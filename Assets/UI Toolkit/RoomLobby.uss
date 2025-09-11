@@ -1,13 +1,15 @@
 .lobby-container {
     flex-direction: column;
+    display: none; /* 初始隐藏，由C#代码控制显示 */
 }
 
 .header {
-    border-bottom: 1px solid rgb(100, 100, 100);
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(100, 100, 100);
 }
 
 .room-title {
-    font-weight: bold;
+    -unity-font-style: bold;
 }
 
 .leave-btn {
@@ -45,9 +47,10 @@
 
 .owner-indicator {
     color: rgb(255, 215, 0);
-    font-weight: bold;
+    -unity-font-style: bold;
 }
 
 .room-info {
-    border-left: 1px solid rgb(100, 100, 100);
+    border-left-width: 1px;
+    border-left-color: rgb(100, 100, 100);
 }

@@ -16,7 +16,7 @@ public class SteamLobbyManager : MonoBehaviour
     public event Action<CSteamID, CSteamID> OnLobbyMemberLeft; // (lobbyId, memberId)
 
     private CallResult<LobbyCreated_t> lobbyCreatedCallResult;
-    private CallResult<LobbyChatUpdate_t> lobbyChatUpdateCallResult;
+    private Callback<LobbyChatUpdate_t> lobbyChatUpdateCallback;
 
     private void Awake()
     {
@@ -38,13 +38,18 @@ public class SteamLobbyManager : MonoBehaviour
         }
 
         lobbyCreatedCallResult = CallResult<LobbyCreated_t>.Create(OnLobbyCreatedCallback);
-        lobbyChatUpdateCallResult = CallResult<LobbyChatUpdate_t>.Create(OnLobbyChatUpdateCallback);
+        // 创建回调对象 - Callback 对象创建时会自动向 Steam 注册
+        lobbyChatUpdateCallback = Callback<LobbyChatUpdate_t>.Create(OnLobbyChatUpdate);
+        
+        Debug.Log("Steam lobby callbacks registered successfully.");
     }
 
     private void OnDisable()
     {
         lobbyCreatedCallResult = null;
-        lobbyChatUpdateCallResult = null;
+        lobbyChatUpdateCallback = null;
+
+        Debug.Log("Steam lobby callbacks unregistered.");
     }
 
     /// <summary>
@@ -125,14 +130,9 @@ public class SteamLobbyManager : MonoBehaviour
         OnLobbyCreated?.Invoke(lobbyId);
     }
 
-    private void OnLobbyChatUpdateCallback(LobbyChatUpdate_t callback, bool ioFailure)
+    // Callback 版本的处理方法（只接收单个参数）
+    private void OnLobbyChatUpdate(LobbyChatUpdate_t callback)
     {
-        if (ioFailure)
-        {
-            Debug.LogError("Lobby chat update failed due to IO failure.");
-            return;
-        }
-
         CSteamID lobbyId = new CSteamID(callback.m_ulSteamIDLobby);
         CSteamID userId = new CSteamID(callback.m_ulSteamIDUserChanged);
 

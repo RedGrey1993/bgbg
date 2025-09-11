@@ -226,13 +226,22 @@ public class RoomCreateUI : MonoBehaviour
         // 切换到房间UI
         if (roomLobbyUI != null)
         {
+            Debug.Log("Show Room Lobby UI");
+            Debug.Log($"RoomLobbyUI GameObject active: {roomLobbyUI.gameObject.activeInHierarchy}");
+            Debug.Log($"RoomLobbyUI UIDocument: {roomLobbyUI.uiDocument != null}");
+            
+            // 确保房间UI的GameObject是激活的
+            roomLobbyUI.gameObject.SetActive(true);
+            
+            // 隐藏创建房间UI
+            uiDocument.rootVisualElement.style.display = DisplayStyle.None; 
+            
+            // 初始化房间UI（Initialize方法会处理显示）
             roomLobbyUI.Initialize(lobbyId);
-            // 这里可以添加切换UI的逻辑，比如隐藏当前UI，显示房间UI
-            uiDocument.rootVisualElement.style.display = DisplayStyle.None; // 隐藏创建UI
-            roomLobbyUI.gameObject.SetActive(true); // 显示房间UI
         }
         else
         {
+            Debug.LogWarning("RoomLobbyUI reference is null!");
             ShowInfo("Lobby created!", Color.green);
         }
     }

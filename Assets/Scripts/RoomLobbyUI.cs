@@ -48,7 +48,10 @@ public class RoomLobbyUI : MonoBehaviour
 
     private void SetupUI()
     {
+        Debug.Log("RoomLobbyUI SetupUI() called");
+        
         var root = uiDocument.rootVisualElement;
+        Debug.Log($"RootVisualElement: {root != null}");
 
         // 获取 UI 元素引用
         roomNameLabel = root.Q<Label>("room-name-label");
@@ -56,6 +59,17 @@ public class RoomLobbyUI : MonoBehaviour
         playerListContainer = root.Q<VisualElement>("player-list-container");
         ownerLabel = root.Q<Label>("owner-label");
         memberCountLabel = root.Q<Label>("member-count-label");
+
+        // 调试UI元素查找
+        if (roomNameLabel == null) Debug.LogError("room-name-label not found!");
+        if (leaveRoomBtn == null) Debug.LogError("leave-room-btn not found!");
+        if (playerListContainer == null) Debug.LogError("player-list-container not found!");
+        if (ownerLabel == null) Debug.LogError("owner-label not found!");
+        if (memberCountLabel == null) Debug.LogError("member-count-label not found!");
+
+        // 初始状态设为隐藏
+        root.style.display = DisplayStyle.None;
+        Debug.Log("RoomLobbyUI initially hidden in SetupUI");
 
         // 绑定事件
         if (leaveRoomBtn != null)
@@ -88,7 +102,20 @@ public class RoomLobbyUI : MonoBehaviour
 
     public void Initialize(CSteamID lobbyId)
     {
+        Debug.Log($"RoomLobbyUI Initialize() called with lobby ID: {lobbyId}");
         currentLobbyId = lobbyId;
+        
+        // 确保UI显示
+        if (uiDocument != null && uiDocument.rootVisualElement != null)
+        {
+            uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+            Debug.Log("RoomLobbyUI set to visible in Initialize");
+        }
+        else
+        {
+            Debug.LogError("UIDocument or rootVisualElement is null in Initialize!");
+        }
+        
         UpdateRoomInfo();
         RefreshPlayerList();
     }
@@ -239,7 +266,16 @@ public class RoomLobbyUI : MonoBehaviour
         {
             SteamLobbyManager.Instance.LeaveLobby(currentLobbyId);
         }
-        // 这里可以添加切换回主菜单的逻辑
+
+        // 隐藏房间UI，显示创建房间UI
+        uiDocument.rootVisualElement.style.display = DisplayStyle.None;
+        
+        // 查找并显示创建房间UI
+        var roomCreateUI = FindFirstObjectByType<RoomCreateUI>();
+        if (roomCreateUI != null)
+        {
+            roomCreateUI.uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+        }
     }
 
     #region Lobby Event Handlers
