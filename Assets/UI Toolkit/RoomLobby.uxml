@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" editor-extension-mode="False" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
+    <ui:VisualElement class="lobby-container" style="flex-grow: 1; background-color: rgb(50, 50, 50);">
+        <ui:VisualElement class="header" style="flex-direction: row; justify-content: space-between; align-items: center; padding: 10px; background-color: rgb(70, 70, 70);">
+            <ui:Label name="room-name-label" text="Room Name" class="room-title" style="font-size: 24px; color: white;" />
+            <ui:Button name="leave-room-btn" text="Leave Room" class="leave-btn" style="background-color: rgb(200, 50, 50); color: white;" />
+        </ui:VisualElement>
+        
+        <ui:VisualElement class="content" style="flex-grow: 1; flex-direction: row; padding: 10px;">
+            <ui:VisualElement class="player-list" style="flex: 1; background-color: rgb(60, 60, 60); border-radius: 5px; padding: 10px;">
+                <ui:Label text="Players in Room:" style="font-size: 18px; color: white; margin-bottom: 10px;" />
+                <ui:ScrollView name="player-scroll-view" style="flex-grow: 1;">
+                    <ui:VisualElement name="player-list-container" style="flex-direction: column;" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="room-info" style="width: 200px; margin-left: 10px; background-color: rgb(60, 60, 60); border-radius: 5px; padding: 10px;">
+                <ui:Label text="Room Info" style="font-size: 18px; color: white; margin-bottom: 10px;" />
+                <ui:Label name="owner-label" text="Owner: " style="color: white;" />
+                <ui:Label name="member-count-label" text="Members: 0/4" style="color: white;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

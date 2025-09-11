@@ -1,0 +1,53 @@
+.lobby-container {
+    flex-direction: column;
+}
+
+.header {
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.room-title {
+    font-weight: bold;
+}
+
+.leave-btn {
+    padding: 5px 10px;
+}
+
+.leave-btn:hover {
+    background-color: rgb(220, 70, 70) !important;
+}
+
+.player-list {
+    min-height: 200px;
+}
+
+.player-item {
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(80, 80, 80);
+    border-radius: 3px;
+}
+
+.player-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    margin-right: 10px;
+}
+
+.player-name {
+    color: white;
+    font-size: 14px;
+}
+
+.owner-indicator {
+    color: rgb(255, 215, 0);
+    font-weight: bold;
+}
+
+.room-info {
+    border-left: 1px solid rgb(100, 100, 100);
+}
