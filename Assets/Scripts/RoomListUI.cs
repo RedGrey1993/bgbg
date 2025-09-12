@@ -1,0 +1,436 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+using Steamworks;
+
+public class RoomListUI : MonoBehaviour
+{
+    [Header("UI Document")]
+    public UIDocument uiDocument;
+
+    [Header("UI References")]
+    public RoomCreateUI roomCreateUI;
+    public RoomLobbyUI roomLobbyUI;
+
+    // UI 元素引用
+    private Button refreshBtn;
+    private Button createRoomBtn;
+    private TextField searchField;
+    private Toggle passwordFilter;
+    private Button searchBtn;
+    private VisualElement roomListContainer;
+    private Label statusLabel;
+    private Label roomCountLabel;
+
+    // 密码对话框元素
+    private VisualElement passwordDialog;
+    private TextField passwordInput;
+    private Button cancelPasswordBtn;
+    private Button joinPasswordBtn;
+
+    // 数据
+    private List<LobbyInfo> roomList = new List<LobbyInfo>();
+    private CSteamID pendingJoinLobby;
+    private bool isSearching = false;
+
+    private void Awake()
+    {
+        if (uiDocument == null)
+        {
+            uiDocument = GetComponent<UIDocument>();
+        }
+
+        if (uiDocument == null)
+        {
+            Debug.LogError("RoomListUI: 需要 UIDocument 组件");
+            enabled = false;
+            return;
+        }
+    }
+
+    private void OnEnable()
+    {
+        SetupUI();
+        SubscribeToEvents();
+    }
+
+    private void OnDisable()
+    {
+        CleanupUI();
+        UnsubscribeFromEvents();
+    }
+
+    private void SetupUI()
+    {
+        var root = uiDocument.rootVisualElement;
+
+        // 获取UI元素引用
+        refreshBtn = root.Q<Button>("refresh-btn");
+        createRoomBtn = root.Q<Button>("create-room-btn");
+        searchField = root.Q<TextField>("search-field");
+        passwordFilter = root.Q<Toggle>("password-filter");
+        searchBtn = root.Q<Button>("search-btn");
+        roomListContainer = root.Q<VisualElement>("room-list-container");
+        statusLabel = root.Q<Label>("status-label");
+        roomCountLabel = root.Q<Label>("room-count-label");
+
+        // 密码对话框元素
+        passwordDialog = root.Q<VisualElement>("password-dialog");
+        passwordInput = root.Q<TextField>("password-input");
+        cancelPasswordBtn = root.Q<Button>("cancel-password-btn");
+        joinPasswordBtn = root.Q<Button>("join-password-btn");
+
+        // 绑定事件
+        if (refreshBtn != null) refreshBtn.clicked += OnRefreshClicked;
+        if (createRoomBtn != null) createRoomBtn.clicked += OnCreateRoomClicked;
+        if (searchBtn != null) searchBtn.clicked += OnSearchClicked;
+        if (cancelPasswordBtn != null) cancelPasswordBtn.clicked += OnCancelPasswordClicked;
+        if (joinPasswordBtn != null) joinPasswordBtn.clicked += OnJoinPasswordClicked;
+
+        // 初始隐藏
+        root.style.display = DisplayStyle.None;
+        if (passwordDialog != null) passwordDialog.style.display = DisplayStyle.None;
+
+        Debug.Log("RoomListUI setup completed");
+    }
+
+    private void CleanupUI()
+    {
+        if (refreshBtn != null) refreshBtn.clicked -= OnRefreshClicked;
+        if (createRoomBtn != null) createRoomBtn.clicked -= OnCreateRoomClicked;
+        if (searchBtn != null) searchBtn.clicked -= OnSearchClicked;
+        if (cancelPasswordBtn != null) cancelPasswordBtn.clicked -= OnCancelPasswordClicked;
+        if (joinPasswordBtn != null) joinPasswordBtn.clicked -= OnJoinPasswordClicked;
+    }
+
+    private void SubscribeToEvents()
+    {
+        if (SteamLobbyManager.Instance != null)
+        {
+            Debug.Log("RoomListUI: Subscribing to SteamLobbyManager events");
+            SteamLobbyManager.Instance.OnLobbyListReceived += OnLobbyListReceived;
+            SteamLobbyManager.Instance.OnLobbyJoined += OnLobbyJoined;
+            SteamLobbyManager.Instance.OnLobbyJoinFailed += OnLobbyJoinFailed;
+            Debug.Log("RoomListUI: Event subscription completed");
+        }
+        else
+        {
+            Debug.LogWarning("RoomListUI: SteamLobbyManager.Instance is null, cannot subscribe to events");
+        }
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        if (SteamLobbyManager.Instance != null)
+        {
+            SteamLobbyManager.Instance.OnLobbyListReceived -= OnLobbyListReceived;
+            SteamLobbyManager.Instance.OnLobbyJoined -= OnLobbyJoined;
+            SteamLobbyManager.Instance.OnLobbyJoinFailed -= OnLobbyJoinFailed;
+        }
+    }
+
+    public void Show()
+    {
+        if (uiDocument != null && uiDocument.rootVisualElement != null)
+        {
+            uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+            RefreshRoomList();
+        }
+    }
+
+    public void Hide()
+    {
+        if (uiDocument != null && uiDocument.rootVisualElement != null)
+        {
+            uiDocument.rootVisualElement.style.display = DisplayStyle.None;
+        }
+    }
+
+    private void OnRefreshClicked()
+    {
+        RefreshRoomList();
+    }
+
+    private void OnCreateRoomClicked()
+    {
+        Hide();
+        if (roomCreateUI != null)
+        {
+            roomCreateUI.Show();
+        }
+    }
+
+    private void OnSearchClicked()
+    {
+        RefreshRoomList();
+    }
+
+    private void RefreshRoomList()
+    {
+        if (!SteamManager.Initialized || isSearching)
+        {
+            UpdateStatus("Steam not initialized or already searching");
+            return;
+        }
+
+        isSearching = true;
+        UpdateStatus("Searching for rooms...");
+        Debug.Log("RoomListUI: Requesting lobby list from SteamLobbyManager");
+        
+        // 请求房间列表
+        if (SteamLobbyManager.Instance != null)
+        {
+            SteamLobbyManager.Instance.RequestLobbyList();
+        }
+        else
+        {
+            Debug.LogError("RoomListUI: SteamLobbyManager.Instance is null when requesting lobby list");
+            isSearching = false;
+            UpdateStatus("SteamLobbyManager not available");
+        }
+    }
+
+    private void OnLobbyListReceived(List<LobbyInfo> lobbies)
+    {
+        Debug.Log($"RoomListUI: OnLobbyListReceived called with {lobbies.Count} lobbies");
+        isSearching = false;
+        roomList = lobbies;
+        
+        // 应用过滤器
+        var filteredRooms = FilterRooms(roomList);
+        
+        UpdateRoomDisplay(filteredRooms);
+        UpdateStatus($"Found {filteredRooms.Count} rooms");
+        
+        if (roomCountLabel != null)
+        {
+            roomCountLabel.text = $"{filteredRooms.Count} rooms found";
+        }
+    }
+
+    private List<LobbyInfo> FilterRooms(List<LobbyInfo> rooms)
+    {
+        var filtered = new List<LobbyInfo>();
+        string searchText = searchField?.value?.ToLower() ?? "";
+        bool showPasswordOnly = passwordFilter?.value ?? false;
+
+        foreach (var room in rooms)
+        {
+            // 搜索过滤
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                if (!room.name.ToLower().Contains(searchText) && 
+                    !room.ownerName.ToLower().Contains(searchText))
+                {
+                    continue;
+                }
+            }
+
+            // 密码过滤
+            if (showPasswordOnly && !room.hasPassword)
+            {
+                continue;
+            }
+
+            filtered.Add(room);
+        }
+
+        return filtered;
+    }
+
+    private void UpdateRoomDisplay(List<LobbyInfo> rooms)
+    {
+        if (roomListContainer == null) return;
+
+        // 清空现有列表
+        roomListContainer.Clear();
+
+        if (rooms.Count == 0)
+        {
+            ShowEmptyState();
+            return;
+        }
+
+        // 添加房间项
+        foreach (var room in rooms)
+        {
+            var roomItem = CreateRoomItem(room);
+            roomListContainer.Add(roomItem);
+        }
+    }
+
+    private VisualElement CreateRoomItem(LobbyInfo lobbyInfo)
+    {
+        var roomItem = new VisualElement();
+        roomItem.AddToClassList("room-item");
+
+        // 房间信息区域
+        var roomInfoContainer = new VisualElement();
+        roomInfoContainer.AddToClassList("room-item-info");
+
+        // 房间名
+        var roomName = new Label(lobbyInfo.name);
+        roomName.AddToClassList("room-name");
+        roomInfoContainer.Add(roomName);
+
+        // 房间详情容器
+        var roomDetails = new VisualElement();
+        roomDetails.AddToClassList("room-details");
+
+        // 玩家数量
+        var playerCount = new Label($"{lobbyInfo.currentPlayers}/{lobbyInfo.maxPlayers} players");
+        playerCount.AddToClassList("room-player-count");
+        roomDetails.Add(playerCount);
+
+        // 房主
+        var owner = new Label($"Owner: {lobbyInfo.ownerName}");
+        owner.AddToClassList("room-owner");
+        roomDetails.Add(owner);
+
+        roomInfoContainer.Add(roomDetails);
+        roomItem.Add(roomInfoContainer);
+
+        // 密码指示器
+        if (lobbyInfo.hasPassword)
+        {
+            var passwordIcon = new VisualElement();
+            passwordIcon.AddToClassList("password-icon");
+            roomItem.Add(passwordIcon);
+
+            var passwordText = new Label("🔒");
+            passwordText.AddToClassList("password-text");
+            roomItem.Add(passwordText);
+        }
+
+        // 加入按钮
+        var joinBtn = new Button(() => OnJoinRoomClicked(lobbyInfo))
+        {
+            text = "Join"
+        };
+        joinBtn.AddToClassList("join-btn");
+
+        // 如果房间满了，禁用按钮
+        if (lobbyInfo.currentPlayers >= lobbyInfo.maxPlayers)
+        {
+            joinBtn.SetEnabled(false);
+            joinBtn.text = "Full";
+        }
+
+        roomItem.Add(joinBtn);
+
+        return roomItem;
+    }
+
+    private void ShowEmptyState()
+    {
+        var emptyState = new VisualElement();
+        emptyState.AddToClassList("empty-state");
+
+        var emptyText = new Label("No rooms found");
+        emptyText.AddToClassList("empty-text");
+        emptyState.Add(emptyText);
+
+        var emptySubtitle = new Label("Try refreshing or create a new room");
+        emptySubtitle.AddToClassList("empty-subtitle");
+        emptyState.Add(emptySubtitle);
+
+        roomListContainer.Add(emptyState);
+    }
+
+    private void OnJoinRoomClicked(LobbyInfo lobbyInfo)
+    {
+        if (lobbyInfo.hasPassword)
+        {
+            ShowPasswordDialog(lobbyInfo.lobbyId);
+        }
+        else
+        {
+            JoinRoom(lobbyInfo.lobbyId, "");
+        }
+    }
+
+    private void ShowPasswordDialog(CSteamID lobbyId)
+    {
+        pendingJoinLobby = lobbyId;
+        if (passwordDialog != null)
+        {
+            passwordDialog.style.display = DisplayStyle.Flex;
+            if (passwordInput != null)
+            {
+                passwordInput.value = "";
+                passwordInput.Focus();
+            }
+        }
+    }
+
+    private void OnCancelPasswordClicked()
+    {
+        HidePasswordDialog();
+    }
+
+    private void OnJoinPasswordClicked()
+    {
+        string password = passwordInput?.value ?? "";
+        if (string.IsNullOrEmpty(password))
+        {
+            UpdateStatus("Please enter a password");
+            return;
+        }
+
+        JoinRoom(pendingJoinLobby, password);
+        HidePasswordDialog();
+    }
+
+    private void HidePasswordDialog()
+    {
+        if (passwordDialog != null)
+        {
+            passwordDialog.style.display = DisplayStyle.None;
+        }
+        pendingJoinLobby = CSteamID.Nil;
+    }
+
+    private void JoinRoom(CSteamID lobbyId, string password)
+    {
+        if (SteamLobbyManager.Instance != null)
+        {
+            UpdateStatus("Joining room...");
+            SteamLobbyManager.Instance.JoinLobby(lobbyId, password);
+        }
+    }
+
+    private void OnLobbyJoined(CSteamID lobbyId)
+    {
+        Hide();
+        if (roomLobbyUI != null)
+        {
+            roomLobbyUI.Initialize(lobbyId);
+        }
+    }
+
+    private void OnLobbyJoinFailed(string reason)
+    {
+        UpdateStatus($"Failed to join room: {reason}");
+    }
+
+    private void UpdateStatus(string message)
+    {
+        if (statusLabel != null)
+        {
+            statusLabel.text = message;
+        }
+        Debug.Log($"RoomListUI: {message}");
+    }
+}
+
+[System.Serializable]
+public class LobbyInfo
+{
+    public CSteamID lobbyId;
+    public string name;
+    public int currentPlayers;
+    public int maxPlayers;
+    public string ownerName;
+    public bool hasPassword;
+}

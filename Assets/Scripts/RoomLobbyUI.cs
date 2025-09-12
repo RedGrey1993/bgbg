@@ -18,6 +18,8 @@ public class RoomLobbyUI : MonoBehaviour
 
     private CSteamID currentLobbyId;
     private Dictionary<CSteamID, VisualElement> playerItems = new Dictionary<CSteamID, VisualElement>();
+    private Callback<AvatarImageLoaded_t> avatarLoadedCallback;
+    private Callback<PersonaStateChange_t> personaStateCallback;
 
     private void Awake()
     {
@@ -89,6 +91,18 @@ public class RoomLobbyUI : MonoBehaviour
             SteamLobbyManager.Instance.OnLobbyMemberJoined += OnLobbyMemberJoined;
             SteamLobbyManager.Instance.OnLobbyMemberLeft += OnLobbyMemberLeft;
         }
+        
+        // 订阅Steam头像加载完成回调
+        if (avatarLoadedCallback == null)
+        {
+            avatarLoadedCallback = Callback<AvatarImageLoaded_t>.Create(OnAvatarImageLoaded);
+        }
+        
+        // 订阅用户状态变化回调（包括用户名更新）
+        if (personaStateCallback == null)
+        {
+            personaStateCallback = Callback<PersonaStateChange_t>.Create(OnPersonaStateChange);
+        }
     }
 
     private void UnsubscribeFromLobbyEvents()
@@ -97,6 +111,20 @@ public class RoomLobbyUI : MonoBehaviour
         {
             SteamLobbyManager.Instance.OnLobbyMemberJoined -= OnLobbyMemberJoined;
             SteamLobbyManager.Instance.OnLobbyMemberLeft -= OnLobbyMemberLeft;
+        }
+        
+        // 取消订阅头像回调
+        if (avatarLoadedCallback != null)
+        {
+            avatarLoadedCallback.Dispose();
+            avatarLoadedCallback = null;
+        }
+        
+        // 取消订阅用户状态回调
+        if (personaStateCallback != null)
+        {
+            personaStateCallback.Dispose();
+            personaStateCallback = null;
         }
     }
 
@@ -125,18 +153,53 @@ public class RoomLobbyUI : MonoBehaviour
         if (!SteamManager.Initialized || !currentLobbyId.IsValid()) return;
 
         // 更新房间名
-        string roomName = SteamMatchmaking.GetLobbyData(currentLobbyId, "name");
+        string lobbyName = SteamMatchmaking.GetLobbyData(currentLobbyId, "name");
         if (roomNameLabel != null)
         {
-            roomNameLabel.text = roomName;
+            roomNameLabel.text = string.IsNullOrEmpty(lobbyName) ? "Unknown Room" : lobbyName;
         }
 
         // 更新房主信息
         CSteamID ownerId = SteamMatchmaking.GetLobbyOwner(currentLobbyId);
-        string ownerName = SteamFriends.GetFriendPersonaName(ownerId);
+        Debug.Log($"Getting lobby owner: LobbyID={currentLobbyId}, OwnerID={ownerId}, IsValid={ownerId.IsValid()}, AccountID={ownerId.GetAccountID()}");
+        
         if (ownerLabel != null)
         {
+            string ownerName = "";
+            
+            // 检查房主ID是否有效
+            if (ownerId.IsValid() && ownerId != CSteamID.Nil)
+            {
+                // 首先尝试请求用户信息
+                SteamFriends.RequestUserInformation(ownerId, false);
+                
+                ownerName = SteamFriends.GetFriendPersonaName(ownerId);
+                Debug.Log($"GetFriendPersonaName returned: '{ownerName}' for ID: {ownerId}");
+                
+                // 如果获取不到用户名或者是默认的数字ID，尝试其他方法
+                if (string.IsNullOrEmpty(ownerName) || ownerName == ownerId.ToString())
+                {
+                    // 尝试获取当前用户自己的名字（如果是自己创建的房间）
+                    if (ownerId == SteamUser.GetSteamID())
+                    {
+                        ownerName = SteamFriends.GetPersonaName();
+                        Debug.Log($"Owner is self, using GetPersonaName: '{ownerName}'");
+                    }
+                    else
+                    {
+                        ownerName = $"Player {ownerId.GetAccountID()}";
+                        Debug.Log($"Using fallback name: '{ownerName}'");
+                    }
+                }
+            }
+            else
+            {
+                ownerName = "Unknown Owner";
+                Debug.LogWarning($"Invalid owner ID: {ownerId}");
+            }
+            
             ownerLabel.text = $"Owner: {ownerName}";
+            Debug.Log($"Final owner display: '{ownerName}'");
         }
 
         // 更新成员数量
@@ -169,6 +232,9 @@ public class RoomLobbyUI : MonoBehaviour
     {
         if (!SteamManager.Initialized) return;
 
+        // 首先请求用户信息
+        SteamFriends.RequestUserInformation(steamId, false);
+
         // 创建玩家项容器
         var playerItem = new VisualElement();
         playerItem.AddToClassList("player-item");
@@ -181,12 +247,44 @@ public class RoomLobbyUI : MonoBehaviour
         // 创建用户名标签
         var nameLabel = new Label();
         nameLabel.AddToClassList("player-name");
-        string playerName = SteamFriends.GetFriendPersonaName(steamId);
+        
+        string playerName = "";
+        
+        // 检查玩家ID是否有效
+        if (steamId.IsValid() && steamId != CSteamID.Nil)
+        {
+            playerName = SteamFriends.GetFriendPersonaName(steamId);
+            Debug.Log($"GetFriendPersonaName for {steamId}: '{playerName}'");
+            
+            // 如果获取不到用户名或者是默认的数字ID，使用备选方案
+            if (string.IsNullOrEmpty(playerName) || playerName == steamId.ToString())
+            {
+                // 检查是否是当前用户自己
+                if (steamId == SteamUser.GetSteamID())
+                {
+                    playerName = SteamFriends.GetPersonaName();
+                    Debug.Log($"Player is self, using GetPersonaName: '{playerName}'");
+                }
+                else
+                {
+                    playerName = $"Player {steamId.GetAccountID()}";
+                    Debug.Log($"Using fallback name for {steamId}: '{playerName}'");
+                }
+            }
+        }
+        else
+        {
+            playerName = "Unknown Player";
+            Debug.LogWarning($"Invalid player ID: {steamId}");
+        }
+        
         nameLabel.text = isOwner ? $"{playerName} (Owner)" : playerName;
         if (isOwner)
         {
             nameLabel.AddToClassList("owner-indicator");
         }
+        
+        Debug.Log($"Added player: ID={steamId}, Name={playerName}, IsOwner={isOwner}");
 
         // 添加到容器
         playerItem.Add(avatar);
@@ -208,40 +306,72 @@ public class RoomLobbyUI : MonoBehaviour
 
     private async void LoadPlayerAvatar(CSteamID steamId, VisualElement avatarElement)
     {
-        if (!SteamManager.Initialized) return;
+        if (!SteamManager.Initialized) 
+        {
+            Debug.LogWarning("SteamManager not initialized for avatar loading");
+            SetDefaultAvatar(avatarElement);
+            return;
+        }
 
         try
         {
-            // 获取头像句柄
+            Debug.Log($"Loading avatar for user: {steamId}");
+            
+            // 首先尝试请求头像（这会触发下载如果还没有的话）
+            SteamFriends.RequestUserInformation(steamId, false);
+            
+            // 等待一下让Steam有时间处理请求
+            await System.Threading.Tasks.Task.Delay(500);
+            
+            // 尝试获取大头像
             int avatarHandle = SteamFriends.GetLargeFriendAvatar(steamId);
+            Debug.Log($"Large avatar handle: {avatarHandle}");
 
+            // 如果大头像不可用，尝试中等头像
             if (avatarHandle == -1)
             {
-                // 头像不可用，使用默认头像
-                avatarElement.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f);
+                avatarHandle = SteamFriends.GetMediumFriendAvatar(steamId);
+                Debug.Log($"Medium avatar handle: {avatarHandle}");
+            }
+
+            // 如果中等头像也不可用，尝试小头像
+            if (avatarHandle == -1)
+            {
+                avatarHandle = SteamFriends.GetSmallFriendAvatar(steamId);
+                Debug.Log($"Small avatar handle: {avatarHandle}");
+            }
+
+            if (avatarHandle == -1 || avatarHandle == 0)
+            {
+                Debug.LogWarning($"No avatar available for user {steamId}");
+                SetDefaultAvatar(avatarElement);
                 return;
             }
 
-            // 等待头像数据加载
-            await System.Threading.Tasks.Task.Delay(100);
+            // 再等待一下确保头像数据准备好
+            await System.Threading.Tasks.Task.Delay(200);
 
             // 获取头像尺寸
             uint width = 0, height = 0;
             bool success = SteamUtils.GetImageSize(avatarHandle, out width, out height);
+            Debug.Log($"Avatar size: {width}x{height}, success: {success}");
 
-            if (!success)
+            if (!success || width == 0 || height == 0)
             {
-                avatarElement.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f);
+                Debug.LogWarning($"Failed to get avatar size for user {steamId}");
+                SetDefaultAvatar(avatarElement);
                 return;
             }
 
             // 获取头像像素数据
             byte[] avatarData = new byte[width * height * 4];
             success = SteamUtils.GetImageRGBA(avatarHandle, avatarData, (int)(width * height * 4));
+            Debug.Log($"Avatar data retrieved: {success}, data length: {avatarData.Length}");
 
             if (!success)
             {
-                avatarElement.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f);
+                Debug.LogWarning($"Failed to get avatar data for user {steamId}");
+                SetDefaultAvatar(avatarElement);
                 return;
             }
 
@@ -250,14 +380,25 @@ public class RoomLobbyUI : MonoBehaviour
             avatarTexture.LoadRawTextureData(avatarData);
             avatarTexture.Apply();
 
+            Debug.Log($"Avatar texture created successfully for user {steamId}");
+
             // 设置背景图像
             avatarElement.style.backgroundImage = new StyleBackground(avatarTexture);
+            avatarElement.style.backgroundColor = Color.clear; // 清除默认背景色
         }
         catch (Exception e)
         {
-            Debug.LogError($"Failed to load avatar for {steamId}: {e.Message}");
-            avatarElement.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f);
+            Debug.LogError($"Failed to load avatar for {steamId}: {e.Message}\n{e.StackTrace}");
+            SetDefaultAvatar(avatarElement);
         }
+    }
+
+    private void SetDefaultAvatar(VisualElement avatarElement)
+    {
+        // 使用默认的灰色背景和问号图标
+        avatarElement.style.backgroundImage = StyleKeyword.None;
+        avatarElement.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f);
+        Debug.Log("Set default avatar (gray background)");
     }
 
     private void OnLeaveRoomClicked()
@@ -278,7 +419,7 @@ public class RoomLobbyUI : MonoBehaviour
         }
     }
 
-    #region Lobby Event Handlers
+    #region Steam Events
 
     private void OnLobbyMemberJoined(CSteamID lobbyId, CSteamID memberId)
     {
@@ -296,6 +437,97 @@ public class RoomLobbyUI : MonoBehaviour
         {
             UpdateRoomInfo();
             RemovePlayerItem(memberId);
+        }
+    }
+
+    private void OnAvatarImageLoaded(AvatarImageLoaded_t param)
+    {
+        Debug.Log($"Avatar image loaded for user: {param.m_steamID}");
+        
+        // 找到对应的玩家项并重新加载头像
+        if (playerItems.ContainsKey(param.m_steamID))
+        {
+            var playerItem = playerItems[param.m_steamID];
+            var avatar = playerItem.Q<VisualElement>(className: "player-avatar");
+            if (avatar != null)
+            {
+                LoadPlayerAvatar(param.m_steamID, avatar);
+            }
+        }
+    }
+
+    private void OnPersonaStateChange(PersonaStateChange_t param)
+    {
+        Debug.Log($"Persona state changed for user: {param.m_ulSteamID}, flags: {param.m_nChangeFlags}");
+        
+        CSteamID changedUserId = new CSteamID(param.m_ulSteamID);
+        
+        // 检查是否是名称变化
+        if ((param.m_nChangeFlags & EPersonaChange.k_EPersonaChangeName) == EPersonaChange.k_EPersonaChangeName)
+        {
+            // 更新房主信息（如果是房主的话）
+            if (currentLobbyId.IsValid())
+            {
+                CSteamID ownerId = SteamMatchmaking.GetLobbyOwner(currentLobbyId);
+                if (changedUserId == ownerId)
+                {
+                    UpdateRoomInfo();
+                }
+            }
+            
+            // 更新玩家列表中的用户名
+            if (playerItems.ContainsKey(changedUserId))
+            {
+                UpdatePlayerName(changedUserId);
+            }
+        }
+    }
+    
+    private void UpdatePlayerName(CSteamID steamId)
+    {
+        if (!playerItems.ContainsKey(steamId)) return;
+        
+        var playerItem = playerItems[steamId];
+        var nameLabel = playerItem.Q<Label>(className: "player-name");
+        
+        if (nameLabel != null)
+        {
+            string playerName = "";
+            
+            // 检查玩家ID是否有效
+            if (steamId.IsValid() && steamId != CSteamID.Nil)
+            {
+                playerName = SteamFriends.GetFriendPersonaName(steamId);
+                
+                // 如果获取不到用户名，使用备选方案
+                if (string.IsNullOrEmpty(playerName) || playerName == steamId.ToString())
+                {
+                    // 检查是否是当前用户自己
+                    if (steamId == SteamUser.GetSteamID())
+                    {
+                        playerName = SteamFriends.GetPersonaName();
+                    }
+                    else
+                    {
+                        playerName = $"Player {steamId.GetAccountID()}";
+                    }
+                }
+            }
+            else
+            {
+                playerName = "Unknown Player";
+            }
+            
+            // 检查是否是房主
+            bool isOwner = false;
+            if (currentLobbyId.IsValid())
+            {
+                CSteamID ownerId = SteamMatchmaking.GetLobbyOwner(currentLobbyId);
+                isOwner = (steamId == ownerId);
+            }
+            
+            nameLabel.text = isOwner ? $"{playerName} (Owner)" : playerName;
+            Debug.Log($"Updated player name: {steamId} -> {playerName}");
         }
     }
 

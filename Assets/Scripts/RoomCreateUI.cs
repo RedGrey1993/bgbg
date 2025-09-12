@@ -9,12 +9,14 @@ public class RoomCreateUI : MonoBehaviour
     [Header("UI Document")]
     public UIDocument uiDocument;
     public RoomLobbyUI roomLobbyUI; // 引用房间UI
+    public RoomListUI roomListUI; // 引用房间列表UI
     
     // 事件：当用户确认创建房间时触发
     public event Action<string, string> OnRoomCreateRequested;
     
     // UI 元素引用
     private Button createRoomBtn;
+    private Button joinRoomBtn; // 新增：加入房间按钮
     private VisualElement dialogOverlay;
     private TextField roomNameField;
     private TextField roomPasswordField;
@@ -74,6 +76,7 @@ public class RoomCreateUI : MonoBehaviour
         
         // 获取 UI 元素引用
         createRoomBtn = root.Q<Button>("create-room-btn");
+        joinRoomBtn = root.Q<Button>("join-room-btn"); // 新增
         dialogOverlay = root.Q<VisualElement>("dialog-overlay");
         roomNameField = root.Q<TextField>("room-name");
         roomPasswordField = root.Q<TextField>("room-password");
@@ -90,6 +93,8 @@ public class RoomCreateUI : MonoBehaviour
         // 绑定事件
         if (createRoomBtn != null)
             createRoomBtn.clicked += ShowDialog;
+        if (joinRoomBtn != null)
+            joinRoomBtn.clicked += OnJoinRoomClicked; // 新增
         if (confirmBtn != null)
             confirmBtn.clicked += OnConfirmClicked;
         if (cancelBtn != null)
@@ -113,6 +118,8 @@ public class RoomCreateUI : MonoBehaviour
     {
         if (createRoomBtn != null)
             createRoomBtn.clicked -= ShowDialog;
+        if (joinRoomBtn != null)
+            joinRoomBtn.clicked -= OnJoinRoomClicked; // 新增
         if (confirmBtn != null)
             confirmBtn.clicked -= OnConfirmClicked;
         if (cancelBtn != null)
@@ -251,6 +258,37 @@ public class RoomCreateUI : MonoBehaviour
         Debug.LogError("UI: Lobby creation failed.");
         // 在UI上显示错误
         ShowError("Failed to create lobby. Please try again.");
+    }
+
+    private void OnJoinRoomClicked()
+    {
+        Debug.Log("Join Room button clicked");
+        Hide(); // 隐藏当前创建房间UI
+        
+        if (roomListUI != null)
+        {
+            roomListUI.Show(); // 显示房间列表UI
+        }
+        else
+        {
+            Debug.LogWarning("RoomListUI reference is null!");
+        }
+    }
+
+    public void Show()
+    {
+        if (uiDocument != null && uiDocument.rootVisualElement != null)
+        {
+            uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+        }
+    }
+
+    public void Hide()
+    {
+        if (uiDocument != null && uiDocument.rootVisualElement != null)
+        {
+            uiDocument.rootVisualElement.style.display = DisplayStyle.None;
+        }
     }
 
     #endregion

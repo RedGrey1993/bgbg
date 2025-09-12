@@ -1,0 +1,36 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" editor-extension-mode="False" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
+    <Style src="project://database/Assets/UI%20Toolkit/RoomListUI.uss?fileID=7433441132597879392&amp;guid=d1f79cf14bba6ca4fa4f5245d3fddbc9&amp;type=3#RoomListUI" />
+    <ui:VisualElement class="room-list-container" style="flex-grow: 1; background-color: rgb(40, 40, 40); display: flex;">
+        <ui:VisualElement class="header" style="flex-direction: row; justify-content: space-between; align-items: center; padding: 15px; background-color: rgb(60, 60, 60); border-bottom-width: 2px; border-bottom-color: rgb(80, 80, 80);">
+            <ui:Label text="Room List" class="header-title" style="font-size: 24px; color: white; -unity-font-style: bold;" />
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Button name="refresh-btn" text="Refresh" class="header-btn" style="margin-right: 10px; background-color: rgb(70, 120, 180); color: white; padding: 8px 16px;" />
+                <ui:Button name="create-room-btn" text="Create Room" class="header-btn" style="background-color: rgb(50, 150, 50); color: white; padding: 8px 16px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="content" style="flex-grow: 1; padding: 15px;">
+            <ui:VisualElement class="filter-bar" style="flex-direction: row; align-items: center; margin-bottom: 15px; padding: 10px; background-color: rgb(50, 50, 50); border-radius: 5px;">
+                <ui:TextField name="search-field" placeholder-text="Search rooms..." style="flex-grow: 1; margin-right: 10px;" />
+                <ui:Toggle name="password-filter" text="Show password protected" style="margin-right: 10px; color: white;" />
+                <ui:Button name="search-btn" text="Search" class="search-btn" style="background-color: rgb(70, 120, 180); color: white; padding: 5px 12px;" />
+            </ui:VisualElement>
+            <ui:ScrollView name="room-list-scroll" style="flex-grow: 1; background-color: rgb(50, 50, 50); border-radius: 5px; padding: 10px;">
+                <ui:VisualElement name="room-list-container" style="flex-direction: column;" />
+            </ui:ScrollView>
+            <ui:VisualElement class="status-bar" style="flex-direction: row; justify-content: space-between; align-items: center; margin-top: 10px; padding: 10px; background-color: rgb(60, 60, 60); border-radius: 5px;">
+                <ui:Label name="status-label" text="Loading rooms..." style="color: white;" />
+                <ui:Label name="room-count-label" text="0 rooms found" style="color: rgb(180, 180, 180);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="password-dialog" class="dialog-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.8); align-items: center; justify-content: center; display: none;">
+        <ui:VisualElement class="dialog-content" style="background-color: rgb(60, 60, 60); border-radius: 10px; padding: 20px; min-width: 300px; border-width: 2px; border-color: rgb(80, 80, 80);">
+            <ui:Label text="Enter Room Password" style="font-size: 18px; color: white; margin-bottom: 15px; -unity-text-align: middle-center;" />
+            <ui:TextField name="password-input" password="true" placeholder-text="Enter password..." style="margin-bottom: 15px;" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                <ui:Button name="cancel-password-btn" text="Cancel" style="flex: 1; margin-right: 5px; background-color: rgb(120, 50, 50); color: white;" />
+                <ui:Button name="join-password-btn" text="Join" style="flex: 1; margin-left: 5px; background-color: rgb(50, 120, 50); color: white;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
