@@ -1,6 +1,11 @@
+.transparent-bg {
+    background-color: rgba(0, 0, 0, 0); /* 完全透明 */
+}
+
 .lobby-container {
     flex-direction: column;
     display: none; /* 初始隐藏，由C#代码控制显示 */
+    background-color: rgba(50, 50, 50, 0); /* 完全透明 */
 }
 
 .header {

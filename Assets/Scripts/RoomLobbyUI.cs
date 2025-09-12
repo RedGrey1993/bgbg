@@ -237,6 +237,7 @@ public class RoomLobbyUI : MonoBehaviour
 
         // 创建玩家项容器
         var playerItem = new VisualElement();
+        playerItem.style.backgroundColor = new StyleColor(Color.clear);
         playerItem.AddToClassList("player-item");
 
         // 创建头像
