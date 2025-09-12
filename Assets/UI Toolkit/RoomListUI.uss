@@ -89,26 +89,6 @@
     -unity-font-style: bold;
 }
 
-.join-btn {
-    background-color: rgb(50, 150, 50);
-    color: white;
-    border-radius: 5px;
-    border-width: 0;
-    padding: 8px 16px;
-    margin-left: 15px;
-    cursor: link;
-}
-
-.join-btn:hover {
-    background-color: rgb(70, 170, 70);
-}
-
-.join-btn:disabled {
-    background-color: rgb(100, 100, 100);
-    color: rgb(150, 150, 150);
-    /* cursor: default; */ /* Unity UI Toolkit 不支持 cursor: default，移除此行 */
-}
-
 /* Dialog Styles */
 .dialog-overlay {
     position: absolute;
