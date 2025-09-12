@@ -73,9 +73,9 @@ public class SteamLobbyManager : MonoBehaviour
     {
         if (!SteamManager.Initialized) return;
 
-        // ELobbyType.k_ELobbyTypeFriendsOnly - 朋友可见，可以获取房主信息
-        // 使用 FriendsOnly 而不是 Private，这样可以在房间列表中显示房主信息
-        SteamAPICall_t tryCreateLobby = SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, 4); // 假设最多4个玩家
+        // ELobbyType.k_ELobbyTypePublic - 所有人都可见和加入
+        // 改为 Public 类型，这样即使不是好友也能搜索到房间
+        SteamAPICall_t tryCreateLobby = SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, 4); // 假设最多4个玩家
         // 监听大厅创建回调
         lobbyCreatedCallResult.Set(tryCreateLobby);
 
@@ -121,19 +121,26 @@ public class SteamLobbyManager : MonoBehaviour
         string roomName = PlayerPrefs.GetString("temp_lobby_name", "Default Room Name");
         string password = PlayerPrefs.GetString("temp_lobby_password", "");
 
-        SteamMatchmaking.SetLobbyData(lobbyId, "name", roomName);
-        SteamMatchmaking.SetLobbyData(lobbyId, "game_type", "BGBG"); // 添加游戏类型标识
+        bool nameSet = SteamMatchmaking.SetLobbyData(lobbyId, "name", roomName);
+        bool gameTypeSet = SteamMatchmaking.SetLobbyData(lobbyId, "game_type", "BGBG");
+        Debug.Log($"Setting lobby metadata - Name: '{roomName}' ({nameSet}), GameType: 'BGBG' ({gameTypeSet})");
+        
         if (!string.IsNullOrEmpty(password))
         {
-            SteamMatchmaking.SetLobbyData(lobbyId, "has_password", "true");
-            // 为了简化，我们不直接把密码暴露在元数据里。
-            // 加入者需要输入密码，房主在接到加入请求时再进行验证。
-            // 这里我们只做一个标记。
+            bool passwordSet = SteamMatchmaking.SetLobbyData(lobbyId, "has_password", "true");
+            Debug.Log($"Setting password flag: true ({passwordSet})");
         }
         else
         {
-            SteamMatchmaking.SetLobbyData(lobbyId, "has_password", "false");
+            bool passwordSet = SteamMatchmaking.SetLobbyData(lobbyId, "has_password", "false");
+            Debug.Log($"Setting password flag: false ({passwordSet})");
         }
+        
+        // 验证元数据是否设置成功
+        string verifyName = SteamMatchmaking.GetLobbyData(lobbyId, "name");
+        string verifyGameType = SteamMatchmaking.GetLobbyData(lobbyId, "game_type");
+        string verifyPassword = SteamMatchmaking.GetLobbyData(lobbyId, "has_password");
+        Debug.Log($"Lobby metadata verification - Name: '{verifyName}', GameType: '{verifyGameType}', HasPassword: '{verifyPassword}'");
 
         // 清理临时存储
         PlayerPrefs.DeleteKey("temp_lobby_name");
@@ -175,13 +182,26 @@ public class SteamLobbyManager : MonoBehaviour
         }
 
         Debug.Log("Requesting lobby list...");
+        Debug.Log($"Current Steam User ID: {SteamUser.GetSteamID()}");
+
+        // 简化搜索，移除所有过滤器，获取最基本的房间列表
+        // Steam 默认只返回 Public 类型的房间，数量通常限制在 50-100 个
+        // 如果需要特定过滤，可以添加以下过滤器：
         
-        // 添加过滤条件，只获取我们游戏的房间
+        // 选项1：只获取我们游戏的房间（推荐用于生产环境）
         SteamMatchmaking.AddRequestLobbyListStringFilter("game_type", "BGBG", ELobbyComparison.k_ELobbyComparisonEqual);
+        
+        // 选项2：按距离排序，优先显示网络延迟低的房间
+        SteamMatchmaking.AddRequestLobbyListDistanceFilter(ELobbyDistanceFilter.k_ELobbyDistanceFilterWorldwide);
+        
+        // 选项3：设置返回数量限制（可选）
+        // SteamMatchmaking.AddRequestLobbyListResultCountFilter(20);
         
         // 请求房间列表
         SteamAPICall_t callResult = SteamMatchmaking.RequestLobbyList();
         lobbyListCallResult.Set(callResult);
+        
+        Debug.Log($"Lobby list request sent with call ID: {callResult.m_SteamAPICall}");
     }
 
     /// <summary>
@@ -226,13 +246,20 @@ public class SteamLobbyManager : MonoBehaviour
         for (int i = 0; i < callback.m_nLobbiesMatching; i++)
         {
             CSteamID lobbyId = SteamMatchmaking.GetLobbyByIndex(i);
+            Debug.Log($"Processing lobby {i}: {lobbyId} (raw: {lobbyId.m_SteamID})");
             
             var lobbyInfo = new LobbyInfo();
             lobbyInfo.lobbyId = lobbyId;
+            
+            // 获取大厅基本信息
             lobbyInfo.name = SteamMatchmaking.GetLobbyData(lobbyId, "name");
             lobbyInfo.hasPassword = SteamMatchmaking.GetLobbyData(lobbyId, "has_password") == "true";
             lobbyInfo.currentPlayers = SteamMatchmaking.GetNumLobbyMembers(lobbyId);
             lobbyInfo.maxPlayers = SteamMatchmaking.GetLobbyMemberLimit(lobbyId);
+            
+            // 输出大厅的所有元数据进行调试
+            string gameType = SteamMatchmaking.GetLobbyData(lobbyId, "game_type");
+            Debug.Log($"Lobby {lobbyId} - Name: '{lobbyInfo.name}', GameType: '{gameType}', HasPassword: {lobbyInfo.hasPassword}, Players: {lobbyInfo.currentPlayers}/{lobbyInfo.maxPlayers}");
             
             // 获取房主名字
             CSteamID ownerId = SteamMatchmaking.GetLobbyOwner(lobbyId);
