@@ -78,14 +78,27 @@ public class PlayerController : MonoBehaviour
         {
             moveInput = moveInput.normalized;
         }
-        
-        Debug.Log($"Move Input: {moveInput}");
     }
-    
+
     void FixedUpdate()
     {
         // Apply movement
-        rb.linearVelocity = moveInput * speed;
+        if (LobbyNetworkManager.Instance.IsInLobby())
+        {
+            // Debug.Log("In Lobby - Sending Input to Host");
+            if (LobbyNetworkManager.Instance != null && SteamManager.Initialized)
+            {
+                // send input to host
+                uint tick = (uint)(Time.realtimeSinceStartup * 1000);
+                LobbyNetworkManager.Instance.SendInputToHost(moveInput, tick);
+                // Do NOT move local authoritative object here. We'll update from server StateUpdate.
+            }
+        }
+        else
+        {
+            rb.linearVelocity = moveInput * speed;
+        }
+        
     }
     
     void OnEnable()
