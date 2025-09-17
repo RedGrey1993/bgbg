@@ -7,13 +7,23 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     public float speed = 5f;
     public bool canMoveDiagonally = true;
-    
-    [Header("Input Settings")]
-    public InputActionReference moveInputAction;
-    
+
     // Private variables
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    private InputAction m_MoveAction;
+    private static InputSystem_Actions s_InputActions;
+
+    void Awake()
+    {
+        // Initialize the static input actions asset if it hasn't been already
+        if (s_InputActions == null)
+        {
+            s_InputActions = new InputSystem_Actions();
+        }
+
+        m_MoveAction = s_InputActions.Player.Move;
+    }
     
     void Start()
     {
@@ -23,40 +33,14 @@ public class PlayerController : MonoBehaviour
         // Configure Rigidbody2D
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.gravityScale = 0f; // Disable gravity for 2D top-down movement
-        
-        // Enable input action
-        if (moveInputAction != null)
-        {
-            moveInputAction.action.Enable();
-        }
-        else
-        {
-            Debug.LogWarning("Move Input Action is not assigned! Assign it in the Inspector.");
-        }
     }
     
     void Update()
     {
-        // Read input
-        if (moveInputAction != null)
+        // Read input from the resolved action
+        if (m_MoveAction != null)
         {
-            moveInput = moveInputAction.action.ReadValue<Vector2>();
-        }
-        else
-        {
-            // Fallback to direct keyboard input
-            moveInput = Vector2.zero;
-            if (Keyboard.current != null)
-            {
-                if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
-                    moveInput.y += 1f;
-                if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
-                    moveInput.y -= 1f;
-                if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-                    moveInput.x -= 1f;
-                if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-                    moveInput.x += 1f;
-            }
+            moveInput = m_MoveAction.ReadValue<Vector2>();
         }
         
         // Handle diagonal movement setting
@@ -82,39 +66,28 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Apply movement
-        if (LobbyNetworkManager.Instance.IsInLobby())
+        if (LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby)
         {
-            // Debug.Log("In Lobby - Sending Input to Host");
-            if (LobbyNetworkManager.Instance != null && SteamManager.Initialized)
-            {
-                // send input to host
-                uint tick = (uint)(Time.realtimeSinceStartup * 1000);
-                LobbyNetworkManager.Instance.SendInputToHost(moveInput, tick);
-                // Do NOT move local authoritative object here. We'll update from server StateUpdate.
-            }
+            // We are in an online lobby, send input to the network manager
+            uint tick = (uint)(Time.realtimeSinceStartup * 1000);
+            LobbyNetworkManager.Instance.SendInput(moveInput, tick);
         }
         else
-        {
+        { 
+            // We are not in an online lobby (e.g., single player, or in a menu)
+            // Apply movement directly
             rb.linearVelocity = moveInput * speed;
         }
-        
     }
     
     void OnEnable()
     {
-        if (moveInputAction != null)
-        {
-            moveInputAction.action.Enable();
-        }
+        m_MoveAction?.Enable();
     }
     
     void OnDisable()
     {
-        if (moveInputAction != null)
-        {
-            moveInputAction.action.Disable();
-        }
+        m_MoveAction?.Disable();
     }
     
     // Public methods for external control

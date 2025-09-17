@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Steamworks;
 
 public class RoomListUI : MonoBehaviour
 {
@@ -31,7 +30,7 @@ public class RoomListUI : MonoBehaviour
 
     // 数据
     private List<LobbyInfo> roomList = new List<LobbyInfo>();
-    private CSteamID pendingJoinLobby;
+    private LobbyInfo pendingJoinLobby;
     private bool isSearching = false;
 
     private void Awake()
@@ -106,27 +105,26 @@ public class RoomListUI : MonoBehaviour
 
     private void SubscribeToEvents()
     {
-        if (SteamLobbyManager.Instance != null)
+        if (NetworkManager.ActiveLayer != null)
         {
-            Debug.Log("RoomListUI: Subscribing to SteamLobbyManager events");
-            SteamLobbyManager.Instance.OnLobbyListReceived += OnLobbyListReceived;
-            SteamLobbyManager.Instance.OnLobbyJoined += OnLobbyJoined;
-            SteamLobbyManager.Instance.OnLobbyJoinFailed += OnLobbyJoinFailed;
-            Debug.Log("RoomListUI: Event subscription completed");
+            Debug.Log("RoomListUI: Subscribing to NetworkManager events");
+            NetworkManager.ActiveLayer.OnLobbyListUpdated += OnLobbyListReceived;
+            NetworkManager.ActiveLayer.OnLobbyJoined += OnLobbyJoined;
+            NetworkManager.ActiveLayer.OnLobbyJoinFailed += OnLobbyJoinFailed;
         }
         else
         {
-            Debug.LogWarning("RoomListUI: SteamLobbyManager.Instance is null, cannot subscribe to events");
+            Debug.LogWarning("RoomListUI: NetworkManager.ActiveLayer is null, cannot subscribe to events");
         }
     }
 
     private void UnsubscribeFromEvents()
     {
-        if (SteamLobbyManager.Instance != null)
+        if (NetworkManager.ActiveLayer != null)
         {
-            SteamLobbyManager.Instance.OnLobbyListReceived -= OnLobbyListReceived;
-            SteamLobbyManager.Instance.OnLobbyJoined -= OnLobbyJoined;
-            SteamLobbyManager.Instance.OnLobbyJoinFailed -= OnLobbyJoinFailed;
+            NetworkManager.ActiveLayer.OnLobbyListUpdated -= OnLobbyListReceived;
+            NetworkManager.ActiveLayer.OnLobbyJoined -= OnLobbyJoined;
+            NetworkManager.ActiveLayer.OnLobbyJoinFailed -= OnLobbyJoinFailed;
         }
     }
 
@@ -168,27 +166,17 @@ public class RoomListUI : MonoBehaviour
 
     private void RefreshRoomList()
     {
-        if (!SteamManager.Initialized || isSearching)
+        if (NetworkManager.ActiveLayer == null || isSearching)
         {
-            UpdateStatus("Steam not initialized or already searching");
+            UpdateStatus("Network not ready or already searching");
             return;
         }
 
         isSearching = true;
         UpdateStatus("Searching for rooms...");
-        Debug.Log("RoomListUI: Requesting lobby list from SteamLobbyManager");
         
         // 请求房间列表
-        if (SteamLobbyManager.Instance != null)
-        {
-            SteamLobbyManager.Instance.RequestLobbyList();
-        }
-        else
-        {
-            Debug.LogError("RoomListUI: SteamLobbyManager.Instance is null when requesting lobby list");
-            isSearching = false;
-            UpdateStatus("SteamLobbyManager not available");
-        }
+        NetworkManager.ActiveLayer.RequestLobbyList();
     }
 
     private void OnLobbyListReceived(List<LobbyInfo> lobbies)
@@ -220,15 +208,15 @@ public class RoomListUI : MonoBehaviour
             // 搜索过滤
             if (!string.IsNullOrEmpty(searchText))
             {
-                if (!room.name.ToLower().Contains(searchText) && 
-                    !room.ownerName.ToLower().Contains(searchText))
+                if (!room.Name.ToLower().Contains(searchText) && 
+                    !room.OwnerName.ToLower().Contains(searchText))
                 {
                     continue;
                 }
             }
 
             // 密码过滤
-            if (showPasswordOnly && !room.hasPassword)
+            if (showPasswordOnly && !room.HasPassword)
             {
                 continue;
             }
@@ -270,7 +258,7 @@ public class RoomListUI : MonoBehaviour
         roomInfoContainer.AddToClassList("room-item-info");
 
         // 房间名
-        var roomName = new Label(lobbyInfo.name);
+        var roomName = new Label(lobbyInfo.Name);
         roomName.AddToClassList("room-name");
         roomInfoContainer.Add(roomName);
 
@@ -279,12 +267,12 @@ public class RoomListUI : MonoBehaviour
         roomDetails.AddToClassList("room-details");
 
         // 玩家数量
-        var playerCount = new Label($"{lobbyInfo.currentPlayers}/{lobbyInfo.maxPlayers} players");
+        var playerCount = new Label($"{lobbyInfo.CurrentPlayers}/{lobbyInfo.MaxPlayers} players");
         playerCount.AddToClassList("room-player-count");
         roomDetails.Add(playerCount);
 
         // 房主
-        var owner = new Label($"Owner: {lobbyInfo.ownerName}");
+        var owner = new Label($"Owner: {lobbyInfo.OwnerName}");
         owner.AddToClassList("room-owner");
         roomDetails.Add(owner);
 
@@ -292,7 +280,7 @@ public class RoomListUI : MonoBehaviour
         roomItem.Add(roomInfoContainer);
 
         // 密码指示器
-        if (lobbyInfo.hasPassword)
+        if (lobbyInfo.HasPassword)
         {
             var passwordIcon = new VisualElement();
             passwordIcon.AddToClassList("password-icon");
@@ -311,7 +299,7 @@ public class RoomListUI : MonoBehaviour
         joinBtn.AddToClassList("join-btn");
 
         // 如果房间满了，禁用按钮
-        if (lobbyInfo.currentPlayers >= lobbyInfo.maxPlayers)
+        if (lobbyInfo.CurrentPlayers >= lobbyInfo.MaxPlayers)
         {
             joinBtn.SetEnabled(false);
             joinBtn.text = "Full";
@@ -340,19 +328,19 @@ public class RoomListUI : MonoBehaviour
 
     private void OnJoinRoomClicked(LobbyInfo lobbyInfo)
     {
-        if (lobbyInfo.hasPassword)
+        if (lobbyInfo.HasPassword)
         {
-            ShowPasswordDialog(lobbyInfo.lobbyId);
+            ShowPasswordDialog(lobbyInfo);
         }
         else
         {
-            JoinRoom(lobbyInfo.lobbyId, "");
+            JoinRoom(lobbyInfo, "");
         }
     }
 
-    private void ShowPasswordDialog(CSteamID lobbyId)
+    private void ShowPasswordDialog(LobbyInfo lobbyInfo)
     {
-        pendingJoinLobby = lobbyId;
+        pendingJoinLobby = lobbyInfo;
         if (passwordDialog != null)
         {
             passwordDialog.style.display = DisplayStyle.Flex;
@@ -388,24 +376,24 @@ public class RoomListUI : MonoBehaviour
         {
             passwordDialog.style.display = DisplayStyle.None;
         }
-        pendingJoinLobby = CSteamID.Nil;
+        pendingJoinLobby = default; // Use default for struct
     }
 
-    private void JoinRoom(CSteamID lobbyId, string password)
+    private void JoinRoom(LobbyInfo lobbyInfo, string password)
     {
-        if (SteamLobbyManager.Instance != null)
+        if (NetworkManager.ActiveLayer != null)
         {
             UpdateStatus("Joining room...");
-            SteamLobbyManager.Instance.JoinLobby(lobbyId, password);
+            NetworkManager.ActiveLayer.JoinLobby(lobbyInfo, password);
         }
     }
 
-    private void OnLobbyJoined(CSteamID lobbyId)
+    private void OnLobbyJoined(LobbyInfo lobbyInfo)
     {
         Hide();
         if (roomLobbyUI != null)
         {
-            roomLobbyUI.Initialize(lobbyId);
+            roomLobbyUI.Initialize(lobbyInfo);
         }
     }
 
@@ -424,13 +412,3 @@ public class RoomListUI : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class LobbyInfo
-{
-    public CSteamID lobbyId;
-    public string name;
-    public int currentPlayers;
-    public int maxPlayers;
-    public string ownerName;
-    public bool hasPassword;
-}

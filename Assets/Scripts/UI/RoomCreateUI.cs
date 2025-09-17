@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Steamworks;
 
 public class RoomCreateUI : MonoBehaviour
 {
@@ -10,9 +9,6 @@ public class RoomCreateUI : MonoBehaviour
     public UIDocument uiDocument;
     public RoomLobbyUI roomLobbyUI; // 引用房间UI
     public RoomListUI roomListUI; // 引用房间列表UI
-    
-    // 事件：当用户确认创建房间时触发
-    public event Action<string, string> OnRoomCreateRequested;
     
     // UI 元素引用
     private Button createRoomBtn;
@@ -38,34 +34,25 @@ public class RoomCreateUI : MonoBehaviour
             enabled = false;
             return;
         }
-        
-        if(SteamManager.Initialized) {
-            string name = SteamFriends.GetPersonaName();
-            Debug.Log(name);
-        }
     }
     
     private void OnEnable()
     {
         SetupUI();
-        // 订阅创建房间的请求
-        if (SteamLobbyManager.Instance != null)
+        if (NetworkManager.ActiveLayer != null)
         {
-            OnRoomCreateRequested += SteamLobbyManager.Instance.CreateLobby;
-            SteamLobbyManager.Instance.OnLobbyCreated += OnLobbyCreated;
-            SteamLobbyManager.Instance.OnLobbyCreateFailed += OnLobbyCreateFailed;
+            NetworkManager.ActiveLayer.OnLobbyCreated += OnLobbyCreated;
+            NetworkManager.ActiveLayer.OnLobbyCreateFailed += OnLobbyCreateFailed;
         }
     }
     
     private void OnDisable()
     {
         CleanupUI();
-        // 取消订阅
-        if (SteamLobbyManager.Instance != null)
+        if (NetworkManager.ActiveLayer != null)
         {
-            OnRoomCreateRequested -= SteamLobbyManager.Instance.CreateLobby;
-            SteamLobbyManager.Instance.OnLobbyCreated -= OnLobbyCreated;
-            SteamLobbyManager.Instance.OnLobbyCreateFailed -= OnLobbyCreateFailed;
+            NetworkManager.ActiveLayer.OnLobbyCreated -= OnLobbyCreated;
+            NetworkManager.ActiveLayer.OnLobbyCreateFailed -= OnLobbyCreateFailed;
         }
     }
     
@@ -133,7 +120,8 @@ public class RoomCreateUI : MonoBehaviour
             dialogOverlay.RemoveFromClassList("hidden");
             
             // 清空之前的输入和错误信息
-            if (roomNameField != null) roomNameField.value = SteamFriends.GetPersonaName() + "'s Room"; // 默认使用玩家名字
+            string defaultRoomName = (NetworkManager.ActiveLayer?.MyInfo.Name ?? "Player") + "'s Room";
+            if (roomNameField != null) roomNameField.value = defaultRoomName;
             if (roomPasswordField != null) roomPasswordField.value = "";
             if (errorMessage != null) errorMessage.text = "";
             
@@ -185,7 +173,7 @@ public class RoomCreateUI : MonoBehaviour
         }
         
         // 触发事件
-        OnRoomCreateRequested?.Invoke(roomName, roomPassword);
+        NetworkManager.ActiveLayer?.CreateLobby(roomName, roomPassword, 4); // Assuming max 4 players
         
         // 可以在这里显示一个“创建中...”的提示
         ShowInfo("Creating lobby, please wait...", Color.yellow);
@@ -225,17 +213,15 @@ public class RoomCreateUI : MonoBehaviour
 
     #region Steam Lobby Callbacks
 
-    private void OnLobbyCreated(CSteamID lobbyId)
+    private void OnLobbyCreated(LobbyInfo lobbyInfo)
     {
-        Debug.Log("UI: Lobby created successfully! ID: " + lobbyId);
+        Debug.Log("UI: Lobby created successfully! ID: " + lobbyInfo.Id);
         // 隐藏创建对话框
         HideDialog();
         // 切换到房间UI
         if (roomLobbyUI != null)
         {
             Debug.Log("Show Room Lobby UI");
-            Debug.Log($"RoomLobbyUI GameObject active: {roomLobbyUI.gameObject.activeInHierarchy}");
-            Debug.Log($"RoomLobbyUI UIDocument: {roomLobbyUI.uiDocument != null}");
             
             // 确保房间UI的GameObject是激活的
             roomLobbyUI.gameObject.SetActive(true);
@@ -244,7 +230,7 @@ public class RoomCreateUI : MonoBehaviour
             uiDocument.rootVisualElement.style.display = DisplayStyle.None; 
             
             // 初始化房间UI（Initialize方法会处理显示）
-            roomLobbyUI.Initialize(lobbyId);
+            roomLobbyUI.Initialize(lobbyInfo);
         }
         else
         {
@@ -267,6 +253,7 @@ public class RoomCreateUI : MonoBehaviour
         
         if (roomListUI != null)
         {
+            roomListUI.gameObject.SetActive(true); // 确保房间列表UI的GameObject是激活的
             roomListUI.Show(); // 显示房间列表UI
         }
         else
