@@ -73,7 +73,7 @@ public class LobbyNetworkManager : MonoBehaviour
             NetworkManager.ActiveLayer.OnPlayerJoined += OnPlayerJoined;
             NetworkManager.ActiveLayer.OnPlayerLeft += OnPlayerLeft;
             NetworkManager.ActiveLayer.OnPacketReceived += OnPacketReceived;
-            NetworkManager.ActiveLayer.OnDisconnected += OnDisconnected;
+            NetworkManager.ActiveLayer.OnLobbyLeft += OnLobbyLeft;
             NetworkManager.ActiveLayer.OnLobbyJoined += OnLobbyJoined;
         }
     }
@@ -86,7 +86,7 @@ public class LobbyNetworkManager : MonoBehaviour
             NetworkManager.ActiveLayer.OnPlayerJoined -= OnPlayerJoined;
             NetworkManager.ActiveLayer.OnPlayerLeft -= OnPlayerLeft;
             NetworkManager.ActiveLayer.OnPacketReceived -= OnPacketReceived;
-            NetworkManager.ActiveLayer.OnDisconnected -= OnDisconnected;
+            NetworkManager.ActiveLayer.OnLobbyLeft -= OnLobbyLeft;
             NetworkManager.ActiveLayer.OnLobbyJoined -= OnLobbyJoined;
         }
     }
@@ -130,10 +130,10 @@ public class LobbyNetworkManager : MonoBehaviour
         RemovePlayerObject(playerInfo.Id);
     }
 
-    private void OnDisconnected()
+    private void OnLobbyLeft()
     {
         IsInLobby = false;
-        Debug.Log("LobbyNetworkManager: Disconnected from lobby.");
+        Debug.Log("LobbyNetworkManager: Left lobby.");
         ClearAllPlayers();
     }
 

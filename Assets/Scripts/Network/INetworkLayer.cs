@@ -35,7 +35,7 @@ public interface INetworkLayer
     event Action<PlayerInfo> OnPlayerJoined;
     event Action<PlayerInfo> OnPlayerLeft;
     event Action<byte[]> OnPacketReceived;
-    event Action OnDisconnected;
+    event Action OnLobbyLeft;
     event Action<string, Texture2D> OnAvatarReady; // object is Player ID
     event Action<PlayerInfo> OnPlayerInfoUpdated;
 

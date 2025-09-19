@@ -89,6 +89,7 @@ public class RoomLobbyUI : MonoBehaviour
             NetworkManager.ActiveLayer.OnPlayerLeft += OnPlayerLeft;
             NetworkManager.ActiveLayer.OnAvatarReady += OnAvatarReady;
             NetworkManager.ActiveLayer.OnPlayerInfoUpdated += OnPlayerInfoUpdated;
+            NetworkManager.ActiveLayer.OnLobbyLeft += OnLeaveRoom;
         }
     }
 
@@ -100,6 +101,7 @@ public class RoomLobbyUI : MonoBehaviour
             NetworkManager.ActiveLayer.OnPlayerLeft -= OnPlayerLeft;
             NetworkManager.ActiveLayer.OnAvatarReady -= OnAvatarReady;
             NetworkManager.ActiveLayer.OnPlayerInfoUpdated -= OnPlayerInfoUpdated;
+            NetworkManager.ActiveLayer.OnLobbyLeft -= OnLeaveRoom;
         }
     }
 
@@ -216,6 +218,11 @@ public class RoomLobbyUI : MonoBehaviour
     {
         NetworkManager.ActiveLayer?.LeaveLobby();
 
+        OnLeaveRoom();
+    }
+
+    private void OnLeaveRoom()
+    {
         // 隐藏房间UI，显示创建房间UI
         uiDocument.rootVisualElement.style.display = DisplayStyle.None;
         

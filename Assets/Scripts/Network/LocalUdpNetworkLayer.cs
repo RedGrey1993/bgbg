@@ -45,7 +45,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public event Action<PlayerInfo> OnPlayerJoined;
     public event Action<PlayerInfo> OnPlayerLeft;
     public event Action<byte[]> OnPacketReceived;
-    public event Action OnDisconnected;
+    public event Action OnLobbyLeft;
     public event Action<string, Texture2D> OnAvatarReady;
     public event Action<PlayerInfo> OnPlayerInfoUpdated;
 
@@ -195,8 +195,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
             SendToHost(data, true);
         }
 
-        OnDisconnected?.Invoke();
-        Shutdown();
+        OnLobbyLeft?.Invoke();
     }
 
     public void SendToHost(byte[] data, bool reliable) => SendToEndpoint(hostEndpoint, data);
@@ -397,8 +396,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             break;
 
                         case "LobbyClosed":
-                            OnDisconnected?.Invoke();
-                            Shutdown();
+                            OnLobbyLeft?.Invoke();
                             packetHandled = true;
                             break;
 

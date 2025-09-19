@@ -17,7 +17,7 @@ public class SteamNetworkLayer : INetworkLayer
     public event Action<PlayerInfo> OnPlayerJoined;
     public event Action<PlayerInfo> OnPlayerLeft;
     public event Action<byte[]> OnPacketReceived;
-    public event Action OnDisconnected;
+    public event Action OnLobbyLeft;
     public event Action<string, Texture2D> OnAvatarReady;
     public event Action<PlayerInfo> OnPlayerInfoUpdated;
 
@@ -177,7 +177,7 @@ public class SteamNetworkLayer : INetworkLayer
             currentLobbyId = CSteamID.Nil;
             IsHost = false;
             Players.Clear();
-            OnDisconnected?.Invoke();
+            OnLobbyLeft?.Invoke();
         }
     }
 
