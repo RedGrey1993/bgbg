@@ -79,13 +79,13 @@ public class RoomCreateUI : MonoBehaviour
         
         // 绑定事件
         if (createRoomBtn != null)
-            createRoomBtn.clicked += ShowDialog;
+            createRoomBtn.clicked += ShowCreateRoomDialog;
         if (joinRoomBtn != null)
             joinRoomBtn.clicked += OnJoinRoomClicked; // 新增
         if (confirmBtn != null)
             confirmBtn.clicked += OnConfirmClicked;
         if (cancelBtn != null)
-            cancelBtn.clicked += HideDialog;
+            cancelBtn.clicked += HideCreateRoomDialog;
         
         // 键盘事件
         if (roomNameField != null)
@@ -98,22 +98,22 @@ public class RoomCreateUI : MonoBehaviour
         }
         
         // 初始状态
-        HideDialog();
+        HideCreateRoomDialog();
     }
     
     private void CleanupUI()
     {
         if (createRoomBtn != null)
-            createRoomBtn.clicked -= ShowDialog;
+            createRoomBtn.clicked -= ShowCreateRoomDialog;
         if (joinRoomBtn != null)
             joinRoomBtn.clicked -= OnJoinRoomClicked; // 新增
         if (confirmBtn != null)
             confirmBtn.clicked -= OnConfirmClicked;
         if (cancelBtn != null)
-            cancelBtn.clicked -= HideDialog;
+            cancelBtn.clicked -= HideCreateRoomDialog;
     }
     
-    private void ShowDialog()
+    private void ShowCreateRoomDialog()
     {
         if (dialogOverlay != null)
         {
@@ -130,7 +130,7 @@ public class RoomCreateUI : MonoBehaviour
         }
     }
     
-    private void HideDialog()
+    private void HideCreateRoomDialog()
     {
         if (dialogOverlay != null)
         {
@@ -188,7 +188,7 @@ public class RoomCreateUI : MonoBehaviour
         }
         else if (evt.keyCode == KeyCode.Escape)
         {
-            HideDialog();
+            HideCreateRoomDialog();
         }
     }
     
@@ -205,11 +205,6 @@ public class RoomCreateUI : MonoBehaviour
     {
         ShowInfo(messae, Color.red);
     }
-    
-    public void OpenCreateRoomDialog()
-    {
-        ShowDialog();
-    }
 
     #region Steam Lobby Callbacks
 
@@ -217,7 +212,7 @@ public class RoomCreateUI : MonoBehaviour
     {
         Debug.Log("UI: Lobby created successfully! ID: " + lobbyInfo.Id);
         // 隐藏创建对话框
-        HideDialog();
+        HideCreateRoomDialog();
         // 切换到房间UI
         if (roomLobbyUI != null)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using Steamworks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // These message classes remain the same as they define the data structure of your game state.
 [Serializable]
@@ -121,11 +122,7 @@ public class LobbyNetworkManager : MonoBehaviour
     {
         Debug.Log($"LobbyNetworkManager: Player {playerInfo.Name} joined.");
         CreatePlayerObject(playerInfo.Id);
-        if (NetworkManager.ActiveLayer.IsHost)
-        {
-            // If we are the host, send the new player the full game state
-            SendFullStateTo(playerInfo);
-        }
+        // HostTick will send the full state to the new player
     }
 
     private void OnPlayerLeft(PlayerInfo playerInfo)
@@ -209,6 +206,13 @@ public class LobbyNetworkManager : MonoBehaviour
         // Initialize position
         go.transform.position = Vector2.zero;
 
+        // 所有的Client都不处理碰撞，碰撞由Host处理
+        if (!NetworkManager.ActiveLayer.IsHost)
+        {
+            var collider = go.GetComponent<BoxCollider2D>();
+            collider.isTrigger = true;
+        }
+
         // Add controller to local player
         if (playerId.Equals(NetworkManager.ActiveLayer.MyInfo.Id))
         {
@@ -285,10 +289,13 @@ public class LobbyNetworkManager : MonoBehaviour
             if (latestInputs.TryGetValue(player.Id, out InputMessage input))
             {
                 Vector2 moveVector = new Vector2(input.x, input.y);
-                Rigidbody2D rb = playerObjects.ContainsKey(player.Id) ? playerObjects[player.Id].GetComponent<Rigidbody2D>() : null;
-                if (rb != null)
+                if (playerObjects.TryGetValue(player.Id, out GameObject playerObject))
                 {
-                    rb.linearVelocity = moveVector * moveSpeed;
+                    var playerInput = playerObject.GetComponent<PlayerInput>();
+                    if (playerInput != null)
+                    {
+                        playerInput.MoveInput = moveVector;
+                    }
                 }
             }
         }
@@ -332,7 +339,6 @@ public class LobbyNetworkManager : MonoBehaviour
     private void SendFullStateTo(PlayerInfo playerInfo)
     {
         // Similar to HostTick, create a StateUpdateMessage and send it.
-        // This needs the same adaptation for player IDs.
         var su = new StateUpdateMessage();
         // ... populate with all player data
         string payload = JsonUtility.ToJson(su);

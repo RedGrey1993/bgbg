@@ -13,10 +13,15 @@ public class PlayerInput : MonoBehaviour
     }
     void FixedUpdate()
     {
+#if TEST_MODE
+        if (gameObject.name.StartsWith("TestModePlayer"))
+        {
+            LookInput = Vector2.left; // TestModePlayer Always shoot left
+        }
+#endif
         // 只有Host能够调用，离线模式视作Host
         // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
-        if (LobbyNetworkManager.Instance == null ||
-            (LobbyNetworkManager.Instance.IsInLobby && NetworkManager.ActiveLayer != null && NetworkManager.ActiveLayer.IsHost))
+        if (GameManager.Instance.IsLocalOrHost())
         {
             playerAction.DoHostAction();
         }
