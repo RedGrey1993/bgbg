@@ -31,7 +31,6 @@ public class RoomListUI : MonoBehaviour
     // 数据
     private List<LobbyInfo> roomList = new List<LobbyInfo>();
     private LobbyInfo pendingJoinLobby;
-    private bool isSearching = false;
 
     private void Awake()
     {
@@ -133,7 +132,7 @@ public class RoomListUI : MonoBehaviour
         if (uiDocument != null && uiDocument.rootVisualElement != null)
         {
             uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
-            RefreshRoomList();
+            SearchRoomList();
         }
     }
 
@@ -147,7 +146,7 @@ public class RoomListUI : MonoBehaviour
 
     private void OnRefreshClicked()
     {
-        RefreshRoomList();
+        SearchRoomList();
     }
 
     private void OnCreateRoomClicked()
@@ -161,20 +160,20 @@ public class RoomListUI : MonoBehaviour
 
     private void OnSearchClicked()
     {
-        RefreshRoomList();
+        SearchRoomList();
     }
 
-    private void RefreshRoomList()
+    private void SearchRoomList()
     {
-        if (NetworkManager.ActiveLayer == null || isSearching)
+        if (NetworkManager.ActiveLayer == null)
         {
-            UpdateStatus("Network not ready or already searching");
+            UpdateStatus("Network not ready");
             return;
         }
 
-        isSearching = true;
+        UpdateRoomDisplay(new List<LobbyInfo>()); // Clear current display
         UpdateStatus("Searching for rooms...");
-        
+
         // 请求房间列表
         NetworkManager.ActiveLayer.RequestLobbyList();
     }
@@ -182,15 +181,14 @@ public class RoomListUI : MonoBehaviour
     private void OnLobbyListReceived(List<LobbyInfo> lobbies)
     {
         Debug.Log($"RoomListUI: OnLobbyListReceived called with {lobbies.Count} lobbies");
-        isSearching = false;
         roomList = lobbies;
-        
+
         // 应用过滤器
         var filteredRooms = FilterRooms(roomList);
-        
+
         UpdateRoomDisplay(filteredRooms);
         UpdateStatus($"Found {filteredRooms.Count} rooms");
-        
+
         if (roomCountLabel != null)
         {
             roomCountLabel.text = $"{filteredRooms.Count} rooms found";
@@ -208,7 +206,7 @@ public class RoomListUI : MonoBehaviour
             // 搜索过滤
             if (!string.IsNullOrEmpty(searchText))
             {
-                if (!room.Name.ToLower().Contains(searchText) && 
+                if (!room.Name.ToLower().Contains(searchText) &&
                     !room.OwnerName.ToLower().Contains(searchText))
                 {
                     continue;
