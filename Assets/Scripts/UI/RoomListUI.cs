@@ -393,6 +393,8 @@ public class RoomListUI : MonoBehaviour
         Hide();
         if (roomLobbyUI != null)
         {
+            // 确保房间UI的GameObject是激活的
+            roomLobbyUI.gameObject.SetActive(true);
             roomLobbyUI.Initialize(lobbyInfo);
         }
     }

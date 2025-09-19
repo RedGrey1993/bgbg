@@ -215,9 +215,7 @@ public class RoomCreateUI : MonoBehaviour
         HideCreateRoomDialog();
         // 切换到房间UI
         if (roomLobbyUI != null)
-        {
-            Debug.Log("Show Room Lobby UI");
-            
+        {            
             // 确保房间UI的GameObject是激活的
             roomLobbyUI.gameObject.SetActive(true);
             
