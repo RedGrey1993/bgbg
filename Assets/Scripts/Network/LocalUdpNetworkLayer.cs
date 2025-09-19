@@ -113,9 +113,11 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
         // Update MyInfo with the correct network ID before adding to the list
         MyInfo = new PlayerInfo { Id = hostEndpoint.ToString(), Name = MyInfo.Name };
+        Players.Clear();
         Players.Add(MyInfo);
 
         // Add the host to the list of endpoints to ensure it receives broadcast messages
+        clientEndpoints.Clear();
         clientEndpoints.Add(hostEndpoint);
 
         currentLobby = new LobbyInfo
@@ -161,12 +163,14 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     public void JoinLobby(LobbyInfo lobbyInfo, string password)
     {
+        Debug.Log($"fhhtest, Attempting to join lobby {lobbyInfo.Name} at {lobbyInfo.Id}");
         if (TryParseIPEndPoint((string)lobbyInfo.Id, out IPEndPoint targetHostEndpoint))
         {
             hostEndpoint = targetHostEndpoint;
             // Send join request
             var joinRequest = new LocalPacket { type = "JoinRequest", payload = JsonUtility.ToJson(MyInfo) };
             var json = JsonUtility.ToJson(joinRequest);
+            Debug.Log($"fhhtest Sending JoinRequest to {hostEndpoint}, json: {json}");
             byte[] data = Encoding.UTF8.GetBytes(json);
             SendToEndpoint(hostEndpoint, data);
             // The host will respond and trigger OnLobbyJoined
@@ -251,6 +255,11 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     private void SendToEndpoint(IPEndPoint endpoint, byte[] data)
     {
+        var json = Encoding.UTF8.GetString(data);
+        if (json.Contains("JoinRequest"))
+        {
+            Debug.Log($"fhhtest, Sending UDP packet to {endpoint}, data: {json}, uclient: {udpClient}");
+        }
         if (udpClient == null || endpoint == null) return;
         try
         {
@@ -269,7 +278,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
         {
             IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
             byte[] receivedBytes = udpClient.EndReceive(result, ref remoteEP);
-            
+
             // Queue the processing to the main thread
             UnityMainThreadDispatcher.Instance().Enqueue(() => ProcessPacket(receivedBytes, remoteEP));
 
@@ -278,7 +287,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
         }
         catch (ObjectDisposedException) { /* Client closed, do nothing */ }
         catch (Exception e)
-        { 
+        {
             Debug.LogError($"UDP Receive Error: {e.Message}");
         }
     }
@@ -396,6 +405,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             break;
 
                         case "LobbyClosed":
+                            Players.Clear();
                             OnLobbyLeft?.Invoke();
                             packetHandled = true;
                             break;

@@ -121,7 +121,6 @@ public class RoomLobbyUI : MonoBehaviour
             Debug.LogError("UIDocument or rootVisualElement is null in Initialize!");
         }
         
-        UpdateRoomInfo();
         RefreshPlayerList();
     }
 
@@ -159,6 +158,7 @@ public class RoomLobbyUI : MonoBehaviour
         {
             AddPlayerItem(player);
         }
+        currentLobby.CurrentPlayers = NetworkManager.ActiveLayer.Players.Count;
         UpdateRoomInfo(); // Also update counts
     }
 
