@@ -53,7 +53,6 @@ public class LobbyNetworkManager : MonoBehaviour
 
     // Runtime data
     private Dictionary<string, GameObject> playerObjects = new Dictionary<string, GameObject>();
-    private Dictionary<string, InputMessage> latestInputs = new Dictionary<string, InputMessage>();
 
     public bool IsInLobby { get; private set; }
 
@@ -168,7 +167,6 @@ public class LobbyNetworkManager : MonoBehaviour
     {
         foreach (var go in playerObjects.Values) { if (go != null) Destroy(go); }
         playerObjects.Clear();
-        latestInputs.Clear();
 
         // 删除 playerParent 下名字以 "Player" 开头的所有子对象（Players 是一个空 GameObject）
         // 用于删除单机模式下默认的那个Player对象
@@ -250,7 +248,6 @@ public class LobbyNetworkManager : MonoBehaviour
             if (go != null) Destroy(go);
             playerObjects.Remove(playerId);
         }
-        latestInputs.Remove(playerId);
     }
 
     private void RouteMessage(GenericMessage msg)
@@ -268,7 +265,14 @@ public class LobbyNetworkManager : MonoBehaviour
                         var player = NetworkManager.ActiveLayer.Players.FirstOrDefault(p => p.Id.ToString() == input.playerId);
                         if (!player.Equals(default(PlayerInfo)))
                         {
-                            latestInputs[player.Id] = input;
+                            if (playerObjects.TryGetValue(player.Id, out GameObject playerObject))
+                            {
+                                var playerInput = playerObject.GetComponent<PlayerInput>();
+                                if (playerInput != null)
+                                {
+                                    playerInput.MoveInput = new Vector2(input.x, input.y);
+                                }
+                            }
                         }
                     }
                 break;
@@ -283,23 +287,6 @@ public class LobbyNetworkManager : MonoBehaviour
 
     private void HostTick(float dt)
     {
-        // Process inputs for all players
-        foreach (var player in NetworkManager.ActiveLayer.Players)
-        {
-            if (latestInputs.TryGetValue(player.Id, out InputMessage input))
-            {
-                Vector2 moveVector = new Vector2(input.x, input.y);
-                if (playerObjects.TryGetValue(player.Id, out GameObject playerObject))
-                {
-                    var playerInput = playerObject.GetComponent<PlayerInput>();
-                    if (playerInput != null)
-                    {
-                        playerInput.MoveInput = moveVector;
-                    }
-                }
-            }
-        }
-
         // Broadcast state update
         var su = new StateUpdateMessage();
         su.tick = (uint)(Time.realtimeSinceStartup * 1000);
