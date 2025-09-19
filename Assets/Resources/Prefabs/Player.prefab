@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 2058633855798607430}
   - component: {fileID: 4992561073915373673}
   - component: {fileID: 4850169735314407500}
+  - component: {fileID: 6222741556485926476}
+  - component: {fileID: 4720782767413707145}
+  - component: {fileID: -9068545519425884085}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -165,3 +168,44 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6222741556485926476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906872621619036891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5d71d333d3e914281a778ec8e5c31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+--- !u!114 &4720782767413707145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906872621619036891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  speed: 5
+  canMoveDiagonally: 1
+  bulletSpeed: 8
+  canShootDiagonally: 0
+  bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
+--- !u!114 &-9068545519425884085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906872621619036891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49af873073b16d4f88f666687231c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAction
