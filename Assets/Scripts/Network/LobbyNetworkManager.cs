@@ -183,7 +183,7 @@ public class LobbyNetworkManager : MonoBehaviour
 
         var im = new InputMessage
         {
-            playerId = NetworkManager.ActiveLayer.MyInfo.Id.ToString(),
+            playerId = GameManager.MyInfo.Id.ToString(),
             tick = tick,
             x = input.x,
             y = input.y

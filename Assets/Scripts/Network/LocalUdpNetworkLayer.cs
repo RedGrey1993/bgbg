@@ -50,7 +50,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public event Action<PlayerInfo> OnPlayerInfoUpdated;
 
     public bool IsHost { get; private set; }
-    public PlayerInfo MyInfo { get; private set; }
     public HashSet<PlayerInfo> Players { get; } = new HashSet<PlayerInfo>();
 
     private UdpClient udpClient;
@@ -62,9 +61,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     public bool Initialize()
     {
-        int randomSuffix = UnityEngine.Random.Range(1000, 9999);
-        MyInfo = new PlayerInfo { Id = "LocalUdpPlayer" + randomSuffix, Name = "Player " + randomSuffix };
-
         // Try to bind to any available game port to allow multiple clients on one machine
         foreach (var port in gamePorts)
         {
@@ -73,6 +69,14 @@ public class LocalUdpNetworkLayer : INetworkLayer
                 udpClient = new UdpClient(port);
                 udpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 udpClient.BeginReceive(OnUdpData, null);
+
+                // The host endpoint is our own endpoint that we are already listening on.
+                var localPort = ((IPEndPoint)udpClient.Client.LocalEndPoint).Port;
+                var localEndpoint = new IPEndPoint(GetLocalIPAddress(), localPort);
+
+                int randomSuffix = UnityEngine.Random.Range(1000, 9999);
+                // Update MyInfo with the correct network ID before adding to the list
+                GameManager.MyInfo = new PlayerInfo { Id = localEndpoint.ToString(), Name = "Player " + randomSuffix };
                 Debug.Log($"LocalUdpNetworkLayer: Initialized and listening on port {port}");
                 return true; // Success
             }
@@ -111,10 +115,8 @@ public class LocalUdpNetworkLayer : INetworkLayer
         var localPort = ((IPEndPoint)udpClient.Client.LocalEndPoint).Port;
         hostEndpoint = new IPEndPoint(GetLocalIPAddress(), localPort);
 
-        // Update MyInfo with the correct network ID before adding to the list
-        MyInfo = new PlayerInfo { Id = hostEndpoint.ToString(), Name = MyInfo.Name };
         Players.Clear();
-        Players.Add(MyInfo);
+        Players.Add(GameManager.MyInfo);
 
         // Add the host to the list of endpoints to ensure it receives broadcast messages
         clientEndpoints.Clear();
@@ -128,7 +130,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
             CurrentPlayers = 1,
             MaxPlayers = maxPlayers,
             HasPassword = !string.IsNullOrEmpty(password),
-            OwnerName = MyInfo.Name
+            OwnerName = GameManager.MyInfo.Name
         };
 
         // We are already receiving, so no need to call BeginReceive again.
@@ -168,7 +170,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
         {
             hostEndpoint = targetHostEndpoint;
             // Send join request
-            var joinRequest = new LocalPacket { type = "JoinRequest", payload = JsonUtility.ToJson(MyInfo) };
+            var joinRequest = new LocalPacket { type = "JoinRequest", payload = JsonUtility.ToJson(GameManager.MyInfo) };
             var json = JsonUtility.ToJson(joinRequest);
             Debug.Log($"fhhtest Sending JoinRequest to {hostEndpoint}, json: {json}");
             byte[] data = Encoding.UTF8.GetBytes(json);
@@ -184,7 +186,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public void LeaveLobby()
     {
         string packetType = IsHost ? "LobbyClosed" : "Leave";
-        var leavePacket = new LocalPacket { type = packetType, payload = JsonUtility.ToJson(MyInfo) };
+        var leavePacket = new LocalPacket { type = packetType, payload = JsonUtility.ToJson(GameManager.MyInfo) };
         byte[] data = Encoding.UTF8.GetBytes(JsonUtility.ToJson(leavePacket));
 
         if (IsHost)
@@ -390,8 +392,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
                                 currentLobby = joinAcceptPayload.lobbyInfo;
                                 Players.Clear();
                                 Players.UnionWith(joinAcceptPayload.players);
-                                // MyInfo的ID会被Host修改为endpoint格式
-                                MyInfo = Players.First(p => p.Name == MyInfo.Name);
                                 Debug.Log($"fhhtest, call OnLobbyJoined, {OnLobbyJoined}");
                                 OnLobbyJoined?.Invoke(currentLobby);
                             }

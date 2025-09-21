@@ -120,7 +120,7 @@ public class RoomCreateUI : MonoBehaviour
             dialogOverlay.RemoveFromClassList("hidden");
             
             // 清空之前的输入和错误信息
-            string defaultRoomName = (NetworkManager.ActiveLayer?.MyInfo.Name ?? "Player") + "'s Room";
+            string defaultRoomName = (GameManager.MyInfo.Name ?? "Default") + "'s Room";
             if (roomNameField != null) roomNameField.value = defaultRoomName;
             if (roomPasswordField != null) roomPasswordField.value = "";
             if (errorMessage != null) errorMessage.text = "";

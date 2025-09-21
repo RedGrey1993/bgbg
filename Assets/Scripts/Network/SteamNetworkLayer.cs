@@ -23,7 +23,6 @@ public class SteamNetworkLayer : INetworkLayer
 
     // --- Interface Properties ---
     public bool IsHost { get; private set; }
-    public PlayerInfo MyInfo { get; private set; }
     public HashSet<PlayerInfo> Players { get; } = new HashSet<PlayerInfo>();
 
     // --- Steam Specifics ---
@@ -44,7 +43,7 @@ public class SteamNetworkLayer : INetworkLayer
             return false;
         }
 
-        MyInfo = new PlayerInfo
+        GameManager.MyInfo = new PlayerInfo
         {
             Id = SteamUser.GetSteamID().m_SteamID.ToString(),
             Name = SteamFriends.GetPersonaName()

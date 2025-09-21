@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    // GameManager初始化在NetworkManager之后，所以NetworkManager无法在Awake中通过Instance访问GameManager，而MyInfo需要在NetworkManager初始化时将Id更新为SteamId或本地的ip:port，所以MyInfo使用static
+    public static PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = "PlayerOffline", Name = "Player Offline" };
 
     public GameObject uiRoot;
     // public GameObject networkManagerPrefab;
@@ -176,7 +178,7 @@ public class GameManager : MonoBehaviour
             string playerId = ps.playerId;
             Vector2 pos = new Vector2(ps.x, ps.y);
 
-            if (!playerObjects.ContainsKey(playerId)) CreatePlayerObject(playerId, ColorFromID(playerId), playerId == NetworkManager.ActiveLayer.MyInfo.Id);
+            if (!playerObjects.ContainsKey(playerId)) CreatePlayerObject(playerId, ColorFromID(playerId), playerId == MyInfo.Id);
             if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
@@ -204,7 +206,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var player in NetworkManager.ActiveLayer.Players)
             {
-                CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == NetworkManager.ActiveLayer.MyInfo.Id);
+                CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
             }
         }
 #if TEST_MODE
