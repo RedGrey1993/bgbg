@@ -85,11 +85,11 @@ public class RoomLobbyUI : MonoBehaviour
     {
         if (NetworkManager.ActiveLayer != null)
         {
-            NetworkManager.ActiveLayer.OnPlayerJoined += OnPlayerJoined;
-            NetworkManager.ActiveLayer.OnPlayerLeft += OnPlayerLeft;
+            GameManager.Instance.PlayersUpdateActions += OnPlayersUpdate;
+
             NetworkManager.ActiveLayer.OnAvatarReady += OnAvatarReady;
             NetworkManager.ActiveLayer.OnPlayerInfoUpdated += OnPlayerInfoUpdated;
-            NetworkManager.ActiveLayer.OnLobbyLeft += OnLeaveRoom;
+            NetworkManager.ActiveLayer.OnLobbyLeft += OnLobbyLeft;
         }
     }
 
@@ -97,11 +97,11 @@ public class RoomLobbyUI : MonoBehaviour
     {
         if (NetworkManager.ActiveLayer != null)
         {
-            NetworkManager.ActiveLayer.OnPlayerJoined -= OnPlayerJoined;
-            NetworkManager.ActiveLayer.OnPlayerLeft -= OnPlayerLeft;
+            GameManager.Instance.PlayersUpdateActions -= OnPlayersUpdate;
+            
             NetworkManager.ActiveLayer.OnAvatarReady -= OnAvatarReady;
             NetworkManager.ActiveLayer.OnPlayerInfoUpdated -= OnPlayerInfoUpdated;
-            NetworkManager.ActiveLayer.OnLobbyLeft -= OnLeaveRoom;
+            NetworkManager.ActiveLayer.OnLobbyLeft -= OnLobbyLeft;
         }
     }
 
@@ -154,11 +154,11 @@ public class RoomLobbyUI : MonoBehaviour
         playerListContainer.Clear();
         playerItems.Clear();
 
-        foreach (var player in NetworkManager.ActiveLayer.Players)
+        foreach (var player in GameManager.Instance.Players)
         {
             AddPlayerItem(player);
         }
-        currentLobby.CurrentPlayers = NetworkManager.ActiveLayer.Players.Count;
+        currentLobby.CurrentPlayers = GameManager.Instance.Players.Count;
         UpdateRoomInfo(); // Also update counts
     }
 
@@ -218,10 +218,10 @@ public class RoomLobbyUI : MonoBehaviour
     {
         NetworkManager.ActiveLayer?.LeaveLobby();
 
-        OnLeaveRoom();
+        OnLobbyLeft();
     }
 
-    private void OnLeaveRoom()
+    private void OnLobbyLeft()
     {
         // 隐藏房间UI，显示创建房间UI
         uiDocument.rootVisualElement.style.display = DisplayStyle.None;
@@ -236,12 +236,7 @@ public class RoomLobbyUI : MonoBehaviour
 
     #region Event Handlers
 
-    private void OnPlayerJoined(PlayerInfo playerInfo)
-    {
-        RefreshPlayerList();
-    }
-
-    private void OnPlayerLeft(PlayerInfo playerInfo)
+    private void OnPlayersUpdate()
     {
         RefreshPlayerList();
     }

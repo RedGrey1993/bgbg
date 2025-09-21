@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -8,12 +9,16 @@ public class GameManager : MonoBehaviour
     // GameManager初始化在NetworkManager之后，所以NetworkManager无法在Awake中通过Instance访问GameManager，而MyInfo需要在NetworkManager初始化时将Id更新为SteamId或本地的ip:port，所以MyInfo使用static
     public static PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = "PlayerOffline", Name = "Player Offline" };
 
+    public event Action PlayersUpdateActions;
+
     public GameObject uiRoot;
     // public GameObject networkManagerPrefab;
     public GameObject playerPrefab;
     public Transform playerParent;
 
     // Runtime data
+    // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
+    public HashSet<PlayerInfo> Players { get; set; } = new HashSet<PlayerInfo>();
     private Dictionary<string, GameObject> playerObjects = new Dictionary<string, GameObject>();
     private float lastFullStateSentTime = 0.0f;
 
@@ -27,6 +32,9 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        Players.Clear();
+        Players.Add(MyInfo);
+        ClearPlayerObjects();
         InitializeGame();
     }
 
@@ -62,8 +70,6 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGame()
     {
-        ClearPlayers();
-        // TODO: 初始化GameManager管理的Players对象
         if (IsLocalOrHost())
         {
             InitializePlayers();
@@ -78,24 +84,47 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInfo player)
     {
-        // TODO: 后面添加到GameManager管理的Players对象中
         if (IsHost())
         {
+            Players.Add(player);
             CreatePlayerObject(player.Id, ColorFromID(player.Id), false);
+            SendPlayersUpdateToAll();
         }
     }
 
     public void OnPlayerLeft(PlayerInfo player)
     {
-        // TODO: 移除GameManager管理的Players对象中的玩家
         if (IsHost())
         {
+            Players.Remove(player);
             RemovePlayerObject(player.Id);
+            SendPlayersUpdateToAll();
         }
+    }
+
+    // 创建房间时，房间中只有房主一个玩家
+    public void OnLobbyCreated()
+    {
+        // HOST
+        Players.Clear();
+        Players.Add(MyInfo);
+        ClearPlayerObjects();
+    }
+
+    public void OnLobbyJoined(LobbyInfo lobbyInfo)
+    {
+        if (!IsHost())
+        {
+            ClearPlayerObjects();
+        }
+        InitializeGame();
     }
 
     public void OnLobbyLeft()
     {
+        Players.Clear();
+        Players.Add(MyInfo);
+        ClearPlayerObjects();
         InitializeGame();
     }
 
@@ -139,24 +168,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SendFullStateToAll()
-    {
-        // Similar to HostTick, create a StateUpdateMessage and send it.
-        var su = new StateUpdateMessage();
-        su.tick = (uint)(Time.realtimeSinceStartup * 1000);
-        foreach (var kvp in playerObjects)
-        {
-            Vector2 pos = kvp.Value.transform.position;
-            su.players.Add(new PlayerState { playerId = kvp.Key.ToString(), x = pos.x, y = pos.y });
-        }
-        string payload = JsonUtility.ToJson(su);
-        var genericMessage = new GenericMessage { type = "FullState", payload = payload };
-        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
-        NetworkManager.ActiveLayer.SendToAll(data, true);
-    }
-
     public void ApplyStateUpdate(StateUpdateMessage su)
     {
+        if (IsHost()) return; // Host不处理StateUpdate消息，因为StateUpdate消息由Host发送
         if (su == null) return;
         foreach (var ps in su.players)
         {
@@ -164,6 +178,13 @@ public class GameManager : MonoBehaviour
             if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
+                var rb = go.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.angularVelocity = 0f;
+                }
+
                 Vector2 pos = new Vector2(ps.x, ps.y);
                 go.transform.position = pos;
             }
@@ -172,6 +193,7 @@ public class GameManager : MonoBehaviour
 
     public void ApplyFullState(StateUpdateMessage su)
     {
+        if (IsHost()) return; // Host不处理FullState消息，因为FullState消息由Host发送
         if (su == null) return;
         foreach (var ps in su.players)
         {
@@ -182,6 +204,12 @@ public class GameManager : MonoBehaviour
             if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
+                var rb = go.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.angularVelocity = 0f;
+                }
                 go.transform.position = pos;
             }
         }
@@ -195,28 +223,61 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnPlayersUpdate(PlayersUpdateMessage players)
+    {
+        // RoomLobbyUI Host/Client都需要刷新玩家列表
+        if (IsHost())
+        {
+            PlayersUpdateActions?.Invoke();
+            return; // PlayersUpdate消息由Host发送，所以Players无需更新
+        }
+        if (players == null) return;
+
+        Players.Clear();
+        Players.UnionWith(players.players);
+        PlayersUpdateActions?.Invoke();
+    }
+
+    private void SendPlayersUpdateToAll()
+    {
+        var pu = new PlayersUpdateMessage();
+        pu.players.AddRange(Players);
+        string payload = JsonUtility.ToJson(pu);
+        var genericMessage = new GenericMessage { type = "PlayersUpdate", payload = payload };
+        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
+        NetworkManager.ActiveLayer.SendToAll(data, true);
+    }
+
+    private void SendFullStateToAll()
+    {
+        // Similar to HostTick, create a StateUpdateMessage and send it.
+        var su = new StateUpdateMessage();
+        su.tick = (uint)(Time.realtimeSinceStartup * 1000);
+        foreach (var kvp in playerObjects)
+        {
+            Vector2 pos = kvp.Value.transform.position;
+            su.players.Add(new PlayerState { playerId = kvp.Key.ToString(), x = pos.x, y = pos.y });
+        }
+        string payload = JsonUtility.ToJson(su);
+        var genericMessage = new GenericMessage { type = "FullState", payload = payload };
+        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
+        NetworkManager.ActiveLayer.SendToAll(data, false);
+    }
+
     // 初始化玩家对象，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
     private void InitializePlayers()
     {
-        if (IsLocal())
+        foreach (var player in Players)
         {
-            CreatePlayerObject("PlayerOffline", Color.green, true);
-        }
-        else
-        {
-            foreach (var player in NetworkManager.ActiveLayer.Players)
-            {
-                CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
-            }
+            CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
         }
 #if TEST_MODE
         CreatePlayerObject("TestModePlayer", Color.red, false);
 #endif
     }
 
-    private void ClearPlayers()
+    private void ClearPlayerObjects()
     {
-        // TODO: GameManager管理的Players对象也要清空
         foreach (var go in playerObjects.Values) { if (go != null) Destroy(go); }
         playerObjects.Clear();
     }

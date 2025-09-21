@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using Steamworks;
 using UnityEngine;
 
@@ -23,7 +24,6 @@ public class SteamNetworkLayer : INetworkLayer
 
     // --- Interface Properties ---
     public bool IsHost { get; private set; }
-    public HashSet<PlayerInfo> Players { get; } = new HashSet<PlayerInfo>();
 
     // --- Steam Specifics ---
     private CSteamID currentLobbyId;
@@ -175,7 +175,6 @@ public class SteamNetworkLayer : INetworkLayer
             SteamMatchmaking.LeaveLobby(currentLobbyId);
             currentLobbyId = CSteamID.Nil;
             IsHost = false;
-            Players.Clear();
             OnLobbyLeft?.Invoke();
         }
     }
@@ -191,7 +190,7 @@ public class SteamNetworkLayer : INetworkLayer
     public void SendToAll(byte[] data, bool reliable)
     {
         if (!currentLobbyId.IsValid()) return;
-        foreach (var player in Players)
+        foreach (var player in GameManager.Instance.Players)
         {
             CSteamID steamId = new CSteamID(Convert.ToUInt64(player.Id));
             Send(steamId, data, reliable);
@@ -295,34 +294,35 @@ public class SteamNetworkLayer : INetworkLayer
 
     private void UpdatePlayerList()
     {
-        var newPlayerList = new List<PlayerInfo>();
-        var previousPlayerIds = new HashSet<string>(Players.Select(p => p.Id));
-
-        int memberCount = SteamMatchmaking.GetNumLobbyMembers(currentLobbyId);
-        for (int i = 0; i < memberCount; i++)
+        if (IsHost)
         {
-            CSteamID memberId = SteamMatchmaking.GetLobbyMemberByIndex(currentLobbyId, i);
-            var playerInfo = new PlayerInfo
-            {
-                Id = memberId.m_SteamID.ToString(),
-                Name = SteamFriends.GetFriendPersonaName(memberId)
-            };
-            newPlayerList.Add(playerInfo);
+            var newPlayerList = new List<PlayerInfo>();
+            var previousPlayerIds = new HashSet<string>(GameManager.Instance.Players.Select(p => p.Id));
 
-            if (!previousPlayerIds.Contains(memberId.m_SteamID.ToString()))
+            int memberCount = SteamMatchmaking.GetNumLobbyMembers(currentLobbyId);
+            for (int i = 0; i < memberCount; i++)
             {
-                Players.Add(playerInfo);
-                OnPlayerJoined?.Invoke(playerInfo);
+                CSteamID memberId = SteamMatchmaking.GetLobbyMemberByIndex(currentLobbyId, i);
+                var playerInfo = new PlayerInfo
+                {
+                    Id = memberId.m_SteamID.ToString(),
+                    Name = SteamFriends.GetFriendPersonaName(memberId)
+                };
+                newPlayerList.Add(playerInfo);
+
+                if (!previousPlayerIds.Contains(memberId.m_SteamID.ToString()))
+                {
+                    OnPlayerJoined?.Invoke(playerInfo);
+                }
+                previousPlayerIds.Remove(memberId.m_SteamID.ToString());
             }
-            previousPlayerIds.Remove(memberId.m_SteamID.ToString());
-        }
 
-        // Any IDs left in previousPlayerIds are players who have left
-        foreach (var oldPlayerId in previousPlayerIds)
-        {
-            var playerToRemove = Players.FirstOrDefault(p => p.Id.Equals(oldPlayerId));
-            Players.Remove(playerToRemove);
-            OnPlayerLeft?.Invoke(playerToRemove);
+            // Any IDs left in previousPlayerIds are players who have left
+            foreach (var oldPlayerId in previousPlayerIds)
+            {
+                var playerToRemove = GameManager.Instance.Players.FirstOrDefault(p => p.Id.Equals(oldPlayerId));
+                OnPlayerLeft?.Invoke(playerToRemove);
+            }
         }
     }
 
@@ -354,22 +354,25 @@ public class SteamNetworkLayer : INetworkLayer
         // Check if the name has changed
         if ((param.m_nChangeFlags & EPersonaChange.k_EPersonaChangeName) != 0)
         {
-            // Find the player in our list
-            var player = Players.FirstOrDefault(p => p.Id.Equals(changedUserId));
-            if (!player.Equals(default(PlayerInfo)))
+            var newInfo = new PlayerInfo
             {
-                var oldInfo = player;
-                var newInfo = new PlayerInfo
+                Id = changedUserId.m_SteamID.ToString(),
+                Name = SteamFriends.GetFriendPersonaName(changedUserId)
+            };
+
+            if (IsHost)
+            {
+                // Update our local player list if we are the host
+                var existingPlayer = GameManager.Instance.Players.FirstOrDefault(p => p.Id == newInfo.Id);
+                if (!existingPlayer.Equals(default(PlayerInfo)))
                 {
-                    Id = oldInfo.Id,
-                    Name = SteamFriends.GetFriendPersonaName(changedUserId)
-                };
-                Players.Remove(oldInfo);
-                Players.Add(newInfo);
-                
-                // Fire the event to notify the UI
-                OnPlayerInfoUpdated?.Invoke(newInfo);
+                    GameManager.Instance.Players.Remove(existingPlayer);
+                    GameManager.Instance.Players.Add(newInfo);
+                }
             }
+            
+            // Fire the event to notify the UI
+            OnPlayerInfoUpdated?.Invoke(newInfo);
         }
 
         // Check if the avatar has changed

@@ -42,7 +42,6 @@ public interface INetworkLayer
 
     // --- Properties ---
     bool IsHost { get; }
-    HashSet<PlayerInfo> Players { get; }
 
     // --- Methods ---
     bool Initialize();

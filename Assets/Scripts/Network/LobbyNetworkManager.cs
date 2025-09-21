@@ -32,9 +32,15 @@ public class StateUpdateMessage
 }
 
 [Serializable]
+public class PlayersUpdateMessage
+{
+    public List<PlayerInfo> players = new List<PlayerInfo>();
+}
+
+[Serializable]
 public class GenericMessage
 {
-    public string type; // "JoinRequest","FullState","StateUpdate","Input"
+    public string type; // "JoinRequest","FullState","StateUpdate","Input","PlayersUpdate"
     public string payload;
 }
 
@@ -72,6 +78,7 @@ public class LobbyNetworkManager : MonoBehaviour
             NetworkManager.ActiveLayer.OnPacketReceived += OnPacketReceived;
             NetworkManager.ActiveLayer.OnLobbyLeft += OnLobbyLeft;
             NetworkManager.ActiveLayer.OnLobbyJoined += OnLobbyJoined;
+            NetworkManager.ActiveLayer.OnLobbyCreated += OnLobbyCreated;
         }
     }
 
@@ -85,6 +92,7 @@ public class LobbyNetworkManager : MonoBehaviour
             NetworkManager.ActiveLayer.OnPacketReceived -= OnPacketReceived;
             NetworkManager.ActiveLayer.OnLobbyLeft -= OnLobbyLeft;
             NetworkManager.ActiveLayer.OnLobbyJoined -= OnLobbyJoined;
+            NetworkManager.ActiveLayer.OnLobbyCreated -= OnLobbyCreated;
         }
     }
 
@@ -104,12 +112,17 @@ public class LobbyNetworkManager : MonoBehaviour
     }
 
     // --- Event Handlers from INetworkLayer ---
+    private void OnLobbyCreated(LobbyInfo lobbyInfo)
+    {
+        Debug.Log($"LobbyNetworkManager: Created lobby: {lobbyInfo.Name}");
+        GameManager.Instance.OnLobbyCreated();
+    }
 
     private void OnLobbyJoined(LobbyInfo lobbyInfo)
     {
         IsInLobby = true;
         Debug.Log($"LobbyNetworkManager: Joined lobby: {lobbyInfo.Name}, Initializing game...");
-        GameManager.Instance.InitializeGame();
+        GameManager.Instance.OnLobbyJoined(lobbyInfo);
         lastTickTime = Time.realtimeSinceStartup;
     }
 
@@ -171,6 +184,12 @@ public class LobbyNetworkManager : MonoBehaviour
                 {
                     var state = JsonUtility.FromJson<StateUpdateMessage>(msg.payload);
                     GameManager.Instance.ApplyFullState(state);
+                    break;
+                }
+            case "PlayersUpdate":
+                {
+                    var players = JsonUtility.FromJson<PlayersUpdateMessage>(msg.payload);
+                    GameManager.Instance.OnPlayersUpdate(players);
                     break;
                 }
         }

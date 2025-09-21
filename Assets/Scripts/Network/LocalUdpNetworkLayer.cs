@@ -28,13 +28,6 @@ public class DiscoveryResponsePayload
     public string hostEndpoint; // "ip:port"
 }
 
-[Serializable]
-public class JoinAcceptPayload
-{
-    public LobbyInfo lobbyInfo;
-    public List<PlayerInfo> players;
-}
-
 public class LocalUdpNetworkLayer : INetworkLayer
 {
     public event Action<LobbyInfo> OnLobbyCreated;
@@ -50,11 +43,9 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public event Action<PlayerInfo> OnPlayerInfoUpdated;
 
     public bool IsHost { get; private set; }
-    public HashSet<PlayerInfo> Players { get; } = new HashSet<PlayerInfo>();
 
     private UdpClient udpClient;
     private IPEndPoint hostEndpoint;
-    private List<IPEndPoint> clientEndpoints = new List<IPEndPoint>();
     private readonly int[] gamePorts = { 7775, 7776, 7777, 7778, 7779, 7780, 7781, 7782 }; // Game ports, one will be chosen
 
     private LobbyInfo currentLobby;
@@ -99,8 +90,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
             udpClient = null;
         }
         IsHost = false;
-        Players.Clear();
-        clientEndpoints.Clear();
         Debug.Log("LocalUdpNetworkLayer Shutdown.");
     }
 
@@ -114,13 +103,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
         // The host endpoint is our own endpoint that we are already listening on.
         var localPort = ((IPEndPoint)udpClient.Client.LocalEndPoint).Port;
         hostEndpoint = new IPEndPoint(GetLocalIPAddress(), localPort);
-
-        Players.Clear();
-        Players.Add(GameManager.MyInfo);
-
-        // Add the host to the list of endpoints to ensure it receives broadcast messages
-        clientEndpoints.Clear();
-        clientEndpoints.Add(hostEndpoint);
 
         currentLobby = new LobbyInfo
         {
@@ -209,9 +191,14 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public void SendToAll(byte[] data, bool reliable)
     {
         if (!IsHost) return;
-        foreach (var client in clientEndpoints)
+        string json = System.Text.Encoding.UTF8.GetString(data);
+        foreach (var player in GameManager.Instance.Players)
         {
-            SendToEndpoint(client, data);
+            Debug.Log($"fhhtest, SendToAll, player: {player.Name}, {player.Id}, {json}");
+            if (TryParseIPEndPoint((string)player.Id, out IPEndPoint client))
+            {
+                SendToEndpoint(client, data);
+            }
         }
     }
 
@@ -315,7 +302,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             var responsePayload = new DiscoveryResponsePayload
                             {
                                 lobbyName = currentLobby.Name,
-                                currentPlayers = Players.Count,
+                                currentPlayers = GameManager.Instance.Players.Count,
                                 maxPlayers = currentLobby.MaxPlayers,
                                 hasPassword = currentLobby.HasPassword,
                                 ownerName = currentLobby.OwnerName,
@@ -330,45 +317,42 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             break;
 
                         case "JoinRequest":
-                            if (!clientEndpoints.Contains(remoteEP))
                             {
                                 var playerInfoFromClient = JsonUtility.FromJson<PlayerInfo>(packet.payload);
                                 var newPlayer = new PlayerInfo { Id = remoteEP.ToString(), Name = playerInfoFromClient.Name };
 
-                                var playerJoinedPacket = new LocalPacket { type = "PlayerJoined", payload = JsonUtility.ToJson(newPlayer) };
-                                byte[] playerJoinedData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerJoinedPacket));
-                                SendToAll(playerJoinedData, true);
+                                if (!GameManager.Instance.Players.Any(p => p.Id == newPlayer.Id))
+                                {
+                                    var playerJoinedPacket = new LocalPacket { type = "PlayerJoined", payload = JsonUtility.ToJson(newPlayer) };
+                                    byte[] playerJoinedData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerJoinedPacket));
+                                    SendToAll(playerJoinedData, true);
 
-                                clientEndpoints.Add(remoteEP);
-                                Players.Add(newPlayer);
-                                OnPlayerJoined?.Invoke(newPlayer);
+                                    OnPlayerJoined?.Invoke(newPlayer);
 
-                                currentLobby.CurrentPlayers = Players.Count;
-                                var joinAcceptPayload = new JoinAcceptPayload { lobbyInfo = currentLobby, players = Players.ToList() };
-                                Debug.Log($"fhhtest, currentLobby {currentLobby.Name}, total players now {Players.Count}");
-                                var joinAcceptPacket = new LocalPacket { type = "JoinAccept", payload = JsonUtility.ToJson(joinAcceptPayload) };
-                                Debug.Log($"fhhtest, joinAcceptPacket payload: {joinAcceptPacket.payload}");
-                                byte[] joinAcceptData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(joinAcceptPacket));
-                                SendToEndpoint(remoteEP, joinAcceptData);
-                                Debug.Log($"fhhtest, Player {newPlayer.Name} joined, Sent join accept to {remoteEP}, {joinAcceptData.Length},,, {JsonUtility.ToJson(joinAcceptPacket)}");
+                                    currentLobby.CurrentPlayers = GameManager.Instance.Players.Count;
+                                    var joinAcceptPacket = new LocalPacket { type = "JoinAccept", payload = JsonUtility.ToJson(currentLobby) };
+                                    Debug.Log($"fhhtest, joinAcceptPacket payload: {joinAcceptPacket.payload}");
+                                    byte[] joinAcceptData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(joinAcceptPacket));
+                                    SendToEndpoint(remoteEP, joinAcceptData);
+                                    Debug.Log($"fhhtest, Player {newPlayer.Name} joined, Sent join accept to {remoteEP}, {joinAcceptData.Length},,, {JsonUtility.ToJson(joinAcceptPacket)}");
+                                }
+                                packetHandled = true;
+                                break;
                             }
-                            packetHandled = true;
-                            break;
-                        
                         case "Leave":
-                            var leavingPlayerInfo = Players.First(p => p.Id.Equals(remoteEP.ToString()));
-                            if (!leavingPlayerInfo.Equals(default(PlayerInfo)))
                             {
-                                clientEndpoints.Remove(remoteEP);
-                                Players.Remove(leavingPlayerInfo);
-                                OnPlayerLeft?.Invoke(leavingPlayerInfo);
+                                var leftPlayer = JsonUtility.FromJson<PlayerInfo>(packet.payload);
+                                if (GameManager.Instance.Players.Contains(leftPlayer))
+                                {
+                                    OnPlayerLeft?.Invoke(leftPlayer);
 
-                                var playerLeftPacket = new LocalPacket { type = "PlayerLeft", payload = JsonUtility.ToJson(leavingPlayerInfo) };
-                                byte[] playerLeftData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerLeftPacket));
-                                SendToAll(playerLeftData, true);
+                                    var playerLeftPacket = new LocalPacket { type = "PlayerLeft", payload = JsonUtility.ToJson(leftPlayer) };
+                                    byte[] playerLeftData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerLeftPacket));
+                                    SendToAll(playerLeftData, true);
+                                }
+                                packetHandled = true;
+                                break;
                             }
-                            packetHandled = true;
-                            break;
                     }
                 }
                 else
@@ -377,21 +361,20 @@ public class LocalUdpNetworkLayer : INetworkLayer
                     switch (packet.type)
                     {
                         case "DiscoveryResponse":
-                            Debug.Log($"fhhtest, Received discovery response from {remoteEP}");
-                            var payload = JsonUtility.FromJson<DiscoveryResponsePayload>(packet.payload);
-                            var lobbyInfo = new LobbyInfo { Id = payload.hostEndpoint, OwnerId = payload.ownerId, Name = payload.lobbyName, CurrentPlayers = payload.currentPlayers, MaxPlayers = payload.maxPlayers, HasPassword = payload.hasPassword, OwnerName = payload.ownerName };
-                            OnLobbyListUpdated?.Invoke(new List<LobbyInfo> { lobbyInfo });
-                            packetHandled = true;
-                            break;
+                            {
+                                Debug.Log($"fhhtest, Received discovery response from {remoteEP}");
+                                var payload = JsonUtility.FromJson<DiscoveryResponsePayload>(packet.payload);
+                                var lobbyInfo = new LobbyInfo { Id = payload.hostEndpoint, OwnerId = payload.ownerId, Name = payload.lobbyName, CurrentPlayers = payload.currentPlayers, MaxPlayers = payload.maxPlayers, HasPassword = payload.hasPassword, OwnerName = payload.ownerName };
+                                OnLobbyListUpdated?.Invoke(new List<LobbyInfo> { lobbyInfo });
+                                packetHandled = true;
+                                break;
+                            }
                         
                         case "JoinAccept":
                             try
                             {
                                 Debug.Log($"fhhtest, Received JoinAccept from {remoteEP}");
-                                var joinAcceptPayload = JsonUtility.FromJson<JoinAcceptPayload>(packet.payload);
-                                currentLobby = joinAcceptPayload.lobbyInfo;
-                                Players.Clear();
-                                Players.UnionWith(joinAcceptPayload.players);
+                                var currentLobby = JsonUtility.FromJson<LobbyInfo>(packet.payload);
                                 Debug.Log($"fhhtest, call OnLobbyJoined, {OnLobbyJoined}");
                                 OnLobbyJoined?.Invoke(currentLobby);
                             }
@@ -405,29 +388,19 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             break;
 
                         case "LobbyClosed":
-                            Players.Clear();
                             OnLobbyLeft?.Invoke();
                             packetHandled = true;
                             break;
 
                         case "PlayerJoined":
                             var newPlayer = JsonUtility.FromJson<PlayerInfo>(packet.payload);
-                            if (!Players.Any(p => p.Id.Equals(newPlayer.Id)))
-                            {
-                                Players.Add(newPlayer);
-                                OnPlayerJoined?.Invoke(newPlayer);
-                            }
+                            OnPlayerJoined?.Invoke(newPlayer);
                             packetHandled = true;
                             break;
 
                         case "PlayerLeft":
                             var leftPlayerInfo = JsonUtility.FromJson<PlayerInfo>(packet.payload);
-                            var playerToRemove = Players.FirstOrDefault(p => p.Id.Equals(leftPlayerInfo.Id));
-                            if (!playerToRemove.Equals(default(PlayerInfo)))
-                            {
-                                Players.Remove(playerToRemove);
-                                OnPlayerLeft?.Invoke(playerToRemove);
-                            }
+                            OnPlayerLeft?.Invoke(leftPlayerInfo);
                             packetHandled = true;
                             break;
                     }
