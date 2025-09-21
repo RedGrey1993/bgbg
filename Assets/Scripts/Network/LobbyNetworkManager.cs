@@ -51,9 +51,6 @@ public class LobbyNetworkManager : MonoBehaviour
     public int tickMs = 25;
     public float moveSpeed = 5.0f;
 
-    // Runtime data
-    private Dictionary<string, GameObject> playerObjects = new Dictionary<string, GameObject>();
-
     public bool IsInLobby { get; private set; }
 
     private double lastTickTime = 0.0;
@@ -100,7 +97,7 @@ public class LobbyNetworkManager : MonoBehaviour
             if ((now - lastTickTime) * 1000.0 >= tickMs)
             {
                 float dt = (float)(now - lastTickTime);
-                HostTick(dt);
+                GameManager.Instance.HostTick(dt);
                 lastTickTime = now;
             }
         }
@@ -111,30 +108,29 @@ public class LobbyNetworkManager : MonoBehaviour
     private void OnLobbyJoined(LobbyInfo lobbyInfo)
     {
         IsInLobby = true;
-        Debug.Log("LobbyNetworkManager: Joined lobby, clearing old players.");
-        ClearAllPlayers();
-        InitializePlayers();
+        Debug.Log($"LobbyNetworkManager: Joined lobby: {lobbyInfo.Name}, Initializing game...");
+        GameManager.Instance.InitializeGame();
         lastTickTime = Time.realtimeSinceStartup;
     }
 
     private void OnPlayerJoined(PlayerInfo playerInfo)
     {
         Debug.Log($"LobbyNetworkManager: Player {playerInfo.Name} joined.");
-        CreatePlayerObject(playerInfo.Id);
+        GameManager.Instance.OnPlayerJoined(playerInfo);
         // HostTick will send the full state to the new player
     }
 
     private void OnPlayerLeft(PlayerInfo playerInfo)
     {
         Debug.Log($"LobbyNetworkManager: Player {playerInfo.Name} left.");
-        RemovePlayerObject(playerInfo.Id);
+        GameManager.Instance.OnPlayerLeft(playerInfo);
     }
 
     private void OnLobbyLeft()
     {
         IsInLobby = false;
         Debug.Log("LobbyNetworkManager: Left lobby.");
-        ClearAllPlayers();
+        GameManager.Instance.OnLobbyLeft();
     }
 
     private void OnPacketReceived(byte[] data)
@@ -152,104 +148,6 @@ public class LobbyNetworkManager : MonoBehaviour
         }
     }
 
-    // --- Game Logic ---
-
-    private void InitializePlayers()
-    {
-        if (NetworkManager.ActiveLayer == null) return;
-        foreach (var player in NetworkManager.ActiveLayer.Players)
-        {
-            CreatePlayerObject(player.Id);
-        }
-    }
-
-    private void ClearAllPlayers()
-    {
-        foreach (var go in playerObjects.Values) { if (go != null) Destroy(go); }
-        playerObjects.Clear();
-
-        // 删除 playerParent 下名字以 "Player" 开头的所有子对象（Players 是一个空 GameObject）
-        // 用于删除单机模式下默认的那个Player对象
-        if (playerParent != null)
-        {
-            // Collect children to avoid modifying the transform during iteration
-            var toDestroy = new List<GameObject>();
-            for (int i = 0; i < playerParent.childCount; i++)
-            {
-                var child = playerParent.GetChild(i);
-                if (child != null && child.name != null && child.name.StartsWith("Player"))
-                {
-                    toDestroy.Add(child.gameObject);
-                }
-            }
-            foreach (var go in toDestroy)
-            {
-                if (go != null) Destroy(go);
-            }
-        }
-    }
-
-    private void CreatePlayerObject(string playerId)
-    {
-        if (playerObjects.ContainsKey(playerId)) return;
-
-        GameObject go = Instantiate(playerPrefab, playerParent);
-        go.name = $"Player_{playerId}";
-        // set color by steamId for distinctness
-        var rend = go.GetComponent<SpriteRenderer>();
-        if (rend != null) rend.color = ColorFromID(playerId);
-
-        playerObjects[playerId] = go;
-
-        // Initialize position
-        go.transform.position = Vector2.zero;
-
-        // 所有的Client都不处理碰撞，碰撞由Host处理
-        if (!NetworkManager.ActiveLayer.IsHost)
-        {
-            var collider = go.GetComponent<BoxCollider2D>();
-            collider.isTrigger = true;
-        }
-
-        // Add controller to local player
-        if (playerId.Equals(NetworkManager.ActiveLayer.MyInfo.Id))
-        {
-            var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
-            pc.enabled = true;
-        }
-    }
-
-    private Color ColorFromID(string playerId)
-    {
-        Debug.Log("ColorFromID: " + playerId);
-        // Use a stable hash function (FNV-1a) for consistent results across platforms and runs
-        uint hash = FNV1a(playerId);
-        // Use the hash to generate a hue value, ensuring large differences for similar strings due to avalanche effect
-        float hue = (hash % 360) / 360f;
-        return Color.HSVToRGB(hue, 0.6f, 0.9f);
-    }
-
-    private uint FNV1a(string str)
-    {
-        const uint FNV_prime = 16777619;
-        uint hash = 2166136261;
-        foreach (char c in str)
-        {
-            hash ^= (uint)c;
-            hash *= FNV_prime;
-        }
-        return hash;
-    }
-
-    private void RemovePlayerObject(string playerId)
-    {
-        if (playerObjects.TryGetValue(playerId, out GameObject go))
-        {
-            if (go != null) Destroy(go);
-            playerObjects.Remove(playerId);
-        }
-    }
-
     private void RouteMessage(GenericMessage msg)
     {
         if (msg == null || string.IsNullOrEmpty(msg.type)) return;
@@ -257,81 +155,25 @@ public class LobbyNetworkManager : MonoBehaviour
         switch (msg.type)
         {
             case "Input":
-                if (!NetworkManager.ActiveLayer.IsHost) return;
-                var input = JsonUtility.FromJson<InputMessage>(msg.payload);
-                if (input != null && !string.IsNullOrEmpty(input.playerId))
-                    {
-                        // Find the player object by string ID to ensure the key type is correct
-                        var player = NetworkManager.ActiveLayer.Players.FirstOrDefault(p => p.Id.ToString() == input.playerId);
-                        if (!player.Equals(default(PlayerInfo)))
-                        {
-                            if (playerObjects.TryGetValue(player.Id, out GameObject playerObject))
-                            {
-                                var playerInput = playerObject.GetComponent<PlayerInput>();
-                                if (playerInput != null)
-                                {
-                                    playerInput.MoveInput = new Vector2(input.x, input.y);
-                                }
-                            }
-                        }
-                    }
-                break;
+                {
+                    var input = JsonUtility.FromJson<InputMessage>(msg.payload);
+                    GameManager.Instance.OnPlayerInput(input);
+                    break;
+                }
 
             case "StateUpdate":
-            case "FullState":
-                var state = JsonUtility.FromJson<StateUpdateMessage>(msg.payload);
-                ApplyStateUpdate(state);
-                break;
-        }
-    }
-
-    private void HostTick(float dt)
-    {
-        // Broadcast state update
-        var su = new StateUpdateMessage();
-        su.tick = (uint)(Time.realtimeSinceStartup * 1000);
-        foreach (var kvp in playerObjects)
-        {
-            Vector2 pos = kvp.Value.transform.position;
-            su.players.Add(new PlayerState { playerId = kvp.Key.ToString(), x = pos.x, y = pos.y });
-        }
-        string payload = JsonUtility.ToJson(su);
-        var genericMessage = new GenericMessage { type = "StateUpdate", payload = payload };
-        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
-        NetworkManager.ActiveLayer.SendToAll(data, true);
-    }
-
-    private void ApplyStateUpdate(StateUpdateMessage su)
-    {
-        if (su == null) return;
-        foreach (var ps in su.players)
-        {
-            // Find the player object by string ID to use the correct key type
-            var player = NetworkManager.ActiveLayer.Players.FirstOrDefault(p => p.Id.ToString() == ps.playerId);
-            if (!player.Equals(default(PlayerInfo)))
-            {
-                string playerId = player.Id;
-                Vector2 pos = new Vector2(ps.x, ps.y);
-
-                if (!playerObjects.ContainsKey(playerId)) CreatePlayerObject(playerId);
-                if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
                 {
-                    // The server is authoritative, so it dictates the position for all objects.
-                    go.transform.position = pos;
+                    var state = JsonUtility.FromJson<StateUpdateMessage>(msg.payload);
+                    GameManager.Instance.ApplyStateUpdate(state);
+                    break;
                 }
-            }
+            case "FullState":
+                {
+                    var state = JsonUtility.FromJson<StateUpdateMessage>(msg.payload);
+                    GameManager.Instance.ApplyFullState(state);
+                    break;
+                }
         }
-    }
-
-    private void SendFullStateTo(PlayerInfo playerInfo)
-    {
-        // Similar to HostTick, create a StateUpdateMessage and send it.
-        var su = new StateUpdateMessage();
-        // ... populate with all player data
-        string payload = JsonUtility.ToJson(su);
-        var genericMessage = new GenericMessage { type = "FullState", payload = payload };
-        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
-        NetworkManager.ActiveLayer.SendToPlayer(playerInfo, data, true);
     }
 
     // Called by the local PlayerController to send its input
