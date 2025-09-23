@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package NetworkMessageProto;
+
+message GenericMessage
+{
+    uint32 Type = 1;
+    InputMessage InputMsg = 2;
+    StateUpdateMessage StateMsg = 3;
+    PlayersUpdateMessage PlayersMsg = 4;
+}
+
+message InputMessage
+{
+    string PlayerId = 1;
+    uint32 Tick = 2;
+    float X = 3;
+    float Y = 4;
+}
+
+message PlayerState
+{
+    string PlayerId = 1;
+    float X = 2;
+    float Y = 3;
+}
+
+message StateUpdateMessage
+{
+    repeated PlayerState Players = 1;
+    uint32 Tick = 2;
+}
+
+message PlayersUpdateMessage
+{
+    repeated PlayerInfo Players = 1;
+}
+
+message PlayerInfo
+{
+    string Id = 1; // CSteamID or a string for local players
+    string Name = 2;
+}

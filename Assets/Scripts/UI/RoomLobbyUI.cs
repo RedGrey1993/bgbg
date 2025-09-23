@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+#if PROTOBUF
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 public class RoomLobbyUI : MonoBehaviour
 {

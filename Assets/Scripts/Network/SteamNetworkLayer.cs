@@ -2,10 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
 using Steamworks;
 using UnityEngine;
+
+#if PROTOBUF
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 public class SteamNetworkLayer : INetworkLayer
 {
@@ -67,7 +71,7 @@ public class SteamNetworkLayer : INetworkLayer
         {
             LeaveLobby();
         }
-        
+
         // Dispose callbacks to prevent potential issues
         lobbyCreatedCallResult?.Dispose();
         lobbyListCallResult?.Dispose();
@@ -276,7 +280,7 @@ public class SteamNetworkLayer : INetworkLayer
     }
 
     private void OnLobbyChatUpdate(LobbyChatUpdate_t callback)
-    { 
+    {
         CSteamID lobbyId = new CSteamID(callback.m_ulSteamIDLobby);
         if (lobbyId != currentLobbyId) return;
 
@@ -370,7 +374,7 @@ public class SteamNetworkLayer : INetworkLayer
                     GameManager.Instance.Players.Add(newInfo);
                 }
             }
-            
+
             // Fire the event to notify the UI
             OnPlayerInfoUpdated?.Invoke(newInfo);
         }

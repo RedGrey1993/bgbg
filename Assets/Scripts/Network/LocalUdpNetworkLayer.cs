@@ -5,15 +5,20 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Unity.VisualScripting;
 using UnityEngine;
+
+#if PROTOBUF
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 // Internal message types for local discovery and communication
 [Serializable]
 public class LocalPacket
 {
     public string type; // "DiscoveryRequest", "DiscoveryResponse", "JoinRequest", "JoinAccept", "GameData", "Leave"
-    public string payload;
+    public byte[] payload;
 }
 
 [Serializable]
@@ -124,7 +129,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public void RequestLobbyList()
     {
         // Broadcast a discovery request to all potential host ports
-        var requestPacket = new LocalPacket { type = "DiscoveryRequest", payload = "" };
+        var requestPacket = new LocalPacket { type = "DiscoveryRequest", payload = null };
         var json = JsonUtility.ToJson(requestPacket);
         byte[] data = Encoding.UTF8.GetBytes(json);
 
@@ -152,7 +157,8 @@ public class LocalUdpNetworkLayer : INetworkLayer
         {
             hostEndpoint = targetHostEndpoint;
             // Send join request
-            var joinRequest = new LocalPacket { type = "JoinRequest", payload = JsonUtility.ToJson(GameManager.MyInfo) };
+            SerializeUtil.Serialize(GameManager.MyInfo, out byte[] myInfo);
+            var joinRequest = new LocalPacket { type = "JoinRequest", payload = myInfo };
             var json = JsonUtility.ToJson(joinRequest);
             Debug.Log($"fhhtest Sending JoinRequest to {hostEndpoint}, json: {json}");
             byte[] data = Encoding.UTF8.GetBytes(json);
@@ -168,7 +174,8 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public void LeaveLobby()
     {
         string packetType = IsHost ? "LobbyClosed" : "Leave";
-        var leavePacket = new LocalPacket { type = packetType, payload = JsonUtility.ToJson(GameManager.MyInfo) };
+        SerializeUtil.Serialize(GameManager.MyInfo, out byte[] myInfo);
+        var leavePacket = new LocalPacket { type = packetType, payload = myInfo };
         byte[] data = Encoding.UTF8.GetBytes(JsonUtility.ToJson(leavePacket));
 
         if (IsHost)
@@ -191,10 +198,8 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public void SendToAll(byte[] data, bool reliable)
     {
         if (!IsHost) return;
-        string json = System.Text.Encoding.UTF8.GetString(data);
         foreach (var player in GameManager.Instance.Players)
         {
-            Debug.Log($"fhhtest, SendToAll, player: {player.Name}, {player.Id}, {json}");
             if (TryParseIPEndPoint((string)player.Id, out IPEndPoint client))
             {
                 SendToEndpoint(client, data);
@@ -244,11 +249,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     private void SendToEndpoint(IPEndPoint endpoint, byte[] data)
     {
-        var json = Encoding.UTF8.GetString(data);
-        if (json.Contains("JoinRequest"))
-        {
-            Debug.Log($"fhhtest, Sending UDP packet to {endpoint}, data: {json}, uclient: {udpClient}");
-        }
         if (udpClient == null || endpoint == null) return;
         try
         {
@@ -309,7 +309,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                                 ownerId = (string)currentLobby.OwnerId,
                                 hostEndpoint = hostEndpoint.ToString()
                             };
-                            var responsePacket = new LocalPacket { type = "DiscoveryResponse", payload = JsonUtility.ToJson(responsePayload) };
+                            var responsePacket = new LocalPacket { type = "DiscoveryResponse", payload = Encoding.UTF8.GetBytes(JsonUtility.ToJson(responsePayload)) };
                             byte[] responseData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(responsePacket));
                             SendToEndpoint(remoteEP, responseData);
                             Debug.Log($"fhhtest, Sent discovery response to {remoteEP}, {responsePayload.hostEndpoint}, {responsePayload.lobbyName}");
@@ -318,19 +318,20 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
                         case "JoinRequest":
                             {
-                                var playerInfoFromClient = JsonUtility.FromJson<PlayerInfo>(packet.payload);
+                                SerializeUtil.Deserialize(packet.payload, out PlayerInfo playerInfoFromClient);
                                 var newPlayer = new PlayerInfo { Id = remoteEP.ToString(), Name = playerInfoFromClient.Name };
 
                                 if (!GameManager.Instance.Players.Any(p => p.Id == newPlayer.Id))
                                 {
-                                    var playerJoinedPacket = new LocalPacket { type = "PlayerJoined", payload = JsonUtility.ToJson(newPlayer) };
+                                    SerializeUtil.Serialize(newPlayer, out byte[] playerInfo);
+                                    var playerJoinedPacket = new LocalPacket { type = "PlayerJoined", payload = playerInfo };
                                     byte[] playerJoinedData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerJoinedPacket));
                                     SendToAll(playerJoinedData, true);
 
                                     OnPlayerJoined?.Invoke(newPlayer);
 
                                     currentLobby.CurrentPlayers = GameManager.Instance.Players.Count;
-                                    var joinAcceptPacket = new LocalPacket { type = "JoinAccept", payload = JsonUtility.ToJson(currentLobby) };
+                                    var joinAcceptPacket = new LocalPacket { type = "JoinAccept", payload = Encoding.UTF8.GetBytes(JsonUtility.ToJson(currentLobby)) };
                                     Debug.Log($"fhhtest, joinAcceptPacket payload: {joinAcceptPacket.payload}");
                                     byte[] joinAcceptData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(joinAcceptPacket));
                                     SendToEndpoint(remoteEP, joinAcceptData);
@@ -341,12 +342,13 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             }
                         case "Leave":
                             {
-                                var leftPlayer = JsonUtility.FromJson<PlayerInfo>(packet.payload);
+                                SerializeUtil.Deserialize(packet.payload, out PlayerInfo leftPlayer);
                                 if (GameManager.Instance.Players.Contains(leftPlayer))
                                 {
                                     OnPlayerLeft?.Invoke(leftPlayer);
 
-                                    var playerLeftPacket = new LocalPacket { type = "PlayerLeft", payload = JsonUtility.ToJson(leftPlayer) };
+                                    SerializeUtil.Serialize(leftPlayer, out byte[] leftPlayerData);
+                                    var playerLeftPacket = new LocalPacket { type = "PlayerLeft", payload = leftPlayerData };
                                     byte[] playerLeftData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerLeftPacket));
                                     SendToAll(playerLeftData, true);
                                 }
@@ -363,7 +365,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                         case "DiscoveryResponse":
                             {
                                 Debug.Log($"fhhtest, Received discovery response from {remoteEP}");
-                                var payload = JsonUtility.FromJson<DiscoveryResponsePayload>(packet.payload);
+                                var payload = JsonUtility.FromJson<DiscoveryResponsePayload>(Encoding.UTF8.GetString(packet.payload));
                                 var lobbyInfo = new LobbyInfo { Id = payload.hostEndpoint, OwnerId = payload.ownerId, Name = payload.lobbyName, CurrentPlayers = payload.currentPlayers, MaxPlayers = payload.maxPlayers, HasPassword = payload.hasPassword, OwnerName = payload.ownerName };
                                 OnLobbyListUpdated?.Invoke(new List<LobbyInfo> { lobbyInfo });
                                 packetHandled = true;
@@ -374,7 +376,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             try
                             {
                                 Debug.Log($"fhhtest, Received JoinAccept from {remoteEP}");
-                                var currentLobby = JsonUtility.FromJson<LobbyInfo>(packet.payload);
+                                var currentLobby = JsonUtility.FromJson<LobbyInfo>(Encoding.UTF8.GetString(packet.payload));
                                 Debug.Log($"fhhtest, call OnLobbyJoined, {OnLobbyJoined}");
                                 OnLobbyJoined?.Invoke(currentLobby);
                             }
@@ -393,13 +395,13 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             break;
 
                         case "PlayerJoined":
-                            var newPlayer = JsonUtility.FromJson<PlayerInfo>(packet.payload);
+                            SerializeUtil.Deserialize(packet.payload, out PlayerInfo newPlayer);
                             OnPlayerJoined?.Invoke(newPlayer);
                             packetHandled = true;
                             break;
 
                         case "PlayerLeft":
-                            var leftPlayerInfo = JsonUtility.FromJson<PlayerInfo>(packet.payload);
+                            SerializeUtil.Deserialize(packet.payload, out PlayerInfo leftPlayerInfo);
                             OnPlayerLeft?.Invoke(leftPlayerInfo);
                             packetHandled = true;
                             break;

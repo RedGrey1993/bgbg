@@ -1,48 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Steamworks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-
-// These message classes remain the same as they define the data structure of your game state.
-[Serializable]
-public class InputMessage
-{
-    public string playerId;
-    public uint tick;
-    public float x;
-    public float y;
-}
-
-[Serializable]
-public class PlayerState
-{
-    public string playerId;
-    public float x;
-    public float y;
-}
-
-[Serializable]
-public class StateUpdateMessage
-{
-    public List<PlayerState> players = new List<PlayerState>();
-    public uint tick;
-}
-
-[Serializable]
-public class PlayersUpdateMessage
-{
-    public List<PlayerInfo> players = new List<PlayerInfo>();
-}
-
-[Serializable]
-public class GenericMessage
-{
-    public string type; // "JoinRequest","FullState","StateUpdate","Input","PlayersUpdate"
-    public string payload;
-}
+#if PROTOBUF
+using Google.Protobuf;
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 
 public class LobbyNetworkManager : MonoBehaviour
@@ -148,11 +112,9 @@ public class LobbyNetworkManager : MonoBehaviour
 
     private void OnPacketReceived(byte[] data)
     {
-        // The logic for routing messages remains largely the same
-        string json = System.Text.Encoding.UTF8.GetString(data);
         try
         {
-            var gen = JsonUtility.FromJson<GenericMessage>(json);
+            SerializeUtil.Deserialize(data, out GenericMessage gen);
             RouteMessage(gen);
         }
         catch (Exception e)
@@ -163,33 +125,29 @@ public class LobbyNetworkManager : MonoBehaviour
 
     private void RouteMessage(GenericMessage msg)
     {
-        if (msg == null || string.IsNullOrEmpty(msg.type)) return;
+        if (msg == null) return;
 
-        switch (msg.type)
+        switch (msg.Type)
         {
-            case "Input":
+            case (uint)MessageType.Input:
                 {
-                    var input = JsonUtility.FromJson<InputMessage>(msg.payload);
-                    GameManager.Instance.OnPlayerInput(input);
+                    GameManager.Instance.OnPlayerInput(msg.InputMsg);
                     break;
                 }
 
-            case "StateUpdate":
+            case (uint)MessageType.StateUpdate:
                 {
-                    var state = JsonUtility.FromJson<StateUpdateMessage>(msg.payload);
-                    GameManager.Instance.ApplyStateUpdate(state);
+                    GameManager.Instance.ApplyStateUpdate(msg.StateMsg);
                     break;
                 }
-            case "FullState":
+            case (uint)MessageType.FullState:
                 {
-                    var state = JsonUtility.FromJson<StateUpdateMessage>(msg.payload);
-                    GameManager.Instance.ApplyFullState(state);
+                    GameManager.Instance.ApplyFullState(msg.StateMsg);
                     break;
                 }
-            case "PlayersUpdate":
+            case (uint)MessageType.PlayersUpdate:
                 {
-                    var players = JsonUtility.FromJson<PlayersUpdateMessage>(msg.payload);
-                    GameManager.Instance.OnPlayersUpdate(players);
+                    GameManager.Instance.OnPlayersUpdate(msg.PlayersMsg);
                     break;
                 }
         }
@@ -202,19 +160,20 @@ public class LobbyNetworkManager : MonoBehaviour
 
         var im = new InputMessage
         {
-            playerId = GameManager.MyInfo.Id.ToString(),
-            tick = tick,
-            x = input.x,
-            y = input.y
+            PlayerId = GameManager.MyInfo.Id.ToString(),
+            Tick = tick,
+            X = input.x,
+            Y = input.y
         };
 
         // Host and Client both send their input to the host through the network layer
         // for consistent processing and to simulate network latency for the host.
-        string payload = JsonUtility.ToJson(im);
-        var genericMessage = new GenericMessage { type = "Input", payload = payload };
-        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
+        var genericMessage = new GenericMessage
+        {
+            Type = (uint)MessageType.Input,
+            InputMsg = im
+        };
+        SerializeUtil.Serialize(genericMessage, out byte[] data);
         NetworkManager.ActiveLayer.SendToHost(data, true);
-
-        // Debug.Log($"Sent Input message: {im.playerId} ({im.x},{im.y}) at tick {im.tick}");
     }
 }

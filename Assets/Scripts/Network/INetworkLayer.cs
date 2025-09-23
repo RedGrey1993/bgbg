@@ -3,6 +3,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if PROTOBUF
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
+
 // 通用的大厅信息结构体，用于UI显示，屏蔽底层差异
 [Serializable]
 public struct LobbyInfo
@@ -14,14 +20,6 @@ public struct LobbyInfo
     public int MaxPlayers;
     public bool HasPassword;
     public string OwnerName;
-}
-
-// 通用玩家信息结构体
-[Serializable]
-public struct PlayerInfo
-{
-    public string Id; // CSteamID or a string for local players
-    public string Name;
 }
 
 public interface INetworkLayer

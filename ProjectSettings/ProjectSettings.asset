@@ -584,7 +584,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Standalone: STEAMWORKS_NET;TEST_MODE
+    Standalone: STEAMWORKS_NET;TEST_MODE;PROTOBUF
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -602,7 +602,7 @@ PlayerSettings:
   gcIncremental: 1
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform: {}
-  editorAssembliesCompatibilityLevel: 1
+  editorAssembliesCompatibilityLevel: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: BGBG

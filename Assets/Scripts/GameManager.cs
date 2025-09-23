@@ -1,7 +1,14 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
+using System.Linq;
+
+#if PROTOBUF
+using Google.Protobuf;
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 public class GameManager : MonoBehaviour
 {
@@ -132,12 +139,12 @@ public class GameManager : MonoBehaviour
     {
         if (IsHost())
         {
-            if (playerObjects.TryGetValue(input.playerId, out GameObject playerObject))
+            if (playerObjects.TryGetValue(input.PlayerId, out GameObject playerObject))
             {
                 var playerInput = playerObject.GetComponent<PlayerInput>();
                 if (playerInput != null)
                 {
-                    playerInput.MoveInput = new Vector2(input.x, input.y);
+                    playerInput.MoveInput = new Vector2(input.X, input.Y);
                 }
             }
         }
@@ -155,15 +162,18 @@ public class GameManager : MonoBehaviour
         {
             // Broadcast state update
             var su = new StateUpdateMessage();
-            su.tick = (uint)(Time.realtimeSinceStartup * 1000);
+            su.Tick = (uint)(Time.realtimeSinceStartup * 1000);
             foreach (var kvp in playerObjects)
             {
                 Vector2 pos = kvp.Value.transform.position;
-                su.players.Add(new PlayerState { playerId = kvp.Key.ToString(), x = pos.x, y = pos.y });
+                su.Players.Add(new PlayerState { PlayerId = kvp.Key.ToString(), X = pos.x, Y = pos.y });
             }
-            string payload = JsonUtility.ToJson(su);
-            var genericMessage = new GenericMessage { type = "StateUpdate", payload = payload };
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
+            var genericMessage = new GenericMessage
+            {
+                Type = (uint)MessageType.StateUpdate,
+                StateMsg = su
+            };
+            SerializeUtil.Serialize(genericMessage, out byte[] data);
             NetworkManager.ActiveLayer.SendToAll(data, false);
         }
     }
@@ -172,9 +182,9 @@ public class GameManager : MonoBehaviour
     {
         if (IsHost()) return; // Host不处理StateUpdate消息，因为StateUpdate消息由Host发送
         if (su == null) return;
-        foreach (var ps in su.players)
+        foreach (var ps in su.Players)
         {
-            string playerId = ps.playerId;
+            string playerId = ps.PlayerId;
             if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
@@ -185,7 +195,7 @@ public class GameManager : MonoBehaviour
                     rb.angularVelocity = 0f;
                 }
 
-                Vector2 pos = new Vector2(ps.x, ps.y);
+                Vector2 pos = new Vector2(ps.X, ps.Y);
                 go.transform.position = pos;
             }
         }
@@ -195,10 +205,10 @@ public class GameManager : MonoBehaviour
     {
         if (IsHost()) return; // Host不处理FullState消息，因为FullState消息由Host发送
         if (su == null) return;
-        foreach (var ps in su.players)
+        foreach (var ps in su.Players)
         {
-            string playerId = ps.playerId;
-            Vector2 pos = new Vector2(ps.x, ps.y);
+            string playerId = ps.PlayerId;
+            Vector2 pos = new Vector2(ps.X, ps.Y);
 
             if (!playerObjects.ContainsKey(playerId)) CreatePlayerObject(playerId, ColorFromID(playerId), playerId == MyInfo.Id);
             if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
@@ -216,7 +226,7 @@ public class GameManager : MonoBehaviour
         foreach (var kvp in playerObjects)
         {
             string playerId = kvp.Key;
-            if (!su.players.Exists(p => p.playerId == playerId))
+            if (!su.Players.Any(p => p.PlayerId == playerId))
             {
                 RemovePlayerObject(playerId);
             }
@@ -234,17 +244,20 @@ public class GameManager : MonoBehaviour
         if (players == null) return;
 
         Players.Clear();
-        Players.UnionWith(players.players);
+        Players.UnionWith(players.Players);
         PlayersUpdateActions?.Invoke();
     }
 
     private void SendPlayersUpdateToAll()
     {
         var pu = new PlayersUpdateMessage();
-        pu.players.AddRange(Players);
-        string payload = JsonUtility.ToJson(pu);
-        var genericMessage = new GenericMessage { type = "PlayersUpdate", payload = payload };
-        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
+        pu.Players.AddRange(Players);
+        var genericMessage = new GenericMessage
+        {
+            Type = (uint)MessageType.PlayersUpdate,
+            PlayersMsg = pu
+        };
+        SerializeUtil.Serialize(genericMessage, out byte[] data);
         NetworkManager.ActiveLayer.SendToAll(data, true);
     }
 
@@ -252,15 +265,18 @@ public class GameManager : MonoBehaviour
     {
         // Similar to HostTick, create a StateUpdateMessage and send it.
         var su = new StateUpdateMessage();
-        su.tick = (uint)(Time.realtimeSinceStartup * 1000);
+        su.Tick = (uint)(Time.realtimeSinceStartup * 1000);
         foreach (var kvp in playerObjects)
         {
             Vector2 pos = kvp.Value.transform.position;
-            su.players.Add(new PlayerState { playerId = kvp.Key.ToString(), x = pos.x, y = pos.y });
+            su.Players.Add(new PlayerState { PlayerId = kvp.Key.ToString(), X = pos.x, Y = pos.y });
         }
-        string payload = JsonUtility.ToJson(su);
-        var genericMessage = new GenericMessage { type = "FullState", payload = payload };
-        byte[] data = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(genericMessage));
+        var genericMessage = new GenericMessage
+        {
+            Type = (uint)MessageType.FullState,
+            StateMsg = su
+        };
+        SerializeUtil.Serialize(genericMessage, out byte[] data);
         NetworkManager.ActiveLayer.SendToAll(data, false);
     }
 
