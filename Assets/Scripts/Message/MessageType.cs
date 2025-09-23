@@ -1,4 +1,4 @@
-enum MessageType {
+public enum MessageType {
     FullState = 1,
     StateUpdate,
     Input,

@@ -154,26 +154,18 @@ public class LobbyNetworkManager : MonoBehaviour
     }
 
     // Called by the local PlayerController to send its input
-    public void SendInput(Vector2 input, uint tick)
+    public void SendInput(InputMessage inputMsg)
     {
         if (NetworkManager.ActiveLayer == null || !IsInLobby) return;
-
-        var im = new InputMessage
-        {
-            PlayerId = GameManager.MyInfo.Id.ToString(),
-            Tick = tick,
-            X = input.x,
-            Y = input.y
-        };
-
         // Host and Client both send their input to the host through the network layer
         // for consistent processing and to simulate network latency for the host.
         var genericMessage = new GenericMessage
         {
             Type = (uint)MessageType.Input,
-            InputMsg = im
+            InputMsg = inputMsg
         };
         SerializeUtil.Serialize(genericMessage, out byte[] data);
-        NetworkManager.ActiveLayer.SendToHost(data, true);
+        // NetworkManager.ActiveLayer.SendToHost(data, true);
+        NetworkManager.ActiveLayer.SendToAll(data, true);
     }
 }

@@ -1,5 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+#if PROTOBUF
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -43,7 +48,22 @@ public class PlayerController : MonoBehaviour
         {
             // We are in an online lobby, send input to the network manager
             uint tick = (uint)(Time.realtimeSinceStartup * 1000);
-            LobbyNetworkManager.Instance.SendInput(moveInput, tick);
+            var inputMsg = new InputMessage
+            {
+                PlayerId = GameManager.MyInfo.Id.ToString(),
+                Tick = tick,
+                MoveInput = new Vec2
+                {
+                    X = moveInput.x,
+                    Y = moveInput.y
+                },
+                LookInput = new Vec2
+                {
+                    X = lookInput.x,
+                    Y = lookInput.y
+                }
+            };
+            LobbyNetworkManager.Instance.SendInput(inputMsg);
         }
         else // Offline local player, set input directly
         {

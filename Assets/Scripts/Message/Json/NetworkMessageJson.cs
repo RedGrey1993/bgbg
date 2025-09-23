@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace NetworkMessageJson
 {
@@ -13,12 +14,19 @@ namespace NetworkMessageJson
     }
 
     [Serializable]
+    public class Vec2
+    {
+        public float X;
+        public float Y;
+    }
+
+    [Serializable]
     public class InputMessage
     {
         public string PlayerId;
         public uint Tick;
-        public float X;
-        public float Y;
+        public Vec2 MoveInput;
+        public Vec2 LookInput;
     }
 
     [Serializable]
@@ -44,7 +52,7 @@ namespace NetworkMessageJson
 
     // 通用玩家信息结构体
     [Serializable]
-    public struct PlayerInfo
+    public class PlayerInfo
     {
         public string Id; // CSteamID or a string for local players
         public string Name;

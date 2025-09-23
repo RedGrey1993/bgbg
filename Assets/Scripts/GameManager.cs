@@ -135,17 +135,18 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
-    public void OnPlayerInput(InputMessage input)
+    public void OnPlayerInput(InputMessage inputMsg)
     {
-        if (IsHost())
+        if (playerObjects.TryGetValue(inputMsg.PlayerId, out GameObject playerObject))
         {
-            if (playerObjects.TryGetValue(input.PlayerId, out GameObject playerObject))
+            var playerInput = playerObject.GetComponent<PlayerInput>();
+            if (playerInput != null)
             {
-                var playerInput = playerObject.GetComponent<PlayerInput>();
-                if (playerInput != null)
+                if (IsHost())
                 {
-                    playerInput.MoveInput = new Vector2(input.X, input.Y);
+                    playerInput.MoveInput = new Vector2(inputMsg.MoveInput.X, inputMsg.MoveInput.Y);
                 }
+                playerInput.LookInput = new Vector2(inputMsg.LookInput.X, inputMsg.LookInput.Y);
             }
         }
     }

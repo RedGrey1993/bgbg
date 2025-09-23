@@ -10,12 +10,19 @@ message GenericMessage
     PlayersUpdateMessage PlayersMsg = 4;
 }
 
+message Vec2
+{
+    float X = 1;
+    float Y = 2;
+}
+
 message InputMessage
 {
     string PlayerId = 1;
     uint32 Tick = 2;
-    float X = 3;
-    float Y = 4;
+    uint32 Type = 3;
+    Vec2 MoveInput = 4;
+    Vec2 LookInput = 5;
 }
 
 message PlayerState

@@ -197,7 +197,6 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     public void SendToAll(byte[] data, bool reliable)
     {
-        if (!IsHost) return;
         foreach (var player in GameManager.Instance.Players)
         {
             if (TryParseIPEndPoint((string)player.Id, out IPEndPoint client))
