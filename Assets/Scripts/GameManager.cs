@@ -159,7 +159,9 @@ public class GameManager : MonoBehaviour
         foreach (var kvp in playerObjects)
         {
             Vector2 pos = kvp.Value.transform.position;
-            su.Players.Add(new PlayerState { PlayerId = kvp.Key.ToString(), X = pos.x, Y = pos.y });
+            var playerState = kvp.Value.GetComponent<PlayerStatus>().State;
+            playerState.Position = new Vec2 { X = pos.x, Y = pos.y };
+            su.Players.Add(playerState);
         }
         var genericMessage = new GenericMessage
         {
@@ -183,8 +185,7 @@ public class GameManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            string playerId = ps.PlayerId;
-            if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
+            if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
                 var rb = go.GetComponent<Rigidbody2D>();
@@ -193,9 +194,9 @@ public class GameManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     rb.angularVelocity = 0f;
                 }
-
-                Vector2 pos = new Vector2(ps.X, ps.Y);
-                go.transform.position = pos;
+                var playerStatus = go.GetComponent<PlayerStatus>();
+                if (playerStatus) playerStatus.State = ps;
+                go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
             }
         }
     }
@@ -207,8 +208,6 @@ public class GameManager : MonoBehaviour
         foreach (var ps in su.Players)
         {
             string playerId = ps.PlayerId;
-            Vector2 pos = new Vector2(ps.X, ps.Y);
-
             if (!playerObjects.ContainsKey(playerId)) CreatePlayerObject(playerId, ColorFromID(playerId), playerId == MyInfo.Id);
             if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
             {
@@ -219,7 +218,10 @@ public class GameManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     rb.angularVelocity = 0f;
                 }
-                go.transform.position = pos;
+                var playerStatus = go.GetComponent<PlayerStatus>();
+                if (playerStatus) playerStatus.State = ps;
+                Debug.Log($"fhhtest, ApplyStateUpdate: {go.name} {playerStatus.State}");
+                go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
             }
         }
         foreach (var kvp in playerObjects)
@@ -297,7 +299,11 @@ public class GameManager : MonoBehaviour
         // Set player name
         string playerName = Players.FirstOrDefault(p => p.Id == playerId)?.Name ?? "Unknown";
         var playerStatus = go.GetComponent<PlayerStatus>();
-        if (playerStatus != null) playerStatus.playerName = playerName;
+        if (playerStatus != null)
+        {
+            playerStatus.State.PlayerId = playerId;
+            playerStatus.State.PlayerName = playerName;
+        }
 
         playerObjects[playerId] = go;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理

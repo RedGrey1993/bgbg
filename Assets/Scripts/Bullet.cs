@@ -23,8 +23,8 @@ public class Bullet : MonoBehaviour
                 if (playerStatus != null)
                 {
                     // 减少Player的生命值
-                    playerStatus.currentHp = (uint)Mathf.Max(0, (int)playerStatus.currentHp - (int)damage);
-                    Debug.Log($"Player {playerStatus.playerName} hit! Current HP: {playerStatus.currentHp}");
+                    playerStatus.State.CurrentHp = (uint)Mathf.Max(0, (int)playerStatus.State.CurrentHp - (int)damage);
+                    Debug.Log($"Player {playerStatus.State.PlayerName} hit! Current HP: {playerStatus.State.CurrentHp}");
                 }
             }
         }

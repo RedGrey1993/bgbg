@@ -33,20 +33,25 @@ namespace NetworkMessageProto {
             "ASABKAISCQoBWRgCIAEoAiKYAQoMSW5wdXRNZXNzYWdlEhAKCFBsYXllcklk",
             "GAEgASgJEgwKBFRpY2sYAiABKA0SDAoEVHlwZRgDIAEoDRIsCglNb3ZlSW5w",
             "dXQYBCABKAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISLAoJTG9va0lu",
-            "cHV0GAUgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIjUKC1BsYXll",
-            "clN0YXRlEhAKCFBsYXllcklkGAEgASgJEgkKAVgYAiABKAISCQoBWRgDIAEo",
-            "AiJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVycxgBIAMoCzIgLk5l",
-            "dHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSDAoEVGljaxgCIAEoDSJI",
-            "ChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5ZXJzGAEgAygLMh8uTmV0",
-            "d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIiYKClBsYXllckluZm8SCgoC",
-            "SWQYASABKAkSDAoETmFtZRgCIAEoCWIGcHJvdG8z"));
+            "cHV0GAUgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIvwBCgtQbGF5",
+            "ZXJTdGF0ZRIQCghQbGF5ZXJJZBgBIAEoCRISCgpQbGF5ZXJOYW1lGAIgASgJ",
+            "Eg0KBW1heEhwGAMgASgNEhEKCWN1cnJlbnRIcBgEIAEoDRIRCgltb3ZlU3Bl",
+            "ZWQYBSABKAISEwoLYnVsbGV0U3BlZWQYBiABKAISDgoGZGFtYWdlGAcgASgN",
+            "EhYKDnNob290RnJlcXVlbmN5GAggASgNEhIKCnNob290UmFuZ2UYCSABKA0S",
+            "FAoMY3JpdGljYWxSYXRlGAogASgNEisKCFBvc2l0aW9uGAsgASgLMhkuTmV0",
+            "d29ya01lc3NhZ2VQcm90by5WZWMyIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIx",
+            "CgdQbGF5ZXJzGAEgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJT",
+            "dGF0ZRIMCgRUaWNrGAIgASgNIkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAK",
+            "B1BsYXllcnMYASADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllcklu",
+            "Zm8iJgoKUGxheWVySW5mbxIKCgJJZBgBIAEoCRIMCgROYW1lGAIgASgJYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.GenericMessage), global::NetworkMessageProto.GenericMessage.Parser, new[]{ "Type", "InputMsg", "StateMsg", "PlayersMsg" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.Vec2), global::NetworkMessageProto.Vec2.Parser, new[]{ "X", "Y" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "X", "Y" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "Id", "Name" }, null, null, null, null)
@@ -1027,8 +1032,16 @@ namespace NetworkMessageProto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState(PlayerState other) : this() {
       playerId_ = other.playerId_;
-      x_ = other.x_;
-      y_ = other.y_;
+      playerName_ = other.playerName_;
+      maxHp_ = other.maxHp_;
+      currentHp_ = other.currentHp_;
+      moveSpeed_ = other.moveSpeed_;
+      bulletSpeed_ = other.bulletSpeed_;
+      damage_ = other.damage_;
+      shootFrequency_ = other.shootFrequency_;
+      shootRange_ = other.shootRange_;
+      criticalRate_ = other.criticalRate_;
+      position_ = other.position_ != null ? other.position_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1050,27 +1063,141 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "X" field.</summary>
-    public const int XFieldNumber = 2;
-    private float x_;
+    /// <summary>Field number for the "PlayerName" field.</summary>
+    public const int PlayerNameFieldNumber = 2;
+    private string playerName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float X {
-      get { return x_; }
+    public string PlayerName {
+      get { return playerName_; }
       set {
-        x_ = value;
+        playerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "Y" field.</summary>
-    public const int YFieldNumber = 3;
-    private float y_;
+    /// <summary>Field number for the "maxHp" field.</summary>
+    public const int MaxHpFieldNumber = 3;
+    private uint maxHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float Y {
-      get { return y_; }
+    public uint MaxHp {
+      get { return maxHp_; }
       set {
-        y_ = value;
+        maxHp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "currentHp" field.</summary>
+    public const int CurrentHpFieldNumber = 4;
+    private uint currentHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurrentHp {
+      get { return currentHp_; }
+      set {
+        currentHp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "moveSpeed" field.</summary>
+    public const int MoveSpeedFieldNumber = 5;
+    private float moveSpeed_;
+    /// <summary>
+    /// 人物移动速度
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float MoveSpeed {
+      get { return moveSpeed_; }
+      set {
+        moveSpeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "bulletSpeed" field.</summary>
+    public const int BulletSpeedFieldNumber = 6;
+    private float bulletSpeed_;
+    /// <summary>
+    /// 子弹飞行速度
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float BulletSpeed {
+      get { return bulletSpeed_; }
+      set {
+        bulletSpeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "damage" field.</summary>
+    public const int DamageFieldNumber = 7;
+    private uint damage_;
+    /// <summary>
+    ///  伤害
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Damage {
+      get { return damage_; }
+      set {
+        damage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "shootFrequency" field.</summary>
+    public const int ShootFrequencyFieldNumber = 8;
+    private uint shootFrequency_;
+    /// <summary>
+    /// 每秒发射子弹数
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ShootFrequency {
+      get { return shootFrequency_; }
+      set {
+        shootFrequency_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "shootRange" field.</summary>
+    public const int ShootRangeFieldNumber = 9;
+    private uint shootRange_;
+    /// <summary>
+    /// 子弹最大射程
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ShootRange {
+      get { return shootRange_; }
+      set {
+        shootRange_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "criticalRate" field.</summary>
+    public const int CriticalRateFieldNumber = 10;
+    private uint criticalRate_;
+    /// <summary>
+    /// 暴击率
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CriticalRate {
+      get { return criticalRate_; }
+      set {
+        criticalRate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Position" field.</summary>
+    public const int PositionFieldNumber = 11;
+    private global::NetworkMessageProto.Vec2 position_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::NetworkMessageProto.Vec2 Position {
+      get { return position_; }
+      set {
+        position_ = value;
       }
     }
 
@@ -1090,8 +1217,16 @@ namespace NetworkMessageProto {
         return true;
       }
       if (PlayerId != other.PlayerId) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      if (PlayerName != other.PlayerName) return false;
+      if (MaxHp != other.MaxHp) return false;
+      if (CurrentHp != other.CurrentHp) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MoveSpeed, other.MoveSpeed)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BulletSpeed, other.BulletSpeed)) return false;
+      if (Damage != other.Damage) return false;
+      if (ShootFrequency != other.ShootFrequency) return false;
+      if (ShootRange != other.ShootRange) return false;
+      if (CriticalRate != other.CriticalRate) return false;
+      if (!object.Equals(Position, other.Position)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1100,8 +1235,16 @@ namespace NetworkMessageProto {
     public override int GetHashCode() {
       int hash = 1;
       if (PlayerId.Length != 0) hash ^= PlayerId.GetHashCode();
-      if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
-      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
+      if (PlayerName.Length != 0) hash ^= PlayerName.GetHashCode();
+      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
+      if (CurrentHp != 0) hash ^= CurrentHp.GetHashCode();
+      if (MoveSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MoveSpeed);
+      if (BulletSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BulletSpeed);
+      if (Damage != 0) hash ^= Damage.GetHashCode();
+      if (ShootFrequency != 0) hash ^= ShootFrequency.GetHashCode();
+      if (ShootRange != 0) hash ^= ShootRange.GetHashCode();
+      if (CriticalRate != 0) hash ^= CriticalRate.GetHashCode();
+      if (position_ != null) hash ^= Position.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1124,13 +1267,45 @@ namespace NetworkMessageProto {
         output.WriteRawTag(10);
         output.WriteString(PlayerId);
       }
-      if (X != 0F) {
-        output.WriteRawTag(21);
-        output.WriteFloat(X);
+      if (PlayerName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PlayerName);
       }
-      if (Y != 0F) {
-        output.WriteRawTag(29);
-        output.WriteFloat(Y);
+      if (MaxHp != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(MaxHp);
+      }
+      if (CurrentHp != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(CurrentHp);
+      }
+      if (MoveSpeed != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MoveSpeed);
+      }
+      if (BulletSpeed != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(BulletSpeed);
+      }
+      if (Damage != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Damage);
+      }
+      if (ShootFrequency != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(ShootFrequency);
+      }
+      if (ShootRange != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(ShootRange);
+      }
+      if (CriticalRate != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(CriticalRate);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(Position);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1146,13 +1321,45 @@ namespace NetworkMessageProto {
         output.WriteRawTag(10);
         output.WriteString(PlayerId);
       }
-      if (X != 0F) {
-        output.WriteRawTag(21);
-        output.WriteFloat(X);
+      if (PlayerName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PlayerName);
       }
-      if (Y != 0F) {
-        output.WriteRawTag(29);
-        output.WriteFloat(Y);
+      if (MaxHp != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(MaxHp);
+      }
+      if (CurrentHp != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(CurrentHp);
+      }
+      if (MoveSpeed != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MoveSpeed);
+      }
+      if (BulletSpeed != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(BulletSpeed);
+      }
+      if (Damage != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Damage);
+      }
+      if (ShootFrequency != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(ShootFrequency);
+      }
+      if (ShootRange != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(ShootRange);
+      }
+      if (CriticalRate != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(CriticalRate);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(Position);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1167,11 +1374,35 @@ namespace NetworkMessageProto {
       if (PlayerId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerId);
       }
-      if (X != 0F) {
+      if (PlayerName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerName);
+      }
+      if (MaxHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxHp);
+      }
+      if (CurrentHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentHp);
+      }
+      if (MoveSpeed != 0F) {
         size += 1 + 4;
       }
-      if (Y != 0F) {
+      if (BulletSpeed != 0F) {
         size += 1 + 4;
+      }
+      if (Damage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Damage);
+      }
+      if (ShootFrequency != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShootFrequency);
+      }
+      if (ShootRange != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShootRange);
+      }
+      if (CriticalRate != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CriticalRate);
+      }
+      if (position_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1188,11 +1419,38 @@ namespace NetworkMessageProto {
       if (other.PlayerId.Length != 0) {
         PlayerId = other.PlayerId;
       }
-      if (other.X != 0F) {
-        X = other.X;
+      if (other.PlayerName.Length != 0) {
+        PlayerName = other.PlayerName;
       }
-      if (other.Y != 0F) {
-        Y = other.Y;
+      if (other.MaxHp != 0) {
+        MaxHp = other.MaxHp;
+      }
+      if (other.CurrentHp != 0) {
+        CurrentHp = other.CurrentHp;
+      }
+      if (other.MoveSpeed != 0F) {
+        MoveSpeed = other.MoveSpeed;
+      }
+      if (other.BulletSpeed != 0F) {
+        BulletSpeed = other.BulletSpeed;
+      }
+      if (other.Damage != 0) {
+        Damage = other.Damage;
+      }
+      if (other.ShootFrequency != 0) {
+        ShootFrequency = other.ShootFrequency;
+      }
+      if (other.ShootRange != 0) {
+        ShootRange = other.ShootRange;
+      }
+      if (other.CriticalRate != 0) {
+        CriticalRate = other.CriticalRate;
+      }
+      if (other.position_ != null) {
+        if (position_ == null) {
+          Position = new global::NetworkMessageProto.Vec2();
+        }
+        Position.MergeFrom(other.Position);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1217,12 +1475,47 @@ namespace NetworkMessageProto {
             PlayerId = input.ReadString();
             break;
           }
-          case 21: {
-            X = input.ReadFloat();
+          case 18: {
+            PlayerName = input.ReadString();
             break;
           }
-          case 29: {
-            Y = input.ReadFloat();
+          case 24: {
+            MaxHp = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            CurrentHp = input.ReadUInt32();
+            break;
+          }
+          case 45: {
+            MoveSpeed = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            BulletSpeed = input.ReadFloat();
+            break;
+          }
+          case 56: {
+            Damage = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            ShootFrequency = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            ShootRange = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            CriticalRate = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            if (position_ == null) {
+              Position = new global::NetworkMessageProto.Vec2();
+            }
+            input.ReadMessage(Position);
             break;
           }
         }
@@ -1248,12 +1541,47 @@ namespace NetworkMessageProto {
             PlayerId = input.ReadString();
             break;
           }
-          case 21: {
-            X = input.ReadFloat();
+          case 18: {
+            PlayerName = input.ReadString();
             break;
           }
-          case 29: {
-            Y = input.ReadFloat();
+          case 24: {
+            MaxHp = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            CurrentHp = input.ReadUInt32();
+            break;
+          }
+          case 45: {
+            MoveSpeed = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            BulletSpeed = input.ReadFloat();
+            break;
+          }
+          case 56: {
+            Damage = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            ShootFrequency = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            ShootRange = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            CriticalRate = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            if (position_ == null) {
+              Position = new global::NetworkMessageProto.Vec2();
+            }
+            input.ReadMessage(Position);
             break;
           }
         }

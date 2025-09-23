@@ -75,7 +75,7 @@ public class PlayerAction : MonoBehaviour
 
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
-        rb.linearVelocity = moveInput * playerStatus.moveSpeed;
+        rb.linearVelocity = moveInput * playerStatus.State.MoveSpeed;
     }
 
     private void Shoot()
@@ -95,12 +95,12 @@ public class PlayerAction : MonoBehaviour
         // Instantiate the bullet
         GameObject bullet = Instantiate(playerStatus.bulletPrefab, playerPosition, Quaternion.identity);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        if (bulletScript) bulletScript.damage = playerStatus.damage;
+        if (bulletScript) bulletScript.damage = playerStatus.State.Damage;
 
         // Get the bullet's Rigidbody2D component
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         // Set the bullet's velocity
-        if (bulletRb) bulletRb.linearVelocity = lookInput * playerStatus.bulletSpeed;
+        if (bulletRb) bulletRb.linearVelocity = lookInput * playerStatus.State.BulletSpeed;
     }
 
     // 只有Host能够调用，离线模式视作Host
