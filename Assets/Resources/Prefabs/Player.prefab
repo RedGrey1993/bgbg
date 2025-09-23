@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -9068545519425884085}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5d71d333d3e914281a778ec8e5c31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  MoveInput: {x: 0, y: 0}
+  LookInput: {x: 0, y: 0}
 --- !u!114 &4720782767413707145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,8 +194,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  speed: 5
+  moveSpeed: 5
   canMoveDiagonally: 1
+  maxHp: 30
+  currentHp: 30
+  damage: 1
+  shootFrequency: 2
+  shootRange: 5
+  criticalRate: 0
   bulletSpeed: 8
   canShootDiagonally: 0
   bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}

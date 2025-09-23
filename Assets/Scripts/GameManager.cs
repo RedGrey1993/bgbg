@@ -153,30 +153,28 @@ public class GameManager : MonoBehaviour
 
     public void HostTick(float dt)
     {
-        // 每隔2秒同步一次完整的状态，Client会根据完整状态创建或删除对象
+        // Broadcast state update
+        var su = new StateUpdateMessage();
+        su.Tick = (uint)(Time.realtimeSinceStartup * 1000);
+        foreach (var kvp in playerObjects)
+        {
+            Vector2 pos = kvp.Value.transform.position;
+            su.Players.Add(new PlayerState { PlayerId = kvp.Key.ToString(), X = pos.x, Y = pos.y });
+        }
+        var genericMessage = new GenericMessage
+        {
+            Type = (uint)MessageType.StateUpdate,
+            StateMsg = su
+        };
+        // 每隔2秒同步一次完整的状态，Client会根据FullState消息创建或删除对象
         if (Time.realtimeSinceStartup - lastFullStateSentTime > 2.0f)
         {
             lastFullStateSentTime = Time.realtimeSinceStartup;
-            SendFullStateToAll();
+            genericMessage.Type = (uint)MessageType.FullState;
         }
-        else // 同步增量状态，Client只会更新自己已经存在的对象，不会创建或删除对象
-        {
-            // Broadcast state update
-            var su = new StateUpdateMessage();
-            su.Tick = (uint)(Time.realtimeSinceStartup * 1000);
-            foreach (var kvp in playerObjects)
-            {
-                Vector2 pos = kvp.Value.transform.position;
-                su.Players.Add(new PlayerState { PlayerId = kvp.Key.ToString(), X = pos.x, Y = pos.y });
-            }
-            var genericMessage = new GenericMessage
-            {
-                Type = (uint)MessageType.StateUpdate,
-                StateMsg = su
-            };
-            SerializeUtil.Serialize(genericMessage, out byte[] data);
-            NetworkManager.ActiveLayer.SendToAll(data, false);
-        }
+        // 默认同步增量状态，Client只会更新自己已经存在的对象，不会根据StateUpdate消息创建或删除对象
+        SerializeUtil.Serialize(genericMessage, out byte[] data);
+        NetworkManager.ActiveLayer.SendToAll(data, false);
     }
 
     public void ApplyStateUpdate(StateUpdateMessage su)
@@ -262,25 +260,6 @@ public class GameManager : MonoBehaviour
         NetworkManager.ActiveLayer.SendToAll(data, true);
     }
 
-    private void SendFullStateToAll()
-    {
-        // Similar to HostTick, create a StateUpdateMessage and send it.
-        var su = new StateUpdateMessage();
-        su.Tick = (uint)(Time.realtimeSinceStartup * 1000);
-        foreach (var kvp in playerObjects)
-        {
-            Vector2 pos = kvp.Value.transform.position;
-            su.Players.Add(new PlayerState { PlayerId = kvp.Key.ToString(), X = pos.x, Y = pos.y });
-        }
-        var genericMessage = new GenericMessage
-        {
-            Type = (uint)MessageType.FullState,
-            StateMsg = su
-        };
-        SerializeUtil.Serialize(genericMessage, out byte[] data);
-        NetworkManager.ActiveLayer.SendToAll(data, false);
-    }
-
     // 初始化玩家对象，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
     private void InitializePlayers()
     {
@@ -315,10 +294,13 @@ public class GameManager : MonoBehaviour
         if (rend != null) rend.color = color;
         // Initialize position
         go.transform.position = Vector2.zero;
+        // Set player name
+        string playerName = Players.FirstOrDefault(p => p.Id == playerId)?.Name ?? "Unknown";
+        var playerStatus = go.GetComponent<PlayerStatus>();
+        if (playerStatus != null) playerStatus.playerName = playerName;
 
         playerObjects[playerId] = go;
-
-        // 所有的Client都不处理碰撞，碰撞由Host处理
+        // 所有的Client Player都不处理碰撞，碰撞由Host处理
         if (!IsLocalOrHost())
         {
             var collider = go.GetComponent<BoxCollider2D>();
