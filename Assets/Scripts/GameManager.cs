@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
         Players.Clear();
         Players.Add(MyInfo);
-        ClearPlayerObjects();
         InitializePlayers();
     }
 
@@ -115,15 +114,10 @@ public class GameManager : MonoBehaviour
         // HOST
         Players.Clear();
         Players.Add(MyInfo);
-        ClearPlayerObjects();
     }
 
     public void OnLobbyJoined(LobbyInfo lobbyInfo)
     {
-        if (!IsHost())
-        {
-            ClearPlayerObjects();
-        }
         InitializePlayers();
     }
 
@@ -131,7 +125,6 @@ public class GameManager : MonoBehaviour
     {
         Players.Clear();
         Players.Add(MyInfo);
-        ClearPlayerObjects();
         InitializePlayers();
     }
 
@@ -265,6 +258,7 @@ public class GameManager : MonoBehaviour
     // 初始化玩家对象，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
     private void InitializePlayers()
     {
+        ClearPlayerObjects();
         foreach (var player in Players)
         {
             CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);

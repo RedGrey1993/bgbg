@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=a0ec7b62bf66cbd4093bf5527c7cd01d&amp;type=3#MainMenu" />
-    <ui:VisualElement name="background" class="background-image" />
-    <ui:VisualElement name="main-container" class="main-container">
+    <ui:VisualElement name="MainMenuRoot" class="main-container">
+        <ui:VisualElement name="background" class="background-image" />
         <ui:Label text="Blast Grid Battle Grounds" name="game-title" class="game-title" />
         <ui:Label text="v1.0.0" name="version-label" class="version-label" />
         <ui:VisualElement name="MainMenuPanel" class="menu-panel">
@@ -73,34 +73,28 @@
                 <ui:Label name="LobbyRoomName" text="游戏大厅" class="panel-title" style="flex-shrink: 0;" />
                 <ui:Button name="LeaveLobbyButton" text="离开房间" class="leave-btn" />
             </ui:VisualElement>
-            
             <ui:VisualElement class="content" style="flex-grow: 1; flex-direction: row; padding-top: 10px;">
                 <ui:ListView name="PlayerListView" class="player-list" style="flex-grow: 1; margin-right: 10px;" />
-                
                 <ui:VisualElement class="room-info" style="width: 250px;">
                     <ui:Label text="房间信息" style="font-size: 18px; color: white; margin-bottom: 10px;" />
                     <ui:Label name="LobbyOwnerLabel" text="房主: " style="color: white;" />
                     <ui:Label name="LobbyMemberCountLabel" text="人数: 0/8" style="color: white;" />
-                    
-                    <ui:VisualElement style="flex-grow: 1;" /> <!-- Spacer -->
-                    
+                    <ui:VisualElement style="flex-grow: 1;" />
+                    <!-- Spacer -->
                     <ui:Button name="ReadyButton" text="准备" class="menu-button" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="SettingsPanel" class="dialog-panel hidden">
             <ui:Label text="设置" class="panel-title" />
-            
             <ui:VisualElement class="form-row">
                 <ui:Label text="主音量" class="form-label" />
                 <ui:Slider name="MasterVolumeSlider" low-value="0" high-value="1" value="1" class="form-input" />
             </ui:VisualElement>
-            
             <ui:VisualElement class="form-row">
                 <ui:Label text="画质" class="form-label" />
                 <ui:DropdownField name="QualityDropdown" class="form-input" />
             </ui:VisualElement>
-            
             <ui:VisualElement class="button-group">
                 <ui:Button name="QuitToMenuButton" text="退出到主菜单" class="menu-button secondary hidden" />
                 <ui:Button name="CloseSettingsButton" text="返回" class="menu-button" />

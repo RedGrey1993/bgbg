@@ -13,13 +13,8 @@ public class LobbyNetworkManager : MonoBehaviour
 {
     public static LobbyNetworkManager Instance { get; private set; }
 
-    [Header("Player Prefab")]
-    public GameObject playerPrefab;
-    public Transform playerParent;
-
     [Header("Game Settings")]
-    public int tickMs = 25;
-    public float moveSpeed = 5.0f;
+    public int tickMs = 25; // Host tick interval in milliseconds
 
     public bool IsInLobby { get; private set; }
 

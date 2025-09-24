@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     private bool _isIngame = false;
 
     // --- Panels ---
+    private VisualElement _mainMenuRoot;
     private VisualElement _mainMenuPanel;
     private VisualElement _onlineMenuPanel;
     private VisualElement _createRoomPanel;
@@ -124,10 +125,11 @@ public class UIManager : MonoBehaviour
         _isIngame = ingame;
         if (ingame)
         {
-            ShowPanel(null);
+            _mainMenuRoot.AddToClassList("hidden");
         }
         else
         {
+            _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_mainMenuPanel);
         }
     }
@@ -136,6 +138,7 @@ public class UIManager : MonoBehaviour
 
     private void QueryUIElements()
     {
+        _mainMenuRoot = _root.Q<VisualElement>("MainMenuRoot");
         _mainMenuPanel = _root.Q<VisualElement>("MainMenuPanel");
         _onlineMenuPanel = _root.Q<VisualElement>("OnlineMenuPanel");
         _createRoomPanel = _root.Q<VisualElement>("CreateRoomPanel");
@@ -143,7 +146,7 @@ public class UIManager : MonoBehaviour
         _lobbyPanel = _root.Q<VisualElement>("LobbyPanel");
         _settingsPanel = _root.Q<VisualElement>("SettingsPanel");
 
-        // Main Menu
+        // Main Menu Panel
         _localGameButton = _root.Q<Button>("LocalGameButton");
         _onlineGameButton = _root.Q<Button>("OnlineGameButton");
         _settingsButton = _root.Q<Button>("SettingsButton");
@@ -186,8 +189,7 @@ public class UIManager : MonoBehaviour
 
     private void RegisterButtonCallbacks()
     {
-        // Main Menu
-        _localGameButton.clicked += () => Debug.Log("本地游戏 Clicked");
+        _localGameButton.clicked += OnLocalGameClicked;
         _onlineGameButton.clicked += () => ShowPanel(_onlineMenuPanel);
         _settingsButton.clicked += () => ShowSettings(false);
         _quitButton.clicked += OnQuitClicked;
@@ -228,11 +230,16 @@ public class UIManager : MonoBehaviour
 
     private void OnQuitClicked()
     {
-        Debug.Log("退出游戏");
         Application.Quit();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    private void OnLocalGameClicked()
+    {
+        SetGameState(true);
+        GameManager.Instance.InitializeGame();
     }
 
     private void OnConfirmCreateRoomClicked()
@@ -257,18 +264,6 @@ public class UIManager : MonoBehaviour
         int maxPlayers = _maxPlayersSlider.value;
 
         NetworkManager.ActiveLayer.CreateLobby(roomName, password, maxPlayers);
-    }
-
-    private void OnCreateRoomKeyDown(KeyDownEvent evt)
-    {
-        if (evt.keyCode == KeyCode.Return || evt.keyCode == KeyCode.KeypadEnter)
-        {
-            OnConfirmCreateRoomClicked();
-        }
-        else if (evt.keyCode == KeyCode.Escape)
-        {
-            ShowPanel(_onlineMenuPanel);
-        }
     }
 
     private void OnLeaveLobbyClicked()
@@ -325,8 +320,6 @@ public class UIManager : MonoBehaviour
         _settingsPanel.AddToClassList("hidden");
 
         // Unregister all panel-specific callbacks first
-        _roomNameField.UnregisterCallback<KeyDownEvent>(OnCreateRoomKeyDown);
-        _passwordField.UnregisterCallback<KeyDownEvent>(OnCreateRoomKeyDown);
         _serverListView.selectionChanged -= OnServerSelectionChanged;
 
         if (panelToShow != null)
@@ -339,8 +332,6 @@ public class UIManager : MonoBehaviour
             _roomNameField.value = $"{GameManager.MyInfo.Name}'s Room";
             _createRoomErrorLabel.style.visibility = Visibility.Hidden;
             _roomNameField.Focus();
-            _roomNameField.RegisterCallback<KeyDownEvent>(OnCreateRoomKeyDown);
-            _passwordField.RegisterCallback<KeyDownEvent>(OnCreateRoomKeyDown);
         }
         else if (panelToShow == _joinRoomPanel)
         {
@@ -620,23 +611,23 @@ public class UIManager : MonoBehaviour
 
     private void ToggleSettingsPanel()
     {
+        Debug.Log($"ToggleSettingsPanel called, _isIngame: {_isIngame}, {_mainMenuRoot.style.display}, {_settingsPanel.style.display}");
         if (!_isIngame) return; // 仅在游戏中允许ESC键打开设置面板
 
-        // 如果设置面板是隐藏的，就根据当前游戏状态显示它
-        if (_settingsPanel.style.display == DisplayStyle.None)
+        if (_mainMenuRoot.ClassListContains("hidden") || _settingsPanel.ClassListContains("hidden"))
         {
+            _mainMenuRoot.RemoveFromClassList("hidden");
             ShowSettings(_isIngame);
         }
         else
         {
+            _mainMenuRoot.AddToClassList("hidden");
             HideSettings();
         }
     }
 
     private void ShowSettings(bool isIngame)
     {
-        _settingsPanel.style.display = DisplayStyle.Flex; // 使用style来显示/隐藏，而不是class
-
         // 如果在游戏中，暂停游戏并显示“退出到主菜单”按钮
         if (isIngame)
         {
@@ -646,21 +637,21 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            // 如果在主菜单打开设置，则隐藏主菜单
-            _mainMenuPanel.AddToClassList("hidden");
             _quitToMenuButton.AddToClassList("hidden");
         }
+        ShowPanel(_settingsPanel);
     }
 
     private void HideSettings()
     {
-        _settingsPanel.style.display = DisplayStyle.None;
-
-        // 只有离线游戏才暂停/恢复游戏
-        if (GameManager.Instance.IsLocal()) Time.timeScale = 1f;
-
-        // 如果不在游戏中（即在主菜单），则重新显示主菜单
-        if (!_isIngame)
+        ShowPanel(null);
+        if (_isIngame)
+        {
+            _mainMenuRoot.AddToClassList("hidden");
+            // 只有离线游戏才暂停/恢复游戏
+            if (GameManager.Instance.IsLocal()) Time.timeScale = 1f;
+        }
+        else // 如果不在游戏中（即在主菜单），则重新显示主菜单
         {
             _mainMenuPanel.RemoveFromClassList("hidden");
         }
@@ -670,8 +661,6 @@ public class UIManager : MonoBehaviour
     {
         HideSettings();
         SetGameState(false);
-        // 确保你的主菜单场景在Build Settings中，并且名字正确
-        SceneManager.LoadScene("MainScene");
     }
 
     private void OnMasterVolumeChanged(ChangeEvent<float> evt)
