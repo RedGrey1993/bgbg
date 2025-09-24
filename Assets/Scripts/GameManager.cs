@@ -12,6 +12,12 @@ using NetworkMessageJson;
 
 public class GameManager : MonoBehaviour
 {
+    const int RoomMaxWidth = 200;
+    const int RoomMaxHeight = 200;
+    const int RoomStep = 20;
+    // TODO: debug only, delete it later
+    public int wallNum = 0;
+
     public static GameManager Instance { get; private set; }
     // GameManager初始化在NetworkManager之后，所以NetworkManager无法在Awake中通过Instance访问GameManager，而MyInfo需要在NetworkManager初始化时将Id更新为SteamId或本地的ip:port，所以MyInfo使用static
     public static PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = "PlayerOffline", Name = "Player Offline" };
@@ -22,6 +28,9 @@ public class GameManager : MonoBehaviour
     // public GameObject networkManagerPrefab;
     public GameObject playerPrefab;
     public Transform playerParent;
+    public GameObject wallWithDoorPrefab;
+    public GameObject wallPrefab;
+    public Transform wallsParent;
 
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
@@ -255,7 +264,7 @@ public class GameManager : MonoBehaviour
         NetworkManager.ActiveLayer.SendToAll(data, true);
     }
 
-    // 初始化玩家对象，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
+    // 初始化玩家对象，动态数据，游戏过程中也在不断变化，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
     private void InitializePlayers()
     {
         ClearPlayerObjects();
@@ -274,11 +283,6 @@ public class GameManager : MonoBehaviour
         playerObjects.Clear();
     }
 
-    private void InitializeRooms()
-    {
-
-    }
-
     private void CreatePlayerObject(string playerId, Color color, bool needController = false)
     {
         if (playerObjects.ContainsKey(playerId)) return;
@@ -289,7 +293,9 @@ public class GameManager : MonoBehaviour
         var rend = go.GetComponent<SpriteRenderer>();
         if (rend != null) rend.color = color;
         // Initialize position
-        go.transform.position = Vector2.zero;
+        float posX = UnityEngine.Random.Range(-RoomMaxWidth / 2 / RoomStep, RoomMaxWidth / 2 / RoomStep) * RoomStep + RoomStep / 2;
+        float posY = UnityEngine.Random.Range(-RoomMaxHeight / 2 / RoomStep, RoomMaxHeight / 2 / RoomStep) * RoomStep + RoomStep / 2;
+        go.transform.position = new Vector2(posX, posY);
         // Set player name
         string playerName = Players.FirstOrDefault(p => p.Id == playerId)?.Name ?? "Unknown";
         var playerStatus = go.GetComponent<PlayerStatus>();
@@ -322,6 +328,133 @@ public class GameManager : MonoBehaviour
             if (go != null) Destroy(go);
             playerObjects.Remove(playerId);
         }
+    }
+
+    // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可
+    private void InitializeRooms()
+    {
+        ClearWallObjects();
+
+        List<Rect> sortedList = new List<Rect> { new Rect(-RoomMaxWidth / 2, -RoomMaxHeight / 2, RoomMaxWidth, RoomMaxHeight) };
+        List<Rect> rooms = new List<Rect>();
+        int cutNum = UnityEngine.Random.Range(30, 50);
+        // cutNum < 100, O(N^2)的插入排序不会太慢
+        for (int i = 0; i < cutNum; i++)
+        {
+            if (sortedList.Count == 0) break;
+            Rect room = sortedList[0];
+            sortedList.RemoveAt(0);
+            bool horizontalCut = UnityEngine.Random.value > 0.5f;
+            if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > 20)
+            {
+                int roomHeight = Mathf.CeilToInt(room.height);
+                int segNum = roomHeight / RoomStep;
+                int cutSeg = UnityEngine.Random.Range(1, segNum);
+                Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * RoomStep);
+                Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * RoomStep, room.width, room.yMax - room.yMin - cutSeg * RoomStep);
+                // 按照面积从大到小顺序的顺序，加入到List中
+                int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
+                if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
+                int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
+                if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
+            }
+            else if ((room.height < room.width || (room.height == room.width && !horizontalCut)) && room.width > 20)
+            {
+                int roomWidth = Mathf.CeilToInt(room.width);
+                int segNum = roomWidth / RoomStep;
+                int cutSeg = UnityEngine.Random.Range(1, segNum);
+                Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * RoomStep, room.height);
+                Rect room2 = new Rect(room.xMin + cutSeg * RoomStep, room.yMin, room.xMax - room.xMin - cutSeg * RoomStep, room.height);
+                // 按照面积从大到小顺序的顺序，加入到List中
+                int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
+                if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
+                int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
+                if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
+            }
+            else
+            {
+                rooms.Add(room);
+            }
+        }
+
+        rooms.AddRange(sortedList);
+        foreach (var room in rooms)
+        {
+            CreateRoomObject(room);
+        }
+        CreateOuterWall();
+
+        Debug.Log($"Generated {rooms.Count} rooms, {wallNum} walls.");
+    }
+
+    private void ClearWallObjects()
+    {
+        foreach (Transform child in wallsParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void CreateRoomObject(Rect room)
+    {
+        // Create walls
+        Vector2 topLeft = new Vector2(room.xMin, room.yMax);
+        Vector2 topRight = new Vector2(room.xMax, room.yMax);
+        Vector2 bottomLeft = new Vector2(room.xMin, room.yMin);
+        // Vector2 bottomRight = new Vector2(room.xMax, room.yMin);
+
+        if (Math.Abs(topLeft.y - (RoomMaxHeight / 2)) > 0.1f)
+        {
+            CreateHorizontalWall(topLeft, topRight); // Top wall
+        }
+        if (Math.Abs(bottomLeft.x - (-RoomMaxWidth / 2)) > 0.1f)
+        {
+            CreateVerticalWall(bottomLeft, topLeft); // Left wall
+        }
+    }
+
+    private void CreateHorizontalWall(Vector2 start, Vector2 end)
+    {
+        for (float x = start.x + RoomStep / 2; x < end.x; x += RoomStep)
+        {
+            GameObject wall = Instantiate(wallWithDoorPrefab, wallsParent);
+            wall.transform.position = new Vector2(x, start.y);
+            wall.transform.localRotation = Quaternion.Euler(0, 0, 90);
+
+            wallNum++;
+        }
+    }
+
+    private void CreateVerticalWall(Vector2 start, Vector2 end)
+    {
+        for (float y = start.y + RoomStep / 2; y < end.y; y += RoomStep)
+        {
+            GameObject wall = Instantiate(wallWithDoorPrefab, wallsParent);
+            wall.transform.position = new Vector2(start.x, y);
+            wall.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            wallNum++;
+        }
+    }
+
+    private void CreateOuterWall()
+    {
+        GameObject wall1 = Instantiate(wallPrefab, wallsParent);
+        wall1.transform.position = new Vector2(0, RoomMaxHeight / 2);
+        wall1.transform.localScale = new Vector3(RoomMaxWidth, 1, 1);
+
+        GameObject wall2 = Instantiate(wallPrefab, wallsParent);
+        wall2.transform.position = new Vector2(0, -RoomMaxHeight / 2);
+        wall2.transform.localScale = new Vector3(RoomMaxWidth, 1, 1);
+        
+        GameObject wall3 = Instantiate(wallPrefab, wallsParent);
+        wall3.transform.position = new Vector2(-RoomMaxWidth / 2, 0);
+        wall3.transform.localScale = new Vector3(1, RoomMaxHeight, 1);
+
+        GameObject wall4 = Instantiate(wallPrefab, wallsParent);
+        wall4.transform.position = new Vector2(RoomMaxWidth / 2, 0);
+        wall4.transform.localScale = new Vector3(1, RoomMaxHeight, 1);
+        wallNum += 4;
     }
 
     private Color ColorFromID(string playerId)
