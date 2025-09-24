@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         Players.Clear();
         Players.Add(MyInfo);
         ClearPlayerObjects();
-        InitializeGame();
+        InitializePlayers();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         {
             ClearPlayerObjects();
         }
-        InitializeGame();
+        InitializePlayers();
     }
 
     public void OnLobbyLeft()
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         Players.Clear();
         Players.Add(MyInfo);
         ClearPlayerObjects();
-        InitializeGame();
+        InitializePlayers();
     }
 
     public void OnPlayerInput(InputMessage inputMsg)

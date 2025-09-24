@@ -1,0 +1,110 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=a0ec7b62bf66cbd4093bf5527c7cd01d&amp;type=3#MainMenu" />
+    <ui:VisualElement name="background" class="background-image" />
+    <ui:VisualElement name="main-container" class="main-container">
+        <ui:Label text="Blast Grid Battle Grounds" name="game-title" class="game-title" />
+        <ui:Label text="v1.0.0" name="version-label" class="version-label" />
+        <ui:VisualElement name="MainMenuPanel" class="menu-panel">
+            <ui:Button name="LocalGameButton" text="本地游戏" class="menu-button" />
+            <ui:Button name="OnlineGameButton" text="在线游戏" class="menu-button" />
+            <ui:Button name="SettingsButton" text="设置" class="menu-button" />
+            <ui:Button name="QuitButton" text="退出游戏" class="menu-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="OnlineMenuPanel" class="menu-panel hidden">
+            <ui:Label text="在线模式" class="panel-title" />
+            <ui:Button name="CreateRoomButton" text="创建房间" class="menu-button" />
+            <ui:Button name="JoinRoomButton" text="加入房间" class="menu-button" />
+            <ui:Button name="BackToMainButton" text="返回" class="menu-button secondary" />
+        </ui:VisualElement>
+        <ui:VisualElement name="CreateRoomPanel" class="dialog-panel hidden">
+            <ui:Label text="创建游戏房间" class="panel-title" />
+            <ui:VisualElement class="form-row">
+                <ui:Label text="房间名称" class="form-label" />
+                <ui:TextField name="RoomNameField" class="form-input" />
+            </ui:VisualElement>
+            <ui:VisualElement class="form-row">
+                <ui:Label text="最大人数" class="form-label" />
+                <ui:SliderInt name="MaxPlayersSlider" low-value="2" high-value="8" value="4" class="form-input" show-input-field="true" />
+            </ui:VisualElement>
+            <ui:VisualElement class="form-row">
+                <ui:Label text="密码 (可选)" class="form-label" />
+                <ui:TextField name="PasswordField" password="true" class="form-input" />
+            </ui:VisualElement>
+            <ui:Label name="CreateRoomErrorLabel" text=" " style="color: red; -unity-font-style: bold; visibility: hidden;" />
+            <ui:VisualElement class="button-group">
+                <ui:Button name="ConfirmCreateButton" text="创建" class="menu-button" />
+                <ui:Button name="CancelCreateButton" text="取消" class="menu-button secondary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="JoinRoomPanel" class="dialog-panel hidden full-screen">
+            <ui:VisualElement class="header" style="flex-direction: row; justify-content: space-between; align-items: center; padding: 15px; background-color: rgb(60, 60, 60); border-bottom-width: 2px; border-bottom-color: rgb(80, 80, 80);">
+                <ui:Label text="服务器列表" class="header-title panel-title" style="margin-bottom: 10px;" />
+                <ui:Button name="RefreshButton" text="刷新" class="header-btn" style="background-color: rgb(70, 120, 180); color: white;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="content" style="flex-grow: 1; padding: 15px;">
+                <ui:VisualElement class="filter-bar" style="flex-direction: row; align-items: center; margin-bottom: 15px; padding: 10px; background-color: rgb(50, 50, 50); border-radius: 5px;">
+                    <ui:TextField name="SearchField" placeholder-text="搜索房间..." style="flex-grow: 1; margin-right: 10px;" />
+                    <ui:Toggle name="PasswordFilterToggle" style="margin: 0; padding: 0;" />
+                    <ui:Label text="仅显示可加入" style="margin-left: 5px; margin-right: 10px; color: white;" />
+                </ui:VisualElement>
+                <ui:ListView name="ServerListView" class="server-list" style="flex-grow: 1;" selection-type="single" />
+                <ui:VisualElement class="status-bar" style="flex-direction: row; justify-content: space-between; align-items: center; margin-top: 10px; padding: 5px;">
+                    <ui:Label name="StatusLabel" text="正在加载..." style="color: white;" />
+                    <ui:Label name="RoomCountLabel" text="找到 0 个房间" style="color: rgb(180, 180, 180);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="button-group">
+                <ui:Button name="ConfirmJoinButton" text="加入游戏" class="menu-button" />
+                <ui:Button name="CancelJoinButton" text="返回" class="menu-button secondary" />
+            </ui:VisualElement>
+            <ui:VisualElement name="PasswordDialog" class="dialog-overlay hidden">
+                <ui:VisualElement class="dialog-content">
+                    <ui:Label text="请输入房间密码" style="font-size: 18px; color: white; margin-bottom: 15px; -unity-text-align: middle-center;" />
+                    <ui:TextField name="PasswordInputField" password="true" placeholder-text="请输入密码..." style="margin-bottom: 15px;" />
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                        <ui:Button name="CancelPasswordButton" text="取消" style="flex: 1; margin-right: 5px; background-color: rgb(120, 50, 50); color: white;" />
+                        <ui:Button name="ConfirmPasswordButton" text="加入" style="flex: 1; margin-left: 5px; background-color: rgb(50, 120, 50); color: white;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="LobbyPanel" class="dialog-panel hidden full-screen">
+            <ui:VisualElement class="header" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                <ui:Label name="LobbyRoomName" text="游戏大厅" class="panel-title" style="flex-shrink: 0;" />
+                <ui:Button name="LeaveLobbyButton" text="离开房间" class="leave-btn" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="content" style="flex-grow: 1; flex-direction: row; padding-top: 10px;">
+                <ui:ListView name="PlayerListView" class="player-list" style="flex-grow: 1; margin-right: 10px;" />
+                
+                <ui:VisualElement class="room-info" style="width: 250px;">
+                    <ui:Label text="房间信息" style="font-size: 18px; color: white; margin-bottom: 10px;" />
+                    <ui:Label name="LobbyOwnerLabel" text="房主: " style="color: white;" />
+                    <ui:Label name="LobbyMemberCountLabel" text="人数: 0/8" style="color: white;" />
+                    
+                    <ui:VisualElement style="flex-grow: 1;" /> <!-- Spacer -->
+                    
+                    <ui:Button name="ReadyButton" text="准备" class="menu-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="SettingsPanel" class="dialog-panel hidden">
+            <ui:Label text="设置" class="panel-title" />
+            
+            <ui:VisualElement class="form-row">
+                <ui:Label text="主音量" class="form-label" />
+                <ui:Slider name="MasterVolumeSlider" low-value="0" high-value="1" value="1" class="form-input" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="form-row">
+                <ui:Label text="画质" class="form-label" />
+                <ui:DropdownField name="QualityDropdown" class="form-input" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="button-group">
+                <ui:Button name="QuitToMenuButton" text="退出到主菜单" class="menu-button secondary hidden" />
+                <ui:Button name="CloseSettingsButton" text="返回" class="menu-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
