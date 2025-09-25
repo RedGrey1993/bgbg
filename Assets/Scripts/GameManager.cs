@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
+
 
 #if PROTOBUF
 using Google.Protobuf;
@@ -329,6 +331,11 @@ public class GameManager : MonoBehaviour
         if (playerRenderer != null && playerRenderer.sprite != null) {
             float playerHeight = playerRenderer.sprite.bounds.size.y;
             worldCanvas.transform.localPosition = new Vector2(0, playerHeight / 2 + 0.2f);
+        }
+        var playerNameText = worldCanvas.GetComponentInChildren<TextMeshProUGUI>();
+        if (playerNameText != null)
+        {
+            playerNameText.text = playerName;
         }
 
         if (needController)
