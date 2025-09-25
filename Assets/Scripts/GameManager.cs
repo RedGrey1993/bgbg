@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     const int RoomMaxWidth = 30;
     const int RoomMaxHeight = 30;
     const int RoomStep = 20;
+    const string AIPlayerPrefix = "BGBGAI_";
     // TODO: debug only, delete it later
     private int wallNum = 0;
 
@@ -95,8 +96,8 @@ public class GameManager : MonoBehaviour
                 {
                     Players.Add(new PlayerInfo
                     {
-                        Id = $"AI_{i}",
-                        Name = $"AI_{i}"
+                        Id = $"{AIPlayerPrefix}{i}",
+                        Name = $"{AIPlayerPrefix}{i}"
                     });
                 }
                 if (IsHost()) SendPlayersUpdateToAll();
@@ -336,6 +337,10 @@ public class GameManager : MonoBehaviour
         {
             playerStatus.State.PlayerId = playerId;
             playerStatus.State.PlayerName = playerName;
+            if (playerId.StartsWith(AIPlayerPrefix))
+            {
+                playerStatus.IsAI = true;
+            }
         }
 
         playerObjects[playerId] = go;

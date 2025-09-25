@@ -11,6 +11,8 @@ using NetworkMessageJson;
 public class PlayerStatus : MonoBehaviour
 {
     public PlayerState State = new PlayerState();
+    public bool IsAI { get; set; } = false;
+    
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
 

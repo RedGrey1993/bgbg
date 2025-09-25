@@ -32,12 +32,17 @@ public class PlayerAction : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 只有Host能够调用，离线模式视作Host
-        // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
-        if (GameManager.Instance.IsLocalOrHost())
+        if (playerStatus.State.CurrentHp == 0)
         {
-            DoHostAction();
+            rb.linearVelocity = Vector2.zero;
+            return;
         }
+        // 只有Host能够调用，离线模式视作Host
+            // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
+            if (GameManager.Instance.IsLocalOrHost())
+            {
+                DoHostAction();
+            }
         // 所有客户端都能调用，包括Host自己
         // 包括不需要严格同步的操作，如物理引擎模拟等相关操作
         DoClientAction();
