@@ -318,7 +318,7 @@ public class GameManager : MonoBehaviour
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
         if (!IsLocalOrHost())
         {
-            var collider = go.GetComponent<BoxCollider2D>();
+            var collider = go.GetComponent<Collider2D>();
             collider.isTrigger = true;
         }
 

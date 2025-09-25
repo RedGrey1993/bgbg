@@ -37,18 +37,61 @@ public class PlayerStatus : MonoBehaviour
         State.CriticalRate = 0;
     }
 
+    // 当前HOST上的所有Player都会触发TakeDamage
+    // TODO: 联机模式的逻辑待考虑，想法：将计算完之后的状态发送给客户端，HOST本身忽略，客户端根据事件更新UI
     public void TakeDamage(uint damage)
     {
         if (State.CurrentHp == 0) return;
+        HealthChanged((uint)Mathf.Max(0, (int)State.CurrentHp - (int)damage));
+    }
 
-        State.CurrentHp = (uint)Mathf.Max(0, (int)State.CurrentHp - (int)damage);
+    // 供HOST/CLIENT统一调用
+    public void HealthChanged(uint curHp)
+    {
+        State.CurrentHp = curHp;
+        // 只有本地键盘操作的那个Player注册了OnHealthChanged事件，用于更新状态栏UI
         OnHealthChanged?.Invoke(State);
-        // 更新挂在在Player上的简易血条的UI
+        // 更新挂在在Player上的简易血条的UI，包括所有Player
         UpdateHealthSliderUI();
 
         if (State.CurrentHp == 0)
         {
+            // 只有本地键盘操作的那个Player注册了OnDied事件
             OnDied?.Invoke();
+            // 所有Player的HP为0时都会调用Died函数
+            Died();
+        }
+    }
+
+    // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用
+    private void Died()
+    {
+        // Change player color to gray
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.gray;
+            sr.sortingOrder = -1; // Change sorting order to be behind alive players
+        }
+
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        if (canvas != null)
+        {
+            canvas.sortingOrder = -1; // Change sorting order to be behind alive players
+        }
+
+        // Destroy Collider2D to allow bullets to pass through
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            Destroy(col);
+        }
+
+        // Disable PlayerController
+        PlayerController pc = GetComponent<PlayerController>();
+        if (pc != null)
+        {
+            pc.enabled = false;
         }
     }
 
