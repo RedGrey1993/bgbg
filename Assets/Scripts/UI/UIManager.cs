@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     [Header("Input Action Asset")]
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
+    public GameObject statusCanvas;
 
     private InputAction _toggleSettingsAction;
     private UIDocument _uiDocument;
@@ -120,15 +121,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void ShowMyStatusUI()
+    {
+        statusCanvas.SetActive(true);
+    }
+
+    private void HideMyStatusUI()
+    {
+        statusCanvas.SetActive(false);
+    }
+
     public void SetGameState(bool ingame)
     {
         _isIngame = ingame;
         if (ingame)
         {
             _mainMenuRoot.AddToClassList("hidden");
+            ShowMyStatusUI();
         }
         else
         {
+            HideMyStatusUI();
             _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_mainMenuPanel);
         }

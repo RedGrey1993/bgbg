@@ -12,8 +12,8 @@ using NetworkMessageJson;
 
 public class GameManager : MonoBehaviour
 {
-    const int RoomMaxWidth = 200;
-    const int RoomMaxHeight = 200;
+    const int RoomMaxWidth = 30;
+    const int RoomMaxHeight = 30;
     const int RoomStep = 20;
     // TODO: debug only, delete it later
     public int wallNum = 0;
@@ -24,9 +24,9 @@ public class GameManager : MonoBehaviour
 
     public event Action PlayersUpdateActions;
 
-    public GameObject uiRoot;
     // public GameObject networkManagerPrefab;
     public GameObject mainCameraPrefab;
+    public GameObject worldCanvasPrefab;
     public GameObject playerPrefab;
     public Transform playerParent;
     public GameObject wallWithDoorPrefab;
@@ -252,6 +252,11 @@ public class GameManager : MonoBehaviour
         PlayersUpdateActions?.Invoke();
     }
 
+    public void UpdateMyStatusUI()
+    {
+
+    }
+
     private void SendPlayersUpdateToAll()
     {
         var pu = new PlayersUpdateMessage();
@@ -312,6 +317,15 @@ public class GameManager : MonoBehaviour
         {
             var collider = go.GetComponent<BoxCollider2D>();
             collider.isTrigger = true;
+        }
+
+        // 将血条显示到玩家对象的头上
+        var worldCanvas = Instantiate(worldCanvasPrefab, go.transform);
+        // 获取玩家对象的高度
+        SpriteRenderer playerRenderer = go.GetComponent<SpriteRenderer>();
+        if (playerRenderer != null && playerRenderer.sprite != null) {
+            float playerHeight = playerRenderer.sprite.bounds.size.y;
+            worldCanvas.transform.localPosition = new Vector2(0, playerHeight / 2 + 0.2f);
         }
 
         if (needController)

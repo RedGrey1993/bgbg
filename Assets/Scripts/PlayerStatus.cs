@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+
 #if PROTOBUF
 using NetworkMessageProto;
 #else
@@ -15,6 +17,8 @@ public class PlayerStatus : MonoBehaviour
     public bool canShootDiagonally = false;
     public GameObject bulletPrefab;
 
+    private Slider healthSlider;
+
     void Awake()
     {
         State.PlayerId = "DefaultID";
@@ -27,5 +31,23 @@ public class PlayerStatus : MonoBehaviour
         State.ShootFrequency = 2;
         State.ShootRange = 5;
         State.CriticalRate = 0;
+    }
+
+    public void UpdateHealthSliderUI()
+    {
+        if (healthSlider == null)
+        {
+            Canvas worldCanvas = GetComponentInChildren<Canvas>();
+            if (worldCanvas != null)
+            {
+                healthSlider = worldCanvas.GetComponentInChildren<Slider>();
+            }
+        }
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = State.MaxHp;
+            healthSlider.value = State.CurrentHp;
+        }
     }
 }

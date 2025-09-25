@@ -24,6 +24,8 @@ public class Bullet : MonoBehaviour
                 {
                     // 减少Player的生命值
                     playerStatus.State.CurrentHp = (uint)Mathf.Max(0, (int)playerStatus.State.CurrentHp - (int)damage);
+                    // TODO: 血量UI状态同步到客户端
+                    playerStatus.UpdateHealthSliderUI();
                     // Debug.Log($"Player {playerStatus.State.PlayerName} hit! Current HP: {playerStatus.State.CurrentHp}");
                 }
             }
