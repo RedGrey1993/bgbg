@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject uiRoot;
     // public GameObject networkManagerPrefab;
+    public GameObject mainCameraPrefab;
     public GameObject playerPrefab;
     public Transform playerParent;
     public GameObject wallWithDoorPrefab;
@@ -318,6 +319,19 @@ public class GameManager : MonoBehaviour
             // Add controller to local player
             var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
             pc.enabled = true;
+
+            Debug.Log("fhhtest, Created local player object with controller: " + go.name);
+            // 将Main Camera设置为当前玩家对象的子对象
+            Camera mainCamera = Camera.main;
+            if (mainCamera == null)
+            {
+                var cameraObject = Instantiate(mainCameraPrefab);
+                cameraObject.name = "Main Camera";
+                mainCamera = cameraObject.GetComponent<Camera>();
+            }
+            mainCamera.transform.SetParent(go.transform, false);
+            // 设置相机相对位置，使玩家位于屏幕中央
+            mainCamera.transform.localPosition = new Vector3(0, 0, -10);
         }
     }
 
@@ -331,6 +345,7 @@ public class GameManager : MonoBehaviour
     }
 
     // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可
+    // TODO: 发送房间数据给Client
     private void InitializeRooms()
     {
         ClearWallObjects();
