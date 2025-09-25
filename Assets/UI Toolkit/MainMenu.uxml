@@ -107,5 +107,12 @@
                 <ui:Button name="GameOverExitButton" text="Exit" class="menu-button" />
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="WinningPanel" class="dialog-panel hidden">
+            <ui:Label text="You Win!" class="panel-title" />
+            <ui:Label name="WinnerText" class="winnerText" style="color: #FFD700; -unity-font-style: bold; font-size: 24px; -unity-text-align: middle-center; text-shadow: 2px 2px 4px black;" />
+            <ui:VisualElement class="button-group">
+                <ui:Button name="WinningExitButton" text="Exit" class="menu-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

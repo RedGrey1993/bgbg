@@ -89,6 +89,20 @@ public class UIManager : MonoBehaviour
     private Button _gameOverExitButton;
     private Button _gameOverSpectateButton;
 
+    // --- Winning Panel Elements ---
+    private VisualElement _winningPanel;
+    private Label _winnerText;
+    private Button _winningExitButton;
+
+    private readonly List<string> _winningMessages = new List<string>
+    {
+        "Winner winner, duck dinner!",
+        "Victory is yours!",
+        "Outstanding performance!",
+        "All hail the champion!",
+        "You are the apex predator!"
+    };
+
     void Awake()
     {
         // Singleton Pattern
@@ -188,6 +202,10 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            if (LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby)
+            {
+                NetworkManager.ActiveLayer?.LeaveLobby();
+            }
             HideMyStatusUI();
             _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_mainMenuPanel);
@@ -206,6 +224,7 @@ public class UIManager : MonoBehaviour
         _lobbyPanel = _root.Q<VisualElement>("LobbyPanel");
         _settingsPanel = _root.Q<VisualElement>("SettingsPanel");
         _gameOverPanel = _root.Q<VisualElement>("GameOverPanel");
+        _winningPanel = _root.Q<VisualElement>("WinningPanel");
 
         // Main Menu Panel
         _localGameButton = _root.Q<Button>("LocalGameButton");
@@ -250,6 +269,10 @@ public class UIManager : MonoBehaviour
         // Game Over Panel
         _gameOverExitButton = _root.Q<Button>("GameOverExitButton");
         _gameOverSpectateButton = _root.Q<Button>("GameOverSpectateButton");
+
+        // Winning Panel
+        _winnerText = _root.Q<Label>("WinnerText");
+        _winningExitButton = _root.Q<Button>("WinningExitButton");
     }
 
     private void RegisterButtonCallbacks()
@@ -284,6 +307,9 @@ public class UIManager : MonoBehaviour
         _gameOverExitButton.clicked += QuitToMainMenu;
         _gameOverSpectateButton.clicked += OnSpectateClicked;
 
+        // Winning Panel
+        _winningExitButton.clicked += QuitToMainMenu;
+
         // Global
         _toggleSettingsAction.performed += _ => ToggleSettingsPanel();
         _root.Q<Button>("BackToMainButton").clicked += () => ShowPanel(_mainMenuPanel);
@@ -316,13 +342,13 @@ public class UIManager : MonoBehaviour
         string roomName = _roomNameField.value.Trim();
         if (string.IsNullOrEmpty(roomName))
         {
-            _createRoomErrorLabel.text = "房间名称不能为空！";
+            _createRoomErrorLabel.text = "Room name cannot be empty!";
             _createRoomErrorLabel.style.visibility = Visibility.Visible;
             return;
         }
         if (roomName.Length < 2 || roomName.Length > 32)
         {
-            _createRoomErrorLabel.text = "房间名称长度必须在2到32个字符之间。";
+            _createRoomErrorLabel.text = "Room name must be between 2 and 32 characters.";
             _createRoomErrorLabel.style.visibility = Visibility.Visible;
             return;
         }
@@ -349,7 +375,7 @@ public class UIManager : MonoBehaviour
     {
         if (_serverListView.selectedItem == null)
         {
-            UpdateStatus("请选择一个房间");
+            UpdateStatus("Please select a room");
             return;
         }
         var lobby = (LobbyInfo)_serverListView.selectedItem;
@@ -394,6 +420,7 @@ public class UIManager : MonoBehaviour
         _lobbyPanel.AddToClassList("hidden");
         _settingsPanel.AddToClassList("hidden");
         _gameOverPanel.AddToClassList("hidden");
+        _winningPanel.AddToClassList("hidden");
 
         // Unregister all panel-specific callbacks first
         _serverListView.selectionChanged -= OnServerSelectionChanged;
@@ -449,6 +476,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ShowWinningScreen()
+    {
+        if (_isIngame)
+        {
+            _mainMenuRoot.RemoveFromClassList("hidden");
+            ShowPanel(_winningPanel);
+            _winnerText.text = _winningMessages[Random.Range(0, _winningMessages.Count)];
+        }
+    }
+
     #endregion
 
     #region Server List Management
@@ -456,7 +493,7 @@ public class UIManager : MonoBehaviour
     private void RequestLobbyList()
     {
         if (NetworkManager.ActiveLayer == null) return;
-        UpdateStatus("正在刷新服务器列表...");
+        UpdateStatus("Refreshing server list...");
         _serverListView.itemsSource = new List<LobbyInfo>();
         _serverListView.Rebuild();
         NetworkManager.ActiveLayer.RequestLobbyList();

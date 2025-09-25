@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
     public HashSet<PlayerInfo> Players { get; set; } = new HashSet<PlayerInfo>();
-    public int MinPlayableObjects { get; set; } = 8;
+    public int MinPlayableObjects { get; set; } = 3;
     private Dictionary<string, GameObject> playerObjects = new Dictionary<string, GameObject>();
     private float lastFullStateSentTime = 0.0f;
 
@@ -263,6 +263,28 @@ public class GameManager : MonoBehaviour
         Players.Clear();
         Players.UnionWith(players.Players);
         PlayersUpdateActions?.Invoke();
+    }
+
+    public void CheckWinningCondition()
+    {
+        if (IsLocalOrHost())
+        {
+            int aliveCount = 0;
+            string lastAlivePlayerId = null;
+            foreach (var kvp in playerObjects)
+            {
+                var playerStatus = kvp.Value.GetComponent<PlayerStatus>();
+                if (playerStatus != null && playerStatus.State.CurrentHp > 0)
+                {
+                    aliveCount++;
+                    lastAlivePlayerId = kvp.Key;
+                }
+            }
+            if (aliveCount <= 1 && lastAlivePlayerId.Equals(MyInfo.Id))
+            {
+                UIManager.Instance.ShowWinningScreen();
+            }
+        }
     }
 
     private void SendPlayersUpdateToAll()

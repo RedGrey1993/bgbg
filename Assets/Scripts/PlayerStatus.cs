@@ -66,6 +66,8 @@ public class PlayerStatus : MonoBehaviour
     // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用
     private void Died()
     {
+        GameManager.Instance.CheckWinningCondition();
+
         // Change player color to gray
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
