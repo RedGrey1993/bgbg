@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:engine="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=a0ec7b62bf66cbd4093bf5527c7cd01d&amp;type=3#MainMenu" />
     <ui:VisualElement name="MainMenuRoot" class="main-container">
-        <ui:VisualElement name="background" class="background-image" />
+        <!-- <ui:VisualElement name="background" class="background-image" /> -->
         <ui:Label text="Blast Grid Battle Grounds" name="game-title" class="game-title" />
         <ui:Label text="v1.0.0" name="version-label" class="version-label" />
         <ui:VisualElement name="MainMenuPanel" class="menu-panel">
