@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     const int RoomMaxHeight = 30;
     const int RoomStep = 20;
     // TODO: debug only, delete it later
-    public int wallNum = 0;
+    private int wallNum = 0;
 
     public static GameManager Instance { get; private set; }
     // GameManager初始化在NetworkManager之后，所以NetworkManager无法在Awake中通过Instance访问GameManager，而MyInfo需要在NetworkManager初始化时将Id更新为SteamId或本地的ip:port，所以MyInfo使用static
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
     public HashSet<PlayerInfo> Players { get; set; } = new HashSet<PlayerInfo>();
+    public int MinPlayableObjects { get; set; } = 8;
     private Dictionary<string, GameObject> playerObjects = new Dictionary<string, GameObject>();
     private float lastFullStateSentTime = 0.0f;
 
@@ -86,6 +87,18 @@ public class GameManager : MonoBehaviour
     {
         if (IsLocalOrHost())
         {
+            if (Players.Count < MinPlayableObjects)
+            {
+                for (int i = Players.Count; i < MinPlayableObjects; i++)
+                {
+                    Players.Add(new PlayerInfo
+                    {
+                        Id = $"AI_{i}",
+                        Name = $"AI_{i}"
+                    });
+                }
+                if (IsHost()) SendPlayersUpdateToAll();
+            }
             InitializePlayers();
             InitializeRooms();
         }
@@ -271,9 +284,6 @@ public class GameManager : MonoBehaviour
         {
             CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
         }
-#if TEST_MODE
-        CreatePlayerObject("TestModePlayer", Color.red, false);
-#endif
     }
 
     private void ClearPlayerObjects()
@@ -483,12 +493,15 @@ public class GameManager : MonoBehaviour
 
     private Color ColorFromID(string playerId)
     {
-        Debug.Log("ColorFromID: " + playerId);
         // Use a stable hash function (FNV-1a) for consistent results across platforms and runs
         uint hash = FNV1a(playerId);
-        // Use the hash to generate a hue value, ensuring large differences for similar strings due to avalanche effect
-        float hue = (hash % 360) / 360f;
-        return Color.HSVToRGB(hue, 0.6f, 0.9f);
+        // Mix the hash bits to improve distribution and ensure visual distinction for similar IDs
+        uint mixedHash = Mix(hash);
+        // Use the mixed hash to generate a hue value
+        float r = (mixedHash & 0xFF) / 255f;
+        float g = ((mixedHash >> 8) & 0xFF) / 255f;
+        float b = ((mixedHash >> 16) & 0xFF) / 255f;
+        return new Color(r, g, b, 1f);
     }
 
     private uint FNV1a(string str)
@@ -501,5 +514,13 @@ public class GameManager : MonoBehaviour
             hash *= FNV_prime;
         }
         return hash;
+    }
+
+    private uint Mix(uint x)
+    {
+        x = (x ^ (x >> 16)) * 0x85ebca6b;
+        x = (x ^ (x >> 13)) * 0xc2b2ae35;
+        x = x ^ (x >> 16);
+        return x;
     }
 }
