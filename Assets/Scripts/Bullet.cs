@@ -22,16 +22,7 @@ public class Bullet : MonoBehaviour
                 PlayerStatus playerStatus = collision.gameObject.GetComponent<PlayerStatus>();
                 if (playerStatus != null)
                 {
-                    // 减少Player的生命值
-                    playerStatus.State.CurrentHp = (uint)Mathf.Max(0, (int)playerStatus.State.CurrentHp - (int)damage);
-                    // TODO: 血量UI状态同步到客户端
-                    playerStatus.UpdateHealthSliderUI();
-                    // 如果是自己被击中，同时更新状态栏UI
-                    if (playerStatus.State.PlayerId == GameManager.MyInfo.Id)
-                    {
-                        UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
-                    }
-                    // Debug.Log($"Player {playerStatus.State.PlayerName} hit! Current HP: {playerStatus.State.CurrentHp}");
+                    playerStatus.TakeDamage((uint)damage);
                 }
             }
         }

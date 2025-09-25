@@ -27,11 +27,13 @@ public class PlayerController : MonoBehaviour
 
         m_MoveAction = s_InputActions.Player.Move;
         m_LookAction = s_InputActions.Player.Look;
+
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+
     }
 
     void Update()

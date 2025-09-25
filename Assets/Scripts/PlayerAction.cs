@@ -14,12 +14,14 @@ public class PlayerAction : MonoBehaviour
         // Configure Rigidbody2D
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.gravityScale = 0f; // Disable gravity for 2D top-down movement
+
+        playerInput = GetComponent<PlayerInput>();
+        playerStatus = GetComponent<PlayerStatus>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerStatus = GetComponent<PlayerStatus>();
+        
     }
 
     // Update is called once per frame

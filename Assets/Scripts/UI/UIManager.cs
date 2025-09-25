@@ -84,6 +84,11 @@ public class UIManager : MonoBehaviour
     private Button _quitToMenuButton;
     private Button _closeSettingsButton;
 
+    // --- Game Over Panel Elements ---
+    private VisualElement _gameOverPanel;
+    private Button _gameOverExitButton;
+    private Button _gameOverSpectateButton;
+
     void Awake()
     {
         // Singleton Pattern
@@ -124,6 +129,12 @@ public class UIManager : MonoBehaviour
         {
             UnsubscribeFromNetworkEvents();
         }
+    }
+
+    public void RegisterLocalPlayer(PlayerStatus localPlayerStatus)
+    {
+        localPlayerStatus.OnHealthChanged += UpdateMyStatusUI;
+        localPlayerStatus.OnDied += ShowGameOverScreen;
     }
 
     private void ShowMyStatusUI()
@@ -194,6 +205,7 @@ public class UIManager : MonoBehaviour
         _joinRoomPanel = _root.Q<VisualElement>("JoinRoomPanel");
         _lobbyPanel = _root.Q<VisualElement>("LobbyPanel");
         _settingsPanel = _root.Q<VisualElement>("SettingsPanel");
+        _gameOverPanel = _root.Q<VisualElement>("GameOverPanel");
 
         // Main Menu Panel
         _localGameButton = _root.Q<Button>("LocalGameButton");
@@ -234,6 +246,10 @@ public class UIManager : MonoBehaviour
         _qualityDropdown = _root.Q<DropdownField>("QualityDropdown");
         _quitToMenuButton = _root.Q<Button>("QuitToMenuButton");
         _closeSettingsButton = _root.Q<Button>("CloseSettingsButton");
+
+        // Game Over Panel
+        _gameOverExitButton = _root.Q<Button>("GameOverExitButton");
+        _gameOverSpectateButton = _root.Q<Button>("GameOverSpectateButton");
     }
 
     private void RegisterButtonCallbacks()
@@ -263,6 +279,10 @@ public class UIManager : MonoBehaviour
         _quitToMenuButton.clicked += QuitToMainMenu;
         _masterVolumeSlider.RegisterValueChangedCallback(OnMasterVolumeChanged);
         _qualityDropdown.RegisterValueChangedCallback(OnQualityChanged);
+
+        // Game Over Panel
+        _gameOverExitButton.clicked += QuitToMainMenu;
+        _gameOverSpectateButton.clicked += OnSpectateClicked;
 
         // Global
         _toggleSettingsAction.performed += _ => ToggleSettingsPanel();
@@ -355,6 +375,12 @@ public class UIManager : MonoBehaviour
         _confirmJoinButton.SetEnabled(items.Any());
     }
 
+    private void OnSpectateClicked()
+    {
+        // TODO: Implement spectate logic
+        _gameOverPanel.AddToClassList("hidden");
+    }
+
     #endregion
 
     #region Panel Management
@@ -367,6 +393,7 @@ public class UIManager : MonoBehaviour
         _joinRoomPanel.AddToClassList("hidden");
         _lobbyPanel.AddToClassList("hidden");
         _settingsPanel.AddToClassList("hidden");
+        _gameOverPanel.AddToClassList("hidden");
 
         // Unregister all panel-specific callbacks first
         _serverListView.selectionChanged -= OnServerSelectionChanged;
@@ -409,6 +436,17 @@ public class UIManager : MonoBehaviour
     private void HidePasswordDialog()
     {
         _passwordDialog.AddToClassList("hidden");
+    }
+
+    private void ShowGameOverScreen()
+    {
+        if (_isIngame)
+        {
+            _mainMenuRoot.RemoveFromClassList("hidden");
+            ShowPanel(_gameOverPanel);
+            bool isInLobby = LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby;
+            _gameOverSpectateButton.style.display = isInLobby ? DisplayStyle.Flex : DisplayStyle.None;
+        }
     }
 
     #endregion

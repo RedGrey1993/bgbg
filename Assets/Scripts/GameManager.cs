@@ -48,16 +48,14 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        Players.Clear();
-        Players.Add(MyInfo);
-        InitializePlayers();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Players.Clear();
+        Players.Add(MyInfo);
+        InitializePlayers();
     }
 
     // Update is called once per frame
@@ -328,6 +326,8 @@ public class GameManager : MonoBehaviour
             // Add controller to local player
             var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
             pc.enabled = true;
+
+            UIManager.Instance.RegisterLocalPlayer(playerStatus);
 
             Debug.Log("fhhtest, Created local player object with controller: " + go.name);
             // 将Main Camera设置为当前玩家对象的子对象
