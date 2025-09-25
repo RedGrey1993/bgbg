@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using TMPro;
+
 #if PROTOBUF
 using NetworkMessageProto;
 #else
@@ -20,6 +22,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject statusCanvas;
+
+    private UnityEngine.UI.Slider healthSlider;
+    private TextMeshProUGUI healthText;
 
     private InputAction _toggleSettingsAction;
     private UIDocument _uiDocument;
@@ -129,6 +134,37 @@ public class UIManager : MonoBehaviour
     private void HideMyStatusUI()
     {
         statusCanvas.SetActive(false);
+    }
+
+    public void UpdateMyStatusUI(PlayerState state)
+    {
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = state.MaxHp;
+            healthSlider.value = state.CurrentHp;
+        }
+        else
+        {
+            healthSlider = statusCanvas.GetComponentInChildren<UnityEngine.UI.Slider>();
+            if (healthSlider != null)
+            {
+                healthSlider.maxValue = state.MaxHp;
+                healthSlider.value = state.CurrentHp;
+            }
+        }
+
+        if (healthText != null)
+        {
+            healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
+        }
+        else
+        {
+            healthText = statusCanvas.GetComponentInChildren<TextMeshProUGUI>();
+            if (healthText != null)
+            {
+                healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
+            }
+        }
     }
 
     public void SetGameState(bool ingame)

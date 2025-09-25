@@ -252,11 +252,6 @@ public class GameManager : MonoBehaviour
         PlayersUpdateActions?.Invoke();
     }
 
-    public void UpdateMyStatusUI()
-    {
-
-    }
-
     private void SendPlayersUpdateToAll()
     {
         var pu = new PlayersUpdateMessage();

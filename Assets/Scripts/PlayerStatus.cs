@@ -35,19 +35,19 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateHealthSliderUI()
     {
-        if (healthSlider == null)
-        {
-            Canvas worldCanvas = GetComponentInChildren<Canvas>();
-            if (worldCanvas != null)
-            {
-                healthSlider = worldCanvas.GetComponentInChildren<Slider>();
-            }
-        }
-
         if (healthSlider != null)
         {
             healthSlider.maxValue = State.MaxHp;
             healthSlider.value = State.CurrentHp;
+        }
+        else
+        {
+            healthSlider = GetComponentInChildren<Slider>();
+            if (healthSlider != null)
+            {
+                healthSlider.maxValue = State.MaxHp;
+                healthSlider.value = State.CurrentHp;
+            }
         }
     }
 }
