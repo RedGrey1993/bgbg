@@ -109,20 +109,24 @@ public class CharacterAction : MonoBehaviour
 
         NormalizeLookInput(ref lookInput);
         // 获取Player的位置
-        Vector2 playerPosition = transform.position;
         // 获取Player碰撞体的边界位置
         Bounds playerBounds = GetComponent<Collider2D>().bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
         Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
-        playerPosition += bulletOffset;
+        Vector2 bulletStartPosition = transform.position;
+        bulletStartPosition += bulletOffset;
 
         // Instantiate the bullet
-        GameObject bullet = Instantiate(characterStatus.bulletPrefab, playerPosition, Quaternion.identity);
+        GameObject bullet = Instantiate(characterStatus.bulletPrefab, bulletStartPosition, Quaternion.identity);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        if (bulletScript) bulletScript.damage = characterStatus.State.Damage;
+        if (bulletScript)
+        {
+            bulletScript.OwnerStatus = characterStatus;
+            bulletScript.StartPosition = bulletStartPosition;
+        }
 
         // Get the bullet's Rigidbody2D component
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         // Set the bullet's velocity
         if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
     }

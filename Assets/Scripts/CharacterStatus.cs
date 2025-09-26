@@ -16,6 +16,8 @@ public class CharacterStatus : MonoBehaviour
     public CharacterType CharacterType = CharacterType.Unset;
     public uint MaxHp = 30;
     public float MoveSpeed = 5f;
+    public uint ShootRange = 5;
+    // NPC相关设置
     public uint AggroRange = 20;
     public uint AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
     private float nextAggroChangeTime = 0;
@@ -43,7 +45,7 @@ public class CharacterStatus : MonoBehaviour
         State.BulletSpeed = 6f;
         State.Damage = 1;
         State.ShootFrequency = 1;
-        State.ShootRange = 5;
+        State.ShootRange = ShootRange;
         State.CriticalRate = 0;
     }
 
