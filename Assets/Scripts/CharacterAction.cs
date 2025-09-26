@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PlayerAction : MonoBehaviour
+public class CharacterAction : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private PlayerStatus playerStatus;
+    private CharacterInput characterInput;
+    private CharacterStatus characterStatus;
     private Rigidbody2D rb;
 
     private float nextShootTime = 0f;
@@ -17,8 +17,8 @@ public class PlayerAction : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.gravityScale = 0f; // Disable gravity for 2D top-down movement
 
-        playerInput = GetComponent<PlayerInput>();
-        playerStatus = GetComponent<PlayerStatus>();
+        characterInput = GetComponent<CharacterInput>();
+        characterStatus = GetComponent<CharacterStatus>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +34,7 @@ public class PlayerAction : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerStatus.State.CurrentHp == 0)
+        if (characterStatus.State.CurrentHp == 0)
         {
             rb.linearVelocity = Vector2.zero;
             return;
@@ -53,7 +53,7 @@ public class PlayerAction : MonoBehaviour
     private void NormalizeMoveInput(ref Vector2 moveInput)
     {
         // Handle diagonal movement setting
-        if (!playerStatus.canMoveDiagonally)
+        if (!characterStatus.canMoveDiagonally)
         {
             // Prioritize the axis with larger absolute value
             if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
@@ -75,7 +75,7 @@ public class PlayerAction : MonoBehaviour
     private void NormalizeLookInput(ref Vector2 lookInput)
     {
         // Handle diagonal shooting setting
-        if (!playerStatus.canShootDiagonally)
+        if (!characterStatus.canShootDiagonally)
         {
             // Restrict look input to horizontal or vertical only
             if (Mathf.Abs(lookInput.x) > Mathf.Abs(lookInput.y))
@@ -91,21 +91,21 @@ public class PlayerAction : MonoBehaviour
 
     private void Move()
     {
-        ref Vector2 moveInput = ref playerInput.MoveInput;
+        ref Vector2 moveInput = ref characterInput.MoveInput;
         if (moveInput.sqrMagnitude > 0.1f)
             NormalizeMoveInput(ref moveInput);
 
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
-        rb.linearVelocity = moveInput * playerStatus.State.MoveSpeed;
+        rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
     }
 
     private void Shoot()
     {
-        ref Vector2 lookInput = ref playerInput.LookInput;
+        ref Vector2 lookInput = ref characterInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) return;
         if (Time.time < nextShootTime) return;
-        nextShootTime = Time.time + 1f / playerStatus.State.ShootFrequency;
+        nextShootTime = Time.time + 1f / characterStatus.State.ShootFrequency;
 
         NormalizeLookInput(ref lookInput);
         // 获取Player的位置
@@ -117,14 +117,14 @@ public class PlayerAction : MonoBehaviour
         playerPosition += bulletOffset;
 
         // Instantiate the bullet
-        GameObject bullet = Instantiate(playerStatus.bulletPrefab, playerPosition, Quaternion.identity);
+        GameObject bullet = Instantiate(characterStatus.bulletPrefab, playerPosition, Quaternion.identity);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        if (bulletScript) bulletScript.damage = playerStatus.State.Damage;
+        if (bulletScript) bulletScript.damage = characterStatus.State.Damage;
 
         // Get the bullet's Rigidbody2D component
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         // Set the bullet's velocity
-        if (bulletRb) bulletRb.linearVelocity = lookInput * playerStatus.State.BulletSpeed;
+        if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
     }
 
     // 只有Host能够调用，离线模式视作Host

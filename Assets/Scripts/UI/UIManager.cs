@@ -146,7 +146,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void RegisterLocalPlayer(PlayerStatus localPlayerStatus)
+    public void RegisterLocalPlayer(CharacterStatus localPlayerStatus)
     {
         localPlayerStatus.OnHealthChanged += UpdateMyStatusUI;
         localPlayerStatus.OnDied += ShowGameOverScreen;

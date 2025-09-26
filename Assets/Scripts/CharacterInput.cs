@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class CharacterInput : MonoBehaviour
 {
     public Vector2 MoveInput;
     public Vector2 LookInput;
 
-    private PlayerStatus playerStatus;
+    private CharacterStatus characterStatus;
     private float lastInputChangeTime = 0f;
     private float inputChangeInterval = 2f; // AI每隔1-10秒改变一次输入
 
     void Awake()
     {
-        playerStatus = GetComponent<PlayerStatus>();
+        characterStatus = GetComponent<CharacterStatus>();
     }
 
     void Update()
     {
-        if (GameManager.Instance.IsLocalOrHost() && playerStatus.IsAI && playerStatus.State.CurrentHp > 0)
+        if (GameManager.Instance.IsLocalOrHost() && characterStatus.characterType == CharacterType.PlayerAI && characterStatus.State.CurrentHp > 0)
         {
             // Simple AI logic: move & look randomly
             // 每隔随机1-10秒改变一次输入

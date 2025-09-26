@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // Private variables
     private Vector2 moveInput;
     private Vector2 lookInput;
-    private PlayerInput playerInput;
+    private CharacterInput playerInput;
     private InputAction m_MoveAction;
     private InputAction m_LookAction;
     private static InputSystem_Actions s_InputActions;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         m_MoveAction = s_InputActions.Player.Move;
         m_LookAction = s_InputActions.Player.Look;
 
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<CharacterInput>();
     }
 
     void Start()

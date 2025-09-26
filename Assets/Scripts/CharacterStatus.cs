@@ -8,10 +8,10 @@ using NetworkMessageProto;
 using NetworkMessageJson;
 #endif
 
-public class PlayerStatus : MonoBehaviour
+public class CharacterStatus : MonoBehaviour
 {
     public PlayerState State = new PlayerState();
-    public bool IsAI { get; set; } = false;
+    public CharacterType characterType { get; set; } = CharacterType.Unset;
     
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;

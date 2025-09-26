@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     const int RoomMaxWidth = 30;
     const int RoomMaxHeight = 30;
     const int RoomStep = 20;
-    const string AIPlayerPrefix = "BGBGAI_";
     // TODO: debug only, delete it later
     private int wallNum = 0;
 
@@ -95,8 +94,8 @@ public class GameManager : MonoBehaviour
                 {
                     Players.Add(new PlayerInfo
                     {
-                        Id = $"{AIPlayerPrefix}{i}",
-                        Name = $"{AIPlayerPrefix}{i}"
+                        Id = $"{Constants.AIPlayerPrefix}{i}",
+                        Name = $"{Constants.AIPlayerPrefix}{i}"
                     });
                 }
                 if (IsHost()) SendPlayersUpdateToAll();
@@ -155,7 +154,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerObjects.TryGetValue(inputMsg.PlayerId, out GameObject playerObject))
         {
-            var playerInput = playerObject.GetComponent<PlayerInput>();
+            var playerInput = playerObject.GetComponent<CharacterInput>();
             if (playerInput != null)
             {
                 if (IsHost())
@@ -175,7 +174,7 @@ public class GameManager : MonoBehaviour
         foreach (var kvp in playerObjects)
         {
             Vector2 pos = kvp.Value.transform.position;
-            var playerState = kvp.Value.GetComponent<PlayerStatus>().State;
+            var playerState = kvp.Value.GetComponent<CharacterStatus>().State;
             playerState.Position = new Vec2 { X = pos.x, Y = pos.y };
             su.Players.Add(playerState);
         }
@@ -210,7 +209,7 @@ public class GameManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     rb.angularVelocity = 0f;
                 }
-                var playerStatus = go.GetComponent<PlayerStatus>();
+                var playerStatus = go.GetComponent<CharacterStatus>();
                 if (playerStatus) playerStatus.State = ps;
                 go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
             }
@@ -234,7 +233,7 @@ public class GameManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     rb.angularVelocity = 0f;
                 }
-                var playerStatus = go.GetComponent<PlayerStatus>();
+                var playerStatus = go.GetComponent<CharacterStatus>();
                 if (playerStatus) playerStatus.State = ps;
                 Debug.Log($"fhhtest, ApplyStateUpdate: {go.name} {playerStatus.State}");
                 go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
@@ -273,7 +272,7 @@ public class GameManager : MonoBehaviour
             string lastAlivePlayerId = null;
             foreach (var kvp in playerObjects)
             {
-                var playerStatus = kvp.Value.GetComponent<PlayerStatus>();
+                var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
                 if (playerStatus != null && playerStatus.State.CurrentHp > 0)
                 {
                     aliveCount++;
@@ -331,14 +330,14 @@ public class GameManager : MonoBehaviour
         go.transform.position = new Vector2(posX, posY);
         // Set player name
         string playerName = Players.FirstOrDefault(p => p.Id == playerId)?.Name ?? "Unknown";
-        var playerStatus = go.GetComponent<PlayerStatus>();
+        var playerStatus = go.GetComponent<CharacterStatus>();
         if (playerStatus != null)
         {
             playerStatus.State.PlayerId = playerId;
             playerStatus.State.PlayerName = playerName;
-            if (playerId.StartsWith(AIPlayerPrefix))
+            if (playerId.StartsWith(Constants.AIPlayerPrefix))
             {
-                playerStatus.IsAI = true;
+                playerStatus.characterType = CharacterType.PlayerAI;
             }
         }
 

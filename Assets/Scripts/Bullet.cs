@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
             // 检测是否碰撞到Player
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerStatus playerStatus = collision.gameObject.GetComponent<PlayerStatus>();
+                CharacterStatus playerStatus = collision.gameObject.GetComponent<CharacterStatus>();
                 if (playerStatus != null)
                 {
                     playerStatus.TakeDamage((uint)damage);
