@@ -595,8 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mainCameraPrefab: {fileID: 2938715402375847171, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
-  worldCanvasPrefab: {fileID: 494872647869772985, guid: f5b57d1e19215e4458205a5659faa8b9, type: 3}
-  playerPrefab: {fileID: 7906872621619036891, guid: fe18362b72e3dd64ab58a0992debd2ed, type: 3}
+  playerPrefab: {fileID: 6219493690339000428, guid: 732d94b326eba214ea006d8754cae19b, type: 3}
   playerParent: {fileID: 417062435}
   wallWithDoorPrefab: {fileID: 5642047652268688225, guid: 3338230c171d2c342a74a16b21d2a795, type: 3}
   wallPrefab: {fileID: 894794398751119706, guid: 6a65ea13549bf3b4a9021ca756aac722, type: 3}

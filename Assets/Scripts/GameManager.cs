@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     // public GameObject networkManagerPrefab;
     public GameObject mainCameraPrefab;
-    public GameObject worldCanvasPrefab;
     public GameObject playerPrefab;
     public Transform playerParent;
     public GameObject wallWithDoorPrefab;
@@ -352,14 +351,8 @@ public class GameManager : MonoBehaviour
         }
 
         // 将血条显示到玩家对象的头上
-        var worldCanvas = Instantiate(worldCanvasPrefab, go.transform);
-        // 获取玩家对象的高度
-        SpriteRenderer playerRenderer = go.GetComponent<SpriteRenderer>();
-        if (playerRenderer != null && playerRenderer.sprite != null) {
-            float playerHeight = playerRenderer.sprite.bounds.size.y;
-            worldCanvas.transform.localPosition = new Vector2(0, playerHeight / 2 + 0.2f);
-        }
-        var playerNameText = worldCanvas.GetComponentInChildren<TextMeshProUGUI>();
+        var miniStatusCanvas = go.GetComponentInChildren<Canvas>();
+        var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>();
         if (playerNameText != null)
         {
             playerNameText.text = playerName;
