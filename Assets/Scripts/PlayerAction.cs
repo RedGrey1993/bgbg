@@ -6,6 +6,8 @@ public class PlayerAction : MonoBehaviour
     private PlayerStatus playerStatus;
     private Rigidbody2D rb;
 
+    private float nextShootTime = 0f;
+
     void Awake()
     {
         // Get the Rigidbody2D component
@@ -102,6 +104,8 @@ public class PlayerAction : MonoBehaviour
     {
         ref Vector2 lookInput = ref playerInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) return;
+        if (Time.time < nextShootTime) return;
+        nextShootTime = Time.time + 1f / playerStatus.State.ShootFrequency;
 
         NormalizeLookInput(ref lookInput);
         // 获取Player的位置

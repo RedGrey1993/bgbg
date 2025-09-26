@@ -32,7 +32,7 @@ public class PlayerStatus : MonoBehaviour
         State.MaxHp = 30;
         State.CurrentHp = 30;
         State.MoveSpeed = 5f;
-        State.BulletSpeed = 8f;
+        State.BulletSpeed = 6f;
         State.Damage = 1;
         State.ShootFrequency = 1;
         State.ShootRange = 5;
