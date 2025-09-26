@@ -2,6 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+#if PROTOBUF
+using NetworkMessageProto;
+#else
+using NetworkMessageJson;
+#endif
 
 /// <summary>
 /// 一个功能完备的自定义UI组件，用于绘制包含背景网格和能力多边形的六边形雷达图。
@@ -10,7 +15,9 @@ using System.Collections.Generic;
 [RequireComponent(typeof(CanvasRenderer))]
 public class HexagonRadarChart : Graphic
 {
-    private float[] stats = new float[6] { 1f, 0.8f, 0.6f, 0.7f, 0.9f, 0.5f };
+    // Damage, Shoot Frequency, Critical Rate, Move Speed, Bullet Speed, Shoot Range
+    private float[] stats = new float[6] { 0.1f, 0.8f, 0.6f, 0.7f, 0.9f, 0.5f };
+    static readonly int[] MaxStats = new int[6] { 30, 6, 100, 30, 50, 100 };
 
     [Header("前景样式 (能力多边形)")]
     [Tooltip("能力多边形填充区域的颜色")]
@@ -29,7 +36,7 @@ public class HexagonRadarChart : Graphic
     [Header("背景样式 (网格)")]
     [Tooltip("是否显示背景网格")]
     public bool showGrid = true;
-    
+
     [Tooltip("背景网格线的颜色")]
     public Color gridColor = new Color(0f, 0f, 0f, 0.5f);
 
@@ -57,7 +64,7 @@ public class HexagonRadarChart : Graphic
 
         DrawStatPolygon(vh, center, radius);
     }
-    
+
     /// <summary>
     /// 绘制背景网格和辐射线
     /// </summary>
@@ -73,12 +80,12 @@ public class HexagonRadarChart : Graphic
             );
             DrawThickLine(vh, center, outerVertex, gridThickness, gridColor);
         }
-        
+
         // --- 绘制多层同心六边形 ---
         for (int level = 1; level <= gridLevels; level++)
         {
             float levelRadius = radius * ((float)level / gridLevels);
-            
+
             Vector2[] gridVertices = new Vector2[6];
             for (int i = 0; i < 6; i++)
             {
@@ -88,7 +95,7 @@ public class HexagonRadarChart : Graphic
                     center.y + levelRadius * Mathf.Sin(angle)
                 );
             }
-            
+
             // 连接顶点形成六边形
             for (int i = 0; i < 6; i++)
             {
@@ -104,19 +111,19 @@ public class HexagonRadarChart : Graphic
     private void DrawStatPolygon(VertexHelper vh, Vector2 center, float radius)
     {
         if (stats == null || stats.Length != 6) return;
-        
+
         // --- 计算6个能力顶点的位置 ---
         Vector2[] statVertices = new Vector2[6];
         for (int i = 0; i < 6; i++)
         {
             float angle = (90 - 60 * i) * Mathf.Deg2Rad;
-            float statValue = Mathf.Clamp01(stats[i]);
+            float statValue = Mathf.Clamp(stats[i], 0, 1.5f);
             statVertices[i] = new Vector2(
                 center.x + radius * statValue * Mathf.Cos(angle),
                 center.y + radius * statValue * Mathf.Sin(angle)
             );
         }
-        
+
         // --- 绘制填充区域 ---
         UIVertex centerVertex = new UIVertex { position = center, color = fillColor, uv0 = Vector2.zero };
         int centerVertexIndex = vh.currentVertCount;
@@ -127,7 +134,7 @@ public class HexagonRadarChart : Graphic
             UIVertex outerVertex = new UIVertex { position = statVertices[i], color = fillColor, uv0 = Vector2.zero };
             vh.AddVert(outerVertex);
         }
-        
+
         for (int i = 1; i <= 6; i++)
         {
             int nextIndex = (i % 6) + 1;
@@ -159,11 +166,22 @@ public class HexagonRadarChart : Graphic
 
         vh.AddUIVertexQuad(verts);
     }
-    
+
+    public void SetStats(PlayerState state)
+    {
+        float[] newStats = new float[6];
+        newStats[0] = (float)state.Damage / MaxStats[0];          // Damage
+        newStats[1] = (float)state.ShootFrequency / MaxStats[1];  // Shoot Frequency
+        newStats[2] = (float)state.CriticalRate / MaxStats[2];      // Critical Rate
+        newStats[3] = (float)state.MoveSpeed / MaxStats[3];        // Move Speed
+        newStats[4] = (float)state.BulletSpeed / MaxStats[4];      // Bullet Speed
+        newStats[5] = (float)state.ShootRange / MaxStats[5];        // Shoot Range
+        SetStats(newStats);
+    }
     /// <summary>
     /// 公开一个方法来更新UI的状态值并触发重绘。
     /// </summary>
-    public void SetStats(float[] newStats)
+    private void SetStats(float[] newStats)
     {
         if (newStats != null && newStats.Length == 6)
         {

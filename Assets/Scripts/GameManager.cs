@@ -364,6 +364,7 @@ public class GameManager : MonoBehaviour
             var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
             pc.enabled = true;
 
+            UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
             UIManager.Instance.RegisterLocalPlayer(playerStatus);
 
             Debug.Log("fhhtest, Created local player object with controller: " + go.name);

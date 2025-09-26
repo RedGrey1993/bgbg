@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     private UnityEngine.UI.Slider healthSlider;
     private TextMeshProUGUI healthText;
+    private HexagonRadarChart abilityRadarChart;
 
     private InputAction _toggleSettingsAction;
     private UIDocument _uiDocument;
@@ -188,6 +189,19 @@ public class UIManager : MonoBehaviour
             if (healthText != null)
             {
                 healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
+            }
+        }
+
+        if (abilityRadarChart != null)
+        {
+            abilityRadarChart.SetStats(state);
+        }
+        else
+        {
+            abilityRadarChart = statusCanvas.GetComponentInChildren<HexagonRadarChart>();
+            if (abilityRadarChart != null)
+            {
+                abilityRadarChart.SetStats(state);
             }
         }
     }

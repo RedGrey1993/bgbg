@@ -34,7 +34,7 @@ public class PlayerStatus : MonoBehaviour
         State.MoveSpeed = 5f;
         State.BulletSpeed = 8f;
         State.Damage = 1;
-        State.ShootFrequency = 2;
+        State.ShootFrequency = 1;
         State.ShootRange = 5;
         State.CriticalRate = 0;
     }
