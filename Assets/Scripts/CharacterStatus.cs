@@ -18,7 +18,7 @@ public class CharacterStatus : MonoBehaviour
     public uint AggroRange = 20;
     public uint AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
     private float nextAggroChangeTime = 0;
-    private GameObject aggroTarget = null; // 当前仇恨目标
+    public GameObject aggroTarget { get; private set; } = null; // 当前仇恨目标
     
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
@@ -51,7 +51,7 @@ public class CharacterStatus : MonoBehaviour
         if (!IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + AggroChangeInterval;
-            aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange);
+            aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange, State.PlayerId);
             Debug.Log($"fhhtest, {transform.name} aggro target: {aggroTarget?.name}");
         }
     }

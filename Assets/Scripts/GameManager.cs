@@ -551,12 +551,13 @@ public class GameManager : MonoBehaviour
         return x;
     }
     
-    public GameObject FindNearestPlayerInRange(Vector2 position, uint range)
+    public GameObject FindNearestPlayerInRange(Vector2 position, uint range, string srcCharacterId)
     {
         GameObject nearestPlayer = null;
         float nearestDistanceSqr = range * range;
         foreach (var kvp in playerObjects)
         {
+            if (kvp.Key == srcCharacterId) continue; // 不会仇恨自己
             var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
             if (playerStatus != null && !playerStatus.IsDead())
             {
