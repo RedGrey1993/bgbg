@@ -339,6 +339,10 @@ public class GameManager : MonoBehaviour
             {
                 playerStatus.characterType = CharacterType.PlayerAI;
             }
+            else
+            {
+                playerStatus.characterType = CharacterType.Player;
+            }
         }
 
         playerObjects[playerId] = go;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4808982134810729363}
   - component: {fileID: 976491970957765153}
   - component: {fileID: 4256584432793903951}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: MiniStatusCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076980007828157169}
   - component: {fileID: 358205007046830682}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 6535984612880077398}
   - component: {fileID: 6802800582430940121}
   - component: {fileID: 4038541332979450564}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,9 +281,9 @@ GameObject:
   - component: {fileID: 8800204278423272890}
   - component: {fileID: 5392539914357313536}
   - component: {fileID: 5648961912058804214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallMinion
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   canMoveDiagonally: 1
   canShootDiagonally: 0
-  bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
+  bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
 --- !u!114 &5648961912058804214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 3044661898576868909}
   - component: {fileID: 4680363001489362817}
   - component: {fileID: 519483027674872730}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3353674101298789604}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
