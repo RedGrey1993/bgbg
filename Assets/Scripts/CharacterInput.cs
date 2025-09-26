@@ -16,7 +16,7 @@ public class CharacterInput : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsLocalOrHost() && characterStatus.characterType == CharacterType.PlayerAI && characterStatus.State.CurrentHp > 0)
+        if (GameManager.Instance.IsLocalOrHost() && characterStatus.CharacterType == CharacterType.PlayerAI && characterStatus.State.CurrentHp > 0)
         {
             // Simple AI logic: move & look randomly
             // 每隔随机1-10秒改变一次输入

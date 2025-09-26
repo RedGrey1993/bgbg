@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage; // 子弹发射时，Player会设置这颗子弹的伤害
+    public uint damage; // 子弹发射时，Player会设置这颗子弹的伤害
 
     // 其他物体的IsTrigger为true，也需要销毁子弹，因为Client中Player的IsTrigger都为true
     void OnTriggerEnter2D(Collider2D other)
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
                 CharacterStatus playerStatus = collision.gameObject.GetComponent<CharacterStatus>();
                 if (playerStatus != null)
                 {
-                    playerStatus.TakeDamage((uint)damage);
+                    playerStatus.TakeDamage(damage);
                 }
             }
         }

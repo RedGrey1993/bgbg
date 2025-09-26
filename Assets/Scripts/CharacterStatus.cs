@@ -11,7 +11,10 @@ using NetworkMessageJson;
 public class CharacterStatus : MonoBehaviour
 {
     public PlayerState State = new PlayerState();
-    public CharacterType characterType { get; set; } = CharacterType.Unset;
+    // 在预制体上的Inspector面板中设置
+    [Header("Character Settings")]
+    public CharacterType CharacterType = CharacterType.Unset;
+    public uint InitialMaxHp = 30;
     
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
@@ -29,8 +32,8 @@ public class CharacterStatus : MonoBehaviour
     {
         State.PlayerId = "DefaultID";
         State.PlayerName = "DefaultName";
-        State.MaxHp = 30;
-        State.CurrentHp = 30;
+        State.MaxHp = InitialMaxHp;
+        State.CurrentHp = InitialMaxHp;
         State.MoveSpeed = 5f;
         State.BulletSpeed = 6f;
         State.Damage = 1;
@@ -44,7 +47,7 @@ public class CharacterStatus : MonoBehaviour
     public void TakeDamage(uint damage)
     {
         if (State.CurrentHp == 0) return;
-        HealthChanged((uint)Mathf.Max(0, (int)State.CurrentHp - (int)damage));
+        HealthChanged((uint)Mathf.Max(0, State.CurrentHp - damage));
     }
 
     // 供HOST/CLIENT统一调用

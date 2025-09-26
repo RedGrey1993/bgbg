@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6219493690339000428, guid: b636a2465f31d084692ce20402687636, type: 3}
       propertyPath: m_Name
-      value: SmallMinion
+      value: SmallMinionNormal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

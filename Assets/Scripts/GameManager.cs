@@ -337,11 +337,7 @@ public class GameManager : MonoBehaviour
             playerStatus.State.PlayerName = playerName;
             if (playerId.StartsWith(Constants.AIPlayerPrefix))
             {
-                playerStatus.characterType = CharacterType.PlayerAI;
-            }
-            else
-            {
-                playerStatus.characterType = CharacterType.Player;
+                playerStatus.CharacterType = CharacterType.PlayerAI;
             }
         }
 

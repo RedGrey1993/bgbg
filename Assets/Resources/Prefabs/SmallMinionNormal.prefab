@@ -282,8 +282,8 @@ GameObject:
   - component: {fileID: 5392539914357313536}
   - component: {fileID: 5648961912058804214}
   m_Layer: 9
-  m_Name: SmallMinion
-  m_TagString: Untagged
+  m_Name: SmallMinionNormal
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,6 +461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  CharacterType: 3
+  InitialMaxHp: 5
   canMoveDiagonally: 1
   canShootDiagonally: 0
   bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
