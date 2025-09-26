@@ -462,7 +462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   CharacterType: 3
-  InitialMaxHp: 5
+  MaxHp: 5
+  AggroRange: 20
+  AggroChangeInterval: 2
   canMoveDiagonally: 1
   canShootDiagonally: 0
   bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}

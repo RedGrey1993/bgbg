@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
     public HashSet<PlayerInfo> Players { get; set; } = new HashSet<PlayerInfo>();
     public int MinPlayableObjects { get; set; } = 3;
-    private Dictionary<string, GameObject> playerObjects = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> playerObjects { get; private set; } = new Dictionary<string, GameObject>();
     private float lastFullStateSentTime = 0.0f;
 
     void Awake()
@@ -507,7 +507,7 @@ public class GameManager : MonoBehaviour
         GameObject wall2 = Instantiate(wallPrefab, wallsParent);
         wall2.transform.position = new Vector2(0, -RoomMaxHeight / 2);
         wall2.transform.localScale = new Vector3(RoomMaxWidth, 1, 1);
-        
+
         GameObject wall3 = Instantiate(wallPrefab, wallsParent);
         wall3.transform.position = new Vector2(-RoomMaxWidth / 2, 0);
         wall3.transform.localScale = new Vector3(1, RoomMaxHeight, 1);
@@ -549,5 +549,26 @@ public class GameManager : MonoBehaviour
         x = (x ^ (x >> 13)) * 0xc2b2ae35;
         x = x ^ (x >> 16);
         return x;
+    }
+    
+    public GameObject FindNearestPlayerInRange(Vector2 position, uint range)
+    {
+        GameObject nearestPlayer = null;
+        float nearestDistanceSqr = range * range;
+        foreach (var kvp in playerObjects)
+        {
+            var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
+            if (playerStatus != null && !playerStatus.IsDead())
+            {
+                Vector2 toPlayer = (Vector2)kvp.Value.transform.position - position;
+                float distSqr = toPlayer.sqrMagnitude;
+                if (distSqr <= nearestDistanceSqr)
+                {
+                    nearestDistanceSqr = distSqr;
+                    nearestPlayer = kvp.Value;
+                }
+            }
+        }
+        return nearestPlayer;
     }
 }

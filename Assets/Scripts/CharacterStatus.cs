@@ -14,7 +14,11 @@ public class CharacterStatus : MonoBehaviour
     // 在预制体上的Inspector面板中设置
     [Header("Character Settings")]
     public CharacterType CharacterType = CharacterType.Unset;
-    public uint InitialMaxHp = 30;
+    public uint MaxHp = 30;
+    public uint AggroRange = 20;
+    public uint AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
+    private float nextAggroChangeTime = 0;
+    private GameObject aggroTarget = null; // 当前仇恨目标
     
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
@@ -32,8 +36,8 @@ public class CharacterStatus : MonoBehaviour
     {
         State.PlayerId = "DefaultID";
         State.PlayerName = "DefaultName";
-        State.MaxHp = InitialMaxHp;
-        State.CurrentHp = InitialMaxHp;
+        State.MaxHp = MaxHp;
+        State.CurrentHp = MaxHp;
         State.MoveSpeed = 5f;
         State.BulletSpeed = 6f;
         State.Damage = 1;
@@ -42,11 +46,31 @@ public class CharacterStatus : MonoBehaviour
         State.CriticalRate = 0;
     }
 
+    void Update()
+    {
+        if (!IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
+        {
+            nextAggroChangeTime = Time.time + AggroChangeInterval;
+            aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange);
+            Debug.Log($"fhhtest, {transform.name} aggro target: {aggroTarget?.name}");
+        }
+    }
+
+    public bool IsNPC()
+    {
+        return CharacterType >= CharacterType.PlayerAI;
+    }
+
+    public bool IsDead()
+    {
+        return State.CurrentHp <= 0;
+    }
+
     // 当前HOST上的所有Player都会触发TakeDamage
     // TODO: 联机模式的逻辑待考虑，想法：将计算完之后的状态发送给客户端，HOST本身忽略，客户端根据事件更新UI
     public void TakeDamage(uint damage)
     {
-        if (State.CurrentHp == 0) return;
+        if (IsDead()) return;
         HealthChanged((uint)Mathf.Max(0, State.CurrentHp - damage));
     }
 
@@ -59,17 +83,17 @@ public class CharacterStatus : MonoBehaviour
         // 更新挂在在Player上的简易血条的UI，包括所有Player
         UpdateHealthSliderUI();
 
-        if (State.CurrentHp == 0)
+        if (IsDead())
         {
             // 只有本地键盘操作的那个Player注册了OnDied事件
             OnDied?.Invoke();
-            // 所有Player的HP为0时都会调用Died函数
-            Died();
+            // 所有角色的HP为0时都会调用SetCharacterDead函数
+            SetCharacterDead();
         }
     }
 
     // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用
-    private void Died()
+    private void SetCharacterDead()
     {
         GameManager.Instance.CheckWinningCondition();
 

@@ -34,7 +34,7 @@ public class CharacterAction : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (characterStatus.State.CurrentHp == 0)
+        if (characterStatus.IsDead())
         {
             rb.linearVelocity = Vector2.zero;
             return;
