@@ -17,7 +17,7 @@ public class HexagonRadarChart : Graphic
 {
     // Damage, Shoot Frequency, Critical Rate, Move Speed, Bullet Speed, Shoot Range
     private float[] stats = new float[6] { 0.1f, 0.8f, 0.6f, 0.7f, 0.9f, 0.5f };
-    static readonly int[] MaxStats = new int[6] { 30, 10, 100, 30, 50, 100 };
+    static readonly int[] MaxStats = new int[6] { 30, 30, 100, 30, 50, 100 };
 
     [Header("前景样式 (能力多边形)")]
     [Tooltip("能力多边形填充区域的颜色")]

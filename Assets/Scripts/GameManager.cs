@@ -365,15 +365,20 @@ public class GameManager : MonoBehaviour
             Debug.Log("fhhtest, Created local player object with controller: " + go.name);
             // 将Main Camera设置为当前玩家对象的子对象
             Camera mainCamera = Camera.main;
-            if (mainCamera == null)
+            if (mainCamera != null)
             {
-                var cameraObject = Instantiate(mainCameraPrefab);
-                cameraObject.name = "Main Camera";
-                mainCamera = cameraObject.GetComponent<Camera>();
+                CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
+                cameraFollow.target = go.transform;
             }
-            mainCamera.transform.SetParent(go.transform, false);
-            // 设置相机相对位置，使玩家位于屏幕中央
-            mainCamera.transform.localPosition = new Vector3(0, 0, -10);
+            // if (mainCamera == null)
+            // {
+            //     var cameraObject = Instantiate(mainCameraPrefab);
+            //     cameraObject.name = "Main Camera";
+            //     mainCamera = cameraObject.GetComponent<Camera>();
+            // }
+            // mainCamera.transform.SetParent(go.transform, false);
+            // // 设置相机相对位置，使玩家位于屏幕中央
+            // mainCamera.transform.localPosition = new Vector3(0, 0, -10);
         }
     }
 

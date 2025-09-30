@@ -44,7 +44,7 @@ public class CharacterStatus : MonoBehaviour
         State.MoveSpeed = MoveSpeed;
         State.BulletSpeed = 6f;
         State.Damage = 1;
-        State.ShootFrequency = 1;
+        State.ShootFrequency = 3;
         State.ShootRange = ShootRange;
         State.CriticalRate = 0;
     }
@@ -101,11 +101,23 @@ public class CharacterStatus : MonoBehaviour
         GameManager.Instance.CheckWinningCondition();
 
         // Change player color to gray
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
         {
             sr.color = Color.gray;
             sr.sortingOrder = -1; // Change sorting order to be behind alive players
+        }
+
+        SkinnedMeshRenderer meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        Debug.Log($"fhhtest, char {transform.name} meshRenderer {meshRenderer}");
+        if (meshRenderer != null)
+        {
+            Material grayMaterial = new Material(meshRenderer.material);
+            grayMaterial.color = Color.gray;
+            meshRenderer.material = grayMaterial;
+
+            // 确保渲染层级在存活玩家之后
+            meshRenderer.sortingOrder = -1;
         }
 
         Canvas canvas = GetComponentInChildren<Canvas>();

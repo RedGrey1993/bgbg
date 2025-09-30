@@ -21,7 +21,7 @@ public enum CharacterType
 public static class Constants
 {
     public const string AIPlayerPrefix = "BGBGAI_";
-    public const int MinPlayableObjects = 1;
+    public const int MinPlayableObjects = 2;
     public const int RoomStep = 20;
     public const float DoorWidth = 1.8f;
     public const int RoomMaxWidth = 40;

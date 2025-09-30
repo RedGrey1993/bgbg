@@ -42,7 +42,7 @@ public class CharacterInput : MonoBehaviour
                     if (posXMod < 0) posXMod += Constants.RoomStep;
                     if (posYMod < 0) posYMod += Constants.RoomStep;
                     const float nearDoorDist = Constants.WallMaxThickness / 2 + Constants.CharacterMaxRadius;
-                    Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
+                    // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
                     Constants.PositionToIndex(transform.position, out int sx, out int sy);
                     Constants.PositionToIndex(characterStatus.aggroTarget.transform.position, out int tx, out int ty);
                     // 在同一间房间，直接追击

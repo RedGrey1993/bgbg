@@ -5,6 +5,7 @@ public class CharacterAction : MonoBehaviour
     private CharacterInput characterInput;
     private CharacterStatus characterStatus;
     private Rigidbody2D rb;
+    private Animator animator;
 
     private float nextShootTime = 0f;
 
@@ -19,6 +20,7 @@ public class CharacterAction : MonoBehaviour
 
         characterInput = GetComponent<CharacterInput>();
         characterStatus = GetComponent<CharacterStatus>();
+        animator = GetComponentInChildren<Animator>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +39,7 @@ public class CharacterAction : MonoBehaviour
         if (characterStatus.IsDead())
         {
             rb.linearVelocity = Vector2.zero;
+            animator?.SetFloat("Speed", 0);
             return;
         }
         // 只有Host能够调用，离线模式视作Host
@@ -98,6 +101,11 @@ public class CharacterAction : MonoBehaviour
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
         rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
+        animator?.SetFloat("Speed", rb.linearVelocity.magnitude);
+
+        Transform childTransform = transform.GetChild(0);
+        childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+        // Debug.Log($"fhhtest, moveInput: {moveInput}, rotation: {childTransform.localRotation.eulerAngles}");
     }
 
     private void Shoot()
