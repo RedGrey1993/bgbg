@@ -1,0 +1,13 @@
+{
+    "asset": "3d1be6d244a303148993a27df463fe0f",
+    "fileName": "01999b1a-2f14-7e03-9fcf-61577ff21a28.wav",
+    "prompt": "Armored humanoid robots running",
+    "negativePrompt": "",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "ac2c2cb5e3e73d0023beb25895fd3a69",
+    "duration": 8.0,
+    "autoTrim": true,
+    "hasReference": false
+}

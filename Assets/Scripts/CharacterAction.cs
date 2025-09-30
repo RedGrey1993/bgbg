@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class CharacterAction : MonoBehaviour
 {
+    public AudioClip shootSound;
     private CharacterInput characterInput;
     private CharacterStatus characterStatus;
     private Rigidbody2D rb;
     private Animator animator;
+    private AudioSource audioSource;
 
     private float nextShootTime = 0f;
 
@@ -21,6 +23,7 @@ public class CharacterAction : MonoBehaviour
         characterInput = GetComponent<CharacterInput>();
         characterStatus = GetComponent<CharacterStatus>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,14 +43,15 @@ public class CharacterAction : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
             animator?.SetFloat("Speed", 0);
+            if (audioSource && audioSource.isPlaying) audioSource.Stop();
             return;
         }
         // 只有Host能够调用，离线模式视作Host
-            // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
-            if (GameManager.Instance.IsLocalOrHost())
-            {
-                DoHostAction();
-            }
+        // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
+        if (GameManager.Instance.IsLocalOrHost())
+        {
+            DoHostAction();
+        }
         // 所有客户端都能调用，包括Host自己
         // 包括不需要严格同步的操作，如物理引擎模拟等相关操作
         DoClientAction();
@@ -96,11 +100,18 @@ public class CharacterAction : MonoBehaviour
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         if (moveInput.sqrMagnitude > 0.1f)
+        {
             NormalizeMoveInput(ref moveInput);
+            if (audioSource && !audioSource.isPlaying) audioSource.Play();
+        }
+        else
+        {
+            if (audioSource && audioSource.isPlaying) audioSource.Stop();
+        }
 
         // Apply movement directly
-        // velocity is deprecated, use linearVelocity instead
-        rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
+            // velocity is deprecated, use linearVelocity instead
+            rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
         animator?.SetFloat("Speed", rb.linearVelocity.magnitude);
 
         Transform childTransform = transform.GetChild(0);
@@ -114,6 +125,13 @@ public class CharacterAction : MonoBehaviour
         if (lookInput.sqrMagnitude < 0.1f) return;
         if (Time.time < nextShootTime) return;
         nextShootTime = Time.time + 1f / characterStatus.State.ShootFrequency;
+
+        if (shootSound)
+        {
+            var audioSrc = gameObject.AddComponent<AudioSource>();
+            audioSrc.PlayOneShot(shootSound);
+            Destroy(audioSrc, shootSound.length);
+        }
 
         NormalizeLookInput(ref lookInput);
         // 获取Player的位置

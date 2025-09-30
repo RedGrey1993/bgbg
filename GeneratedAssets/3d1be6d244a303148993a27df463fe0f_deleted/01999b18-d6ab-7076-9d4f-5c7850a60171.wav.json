@@ -1,0 +1,13 @@
+{
+    "asset": "3d1be6d244a303148993a27df463fe0f",
+    "fileName": "01999b18-d6ab-7076-9d4f-5c7850a60171.wav",
+    "prompt": "Armored robots move",
+    "negativePrompt": "",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "2dbba62caf29f34c3cc85d5bee24f2da",
+    "duration": 5.0,
+    "autoTrim": true,
+    "hasReference": false
+}
