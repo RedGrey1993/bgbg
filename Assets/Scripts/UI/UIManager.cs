@@ -18,16 +18,24 @@ public class UIManager : MonoBehaviour
     // Singleton Instance
     public static UIManager Instance { get; private set; }
 
+    #region Inspector Fields
+
     [Header("Input Action Asset")]
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject statusCanvas;
+    [SerializeField] private Animator skillPanelAnimator;
+
+    #endregion
+
+    private bool isSkillPanelOpen = false;
 
     private UnityEngine.UI.Slider healthSlider;
     private TextMeshProUGUI healthText;
     private HexagonRadarChart abilityRadarChart;
 
     private InputAction _toggleSettingsAction;
+    private InputAction _toggleSkillPanelAction;
     private UIDocument _uiDocument;
     private VisualElement _root;
     private bool _isIngame = false;
@@ -119,6 +127,7 @@ public class UIManager : MonoBehaviour
         _root = _uiDocument.rootVisualElement;
 
         _toggleSettingsAction = inputActions.FindActionMap("UI").FindAction("ToggleSettings");
+        _toggleSkillPanelAction = inputActions.FindActionMap("UI").FindAction("ToggleSkillPanel");
 
         QueryUIElements();
         RegisterButtonCallbacks();
@@ -131,6 +140,7 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         _toggleSettingsAction?.Enable();
+        _toggleSkillPanelAction?.Enable();
         if (NetworkManager.ActiveLayer != null)
         {
             SubscribeToNetworkEvents();
@@ -140,6 +150,7 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         _toggleSettingsAction?.Disable();
+        _toggleSkillPanelAction?.Disable();
         if (NetworkManager.ActiveLayer != null)
         {
             UnsubscribeFromNetworkEvents();
@@ -326,6 +337,7 @@ public class UIManager : MonoBehaviour
 
         // Global
         _toggleSettingsAction.performed += _ => ToggleSettingsPanel();
+        _toggleSkillPanelAction.performed += _ => ToggleSkillPanel();
         _root.Q<Button>("BackToMainButton").clicked += () => ShowPanel(_mainMenuPanel);
         _root.Q<Button>("CreateRoomButton").clicked += () => ShowPanel(_createRoomPanel);
         _root.Q<Button>("JoinRoomButton").clicked += () => ShowPanel(_joinRoomPanel);
@@ -761,6 +773,23 @@ public class UIManager : MonoBehaviour
         {
             _mainMenuRoot.AddToClassList("hidden");
             HideSettings();
+        }
+    }
+
+    private void ToggleSkillPanel()
+    {
+        Debug.Log("ToggleSkillPanel called, _isIngame: {_isIngame}");
+        if (!_isIngame) return; // 仅在游戏中允许打开技能面板
+        if (skillPanelAnimator == null) return;
+
+        isSkillPanelOpen = !isSkillPanelOpen;
+        if (isSkillPanelOpen)
+        {
+            skillPanelAnimator.SetTrigger("Show");
+        }
+        else
+        {
+            skillPanelAnimator.SetTrigger("Hide");
         }
     }
 

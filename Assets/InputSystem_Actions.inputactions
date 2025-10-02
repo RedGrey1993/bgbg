@@ -578,6 +578,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSkillPanel",
+                    "type": "Button",
+                    "id": "948d9dba-218d-46bc-9901-cb14dc0eaa7f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1007,6 +1016,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "ToggleSettings",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "095ca540-e2b6-4b99-b734-488df95f517b",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ToggleSkillPanel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

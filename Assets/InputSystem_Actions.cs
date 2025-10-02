@@ -664,6 +664,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleSkillPanel"",
+                    ""type"": ""Button"",
+                    ""id"": ""948d9dba-218d-46bc-9901-cb14dc0eaa7f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1095,6 +1104,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleSettings"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""095ca540-e2b6-4b99-b734-488df95f517b"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ToggleSkillPanel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1186,6 +1206,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_ToggleSettings = m_UI.FindAction("ToggleSettings", throwIfNotFound: true);
+        m_UI_ToggleSkillPanel = m_UI.FindAction("ToggleSkillPanel", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1462,6 +1483,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_ToggleSettings;
+    private readonly InputAction m_UI_ToggleSkillPanel;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1517,6 +1539,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/ToggleSettings".
         /// </summary>
         public InputAction @ToggleSettings => m_Wrapper.m_UI_ToggleSettings;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/ToggleSkillPanel".
+        /// </summary>
+        public InputAction @ToggleSkillPanel => m_Wrapper.m_UI_ToggleSkillPanel;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1576,6 +1602,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ToggleSettings.started += instance.OnToggleSettings;
             @ToggleSettings.performed += instance.OnToggleSettings;
             @ToggleSettings.canceled += instance.OnToggleSettings;
+            @ToggleSkillPanel.started += instance.OnToggleSkillPanel;
+            @ToggleSkillPanel.performed += instance.OnToggleSkillPanel;
+            @ToggleSkillPanel.canceled += instance.OnToggleSkillPanel;
         }
 
         /// <summary>
@@ -1620,6 +1649,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ToggleSettings.started -= instance.OnToggleSettings;
             @ToggleSettings.performed -= instance.OnToggleSettings;
             @ToggleSettings.canceled -= instance.OnToggleSettings;
+            @ToggleSkillPanel.started -= instance.OnToggleSkillPanel;
+            @ToggleSkillPanel.performed -= instance.OnToggleSkillPanel;
+            @ToggleSkillPanel.canceled -= instance.OnToggleSkillPanel;
         }
 
         /// <summary>
@@ -1873,5 +1905,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleSettings(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleSkillPanel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleSkillPanel(InputAction.CallbackContext context);
     }
 }
