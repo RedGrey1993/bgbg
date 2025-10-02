@@ -9,6 +9,7 @@ message GenericMessage
     InputMessage InputMsg = 3;
     StateUpdateMessage StateMsg = 4;
     PlayersUpdateMessage PlayersMsg = 5;
+    LearnSkillMessage LearnSkillMsg = 6;
 }
 
 message Vec2
@@ -19,7 +20,7 @@ message Vec2
 
 message InputMessage
 {
-    string PlayerId = 1;
+    uint32 PlayerId = 1;
     uint32 Tick = 2;
     uint32 Type = 3;
     Vec2 MoveInput = 4;
@@ -28,7 +29,7 @@ message InputMessage
 
 message PlayerState
 {
-    string PlayerId = 1;
+    uint32 PlayerId = 1;
     string PlayerName = 2;
     uint32 MaxHp = 3;
     uint32 CurrentHp = 4;
@@ -54,6 +55,13 @@ message PlayersUpdateMessage
 
 message PlayerInfo
 {
-    string Id = 1; // CSteamID or a string for local players
+    string CSteamID = 1; // CSteamID or a string for local players
     string Name = 2;
+    uint32 Id = 3;
+}
+
+message LearnSkillMessage
+{
+    uint32 playerId = 1;
+    uint32 skillId = 2;
 }

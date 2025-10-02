@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   skillName: Fireball Test
   description: Test skill data, Fireball
+  backgroundStory: 
   icon: {fileID: -7343100771688192990, guid: 4cc797a512aeee44fa39d7486ed34359, type: 3}
+  deltaFireRate: 0
+  fireRateChangeType: 0

@@ -37,7 +37,7 @@ public class CharacterStatus : MonoBehaviour
 
     void Awake()
     {
-        State.PlayerId = "DefaultID";
+        State.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
         State.PlayerName = "DefaultName";
         State.MaxHp = MaxHp;
         State.CurrentHp = MaxHp;
@@ -51,7 +51,7 @@ public class CharacterStatus : MonoBehaviour
 
     void Update()
     {
-        if (!IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
+        if (GameManager.Instance.IsLocalOrHost() && !IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + AggroChangeInterval;
             aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange, State.PlayerId);
@@ -71,7 +71,7 @@ public class CharacterStatus : MonoBehaviour
 
     // 当前HOST上的所有Player都会触发TakeDamage
     // TODO: 联机模式的逻辑待考虑，想法：将计算完之后的状态发送给客户端，HOST本身忽略，客户端根据事件更新UI
-    public void TakeDamage(uint damage)
+    public void TakeDamage_Host(uint damage)
     {
         if (IsDead()) return;
         HealthChanged((uint)Mathf.Max(0, State.CurrentHp - damage));
@@ -98,7 +98,7 @@ public class CharacterStatus : MonoBehaviour
     // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用
     private void SetCharacterDead()
     {
-        GameManager.Instance.CheckWinningCondition();
+        GameManager.Instance.CheckWinningCondition_Host();
 
         // Change player color to gray
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();

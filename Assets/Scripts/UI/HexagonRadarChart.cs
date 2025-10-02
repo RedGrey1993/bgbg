@@ -16,6 +16,7 @@ using NetworkMessageJson;
 public class HexagonRadarChart : Graphic
 {
     // Damage, Shoot Frequency, Critical Rate, Move Speed, Bullet Speed, Shoot Range
+    // DM, FR, CR, MS, BS, RG
     private float[] stats = new float[6] { 0.1f, 0.8f, 0.6f, 0.7f, 0.9f, 0.5f };
     static readonly int[] MaxStats = new int[6] { 30, 30, 100, 30, 50, 100 };
 

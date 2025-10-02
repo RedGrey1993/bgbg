@@ -86,7 +86,7 @@ public class SkillPanelController : MonoBehaviour
             }
 
             timer -= Time.deltaTime;
-            timerText.text = Mathf.CeilToInt(timer).ToString();
+            timerText.text = "Please choose one of three\n" + Mathf.CeilToInt(timer).ToString() + " seconds left";
             yield return null;
         }
 
@@ -127,6 +127,7 @@ public class SkillPanelController : MonoBehaviour
     private void LearnNewSkill(SkillData newSkill)
     {
         // 在这里添加你的游戏逻辑，比如给玩家添加能力
+        GameManager.Instance.LearnSkill(newSkill);
 
         // 更新“持有技能”UI
         GameObject iconObj = Instantiate(ownedSkillIconPrefab, ownedSkillsContainer);

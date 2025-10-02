@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
     private int wallNum = 0;
 
     public static GameManager Instance { get; private set; }
-    // GameManager初始化在NetworkManager之后，所以NetworkManager无法在Awake中通过Instance访问GameManager，而MyInfo需要在NetworkManager初始化时将Id更新为SteamId或本地的ip:port，所以MyInfo使用static
-    public static PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = "PlayerOffline", Name = "Player Offline" };
+
+    public static uint currentPlayerId = 0;
+    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = currentPlayerId, CSteamID = "PlayerOffline", Name = "Player Offline" };
 
     public event Action PlayersUpdateActions;
     public GameObject mainCameraPrefab;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
 
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
-    public HashSet<PlayerInfo> Players { get; set; } = new HashSet<PlayerInfo>();
+    public List<PlayerInfo> Players { get; set; } = new List<PlayerInfo>();
+    public Dictionary<uint, PlayerInfo> PlayerInfoMap { get; set; } = new Dictionary<uint, PlayerInfo>();
     public Dictionary<string, GameObject> playerObjects { get; private set; } = new Dictionary<string, GameObject>();
     public int[,] RoomGrid { get; private set; } = new int[Constants.RoomMaxWidth / Constants.RoomStep, Constants.RoomMaxHeight / Constants.RoomStep];
     public List<Rect> Rooms { get; private set; }
@@ -51,7 +53,11 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        PlayerInfoMap.Clear();
         Players.Clear();
+        currentPlayerId = 0;
+        MyInfo.Id = currentPlayerId++;
+        PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
         InitializePlayers();
     }
@@ -80,6 +86,7 @@ public class GameManager : MonoBehaviour
             && LobbyNetworkManager.Instance.IsInLobby && NetworkManager.ActiveLayer.IsHost;
     }
 
+    #region Game Initialization
     public void InitializeGame()
     {
         if (IsLocalOrHost())
@@ -88,11 +95,14 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = Players.Count; i < Constants.MinPlayableObjects; i++)
                 {
-                    Players.Add(new PlayerInfo
+                    var player = new PlayerInfo
                     {
-                        Id = $"{Constants.AIPlayerPrefix}{i}",
-                        Name = $"{Constants.AIPlayerPrefix}{i}"
-                    });
+                        CSteamID = $"{Constants.AIPlayerPrefix}{i}",
+                        Name = $"{Constants.AIPlayerPrefix}{i}",
+                        Id = currentPlayerId++,
+                    };
+                    PlayerInfoMap[player.Id] = player;
+                    Players.Add(player);
                 }
                 if (IsHost()) SendPlayersUpdateToAll();
             }
@@ -105,13 +115,16 @@ public class GameManager : MonoBehaviour
             // 当前暂时不实现，直接等服务器的State消息同步
         }
     }
+    #endregion
 
     public void OnPlayerJoined(PlayerInfo player)
     {
         if (IsHost())
         {
+            player.Id = currentPlayerId++;
+            PlayerInfoMap[player.Id] = player;
             Players.Add(player);
-            CreatePlayerObject(player.Id, ColorFromID(player.Id), false);
+            CreatePlayerObject(player.Id, ColorFromID(player.CSteamID), false);
             SendPlayersUpdateToAll();
         }
     }
@@ -120,8 +133,9 @@ public class GameManager : MonoBehaviour
     {
         if (IsHost())
         {
+            PlayerInfoMap.Remove(player.Id);
             Players.Remove(player);
-            RemovePlayerObject(player.Id);
+            RemovePlayerObject(player.CSteamID);
             SendPlayersUpdateToAll();
         }
     }
@@ -130,7 +144,9 @@ public class GameManager : MonoBehaviour
     public void OnLobbyCreated()
     {
         // HOST
+        PlayerInfoMap.Clear();
         Players.Clear();
+        PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
     }
 
@@ -141,14 +157,16 @@ public class GameManager : MonoBehaviour
 
     public void OnLobbyLeft()
     {
+        PlayerInfoMap.Clear();
         Players.Clear();
+        PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
         InitializePlayers();
     }
 
     public void OnPlayerInput(InputMessage inputMsg)
     {
-        if (playerObjects.TryGetValue(inputMsg.PlayerId, out GameObject playerObject))
+        if (playerObjects.TryGetValue(PlayerInfoMap[inputMsg.PlayerId].CSteamID, out GameObject playerObject))
         {
             var playerInput = playerObject.GetComponent<CharacterInput>();
             if (playerInput != null)
@@ -195,7 +213,8 @@ public class GameManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
+            if (!PlayerInfoMap.TryGetValue(ps.PlayerId, out PlayerInfo player)) continue;
+            if (playerObjects.TryGetValue(player.CSteamID, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
                 var rb = go.GetComponent<Rigidbody2D>();
@@ -217,9 +236,9 @@ public class GameManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            string playerId = ps.PlayerId;
-            if (!playerObjects.ContainsKey(playerId)) CreatePlayerObject(playerId, ColorFromID(playerId), playerId == MyInfo.Id);
-            if (playerObjects.TryGetValue(playerId, out GameObject go) && go != null)
+            if (!PlayerInfoMap.TryGetValue(ps.PlayerId, out PlayerInfo player)) continue;
+            if (!playerObjects.ContainsKey(player.CSteamID)) CreatePlayerObject(ps.PlayerId, ColorFromID(player.CSteamID), ps.PlayerId == MyInfo.Id);
+            if (playerObjects.TryGetValue(player.CSteamID, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
                 var rb = go.GetComponent<Rigidbody2D>();
@@ -236,10 +255,10 @@ public class GameManager : MonoBehaviour
         }
         foreach (var kvp in playerObjects)
         {
-            string playerId = kvp.Key;
-            if (!su.Players.Any(p => p.PlayerId == playerId))
+            string csteamId = kvp.Key;
+            if (!su.Players.Any(p => PlayerInfoMap.ContainsKey(p.PlayerId) && PlayerInfoMap[p.PlayerId].CSteamID == csteamId))
             {
-                RemovePlayerObject(playerId);
+                RemovePlayerObject(csteamId);
             }
         }
     }
@@ -254,27 +273,32 @@ public class GameManager : MonoBehaviour
         }
         if (players == null) return;
 
+        PlayerInfoMap.Clear();
         Players.Clear();
-        Players.UnionWith(players.Players);
+        foreach (var p in players.Players)
+        {
+            PlayerInfoMap[p.Id] = p;
+        }
+        Players.AddRange(players.Players);
         PlayersUpdateActions?.Invoke();
     }
 
-    public void CheckWinningCondition()
+    public void CheckWinningCondition_Host()
     {
         if (IsLocalOrHost())
         {
             int aliveCount = 0;
-            string lastAlivePlayerId = null;
+            string lastAlivePlayerCSteamId = null;
             foreach (var kvp in playerObjects)
             {
                 var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
                 if (playerStatus != null && playerStatus.State.CurrentHp > 0)
                 {
                     aliveCount++;
-                    lastAlivePlayerId = kvp.Key;
+                    lastAlivePlayerCSteamId = kvp.Key;
                 }
             }
-            if (aliveCount <= 1 && lastAlivePlayerId.Equals(MyInfo.Id))
+            if (aliveCount <= 1 && lastAlivePlayerCSteamId.Equals(MyInfo.CSteamID))
             {
                 UIManager.Instance.ShowWinningScreen();
             }
@@ -300,7 +324,7 @@ public class GameManager : MonoBehaviour
         ClearPlayerObjects();
         foreach (var player in Players)
         {
-            CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
+            CreatePlayerObject(player.Id, ColorFromID(player.CSteamID), player.Id == MyInfo.Id);
         }
     }
 
@@ -310,12 +334,13 @@ public class GameManager : MonoBehaviour
         playerObjects.Clear();
     }
 
-    private void CreatePlayerObject(string playerId, Color color, bool needController = false)
+    private void CreatePlayerObject(uint playerId, Color color, bool needController = false)
     {
-        if (playerObjects.ContainsKey(playerId)) return;
+        string csteamId = PlayerInfoMap[playerId].CSteamID;
+        if (playerObjects.ContainsKey(csteamId)) return;
 
         GameObject go = Instantiate(playerPrefab, playerParent);
-        go.name = playerId;
+        go.name = csteamId;
         // set color by steamId for distinctness
         var rend = go.GetComponent<SpriteRenderer>();
         if (rend != null) rend.color = color;
@@ -324,19 +349,19 @@ public class GameManager : MonoBehaviour
         float posY = UnityEngine.Random.Range(-Constants.RoomMaxHeight / 2 / Constants.RoomStep, Constants.RoomMaxHeight / 2 / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
         go.transform.position = new Vector2(posX, posY);
         // Set player name
-        string playerName = Players.FirstOrDefault(p => p.Id == playerId)?.Name ?? "Unknown";
+        string playerName = PlayerInfoMap[playerId].Name;
         var playerStatus = go.GetComponent<CharacterStatus>();
         if (playerStatus != null)
         {
             playerStatus.State.PlayerId = playerId;
             playerStatus.State.PlayerName = playerName;
-            if (playerId.StartsWith(Constants.AIPlayerPrefix))
+            if (csteamId.StartsWith(Constants.AIPlayerPrefix))
             {
                 playerStatus.CharacterType = CharacterType.PlayerAI;
             }
         }
 
-        playerObjects[playerId] = go;
+        playerObjects[csteamId] = go;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
         // 上面的注释是老逻辑，新逻辑Client都处理，但是Host会定期同步统一的状态
         // if (!IsLocalOrHost())
@@ -370,15 +395,6 @@ public class GameManager : MonoBehaviour
                 CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
                 cameraFollow.target = go.transform;
             }
-            // if (mainCamera == null)
-            // {
-            //     var cameraObject = Instantiate(mainCameraPrefab);
-            //     cameraObject.name = "Main Camera";
-            //     mainCamera = cameraObject.GetComponent<Camera>();
-            // }
-            // mainCamera.transform.SetParent(go.transform, false);
-            // // 设置相机相对位置，使玩家位于屏幕中央
-            // mainCamera.transform.localPosition = new Vector3(0, 0, -10);
         }
     }
 
@@ -569,13 +585,19 @@ public class GameManager : MonoBehaviour
         return x;
     }
 
-    public GameObject FindNearestPlayerInRange(Vector2 position, uint range, string srcCharacterId)
+    public GameObject FindNearestPlayerInRange(Vector2 position, uint range, uint srcCharacterId)
     {
+        // srcCharacterId 可能是小兵，小兵不在PlayerInfoMap中
+        string srcCSteamId = "Minion";
+        if (PlayerInfoMap.ContainsKey(srcCharacterId))
+        {
+            srcCSteamId = PlayerInfoMap[srcCharacterId].CSteamID;
+        }
         GameObject nearestPlayer = null;
         float nearestDistanceSqr = range * range;
         foreach (var kvp in playerObjects)
         {
-            if (kvp.Key == srcCharacterId) continue; // 不会仇恨自己
+            if (kvp.Key == srcCSteamId) continue; // 不会仇恨自己
             var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
             if (playerStatus != null && !playerStatus.IsDead())
             {
@@ -590,6 +612,22 @@ public class GameManager : MonoBehaviour
         }
         return nearestPlayer;
     }
+
+    #region Skill Management
+    public void LearnSkill(SkillData newSkill)
+    {
+        GenericMessage msg = new GenericMessage
+        {
+            Target = (uint)MessageTarget.Host,
+            Type = (uint)MessageType.LearnSkill,
+            LearnSkillMsg = new LearnSkillMessage
+            {
+                // PlayerId = MyInfo.Id,
+                SkillId = (uint)newSkill.Id
+            }
+        };
+    }
+    #endregion
 
     #region Message Handlers
     public void SendMessage(GenericMessage msg, bool reliable)

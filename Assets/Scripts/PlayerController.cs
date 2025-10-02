@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         uint tick = (uint)(Time.realtimeSinceStartup * 1000);
         var inputMsg = new InputMessage
         {
-            PlayerId = GameManager.MyInfo.Id.ToString(),
+            PlayerId = GameManager.Instance.MyInfo.Id,
             Tick = tick,
             MoveInput = new Vec2
             {

@@ -20,7 +20,10 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         // 调用管理器的静态方法来显示 Tooltip
-        SkillTooltip.ShowTooltip_Static(skillData.description);
+        SkillTooltip.ShowTooltip_Static(
+            skillData.description +
+            "\n----------------------------------------------------\n" +
+            skillData.backgroundStory);
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     [Header("Input Action Asset")]
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
-    public GameObject statusCanvas;
+    public GameObject statusPanel;
     [SerializeField] private Animator skillPanelAnimator;
 
     #endregion
@@ -165,12 +165,12 @@ public class UIManager : MonoBehaviour
 
     private void ShowMyStatusUI()
     {
-        statusCanvas.SetActive(true);
+        statusPanel.SetActive(true);
     }
 
     private void HideMyStatusUI()
     {
-        statusCanvas.SetActive(false);
+        statusPanel.SetActive(false);
     }
 
     public void UpdateMyStatusUI(PlayerState state)
@@ -182,7 +182,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            healthSlider = statusCanvas.GetComponentInChildren<UnityEngine.UI.Slider>();
+            healthSlider = statusPanel.GetComponentInChildren<UnityEngine.UI.Slider>();
             if (healthSlider != null)
             {
                 healthSlider.maxValue = state.MaxHp;
@@ -196,7 +196,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            healthText = statusCanvas.GetComponentInChildren<TextMeshProUGUI>();
+            healthText = statusPanel.GetComponentInChildren<TextMeshProUGUI>();
             if (healthText != null)
             {
                 healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
@@ -209,7 +209,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            abilityRadarChart = statusCanvas.GetComponentInChildren<HexagonRadarChart>();
+            abilityRadarChart = statusPanel.GetComponentInChildren<HexagonRadarChart>();
             if (abilityRadarChart != null)
             {
                 abilityRadarChart.SetStats(state);
@@ -458,7 +458,7 @@ public class UIManager : MonoBehaviour
 
         if (panelToShow == _createRoomPanel)
         {
-            _roomNameField.value = $"{GameManager.MyInfo.Name}'s Room";
+            _roomNameField.value = $"{GameManager.Instance.MyInfo.Name}'s Room";
             _createRoomErrorLabel.style.visibility = Visibility.Hidden;
             _roomNameField.Focus();
         }
@@ -628,19 +628,19 @@ public class UIManager : MonoBehaviour
             var nameLabel = element.Q<Label>(className: "player-name");
             var avatarElement = element.Q<VisualElement>(className: "player-avatar");
 
-            bool isOwner = playerInfo.Id.Equals(_currentLobby.OwnerId);
+            bool isOwner = playerInfo.CSteamID.Equals(_currentLobby.OwnerId);
             nameLabel.text = isOwner ? $"{playerInfo.Name} (房主)" : playerInfo.Name;
             nameLabel.EnableInClassList("owner-indicator", isOwner);
 
-            if (_avatars.ContainsKey(playerInfo.Id))
+            if (_avatars.ContainsKey(playerInfo.CSteamID))
             {
-                avatarElement.style.backgroundImage = new StyleBackground(_avatars[playerInfo.Id]);
+                avatarElement.style.backgroundImage = new StyleBackground(_avatars[playerInfo.CSteamID]);
                 avatarElement.style.backgroundColor = Color.clear;
             }
             else
             {
                 SetDefaultAvatar(avatarElement);
-                NetworkManager.ActiveLayer?.RequestAvatar(playerInfo.Id);
+                NetworkManager.ActiveLayer?.RequestAvatar(playerInfo.CSteamID);
             }
         };
 

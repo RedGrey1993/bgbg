@@ -1,9 +1,11 @@
 using UnityEngine;
-public enum MessageType {
+public enum MessageType
+{
     FullState = 1,
     StateUpdate,
     Input,
     PlayersUpdate,
+    LearnSkill,
 };
 
 public enum MessageTarget
@@ -14,6 +16,12 @@ public enum MessageTarget
     All,
     // 发送给Host
     Host,
+}
+
+public enum ItemChangeType
+{
+    Absolute = 0,
+    Relative = 1,
 }
 
 public enum CharacterType

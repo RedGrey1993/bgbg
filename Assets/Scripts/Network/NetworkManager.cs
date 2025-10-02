@@ -25,7 +25,10 @@ public class NetworkManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
+    }
+    
+    private void Start()
+    {
         Initialize();
     }
 
@@ -53,9 +56,12 @@ public class NetworkManager : MonoBehaviour
 
         if (ActiveLayer != null)
         {
-            if (ActiveLayer.Initialize()) {
+            if (ActiveLayer.Initialize())
+            {
                 Debug.Log($"NetworkManager: {networkMode} layer initialized.");
-            } else {
+            }
+            else
+            {
                 Debug.LogError($"NetworkManager: Failed to initialize {networkMode} network layer.");
                 ActiveLayer = null;
             }

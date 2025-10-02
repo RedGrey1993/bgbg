@@ -47,9 +47,9 @@ public class SteamNetworkLayer : INetworkLayer
             return false;
         }
 
-        GameManager.MyInfo = new PlayerInfo
+        GameManager.Instance.MyInfo = new PlayerInfo
         {
-            Id = SteamUser.GetSteamID().m_SteamID.ToString(),
+            CSteamID = SteamUser.GetSteamID().m_SteamID.ToString(),
             Name = SteamFriends.GetPersonaName()
         };
 
@@ -196,14 +196,14 @@ public class SteamNetworkLayer : INetworkLayer
         if (!currentLobbyId.IsValid()) return;
         foreach (var player in GameManager.Instance.Players)
         {
-            CSteamID steamId = new CSteamID(Convert.ToUInt64(player.Id));
+            CSteamID steamId = new CSteamID(Convert.ToUInt64(player.CSteamID));
             Send(steamId, data, reliable);
         }
     }
 
     public void SendToPlayer(PlayerInfo player, byte[] data, bool reliable)
     {
-        CSteamID steamId = new CSteamID(Convert.ToUInt64(player.Id));
+        CSteamID steamId = new CSteamID(Convert.ToUInt64(player.CSteamID));
         Send(steamId, data, reliable);
     }
 
@@ -301,7 +301,7 @@ public class SteamNetworkLayer : INetworkLayer
         if (IsHost)
         {
             var newPlayerList = new List<PlayerInfo>();
-            var previousPlayerIds = new HashSet<string>(GameManager.Instance.Players.Select(p => p.Id));
+            var previousPlayerIds = new HashSet<string>(GameManager.Instance.Players.Select(p => p.CSteamID));
 
             int memberCount = SteamMatchmaking.GetNumLobbyMembers(currentLobbyId);
             for (int i = 0; i < memberCount; i++)
@@ -309,7 +309,7 @@ public class SteamNetworkLayer : INetworkLayer
                 CSteamID memberId = SteamMatchmaking.GetLobbyMemberByIndex(currentLobbyId, i);
                 var playerInfo = new PlayerInfo
                 {
-                    Id = memberId.m_SteamID.ToString(),
+                    CSteamID = memberId.m_SteamID.ToString(),
                     Name = SteamFriends.GetFriendPersonaName(memberId)
                 };
                 newPlayerList.Add(playerInfo);
@@ -324,7 +324,7 @@ public class SteamNetworkLayer : INetworkLayer
             // Any IDs left in previousPlayerIds are players who have left
             foreach (var oldPlayerId in previousPlayerIds)
             {
-                var playerToRemove = GameManager.Instance.Players.FirstOrDefault(p => p.Id.Equals(oldPlayerId));
+                var playerToRemove = GameManager.Instance.Players.FirstOrDefault(p => p.CSteamID.Equals(oldPlayerId));
                 OnPlayerLeft?.Invoke(playerToRemove);
             }
         }
@@ -360,14 +360,14 @@ public class SteamNetworkLayer : INetworkLayer
         {
             var newInfo = new PlayerInfo
             {
-                Id = changedUserId.m_SteamID.ToString(),
+                CSteamID = changedUserId.m_SteamID.ToString(),
                 Name = SteamFriends.GetFriendPersonaName(changedUserId)
             };
 
             if (IsHost)
             {
                 // Update our local player list if we are the host
-                var existingPlayer = GameManager.Instance.Players.FirstOrDefault(p => p.Id == newInfo.Id);
+                var existingPlayer = GameManager.Instance.Players.FirstOrDefault(p => p.CSteamID == newInfo.CSteamID);
                 if (!existingPlayer.Equals(default(PlayerInfo)))
                 {
                     GameManager.Instance.Players.Remove(existingPlayer);
