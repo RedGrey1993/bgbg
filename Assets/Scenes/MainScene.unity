@@ -815,6 +815,7 @@ GameObject:
   - component: {fileID: 1032489889}
   - component: {fileID: 1032489888}
   - component: {fileID: 1032489890}
+  - component: {fileID: 1032489891}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -891,6 +892,33 @@ MonoBehaviour:
   descriptionText: {fileID: 967428714}
   offset: {x: 10, y: 10}
   followMouse: 0
+--- !u!114 &1032489891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032489886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd15a0d117649bb43a98d4f2d047cd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillPanelController
+  learnableSkillsPanel: {fileID: 1352085791}
+  ownedSkillsContainer: {fileID: 525732256}
+  learnableSkillsContainer: {fileID: 1352085792}
+  ownedSkillIconPrefab: {fileID: 7157209194663601704, guid: db441475d3a8ed847835ed75dbb97d4d, type: 3}
+  skillChoiceButtonPrefab: {fileID: 2299674220110527827, guid: 6334b599132f81544b733459d5f7122c, type: 3}
+  timerText: {fileID: 306613133}
+  choiceTime: 30
+  testSkills1:
+  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
+  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
+  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
+  testSkills2:
+  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
+  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
+  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
 --- !u!1 &1042778857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2422,7 +2450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2462,11 +2490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6225981350945018915, guid: 6334b599132f81544b733459d5f7122c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2480,7 +2508,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 141652261995240025, guid: 6334b599132f81544b733459d5f7122c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
