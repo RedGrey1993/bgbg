@@ -4,10 +4,11 @@ package NetworkMessageProto;
 
 message GenericMessage
 {
-    uint32 Type = 1;
-    InputMessage InputMsg = 2;
-    StateUpdateMessage StateMsg = 3;
-    PlayersUpdateMessage PlayersMsg = 4;
+    uint32 Target = 1;
+    uint32 Type = 2;
+    InputMessage InputMsg = 3;
+    StateUpdateMessage StateMsg = 4;
+    PlayersUpdateMessage PlayersMsg = 5;
 }
 
 message Vec2

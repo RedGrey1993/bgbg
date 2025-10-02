@@ -6,6 +6,16 @@ public enum MessageType {
     PlayersUpdate,
 };
 
+public enum MessageTarget
+{
+    // 本地消息，只有自己发送给自己会是Local
+    Local = 0,
+    // 发送给所有人，包括Host自己
+    All,
+    // 发送给Host
+    Host,
+}
+
 public enum CharacterType
 {
     Unset = 0,

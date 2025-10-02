@@ -25,30 +25,30 @@ namespace NetworkMessageProto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlOZXR3b3JrTWVzc2FnZVByb3RvLnByb3RvEhNOZXR3b3JrTWVzc2FnZVBy",
-            "b3RvIs0BCg5HZW5lcmljTWVzc2FnZRIMCgRUeXBlGAEgASgNEjMKCElucHV0",
-            "TXNnGAIgASgLMiEuTmV0d29ya01lc3NhZ2VQcm90by5JbnB1dE1lc3NhZ2US",
-            "OQoIU3RhdGVNc2cYAyABKAsyJy5OZXR3b3JrTWVzc2FnZVByb3RvLlN0YXRl",
-            "VXBkYXRlTWVzc2FnZRI9CgpQbGF5ZXJzTXNnGAQgASgLMikuTmV0d29ya01l",
-            "c3NhZ2VQcm90by5QbGF5ZXJzVXBkYXRlTWVzc2FnZSIcCgRWZWMyEgkKAVgY",
-            "ASABKAISCQoBWRgCIAEoAiKYAQoMSW5wdXRNZXNzYWdlEhAKCFBsYXllcklk",
-            "GAEgASgJEgwKBFRpY2sYAiABKA0SDAoEVHlwZRgDIAEoDRIsCglNb3ZlSW5w",
-            "dXQYBCABKAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISLAoJTG9va0lu",
-            "cHV0GAUgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIvwBCgtQbGF5",
-            "ZXJTdGF0ZRIQCghQbGF5ZXJJZBgBIAEoCRISCgpQbGF5ZXJOYW1lGAIgASgJ",
-            "Eg0KBW1heEhwGAMgASgNEhEKCWN1cnJlbnRIcBgEIAEoDRIRCgltb3ZlU3Bl",
-            "ZWQYBSABKAISEwoLYnVsbGV0U3BlZWQYBiABKAISDgoGZGFtYWdlGAcgASgN",
-            "EhYKDnNob290RnJlcXVlbmN5GAggASgNEhIKCnNob290UmFuZ2UYCSABKA0S",
-            "FAoMY3JpdGljYWxSYXRlGAogASgNEisKCFBvc2l0aW9uGAsgASgLMhkuTmV0",
-            "d29ya01lc3NhZ2VQcm90by5WZWMyIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIx",
-            "CgdQbGF5ZXJzGAEgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJT",
-            "dGF0ZRIMCgRUaWNrGAIgASgNIkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAK",
-            "B1BsYXllcnMYASADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllcklu",
-            "Zm8iJgoKUGxheWVySW5mbxIKCgJJZBgBIAEoCRIMCgROYW1lGAIgASgJYgZw",
-            "cm90bzM="));
+            "b3RvIt0BCg5HZW5lcmljTWVzc2FnZRIOCgZUYXJnZXQYASABKA0SDAoEVHlw",
+            "ZRgCIAEoDRIzCghJbnB1dE1zZxgDIAEoCzIhLk5ldHdvcmtNZXNzYWdlUHJv",
+            "dG8uSW5wdXRNZXNzYWdlEjkKCFN0YXRlTXNnGAQgASgLMicuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5TdGF0ZVVwZGF0ZU1lc3NhZ2USPQoKUGxheWVyc01zZxgF",
+            "IAEoCzIpLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyc1VwZGF0ZU1lc3Nh",
+            "Z2UiHAoEVmVjMhIJCgFYGAEgASgCEgkKAVkYAiABKAIimAEKDElucHV0TWVz",
+            "c2FnZRIQCghQbGF5ZXJJZBgBIAEoCRIMCgRUaWNrGAIgASgNEgwKBFR5cGUY",
+            "AyABKA0SLAoJTW92ZUlucHV0GAQgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90",
+            "by5WZWMyEiwKCUxvb2tJbnB1dBgFIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJv",
+            "dG8uVmVjMiL8AQoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKAkSEgoK",
+            "UGxheWVyTmFtZRgCIAEoCRINCgVNYXhIcBgDIAEoDRIRCglDdXJyZW50SHAY",
+            "BCABKA0SEQoJTW92ZVNwZWVkGAUgASgCEhMKC0J1bGxldFNwZWVkGAYgASgC",
+            "Eg4KBkRhbWFnZRgHIAEoDRIWCg5TaG9vdEZyZXF1ZW5jeRgIIAEoDRISCgpT",
+            "aG9vdFJhbmdlGAkgASgNEhQKDENyaXRpY2FsUmF0ZRgKIAEoDRIrCghQb3Np",
+            "dGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMiJVChJTdGF0",
+            "ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVycxgBIAMoCzIgLk5ldHdvcmtNZXNz",
+            "YWdlUHJvdG8uUGxheWVyU3RhdGUSDAoEVGljaxgCIAEoDSJIChRQbGF5ZXJz",
+            "VXBkYXRlTWVzc2FnZRIwCgdQbGF5ZXJzGAEgAygLMh8uTmV0d29ya01lc3Nh",
+            "Z2VQcm90by5QbGF5ZXJJbmZvIiYKClBsYXllckluZm8SCgoCSWQYASABKAkS",
+            "DAoETmFtZRgCIAEoCWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.GenericMessage), global::NetworkMessageProto.GenericMessage.Parser, new[]{ "Type", "InputMsg", "StateMsg", "PlayersMsg" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.GenericMessage), global::NetworkMessageProto.GenericMessage.Parser, new[]{ "Target", "Type", "InputMsg", "StateMsg", "PlayersMsg" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.Vec2), global::NetworkMessageProto.Vec2.Parser, new[]{ "X", "Y" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "Position" }, null, null, null, null),
@@ -96,6 +96,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GenericMessage(GenericMessage other) : this() {
+      target_ = other.target_;
       type_ = other.type_;
       inputMsg_ = other.inputMsg_ != null ? other.inputMsg_.Clone() : null;
       stateMsg_ = other.stateMsg_ != null ? other.stateMsg_.Clone() : null;
@@ -109,8 +110,20 @@ namespace NetworkMessageProto {
       return new GenericMessage(this);
     }
 
+    /// <summary>Field number for the "Target" field.</summary>
+    public const int TargetFieldNumber = 1;
+    private uint target_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Target {
+      get { return target_; }
+      set {
+        target_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Type" field.</summary>
-    public const int TypeFieldNumber = 1;
+    public const int TypeFieldNumber = 2;
     private uint type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +135,7 @@ namespace NetworkMessageProto {
     }
 
     /// <summary>Field number for the "InputMsg" field.</summary>
-    public const int InputMsgFieldNumber = 2;
+    public const int InputMsgFieldNumber = 3;
     private global::NetworkMessageProto.InputMessage inputMsg_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -134,7 +147,7 @@ namespace NetworkMessageProto {
     }
 
     /// <summary>Field number for the "StateMsg" field.</summary>
-    public const int StateMsgFieldNumber = 3;
+    public const int StateMsgFieldNumber = 4;
     private global::NetworkMessageProto.StateUpdateMessage stateMsg_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -146,7 +159,7 @@ namespace NetworkMessageProto {
     }
 
     /// <summary>Field number for the "PlayersMsg" field.</summary>
-    public const int PlayersMsgFieldNumber = 4;
+    public const int PlayersMsgFieldNumber = 5;
     private global::NetworkMessageProto.PlayersUpdateMessage playersMsg_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -172,6 +185,7 @@ namespace NetworkMessageProto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Target != other.Target) return false;
       if (Type != other.Type) return false;
       if (!object.Equals(InputMsg, other.InputMsg)) return false;
       if (!object.Equals(StateMsg, other.StateMsg)) return false;
@@ -183,6 +197,7 @@ namespace NetworkMessageProto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Target != 0) hash ^= Target.GetHashCode();
       if (Type != 0) hash ^= Type.GetHashCode();
       if (inputMsg_ != null) hash ^= InputMsg.GetHashCode();
       if (stateMsg_ != null) hash ^= StateMsg.GetHashCode();
@@ -205,20 +220,24 @@ namespace NetworkMessageProto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Type != 0) {
+      if (Target != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(Target);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
         output.WriteUInt32(Type);
       }
       if (inputMsg_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(InputMsg);
       }
       if (stateMsg_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(StateMsg);
       }
       if (playersMsg_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(PlayersMsg);
       }
       if (_unknownFields != null) {
@@ -231,20 +250,24 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Type != 0) {
+      if (Target != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(Target);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
         output.WriteUInt32(Type);
       }
       if (inputMsg_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(InputMsg);
       }
       if (stateMsg_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(StateMsg);
       }
       if (playersMsg_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(PlayersMsg);
       }
       if (_unknownFields != null) {
@@ -257,6 +280,9 @@ namespace NetworkMessageProto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Target != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Target);
+      }
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Type);
       }
@@ -280,6 +306,9 @@ namespace NetworkMessageProto {
     public void MergeFrom(GenericMessage other) {
       if (other == null) {
         return;
+      }
+      if (other.Target != 0) {
+        Target = other.Target;
       }
       if (other.Type != 0) {
         Type = other.Type;
@@ -322,24 +351,28 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
+            Target = input.ReadUInt32();
+            break;
+          }
+          case 16: {
             Type = input.ReadUInt32();
             break;
           }
-          case 18: {
+          case 26: {
             if (inputMsg_ == null) {
               InputMsg = new global::NetworkMessageProto.InputMessage();
             }
             input.ReadMessage(InputMsg);
             break;
           }
-          case 26: {
+          case 34: {
             if (stateMsg_ == null) {
               StateMsg = new global::NetworkMessageProto.StateUpdateMessage();
             }
             input.ReadMessage(StateMsg);
             break;
           }
-          case 34: {
+          case 42: {
             if (playersMsg_ == null) {
               PlayersMsg = new global::NetworkMessageProto.PlayersUpdateMessage();
             }
@@ -366,24 +399,28 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
+            Target = input.ReadUInt32();
+            break;
+          }
+          case 16: {
             Type = input.ReadUInt32();
             break;
           }
-          case 18: {
+          case 26: {
             if (inputMsg_ == null) {
               InputMsg = new global::NetworkMessageProto.InputMessage();
             }
             input.ReadMessage(InputMsg);
             break;
           }
-          case 26: {
+          case 34: {
             if (stateMsg_ == null) {
               StateMsg = new global::NetworkMessageProto.StateUpdateMessage();
             }
             input.ReadMessage(StateMsg);
             break;
           }
-          case 34: {
+          case 42: {
             if (playersMsg_ == null) {
               PlayersMsg = new global::NetworkMessageProto.PlayersUpdateMessage();
             }
@@ -1075,7 +1112,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "maxHp" field.</summary>
+    /// <summary>Field number for the "MaxHp" field.</summary>
     public const int MaxHpFieldNumber = 3;
     private uint maxHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1087,7 +1124,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "currentHp" field.</summary>
+    /// <summary>Field number for the "CurrentHp" field.</summary>
     public const int CurrentHpFieldNumber = 4;
     private uint currentHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1099,7 +1136,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "moveSpeed" field.</summary>
+    /// <summary>Field number for the "MoveSpeed" field.</summary>
     public const int MoveSpeedFieldNumber = 5;
     private float moveSpeed_;
     /// <summary>
@@ -1114,7 +1151,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "bulletSpeed" field.</summary>
+    /// <summary>Field number for the "BulletSpeed" field.</summary>
     public const int BulletSpeedFieldNumber = 6;
     private float bulletSpeed_;
     /// <summary>
@@ -1129,7 +1166,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "damage" field.</summary>
+    /// <summary>Field number for the "Damage" field.</summary>
     public const int DamageFieldNumber = 7;
     private uint damage_;
     /// <summary>
@@ -1144,7 +1181,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "shootFrequency" field.</summary>
+    /// <summary>Field number for the "ShootFrequency" field.</summary>
     public const int ShootFrequencyFieldNumber = 8;
     private uint shootFrequency_;
     /// <summary>
@@ -1159,7 +1196,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "shootRange" field.</summary>
+    /// <summary>Field number for the "ShootRange" field.</summary>
     public const int ShootRangeFieldNumber = 9;
     private uint shootRange_;
     /// <summary>
@@ -1174,7 +1211,7 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "criticalRate" field.</summary>
+    /// <summary>Field number for the "CriticalRate" field.</summary>
     public const int CriticalRateFieldNumber = 10;
     private uint criticalRate_;
     /// <summary>

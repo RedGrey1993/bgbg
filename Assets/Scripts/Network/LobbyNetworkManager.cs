@@ -110,7 +110,7 @@ public class LobbyNetworkManager : MonoBehaviour
         try
         {
             SerializeUtil.Deserialize(data, out GenericMessage gen);
-            RouteMessage(gen);
+            GameManager.Instance.ReceiveMessage(gen);
         }
         catch (Exception e)
         {
@@ -118,49 +118,15 @@ public class LobbyNetworkManager : MonoBehaviour
         }
     }
 
-    private void RouteMessage(GenericMessage msg)
+    public void SendToAll(GenericMessage msg, bool reliable)
     {
-        if (msg == null) return;
-
-        switch (msg.Type)
-        {
-            case (uint)MessageType.Input:
-                {
-                    GameManager.Instance.OnPlayerInput(msg.InputMsg);
-                    break;
-                }
-
-            case (uint)MessageType.StateUpdate:
-                {
-                    GameManager.Instance.ApplyStateUpdate(msg.StateMsg);
-                    break;
-                }
-            case (uint)MessageType.FullState:
-                {
-                    GameManager.Instance.ApplyFullState(msg.StateMsg);
-                    break;
-                }
-            case (uint)MessageType.PlayersUpdate:
-                {
-                    GameManager.Instance.OnPlayersUpdate(msg.PlayersMsg);
-                    break;
-                }
-        }
+        SerializeUtil.Serialize(msg, out byte[] data);
+        NetworkManager.ActiveLayer.SendToAll(data, reliable);
     }
 
-    // Called by the local PlayerController to send its input
-    public void SendInput(InputMessage inputMsg)
+    public void SendToHost(GenericMessage msg, bool reliable)
     {
-        if (NetworkManager.ActiveLayer == null || !IsInLobby) return;
-        // Host and Client both send their input to the host through the network layer
-        // for consistent processing and to simulate network latency for the host.
-        var genericMessage = new GenericMessage
-        {
-            Type = (uint)MessageType.Input,
-            InputMsg = inputMsg
-        };
-        SerializeUtil.Serialize(genericMessage, out byte[] data);
-        // NetworkManager.ActiveLayer.SendToHost(data, true);
-        NetworkManager.ActiveLayer.SendToAll(data, true);
+        SerializeUtil.Serialize(msg, out byte[] data);
+        NetworkManager.ActiveLayer.SendToHost(data, reliable);
     }
 }

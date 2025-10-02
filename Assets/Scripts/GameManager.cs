@@ -153,10 +153,9 @@ public class GameManager : MonoBehaviour
             var playerInput = playerObject.GetComponent<CharacterInput>();
             if (playerInput != null)
             {
-                if (IsHost())
-                {
-                    playerInput.MoveInput = new Vector2(inputMsg.MoveInput.X, inputMsg.MoveInput.Y);
-                }
+                // if (IsLocalOrHost()) // 移动指令都由Host处理后再同步给Client，射击指令（LookInput）后Client自己处理
+                // 上面的注释是老逻辑，现在最新的逻辑是所有输入指令都由Client自己处理，但Host会定期同步执行后的状态
+                playerInput.MoveInput = new Vector2(inputMsg.MoveInput.X, inputMsg.MoveInput.Y);
                 playerInput.LookInput = new Vector2(inputMsg.LookInput.X, inputMsg.LookInput.Y);
             }
         }
@@ -339,11 +338,12 @@ public class GameManager : MonoBehaviour
 
         playerObjects[playerId] = go;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
-        if (!IsLocalOrHost())
-        {
-            var collider = go.GetComponent<Collider2D>();
-            collider.isTrigger = true;
-        }
+        // 上面的注释是老逻辑，新逻辑Client都处理，但是Host会定期同步统一的状态
+        // if (!IsLocalOrHost())
+        // {
+        //     var collider = go.GetComponent<Collider2D>();
+        //     collider.isTrigger = true;
+        // }
 
         // 将血条显示到玩家对象的头上
         var miniStatusCanvas = go.GetComponentInChildren<Canvas>();
@@ -568,7 +568,7 @@ public class GameManager : MonoBehaviour
         x = x ^ (x >> 16);
         return x;
     }
-    
+
     public GameObject FindNearestPlayerInRange(Vector2 position, uint range, string srcCharacterId)
     {
         GameObject nearestPlayer = null;
@@ -590,4 +590,65 @@ public class GameManager : MonoBehaviour
         }
         return nearestPlayer;
     }
+
+    #region Message Handlers
+    public void SendMessage(GenericMessage msg, bool reliable)
+    {
+        if (IsLocal() || msg.Target == (uint)MessageTarget.Local)
+        {
+            ReceiveMessage(msg);
+        }
+        else
+        {
+            switch (msg.Target)
+            {
+                case (uint)MessageTarget.All:
+                    {
+                        LobbyNetworkManager.Instance.SendToAll(msg, reliable);
+                        break;
+                    }
+                case (uint)MessageTarget.Host:
+                    {
+                        LobbyNetworkManager.Instance.SendToHost(msg, reliable);
+                        break;
+                    }
+            }
+        }
+    }
+
+    public void ReceiveMessage(GenericMessage msg)
+    {
+        if (msg == null) return;
+        // Local消息：只有自己会发给自己，处理
+        // All消息：Host和Client都处理
+        // Host消息：只有Host处理
+        // IsLocal()：离线模式，处理所有消息
+        if (!IsLocal() && msg.Target == (uint)MessageTarget.Host && !IsHost()) return;
+
+        switch (msg.Type)
+        {
+            case (uint)MessageType.Input:
+                {
+                    OnPlayerInput(msg.InputMsg);
+                    break;
+                }
+
+            case (uint)MessageType.StateUpdate:
+                {
+                    ApplyStateUpdate(msg.StateMsg);
+                    break;
+                }
+            case (uint)MessageType.FullState:
+                {
+                    ApplyFullState(msg.StateMsg);
+                    break;
+                }
+            case (uint)MessageType.PlayersUpdate:
+                {
+                    OnPlayersUpdate(msg.PlayersMsg);
+                    break;
+                }
+        }
+    }
+    #endregion Message Handlers
 }

@@ -45,33 +45,32 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // If we are in an online lobby, send input to the network manager
-        if (LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby)
+        // We are in an online lobby, send input to the network manager
+        uint tick = (uint)(Time.realtimeSinceStartup * 1000);
+        var inputMsg = new InputMessage
         {
-            // We are in an online lobby, send input to the network manager
-            uint tick = (uint)(Time.realtimeSinceStartup * 1000);
-            var inputMsg = new InputMessage
+            PlayerId = GameManager.MyInfo.Id.ToString(),
+            Tick = tick,
+            MoveInput = new Vec2
             {
-                PlayerId = GameManager.MyInfo.Id.ToString(),
-                Tick = tick,
-                MoveInput = new Vec2
-                {
-                    X = moveInput.x,
-                    Y = moveInput.y
-                },
-                LookInput = new Vec2
-                {
-                    X = lookInput.x,
-                    Y = lookInput.y
-                }
-            };
-            LobbyNetworkManager.Instance.SendInput(inputMsg);
-        }
-        else // Offline local player, set input directly
+                X = moveInput.x,
+                Y = moveInput.y
+            },
+            LookInput = new Vec2
+            {
+                X = lookInput.x,
+                Y = lookInput.y
+            }
+        };
+        var genericMessage = new GenericMessage
         {
-            playerInput.MoveInput = moveInput;
-            playerInput.LookInput = lookInput;
-        }
+            // 所有输入指令都由Client自己处理，但Host会定期同步执行后的状态
+            Target = (uint)MessageTarget.All,
+            Type = (uint)MessageType.Input,
+            InputMsg = inputMsg
+        };
+        // 输入指令频率很高，丢失了也会很快被下一次输入覆盖，因此不需要可靠传输
+        GameManager.Instance.SendMessage(genericMessage, false);
     }
 
     void OnEnable()
