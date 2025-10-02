@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
   m_Name: FireballTest
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 9999
   skillName: Fireball Test
   description: Test skill data, Fireball
   backgroundStory: 

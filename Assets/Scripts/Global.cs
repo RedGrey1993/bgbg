@@ -1,8 +1,10 @@
 using UnityEngine;
 public enum MessageType
 {
-    FullState = 1,
-    StateUpdate,
+    Unset = 0,
+    FullTransformState = 1,
+    TransformStateUpdate,
+    FireRateStateUpdate,
     Input,
     PlayersUpdate,
     LearnSkill,
@@ -14,6 +16,8 @@ public enum MessageTarget
     Local = 0,
     // 发送给所有人，包括Host自己
     All,
+    // 发送给除了自己以外的所有人
+    Others,
     // 发送给Host
     Host,
 }
@@ -46,6 +50,8 @@ public static class Constants
     public const int RoomMaxHeight = 40;
     public const float CharacterMaxRadius = 0.6f;
     public const float WallMaxThickness = 1.2f;
+    // 每升1级，从3个技能中选择1个
+    public const int SkillChooseNumber = 3;
 
     public static void PositionToIndex(Vector2 position, out int x, out int y)
     {

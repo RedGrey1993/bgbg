@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
-    public static uint currentPlayerId = 0;
-    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = currentPlayerId, CSteamID = "PlayerOffline", Name = "Player Offline" };
+    public static uint nextPlayerId = 0;
+    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = nextPlayerId, CSteamID = "PlayerOffline", Name = "Player Offline" };
 
     public event Action PlayersUpdateActions;
     public GameObject mainCameraPrefab;
@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerInfoMap.Clear();
         Players.Clear();
-        currentPlayerId = 0;
-        MyInfo.Id = currentPlayerId++;
+        nextPlayerId = 0;
+        MyInfo.Id = nextPlayerId++;
         PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
         InitializePlayers();
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region Game Initialization
-    public void InitializeGame()
+    public void InitializeGame_Host()
     {
         if (IsLocalOrHost())
         {
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
                     {
                         CSteamID = $"{Constants.AIPlayerPrefix}{i}",
                         Name = $"{Constants.AIPlayerPrefix}{i}",
-                        Id = currentPlayerId++,
+                        Id = nextPlayerId++,
                     };
                     PlayerInfoMap[player.Id] = player;
                     Players.Add(player);
@@ -108,6 +108,19 @@ public class GameManager : MonoBehaviour
             }
             InitializePlayers();
             InitializeRooms();
+            // 游戏刚开始时可以有一次选择技能的机会
+            UIManager.Instance.ToggleSkillPanel();
+            var skillNum = SkillDatabase.Instance.Skills.Count;
+            List<SkillData> skills = new List<SkillData>();
+            for (int i = 0; i < Constants.SkillChooseNumber; i++)
+            {
+                var skillId = UnityEngine.Random.Range(0, skillNum);
+                var skillData = SkillDatabase.Instance.Skills[skillId];
+                skills.Add(skillData);
+            }
+            SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+            skillPanelController.Initialize();
+            skillPanelController.AddNewSkillChoice(skills);
         }
         else
         {
@@ -121,7 +134,7 @@ public class GameManager : MonoBehaviour
     {
         if (IsHost())
         {
-            player.Id = currentPlayerId++;
+            player.Id = nextPlayerId++;
             PlayerInfoMap[player.Id] = player;
             Players.Add(player);
             CreatePlayerObject(player.Id, ColorFromID(player.CSteamID), false);
@@ -189,27 +202,31 @@ public class GameManager : MonoBehaviour
             Vector2 pos = kvp.Value.transform.position;
             var playerState = kvp.Value.GetComponent<CharacterStatus>().State;
             playerState.Position = new Vec2 { X = pos.x, Y = pos.y };
-            su.Players.Add(playerState);
+            su.Players.Add(new PlayerState
+            {
+                PlayerId = playerState.PlayerId,
+                Position = new Vec2 { X = pos.x, Y = pos.y },
+            });
         }
         var genericMessage = new GenericMessage
         {
-            Type = (uint)MessageType.StateUpdate,
+            Target = (uint)MessageTarget.Others,
+            Type = (uint)MessageType.TransformStateUpdate,
             StateMsg = su
         };
         // 每隔2秒同步一次完整的状态，Client会根据FullState消息创建或删除对象
         if (Time.realtimeSinceStartup - lastFullStateSentTime > 2.0f)
         {
             lastFullStateSentTime = Time.realtimeSinceStartup;
-            genericMessage.Type = (uint)MessageType.FullState;
+            genericMessage.Type = (uint)MessageType.FullTransformState;
         }
         // 默认同步增量状态，Client只会更新自己已经存在的对象，不会根据StateUpdate消息创建或删除对象
-        SerializeUtil.Serialize(genericMessage, out byte[] data);
-        NetworkManager.ActiveLayer.SendToAll(data, false);
+        SendMessage(genericMessage, false);
     }
 
-    public void ApplyStateUpdate(StateUpdateMessage su)
+    private void ApplyTransformStateUpdate_Client(StateUpdateMessage su)
     {
-        if (IsHost()) return; // Host不处理StateUpdate消息，因为StateUpdate消息由Host发送
+        if (IsHost()) return; // Host不处理TransformStateUpdate消息，因为TransformStateUpdate消息由Host发送
         if (su == null) return;
         foreach (var ps in su.Players)
         {
@@ -224,13 +241,16 @@ public class GameManager : MonoBehaviour
                     rb.angularVelocity = 0f;
                 }
                 var playerStatus = go.GetComponent<CharacterStatus>();
-                if (playerStatus) playerStatus.State = ps;
+                if (playerStatus)
+                {
+                    playerStatus.State.Position = ps.Position;
+                }
                 go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
             }
         }
     }
 
-    public void ApplyFullState(StateUpdateMessage su)
+    public void ApplyFullTransformState_Client(StateUpdateMessage su)
     {
         if (IsHost()) return; // Host不处理FullState消息，因为FullState消息由Host发送
         if (su == null) return;
@@ -248,8 +268,11 @@ public class GameManager : MonoBehaviour
                     rb.angularVelocity = 0f;
                 }
                 var playerStatus = go.GetComponent<CharacterStatus>();
-                if (playerStatus) playerStatus.State = ps;
-                Debug.Log($"fhhtest, ApplyStateUpdate: {go.name} {playerStatus.State}");
+                if (playerStatus)
+                {
+                    playerStatus.State.Position = ps.Position;
+                }
+                Debug.Log($"fhhtest, ApplyFullTransformState_Client: {go.name} {playerStatus.State}");
                 go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
             }
         }
@@ -622,11 +645,83 @@ public class GameManager : MonoBehaviour
             Type = (uint)MessageType.LearnSkill,
             LearnSkillMsg = new LearnSkillMessage
             {
-                // PlayerId = MyInfo.Id,
-                SkillId = (uint)newSkill.Id
+                PlayerId = MyInfo.Id,
+                SkillId = newSkill.id
             }
         };
+
+        SendMessage(msg, true);
     }
+
+    private void CalculateSkillEffect_Host(uint skillId, uint targetCharacterId)
+    {
+        var skill = SkillDatabase.Instance.GetSkill(skillId);
+        var playerObj = playerObjects[PlayerInfoMap[targetCharacterId].CSteamID];
+        var playerStatus = playerObj.GetComponent<CharacterStatus>();
+        var playerState = playerStatus.State;
+
+        var msg = new GenericMessage
+        {
+            Target = (uint)MessageTarget.Others,
+            Type = (uint)MessageType.Unset,
+            StateMsg = new StateUpdateMessage
+            {
+                Tick = (uint)(Time.realtimeSinceStartup * 1000),
+                Players = { new PlayerState {
+                    PlayerId = playerState.PlayerId,
+                } }
+            }
+        };
+
+        if (skill.deltaFireRate != 0)
+        {
+            switch (skill.fireRateChangeType)
+            {
+                case ItemChangeType.Absolute:
+                    {
+                        playerState.ShootFrequency += skill.deltaFireRate;
+                        break;
+                    }
+                case ItemChangeType.Relative:
+                    {
+                        playerState.ShootFrequency = (uint)(playerState.ShootFrequency * (1.0f + skill.deltaFireRate / 100.0f));
+                        break;
+                    }
+            }
+            msg.Type = (uint)MessageType.FireRateStateUpdate;
+            msg.StateMsg.Players[0].ShootFrequency = playerState.ShootFrequency;
+        }
+
+        if (targetCharacterId == MyInfo.Id) UIManager.Instance.UpdateMyStatusUI(playerState);
+        SendMessage(msg, true);
+    }
+
+    private void UpdateAbilityState_Client(GenericMessage msg)
+    {
+        if (IsHost()) return; // Host不处理TransformStateUpdate消息，因为TransformStateUpdate消息由Host发送
+        if (msg == null || msg.StateMsg == null) return;
+        foreach (var ps in msg.StateMsg.Players)
+        {
+            if (!PlayerInfoMap.TryGetValue(ps.PlayerId, out PlayerInfo player)) continue;
+            if (playerObjects.TryGetValue(player.CSteamID, out GameObject go) && go != null)
+            {
+                var playerStatus = go.GetComponent<CharacterStatus>();
+                if (playerStatus)
+                {
+                    switch (msg.Type)
+                    {
+                        case (uint)MessageType.FireRateStateUpdate:
+                            {
+                                playerStatus.State.ShootFrequency = ps.ShootFrequency;
+                                break;
+                            }
+                    }
+                    if (ps.PlayerId == MyInfo.Id) UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
+                }
+            }
+        }
+    }
+
     #endregion
 
     #region Message Handlers
@@ -650,6 +745,11 @@ public class GameManager : MonoBehaviour
                         LobbyNetworkManager.Instance.SendToHost(msg, reliable);
                         break;
                     }
+                case (uint)MessageTarget.Others:
+                    {
+                        LobbyNetworkManager.Instance.SendToOthers(msg, reliable);
+                        break;
+                    }
             }
         }
     }
@@ -659,7 +759,8 @@ public class GameManager : MonoBehaviour
         if (msg == null) return;
         // Local消息：只有自己会发给自己，处理
         // All消息：Host和Client都处理
-        // Host消息：只有Host处理
+        // Others消息：收到了就处理（自己不会收到，只发送给其他人）
+        // Host消息：只有Host处理（理论上只有Host才会收到）
         // IsLocal()：离线模式，处理所有消息
         if (!IsLocal() && msg.Target == (uint)MessageTarget.Host && !IsHost()) return;
 
@@ -670,20 +771,30 @@ public class GameManager : MonoBehaviour
                     OnPlayerInput(msg.InputMsg);
                     break;
                 }
-
-            case (uint)MessageType.StateUpdate:
+            case (uint)MessageType.TransformStateUpdate:
                 {
-                    ApplyStateUpdate(msg.StateMsg);
+                    ApplyTransformStateUpdate_Client(msg.StateMsg);
                     break;
                 }
-            case (uint)MessageType.FullState:
+            case (uint)MessageType.FullTransformState:
                 {
-                    ApplyFullState(msg.StateMsg);
+                    ApplyFullTransformState_Client(msg.StateMsg);
                     break;
                 }
             case (uint)MessageType.PlayersUpdate:
                 {
                     OnPlayersUpdate(msg.PlayersMsg);
+                    break;
+                }
+            case (uint)MessageType.LearnSkill:
+                {
+                    var tarPlayer = PlayerInfoMap[msg.LearnSkillMsg.PlayerId];
+                    CalculateSkillEffect_Host(msg.LearnSkillMsg.SkillId, tarPlayer.Id);
+                    break;
+                }
+            case (uint)MessageType.FireRateStateUpdate:
+                {
+                    UpdateAbilityState_Client(msg);
                     break;
                 }
         }

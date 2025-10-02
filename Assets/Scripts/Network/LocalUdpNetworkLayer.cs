@@ -206,6 +206,18 @@ public class LocalUdpNetworkLayer : INetworkLayer
         }
     }
 
+    public void SendToOthers(byte[] data, bool reliable)
+    {
+        foreach (var player in GameManager.Instance.Players)
+        {
+            if (player.Id == GameManager.Instance.MyInfo.Id) continue;
+            if (TryParseIPEndPoint(player.CSteamID, out IPEndPoint client))
+            {
+                SendToEndpoint(client, data);
+            }
+        }
+    }
+
     public void SendToPlayer(PlayerInfo player, byte[] data, bool reliable)
     {
         if (TryParseIPEndPoint(player.CSteamID, out IPEndPoint target))

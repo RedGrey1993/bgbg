@@ -124,6 +124,12 @@ public class LobbyNetworkManager : MonoBehaviour
         NetworkManager.ActiveLayer.SendToAll(data, reliable);
     }
 
+    public void SendToOthers(GenericMessage msg, bool reliable)
+    {
+        SerializeUtil.Serialize(msg, out byte[] data);
+        NetworkManager.ActiveLayer.SendToOthers(data, reliable);
+    }
+
     public void SendToHost(GenericMessage msg, bool reliable)
     {
         SerializeUtil.Serialize(msg, out byte[] data);

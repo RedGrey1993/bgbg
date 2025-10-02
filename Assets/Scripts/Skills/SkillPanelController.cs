@@ -51,6 +51,19 @@ public class SkillPanelController : MonoBehaviour
         }
     }
 
+    public void Initialize()
+    {
+        foreach (Transform child in ownedSkillsContainer)
+        {
+            if (child.GetComponent<OwnedSkillIcon>() != null) Destroy(child.gameObject);
+        }
+        // 清理之前的Coroutines
+        StopAllCoroutines();
+        skillChoiceQueue.Clear();
+        isChoosing = false;
+        learnableSkillsPanel.SetActive(false);
+    }
+
     private IEnumerator ProcessSkillQueue()
     {
         // 当队列中有待处理项时循环
@@ -86,7 +99,7 @@ public class SkillPanelController : MonoBehaviour
             }
 
             timer -= Time.deltaTime;
-            timerText.text = "Please choose one of three\n" + Mathf.CeilToInt(timer).ToString() + " seconds left";
+            timerText.text = "Please choose one item\n" + Mathf.CeilToInt(timer).ToString() + " seconds left";
             yield return null;
         }
 
@@ -105,6 +118,7 @@ public class SkillPanelController : MonoBehaviour
         // 4. 应用技能并清理UI
         LearnNewSkill(selectedSkill);
         learnableSkillsPanel.SetActive(false);
+        UIManager.Instance.HideSkillPanel(); // 关闭技能面板
     }
 
     private void PopulateAndSetupLearnableSkills(List<SkillData> skills, System.Action<SkillData> callback)

@@ -201,6 +201,17 @@ public class SteamNetworkLayer : INetworkLayer
         }
     }
 
+    public void SendToOthers(byte[] data, bool reliable)
+    {
+        if (!currentLobbyId.IsValid()) return;
+        foreach (var player in GameManager.Instance.Players)
+        {
+            if (player.Id == GameManager.Instance.MyInfo.Id) continue;
+            CSteamID steamId = new CSteamID(Convert.ToUInt64(player.CSteamID));
+            Send(steamId, data, reliable);
+        }
+    }
+
     public void SendToPlayer(PlayerInfo player, byte[] data, bool reliable)
     {
         CSteamID steamId = new CSteamID(Convert.ToUInt64(player.CSteamID));

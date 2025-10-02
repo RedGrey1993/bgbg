@@ -53,6 +53,7 @@ public interface INetworkLayer
 
     void SendToHost(byte[] data, bool reliable);
     void SendToAll(byte[] data, bool reliable);
+    void SendToOthers(byte[] data, bool reliable);
     void SendToPlayer(PlayerInfo player, byte[] data, bool reliable);
 
     void RequestAvatar(string playerId);

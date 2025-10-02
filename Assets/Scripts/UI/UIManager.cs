@@ -360,7 +360,7 @@ public class UIManager : MonoBehaviour
     private void OnLocalGameClicked()
     {
         SetGameState(true);
-        GameManager.Instance.InitializeGame();
+        GameManager.Instance.InitializeGame_Host();
     }
 
     private void OnConfirmCreateRoomClicked()
@@ -776,9 +776,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ToggleSkillPanel()
+    public void ToggleSkillPanel()
     {
-        Debug.Log($"ToggleSkillPanel called, _isIngame: {_isIngame}");
+        Debug.Log($"ToggleSkillPanel called, _isIngame: {_isIngame}, isSkillPanelOpen: {isSkillPanelOpen}");
         if (!_isIngame) return; // 仅在游戏中允许打开技能面板
         if (skillPanelAnimator == null) return;
 
@@ -789,6 +789,17 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            skillPanelAnimator.SetTrigger("Hide");
+        }
+    }
+
+    public void HideSkillPanel()
+    {
+        Debug.Log($"HideSkillPanel called, _isIngame: {_isIngame}, isSkillPanelOpen: {isSkillPanelOpen}");
+        if (skillPanelAnimator == null) return;
+        if (isSkillPanelOpen)
+        {
+            isSkillPanelOpen = false;
             skillPanelAnimator.SetTrigger("Hide");
         }
     }
@@ -827,6 +838,7 @@ public class UIManager : MonoBehaviour
     private void QuitToMainMenu()
     {
         HideSettings();
+        HideSkillPanel();
         SetGameState(false);
     }
 
