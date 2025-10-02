@@ -778,7 +778,7 @@ public class UIManager : MonoBehaviour
 
     private void ToggleSkillPanel()
     {
-        Debug.Log("ToggleSkillPanel called, _isIngame: {_isIngame}");
+        Debug.Log($"ToggleSkillPanel called, _isIngame: {_isIngame}");
         if (!_isIngame) return; // 仅在游戏中允许打开技能面板
         if (skillPanelAnimator == null) return;
 

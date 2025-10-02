@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   skillName: Fireball Test
   description: Test skill data, Fireball
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: -7343100771688192990, guid: 4cc797a512aeee44fa39d7486ed34359, type: 3}

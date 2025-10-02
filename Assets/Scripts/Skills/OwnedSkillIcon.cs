@@ -1,9 +1,21 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public SkillData skillData;
+    private Image srcImage;
+
+    void Awake()
+    {
+        srcImage = GetComponent<Image>();
+    }
+
+    void Start()
+    {
+        srcImage.sprite = skillData.icon;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -19,9 +19,9 @@ public class LearnableSkillButton : MonoBehaviour
 
     public void Setup(SkillData data, Action<SkillData> callback)
     {
-        this.skillData = data;
-        this.iconImage.sprite = data.icon;
-        this.onSkillSelectedCallback = callback;
+        skillData = data;
+        iconImage.sprite = data.icon;
+        onSkillSelectedCallback = callback;
     }
 
     private void OnButtonClicked()
