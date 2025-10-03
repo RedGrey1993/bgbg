@@ -4,12 +4,19 @@ public class Bullet : MonoBehaviour
 {
     public Vector2 StartPosition { get; set; } // 子弹发射时，Player会设置这颗子弹的起始位置
     public CharacterStatus OwnerStatus { get; set; } // 这颗子弹的操作者是谁
+    private float bornTime;
+
+    void Awake()
+    {
+        bornTime = Time.time;
+    }
 
     void Update()
     {
         // 由于子弹不能斜着发射，因此只需单独判断X或Y轴的距离即可
         if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
-            || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange)
+            || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
+            || Time.time - bornTime > 5f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则5秒后自动销毁
         {
             Destroy(gameObject);
         }      
@@ -33,7 +40,7 @@ public class Bullet : MonoBehaviour
         if (GameManager.Instance.IsLocalOrHost())
         {
             // 检测是否碰撞到Player
-            if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
                 CharacterStatus targetCharacterStatus = collision.gameObject.GetComponent<CharacterStatus>();
                 if (targetCharacterStatus != null && targetCharacterStatus != OwnerStatus)

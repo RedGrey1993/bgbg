@@ -232,6 +232,8 @@ public class UIManager : MonoBehaviour
                 NetworkManager.ActiveLayer?.LeaveLobby();
             }
             HideMyStatusUI();
+            HideSettings();
+            HideSkillPanel();
             _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_mainMenuPanel);
         }
@@ -837,8 +839,6 @@ public class UIManager : MonoBehaviour
 
     private void QuitToMainMenu()
     {
-        HideSettings();
-        HideSkillPanel();
         SetGameState(false);
     }
 

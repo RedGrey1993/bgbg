@@ -308,24 +308,24 @@ public class GameManager : MonoBehaviour
 
     public void CheckWinningCondition_Host()
     {
-        if (IsLocalOrHost())
-        {
-            int aliveCount = 0;
-            string lastAlivePlayerCSteamId = null;
-            foreach (var kvp in playerObjects)
-            {
-                var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
-                if (playerStatus != null && playerStatus.State.CurrentHp > 0)
-                {
-                    aliveCount++;
-                    lastAlivePlayerCSteamId = kvp.Key;
-                }
-            }
-            if (aliveCount <= 1 && lastAlivePlayerCSteamId.Equals(MyInfo.CSteamID))
-            {
-                UIManager.Instance.ShowWinningScreen();
-            }
-        }
+        // if (IsLocalOrHost())
+        // {
+        //     int aliveCount = 0;
+        //     string lastAlivePlayerCSteamId = null;
+        //     foreach (var kvp in playerObjects)
+        //     {
+        //         var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
+        //         if (playerStatus != null && playerStatus.State.CurrentHp > 0)
+        //         {
+        //             aliveCount++;
+        //             lastAlivePlayerCSteamId = kvp.Key;
+        //         }
+        //     }
+        //     if (aliveCount <= 1 && lastAlivePlayerCSteamId.Equals(MyInfo.CSteamID))
+        //     {
+        //         UIManager.Instance.ShowWinningScreen();
+        //     }
+        // }
     }
 
     private void SendPlayersUpdateToAll()

@@ -52,6 +52,9 @@ public static class Constants
     public const float WallMaxThickness = 1.2f;
     // 每升1级，从3个技能中选择1个
     public const int SkillChooseNumber = 3;
+    public const string TagPlayer = "Player";
+    public const string TagEnemy = "Enemy";
+    public const string TagWall = "Wall";
 
     public static void PositionToIndex(Vector2 position, out int x, out int y)
     {

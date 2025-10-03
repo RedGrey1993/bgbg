@@ -17,12 +17,7 @@ public class CharacterStatus : MonoBehaviour
     public uint MaxHp = 30;
     public float MoveSpeed = 5f;
     public uint ShootRange = 5;
-    // NPC相关设置
-    public uint AggroRange = 20;
-    public uint AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
-    private float nextAggroChangeTime = 0;
-    public GameObject aggroTarget { get; private set; } = null; // 当前仇恨目标
-    
+
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
 
@@ -51,17 +46,7 @@ public class CharacterStatus : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsLocalOrHost() && !IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
-        {
-            nextAggroChangeTime = Time.time + AggroChangeInterval;
-            aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange, State.PlayerId);
-            Debug.Log($"fhhtest, {transform.name} aggro target: {aggroTarget?.name}");
-        }
-    }
-
-    public bool IsNPC()
-    {
-        return CharacterType >= CharacterType.PlayerAI;
+        UpdateAggroTarget();
     }
 
     public bool IsDead()
@@ -158,4 +143,27 @@ public class CharacterStatus : MonoBehaviour
             }
         }
     }
+
+    #region AI Logic
+    [Header("Aggro Settings")]
+    // NPC相关设置
+    public uint AggroRange = 20;
+    public uint AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
+    private float nextAggroChangeTime = 0;
+    public GameObject aggroTarget { get; private set; } = null; // 当前仇恨目标
+    public bool IsNPC()
+    {
+        return CharacterType >= CharacterType.PlayerAI;
+    }
+
+    public void UpdateAggroTarget()
+    {
+        if (GameManager.Instance.IsLocalOrHost() && !IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
+        {
+            nextAggroChangeTime = Time.time + AggroChangeInterval;
+            aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange, State.PlayerId);
+            Debug.Log($"fhhtest, {transform.name} aggro target: {aggroTarget?.name}");
+        }
+    }
+    #endregion
 }
