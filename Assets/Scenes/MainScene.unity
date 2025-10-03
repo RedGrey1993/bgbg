@@ -2861,7 +2861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5506378715684145941, guid: f86eae0e42b1790449097f99efa82df2, type: 3}
       propertyPath: m_Name
-      value: SmallMinionNormal
+      value: SuperMinionNormal
       objectReference: {fileID: 0}
     - target: {fileID: 6641391400573639146, guid: f86eae0e42b1790449097f99efa82df2, type: 3}
       propertyPath: m_LocalPosition.x

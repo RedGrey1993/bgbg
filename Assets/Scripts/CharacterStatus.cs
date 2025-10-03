@@ -13,10 +13,7 @@ public class CharacterStatus : MonoBehaviour
     public PlayerState State = new PlayerState();
     // 在预制体上的Inspector面板中设置
     [Header("Character Settings")]
-    public CharacterType CharacterType = CharacterType.Unset;
-    public uint MaxHp = 30;
-    public float MoveSpeed = 5f;
-    public uint ShootRange = 5;
+    public CharacterData characterData;
 
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
@@ -34,13 +31,13 @@ public class CharacterStatus : MonoBehaviour
     {
         State.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
         State.PlayerName = "DefaultName";
-        State.MaxHp = MaxHp;
-        State.CurrentHp = MaxHp;
-        State.MoveSpeed = MoveSpeed;
+        State.MaxHp = characterData.MaxHp;
+        State.CurrentHp = characterData.MaxHp;
+        State.MoveSpeed = characterData.MoveSpeed;
         State.BulletSpeed = 6f;
         State.Damage = 1;
         State.ShootFrequency = 3;
-        State.ShootRange = ShootRange;
+        State.ShootRange = characterData.ShootRange;
         State.CriticalRate = 0;
     }
 
@@ -153,7 +150,7 @@ public class CharacterStatus : MonoBehaviour
     public GameObject aggroTarget { get; private set; } = null; // 当前仇恨目标
     public bool IsNPC()
     {
-        return CharacterType >= CharacterType.PlayerAI;
+        return characterData.CharacterType >= CharacterType.PlayerAI;
     }
 
     public void UpdateAggroTarget()

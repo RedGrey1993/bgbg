@@ -6,6 +6,7 @@ public class CharacterInput : MonoBehaviour
     public Vector2 LookInput;
 
     private CharacterStatus characterStatus;
+    private CharacterData characterData => characterStatus.characterData;
 
     void Awake()
     {
@@ -35,11 +36,11 @@ public class CharacterInput : MonoBehaviour
         {
             if (Time.time > nextInputChangeTime)
             {
-                switch (characterStatus.CharacterType)
+                switch (characterData.CharacterType)
                 {
                     case CharacterType.PlayerAI:
                     // AI玩家角色逻辑（暂时共用小兵逻辑）
-                    case CharacterType.SmallMinionNormal:
+                    case CharacterType.SuperMinionNormal:
                         // 小兵角色逻辑
                         {
                             MoveInput = Vector2.zero;
@@ -164,11 +165,11 @@ public class CharacterInput : MonoBehaviour
         if (GameManager.Instance.IsLocalOrHost() && characterStatus.IsNPC()
             && !characterStatus.IsDead())
         {
-            switch (characterStatus.CharacterType)
+            switch (characterData.CharacterType)
             {
                 case CharacterType.PlayerAI:
                 // AI玩家角色逻辑（暂时共用小兵逻辑）
-                case CharacterType.SmallMinionNormal:
+                case CharacterType.SuperMinionNormal:
                     // 小兵角色逻辑
                     {
                         // 碰撞到墙壁或者其他敌人时，翻转移动方向

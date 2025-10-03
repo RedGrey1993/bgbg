@@ -380,7 +380,8 @@ public class GameManager : MonoBehaviour
             playerStatus.State.PlayerName = playerName;
             if (csteamId.StartsWith(Constants.AIPlayerPrefix))
             {
-                playerStatus.CharacterType = CharacterType.PlayerAI;
+                // TODO: 将prefab放到characterData中，根据csteamId创建不同的角色
+                // playerStatus.characterData.CharacterType = CharacterType.PlayerAI;
             }
         }
 
