@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   CharacterType: 5
   MaxHp: 10
-  MoveSpeed: 4
+  MoveSpeed: 3
   ShootRange: 8
+  BulletSpeed: 6
+  Damage: 1
+  ShootFrequency: 3
+  CriticalRate: 0
+  AggroRange: 20
+  AggroChangeInterval: 2
+  minRandomMoveInputInterval: 1
+  maxRandomMoveInputInterval: 6
+  minChaseMoveInputInterval: 0.5
+  maxChaseMoveInputInterval: 1
