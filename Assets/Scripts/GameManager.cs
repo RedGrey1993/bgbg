@@ -609,34 +609,6 @@ public class GameManager : MonoBehaviour
         return x;
     }
 
-    public GameObject FindNearestPlayerInRange(Vector2 position, uint range, uint srcCharacterId)
-    {
-        // srcCharacterId 可能是小兵，小兵不在PlayerInfoMap中
-        string srcCSteamId = "Minion";
-        if (PlayerInfoMap.ContainsKey(srcCharacterId))
-        {
-            srcCSteamId = PlayerInfoMap[srcCharacterId].CSteamID;
-        }
-        GameObject nearestPlayer = null;
-        float nearestDistanceSqr = range * range;
-        foreach (var kvp in playerObjects)
-        {
-            if (kvp.Key == srcCSteamId) continue; // 不会仇恨自己
-            var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
-            if (playerStatus != null && !playerStatus.IsDead())
-            {
-                Vector2 toPlayer = (Vector2)kvp.Value.transform.position - position;
-                float distSqr = toPlayer.sqrMagnitude;
-                if (distSqr <= nearestDistanceSqr)
-                {
-                    nearestDistanceSqr = distSqr;
-                    nearestPlayer = kvp.Value;
-                }
-            }
-        }
-        return nearestPlayer;
-    }
-
     #region Skill Management
     public void LearnSkill(SkillData newSkill)
     {

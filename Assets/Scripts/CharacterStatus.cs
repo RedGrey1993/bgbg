@@ -34,21 +34,21 @@ public class CharacterStatus : MonoBehaviour
         State.MaxHp = characterData.MaxHp;
         State.CurrentHp = characterData.MaxHp;
         State.MoveSpeed = characterData.MoveSpeed;
-        State.BulletSpeed = 6f;
-        State.Damage = 1;
-        State.ShootFrequency = 3;
+        State.BulletSpeed = characterData.BulletSpeed;
+        State.Damage = characterData.Damage;
+        State.ShootFrequency = characterData.ShootFrequency;
         State.ShootRange = characterData.ShootRange;
-        State.CriticalRate = 0;
-    }
-
-    void Update()
-    {
-        UpdateAggroTarget();
+        State.CriticalRate = characterData.CriticalRate;
     }
 
     public bool IsDead()
     {
         return State.CurrentHp <= 0;
+    }
+
+    public bool IsAlive()
+    {
+        return !IsDead();
     }
 
     // 当前HOST上的所有Player都会触发TakeDamage
@@ -140,27 +140,4 @@ public class CharacterStatus : MonoBehaviour
             }
         }
     }
-
-    #region AI Logic
-    [Header("Aggro Settings")]
-    // NPC相关设置
-    public uint AggroRange = 20;
-    public uint AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
-    private float nextAggroChangeTime = 0;
-    public GameObject aggroTarget { get; private set; } = null; // 当前仇恨目标
-    public bool IsNPC()
-    {
-        return characterData.CharacterType >= CharacterType.PlayerAI;
-    }
-
-    public void UpdateAggroTarget()
-    {
-        if (GameManager.Instance.IsLocalOrHost() && !IsDead() && IsNPC() && Time.time >= nextAggroChangeTime)
-        {
-            nextAggroChangeTime = Time.time + AggroChangeInterval;
-            aggroTarget = GameManager.Instance.FindNearestPlayerInRange(transform.position, AggroRange, State.PlayerId);
-            Debug.Log($"fhhtest, {transform.name} aggro target: {aggroTarget?.name}");
-        }
-    }
-    #endregion
 }

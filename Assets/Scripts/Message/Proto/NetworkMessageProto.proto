@@ -33,8 +33,8 @@ message PlayerState
     string PlayerName = 2;
     uint32 MaxHp = 3;
     uint32 CurrentHp = 4;
-    float MoveSpeed = 5; // 人物移动速度
-    float BulletSpeed = 6; // 子弹飞行速度
+    uint32 MoveSpeed = 5; // 人物移动速度
+    uint32 BulletSpeed = 6; // 子弹飞行速度
     uint32 Damage = 7; //  伤害
     uint32 ShootFrequency = 8; // 每秒发射子弹数
     uint32 ShootRange = 9; // 子弹最大射程

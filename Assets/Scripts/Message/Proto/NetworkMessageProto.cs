@@ -37,8 +37,8 @@ namespace NetworkMessageProto {
             "TmV0d29ya01lc3NhZ2VQcm90by5WZWMyEiwKCUxvb2tJbnB1dBgFIAEoCzIZ",
             "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMiL8AQoLUGxheWVyU3RhdGUSEAoI",
             "UGxheWVySWQYASABKA0SEgoKUGxheWVyTmFtZRgCIAEoCRINCgVNYXhIcBgD",
-            "IAEoDRIRCglDdXJyZW50SHAYBCABKA0SEQoJTW92ZVNwZWVkGAUgASgCEhMK",
-            "C0J1bGxldFNwZWVkGAYgASgCEg4KBkRhbWFnZRgHIAEoDRIWCg5TaG9vdEZy",
+            "IAEoDRIRCglDdXJyZW50SHAYBCABKA0SEQoJTW92ZVNwZWVkGAUgASgNEhMK",
+            "C0J1bGxldFNwZWVkGAYgASgNEg4KBkRhbWFnZRgHIAEoDRIWCg5TaG9vdEZy",
             "ZXF1ZW5jeRgIIAEoDRISCgpTaG9vdFJhbmdlGAkgASgNEhQKDENyaXRpY2Fs",
             "UmF0ZRgKIAEoDRIrCghQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
             "UHJvdG8uVmVjMiJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVycxgB",
@@ -1188,13 +1188,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "MoveSpeed" field.</summary>
     public const int MoveSpeedFieldNumber = 5;
-    private float moveSpeed_;
+    private uint moveSpeed_;
     /// <summary>
     /// 人物移动速度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float MoveSpeed {
+    public uint MoveSpeed {
       get { return moveSpeed_; }
       set {
         moveSpeed_ = value;
@@ -1203,13 +1203,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "BulletSpeed" field.</summary>
     public const int BulletSpeedFieldNumber = 6;
-    private float bulletSpeed_;
+    private uint bulletSpeed_;
     /// <summary>
     /// 子弹飞行速度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float BulletSpeed {
+    public uint BulletSpeed {
       get { return bulletSpeed_; }
       set {
         bulletSpeed_ = value;
@@ -1307,8 +1307,8 @@ namespace NetworkMessageProto {
       if (PlayerName != other.PlayerName) return false;
       if (MaxHp != other.MaxHp) return false;
       if (CurrentHp != other.CurrentHp) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MoveSpeed, other.MoveSpeed)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BulletSpeed, other.BulletSpeed)) return false;
+      if (MoveSpeed != other.MoveSpeed) return false;
+      if (BulletSpeed != other.BulletSpeed) return false;
       if (Damage != other.Damage) return false;
       if (ShootFrequency != other.ShootFrequency) return false;
       if (ShootRange != other.ShootRange) return false;
@@ -1325,8 +1325,8 @@ namespace NetworkMessageProto {
       if (PlayerName.Length != 0) hash ^= PlayerName.GetHashCode();
       if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
       if (CurrentHp != 0) hash ^= CurrentHp.GetHashCode();
-      if (MoveSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MoveSpeed);
-      if (BulletSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BulletSpeed);
+      if (MoveSpeed != 0) hash ^= MoveSpeed.GetHashCode();
+      if (BulletSpeed != 0) hash ^= BulletSpeed.GetHashCode();
       if (Damage != 0) hash ^= Damage.GetHashCode();
       if (ShootFrequency != 0) hash ^= ShootFrequency.GetHashCode();
       if (ShootRange != 0) hash ^= ShootRange.GetHashCode();
@@ -1366,13 +1366,13 @@ namespace NetworkMessageProto {
         output.WriteRawTag(32);
         output.WriteUInt32(CurrentHp);
       }
-      if (MoveSpeed != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(MoveSpeed);
+      if (MoveSpeed != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(MoveSpeed);
       }
-      if (BulletSpeed != 0F) {
-        output.WriteRawTag(53);
-        output.WriteFloat(BulletSpeed);
+      if (BulletSpeed != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(BulletSpeed);
       }
       if (Damage != 0) {
         output.WriteRawTag(56);
@@ -1420,13 +1420,13 @@ namespace NetworkMessageProto {
         output.WriteRawTag(32);
         output.WriteUInt32(CurrentHp);
       }
-      if (MoveSpeed != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(MoveSpeed);
+      if (MoveSpeed != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(MoveSpeed);
       }
-      if (BulletSpeed != 0F) {
-        output.WriteRawTag(53);
-        output.WriteFloat(BulletSpeed);
+      if (BulletSpeed != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(BulletSpeed);
       }
       if (Damage != 0) {
         output.WriteRawTag(56);
@@ -1470,11 +1470,11 @@ namespace NetworkMessageProto {
       if (CurrentHp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentHp);
       }
-      if (MoveSpeed != 0F) {
-        size += 1 + 4;
+      if (MoveSpeed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MoveSpeed);
       }
-      if (BulletSpeed != 0F) {
-        size += 1 + 4;
+      if (BulletSpeed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BulletSpeed);
       }
       if (Damage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Damage);
@@ -1515,10 +1515,10 @@ namespace NetworkMessageProto {
       if (other.CurrentHp != 0) {
         CurrentHp = other.CurrentHp;
       }
-      if (other.MoveSpeed != 0F) {
+      if (other.MoveSpeed != 0) {
         MoveSpeed = other.MoveSpeed;
       }
-      if (other.BulletSpeed != 0F) {
+      if (other.BulletSpeed != 0) {
         BulletSpeed = other.BulletSpeed;
       }
       if (other.Damage != 0) {
@@ -1574,12 +1574,12 @@ namespace NetworkMessageProto {
             CurrentHp = input.ReadUInt32();
             break;
           }
-          case 45: {
-            MoveSpeed = input.ReadFloat();
+          case 40: {
+            MoveSpeed = input.ReadUInt32();
             break;
           }
-          case 53: {
-            BulletSpeed = input.ReadFloat();
+          case 48: {
+            BulletSpeed = input.ReadUInt32();
             break;
           }
           case 56: {
@@ -1640,12 +1640,12 @@ namespace NetworkMessageProto {
             CurrentHp = input.ReadUInt32();
             break;
           }
-          case 45: {
-            MoveSpeed = input.ReadFloat();
+          case 40: {
+            MoveSpeed = input.ReadUInt32();
             break;
           }
-          case 53: {
-            BulletSpeed = input.ReadFloat();
+          case 48: {
+            BulletSpeed = input.ReadUInt32();
             break;
           }
           case 56: {

@@ -828,13 +828,13 @@ public class UIManager : MonoBehaviour
         if (_isIngame)
         {
             _mainMenuRoot.AddToClassList("hidden");
-            // 只有离线游戏才暂停/恢复游戏
-            if (GameManager.Instance.IsLocal()) Time.timeScale = 1f;
         }
         else // 如果不在游戏中（即在主菜单），则重新显示主菜单
         {
             _mainMenuPanel.RemoveFromClassList("hidden");
         }
+        // 因为在游戏中打开设置可能会暂停游戏，因此在这里无论如何都重新设置游戏时速为1
+        Time.timeScale = 1f;
     }
 
     private void QuitToMainMenu()
