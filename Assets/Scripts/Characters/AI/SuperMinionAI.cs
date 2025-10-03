@@ -19,10 +19,41 @@ public class SuperMinionAI : CharacterBaseAI
             UpdateAttackInput();
         }
     }
+    public override void OnCollision(Collision2D collision)
+    {
+        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        {
+            if (collision.gameObject.CompareTag(Constants.TagWall) || collision.gameObject.CompareTag(Constants.TagEnemy))
+            {
+                if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
+                {
+                    // 对角线方向，随机翻转水平或垂直方向
+                    if (Random.value < 0.5f)
+                    {
+                        characterInput.MoveInput.x = -characterInput.MoveInput.x;
+                        characterInput.MoveInput.y = 0;
+                    }
+                    else
+                    {
+                        characterInput.MoveInput.x = 0;
+                        characterInput.MoveInput.y = -characterInput.MoveInput.y;
+                    }
+                }
+                else if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f)
+                {
+                    characterInput.MoveInput.x = -characterInput.MoveInput.x;
+                }
+                else if (Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
+                {
+                    characterInput.MoveInput.y = -characterInput.MoveInput.y;
+                }
+            }
+        }
+    }
 
     #endregion
 
-    #region Aggro
+        #region Aggro
     private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
     private void UpdateAggroTarget()
     {

@@ -35,5 +35,6 @@ public abstract class CharacterBaseAI : ICharacterAI
 
     #region ICharacterAI implementation
     public abstract void Update();
+    public abstract void OnCollision(Collision2D collision);
     #endregion
 }

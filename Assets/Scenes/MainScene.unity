@@ -268,6 +268,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -281,11 +285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9659259
       objectReference: {fileID: 0}
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.258819
       objectReference: {fileID: 0}
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -297,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -306,6 +310,10 @@ PrefabInstance:
     - target: {fileID: 1051380484567272107, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808852939157466319, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
+      propertyPath: orthographic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2938715402375847171, guid: 783193076a30c9642b563a4ac00ef21f, type: 3}
       propertyPath: m_Name
@@ -337,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 0}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: -5, z: -10}
 --- !u!1 &417062434
 GameObject:
   m_ObjectHideFlags: 0

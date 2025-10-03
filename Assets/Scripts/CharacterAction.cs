@@ -47,7 +47,7 @@ public class CharacterAction : MonoBehaviour
             return;
         }
         // 只有Host能够调用，离线模式视作Host
-        // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
+        // 包括需要严格100%同步的操作
         if (GameManager.Instance.IsLocalOrHost())
         {
             DoHostAction();
@@ -57,6 +57,7 @@ public class CharacterAction : MonoBehaviour
         DoClientAction();
     }
 
+    #region Move
     private void NormalizeMoveInput(ref Vector2 moveInput)
     {
         // Handle diagonal movement setting
@@ -79,6 +80,27 @@ public class CharacterAction : MonoBehaviour
         }
     }
 
+    private void Move()
+    {
+        ref Vector2 moveInput = ref characterInput.MoveInput;
+        if (moveInput.sqrMagnitude >= 0.1f)
+        {
+            NormalizeMoveInput(ref moveInput);
+            if (audioSource && !audioSource.isPlaying) audioSource.Play();
+        }
+        else
+        {
+            if (audioSource && audioSource.isPlaying) audioSource.Stop();
+        }
+
+        // Apply movement directly
+        // velocity is deprecated, use linearVelocity instead
+        rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
+        animator?.SetFloat("Speed", rb.linearVelocity.magnitude);
+    }
+    #endregion
+
+    #region Shoot
     private void NormalizeLookInput(ref Vector2 lookInput)
     {
         // Handle diagonal shooting setting
@@ -95,30 +117,6 @@ public class CharacterAction : MonoBehaviour
             }
         }
     }
-
-    private void Move()
-    {
-        ref Vector2 moveInput = ref characterInput.MoveInput;
-        if (moveInput.sqrMagnitude > 0.1f)
-        {
-            NormalizeMoveInput(ref moveInput);
-            if (audioSource && !audioSource.isPlaying) audioSource.Play();
-        }
-        else
-        {
-            if (audioSource && audioSource.isPlaying) audioSource.Stop();
-        }
-
-        // Apply movement directly
-            // velocity is deprecated, use linearVelocity instead
-            rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
-        animator?.SetFloat("Speed", rb.linearVelocity.magnitude);
-
-        Transform childTransform = transform.GetChild(0);
-        childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
-        // Debug.Log($"fhhtest, moveInput: {moveInput}, rotation: {childTransform.localRotation.eulerAngles}");
-    }
-
     private void Shoot()
     {
         ref Vector2 lookInput = ref characterInput.LookInput;
@@ -152,22 +150,49 @@ public class CharacterAction : MonoBehaviour
         }
 
         // Get the bullet's Rigidbody2D component
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         // Set the bullet's velocity
         if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
     }
+    #endregion
 
+    #region Animation
+    private void LookTo()
+    {
+        ref Vector2 moveInput = ref characterInput.MoveInput;
+        ref Vector2 lookInput = ref characterInput.LookInput;
+        if (lookInput.sqrMagnitude >= 0.1f)
+        {
+            // 优先将角色面朝射击方向，优先级高于MoveInput
+            Transform childTransform = transform.GetChild(0);
+            childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
+        }
+        else if (moveInput.sqrMagnitude >= 0.1f)
+        {
+            // 优先将角色面朝移动方向
+            Transform childTransform = transform.GetChild(0);
+            childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+        }
+    }
+    #endregion
+
+    #region Host Action
     // 只有Host能够调用，离线模式视作Host
-    // 包括需要严格同步的操作，如所有Player的位置和状态等相关的操作
+    // 包括需要严格100%同步的操作
     private void DoHostAction()
     {
-        Move();
+        
     }
+    #endregion
 
+    #region Client Action
     // 所有客户端都能调用，包括Host自己
     // 包括不需要严格同步的操作，如物理引擎模拟等相关操作
     private void DoClientAction()
     {
+        Move(); // Client 的 Move类似于移动预测，最终还是会同步到Host的权威位置
         Shoot();
+        LookTo();
     }
+    #endregion
 }
