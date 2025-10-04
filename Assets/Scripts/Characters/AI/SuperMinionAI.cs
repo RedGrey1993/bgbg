@@ -23,31 +23,32 @@ public class SuperMinionAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (collision.gameObject.CompareTag(Constants.TagWall) || collision.gameObject.CompareTag(Constants.TagEnemy))
+            // if (collision.gameObject.CompareTag(Constants.TagWall) || collision.gameObject.CompareTag(Constants.TagEnemy))
+            // {
+            Debug.Log($"fhhtest, {character.name} collided with {collision.gameObject.name}, bounce back");
+            if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
             {
-                if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
-                {
-                    // 对角线方向，随机翻转水平或垂直方向
-                    if (Random.value < 0.5f)
-                    {
-                        characterInput.MoveInput.x = -characterInput.MoveInput.x;
-                        characterInput.MoveInput.y = 0;
-                    }
-                    else
-                    {
-                        characterInput.MoveInput.x = 0;
-                        characterInput.MoveInput.y = -characterInput.MoveInput.y;
-                    }
-                }
-                else if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f)
+                // 对角线方向，随机翻转水平或垂直方向
+                if (Random.value < 0.5f)
                 {
                     characterInput.MoveInput.x = -characterInput.MoveInput.x;
+                    characterInput.MoveInput.y = 0;
                 }
-                else if (Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
+                else
                 {
+                    characterInput.MoveInput.x = 0;
                     characterInput.MoveInput.y = -characterInput.MoveInput.y;
                 }
             }
+            else if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f)
+            {
+                characterInput.MoveInput.x = -characterInput.MoveInput.x;
+            }
+            else if (Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
+            {
+                characterInput.MoveInput.y = -characterInput.MoveInput.y;
+            }
+            // }
         }
     }
 

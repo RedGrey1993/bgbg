@@ -14,9 +14,6 @@ using NetworkMessageJson;
 
 public class GameManager : MonoBehaviour
 {
-    // TODO: debug only, delete it later
-    private int wallNum = 0;
-
     public static GameManager Instance { get; private set; }
 
     public static uint nextPlayerId = 0;

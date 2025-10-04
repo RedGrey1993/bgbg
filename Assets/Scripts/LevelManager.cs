@@ -158,7 +158,6 @@ public class LevelManager : MonoBehaviour
             for (int x = (int)start.x; x < (int)end.x; x++)
             {
                 if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax) continue; // Doorway
-                Debug.Log($"fhhtest, top wall tile at {x},{(int)start.y}");
                 wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), wallTile);
             }
         }

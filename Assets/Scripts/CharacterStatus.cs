@@ -101,8 +101,10 @@ public class CharacterStatus : MonoBehaviour
         {
             State.CurrentLevel += 1;
             State.CurrentExp = curExp - (uint)maxExp;
-            SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
-            skillPanelController.RandomizeNewSkillChoice();
+            if (HasPlayerController()) {
+                SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+                skillPanelController.RandomizeNewSkillChoice();
+            }
         }
         else
         {
@@ -110,6 +112,11 @@ public class CharacterStatus : MonoBehaviour
         }
         // 只有本地键盘操作的那个Player注册了OnHealthChanged事件，用于更新状态栏UI
         OnHealthChanged?.Invoke(State);
+    }
+
+    private bool HasPlayerController()
+    {
+        return GetComponent<PlayerController>() != null;
     }
 
     // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用
