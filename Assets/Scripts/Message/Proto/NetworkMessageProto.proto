@@ -39,6 +39,8 @@ message PlayerState
     uint32 ShootFrequency = 8; // 每秒发射子弹数
     uint32 ShootRange = 9; // 子弹最大射程
     uint32 CriticalRate = 10; // 暴击率
+    uint32 CurrentLevel = 12;
+    uint32 CurrentExp = 13;
     Vec2 Position = 11;
 }
 

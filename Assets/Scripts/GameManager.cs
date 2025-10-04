@@ -107,18 +107,8 @@ public class GameManager : MonoBehaviour
             InitializePlayers();
             LevelManager.Instance.GenerateLevel(1);
             // 游戏刚开始时可以有一次选择技能的机会
-            UIManager.Instance.ToggleSkillPanel();
-            var skillNum = SkillDatabase.Instance.Skills.Count;
-            List<SkillData> skills = new List<SkillData>();
-            for (int i = 0; i < Constants.SkillChooseNumber; i++)
-            {
-                var skillId = UnityEngine.Random.Range(0, skillNum);
-                var skillData = SkillDatabase.Instance.Skills[skillId];
-                skills.Add(skillData);
-            }
             SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
-            skillPanelController.Initialize();
-            skillPanelController.AddNewSkillChoice(skills);
+            skillPanelController.RandomizeNewSkillChoice();
         }
         else
         {
@@ -527,7 +517,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateAbilityState_Client(GenericMessage msg)
     {
-        if (IsHost()) return; // Host不处理TransformStateUpdate消息，因为TransformStateUpdate消息由Host发送
+        if (IsHost()) return; // Host不处理AbilityState消息，因为AbilityState消息由Host发送
         if (msg == null || msg.StateMsg == null) return;
         foreach (var ps in msg.StateMsg.Players)
         {

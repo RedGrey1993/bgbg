@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.TextCore.Text;
+
 
 #if PROTOBUF
 using NetworkMessageProto;
@@ -39,6 +41,8 @@ public class CharacterStatus : MonoBehaviour
         State.ShootFrequency = characterData.ShootFrequency;
         State.ShootRange = characterData.ShootRange;
         State.CriticalRate = characterData.CriticalRate;
+        State.CurrentExp = 0;
+        State.CurrentLevel = 1;
     }
 
     public bool IsDead()
@@ -53,10 +57,22 @@ public class CharacterStatus : MonoBehaviour
 
     // 当前HOST上的所有Player都会触发TakeDamage
     // TODO: 联机模式的逻辑待考虑，想法：将计算完之后的状态发送给客户端，HOST本身忽略，客户端根据事件更新UI
-    public void TakeDamage_Host(uint damage)
+    public void TakeDamage_Host(CharacterStatus attacker)
     {
         if (IsDead()) return;
-        HealthChanged((uint)Mathf.Max(0, State.CurrentHp - damage));
+        uint damage = attacker.State.Damage;
+        uint curHp = State.CurrentHp - damage;
+        if (curHp <= 0)
+        {
+            // this死亡，提供给attacker经验值
+            uint attackerCurExp = attacker.State.CurrentExp;
+            uint expGained = characterData.ExpGiven;
+            attackerCurExp += expGained;
+            // TODO: 发送attacker.ExpChanged消息给所有客户端
+            attacker.ExpChanged(attackerCurExp);
+        }
+        // TODO: 发送this.HealthChanged消息给所有客户端
+        HealthChanged((uint)Mathf.Max(0, curHp));
     }
 
     // 供HOST/CLIENT统一调用
@@ -70,11 +86,30 @@ public class CharacterStatus : MonoBehaviour
 
         if (IsDead())
         {
-            // 只有本地键盘操作的那个Player注册了OnDied事件
+            // 只有本地键盘操作的那个Player注册了OnDied事件，用来显示GameOver界面
             OnDied?.Invoke();
             // 所有角色的HP为0时都会调用SetCharacterDead函数
             SetCharacterDead();
         }
+    }
+
+    private void ExpChanged(uint curExp)
+    {
+        int idx = Mathf.Min(Mathf.Max(0, (int)State.CurrentLevel - 1), Constants.LevelUpExp.Length - 1);
+        int maxExp = Constants.LevelUpExp[idx];
+        if (curExp >= maxExp)
+        {
+            State.CurrentLevel += 1;
+            State.CurrentExp = curExp - (uint)maxExp;
+            SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+            skillPanelController.RandomizeNewSkillChoice();
+        }
+        else
+        {
+            State.CurrentExp = curExp;
+        }
+        // 只有本地键盘操作的那个Player注册了OnHealthChanged事件，用于更新状态栏UI
+        OnHealthChanged?.Invoke(State);
     }
 
     // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用

@@ -31,7 +31,9 @@ public class UIManager : MonoBehaviour
     private bool isSkillPanelOpen = false;
 
     private UnityEngine.UI.Slider healthSlider;
+    private UnityEngine.UI.Slider expSlider;
     private TextMeshProUGUI healthText;
+    private TextMeshProUGUI expText;
     private HexagonRadarChart abilityRadarChart;
 
     private InputAction _toggleSettingsAction;
@@ -175,31 +177,63 @@ public class UIManager : MonoBehaviour
 
     public void UpdateMyStatusUI(PlayerState state)
     {
+        int idx = Mathf.Min(Mathf.Max(0, (int)state.CurrentLevel - 1), Constants.LevelUpExp.Length - 1);
+        int maxExp = Constants.LevelUpExp[idx];
         if (healthSlider != null)
         {
             healthSlider.maxValue = state.MaxHp;
             healthSlider.value = state.CurrentHp;
+
+            expSlider.maxValue = maxExp;
+            expSlider.value = state.CurrentExp;
         }
         else
         {
-            healthSlider = statusPanel.GetComponentInChildren<UnityEngine.UI.Slider>();
+            var sliders = statusPanel.GetComponentsInChildren<UnityEngine.UI.Slider>();
+            foreach (var slider in sliders)
+            {
+                if (slider.name == Constants.NameHealthSlider)
+                {
+                    healthSlider = slider;
+                }
+                else if (slider.name == Constants.NameExpSlider)
+                {
+                    expSlider = slider;
+                }
+            }
             if (healthSlider != null)
             {
                 healthSlider.maxValue = state.MaxHp;
                 healthSlider.value = state.CurrentHp;
+
+                expSlider.maxValue = maxExp;
+                expSlider.value = state.CurrentExp;
             }
         }
 
         if (healthText != null)
         {
             healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
+            expText.text = $"Data Shards: {state.CurrentExp}/{maxExp}";
         }
         else
         {
-            healthText = statusPanel.GetComponentInChildren<TextMeshProUGUI>();
+            var healthTexts = statusPanel.GetComponentsInChildren<TextMeshProUGUI>();
+            foreach (var text in healthTexts)
+            {
+                if (text.name == Constants.NameHealthText)
+                {
+                    healthText = text;
+                }
+                else if (text.name == Constants.NameExpText)
+                {
+                    expText = text;
+                }
+            }
             if (healthText != null)
             {
                 healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
+                expText.text = $"Data Shards: {state.CurrentExp}/{maxExp}";
             }
         }
 

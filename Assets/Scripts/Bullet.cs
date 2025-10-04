@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
                 CharacterStatus targetCharacterStatus = collision.gameObject.GetComponent<CharacterStatus>();
                 if (targetCharacterStatus != null && targetCharacterStatus != OwnerStatus)
                 {
-                    targetCharacterStatus.TakeDamage_Host(OwnerStatus.State.Damage);
+                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
                 }
                 if (targetCharacterStatus == OwnerStatus)
                 {

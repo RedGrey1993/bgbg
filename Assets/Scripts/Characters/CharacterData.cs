@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Characters/Character Data")]
 public class CharacterData : ScriptableObject
 {
+    [Header("Basic Attributes")]
     public CharacterType CharacterType = CharacterType.Unset;
     public uint MaxHp;
     public uint MoveSpeed;
@@ -13,6 +14,7 @@ public class CharacterData : ScriptableObject
     public uint Damage = 1;
     public uint ShootFrequency = 3;
     public uint CriticalRate = 0;
+    public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
 
     [Header("AI Settings")]
     // NPC相关设置

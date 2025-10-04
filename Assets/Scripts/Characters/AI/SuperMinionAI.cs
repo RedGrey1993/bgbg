@@ -110,15 +110,20 @@ public class SuperMinionAI : CharacterBaseAI
     private float chaseMoveInputInterval = 0;
     private void Move_ChaseAcrossRooms()
     {
-        float posXMod = character.transform.position.x % Constants.RoomStep;
-        float posYMod = character.transform.position.y % Constants.RoomStep;
-        if (posXMod < 0) posXMod += Constants.RoomStep;
-        if (posYMod < 0) posYMod += Constants.RoomStep;
-        const float nearDoorDist = Constants.WallMaxThickness / 2 + Constants.CharacterMaxRadius;
+        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
+        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
+        const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
+        const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
-        // 在门边缘时，需要尽快改变追击路线，避免来回横跳
-        if (posXMod < nearDoorDist || posXMod > Constants.RoomStep - nearDoorDist
-            || posYMod < nearDoorDist || posYMod > Constants.RoomStep - nearDoorDist)
+        bool XNearWall() => posXMod < nearWallLowPos || posXMod > nearWallHighPos;
+        bool YNearWall() => posYMod < nearWallLowPos || posYMod > nearWallHighPos;
+        bool NearWall()
+        {
+            return XNearWall() || YNearWall();
+        }
+
+        // 在墙壁边缘时，需要尽快改变追击路线，避免来回横跳
+        if (NearWall())
         {
             chaseMoveInputInterval = 0;
         }
@@ -137,14 +142,14 @@ public class SuperMinionAI : CharacterBaseAI
         // 在同一间房间，直接追击
         if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
         {
-            // 优先穿过门，不管是否在攻击范围内
-            if (posXMod < nearDoorDist || posXMod > Constants.RoomStep - nearDoorDist)
+            // 优先穿过门，不管是否在攻击范围内，即在墙边时先快速远离墙
+            if (XNearWall())
             {
-                characterInput.MoveInput = new Vector2(posXMod < nearDoorDist ? 1 : -1, 0);
+                characterInput.MoveInput = new Vector2(posXMod < nearWallLowPos ? 1 : -1, 0);
             }
-            else if (posYMod < nearDoorDist || posYMod > Constants.RoomStep - nearDoorDist)
+            else if (YNearWall())
             {
-                characterInput.MoveInput = new Vector2(0, posYMod < nearDoorDist ? 1 : -1);
+                characterInput.MoveInput = new Vector2(0, posYMod < nearWallLowPos ? 1 : -1);
             }
             // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
             else if (diff.sqrMagnitude > sqrShootRange)
@@ -163,11 +168,11 @@ public class SuperMinionAI : CharacterBaseAI
             {
                 if (posYMod > Constants.RoomStep / 2 + 0.2f)
                 {
-                    characterInput.MoveInput = new Vector2(posXMod < nearDoorDist ? 0 : (tx < sx ? -1 : 1), -1);
+                    characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), -1);
                 }
                 else if (posYMod < Constants.RoomStep / 2 - 0.2f)
                 {
-                    characterInput.MoveInput = new Vector2(posXMod < nearDoorDist ? 0 : (tx < sx ? -1 : 1), 1);
+                    characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), 1);
                 }
                 else
                 {
@@ -178,11 +183,11 @@ public class SuperMinionAI : CharacterBaseAI
             {
                 if (posXMod > Constants.RoomStep / 2 + 0.2f)
                 {
-                    characterInput.MoveInput = new Vector2(-1, posYMod < nearDoorDist ? 0 : (ty < sy ? -1 : 1));
+                    characterInput.MoveInput = new Vector2(-1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }
                 else if (posXMod < Constants.RoomStep / 2 - 0.2f)
                 {
-                    characterInput.MoveInput = new Vector2(1, posYMod < nearDoorDist ? 0 : (ty < sy ? -1 : 1));
+                    characterInput.MoveInput = new Vector2(1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }
                 else
                 {

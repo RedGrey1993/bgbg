@@ -20,6 +20,7 @@ MonoBehaviour:
   Damage: 1
   ShootFrequency: 3
   CriticalRate: 0
+  ExpGiven: 100
   AggroRange: 20
   AggroChangeInterval: 2
   minRandomMoveInputInterval: 1

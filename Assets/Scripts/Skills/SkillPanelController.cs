@@ -40,8 +40,24 @@ public class SkillPanelController : MonoBehaviour
     [SerializeField] private List<SkillData> testSkills1;
     [SerializeField] private List<SkillData> testSkills2;
 
-    // 用于从外部触发技能选择
-    public void AddNewSkillChoice(List<SkillData> skills)
+    public void RandomizeNewSkillChoice()
+    {
+        UIManager.Instance.HideSkillPanel();
+        UIManager.Instance.ToggleSkillPanel();
+        var skillNum = SkillDatabase.Instance.Skills.Count;
+        List<SkillData> skills = new List<SkillData>();
+        for (int i = 0; i < Constants.SkillChooseNumber; i++)
+        {
+            var skillId = Random.Range(0, skillNum);
+            var skillData = SkillDatabase.Instance.Skills[skillId];
+            skills.Add(skillData);
+        }
+        Initialize();
+        AddNewSkillChoice(skills);
+    }
+
+    // 触发技能选择
+    private void AddNewSkillChoice(List<SkillData> skills)
     {
         skillChoiceQueue.Enqueue(new SkillChoiceRequest(skills));
         // 如果当前没有在选择，则开始处理队列

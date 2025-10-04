@@ -16,3 +16,14 @@ MonoBehaviour:
   MaxHp: 30
   MoveSpeed: 5
   ShootRange: 5
+  BulletSpeed: 6
+  Damage: 1
+  ShootFrequency: 3
+  CriticalRate: 0
+  ExpGiven: 200
+  AggroRange: 20
+  AggroChangeInterval: 2
+  minRandomMoveInputInterval: 1
+  maxRandomMoveInputInterval: 6
+  minChaseMoveInputInterval: 0.5
+  maxChaseMoveInputInterval: 1

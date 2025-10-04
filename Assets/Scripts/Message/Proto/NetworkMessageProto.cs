@@ -35,26 +35,27 @@ namespace NetworkMessageProto {
             "AiABKAIimAEKDElucHV0TWVzc2FnZRIQCghQbGF5ZXJJZBgBIAEoDRIMCgRU",
             "aWNrGAIgASgNEgwKBFR5cGUYAyABKA0SLAoJTW92ZUlucHV0GAQgASgLMhku",
             "TmV0d29ya01lc3NhZ2VQcm90by5WZWMyEiwKCUxvb2tJbnB1dBgFIAEoCzIZ",
-            "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMiL8AQoLUGxheWVyU3RhdGUSEAoI",
+            "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMiKmAgoLUGxheWVyU3RhdGUSEAoI",
             "UGxheWVySWQYASABKA0SEgoKUGxheWVyTmFtZRgCIAEoCRINCgVNYXhIcBgD",
             "IAEoDRIRCglDdXJyZW50SHAYBCABKA0SEQoJTW92ZVNwZWVkGAUgASgNEhMK",
             "C0J1bGxldFNwZWVkGAYgASgNEg4KBkRhbWFnZRgHIAEoDRIWCg5TaG9vdEZy",
             "ZXF1ZW5jeRgIIAEoDRISCgpTaG9vdFJhbmdlGAkgASgNEhQKDENyaXRpY2Fs",
-            "UmF0ZRgKIAEoDRIrCghQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
-            "UHJvdG8uVmVjMiJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVycxgB",
-            "IAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSDAoEVGlj",
-            "axgCIAEoDSJIChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5ZXJzGAEg",
-            "AygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIjgKClBsYXll",
-            "ckluZm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIKCgJJZBgD",
-            "IAEoDSI2ChFMZWFyblNraWxsTWVzc2FnZRIQCghwbGF5ZXJJZBgBIAEoDRIP",
-            "Cgdza2lsbElkGAIgASgNYgZwcm90bzM="));
+            "UmF0ZRgKIAEoDRIUCgxDdXJyZW50TGV2ZWwYDCABKA0SEgoKQ3VycmVudEV4",
+            "cBgNIAEoDRIrCghQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJv",
+            "dG8uVmVjMiJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVycxgBIAMo",
+            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSDAoEVGljaxgC",
+            "IAEoDSJIChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5ZXJzGAEgAygL",
+            "Mh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIjgKClBsYXllcklu",
+            "Zm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIKCgJJZBgDIAEo",
+            "DSI2ChFMZWFyblNraWxsTWVzc2FnZRIQCghwbGF5ZXJJZBgBIAEoDRIPCgdz",
+            "a2lsbElkGAIgASgNYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.GenericMessage), global::NetworkMessageProto.GenericMessage.Parser, new[]{ "Target", "Type", "InputMsg", "StateMsg", "PlayersMsg", "LearnSkillMsg" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.Vec2), global::NetworkMessageProto.Vec2.Parser, new[]{ "X", "Y" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "Position" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
@@ -1128,6 +1129,8 @@ namespace NetworkMessageProto {
       shootFrequency_ = other.shootFrequency_;
       shootRange_ = other.shootRange_;
       criticalRate_ = other.criticalRate_;
+      currentLevel_ = other.currentLevel_;
+      currentExp_ = other.currentExp_;
       position_ = other.position_ != null ? other.position_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1276,6 +1279,30 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "CurrentLevel" field.</summary>
+    public const int CurrentLevelFieldNumber = 12;
+    private uint currentLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurrentLevel {
+      get { return currentLevel_; }
+      set {
+        currentLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CurrentExp" field.</summary>
+    public const int CurrentExpFieldNumber = 13;
+    private uint currentExp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurrentExp {
+      get { return currentExp_; }
+      set {
+        currentExp_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Position" field.</summary>
     public const int PositionFieldNumber = 11;
     private global::NetworkMessageProto.Vec2 position_;
@@ -1313,6 +1340,8 @@ namespace NetworkMessageProto {
       if (ShootFrequency != other.ShootFrequency) return false;
       if (ShootRange != other.ShootRange) return false;
       if (CriticalRate != other.CriticalRate) return false;
+      if (CurrentLevel != other.CurrentLevel) return false;
+      if (CurrentExp != other.CurrentExp) return false;
       if (!object.Equals(Position, other.Position)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1331,6 +1360,8 @@ namespace NetworkMessageProto {
       if (ShootFrequency != 0) hash ^= ShootFrequency.GetHashCode();
       if (ShootRange != 0) hash ^= ShootRange.GetHashCode();
       if (CriticalRate != 0) hash ^= CriticalRate.GetHashCode();
+      if (CurrentLevel != 0) hash ^= CurrentLevel.GetHashCode();
+      if (CurrentExp != 0) hash ^= CurrentExp.GetHashCode();
       if (position_ != null) hash ^= Position.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1394,6 +1425,14 @@ namespace NetworkMessageProto {
         output.WriteRawTag(90);
         output.WriteMessage(Position);
       }
+      if (CurrentLevel != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(CurrentLevel);
+      }
+      if (CurrentExp != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CurrentExp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1448,6 +1487,14 @@ namespace NetworkMessageProto {
         output.WriteRawTag(90);
         output.WriteMessage(Position);
       }
+      if (CurrentLevel != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(CurrentLevel);
+      }
+      if (CurrentExp != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CurrentExp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1487,6 +1534,12 @@ namespace NetworkMessageProto {
       }
       if (CriticalRate != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CriticalRate);
+      }
+      if (CurrentLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentLevel);
+      }
+      if (CurrentExp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentExp);
       }
       if (position_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
@@ -1532,6 +1585,12 @@ namespace NetworkMessageProto {
       }
       if (other.CriticalRate != 0) {
         CriticalRate = other.CriticalRate;
+      }
+      if (other.CurrentLevel != 0) {
+        CurrentLevel = other.CurrentLevel;
+      }
+      if (other.CurrentExp != 0) {
+        CurrentExp = other.CurrentExp;
       }
       if (other.position_ != null) {
         if (position_ == null) {
@@ -1605,6 +1664,14 @@ namespace NetworkMessageProto {
             input.ReadMessage(Position);
             break;
           }
+          case 96: {
+            CurrentLevel = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            CurrentExp = input.ReadUInt32();
+            break;
+          }
         }
       }
     #endif
@@ -1669,6 +1736,14 @@ namespace NetworkMessageProto {
               Position = new global::NetworkMessageProto.Vec2();
             }
             input.ReadMessage(Position);
+            break;
+          }
+          case 96: {
+            CurrentLevel = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            CurrentExp = input.ReadUInt32();
             break;
           }
         }

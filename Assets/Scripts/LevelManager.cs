@@ -148,6 +148,8 @@ public class LevelManager : MonoBehaviour
         Vector2 bottomLeft = new Vector2(room.xMin, room.yMin);
         // Vector2 bottomRight = new Vector2(room.xMax, room.yMin);
 
+        int doorMin = Constants.DoorMin;
+        int doorMax = Constants.DoorMax;
         if (Mathf.Abs(topLeft.y - (Constants.RoomMaxHeight / 2)) > 0.1f)
         {
             // Top wall
@@ -155,6 +157,8 @@ public class LevelManager : MonoBehaviour
             ref var end = ref topRight;
             for (int x = (int)start.x; x < (int)end.x; x++)
             {
+                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax) continue; // Doorway
+                Debug.Log($"fhhtest, top wall tile at {x},{(int)start.y}");
                 wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), wallTile);
             }
         }
@@ -165,6 +169,7 @@ public class LevelManager : MonoBehaviour
             ref var end = ref topLeft;
             for (int y = (int)start.y; y < (int)end.y; y++)
             {
+                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax) continue; // Doorway
                 wallTilemap.SetTile(new Vector3Int((int)start.x, y, 0), wallTile);
             }
         }
