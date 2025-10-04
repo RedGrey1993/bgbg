@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: Level1FloorRuleType
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.RuleTile
+  m_DefaultSprite: {fileID: -939061564384460015, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 0
+  m_TilingRules:
+  - m_Id: 0
+    m_Sprites:
+    - {fileID: -1149738669, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: -1354855516, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 2278337, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 1837985526, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 830572010, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 1034208476, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: -253891085, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: -1372086210, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 1831639879, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 722566341, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 46228955, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 296804385, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: -917910605, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    - {fileID: 769955961, guid: b32672f5e0d12b848839ce1426b5d041, type: 3}
+    m_GameObject: {fileID: 0}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.3
+    m_Output: 1
+    m_ColliderType: 0
+    m_RandomTransform: 5
+    m_Neighbors: 
+    m_NeighborPositions: []
+    m_RuleTransform: 0

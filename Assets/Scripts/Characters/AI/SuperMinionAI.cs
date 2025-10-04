@@ -135,7 +135,7 @@ public class SuperMinionAI : CharacterBaseAI
         Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
 
         // 在同一间房间，直接追击
-        if (GameManager.Instance.RoomGrid[sx, sy] == GameManager.Instance.RoomGrid[tx, ty])
+        if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
         {
             // 优先穿过门，不管是否在攻击范围内
             if (posXMod < nearDoorDist || posXMod > Constants.RoomStep - nearDoorDist)
