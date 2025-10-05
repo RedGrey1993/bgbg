@@ -267,6 +267,8 @@ public class UIManager : MonoBehaviour
         {
             _mainMenuRoot.AddToClassList("hidden");
             ShowMyStatusUI();
+
+            GameManager.Instance.InitializeGame_Host();
         }
         else
         {
@@ -274,6 +276,7 @@ public class UIManager : MonoBehaviour
             {
                 NetworkManager.ActiveLayer?.LeaveLobby();
             }
+
             HideMyStatusUI();
             HideSettings();
             HideSkillPanel();
@@ -405,7 +408,6 @@ public class UIManager : MonoBehaviour
     private void OnLocalGameClicked()
     {
         SetGameState(true);
-        GameManager.Instance.InitializeGame_Host();
     }
 
     private void OnConfirmCreateRoomClicked()
@@ -854,12 +856,12 @@ public class UIManager : MonoBehaviour
     }
 
     private readonly object _infoLockObject = new object();
-    public void ShowInfoPanel(string info)
+    public void ShowInfoPanel(string info, float duration)
     {
         Debug.Log($"ShowInfoPanel called, _isIngame: {_isIngame}");
         if (!_isIngame) return; // 仅在游戏中允许打开信息面板
 
-        infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, 5)));
+        infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, duration)));
     }
 
     public void ClearInfoPanel()

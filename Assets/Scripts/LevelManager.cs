@@ -1,5 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -17,6 +18,14 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
     public List<Rect> Rooms { get; private set; }
     public int[,] RoomGrid { get; private set; } = new int[Constants.RoomMaxWidth / Constants.RoomStep, Constants.RoomMaxHeight / Constants.RoomStep];
+
+    private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
+    private List<Vector3Int>[] roomToTiles; // 每个房间包含的Tile位置列表
+    private List<Vector3Int>[] roomToDoorTiles; // 每个房间包含的门的Tile位置列表
+    private Dictionary<Vector3Int, List<int>> tileToRooms; // 每个Tile位置包含的房间列表
+    private Dictionary<Vector3Int, List<int>> doorTileToRooms; // 每个门的Tile位置包含的房间列表
+    private int remainRooms;
+    private List<int> remainRoomsIndex;
 
     void Awake()
     {
@@ -60,8 +69,9 @@ public class LevelManager : MonoBehaviour
         GenerateRooms(wallTile);
 
         UIManager.Instance.ClearInfoPanel();
-        UIManager.Instance.ShowInfoPanel("Generating Level1...");
-        UIManager.Instance.ShowInfoPanel("Generating Level2...");
+        UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
+
+        StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
     }
 
     private void GenerateFloors(TileBase floorTile)
@@ -122,9 +132,17 @@ public class LevelManager : MonoBehaviour
         }
 
         Rooms.AddRange(sortedList);
-        foreach (var room in Rooms)
+
+        roomConnections = new HashSet<int>[Rooms.Count];
+        roomToTiles = new List<Vector3Int>[Rooms.Count];
+        roomToDoorTiles = new List<Vector3Int>[Rooms.Count];
+        tileToRooms = new Dictionary<Vector3Int, List<int>>();
+        doorTileToRooms = new Dictionary<Vector3Int, List<int>>();
+        remainRoomsIndex = new List<int>();
+        for (int i = 0; i < Rooms.Count; ++i)
         {
-            GenerateRoom(room, wallTile);
+            remainRoomsIndex.Add(i);
+            GenerateRoom(Rooms[i], wallTile);
         }
         GenerateOuterWall(wallTile);
 
@@ -145,16 +163,55 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        remainRooms = Rooms.Count;
+        int hNum = Constants.RoomMaxWidth / Constants.RoomStep;
+        int vNum = Constants.RoomMaxHeight / Constants.RoomStep;
+        int[,] dir = new int[4, 2]
+        {
+            {0, -1}, // up
+            {-1, 0}, // left
+            {0, 1},  // down
+            {1, 0},  // right
+        };
+        for (int i = 0; i < hNum; i++)
+        {
+            for (int j = 0; j < vNum; j++)
+            {
+                for (int d = 0; d < 4; d++)
+                {
+                    int ni = i + dir[d, 0];
+                    int nj = j + dir[d, 1];
+                    if (ni >= 0 && ni < hNum && nj >= 0 && nj < vNum)
+                    {
+                        if (RoomGrid[i, j] != RoomGrid[ni, nj])
+                        {
+                            roomConnections[RoomGrid[i, j]] ??= new HashSet<int>();
+                            roomConnections[RoomGrid[i, j]].Add(RoomGrid[ni, nj]);
+                            roomConnections[RoomGrid[ni, nj]] ??= new HashSet<int>();
+                            roomConnections[RoomGrid[ni, nj]].Add(RoomGrid[i, j]);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < Rooms.Count; i++)
+        {
+            Debug.Log($"fhhtest, roomConnections[{i}]: {string.Join(",", roomConnections[i])}");
+        }
+
         Debug.Log($"Generated {Rooms.Count} rooms");
     }
 
     private void GenerateRoom(Rect room, TileBase wallTile)
     {
+        // 记录room对应的tile，一个tile可能属于多个rooms
+        int roomIdx = Rooms.IndexOf(room);
+
         // Create walls
         Vector2 topLeft = new Vector2(room.xMin, room.yMax);
         Vector2 topRight = new Vector2(room.xMax, room.yMax);
         Vector2 bottomLeft = new Vector2(room.xMin, room.yMin);
-        // Vector2 bottomRight = new Vector2(room.xMax, room.yMin);
 
         int doorMin = Constants.DoorMin;
         int doorMax = Constants.DoorMax;
@@ -165,7 +222,12 @@ public class LevelManager : MonoBehaviour
             ref var end = ref topRight;
             for (int x = (int)start.x; x < (int)end.x; x++)
             {
-                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax) continue; // Doorway
+                // Doorway
+                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
+                {
+                    wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), null);
+                    continue;
+                }
                 wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), wallTile);
             }
         }
@@ -176,8 +238,73 @@ public class LevelManager : MonoBehaviour
             ref var end = ref topLeft;
             for (int y = (int)start.y; y < (int)end.y; y++)
             {
-                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax) continue; // Doorway
+                // Doorway
+                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
+                {
+                    wallTilemap.SetTile(new Vector3Int((int)start.x, y, 0), null);
+                    continue;
+                }
                 wallTilemap.SetTile(new Vector3Int((int)start.x, y, 0), wallTile);
+            }
+        }
+
+        {
+            ref var start = ref topLeft;
+            ref var end = ref topRight;
+            for (int x = (int)start.x; x < (int)end.x; x++)
+            {
+                // Doorway
+                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
+                {
+                    roomToDoorTiles[roomIdx] ??= new List<Vector3Int>();
+                    var upDoor = new Vector3Int(x, (int)topLeft.y, 0);
+                    var downDoor = new Vector3Int(x, (int)bottomLeft.y, 0);
+                    if (!doorTileToRooms.ContainsKey(upDoor))
+                        doorTileToRooms[upDoor] = new List<int>();
+                    doorTileToRooms[upDoor].Add(roomIdx);
+                    if (!doorTileToRooms.ContainsKey(downDoor))
+                        doorTileToRooms[downDoor] = new List<int>();
+                    doorTileToRooms[downDoor].Add(roomIdx);
+
+                    roomToDoorTiles[roomIdx].Add(upDoor);
+                    roomToDoorTiles[roomIdx].Add(downDoor);
+                }
+            }
+
+            // Left wall
+            start = ref bottomLeft;
+            end = ref topLeft;
+            for (int y = (int)start.y; y < (int)end.y; y++)
+            {
+                // Doorway
+                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
+                {
+                    roomToDoorTiles[roomIdx] ??= new List<Vector3Int>();
+                    var leftDoor = new Vector3Int((int)bottomLeft.x, y, 0);
+                    var rightDoor = new Vector3Int((int)topRight.x, y, 0);
+                    if (!doorTileToRooms.ContainsKey(leftDoor))
+                        doorTileToRooms[leftDoor] = new List<int>();
+                    doorTileToRooms[leftDoor].Add(roomIdx);
+                    if (!doorTileToRooms.ContainsKey(rightDoor))
+                        doorTileToRooms[rightDoor] = new List<int>();
+                    doorTileToRooms[rightDoor].Add(roomIdx);
+
+                    roomToDoorTiles[roomIdx].Add(leftDoor);
+                    roomToDoorTiles[roomIdx].Add(rightDoor);
+                }
+            }
+        }
+
+        // 所有房间累积不超过200 * 200 = 40000个tile
+        for (int x = (int)topLeft.x; x <= (int)topRight.x; x++)
+        {
+            for (int y = (int)bottomLeft.y; y <= (int)topLeft.y; y++)
+            {
+                Vector3Int pos = new Vector3Int(x, y, 0);
+                if (!tileToRooms.ContainsKey(pos)) tileToRooms[pos] = new List<int>();
+                tileToRooms[pos].Add(roomIdx);
+                roomToTiles[roomIdx] ??= new List<Vector3Int>();
+                roomToTiles[roomIdx].Add(pos);
             }
         }
     }
@@ -218,5 +345,149 @@ public class LevelManager : MonoBehaviour
         var audioSrc = gameObject.AddComponent<AudioSource>();
         audioSrc.PlayOneShot(explosionSound);
         Destroy(audioSrc, explosionSound.length);
+    }
+
+    private int GetNextDestroyRoomIndex()
+    {
+        if (remainRooms <= 1) return -1;
+        int idx = Random.Range(0, remainRoomsIndex.Count);
+        int toDestroy = remainRoomsIndex[idx];
+        foreach (var neighbor in roomConnections[toDestroy])
+        {
+            if (roomConnections[neighbor].Count <= 1)
+            {
+                toDestroy = neighbor;
+                Debug.Log($"fhhtest, toDestroy(neighbor): {toDestroy}, {string.Join(",", roomConnections[toDestroy])}");
+                return toDestroy;
+            }
+        }
+
+        int connectCnt = 0;
+        int[] visited = new int[Rooms.Count];
+        Queue<int> q = new Queue<int>();
+        int firstNode = toDestroy == remainRoomsIndex[0] ? remainRoomsIndex[1] : remainRoomsIndex[0];
+        q.Enqueue(firstNode);
+        visited[firstNode] = 1;
+        while (q.Count > 0)
+        {
+            int curr = q.Dequeue();
+            connectCnt++;
+
+            foreach (var neighbor in roomConnections[curr])
+            {
+                if (neighbor != toDestroy && visited[neighbor] == 0)
+                {
+                    visited[neighbor] = 1;
+                    q.Enqueue(neighbor);
+                }
+            }
+        }
+        if (connectCnt < remainRooms - 1)
+        {
+            // Debug.Log($"fhhtest, room {toDestroy} is a cut node, connected {connectCnt}, remain {remainRooms}");
+            // room {toDestroy} is a cut node, select the bfs last leaf node as the destroy room.
+            int lastIdx = -1;
+            q.Enqueue(toDestroy);
+            visited[toDestroy] = 1;
+            while (q.Count > 0)
+            {
+                int curr = q.Dequeue();
+                lastIdx = curr;
+
+                foreach (var neighbor in roomConnections[curr])
+                {
+                    if (visited[neighbor] == 0)
+                    {
+                        visited[neighbor] = 1;
+                        q.Enqueue(neighbor);
+                    }
+                }
+            }
+            Debug.Log($"fhhtest, lastIdx: {lastIdx}, {string.Join(",", roomConnections[lastIdx])}");
+            return lastIdx;
+        }
+
+        Debug.Log($"fhhtest, toDestroy: {toDestroy}, {string.Join(",", roomConnections[toDestroy])}");
+        return toDestroy;
+    }
+
+    private void DestroyRoom(int roomIdx)
+    {
+        remainRooms--;
+        remainRoomsIndex.Remove(roomIdx);
+        // 移除房间连接关系
+        foreach (var neighbor in roomConnections[roomIdx])
+        {
+            roomConnections[neighbor].Remove(roomIdx);
+        }
+        roomConnections[roomIdx].Clear();
+
+        // 触发爆炸特效
+        Vector3 roomCenter = new Vector3(Rooms[roomIdx].center.x, Rooms[roomIdx].center.y, 0);
+        TriggerRoomExplosion(roomCenter);
+
+        // 移除房间对应的Tiles
+        foreach (var tilePos in roomToTiles[roomIdx])
+        {
+            if (tileToRooms.ContainsKey(tilePos))
+            {
+                tileToRooms[tilePos].Remove(roomIdx);
+                if (tileToRooms[tilePos].Count == 0)
+                {
+                    floorTilemap.SetTile(tilePos, null);
+                    wallTilemap.SetTile(tilePos, null);
+                    tileToRooms.Remove(tilePos);
+                }
+            }
+        }
+
+        // 炸毁房间后，原来连通未炸毁房间的门需要变成墙
+        // 遍历房间对应的门的Tiles
+        foreach (var tilePos in roomToDoorTiles[roomIdx])
+        {
+            if (doorTileToRooms.ContainsKey(tilePos))
+            {
+                doorTileToRooms[tilePos].Remove(roomIdx);
+                if (doorTileToRooms[tilePos].Count == 0)
+                {
+                    doorTileToRooms.Remove(tilePos);
+                }
+                else
+                {
+                    wallTilemap.SetTile(tilePos, level1WallTile);
+                }
+            }
+        }
+    }
+
+    // 协程函数，每隔一段时间摧毁一个房间
+    public IEnumerator StartDestroyingRooms(float interval)
+    {
+        while (true)
+        {
+            int roomIdx = GetNextDestroyRoomIndex();
+            if (roomIdx == -1)
+            {
+                Debug.Log("No more rooms can be destroyed.");
+                yield break; // 退出协程
+            }
+            UIManager.Instance.ShowInfoPanel($"Warning: room {roomIdx} will be destroyed in", interval);
+            yield return new WaitForSeconds(interval);
+            DestroyRoom(roomIdx);
+        }
+    }
+
+    public void ClearLevel(int level)
+    {
+        StopAllCoroutines();
+
+        // // 获取当前活动场景
+        // Scene currentScene = SceneManager.GetActiveScene();
+
+        // // 使用当前场景的 buildIndex 来重新加载场景
+        // // 这是推荐的做法，因为它效率更高且更安全
+        // SceneManager.LoadScene(currentScene.buildIndex);
+        
+        // Debug.Log("Scene reloaded: " + currentScene.name);
     }
 }
