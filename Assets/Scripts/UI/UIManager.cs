@@ -28,11 +28,16 @@ public class UIManager : MonoBehaviour
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject statusPanel;
     [SerializeField] private Animator skillPanelAnimator;
+    [SerializeField] private Transform infoPanelContainer;
+    [SerializeField] private GameObject infoTextPrefab;
     public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
     #endregion
 
-    private Coroutine flashCoroutine;
     private bool isSkillPanelOpen = false;
+    private Coroutine flashCoroutine;
+
+    private List<Coroutine> infoPanelCoroutines = new List<Coroutine>();
+    private HashSet<GameObject> infoTextObjects = new HashSet<GameObject>();
 
     private UnityEngine.UI.Slider healthSlider;
     private UnityEngine.UI.Slider expSlider;
@@ -848,6 +853,76 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private readonly object _infoLockObject = new object();
+    public void ShowInfoPanel(string info)
+    {
+        Debug.Log($"ShowInfoPanel called, _isIngame: {_isIngame}");
+        if (!_isIngame) return; // 仅在游戏中允许打开信息面板
+
+        infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, 5)));
+    }
+
+    public void ClearInfoPanel()
+    {
+        Debug.Log($"ClearInfoPanel called, _isIngame: {_isIngame}");
+        foreach (var coroutine in infoPanelCoroutines)
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+        }
+        lock (_infoLockObject)
+        {
+            foreach (var infoTextObj in infoTextObjects)
+            {
+                Destroy(infoTextObj);
+            }
+            if (infoTextObjects.Count > 0)
+            {
+                Animator animator = infoPanelContainer.GetComponent<Animator>();
+                animator.SetTrigger("Hide");
+            }
+            infoTextObjects.Clear();
+        }
+        infoPanelCoroutines.Clear();
+    }
+
+    // 显示信息并倒计时
+    private IEnumerator ShowInfoTextForDuration(string info, float duration)
+    {
+        GameObject infoTextObj = Instantiate(infoTextPrefab, infoPanelContainer);
+        TextMeshProUGUI infoText = infoTextObj.GetComponentInChildren<TextMeshProUGUI>();
+        lock (_infoLockObject)
+        {
+            if (infoTextObjects.Count == 0)
+            {
+                Animator animator = infoPanelContainer.GetComponent<Animator>();
+                animator.SetTrigger("Show");
+            }
+            infoTextObjects.Add(infoTextObj);
+        }
+
+        float timer = duration;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            infoText.text = $"{info}\n" + Mathf.CeilToInt(timer).ToString() + " s";
+            yield return null;
+        }
+        Destroy(infoTextObj);
+
+        lock (_infoLockObject)
+        {
+            infoTextObjects.Remove(infoTextObj);
+            if (infoTextObjects.Count == 0)
+            {
+                Animator animator = infoTextObj.GetComponentInParent<Animator>();
+                animator.SetTrigger("Hide");
+            }
+        }
+    }
+
     private void ShowSettings(bool isIngame)
     {
         // 如果在游戏中，暂停游戏并显示“退出到主菜单”按钮
@@ -919,5 +994,6 @@ public class UIManager : MonoBehaviour
             flashImage.color = new Color(1f, 1f, 0.8f, newAlpha);
             yield return null;
         }
+        flashCoroutine = null;
     }
 }

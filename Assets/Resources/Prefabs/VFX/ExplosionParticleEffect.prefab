@@ -4913,7 +4913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4310651629998574489}
   m_Layer: 0
-  m_Name: ExplosionEffect
+  m_Name: ExplosionParticleEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

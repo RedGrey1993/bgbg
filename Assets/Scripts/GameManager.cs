@@ -412,7 +412,7 @@ public class GameManager : MonoBehaviour
                 cameraFollow.target = go.transform;
             }
 
-            LevelManager.Instance.TriggerRoomExplosion(go.transform.position);
+            // LevelManager.Instance.TriggerRoomExplosion(go.transform.position);
         }
     }
 

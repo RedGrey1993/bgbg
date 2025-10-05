@@ -58,6 +58,10 @@ public class LevelManager : MonoBehaviour
         }
         GenerateFloors(floorTile);
         GenerateRooms(wallTile);
+
+        UIManager.Instance.ClearInfoPanel();
+        UIManager.Instance.ShowInfoPanel("Generating Level1...");
+        UIManager.Instance.ShowInfoPanel("Generating Level2...");
     }
 
     private void GenerateFloors(TileBase floorTile)
