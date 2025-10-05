@@ -15,7 +15,7 @@ public class LearnableSkillButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        iconImage = GetComponent<Image>();
+        iconImage = GetComponentInChildren<Image>();
         nameText = GetComponentInChildren<TextMeshProUGUI>();
         button.onClick.AddListener(OnButtonClicked);
     }
