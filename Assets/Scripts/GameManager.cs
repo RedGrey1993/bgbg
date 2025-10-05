@@ -379,7 +379,7 @@ public class GameManager : MonoBehaviour
 
         playerObjects[csteamId] = go;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
-        // 上面的注释是老逻辑，新逻辑Client都处理，但是Host会定期同步统一的状态
+        // 上面的注释是老逻辑，新逻辑Client都处理（相当于状态同步的移动预测），但是Host会定期同步统一的状态
         // if (!IsLocalOrHost())
         // {
         //     var collider = go.GetComponent<Collider2D>();
