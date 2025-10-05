@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 515694975425051795}
   - component: {fileID: 4436719811396333017}
   m_Layer: 5
-  m_Name: WorldCanvas
+  m_Name: MiniStatusCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4436719811396333017
 MonoBehaviour:
   m_ObjectHideFlags: 0

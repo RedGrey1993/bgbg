@@ -52,7 +52,6 @@ public class SkillPanelController : MonoBehaviour
             var skillData = SkillDatabase.Instance.Skills[skillId];
             skills.Add(skillData);
         }
-        Initialize();
         AddNewSkillChoice(skills);
     }
 

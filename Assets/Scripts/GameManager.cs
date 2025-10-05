@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using Unity.Cinemachine;
+
 
 
 #if PROTOBUF
@@ -20,7 +22,7 @@ public class GameManager : MonoBehaviour
     public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = nextPlayerId, CSteamID = "PlayerOffline", Name = "Player Offline" };
 
     public event Action PlayersUpdateActions;
-    public GameObject mainCameraPrefab;
+    public GameObject cameraFollowObject;
     public GameObject playerPrefab;
     public Transform playerParent;
     public GameObject wallWithDoorPrefab;
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public bool IsLocalOrHost()
@@ -105,6 +107,8 @@ public class GameManager : MonoBehaviour
             LevelManager.Instance.GenerateLevel(1);
             // 游戏刚开始时可以有一次选择技能的机会
             SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+            // 清空之前owned的技能和对应的协程
+            skillPanelController.Initialize();
             skillPanelController.RandomizeNewSkillChoice();
         }
         else
@@ -404,9 +408,11 @@ public class GameManager : MonoBehaviour
             Camera mainCamera = Camera.main;
             if (mainCamera != null)
             {
-                CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
+                CameraFollow cameraFollow = cameraFollowObject.GetComponent<CameraFollow>();
                 cameraFollow.target = go.transform;
             }
+
+            LevelManager.Instance.TriggerRoomExplosion(go.transform.position);
         }
     }
 

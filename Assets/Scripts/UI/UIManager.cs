@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using TMPro;
+using System.Collections;
+
+
 
 #if PROTOBUF
 using NetworkMessageProto;
@@ -25,9 +28,10 @@ public class UIManager : MonoBehaviour
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject statusPanel;
     [SerializeField] private Animator skillPanelAnimator;
-
+    public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
     #endregion
 
+    private Coroutine flashCoroutine;
     private bool isSkillPanelOpen = false;
 
     private UnityEngine.UI.Slider healthSlider;
@@ -586,7 +590,8 @@ public class UIManager : MonoBehaviour
 
     private void SetupServerListView()
     {
-        _serverListView.makeItem = () => {
+        _serverListView.makeItem = () =>
+        {
             var item = new VisualElement();
             item.AddToClassList("room-item");
 
@@ -614,7 +619,8 @@ public class UIManager : MonoBehaviour
             return item;
         };
 
-        _serverListView.bindItem = (element, i) => {
+        _serverListView.bindItem = (element, i) =>
+        {
             var lobby = (LobbyInfo)_serverListView.itemsSource[i];
             element.Q<Label>(className: "room-name").text = lobby.Name;
             element.Q<Label>(className: "room-player-count").text = $"{lobby.CurrentPlayers}/{lobby.MaxPlayers}";
@@ -647,7 +653,8 @@ public class UIManager : MonoBehaviour
     {
         if (NetworkManager.ActiveLayer == null || _playerListView == null) return;
 
-        _playerListView.makeItem = () => {
+        _playerListView.makeItem = () =>
+        {
             var item = new VisualElement();
             item.AddToClassList("player-item");
             var avatar = new VisualElement();
@@ -659,7 +666,8 @@ public class UIManager : MonoBehaviour
             return item;
         };
 
-        _playerListView.bindItem = (element, i) => {
+        _playerListView.bindItem = (element, i) =>
+        {
             var playerInfo = GameManager.Instance.Players.ElementAt(i);
             var nameLabel = element.Q<Label>(className: "player-name");
             var avatarElement = element.Q<VisualElement>(className: "player-avatar");
@@ -743,7 +751,7 @@ public class UIManager : MonoBehaviour
     {
         UpdateStatus($"加入失败: {reason}");
     }
-    
+
     private void OnLobbyListUpdated(List<LobbyInfo> lobbies)
     {
         _lobbies = lobbies;
@@ -890,4 +898,26 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+
+    public void TriggerScreenFlash()
+    {
+        if (flashImage != null)
+        {
+            if (flashCoroutine != null)
+                StopCoroutine(flashCoroutine);
+            flashCoroutine = StartCoroutine(ScreenFlash());
+        }
+    }
+
+    // 屏幕闪烁效果协程
+    private IEnumerator ScreenFlash()
+    {
+        flashImage.color = new Color(1f, 1f, 0.8f, 0.8f); // 亮黄色，80%不透明
+        while (flashImage.color.a > 0)
+        {
+            float newAlpha = flashImage.color.a - (Time.deltaTime); // 调整 *4 这个速度
+            flashImage.color = new Color(1f, 1f, 0.8f, newAlpha);
+            yield return null;
+        }
+    }
 }

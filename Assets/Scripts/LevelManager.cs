@@ -1,16 +1,20 @@
 using System.Collections.Generic;
 using System.Data;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance { get; private set; }
-
     public Tilemap floorTilemap;
     public Tilemap wallTilemap;
     public TileBase level1FloorTile;
     public TileBase level1WallTile;
+    public GameObject explosionEffectPrefab; // 你的粒子特效Prefab
+    public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
+    public AudioClip explosionSound;
+
+    public static LevelManager Instance { get; private set; }
     public List<Rect> Rooms { get; private set; }
     public int[,] RoomGrid { get; private set; } = new int[Constants.RoomMaxWidth / Constants.RoomStep, Constants.RoomMaxHeight / Constants.RoomStep];
 
@@ -186,5 +190,29 @@ public class LevelManager : MonoBehaviour
             wallTilemap.SetTile(new Vector3Int(-Constants.RoomMaxWidth / 2, y, 0), wallTile);
             wallTilemap.SetTile(new Vector3Int(Constants.RoomMaxWidth / 2, y, 0), wallTile);
         }
+    }
+
+    public void TriggerRoomExplosion(Vector3 worldPosition)
+    {
+        // 1. 触发爆炸特效
+        var explosionObj = Instantiate(explosionEffectPrefab, worldPosition, Quaternion.identity);
+        Destroy(explosionObj, 15f); // 15秒后销毁
+
+        // 2. 触发屏幕震动
+        var impulseObj = Instantiate(explosionImpulsePrefab, worldPosition, Quaternion.identity);
+        var impulseSource = impulseObj.GetComponent<CinemachineImpulseSource>();
+        impulseSource.GenerateImpulse();
+        Destroy(impulseObj, 10f); // 10秒后销毁
+
+        // 3. 触发屏幕闪光
+        UIManager.Instance.TriggerScreenFlash();
+
+        // // 4. 摧毁Tilemap
+        // ExplodeRoom(worldPosition, 5); // 5是爆炸半径
+
+        // 5. 播放音效 (需要一个AudioManager)
+        var audioSrc = gameObject.AddComponent<AudioSource>();
+        audioSrc.PlayOneShot(explosionSound);
+        Destroy(audioSrc, explosionSound.length);
     }
 }
