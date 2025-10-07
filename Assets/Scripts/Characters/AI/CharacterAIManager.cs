@@ -16,8 +16,8 @@ public static class CharacterAIManager
 
         switch (characterStatus.characterData.CharacterType)
         {
-            case CharacterType.SuperMinionNormal:
-                return new SuperMinionAI(character);
+            case CharacterType.Contra_Bill:
+                return new ContraBillAI(character);
             case CharacterType.Minion_1_0_Stomper:
                 return new Minion_1_0_StomperAI(character);
             default:

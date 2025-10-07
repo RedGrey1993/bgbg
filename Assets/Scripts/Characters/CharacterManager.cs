@@ -100,6 +100,14 @@ public class CharacterManager : MonoBehaviour
         {
             playerStatus.State.PlayerId = playerId;
             playerStatus.State.PlayerName = playerName;
+            if (playerName.StartsWith(Constants.AIPlayerPrefix))
+            {
+                playerStatus.IsAI = true;
+            }
+            else
+            {
+                playerStatus.IsAI = false;
+            }
             // TODO: 将prefab放到characterData中，根据csteamId创建不同的角色
             // playerStatus.characterData.CharacterType = CharacterType.PlayerAI;
         }
@@ -230,6 +238,31 @@ public class CharacterManager : MonoBehaviour
         };
         MessageManager.Instance.SendMessage(genericMessage, true);
     }
+
+    #region Utils
+    public GameObject FindNearestPlayerInRange(GameObject character, uint range)
+    {
+        GameObject nearestPlayer = null;
+        float nearestDistanceSqr = range * range;
+        foreach (var kvp in playerObjects)
+        {
+            // 跳过自己
+            if (kvp.Value == character) continue;
+            var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
+            if (playerStatus != null && !playerStatus.IsDead())
+            {
+                Vector2 toPlayer = kvp.Value.transform.position - character.transform.position;
+                float distSqr = toPlayer.sqrMagnitude;
+                if (distSqr <= nearestDistanceSqr)
+                {
+                    nearestDistanceSqr = distSqr;
+                    nearestPlayer = kvp.Value;
+                }
+            }
+        }
+        return nearestPlayer;
+    }
+    #endregion
 
     #region State Msg Handler
     public void UpdatePlayers(PlayersUpdateMessage players)

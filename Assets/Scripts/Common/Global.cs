@@ -32,9 +32,8 @@ public enum ItemChangeType
 public enum CharacterType
 {
     Unset = 0,
-    Player = 1,
-    PlayerAI,
-    SuperMinionNormal,
+    // 默认的角色，最终也会变成Boss
+    Contra_Bill = 1,
     // Level 1 0, 踩踏者
     Minion_1_0_Stomper,
     // Elite 精英

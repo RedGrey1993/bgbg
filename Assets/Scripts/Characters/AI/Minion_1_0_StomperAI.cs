@@ -10,15 +10,16 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
 
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
-    public override void Update()
+    protected override void GenerateAILogic()
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
             UpdateAggroTarget();
             UpdateMoveInput();
-            UpdateAttackInput();
+            Attack();
         }
     }
+
     public override void OnCollision(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
@@ -61,29 +62,9 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = FindNearestPlayerInRange(character.transform.position, CharacterData.AggroRange);
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
             Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
         }
-    }
-    private GameObject FindNearestPlayerInRange(Vector2 position, uint range)
-    {
-        GameObject nearestPlayer = null;
-        float nearestDistanceSqr = range * range;
-        foreach (var kvp in CharacterManager.Instance.playerObjects)
-        {
-            var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
-            if (playerStatus != null && !playerStatus.IsDead())
-            {
-                Vector2 toPlayer = (Vector2)kvp.Value.transform.position - position;
-                float distSqr = toPlayer.sqrMagnitude;
-                if (distSqr <= nearestDistanceSqr)
-                {
-                    nearestDistanceSqr = distSqr;
-                    nearestPlayer = kvp.Value;
-                }
-            }
-        }
-        return nearestPlayer;
     }
     #endregion
 
@@ -96,20 +77,20 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                Move_RandomMove();
+                Move_RandomMove(false);
                 // 每隔随机时间改变一次随机输入
                 randomMoveInputInterval = Random.Range(CharacterData.minRandomMoveInputInterval, CharacterData.maxRandomMoveInputInterval);
                 nextMoveInputChangeTime = Time.time + randomMoveInputInterval;
             }
             else
             {
-                Move_ChaseAcrossRooms();
+                Move_ChaseInRoom();
             }
         }
     }
 
     private float chaseMoveInputInterval = 0;
-    private void Move_ChaseAcrossRooms()
+    private void Move_ChaseInRoom()
     {
         float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
         float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
@@ -164,43 +145,15 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         }
         else
         {
-            // 在不同房间，走门追击
-            if (tx != sx)
-            {
-                if (posYMod > Constants.RoomStep / 2 + 0.2f)
-                {
-                    characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), -1);
-                }
-                else if (posYMod < Constants.RoomStep / 2 - 0.2f)
-                {
-                    characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), 1);
-                }
-                else
-                {
-                    characterInput.MoveInput = new Vector2(tx < sx ? -1 : 1, 0);
-                }
-            }
-            else if (ty != sy)
-            {
-                if (posXMod > Constants.RoomStep / 2 + 0.2f)
-                {
-                    characterInput.MoveInput = new Vector2(-1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
-                }
-                else if (posXMod < Constants.RoomStep / 2 - 0.2f)
-                {
-                    characterInput.MoveInput = new Vector2(1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
-                }
-                else
-                {
-                    characterInput.MoveInput = new Vector2(0, ty < sy ? -1 : 1);
-                }
-            }
+            // 在不同房间，随机移动
+            Move_RandomMove(false);
+            AggroTarget = null; // 取消仇恨，等待下次重新搜索
         }
     }
     #endregion
 
     #region Attack
-    private void UpdateAttackInput()
+    private void Attack()
     {
         if (AggroTarget != null)
         {

@@ -25,9 +25,9 @@ public class CharacterStatus : MonoBehaviour
 
     [Header("Shooting Settings")]
     public bool canShootDiagonally = false;
-    public GameObject bulletPrefab;
 
     private Slider healthSlider;
+    public bool IsAI { get; set; } = true;
 
     void Awake()
     {

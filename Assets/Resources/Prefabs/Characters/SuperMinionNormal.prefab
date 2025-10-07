@@ -568,8 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  characterData: {fileID: 11400000, guid: 1c7153ebc6dc06341adff2f8da592e5c, type: 2}
-  canMoveDiagonally: 1
+  characterData: {fileID: 11400000, guid: a8cec24f41cf3174c8f8c016da91a799, type: 2}
+  canMoveDiagonally: 0
   canShootDiagonally: 0
   bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
 --- !u!114 &2886354748114766976

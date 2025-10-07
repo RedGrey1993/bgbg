@@ -2,15 +2,15 @@
 
 using UnityEngine;
 
-public class SuperMinionAI : CharacterBaseAI
+public class ContraBillAI : CharacterBaseAI
 {
-    public SuperMinionAI(GameObject character) : base(character)
+    public ContraBillAI(GameObject character) : base(character)
     {
     }
 
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
-    public override void Update()
+    protected override void GenerateAILogic()
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
@@ -19,6 +19,7 @@ public class SuperMinionAI : CharacterBaseAI
             UpdateAttackInput();
         }
     }
+
     public override void OnCollision(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
@@ -61,29 +62,9 @@ public class SuperMinionAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = FindNearestPlayerInRange(character.transform.position, CharacterData.AggroRange);
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
             Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
         }
-    }
-    private GameObject FindNearestPlayerInRange(Vector2 position, uint range)
-    {
-        GameObject nearestPlayer = null;
-        float nearestDistanceSqr = range * range;
-        foreach (var kvp in CharacterManager.Instance.playerObjects)
-        {
-            var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
-            if (playerStatus != null && !playerStatus.IsDead())
-            {
-                Vector2 toPlayer = (Vector2)kvp.Value.transform.position - position;
-                float distSqr = toPlayer.sqrMagnitude;
-                if (distSqr <= nearestDistanceSqr)
-                {
-                    nearestDistanceSqr = distSqr;
-                    nearestPlayer = kvp.Value;
-                }
-            }
-        }
-        return nearestPlayer;
     }
     #endregion
 

@@ -1253,7 +1253,7 @@ namespace NetworkMessageProto {
     public const int ShootRangeFieldNumber = 9;
     private uint shootRange_;
     /// <summary>
-    /// 子弹最大射程
+    /// 攻击范围，不一定是射击
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]

@@ -6,6 +6,8 @@ public class CharacterData : ScriptableObject
 {
     [Header("Basic Attributes")]
     public CharacterType CharacterType = CharacterType.Unset;
+    public AudioClip shootSound;
+    public GameObject bulletPrefab;
     public uint MaxHp;
     public uint MoveSpeed;
     public uint ShootRange;
