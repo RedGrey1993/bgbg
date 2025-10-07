@@ -72,7 +72,7 @@ public abstract class CharacterBaseAI : ICharacterAI
     protected void NormalizeMoveInput(ref Vector2 moveInput)
     {
         // Handle diagonal movement setting
-        if (!characterStatus.canMoveDiagonally)
+        if (!CharacterData.canMoveDiagonally)
         {
             // Prioritize the axis with larger absolute value
             if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
@@ -94,7 +94,7 @@ public abstract class CharacterBaseAI : ICharacterAI
     private void NormalizeLookInput(ref Vector2 lookInput)
     {
         // Handle diagonal shooting setting
-        if (!characterStatus.canShootDiagonally)
+        if (!CharacterData.canAttackDiagonally)
         {
             // Restrict look input to horizontal or vertical only
             if (Mathf.Abs(lookInput.x) > Mathf.Abs(lookInput.y))

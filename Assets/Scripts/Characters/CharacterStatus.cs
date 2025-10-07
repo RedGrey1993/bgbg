@@ -20,12 +20,6 @@ public class CharacterStatus : MonoBehaviour
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
 
-    [Header("Movement Settings")]
-    public bool canMoveDiagonally = true;
-
-    [Header("Shooting Settings")]
-    public bool canShootDiagonally = false;
-
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
 

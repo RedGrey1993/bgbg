@@ -31,9 +31,9 @@ public class SkillDatabase : MonoBehaviour
         Skills = new List<SkillData>();
         SkillDictionary = new Dictionary<uint, SkillData>();
 
-        // 从 Resources/Skills/ 文件夹中加载所有 SkillData 类型的资产
+        // 从 Resources/Configs/Skills/ 文件夹中加载所有 SkillData 类型的资产
         // 如果你直接放在 Resources 根目录，路径就是 ""
-        SkillData[] skillAssets = Resources.LoadAll<SkillData>("Skills");
+        SkillData[] skillAssets = Resources.LoadAll<SkillData>("Configs/Skills");
 
         // 将加载的技能数组转换为字典
         foreach (SkillData skill in skillAssets)

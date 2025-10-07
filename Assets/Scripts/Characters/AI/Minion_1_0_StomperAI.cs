@@ -2,6 +2,7 @@
 
 using UnityEngine;
 
+// Stomper不会对角线移动
 public class Minion_1_0_StomperAI : CharacterBaseAI
 {
     public Minion_1_0_StomperAI(GameObject character) : base(character)
@@ -16,7 +17,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         {
             UpdateAggroTarget();
             UpdateMoveInput();
-            Attack();
+            UpdateAttackInput();
         }
     }
 
@@ -55,7 +56,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
 
     #endregion
 
-        #region Aggro
+    #region Aggro
     private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
     private void UpdateAggroTarget()
     {
@@ -153,25 +154,21 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     #endregion
 
     #region Attack
-    private void Attack()
+    private void UpdateAttackInput()
     {
         if (AggroTarget != null)
         {
-            Attack_ShootToTarget();
-        }
-    }
-    private void Attack_ShootToTarget()
-    {
-        var diff = AggroTarget.transform.position - character.transform.position;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // 进入攻击距离，直接射击
-        if (diff.sqrMagnitude <= sqrShootRange)
-        {
-            characterInput.LookInput = diff;
-        }
-        else
-        {
-            characterInput.LookInput = Vector2.zero;
+            var diff = AggroTarget.transform.position - character.transform.position;
+            var atkRange = characterStatus.State.ShootRange;
+            // 进入攻击距离，直接攻击
+            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+            {
+                characterInput.LookInput = diff;
+            }
+            else
+            {
+                characterInput.LookInput = Vector2.zero;
+            }
         }
     }
     #endregion

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
 {
+    public LevelData levelData;
     public Tilemap floorTilemap;
     public Tilemap wallTilemap;
-    public TileBase level1FloorTile;
     public TileBase level1WallTile;
     public GameObject explosionEffectPrefab; // 你的粒子特效Prefab
     public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
@@ -41,16 +42,18 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateLevel(int level)
     {
-        ref TileBase floorTile = ref level1FloorTile;
+        if (level < 1 || level > levelData.floorTiles.Count)
+        {
+            throw new ArgumentOutOfRangeException("No LevelData for level " + level);
+        }
+        TileBase floorTile = levelData.floorTiles[level - 1];
         ref TileBase wallTile = ref level1WallTile;
         switch (level)
         {
             case 1:
-                floorTile = ref level1FloorTile;
                 wallTile = ref level1WallTile;
                 break;
             default:
-                floorTile = ref level1FloorTile;
                 wallTile = ref level1WallTile;
                 break;
         }
@@ -342,7 +345,7 @@ public class LevelManager : MonoBehaviour
     private int GetNextDestroyRoomIndex()
     {
         if (remainRooms <= 1) return -1;
-        int idx = Random.Range(0, remainRoomsIndex.Count);
+        int idx = UnityEngine.Random.Range(0, remainRoomsIndex.Count);
         int toDestroy = remainRoomsIndex[idx];
         foreach (var neighbor in roomConnections[toDestroy])
         {

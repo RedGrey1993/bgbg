@@ -1938,9 +1938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb1ac3a940b0f94da2897324b183327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  levelData: {fileID: 11400000, guid: ee150687057fe9b40a3bb99e8396e0a8, type: 2}
   floorTilemap: {fileID: 1246905460}
   wallTilemap: {fileID: 414631226}
-  level1FloorTile: {fileID: 11400000, guid: f3901e6e4404d8445866279c9c661900, type: 2}
   level1WallTile: {fileID: 11400000, guid: 36c0ac87a3f14014197c33090a5f9d06, type: 2}
   explosionEffectPrefab: {fileID: 3550354129048877229, guid: ba3dff98310ec7947b58568d29221425, type: 3}
   explosionImpulsePrefab: {fileID: 7926851015835408411, guid: ed5b9ccd262dd2f4ab36cd52d52c51f6, type: 3}

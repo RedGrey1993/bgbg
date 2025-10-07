@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 6554821156004288781}
   - component: {fileID: 1240948171261194774}
   - component: {fileID: 7173131251571810398}
-  - component: {fileID: 361131581170699510}
   - component: {fileID: 8595861815966908792}
   m_Layer: 0
   m_Name: Player3D
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,22 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatus
   characterData: {fileID: 11400000, guid: a8cec24f41cf3174c8f8c016da91a799, type: 2}
-  canMoveDiagonally: 1
-  canShootDiagonally: 0
-  bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
---- !u!114 &361131581170699510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696006956200170134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49af873073b16d4f88f666687231c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterAction
-  shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
 --- !u!82 &8595861815966908792
 AudioSource:
   m_ObjectHideFlags: 0

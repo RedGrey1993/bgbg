@@ -18,6 +18,12 @@ public class CharacterData : ScriptableObject
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
 
+    [Header("Movement Settings")]
+    public bool canMoveDiagonally = true;
+
+    [Header("Attack Settings")]
+    public bool canAttackDiagonally = false;
+
     [Header("AI Settings")]
     // NPC相关设置
     public uint AggroRange = 20;
