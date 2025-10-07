@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         uint tick = (uint)(Time.realtimeSinceStartup * 1000);
         var inputMsg = new InputMessage
         {
-            PlayerId = GameManager.Instance.MyInfo.Id,
+            PlayerId = CharacterManager.Instance.MyInfo.Id,
             Tick = tick,
             MoveInput = new Vec2
             {
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             InputMsg = inputMsg
         };
         // 输入指令频率很高，丢失了也会很快被下一次输入覆盖，因此不需要可靠传输
-        GameManager.Instance.SendMessage(genericMessage, false);
+        MessageManager.Instance.SendMessage(genericMessage, false);
     }
 
     void OnEnable()

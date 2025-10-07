@@ -72,7 +72,8 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
                 int randomSuffix = UnityEngine.Random.Range(1000, 9999);
                 // Update MyInfo with the correct network ID before adding to the list
-                GameManager.Instance.MyInfo = new PlayerInfo { CSteamID = localEndpoint.ToString(), Name = "Player " + randomSuffix };
+                CharacterManager.Instance.MyInfo.CSteamID = localEndpoint.ToString();
+                CharacterManager.Instance.MyInfo.Name = "Player " + randomSuffix;
                 Debug.Log($"LocalUdpNetworkLayer: Initialized and listening on port {port}");
                 return true; // Success
             }
@@ -117,7 +118,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
             CurrentPlayers = 1,
             MaxPlayers = maxPlayers,
             HasPassword = !string.IsNullOrEmpty(password),
-            OwnerName = GameManager.Instance.MyInfo.Name
+            OwnerName = CharacterManager.Instance.MyInfo.Name
         };
 
         // We are already receiving, so no need to call BeginReceive again.
@@ -157,7 +158,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
         {
             hostEndpoint = targetHostEndpoint;
             // Send join request
-            SerializeUtil.Serialize(GameManager.Instance.MyInfo, out byte[] myInfo);
+            SerializeUtil.Serialize(CharacterManager.Instance.MyInfo, out byte[] myInfo);
             var joinRequest = new LocalPacket { type = "JoinRequest", payload = myInfo };
             var json = JsonUtility.ToJson(joinRequest);
             Debug.Log($"fhhtest Sending JoinRequest to {hostEndpoint}, json: {json}");
@@ -174,7 +175,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
     public void LeaveLobby()
     {
         string packetType = IsHost ? "LobbyClosed" : "Leave";
-        SerializeUtil.Serialize(GameManager.Instance.MyInfo, out byte[] myInfo);
+        SerializeUtil.Serialize(CharacterManager.Instance.MyInfo, out byte[] myInfo);
         var leavePacket = new LocalPacket { type = packetType, payload = myInfo };
         byte[] data = Encoding.UTF8.GetBytes(JsonUtility.ToJson(leavePacket));
 
@@ -197,7 +198,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     public void SendToAll(byte[] data, bool reliable)
     {
-        foreach (var player in GameManager.Instance.Players)
+        foreach (var player in CharacterManager.Instance.Players)
         {
             if (TryParseIPEndPoint(player.CSteamID, out IPEndPoint client))
             {
@@ -208,9 +209,9 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
     public void SendToOthers(byte[] data, bool reliable)
     {
-        foreach (var player in GameManager.Instance.Players)
+        foreach (var player in CharacterManager.Instance.Players)
         {
-            if (player.Id == GameManager.Instance.MyInfo.Id) continue;
+            if (player.Id == CharacterManager.Instance.MyInfo.Id) continue;
             if (TryParseIPEndPoint(player.CSteamID, out IPEndPoint client))
             {
                 SendToEndpoint(client, data);
@@ -313,7 +314,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             var responsePayload = new DiscoveryResponsePayload
                             {
                                 lobbyName = currentLobby.Name,
-                                currentPlayers = GameManager.Instance.Players.Count,
+                                currentPlayers = CharacterManager.Instance.Players.Count,
                                 maxPlayers = currentLobby.MaxPlayers,
                                 hasPassword = currentLobby.HasPassword,
                                 ownerName = currentLobby.OwnerName,
@@ -332,7 +333,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
                                 SerializeUtil.Deserialize(packet.payload, out PlayerInfo playerInfoFromClient);
                                 var newPlayer = new PlayerInfo { CSteamID = remoteEP.ToString(), Name = playerInfoFromClient.Name };
 
-                                if (!GameManager.Instance.Players.Any(p => p.CSteamID == newPlayer.CSteamID))
+                                if (!CharacterManager.Instance.Players.Any(p => p.CSteamID == newPlayer.CSteamID))
                                 {
                                     SerializeUtil.Serialize(newPlayer, out byte[] playerInfo);
                                     var playerJoinedPacket = new LocalPacket { type = "PlayerJoined", payload = playerInfo };
@@ -341,7 +342,7 @@ public class LocalUdpNetworkLayer : INetworkLayer
 
                                     OnPlayerJoined?.Invoke(newPlayer);
 
-                                    currentLobby.CurrentPlayers = GameManager.Instance.Players.Count;
+                                    currentLobby.CurrentPlayers = CharacterManager.Instance.Players.Count;
                                     var joinAcceptPacket = new LocalPacket { type = "JoinAccept", payload = Encoding.UTF8.GetBytes(JsonUtility.ToJson(currentLobby)) };
                                     Debug.Log($"fhhtest, joinAcceptPacket payload: {joinAcceptPacket.payload}");
                                     byte[] joinAcceptData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(joinAcceptPacket));
@@ -353,15 +354,16 @@ public class LocalUdpNetworkLayer : INetworkLayer
                             }
                         case "Leave":
                             {
-                                SerializeUtil.Deserialize(packet.payload, out PlayerInfo leftPlayer);
-                                if (GameManager.Instance.Players.Contains(leftPlayer))
+                                SerializeUtil.Deserialize(packet.payload, out PlayerInfo playerInfo);
+                                if (CharacterManager.Instance.Players.Any(p => p.CSteamID == playerInfo.CSteamID))
                                 {
+                                    var leftPlayer = CharacterManager.Instance.Players.FirstOrDefault(p => p.CSteamID == playerInfo.CSteamID);
                                     OnPlayerLeft?.Invoke(leftPlayer);
 
                                     SerializeUtil.Serialize(leftPlayer, out byte[] leftPlayerData);
                                     var playerLeftPacket = new LocalPacket { type = "PlayerLeft", payload = leftPlayerData };
                                     byte[] playerLeftData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(playerLeftPacket));
-                                    SendToAll(playerLeftData, true);
+                                    SendToOthers(playerLeftData, true);
                                 }
                                 packetHandled = true;
                                 break;

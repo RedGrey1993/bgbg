@@ -71,38 +71,44 @@ public class LobbyNetworkManager : MonoBehaviour
     }
 
     // --- Event Handlers from INetworkLayer ---
+    // 创建房间时，房间中只有房主一个玩家
     private void OnLobbyCreated(LobbyInfo lobbyInfo)
     {
         Debug.Log($"LobbyNetworkManager: Created lobby: {lobbyInfo.Name}");
-        GameManager.Instance.OnLobbyCreated();
+        CharacterManager.Instance.InitializeMySelf();
     }
 
     private void OnLobbyJoined(LobbyInfo lobbyInfo)
     {
         IsInLobby = true;
         Debug.Log($"LobbyNetworkManager: Joined lobby: {lobbyInfo.Name}, Initializing game...");
-        GameManager.Instance.OnLobbyJoined(lobbyInfo);
         lastTickTime = Time.realtimeSinceStartup;
     }
 
     private void OnPlayerJoined(PlayerInfo playerInfo)
     {
         Debug.Log($"LobbyNetworkManager: Player {playerInfo.Name} joined.");
-        GameManager.Instance.OnPlayerJoined(playerInfo);
+        if (GameManager.Instance.IsHost())
+        {
+            CharacterManager.Instance.AddPlayer(playerInfo);
+        }
         // HostTick will send the full state to the new player
     }
 
     private void OnPlayerLeft(PlayerInfo playerInfo)
     {
         Debug.Log($"LobbyNetworkManager: Player {playerInfo.Name} left.");
-        GameManager.Instance.OnPlayerLeft(playerInfo);
+        if (GameManager.Instance.IsHost())
+        {
+            CharacterManager.Instance.RemovePlayer(playerInfo);
+        }
     }
 
     private void OnLobbyLeft()
     {
         IsInLobby = false;
         Debug.Log("LobbyNetworkManager: Left lobby.");
-        GameManager.Instance.OnLobbyLeft();
+        CharacterManager.Instance.InitializeMySelf();
     }
 
     private void OnPacketReceived(byte[] data)
@@ -110,7 +116,7 @@ public class LobbyNetworkManager : MonoBehaviour
         try
         {
             SerializeUtil.Deserialize(data, out GenericMessage gen);
-            GameManager.Instance.ReceiveMessage(gen);
+            MessageManager.Instance.ReceiveMessage(gen);
         }
         catch (Exception e)
         {

@@ -34,11 +34,16 @@ public enum CharacterType
     Unset = 0,
     Player = 1,
     PlayerAI,
-    SmallMinionNormal,
-    MiddleMinionNormal,
     SuperMinionNormal,
+    // Level 1 0, 踩踏者
+    Minion_1_0_Stomper,
     // Elite 精英
-    BossFatTiger,
+}
+
+public enum GameState
+{
+    InMenu = 0,
+    InGame = 1,
 }
 
 public static class Constants

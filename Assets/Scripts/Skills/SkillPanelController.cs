@@ -156,7 +156,7 @@ public class SkillPanelController : MonoBehaviour
     private void LearnNewSkill(SkillData newSkill)
     {
         // 在这里添加你的游戏逻辑，比如给玩家添加能力
-        GameManager.Instance.LearnSkill(newSkill);
+        CharacterManager.Instance.LearnSkill(newSkill);
 
         // 更新“持有技能”UI
         GameObject iconObj = Instantiate(ownedSkillIconPrefab, ownedSkillsContainer);

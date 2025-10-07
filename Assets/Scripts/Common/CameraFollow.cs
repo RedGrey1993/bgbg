@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
         // 如果目标物体不存在，则不执行任何操作
         if (target == null)
         {
-            Debug.LogWarning("相机没有设置跟随目标！");
+            // Debug.LogWarning("相机没有设置跟随目标！");
             return;
         }
 

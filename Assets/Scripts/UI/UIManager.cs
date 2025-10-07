@@ -49,7 +49,6 @@ public class UIManager : MonoBehaviour
     private InputAction _toggleSkillPanelAction;
     private UIDocument _uiDocument;
     private VisualElement _root;
-    private bool _isIngame = false;
 
     // --- Panels ---
     private VisualElement _mainMenuRoot;
@@ -260,31 +259,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SetGameState(bool ingame)
-    {
-        _isIngame = ingame;
-        if (ingame)
-        {
-            _mainMenuRoot.AddToClassList("hidden");
-            ShowMyStatusUI();
-
-            GameManager.Instance.InitializeGame_Host();
-        }
-        else
-        {
-            if (LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby)
-            {
-                NetworkManager.ActiveLayer?.LeaveLobby();
-            }
-
-            HideMyStatusUI();
-            HideSettings();
-            HideSkillPanel();
-            _mainMenuRoot.RemoveFromClassList("hidden");
-            ShowPanel(_mainMenuPanel);
-        }
-    }
-
     #region UI Element Queries and Callbacks
 
     private void QueryUIElements()
@@ -352,7 +326,7 @@ public class UIManager : MonoBehaviour
     {
         _localGameButton.clicked += OnLocalGameClicked;
         _onlineGameButton.clicked += () => ShowPanel(_onlineMenuPanel);
-        _settingsButton.clicked += () => ShowSettings(false);
+        _settingsButton.clicked += () => ShowSettings();
         _quitButton.clicked += OnQuitClicked;
 
         // Create Room Panel
@@ -407,7 +381,10 @@ public class UIManager : MonoBehaviour
 
     private void OnLocalGameClicked()
     {
-        SetGameState(true);
+        _mainMenuRoot.AddToClassList("hidden");
+        ShowMyStatusUI();
+
+        GameManager.Instance.StartGame();
     }
 
     private void OnConfirmCreateRoomClicked()
@@ -505,7 +482,7 @@ public class UIManager : MonoBehaviour
 
         if (panelToShow == _createRoomPanel)
         {
-            _roomNameField.value = $"{GameManager.Instance.MyInfo.Name}'s Room";
+            _roomNameField.value = $"{CharacterManager.Instance.MyInfo.Name}'s Room";
             _createRoomErrorLabel.style.visibility = Visibility.Hidden;
             _roomNameField.Focus();
         }
@@ -540,7 +517,7 @@ public class UIManager : MonoBehaviour
 
     private void ShowGameOverScreen()
     {
-        if (_isIngame)
+        if (GameManager.Instance.GameState == GameState.InGame)
         {
             _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_gameOverPanel);
@@ -551,7 +528,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowWinningScreen()
     {
-        if (_isIngame)
+        if (GameManager.Instance.GameState == GameState.InGame)
         {
             _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_winningPanel);
@@ -656,7 +633,7 @@ public class UIManager : MonoBehaviour
         _lobbyMemberCountLabel.text = $"人数: {_currentLobby.CurrentPlayers}/{_currentLobby.MaxPlayers}";
     }
 
-    private void RefreshPlayerList()
+    public void RefreshPlayerList()
     {
         if (NetworkManager.ActiveLayer == null || _playerListView == null) return;
 
@@ -675,7 +652,7 @@ public class UIManager : MonoBehaviour
 
         _playerListView.bindItem = (element, i) =>
         {
-            var playerInfo = GameManager.Instance.Players.ElementAt(i);
+            var playerInfo = CharacterManager.Instance.Players.ElementAt(i);
             var nameLabel = element.Q<Label>(className: "player-name");
             var avatarElement = element.Q<VisualElement>(className: "player-avatar");
 
@@ -695,10 +672,10 @@ public class UIManager : MonoBehaviour
             }
         };
 
-        _playerListView.itemsSource = GameManager.Instance.Players.ToList();
+        _playerListView.itemsSource = CharacterManager.Instance.Players.ToList();
         _playerListView.Rebuild();
 
-        _currentLobby.CurrentPlayers = GameManager.Instance.Players.Count;
+        _currentLobby.CurrentPlayers = CharacterManager.Instance.Players.Count;
         UpdateLobbyInfo();
     }
 
@@ -722,7 +699,6 @@ public class UIManager : MonoBehaviour
         NetworkManager.ActiveLayer.OnAvatarReady += OnAvatarReady;
         NetworkManager.ActiveLayer.OnPlayerInfoUpdated += OnPlayerInfoUpdated;
         NetworkManager.ActiveLayer.OnLobbyListUpdated += OnLobbyListUpdated;
-        GameManager.Instance.PlayersUpdateActions += OnPlayersUpdate;
     }
 
     private void UnsubscribeFromNetworkEvents()
@@ -735,7 +711,6 @@ public class UIManager : MonoBehaviour
         NetworkManager.ActiveLayer.OnAvatarReady -= OnAvatarReady;
         NetworkManager.ActiveLayer.OnPlayerInfoUpdated -= OnPlayerInfoUpdated;
         NetworkManager.ActiveLayer.OnLobbyListUpdated -= OnLobbyListUpdated;
-        GameManager.Instance.PlayersUpdateActions -= OnPlayersUpdate;
     }
 
     private void OnLobbyCreated(LobbyInfo lobbyInfo)
@@ -778,11 +753,6 @@ public class UIManager : MonoBehaviour
         _avatars.Clear();
     }
 
-    private void OnPlayersUpdate()
-    {
-        RefreshPlayerList();
-    }
-
     private void OnAvatarReady(string playerId, Texture2D avatarTexture)
     {
         if (avatarTexture != null)
@@ -812,13 +782,14 @@ public class UIManager : MonoBehaviour
 
     private void ToggleSettingsPanel()
     {
-        Debug.Log($"ToggleSettingsPanel called, _isIngame: {_isIngame}, {_mainMenuRoot.style.display}, {_settingsPanel.style.display}");
-        if (!_isIngame) return; // 仅在游戏中允许ESC键打开设置面板
+        bool inGame = GameManager.Instance.GameState == GameState.InGame;
+        Debug.Log($"ToggleSettingsPanel called, inGame: {inGame}, {_mainMenuRoot.style.display}, {_settingsPanel.style.display}");
+        if (!inGame) return; // 仅在游戏中允许ESC键打开设置面板
 
         if (_mainMenuRoot.ClassListContains("hidden") || _settingsPanel.ClassListContains("hidden"))
         {
             _mainMenuRoot.RemoveFromClassList("hidden");
-            ShowSettings(_isIngame);
+            ShowSettings();
         }
         else
         {
@@ -829,8 +800,9 @@ public class UIManager : MonoBehaviour
 
     public void ToggleSkillPanel()
     {
-        Debug.Log($"ToggleSkillPanel called, _isIngame: {_isIngame}, isSkillPanelOpen: {isSkillPanelOpen}");
-        if (!_isIngame) return; // 仅在游戏中允许打开技能面板
+        bool inGame = GameManager.Instance.GameState == GameState.InGame;
+        Debug.Log($"ToggleSkillPanel called, inGame: {inGame}, isSkillPanelOpen: {isSkillPanelOpen}");
+        if (!inGame) return; // 仅在游戏中允许打开技能面板
         if (skillPanelAnimator == null) return;
 
         isSkillPanelOpen = !isSkillPanelOpen;
@@ -846,7 +818,8 @@ public class UIManager : MonoBehaviour
 
     public void HideSkillPanel()
     {
-        Debug.Log($"HideSkillPanel called, _isIngame: {_isIngame}, isSkillPanelOpen: {isSkillPanelOpen}");
+        bool inGame = GameManager.Instance.GameState == GameState.InGame;
+        Debug.Log($"HideSkillPanel called, inGame: {inGame}, isSkillPanelOpen: {isSkillPanelOpen}");
         if (skillPanelAnimator == null) return;
         if (isSkillPanelOpen)
         {
@@ -858,15 +831,15 @@ public class UIManager : MonoBehaviour
     private readonly object _infoLockObject = new object();
     public void ShowInfoPanel(string info, float duration)
     {
-        Debug.Log($"ShowInfoPanel called, _isIngame: {_isIngame}");
-        if (!_isIngame) return; // 仅在游戏中允许打开信息面板
+        bool inGame = GameManager.Instance.GameState == GameState.InGame;
+        Debug.Log($"ShowInfoPanel called, inGame: {inGame}");
+        if (!inGame) return; // 仅在游戏中允许打开信息面板
 
         infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, duration)));
     }
 
     public void ClearInfoPanel()
     {
-        Debug.Log($"ClearInfoPanel called, _isIngame: {_isIngame}");
         foreach (var coroutine in infoPanelCoroutines)
         {
             if (coroutine != null)
@@ -925,10 +898,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ShowSettings(bool isIngame)
+    private void ShowSettings()
     {
         // 如果在游戏中，暂停游戏并显示“退出到主菜单”按钮
-        if (isIngame)
+        if (GameManager.Instance.GameState == GameState.InGame)
         {
             // 只有离线游戏才暂停
             if (GameManager.Instance.IsLocal()) Time.timeScale = 0f;
@@ -944,7 +917,7 @@ public class UIManager : MonoBehaviour
     private void HideSettings()
     {
         ShowPanel(null);
-        if (_isIngame)
+        if (GameManager.Instance.GameState == GameState.InGame) // 如果在游戏中，重新隐藏主菜单
         {
             _mainMenuRoot.AddToClassList("hidden");
         }
@@ -958,7 +931,17 @@ public class UIManager : MonoBehaviour
 
     private void QuitToMainMenu()
     {
-        SetGameState(false);
+        GameManager.Instance.StopGame();
+        if (LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby)
+        {
+            NetworkManager.ActiveLayer?.LeaveLobby();
+        }
+
+        HideMyStatusUI();
+        HideSettings();
+        HideSkillPanel();
+        _mainMenuRoot.RemoveFromClassList("hidden");
+        ShowPanel(_mainMenuPanel);
     }
 
     private void OnMasterVolumeChanged(ChangeEvent<float> evt)

@@ -2,9 +2,9 @@
 
 using UnityEngine;
 
-public class SuperMinionAI : CharacterBaseAI
+public class Minion_1_0_StomperAI : CharacterBaseAI
 {
-    public SuperMinionAI(GameObject character) : base(character)
+    public Minion_1_0_StomperAI(GameObject character) : base(character)
     {
     }
 

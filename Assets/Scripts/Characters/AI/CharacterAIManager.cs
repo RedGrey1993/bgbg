@@ -18,6 +18,8 @@ public static class CharacterAIManager
         {
             case CharacterType.SuperMinionNormal:
                 return new SuperMinionAI(character);
+            case CharacterType.Minion_1_0_Stomper:
+                return new Minion_1_0_StomperAI(character);
             default:
                 Debug.LogWarning($"[CharacterAIManager] No AI for character type: {characterStatus.characterData.CharacterType}");
                 return null;

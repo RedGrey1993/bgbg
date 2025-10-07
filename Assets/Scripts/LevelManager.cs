@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
@@ -38,18 +39,6 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GenerateLevel(int level)
     {
         ref TileBase floorTile = ref level1FloorTile;
@@ -71,7 +60,10 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.ClearInfoPanel();
         UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
 
-        StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
+        // character objects 会随每次的HostTick将状态同步到Client
+        CharacterManager.Instance.CreateCharacterObjects();
+
+        // StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
     }
 
     private void GenerateFloors(TileBase floorTile)
@@ -155,7 +147,7 @@ public class LevelManager : MonoBehaviour
                 {
                     if (Rooms[k].Contains(new Vector2(x, y)))
                     {
-                        Debug.Log($"fhhtest, i, j: ({i}, {j}) => {k}");
+                        // Debug.Log($"fhhtest, i, j: ({i}, {j}) => {k}");
                         RoomGrid[i, j] = k;
                         break;
                     }
@@ -477,17 +469,13 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void ClearLevel(int level)
+    public void ClearLevel()
     {
         StopAllCoroutines();
 
-        // // 获取当前活动场景
-        // Scene currentScene = SceneManager.GetActiveScene();
+        wallTilemap.ClearAllTiles();
+        floorTilemap.ClearAllTiles();
 
-        // // 使用当前场景的 buildIndex 来重新加载场景
-        // // 这是推荐的做法，因为它效率更高且更安全
-        // SceneManager.LoadScene(currentScene.buildIndex);
-        
-        // Debug.Log("Scene reloaded: " + currentScene.name);
+        CharacterManager.Instance.ClearCharacterObjects();
     }
 }
