@@ -9,7 +9,6 @@ using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
 {
-    public LevelData levelData;
     public Tilemap floorTilemap;
     public Tilemap wallTilemap;
     public TileBase level1WallTile;
@@ -27,7 +26,7 @@ public class LevelManager : MonoBehaviour
     private Dictionary<Vector3Int, List<int>> tileToRooms; // 每个Tile位置包含的房间列表
     private Dictionary<Vector3Int, List<int>> doorTileToRooms; // 每个门的Tile位置包含的房间列表
     private int remainRooms;
-    private List<int> remainRoomsIndex;
+    public List<int> remainRoomsIndex;
 
     void Awake()
     {
@@ -42,11 +41,7 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateLevel(int level)
     {
-        if (level < 1 || level > levelData.floorTiles.Count)
-        {
-            throw new ArgumentOutOfRangeException("No LevelData for level " + level);
-        }
-        TileBase floorTile = levelData.floorTiles[level - 1];
+        TileBase floorTile = LevelDatabase.Instance.GetLevelData(level).floorTile;
         ref TileBase wallTile = ref level1WallTile;
         switch (level)
         {
@@ -64,7 +59,7 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
 
         // character objects 会随每次的HostTick将状态同步到Client
-        CharacterManager.Instance.CreateCharacterObjects();
+        CharacterManager.Instance.CreateCharacterObjects(level);
 
         // StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
     }

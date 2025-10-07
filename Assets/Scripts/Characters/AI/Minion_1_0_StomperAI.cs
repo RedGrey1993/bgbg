@@ -160,7 +160,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         {
             var diff = AggroTarget.transform.position - character.transform.position;
             var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，直接攻击
+            // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
             if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
             {
                 characterInput.LookInput = diff;

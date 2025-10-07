@@ -85,6 +85,8 @@ public class CharacterStatus : MonoBehaviour
             // 所有角色的HP为0时都会调用SetCharacterDead函数
             SetCharacterDead();
         }
+
+        Debug.Log($"fhhtest, char {transform.name} current state {State}");
     }
 
     private void ExpChanged(uint curExp)
@@ -134,8 +136,7 @@ public class CharacterStatus : MonoBehaviour
             grayMaterial.color = Color.gray;
             meshRenderer.material = grayMaterial;
 
-            // 确保渲染层级在存活玩家之后
-            meshRenderer.sortingOrder = -1;
+            // 渲染层级对SkinnedMeshRenderer不管用
         }
 
         Canvas canvas = GetComponentInChildren<Canvas>();
@@ -157,6 +158,9 @@ public class CharacterStatus : MonoBehaviour
         {
             pc.enabled = false;
         }
+
+        // 尸体在10s后销毁
+        Destroy(gameObject, 10f);
     }
 
     public void UpdateHealthSliderUI()

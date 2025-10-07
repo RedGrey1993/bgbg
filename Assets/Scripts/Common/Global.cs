@@ -53,8 +53,8 @@ public static class Constants
     public const int DoorWidth = 2;
     public const int DoorMin = RoomStep / 2 - DoorWidth / 2;
     public const int DoorMax = RoomStep / 2 + DoorWidth / 2;
-    public const int RoomMaxWidth = 200;
-    public const int RoomMaxHeight = 200;
+    public const int RoomMaxWidth = 40;
+    public const int RoomMaxHeight = 40;
     public const float CharacterMaxRadius = 1f;
     public const float WallMaxThickness = 1.2f;
     // 每升1级，从3个技能中选择1个

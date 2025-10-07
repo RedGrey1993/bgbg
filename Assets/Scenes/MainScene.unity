@@ -1868,6 +1868,7 @@ GameObject:
   - component: {fileID: 1509823719}
   - component: {fileID: 1509823720}
   - component: {fileID: 1509823721}
+  - component: {fileID: 1509823722}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1938,7 +1939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb1ac3a940b0f94da2897324b183327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  levelData: {fileID: 11400000, guid: ee150687057fe9b40a3bb99e8396e0a8, type: 2}
   floorTilemap: {fileID: 1246905460}
   wallTilemap: {fileID: 414631226}
   level1WallTile: {fileID: 11400000, guid: 36c0ac87a3f14014197c33090a5f9d06, type: 2}
@@ -1972,6 +1972,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcda8646959b864888aa023772ce020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageManager
+--- !u!114 &1509823722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509823711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bace8af6253632c45ac674b20f85c7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelDatabase
 --- !u!1 &1744355316
 GameObject:
   m_ObjectHideFlags: 0

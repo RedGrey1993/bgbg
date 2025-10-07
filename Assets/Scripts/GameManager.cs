@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         GameState = GameState.InMenu;
         LevelManager.Instance.ClearLevel();
+        CharacterManager.Instance.InitializeMySelf();
     }
     #endregion
 

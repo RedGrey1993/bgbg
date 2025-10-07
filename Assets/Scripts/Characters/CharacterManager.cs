@@ -41,7 +41,7 @@ public class CharacterManager : MonoBehaviour
         InitializeMySelf();
     }
 
-    public void CreateCharacterObjects()
+    public void CreateCharacterObjects(int level)
     {
         // add ai players if needed
         if (Players.Count < Constants.MinPlayableObjects)
@@ -60,13 +60,14 @@ public class CharacterManager : MonoBehaviour
             if (GameManager.Instance.IsHost()) SendPlayersUpdateToAll();
         }
         CreatePlayerObjects();
+        CreateMinionObjects(level);
     }
 
     public void ClearCharacterObjects()
     {
         ClearPlayerObjects();
+        ClearMinionObjects();
 
-        // minionObjects.Clear();
         // bossObjects.Clear();
     }
 
@@ -77,6 +78,52 @@ public class CharacterManager : MonoBehaviour
         foreach (var player in Players)
         {
             CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
+        }
+    }
+
+    private void CreateMinionObjects(int level)
+    {
+        void AreaToNumber(Rect room, out int number, out List<Vector2> positions)
+        {
+            int perArea = Random.Range(50, 100);
+            float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
+            number = 1; //Mathf.FloorToInt(area / perArea);
+            positions = new List<Vector2>();
+
+            // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
+            for (int i = 0; i < number; i++)
+            {
+                Vector2 position = new Vector2(Random.Range(room.xMin, room.xMax), Random.Range(room.yMin, room.yMax));
+                // if (!positions.Contains(position)) // O(n) 太慢了
+                positions.Add(position);
+            }
+        }
+
+        ClearMinionObjects();
+
+        var levelData = LevelDatabase.Instance.GetLevelData(level);
+        foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
+        {
+            var room = LevelManager.Instance.Rooms[roomIdx];
+            // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
+            int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
+            var minionPrefab = levelData.normalMinionPrefabs[randomMinionIdx];
+            AreaToNumber(room, out var minionNum, out var spawnPositions);
+            for (int i = 0; i < minionNum; i++)
+            {
+                var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
+                uint minionId = nextCharacterId++;
+                minion.name = $"{minionPrefab.name}{minionId}";
+                minion.tag = Constants.TagEnemy;
+                var minionStatus = minion.GetComponent<CharacterStatus>();
+                if (minionStatus != null)
+                {
+                    minionStatus.State.PlayerId = minionId;
+                    minionStatus.State.PlayerName = minion.name;
+                }
+
+                minionObjects[minionId] = minion;
+            }
         }
     }
 
@@ -109,8 +156,6 @@ public class CharacterManager : MonoBehaviour
             {
                 playerStatus.IsAI = false;
             }
-            // TODO: 将prefab放到characterData中，根据csteamId创建不同的角色
-            // playerStatus.characterData.CharacterType = CharacterType.PlayerAI;
         }
 
         playerObjects[playerId] = go;
@@ -157,6 +202,12 @@ public class CharacterManager : MonoBehaviour
     {
         foreach (var go in playerObjects.Values) { if (go != null) Destroy(go); }
         playerObjects.Clear();
+    }
+
+    private void ClearMinionObjects()
+    {
+        foreach (var go in minionObjects.Values) { if (go != null) Destroy(go); }
+        minionObjects.Clear();
     }
 
     private void RemovePlayerObject(uint playerId)
