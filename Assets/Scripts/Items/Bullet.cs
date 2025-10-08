@@ -43,13 +43,17 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
                 CharacterStatus targetCharacterStatus = collision.gameObject.GetComponent<CharacterStatus>();
-                if (targetCharacterStatus != null && targetCharacterStatus != OwnerStatus)
-                {
-                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
-                }
                 if (targetCharacterStatus == OwnerStatus)
                 {
                     return; // 不伤害自己，也不销毁碰到自己的子弹
+                }
+                if (targetCharacterStatus?.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
+                {
+                    ; // 敌人之间不互相伤害；但还是会销毁子弹
+                }
+                else if (targetCharacterStatus != null)
+                {
+                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
                 }
             }
         }

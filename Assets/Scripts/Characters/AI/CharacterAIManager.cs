@@ -20,6 +20,8 @@ public static class CharacterAIManager
                 return new ContraBillAI(character);
             case CharacterType.Minion_1_0_Stomper:
                 return new Minion_1_0_StomperAI(character);
+            case CharacterType.Boss_1_0_PhantomTank:
+                return new Boss_1_0_PhantomTankAI(character);
             default:
                 Debug.LogWarning($"[CharacterAIManager] No AI for character type: {characterStatus.characterData.CharacterType}");
                 return null;

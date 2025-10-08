@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
+  m_Name: Boss_1_0_PhantomTank
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  CharacterType: 3
+  shootSound: {fileID: 8300000, guid: 09926e3f4e00d3f4e884a2bf5462e9d2, type: 3}
+  bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
+  MaxHp: 5
+  MoveSpeed: 2
+  ShootRange: 4
+  BulletSpeed: 6
+  Damage: 10
+  ShootFrequency: 2
+  CriticalRate: 0
+  ExpGiven: 5
+  canMoveDiagonally: 0
+  canAttackDiagonally: 0
+  AggroRange: 15
+  AggroChangeInterval: 2
+  minRandomMoveInputInterval: 1
+  maxRandomMoveInputInterval: 6
+  minChaseMoveInputInterval: 0.5
+  maxChaseMoveInputInterval: 1

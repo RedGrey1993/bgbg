@@ -37,6 +37,8 @@ public enum CharacterType
     // Level 1 0, 踩踏者
     Minion_1_0_Stomper,
     // Elite 精英
+    // Boss
+    Boss_1_0_PhantomTank,
 }
 
 public enum GameState
@@ -48,13 +50,11 @@ public enum GameState
 public static class Constants
 {
     public const string AIPlayerPrefix = "BGBGAI_";
-    public const int MinPlayableObjects = 2;
+    public const int MinPlayableObjects = 1;
     public const int RoomStep = 20;
     public const int DoorWidth = 2;
     public const int DoorMin = RoomStep / 2 - DoorWidth / 2;
     public const int DoorMax = RoomStep / 2 + DoorWidth / 2;
-    public const int RoomMaxWidth = 40;
-    public const int RoomMaxHeight = 40;
     public const float CharacterMaxRadius = 1f;
     public const float WallMaxThickness = 1.2f;
     // 每升1级，从3个技能中选择1个
@@ -98,7 +98,7 @@ public static class Constants
 
     public static void PositionToIndex(Vector2 position, out int x, out int y)
     {
-        x = (int)(position.x + RoomMaxWidth / 2) / RoomStep;
-        y = (int)(position.y + RoomMaxHeight / 2) / RoomStep;
+        x = (int)position.x / RoomStep;
+        y = (int)position.y / RoomStep;
     }
 }

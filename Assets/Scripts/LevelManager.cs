@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager Instance { get; private set; }
     public List<Rect> Rooms { get; private set; }
-    public int[,] RoomGrid { get; private set; } = new int[Constants.RoomMaxWidth / Constants.RoomStep, Constants.RoomMaxHeight / Constants.RoomStep];
+    public int[,] RoomGrid { get; private set; }
 
     private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
     private List<Vector3Int>[] roomToTiles; // 每个房间包含的Tile位置列表
@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
     private Dictionary<Vector3Int, List<int>> doorTileToRooms; // 每个门的Tile位置包含的房间列表
     private int remainRooms;
     public List<int> remainRoomsIndex;
+    public LevelData CurrentLevelData { get; private set; }
 
     void Awake()
     {
@@ -41,7 +42,8 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateLevel(int level)
     {
-        TileBase floorTile = LevelDatabase.Instance.GetLevelData(level).floorTile;
+        CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
+        TileBase floorTile = CurrentLevelData.floorTile;
         ref TileBase wallTile = ref level1WallTile;
         switch (level)
         {
@@ -66,9 +68,11 @@ public class LevelManager : MonoBehaviour
 
     private void GenerateFloors(TileBase floorTile)
     {
-        for (int x = -Constants.RoomMaxWidth / 2; x <= Constants.RoomMaxWidth / 2; x++)
+        int roomMaxWidth = CurrentLevelData.roomMaxWidth;
+        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
+        for (int x = 0; x <= roomMaxWidth; x++)
         {
-            for (int y = -Constants.RoomMaxHeight / 2; y <= Constants.RoomMaxHeight / 2; y++)
+            for (int y = 0; y <= roomMaxHeight; y++)
             {
                 floorTilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
             }
@@ -79,9 +83,15 @@ public class LevelManager : MonoBehaviour
     // TODO: 发送房间数据给Client
     private void GenerateRooms(TileBase wallTile)
     {
-        List<Rect> sortedList = new List<Rect> { new Rect(-Constants.RoomMaxWidth / 2, -Constants.RoomMaxHeight / 2, Constants.RoomMaxWidth, Constants.RoomMaxHeight) };
+        int roomMaxWidth = CurrentLevelData.roomMaxWidth;
+        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
+        List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
         Rooms = new List<Rect>();
-        int cutNum = UnityEngine.Random.Range(30, 50);
+        RoomGrid = new int[roomMaxWidth / Constants.RoomStep, roomMaxHeight / Constants.RoomStep];
+
+        int minTotalRooms = CurrentLevelData.minTotalRooms;
+        int maxTotalRooms = CurrentLevelData.maxTotalRooms;
+        int cutNum = UnityEngine.Random.Range(minTotalRooms, maxTotalRooms + 1);
         // cutNum < 100, O(N^2)的插入排序不会太慢
         for (int i = 0; i < cutNum; i++)
         {
@@ -124,6 +134,7 @@ public class LevelManager : MonoBehaviour
         Rooms.AddRange(sortedList);
 
         roomConnections = new HashSet<int>[Rooms.Count];
+        for (int i = 0; i < Rooms.Count; i++) roomConnections[i] = new HashSet<int>();
         roomToTiles = new List<Vector3Int>[Rooms.Count];
         roomToDoorTiles = new List<Vector3Int>[Rooms.Count];
         tileToRooms = new Dictionary<Vector3Int, List<int>>();
@@ -136,9 +147,9 @@ public class LevelManager : MonoBehaviour
         }
         GenerateOuterWall(wallTile);
 
-        for (int x = -Constants.RoomMaxWidth / 2 + Constants.RoomStep / 2; x < Constants.RoomMaxWidth / 2; x += Constants.RoomStep)
+        for (int x = Constants.RoomStep / 2; x < roomMaxWidth; x += Constants.RoomStep)
         {
-            for (int y = -Constants.RoomMaxHeight / 2 + Constants.RoomStep / 2; y < Constants.RoomMaxHeight / 2; y += Constants.RoomStep)
+            for (int y = Constants.RoomStep / 2; y < roomMaxHeight; y += Constants.RoomStep)
             {
                 Constants.PositionToIndex(new Vector2(x, y), out int i, out int j);
                 for (int k = 0; k < Rooms.Count; k++)
@@ -154,8 +165,8 @@ public class LevelManager : MonoBehaviour
         }
 
         remainRooms = Rooms.Count;
-        int hNum = Constants.RoomMaxWidth / Constants.RoomStep;
-        int vNum = Constants.RoomMaxHeight / Constants.RoomStep;
+        int hNum = roomMaxWidth / Constants.RoomStep;
+        int vNum = roomMaxHeight / Constants.RoomStep;
         int[,] dir = new int[4, 2]
         {
             {0, -1}, // up
@@ -175,9 +186,7 @@ public class LevelManager : MonoBehaviour
                     {
                         if (RoomGrid[i, j] != RoomGrid[ni, nj])
                         {
-                            roomConnections[RoomGrid[i, j]] ??= new HashSet<int>();
                             roomConnections[RoomGrid[i, j]].Add(RoomGrid[ni, nj]);
-                            roomConnections[RoomGrid[ni, nj]] ??= new HashSet<int>();
                             roomConnections[RoomGrid[ni, nj]].Add(RoomGrid[i, j]);
                         }
                     }
@@ -195,6 +204,9 @@ public class LevelManager : MonoBehaviour
 
     private void GenerateRoom(Rect room, TileBase wallTile)
     {
+        int roomMaxWidth = CurrentLevelData.roomMaxWidth;
+        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
+
         // 记录room对应的tile，一个tile可能属于多个rooms
         int roomIdx = Rooms.IndexOf(room);
 
@@ -205,7 +217,7 @@ public class LevelManager : MonoBehaviour
 
         int doorMin = Constants.DoorMin;
         int doorMax = Constants.DoorMax;
-        if (Mathf.Abs(topLeft.y - (Constants.RoomMaxHeight / 2)) > 0.1f)
+        if (Mathf.Abs(topLeft.y) > 0.1f)
         {
             // Top wall
             ref var start = ref topLeft;
@@ -221,7 +233,7 @@ public class LevelManager : MonoBehaviour
                 wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), wallTile);
             }
         }
-        if (Mathf.Abs(bottomLeft.x - (-Constants.RoomMaxWidth / 2)) > 0.1f)
+        if (Mathf.Abs(bottomLeft.x) > 0.1f)
         {
             // Left wall
             ref var start = ref bottomLeft;
@@ -301,15 +313,17 @@ public class LevelManager : MonoBehaviour
 
     private void GenerateOuterWall(TileBase wallTile)
     {
-        for (int x = -Constants.RoomMaxWidth / 2; x <= Constants.RoomMaxWidth / 2; x++)
+        int roomMaxWidth = CurrentLevelData.roomMaxWidth;
+        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
+        for (int x = 0; x <= roomMaxWidth; x++)
         {
-            wallTilemap.SetTile(new Vector3Int(x, -Constants.RoomMaxHeight / 2, 0), wallTile);
-            wallTilemap.SetTile(new Vector3Int(x, Constants.RoomMaxHeight / 2, 0), wallTile);
+            wallTilemap.SetTile(new Vector3Int(x, 0, 0), wallTile);
+            wallTilemap.SetTile(new Vector3Int(x, roomMaxHeight, 0), wallTile);
         }
-        for (int y = -Constants.RoomMaxHeight / 2; y <= Constants.RoomMaxHeight / 2; y++)
+        for (int y = 0; y <= roomMaxHeight; y++)
         {
-            wallTilemap.SetTile(new Vector3Int(-Constants.RoomMaxWidth / 2, y, 0), wallTile);
-            wallTilemap.SetTile(new Vector3Int(Constants.RoomMaxWidth / 2, y, 0), wallTile);
+            wallTilemap.SetTile(new Vector3Int(0, y, 0), wallTile);
+            wallTilemap.SetTile(new Vector3Int(roomMaxWidth, y, 0), wallTile);
         }
     }
 
@@ -475,5 +489,15 @@ public class LevelManager : MonoBehaviour
         floorTilemap.ClearAllTiles();
 
         CharacterManager.Instance.ClearCharacterObjects();
+    }
+    
+    public bool InSameRoom(GameObject obj1, GameObject obj2)
+    {
+        Constants.PositionToIndex(obj1.transform.position, out int i1, out int j1);
+        Constants.PositionToIndex(obj2.transform.position, out int i2, out int j2);
+        if (i1 < 0 || i1 >= RoomGrid.GetLength(0) || j1 < 0 || j1 >= RoomGrid.GetLength(1)
+            || i2 < 0 || i2 >= RoomGrid.GetLength(0) || j2 < 0 || j2 >= RoomGrid.GetLength(1))
+            return false;
+        return RoomGrid[i1, j1] == RoomGrid[i2, j2];
     }
 }

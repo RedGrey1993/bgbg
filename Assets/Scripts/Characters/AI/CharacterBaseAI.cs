@@ -183,12 +183,31 @@ public abstract class CharacterBaseAI : ICharacterAI
         }
     }
 
+    protected bool IsBoss()
+    {
+        if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+        {
+            return true;
+        }
+        return false;
+    }
+
     #region ICharacterAI implementation
     public void Update()
     {
         if (isAi)// 有玩家控制时不启用AI
         {
-            GenerateAILogic();
+            if (characterStatus.IsAlive()) GenerateAILogic();
+
+            UIManager.Instance.UpdateBossHealthSlider(characterStatus.State.CurrentHp, characterStatus.State.MaxHp);
+            if (IsBoss() && LevelManager.Instance.InSameRoom(character, CharacterManager.Instance.GetMyselfGameObject()) && characterStatus.IsAlive())
+            {
+                UIManager.Instance.ShowBossHealthSlider();
+            }
+            else
+            {
+                UIManager.Instance.HideBossHealthSlider();
+            }
         }
     }
     public void FixedUpdate()

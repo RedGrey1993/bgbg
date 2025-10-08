@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform infoPanelContainer;
     [SerializeField] private GameObject infoTextPrefab;
     public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
+    public UnityEngine.UI.Slider bossHealthSlider;
     #endregion
 
     private bool isSkillPanelOpen = false;
@@ -181,6 +182,22 @@ public class UIManager : MonoBehaviour
     private void HideMyStatusUI()
     {
         statusPanel.SetActive(false);
+    }
+
+    public void ShowBossHealthSlider()
+    {
+        bossHealthSlider.gameObject.SetActive(true);
+    }
+
+    public void HideBossHealthSlider()
+    {
+        bossHealthSlider.gameObject.SetActive(false);
+    }
+
+    public void UpdateBossHealthSlider(uint curHp, uint maxHp)
+    {
+        bossHealthSlider.value = curHp;
+        bossHealthSlider.maxValue = maxHp;
     }
 
     public void UpdateMyStatusUI(PlayerState state)

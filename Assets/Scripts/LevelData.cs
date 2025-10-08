@@ -14,9 +14,15 @@ public class LevelData : ScriptableObject
     [Header("Minion Prefabs")]
     public List<GameObject> normalMinionPrefabs; // 普通怪物
     // public List<GameObject> eliteMonsterPrefabs; // 精英怪物
+    public List<GameObject> bossPrefabs; // Boss 怪物
 
     [Header("Level Settings")]
     public int level = 1;
-    // public int totalRooms = 10;
+    public int minTotalRooms = 10;
+    public int maxTotalRooms = 16;
+    public int roomMaxWidth = 80;
+    public int roomMaxHeight = 80;
+    public int minAreaPerMinion = 50; // 每多少面积刷1个怪物
+    public int maxAreaPerMinion = 100; // 每多少面积刷1个怪物
     // public float monsterSpawnChance = 0.8f; // 80%的房间会刷怪
 }

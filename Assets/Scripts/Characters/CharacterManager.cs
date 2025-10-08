@@ -61,14 +61,14 @@ public class CharacterManager : MonoBehaviour
         }
         CreatePlayerObjects();
         CreateMinionObjects(level);
+        CreateBossObjects(level);
     }
 
     public void ClearCharacterObjects()
     {
         ClearPlayerObjects();
         ClearMinionObjects();
-
-        // bossObjects.Clear();
+        ClearBossObjects();
     }
 
     // 初始化玩家对象，动态数据，游戏过程中也在不断变化，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
@@ -83,11 +83,14 @@ public class CharacterManager : MonoBehaviour
 
     private void CreateMinionObjects(int level)
     {
+        ClearMinionObjects();
+
+        var levelData = LevelDatabase.Instance.GetLevelData(level);
         void AreaToNumber(Rect room, out int number, out List<Vector2> positions)
         {
-            int perArea = Random.Range(50, 100);
+            int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion);
             float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
-            number = 1; //Mathf.FloorToInt(area / perArea);
+            number = Mathf.FloorToInt(area / areaPerMinion);
             positions = new List<Vector2>();
 
             // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
@@ -98,10 +101,6 @@ public class CharacterManager : MonoBehaviour
                 positions.Add(position);
             }
         }
-
-        ClearMinionObjects();
-
-        var levelData = LevelDatabase.Instance.GetLevelData(level);
         foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
         {
             var room = LevelManager.Instance.Rooms[roomIdx];
@@ -127,6 +126,37 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    private void CreateBossObjects(int level)
+    {
+        void GenerateBossPosition(Rect room, out Vector2 position)
+        {
+            float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
+            position = new Vector2(Random.Range(room.xMin, room.xMax), Random.Range(room.yMin, room.yMax));
+        }
+
+        ClearBossObjects();
+
+        var levelData = LevelDatabase.Instance.GetLevelData(level);
+        var roomIdx = Random.Range(0, LevelManager.Instance.remainRoomsIndex.Count);
+        var room = LevelManager.Instance.Rooms[roomIdx];
+        int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
+        var bossPrefab = levelData.bossPrefabs[randomBossIdx];
+        GenerateBossPosition(room, out var spawnPosition);
+
+        var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+        uint bossId = nextCharacterId++;
+        boss.name = $"{bossPrefab.name}{bossId}";
+        boss.tag = Constants.TagEnemy;
+        var bossStatus = boss.GetComponent<CharacterStatus>();
+        if (bossStatus != null)
+        {
+            bossStatus.State.PlayerId = bossId;
+            bossStatus.State.PlayerName = boss.name;
+        }
+
+        bossObjects[bossId] = boss;
+    }
+
     private void CreatePlayerObject(uint playerId, Color color, bool needController = false)
     {
         if (playerObjects.ContainsKey(playerId)) return;
@@ -138,8 +168,10 @@ public class CharacterManager : MonoBehaviour
         var rend = go.GetComponent<SpriteRenderer>();
         if (rend != null) rend.color = color;
         // Initialize position
-        float posX = UnityEngine.Random.Range(-Constants.RoomMaxWidth / 2 / Constants.RoomStep, Constants.RoomMaxWidth / 2 / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
-        float posY = UnityEngine.Random.Range(-Constants.RoomMaxHeight / 2 / Constants.RoomStep, Constants.RoomMaxHeight / 2 / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
+        int roomMaxWidth = LevelManager.Instance.CurrentLevelData.roomMaxWidth;
+        int roomMaxHeight = LevelManager.Instance.CurrentLevelData.roomMaxHeight;
+        float posX = UnityEngine.Random.Range(0, roomMaxWidth / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
+        float posY = UnityEngine.Random.Range(0, roomMaxHeight / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
         go.transform.position = new Vector2(posX, posY);
         // Set player name
         string playerName = PlayerInfoMap[playerId].Name;
@@ -210,12 +242,36 @@ public class CharacterManager : MonoBehaviour
         minionObjects.Clear();
     }
 
+    private void ClearBossObjects()
+    {
+        foreach (var go in bossObjects.Values) { if (go != null) Destroy(go); }
+        bossObjects.Clear();
+    }
+
     private void RemovePlayerObject(uint playerId)
     {
         if (playerObjects.TryGetValue(playerId, out GameObject go))
         {
             if (go != null) Destroy(go);
             playerObjects.Remove(playerId);
+        }
+    }
+
+    public void RemoveObject(uint characterId)
+    {
+        if (playerObjects.ContainsKey(characterId))
+        {
+            playerObjects.Remove(characterId);
+            PlayerInfoMap.Remove(characterId);
+            Players.RemoveAll(p => p.Id == characterId);
+        }
+        else if (minionObjects.ContainsKey(characterId))
+        {
+            minionObjects.Remove(characterId);
+        }
+        else if (bossObjects.ContainsKey(characterId))
+        {
+            bossObjects.Remove(characterId);
         }
     }
 
@@ -313,6 +369,14 @@ public class CharacterManager : MonoBehaviour
             }
         }
         return nearestPlayer;
+    }
+    public GameObject GetMyselfGameObject()
+    {
+        if (playerObjects.TryGetValue(MyInfo.Id, out GameObject go))
+        {
+            return go;
+        }
+        return null;
     }
     #endregion
 

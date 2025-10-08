@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         GameState = GameState.InGame;
+        StopAllCoroutines();
         LevelManager.Instance.ClearLevel();
         if (IsLocalOrHost())
         {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         GameState = GameState.InMenu;
+        StopAllCoroutines();
         LevelManager.Instance.ClearLevel();
         CharacterManager.Instance.InitializeMySelf();
     }

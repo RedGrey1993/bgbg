@@ -4,9 +4,9 @@ using System.Collections;
 using UnityEngine;
 
 // Stomper不会对角线移动
-public class Minion_1_0_StomperAI : CharacterBaseAI
+public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
-    public Minion_1_0_StomperAI(GameObject character) : base(character)
+    public Boss_1_0_PhantomTankAI(GameObject character) : base(character)
     {
     }
 

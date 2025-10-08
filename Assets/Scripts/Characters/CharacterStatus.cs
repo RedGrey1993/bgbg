@@ -125,7 +125,7 @@ public class CharacterStatus : MonoBehaviour
         if (sr != null)
         {
             sr.color = Color.gray;
-            sr.sortingOrder = -1; // Change sorting order to be behind alive players
+            // sr.sortingOrder = -1; // Change sorting order to be behind alive players
         }
 
         SkinnedMeshRenderer meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -139,11 +139,11 @@ public class CharacterStatus : MonoBehaviour
             // 渲染层级对SkinnedMeshRenderer不管用
         }
 
-        Canvas canvas = GetComponentInChildren<Canvas>();
-        if (canvas != null)
-        {
-            canvas.sortingOrder = -1; // Change sorting order to be behind alive players
-        }
+        // Canvas canvas = GetComponentInChildren<Canvas>();
+        // if (canvas != null)
+        // {
+        //     canvas.sortingOrder = -1; // Change sorting order to be behind alive players
+        // }
 
         // Destroy Collider2D to allow bullets to pass through
         Collider2D col = GetComponent<Collider2D>();
@@ -159,8 +159,9 @@ public class CharacterStatus : MonoBehaviour
             pc.enabled = false;
         }
 
-        // 尸体在10s后销毁
-        Destroy(gameObject, 10f);
+        // 尸体在2s后销毁
+        Destroy(gameObject, 2f);
+        CharacterManager.Instance.RemoveObject(State.PlayerId);
     }
 
     public void UpdateHealthSliderUI()
