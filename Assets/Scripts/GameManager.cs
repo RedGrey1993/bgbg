@@ -69,7 +69,9 @@ public class GameManager : MonoBehaviour
         if (LevelDatabase.Instance.GetLevelData(CurrentStage) != null)
         {
             // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
-            StartGame();
+            UIManager.Instance.PlayLoadingAnimation(() => {
+                StartGame();
+            });
         }
         else
         {

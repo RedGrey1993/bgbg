@@ -38,7 +38,7 @@ public class TeleportBeam : MonoBehaviour
 
         GameManager.Instance.ToNextStage();
 
-        Destroy(gameObject, 1f); // 传送后销毁传送门
+        Destroy(gameObject, 2f); // 传送后销毁传送门
 
         // 可选：你可以在这里添加一个短暂的屏幕闪烁或角色无敌时间
         Debug.Log($"{player.name} 到达下一关！Stage: {GameManager.Instance.CurrentStage}");

@@ -7,14 +7,8 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using TMPro;
 using System.Collections;
-
-
-
-#if PROTOBUF
+using System;
 using NetworkMessageProto;
-#else
-using NetworkMessageJson;
-#endif
 
 public class UIManager : MonoBehaviour
 {
@@ -27,6 +21,11 @@ public class UIManager : MonoBehaviour
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject statusPanel;
+    public GameObject fadePanel;
+    // 新增：定义一个动画曲线
+    [Tooltip("控制渐变速度的缓动曲线")]
+    public AnimationCurve fadeOutCurve;
+    public AnimationCurve fadeInCurve;
     [SerializeField] private Animator skillPanelAnimator;
     [SerializeField] private Transform infoPanelContainer;
     [SerializeField] private GameObject infoTextPrefab;
@@ -35,6 +34,7 @@ public class UIManager : MonoBehaviour
     public GameObject teleportBeamEffectPrefab; // 传送特效预制体
     #endregion
 
+    private GameObject teleportBeamEffect;
     private bool isSkillPanelOpen = false;
     private Coroutine flashCoroutine;
 
@@ -175,6 +175,7 @@ public class UIManager : MonoBehaviour
         localPlayerStatus.OnDied += ShowGameOverScreen;
     }
 
+    #region Canvas
     private void ShowMyStatusUI()
     {
         statusPanel.SetActive(true);
@@ -183,6 +184,85 @@ public class UIManager : MonoBehaviour
     private void HideMyStatusUI()
     {
         statusPanel.SetActive(false);
+    }
+
+    public void PlayLoadingAnimation(Action callback)
+    {
+        fadePanel.SetActive(true);
+        StartCoroutine(LoadAnimationRoutine(callback));
+    }
+
+    private IEnumerator FadeRoutine(float targetAlpha, float transitionTime)
+    {
+        var canvasGroup = fadePanel.GetComponent<CanvasGroup>();
+        float elapsedTime = 0f;
+        float startAlpha = canvasGroup.alpha;
+
+        // 当计时器小于设定的过渡时间时，循环执行
+        while (elapsedTime < transitionTime)
+        {
+            // 1. 计算线性的时间进度 (0到1)
+            float timeProgress = elapsedTime / transitionTime;
+
+            // 2. 使用动画曲线来评估（转换）这个进度
+            // 这会将线性的 timeProgress 映射到你设计的曲线上
+            float curveValue;
+            if (startAlpha < 0.1f)
+            {
+                curveValue = fadeOutCurve.Evaluate(timeProgress);
+            }
+            else
+            {
+                curveValue = fadeInCurve.Evaluate(timeProgress);
+            }
+
+            // 3. 将曲线值用于 Lerp
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, curveValue);
+            
+            // 累加时间
+            elapsedTime += Time.deltaTime;
+
+            // 等待下一帧
+            yield return null;
+        }
+
+        // 循环结束后，确保Alpha值精确地设置为目标值
+        canvasGroup.alpha = targetAlpha;
+    }
+
+    private IEnumerator LoadAnimationRoutine(Action callback)
+    {
+        // 1. 触发渐变黑屏动画
+        var transitionTime = 2f;
+        yield return StartCoroutine(FadeRoutine(1f, transitionTime));
+
+        // var loadingContent = fadePanel.GetComponentInChildren<UnityEngine.UI.Video>();
+        // // [可选] 在黑屏后，显示你的加载图片或视频
+        // if (loadingContent != null)
+        // {
+        //     loadingContent.gameObject.SetActive(true);
+        //     // 如果是视频，可以在这里 videoPlayer.Play();
+        // }
+
+        // // [可选] 隐藏加载内容
+        // if (loadingContent != null)
+        // {
+        //     // 如果是视频，可以在这里等待视频播放完毕
+        //     // yield return new WaitForSeconds(videoPlayTime);
+        //     loadingContent.gameObject.SetActive(false);
+        // }
+
+        callback?.Invoke();
+        // yield return new WaitForSeconds(transitionTime);
+
+        // 5. 触发渐变显示动画
+        transitionTime = 1f;
+        yield return StartCoroutine(FadeRoutine(0f, transitionTime));
+    }
+
+    public void HideFadePanel()
+    {
+        fadePanel.SetActive(false);
     }
 
     public void ShowBossHealthSlider()
@@ -276,6 +356,8 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
     #region UI Element Queries and Callbacks
 
@@ -551,7 +633,7 @@ public class UIManager : MonoBehaviour
         {
             _mainMenuRoot.RemoveFromClassList("hidden");
             ShowPanel(_winningPanel);
-            _winnerText.text = _winningMessages[Random.Range(0, _winningMessages.Count)];
+            _winnerText.text = _winningMessages[UnityEngine.Random.Range(0, _winningMessages.Count)];
         }
     }
 
@@ -956,11 +1038,16 @@ public class UIManager : MonoBehaviour
             NetworkManager.ActiveLayer?.LeaveLobby();
         }
 
+        Destroy(teleportBeamEffect);
         HideMyStatusUI();
         HideSettings();
         HideSkillPanel();
+        HideFadePanel();
         _mainMenuRoot.RemoveFromClassList("hidden");
         ShowPanel(_mainMenuPanel);
+
+        // // 重新加载当前场景
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnMasterVolumeChanged(ChangeEvent<float> evt)
@@ -1006,7 +1093,7 @@ public class UIManager : MonoBehaviour
     {
         if (teleportBeamEffectPrefab != null)
         {
-            Instantiate(teleportBeamEffectPrefab, position, Quaternion.identity);
+            teleportBeamEffect = Instantiate(teleportBeamEffectPrefab, position, Quaternion.identity);
         }
     }
 

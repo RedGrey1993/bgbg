@@ -97,7 +97,8 @@ public class CharacterStatus : MonoBehaviour
         {
             State.CurrentLevel += 1;
             State.CurrentExp = curExp - (uint)maxExp;
-            if (HasPlayerController()) {
+            if (HasPlayerController())
+            {
                 SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
                 skillPanelController.RandomizeNewSkillChoice();
             }
@@ -161,8 +162,8 @@ public class CharacterStatus : MonoBehaviour
             pc.enabled = false;
         }
 
-        // 尸体在2s后销毁
-        Destroy(gameObject, 2f);
+        // 尸体销毁
+        Destroy(gameObject);
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {
@@ -186,6 +187,28 @@ public class CharacterStatus : MonoBehaviour
                 healthSlider.maxValue = State.MaxHp;
                 healthSlider.value = State.CurrentHp;
             }
+        }
+    }
+
+    public bool IsBoss()
+    {
+        if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void FixedUpdate()
+    {
+        if (IsBoss() && LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()) && IsAlive())
+        {
+            UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
+            UIManager.Instance.ShowBossHealthSlider();
+        }
+        else
+        {
+            UIManager.Instance.HideBossHealthSlider();
         }
     }
 }
