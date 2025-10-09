@@ -21,7 +21,7 @@ public class TeleportBeam : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // 检查进入的是否是玩家（请确保你的玩家对象Tag被设置为"Player"）
-        if (other.CompareTag(Constants.TagPlayer))
+        if (other.CompareTag(Constants.TagPlayerFeet))
         {
             // 执行传送
             TeleportToNextLevel(other.gameObject);

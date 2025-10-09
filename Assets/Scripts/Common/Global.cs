@@ -60,6 +60,7 @@ public static class Constants
     // 每升1级，从3个技能中选择1个
     public const int SkillChooseNumber = 3;
     public const string TagPlayer = "Player";
+    public const string TagPlayerFeet = "PlayerFeet";
     public const string TagEnemy = "Enemy";
     public const string TagWall = "Wall";
     public const string NameHealthSlider = "HealthSlider";

@@ -126,8 +126,7 @@ public class CharacterStatus : MonoBehaviour
         if (sr != null)
         {
             sr.color = Color.gray;
-            // 可能会渲染到tile后面，所以暂时先注释，TODO: 后面看看改tile的渲染层级为-2
-            // sr.sortingOrder = -1; // Change sorting order to be behind alive players
+            sr.sortingOrder = -5; // Change sorting order to be behind alive players
         }
 
         SkinnedMeshRenderer meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -141,12 +140,11 @@ public class CharacterStatus : MonoBehaviour
             // 渲染层级对SkinnedMeshRenderer不管用
         }
 
-        // Canvas canvas = GetComponentInChildren<Canvas>();
-        // if (canvas != null)
-        // {
-        //     // 可能会渲染到tile后面，所以暂时先注释，TODO: 后面看看改tile的渲染层级为-2
-        //     canvas.sortingOrder = -1; // Change sorting order to be behind alive players
-        // }
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        if (canvas != null)
+        {
+            canvas.sortingOrder = -5; // Change sorting order to be behind alive players
+        }
 
         // Destroy Collider2D to allow bullets to pass through
         Collider2D col = GetComponent<Collider2D>();
@@ -163,7 +161,7 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // 尸体销毁
-        Destroy(gameObject);
+        Destroy(gameObject, 5f);
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {

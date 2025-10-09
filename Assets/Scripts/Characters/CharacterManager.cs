@@ -164,6 +164,8 @@ public class CharacterManager : MonoBehaviour
         GameObject go = Instantiate(playerPrefab, playerParent);
         go.name = $"Player{playerId}";
         go.tag = Constants.TagPlayer;
+        var feet = go.transform.Find("Feet");
+        if (feet != null) feet.tag = Constants.TagPlayerFeet;
         // set color by steamId for distinctness
         var rend = go.GetComponent<SpriteRenderer>();
         if (rend != null) rend.color = color;
