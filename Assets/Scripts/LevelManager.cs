@@ -494,6 +494,7 @@ public class LevelManager : MonoBehaviour
     
     public bool InSameRoom(GameObject obj1, GameObject obj2)
     {
+        if (obj1 == null || obj2 == null) return false;
         Constants.PositionToIndex(obj1.transform.position, out int i1, out int j1);
         Constants.PositionToIndex(obj2.transform.position, out int i2, out int j2);
         if (i1 < 0 || i1 >= RoomGrid.GetLength(0) || j1 < 0 || j1 >= RoomGrid.GetLength(1)
