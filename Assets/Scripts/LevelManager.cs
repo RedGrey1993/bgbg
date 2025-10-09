@@ -489,6 +489,7 @@ public class LevelManager : MonoBehaviour
         floorTilemap.ClearAllTiles();
 
         CharacterManager.Instance.ClearCharacterObjects();
+        UIManager.Instance.HideBossHealthSlider();
     }
     
     public bool InSameRoom(GameObject obj1, GameObject obj2)

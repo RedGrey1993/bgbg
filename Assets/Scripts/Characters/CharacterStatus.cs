@@ -125,6 +125,7 @@ public class CharacterStatus : MonoBehaviour
         if (sr != null)
         {
             sr.color = Color.gray;
+            // 可能会渲染到tile后面，所以暂时先注释，TODO: 后面看看改tile的渲染层级为-2
             // sr.sortingOrder = -1; // Change sorting order to be behind alive players
         }
 
@@ -142,6 +143,7 @@ public class CharacterStatus : MonoBehaviour
         // Canvas canvas = GetComponentInChildren<Canvas>();
         // if (canvas != null)
         // {
+        //     // 可能会渲染到tile后面，所以暂时先注释，TODO: 后面看看改tile的渲染层级为-2
         //     canvas.sortingOrder = -1; // Change sorting order to be behind alive players
         // }
 
@@ -161,6 +163,11 @@ public class CharacterStatus : MonoBehaviour
 
         // 尸体在2s后销毁
         Destroy(gameObject, 2f);
+        // 如果是最后一只boss
+        if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
+        {
+            UIManager.Instance.ShowTeleportBeamEffect(transform.position);
+        }
         CharacterManager.Instance.RemoveObject(State.PlayerId);
     }
 

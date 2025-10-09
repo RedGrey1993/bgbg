@@ -199,9 +199,9 @@ public abstract class CharacterBaseAI : ICharacterAI
         {
             if (characterStatus.IsAlive()) GenerateAILogic();
 
-            UIManager.Instance.UpdateBossHealthSlider(characterStatus.State.CurrentHp, characterStatus.State.MaxHp);
             if (IsBoss() && LevelManager.Instance.InSameRoom(character, CharacterManager.Instance.GetMyselfGameObject()) && characterStatus.IsAlive())
             {
+                UIManager.Instance.UpdateBossHealthSlider(characterStatus.State.CurrentHp, characterStatus.State.MaxHp);
                 UIManager.Instance.ShowBossHealthSlider();
             }
             else

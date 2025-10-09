@@ -50,7 +50,8 @@ public class LevelDatabase : MonoBehaviour
     {
         if (level < 1 || level > LevelDatas.Count || LevelDictionary[level] == null)
         {
-            throw new System.ArgumentOutOfRangeException("No LevelData for level " + level);
+            Debug.Log("No LevelData for level " + level);
+            return null;
         }
         return LevelDictionary[level];
     }

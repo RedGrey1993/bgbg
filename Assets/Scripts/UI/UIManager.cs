@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject infoTextPrefab;
     public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
     public UnityEngine.UI.Slider bossHealthSlider;
+    public GameObject teleportBeamEffectPrefab; // 传送特效预制体
     #endregion
 
     private bool isSkillPanelOpen = false;
@@ -401,6 +402,7 @@ public class UIManager : MonoBehaviour
         _mainMenuRoot.AddToClassList("hidden");
         ShowMyStatusUI();
 
+        GameManager.Instance.LoadLocalStorage();
         GameManager.Instance.StartGame();
     }
 
@@ -976,6 +978,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    #region Visual Effects
     public void TriggerScreenFlash()
     {
         if (flashImage != null)
@@ -998,4 +1001,14 @@ public class UIManager : MonoBehaviour
         }
         flashCoroutine = null;
     }
+
+    public void ShowTeleportBeamEffect(Vector3 position)
+    {
+        if (teleportBeamEffectPrefab != null)
+        {
+            Instantiate(teleportBeamEffectPrefab, position, Quaternion.identity);
+        }
+    }
+
+    #endregion
 }
