@@ -22,7 +22,7 @@ public class ContraBillAI : CharacterBaseAI
 
     public override void OnCollision(Collision2D collision)
     {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        if (isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
             // if (collision.gameObject.CompareTag(Constants.TagWall) || collision.gameObject.CompareTag(Constants.TagEnemy))
             // {

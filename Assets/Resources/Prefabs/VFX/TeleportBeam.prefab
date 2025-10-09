@@ -4938,7 +4938,7 @@ GameObject:
   - component: {fileID: 366907381421349243}
   - component: {fileID: 874400965763630615}
   m_Layer: 0
-  m_Name: 'TeleportBeam '
+  m_Name: TeleportBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4974,6 +4974,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportBeam
   teleportSound: {fileID: 0}
+  fadeInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.723755
+      value: 0.090889014
+      inSlope: 0.54195434
+      outSlope: 0.54195434
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!61 &874400965763630615
 BoxCollider2D:
   m_ObjectHideFlags: 0

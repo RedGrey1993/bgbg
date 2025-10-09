@@ -5,10 +5,17 @@ public class TeleportBeam : MonoBehaviour
 {
     [Tooltip("传送时播放的音效")]
     public AudioClip teleportSound;
+    public AnimationCurve fadeInCurve;
 
     private AudioSource audioSource;
-
+    private SpriteRenderer spriteRenderer;
     private bool isTeleporting = false;
+    private bool canTeleport = false;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -18,6 +25,48 @@ public class TeleportBeam : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        if (spriteRenderer != null)
+        {
+            Color startColor = spriteRenderer.color;
+            startColor.a = 0f;
+            spriteRenderer.color = startColor;
+        }
+
+        // 启动渐显协程
+        StartCoroutine(FadeInRoutine());
+    }
+
+    private IEnumerator FadeInRoutine()
+    {
+        float timer = 0f;
+        float fadeInDuration = 2f; // 渐显持续时间
+
+        // --- 渐显阶段 ---
+        while (timer < fadeInDuration)
+        {
+            float timeProgress = timer / fadeInDuration;
+            float curveValue = fadeInCurve.Evaluate(timeProgress);
+
+            float alpha = Mathf.Lerp(0f, 1f, curveValue);
+            if (spriteRenderer != null)
+            {
+                Color currentColor = spriteRenderer.color;
+                currentColor.a = alpha;
+                spriteRenderer.color = currentColor;
+            }
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // 确保最终透明度为1
+        if (spriteRenderer != null)
+        {
+            Color finalColor = spriteRenderer.color;
+            finalColor.a = 1f;
+            spriteRenderer.color = finalColor;
+        }
+        canTeleport = true;
     }
 
     // 当有其他Collider2D进入这个触发器时调用
@@ -26,7 +75,7 @@ public class TeleportBeam : MonoBehaviour
         // 检查进入的是否是玩家（请确保你的玩家对象Tag被设置为"Player"）
         if (other.CompareTag(Constants.TagPlayerFeet))
         {
-            if (!isTeleporting)
+            if (!isTeleporting && canTeleport)
             {
                 isTeleporting = true;
                 // 执行传送
