@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TeleportBeam : MonoBehaviour
@@ -6,6 +7,8 @@ public class TeleportBeam : MonoBehaviour
     public AudioClip teleportSound;
 
     private AudioSource audioSource;
+
+    private bool isTeleporting = false;
 
     void Start()
     {
@@ -23,8 +26,12 @@ public class TeleportBeam : MonoBehaviour
         // 检查进入的是否是玩家（请确保你的玩家对象Tag被设置为"Player"）
         if (other.CompareTag(Constants.TagPlayerFeet))
         {
-            // 执行传送
-            TeleportToNextLevel(other.gameObject);
+            if (!isTeleporting)
+            {
+                isTeleporting = true;
+                // 执行传送
+                TeleportToNextLevel(other.gameObject);
+            }
         }
     }
 
@@ -36,10 +43,12 @@ public class TeleportBeam : MonoBehaviour
             audioSource.PlayOneShot(teleportSound);
         }
 
-        GameManager.Instance.ToNextStage();
-
-        Destroy(gameObject, 2f); // 传送后销毁传送门
-
+        GameManager.Instance.ToNextStage(() =>
+        {
+            // 传送完成后的回调
+            Destroy(gameObject); // 传送后销毁传送门
+            isTeleporting = false;
+        });
         // 可选：你可以在这里添加一个短暂的屏幕闪烁或角色无敌时间
         Debug.Log($"{player.name} 到达下一关！Stage: {GameManager.Instance.CurrentStage}");
     }

@@ -18,6 +18,14 @@ message Vec2
     float Y = 2;
 }
 
+message RectProto
+{
+    float X = 1;
+    float Y = 2;
+    float Width = 3;
+    float Height = 4;
+}
+
 message InputMessage
 {
     uint32 PlayerId = 1;
@@ -42,6 +50,8 @@ message PlayerState
     uint32 CurrentLevel = 12;
     uint32 CurrentExp = 13;
     Vec2 Position = 11;
+    repeated uint32 SkillIds = 14;
+    bool CurrentStageSkillLearned = 15;
 }
 
 message StateUpdateMessage
@@ -66,4 +76,18 @@ message LearnSkillMessage
 {
     uint32 playerId = 1;
     uint32 skillId = 2;
+}
+
+message LocalStorage
+{
+    uint32 CurrentStage = 1;
+    repeated PlayerState PlayerStates = 2;
+    repeated PlayerState MinionStates = 3;
+    repeated int32 MinionPrefabIdx = 4;
+    repeated PlayerState BossStates = 5;
+    repeated int32 BossPrefabIdx = 6;
+    repeated RectProto Rooms = 7;
+    uint32 RoomMaxWidth = 8;
+    uint32 RoomMaxHeight = 9;
+    uint32 NextCharacterId = 10;
 }

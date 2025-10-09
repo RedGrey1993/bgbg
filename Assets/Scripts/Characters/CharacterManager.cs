@@ -15,7 +15,9 @@ public class CharacterManager : MonoBehaviour
 
     public Dictionary<uint, GameObject> playerObjects { get; private set; } = new Dictionary<uint, GameObject>();
     public Dictionary<uint, GameObject> minionObjects { get; private set; } = new Dictionary<uint, GameObject>();
+    public Dictionary<uint, int> minionPrefabIdx { get; private set; } = new Dictionary<uint, int>();
     public Dictionary<uint, GameObject> bossObjects { get; private set; } = new Dictionary<uint, GameObject>();
+    public Dictionary<uint, int> bossPrefabIdx { get; private set; } = new Dictionary<uint, int>();
 
     public static uint nextCharacterId = 0;
     public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = nextCharacterId++, CSteamID = "PlayerOffline", Name = "Player Offline" };
@@ -41,27 +43,12 @@ public class CharacterManager : MonoBehaviour
         InitializeMySelf();
     }
 
-    public void CreateCharacterObjects(int level)
+    public void CreateCharacterObjects(LocalStorage storage)
     {
-        // add ai players if needed
-        if (Players.Count < Constants.MinPlayableObjects)
-        {
-            for (int i = Players.Count; i < Constants.MinPlayableObjects; i++)
-            {
-                var player = new PlayerInfo
-                {
-                    CSteamID = $"{Constants.AIPlayerPrefix}{i}",
-                    Name = $"{Constants.AIPlayerPrefix}{i}",
-                    Id = nextCharacterId++,
-                };
-                PlayerInfoMap[player.Id] = player;
-                Players.Add(player);
-            }
-            if (GameManager.Instance.IsHost()) SendPlayersUpdateToAll();
-        }
-        CreatePlayerObjects();
-        CreateMinionObjects(level);
-        CreateBossObjects(level);
+        nextCharacterId = System.Math.Max(1, storage.NextCharacterId);
+        CreatePlayerObjects(storage);
+        CreateMinionObjects(storage);
+        CreateBossObjects(storage);
     }
 
     public void ClearCharacterObjects()
@@ -72,92 +59,155 @@ public class CharacterManager : MonoBehaviour
     }
 
     // 初始化玩家对象，动态数据，游戏过程中也在不断变化，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
-    private void CreatePlayerObjects()
+    private void CreatePlayerObjects(LocalStorage storage)
     {
         ClearPlayerObjects();
-        foreach (var player in Players)
+        if (storage.PlayerStates.Count > 0)
         {
-            CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
+            foreach (var ps in storage.PlayerStates) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
+            {
+                CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), ps.PlayerId == MyInfo.Id, ps);
+            }
+        }
+        else
+        {
+            foreach (var player in Players)
+            {
+                CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
+            }
         }
     }
 
-    private void CreateMinionObjects(int level)
+    private void CreateMinionObjects(LocalStorage storage)
     {
         ClearMinionObjects();
 
-        var levelData = LevelDatabase.Instance.GetLevelData(level);
-        void AreaToNumber(Rect room, out int number, out List<Vector2> positions)
+        var levelData = LevelDatabase.Instance.GetLevelData((int)storage.CurrentStage);
+        if (storage.MinionStates.Count > 0)
         {
-            int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion);
-            float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
-            number = Mathf.FloorToInt(area / areaPerMinion);
-            positions = new List<Vector2>();
-
-            // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
-            for (int i = 0; i < number; i++)
+            for (int i = 0; i < storage.MinionStates.Count; i++)
             {
-                Vector2 position = new Vector2(Random.Range(room.xMin, room.xMax), Random.Range(room.yMin, room.yMax));
-                // if (!positions.Contains(position)) // O(n) 太慢了
-                positions.Add(position);
-            }
-        }
-        foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
-        {
-            var room = LevelManager.Instance.Rooms[roomIdx];
-            // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
-            int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
-            var minionPrefab = levelData.normalMinionPrefabs[randomMinionIdx];
-            AreaToNumber(room, out var minionNum, out var spawnPositions);
-            for (int i = 0; i < minionNum; i++)
-            {
-                var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
-                uint minionId = nextCharacterId++;
+                var ms = storage.MinionStates[i];
+                var prefabIdx = storage.MinionPrefabIdx[i];
+                var minionPrefab = levelData.normalMinionPrefabs[prefabIdx];
+                var minion = Instantiate(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), Quaternion.identity);
+                uint minionId = ms.PlayerId;
                 minion.name = $"{minionPrefab.name}{minionId}";
                 minion.tag = Constants.TagEnemy;
                 var minionStatus = minion.GetComponent<CharacterStatus>();
                 if (minionStatus != null)
                 {
-                    minionStatus.State.PlayerId = minionId;
-                    minionStatus.State.PlayerName = minion.name;
+                    minionStatus.State = ms;
                 }
 
                 minionObjects[minionId] = minion;
+                minionPrefabIdx[minionId] = prefabIdx;
+            }
+            return;
+        }
+        else
+        {
+            void AreaToNumber(Rect room, out int number, out List<Vector2> positions)
+            {
+                int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion);
+                float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
+                number = Mathf.FloorToInt(area / areaPerMinion);
+                positions = new List<Vector2>();
+
+                // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
+                for (int i = 0; i < number; i++)
+                {
+                    Vector2 position = new Vector2(Random.Range(room.xMin + 1, room.xMax), Random.Range(room.yMin + 1, room.yMax));
+                    // if (!positions.Contains(position)) // O(n) 太慢了
+                    positions.Add(position);
+                }
+            }
+            foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
+            {
+                var room = LevelManager.Instance.Rooms[roomIdx];
+                // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
+                int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
+                var minionPrefab = levelData.normalMinionPrefabs[randomMinionIdx];
+                AreaToNumber(room, out var minionNum, out var spawnPositions);
+                for (int i = 0; i < minionNum; i++)
+                {
+                    var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
+                    uint minionId = nextCharacterId++;
+                    minion.name = $"{minionPrefab.name}{minionId}";
+                    minion.tag = Constants.TagEnemy;
+                    var minionStatus = minion.GetComponent<CharacterStatus>();
+                    if (minionStatus != null)
+                    {
+                        minionStatus.State.PlayerId = minionId;
+                        minionStatus.State.PlayerName = minion.name;
+                    }
+
+                    minionObjects[minionId] = minion;
+                    minionPrefabIdx[minionId] = randomMinionIdx;
+                }
             }
         }
     }
 
-    private void CreateBossObjects(int level)
+    private void CreateBossObjects(LocalStorage storage)
     {
         void GenerateBossPosition(Rect room, out Vector2 position)
         {
-            float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
-            position = new Vector2(Random.Range(room.xMin, room.xMax), Random.Range(room.yMin, room.yMax));
+            position = new Vector2(Random.Range(room.xMin + 1, room.xMax), Random.Range(room.yMin + 1, room.yMax));
         }
 
         ClearBossObjects();
-
+        
+        int level = (int)storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData(level);
-        var roomIdx = Random.Range(0, LevelManager.Instance.remainRoomsIndex.Count);
-        var room = LevelManager.Instance.Rooms[roomIdx];
-        int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
-        var bossPrefab = levelData.bossPrefabs[randomBossIdx];
-        GenerateBossPosition(room, out var spawnPosition);
 
-        var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
-        uint bossId = nextCharacterId++;
-        boss.name = $"{bossPrefab.name}{bossId}";
-        boss.tag = Constants.TagEnemy;
-        var bossStatus = boss.GetComponent<CharacterStatus>();
-        if (bossStatus != null)
+        if (storage.BossStates.Count > 0)
         {
-            bossStatus.State.PlayerId = bossId;
-            bossStatus.State.PlayerName = boss.name;
-        }
+            for (int i = 0; i < storage.BossStates.Count; i++)
+            {
+                var bs = storage.BossStates[i];
+                var prefabIdx = storage.BossPrefabIdx[i];
+                var bossPrefab = levelData.bossPrefabs[prefabIdx];
 
-        bossObjects[bossId] = boss;
+                var boss = Instantiate(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), Quaternion.identity);
+                uint bossId = bs.PlayerId;
+                boss.name = $"{bossPrefab.name}{bossId}";
+                boss.tag = Constants.TagEnemy;
+                var bossStatus = boss.GetComponent<CharacterStatus>();
+                if (bossStatus != null)
+                {
+                    bossStatus.State = bs;
+                }
+
+                bossObjects[bossId] = boss;
+                bossPrefabIdx[bossId] = prefabIdx;
+            }
+        }
+        else
+        {
+            var roomIdx = Random.Range(0, LevelManager.Instance.remainRoomsIndex.Count);
+            var room = LevelManager.Instance.Rooms[roomIdx];
+            int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
+            var bossPrefab = levelData.bossPrefabs[randomBossIdx];
+            GenerateBossPosition(room, out var spawnPosition);
+
+            var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+            uint bossId = nextCharacterId++;
+            boss.name = $"{bossPrefab.name}{bossId}";
+            boss.tag = Constants.TagEnemy;
+            var bossStatus = boss.GetComponent<CharacterStatus>();
+            if (bossStatus != null)
+            {
+                bossStatus.State.PlayerId = bossId;
+                bossStatus.State.PlayerName = boss.name;
+            }
+
+            bossObjects[bossId] = boss;
+            bossPrefabIdx[bossId] = randomBossIdx;
+        }
     }
 
-    private void CreatePlayerObject(uint playerId, Color color, bool needController = false)
+    private void CreatePlayerObject(uint playerId, Color color, bool needController = false, PlayerState initState = null)
     {
         if (playerObjects.ContainsKey(playerId)) return;
 
@@ -180,16 +230,18 @@ public class CharacterManager : MonoBehaviour
         var playerStatus = go.GetComponent<CharacterStatus>();
         if (playerStatus != null)
         {
-            playerStatus.State.PlayerId = playerId;
-            playerStatus.State.PlayerName = playerName;
-            if (playerName.StartsWith(Constants.AIPlayerPrefix))
+            if (initState != null)
             {
-                playerStatus.IsAI = true;
+                playerStatus.State = initState;
+                if (initState.Position != null)
+                    go.transform.position = new Vector2(initState.Position.X, initState.Position.Y);
             }
             else
             {
-                playerStatus.IsAI = false;
+                playerStatus.State.PlayerId = playerId;
+                playerStatus.State.PlayerName = playerName;
             }
+            playerStatus.IsAI = false;
         }
 
         playerObjects[playerId] = go;
@@ -227,8 +279,10 @@ public class CharacterManager : MonoBehaviour
             // 在MyInfo对应的playerObject创建好之后，在弹出技能选择界面
             SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
             // 清空之前owned的技能和对应的协程
-            skillPanelController.Initialize();
-            skillPanelController.RandomizeNewSkillChoice();
+            List<SkillData> ownedSkills = initState != null ? initState.SkillIds.Select(id => SkillDatabase.Instance.GetSkill(id)).ToList() : new List<SkillData>();
+            skillPanelController.Initialize(ownedSkills);
+            if (initState == null || !initState.CurrentStageSkillLearned)
+                skillPanelController.RandomizeNewSkillChoice();
         }
     }
 
@@ -242,12 +296,14 @@ public class CharacterManager : MonoBehaviour
     {
         foreach (var go in minionObjects.Values) { if (go != null) Destroy(go); }
         minionObjects.Clear();
+        minionPrefabIdx.Clear();
     }
 
     private void ClearBossObjects()
     {
         foreach (var go in bossObjects.Values) { if (go != null) Destroy(go); }
         bossObjects.Clear();
+        bossPrefabIdx.Clear();
     }
 
     private void RemovePlayerObject(uint playerId)
@@ -380,6 +436,43 @@ public class CharacterManager : MonoBehaviour
         }
         return null;
     }
+
+    public void SaveInfoToLocalStorage(LocalStorage storage)
+    {
+        storage.PlayerStates.Clear();
+        foreach (var player in playerObjects.Values)
+        {
+            var playerStatus = player.GetComponent<CharacterStatus>();
+            if (playerStatus != null)
+            {
+                storage.PlayerStates.Add(playerStatus.State);
+            }
+        }
+        storage.MinionStates.Clear();
+        foreach (var minionId in minionObjects.Keys)
+        {
+            var minion = minionObjects[minionId];
+            var prefabIdx = minionPrefabIdx[minionId];
+            var minionStatus = minion.GetComponent<CharacterStatus>();
+            if (minionStatus != null)
+            {
+                storage.MinionStates.Add(minionStatus.State);
+                storage.MinionPrefabIdx.Add(prefabIdx);
+            }
+        }
+        storage.BossStates.Clear();
+        foreach (var bossId in bossObjects.Keys)
+        {
+            var boss = bossObjects[bossId];
+            var prefabIdx = bossPrefabIdx[bossId];
+            var bossStatus = boss.GetComponent<CharacterStatus>();
+            if (bossStatus != null)
+            {
+                storage.BossStates.Add(bossStatus.State);
+                storage.BossPrefabIdx.Add(prefabIdx);
+            }
+        }
+    }
     #endregion
 
     #region State Msg Handler
@@ -398,6 +491,10 @@ public class CharacterManager : MonoBehaviour
         foreach (var p in players.Players)
         {
             PlayerInfoMap[p.Id] = p;
+            if (p.CSteamID == MyInfo.CSteamID)
+            {
+                MyInfo = p; // update MyInfo
+            }
         }
         Players.AddRange(players.Players);
         UIManager.Instance.RefreshPlayerList();
@@ -516,7 +613,9 @@ public class CharacterManager : MonoBehaviour
         var skill = SkillDatabase.Instance.GetSkill(skillId);
         var playerObj = playerObjects[targetCharacterId];
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
+        playerStatus.State.CurrentStageSkillLearned = true;
         var playerState = playerStatus.State;
+        playerState.SkillIds.Add(skillId);
 
         var msg = new GenericMessage
         {
@@ -527,9 +626,11 @@ public class CharacterManager : MonoBehaviour
                 Tick = (uint)(Time.realtimeSinceStartup * 1000),
                 Players = { new PlayerState {
                     PlayerId = playerState.PlayerId,
+                    CurrentStageSkillLearned = true,
                 } }
             }
         };
+        msg.StateMsg.Players[0].SkillIds.AddRange(playerState.SkillIds);
 
         if (skill.deltaFireRate != 0)
         {
@@ -573,6 +674,8 @@ public class CharacterManager : MonoBehaviour
                                 break;
                             }
                     }
+                    playerStatus.State.SkillIds.Clear();
+                    playerStatus.State.SkillIds.AddRange(ps.SkillIds);
                     if (ps.PlayerId == MyInfo.Id) UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
                 }
             }

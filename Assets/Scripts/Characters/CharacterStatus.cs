@@ -37,6 +37,7 @@ public class CharacterStatus : MonoBehaviour
         State.CriticalRate = characterData.CriticalRate;
         State.CurrentExp = 0;
         State.CurrentLevel = 1;
+        State.Position = new Vec2();
     }
 
     public bool IsDead()
@@ -161,7 +162,7 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // 尸体销毁
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {
@@ -208,5 +209,10 @@ public class CharacterStatus : MonoBehaviour
         {
             UIManager.Instance.HideBossHealthSlider();
         }
+        State.Position = new Vec2
+        {
+            X = transform.position.x,
+            Y = transform.position.y
+        };
     }
 }

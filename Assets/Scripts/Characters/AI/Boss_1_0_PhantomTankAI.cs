@@ -65,7 +65,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
             AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            // Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion

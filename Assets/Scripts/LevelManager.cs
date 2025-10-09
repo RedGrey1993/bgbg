@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NetworkMessageProto;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,8 +41,10 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void GenerateLevel(int level)
+    public void GenerateLevel(LocalStorage storage)
     {
+        int level = (int)storage.CurrentStage;
+        Debug.Log($"################# 生成第 {level} 关 #################");
         CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
         TileBase floorTile = CurrentLevelData.floorTile;
         ref TileBase wallTile = ref level1WallTile;
@@ -55,13 +58,13 @@ public class LevelManager : MonoBehaviour
                 break;
         }
         GenerateFloors(floorTile);
-        GenerateRooms(wallTile);
+        GenerateRooms(wallTile, storage);
 
         UIManager.Instance.ClearInfoPanel();
         UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
 
         // character objects 会随每次的HostTick将状态同步到Client
-        CharacterManager.Instance.CreateCharacterObjects(level);
+        CharacterManager.Instance.CreateCharacterObjects(storage);
 
         // StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
     }
@@ -81,58 +84,70 @@ public class LevelManager : MonoBehaviour
 
     // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可
     // TODO: 发送房间数据给Client
-    private void GenerateRooms(TileBase wallTile)
+    private void GenerateRooms(TileBase wallTile, LocalStorage storage)
     {
-        int roomMaxWidth = CurrentLevelData.roomMaxWidth;
-        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
-        List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
+        int roomMaxWidth;
+        int roomMaxHeight;
         Rooms = new List<Rect>();
-        RoomGrid = new int[roomMaxWidth / Constants.RoomStep, roomMaxHeight / Constants.RoomStep];
-
-        int minTotalRooms = CurrentLevelData.minTotalRooms;
-        int maxTotalRooms = CurrentLevelData.maxTotalRooms;
-        int cutNum = UnityEngine.Random.Range(minTotalRooms, maxTotalRooms + 1);
-        // cutNum < 100, O(N^2)的插入排序不会太慢
-        for (int i = 0; i < cutNum; i++)
+        if (storage.Rooms.Count > 0) // 使用存档记录的房间布局
         {
-            if (sortedList.Count == 0) break;
-            Rect room = sortedList[0];
-            sortedList.RemoveAt(0);
-            bool horizontalCut = UnityEngine.Random.value > 0.5f;
-            if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > 20)
-            {
-                int roomHeight = Mathf.CeilToInt(room.height);
-                int segNum = roomHeight / Constants.RoomStep;
-                int cutSeg = UnityEngine.Random.Range(1, segNum);
-                Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomStep);
-                Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomStep);
-                // 按照面积从大到小顺序的顺序，加入到List中
-                int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
-                if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
-                int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
-                if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
-            }
-            else if ((room.height < room.width || (room.height == room.width && !horizontalCut)) && room.width > 20)
-            {
-                int roomWidth = Mathf.CeilToInt(room.width);
-                int segNum = roomWidth / Constants.RoomStep;
-                int cutSeg = UnityEngine.Random.Range(1, segNum);
-                Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomStep, room.height);
-                Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomStep, room.height);
-                // 按照面积从大到小顺序的顺序，加入到List中
-                int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
-                if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
-                int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
-                if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
-            }
-            else
-            {
-                Rooms.Add(room);
-            }
+            roomMaxWidth = (int)storage.RoomMaxWidth;
+            roomMaxHeight = (int)storage.RoomMaxHeight;
+
+            Rooms.AddRange(storage.Rooms.Select(r => new Rect(r.X, r.Y, r.Width, r.Height)));
         }
+        else // 重新随机生成房间
+        {
+            roomMaxWidth = CurrentLevelData.roomMaxWidth;
+            roomMaxHeight = CurrentLevelData.roomMaxHeight;
 
-        Rooms.AddRange(sortedList);
+            List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
+            int minTotalRooms = CurrentLevelData.minTotalRooms;
+            int maxTotalRooms = CurrentLevelData.maxTotalRooms;
+            int cutNum = UnityEngine.Random.Range(minTotalRooms, maxTotalRooms + 1);
+            // cutNum < 100, O(N^2)的插入排序不会太慢
+            for (int i = 0; i < cutNum; i++)
+            {
+                if (sortedList.Count == 0) break;
+                Rect room = sortedList[0];
+                sortedList.RemoveAt(0);
+                bool horizontalCut = UnityEngine.Random.value > 0.5f;
+                if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > 20)
+                {
+                    int roomHeight = Mathf.CeilToInt(room.height);
+                    int segNum = roomHeight / Constants.RoomStep;
+                    int cutSeg = UnityEngine.Random.Range(1, segNum);
+                    Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomStep);
+                    Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomStep);
+                    // 按照面积从大到小顺序的顺序，加入到List中
+                    int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
+                    if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
+                    int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
+                    if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
+                }
+                else if ((room.height < room.width || (room.height == room.width && !horizontalCut)) && room.width > 20)
+                {
+                    int roomWidth = Mathf.CeilToInt(room.width);
+                    int segNum = roomWidth / Constants.RoomStep;
+                    int cutSeg = UnityEngine.Random.Range(1, segNum);
+                    Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomStep, room.height);
+                    Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomStep, room.height);
+                    // 按照面积从大到小顺序的顺序，加入到List中
+                    int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
+                    if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
+                    int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
+                    if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
+                }
+                else
+                {
+                    Rooms.Add(room);
+                }
+            }
 
+            Rooms.AddRange(sortedList);
+        }
+        
+        RoomGrid = new int[roomMaxWidth / Constants.RoomStep, roomMaxHeight / Constants.RoomStep];
         roomConnections = new HashSet<int>[Rooms.Count];
         for (int i = 0; i < Rooms.Count; i++) roomConnections[i] = new HashSet<int>();
         roomToTiles = new List<Vector3Int>[Rooms.Count];
@@ -194,10 +209,10 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < Rooms.Count; i++)
-        {
-            Debug.Log($"fhhtest, roomConnections[{i}]: {string.Join(",", roomConnections[i])}");
-        }
+        // for (int i = 0; i < Rooms.Count; i++)
+        // {
+        //     Debug.Log($"fhhtest, roomConnections[{i}]: {string.Join(",", roomConnections[i])}");
+        // }
 
         Debug.Log($"Generated {Rooms.Count} rooms");
     }
@@ -491,7 +506,7 @@ public class LevelManager : MonoBehaviour
         CharacterManager.Instance.ClearCharacterObjects();
         UIManager.Instance.HideBossHealthSlider();
     }
-    
+
     public bool InSameRoom(GameObject obj1, GameObject obj2)
     {
         if (obj1 == null || obj2 == null) return false;
@@ -501,5 +516,25 @@ public class LevelManager : MonoBehaviour
             || i2 < 0 || i2 >= RoomGrid.GetLength(0) || j2 < 0 || j2 >= RoomGrid.GetLength(1))
             return false;
         return RoomGrid[i1, j1] == RoomGrid[i2, j2];
+    }
+
+    public void SaveInfoToLocalStorage(LocalStorage storage)
+    {
+        storage.Rooms.Clear();
+        foreach (var idx in remainRoomsIndex)
+        {
+            storage.Rooms.Add(new RectProto
+            {
+                X = Rooms[idx].xMin,
+                Y = Rooms[idx].yMin,
+                Width = Rooms[idx].width,
+                Height = Rooms[idx].height
+            });
+        }
+
+        var roomMaxWidth = CurrentLevelData.roomMaxWidth;
+        var roomMaxHeight = CurrentLevelData.roomMaxHeight;
+        storage.RoomMaxWidth = (uint)roomMaxWidth;
+        storage.RoomMaxHeight = (uint)roomMaxHeight;
     }
 }

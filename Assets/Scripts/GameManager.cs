@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using NetworkMessageProto;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public int CurrentStage { get; private set; } = 1;
     public GameState GameState { get; private set; } = GameState.InMenu;
+    private string saveFilePath;
 
     void Awake()
     {
@@ -16,6 +19,11 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
+        saveFilePath = Path.Combine(Application.persistentDataPath, "savedata.bin");
     }
 
     public bool IsLocalOrHost()
@@ -37,40 +45,84 @@ public class GameManager : MonoBehaviour
     }
 
     #region Game Logic
-    public void LoadLocalStorage()
+    public void SaveLocalStorage()
     {
-        // TODO: 从存档读取关卡数据
-        CurrentStage = 1;
-        CharacterManager.Instance.InitializeMySelf();
+        LocalStorage storage = new LocalStorage();
+        storage.CurrentStage = (uint)CurrentStage;
+        CharacterManager.Instance.SaveInfoToLocalStorage(storage);
+        LevelManager.Instance.SaveInfoToLocalStorage(storage);
+        using (var file = File.Create(saveFilePath))
+        {
+            SerializeUtil.Serialize(storage, out byte[] data);
+            file.Write(data, 0, data.Length);
+        }
+    }
+    public LocalStorage LoadLocalStorage()
+    {
+        if (!File.Exists(saveFilePath))
+        {
+            Debug.Log("No save file found, starting a new game.");
+            return new LocalStorage
+            {
+                CurrentStage = 1,
+                NextCharacterId = 1,
+            };
+        }
+        var data = File.ReadAllBytes(saveFilePath);
+        SerializeUtil.Deserialize(data, out LocalStorage storage);
+        CurrentStage = Mathf.Max(1, (int)storage.CurrentStage);
+        return storage;
     }
 
+    // TODO: 后续StartOnlineGame需要将关卡消息同步到Client
+
     // StartGame前，如果是联机模式，则所有玩家的Players都已经收集完毕，不能再调用InitializeMySelf
-    public void StartGame()
+    public void StartLocalGame(LocalStorage storage)
     {
         GameState = GameState.InGame;
         StopAllCoroutines();
         LevelManager.Instance.ClearLevel();
-        if (IsLocalOrHost())
-        {
-            // TODO: 后续需要将关卡消息同步到Client
-            LevelManager.Instance.GenerateLevel(CurrentStage);
-        }
+        LevelManager.Instance.GenerateLevel(storage);
     }
     public void StopGame()
     {
+        if (IsLocal())
+        {
+            SaveLocalStorage();
+        }
         GameState = GameState.InMenu;
         StopAllCoroutines();
         LevelManager.Instance.ClearLevel();
         CharacterManager.Instance.InitializeMySelf();
     }
-    public void ToNextStage()
+    public void ToNextStage(Action callback)
     {
+        SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+        skillPanelController.forceRandomChoose = true;
+        SaveLocalStorage();
         CurrentStage++;
         if (LevelDatabase.Instance.GetLevelData(CurrentStage) != null)
         {
             // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
-            UIManager.Instance.PlayLoadingAnimation(() => {
-                StartGame();
+            UIManager.Instance.PlayLoadingAnimation(() =>
+            {
+                LocalStorage storage = new LocalStorage
+                {
+                    CurrentStage = (uint)CurrentStage,
+                    NextCharacterId = 1,
+                };
+                foreach (var player in CharacterManager.Instance.playerObjects.Values)
+                {
+                    var playerStatus = player.GetComponent<CharacterStatus>();
+                    if (playerStatus != null)
+                    {
+                        playerStatus.State.CurrentStageSkillLearned = false;
+                        storage.PlayerStates.Add(playerStatus.State);
+                    }
+                }
+                skillPanelController.forceRandomChoose = false;
+                callback?.Invoke();
+                StartLocalGame(storage);
             });
         }
         else

@@ -233,7 +233,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator LoadAnimationRoutine(Action callback)
     {
         // 1. 触发渐变黑屏动画
-        var transitionTime = 2f;
+        var transitionTime = 1.5f;
         yield return StartCoroutine(FadeRoutine(1f, transitionTime));
 
         // var loadingContent = fadePanel.GetComponentInChildren<UnityEngine.UI.Video>();
@@ -482,10 +482,12 @@ public class UIManager : MonoBehaviour
     private void OnLocalGameClicked()
     {
         _mainMenuRoot.AddToClassList("hidden");
-        ShowMyStatusUI();
-
-        GameManager.Instance.LoadLocalStorage();
-        GameManager.Instance.StartGame();
+        PlayLoadingAnimation(() =>
+        {
+            ShowMyStatusUI();
+            var storage = GameManager.Instance.LoadLocalStorage();
+            GameManager.Instance.StartLocalGame(storage);
+        });
     }
 
     private void OnConfirmCreateRoomClicked()
@@ -902,7 +904,6 @@ public class UIManager : MonoBehaviour
     public void ToggleSkillPanel()
     {
         bool inGame = GameManager.Instance.GameState == GameState.InGame;
-        Debug.Log($"ToggleSkillPanel called, inGame: {inGame}, isSkillPanelOpen: {isSkillPanelOpen}");
         if (!inGame) return; // 仅在游戏中允许打开技能面板
         if (skillPanelAnimator == null) return;
 
@@ -919,8 +920,6 @@ public class UIManager : MonoBehaviour
 
     public void HideSkillPanel()
     {
-        bool inGame = GameManager.Instance.GameState == GameState.InGame;
-        Debug.Log($"HideSkillPanel called, inGame: {inGame}, isSkillPanelOpen: {isSkillPanelOpen}");
         if (skillPanelAnimator == null) return;
         if (isSkillPanelOpen)
         {
@@ -933,7 +932,6 @@ public class UIManager : MonoBehaviour
     public void ShowInfoPanel(string info, float duration)
     {
         bool inGame = GameManager.Instance.GameState == GameState.InGame;
-        Debug.Log($"ShowInfoPanel called, inGame: {inGame}");
         if (!inGame) return; // 仅在游戏中允许打开信息面板
 
         infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, duration)));

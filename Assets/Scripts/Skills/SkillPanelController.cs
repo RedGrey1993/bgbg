@@ -34,6 +34,8 @@ public class SkillPanelController : MonoBehaviour
     // 技能选择队列
     private Queue<SkillChoiceRequest> skillChoiceQueue = new Queue<SkillChoiceRequest>();
     private bool isChoosing = false;
+    // 如果玩家一直不选择技能进入下一关，则设置这个变量为 true，强制在进入下一关之前自动选择一个技能
+    public bool forceRandomChoose = false;
 
     // 用于测试的技能列表
     [Header("Debug & Test")]
@@ -66,17 +68,37 @@ public class SkillPanelController : MonoBehaviour
         }
     }
 
-    public void Initialize()
+    public void Initialize(List<SkillData> initialSkills)
     {
         foreach (Transform child in ownedSkillsContainer)
         {
             if (child.GetComponent<OwnedSkillIcon>() != null) Destroy(child.gameObject);
+        }
+        foreach (var skill in initialSkills)
+        {
+            GameObject iconObj = Instantiate(ownedSkillIconPrefab, ownedSkillsContainer);
+            iconObj.GetComponent<Image>().sprite = skill.icon;
+            iconObj.GetComponent<OwnedSkillIcon>().skillData = skill;
         }
         // 清理之前的Coroutines
         StopAllCoroutines();
         skillChoiceQueue.Clear();
         isChoosing = false;
         learnableSkillsPanel.SetActive(false);
+    }
+
+    public List<uint> GetOwnedSkillIds()
+    {
+        List<uint> skillIds = new List<uint>();
+        foreach (Transform child in ownedSkillsContainer)
+        {
+            var icon = child.GetComponent<OwnedSkillIcon>();
+            if (icon != null && icon.skillData != null)
+            {
+                skillIds.Add(icon.skillData.id);
+            }
+        }
+        return skillIds;
     }
 
     private IEnumerator ProcessSkillQueue()
@@ -108,7 +130,7 @@ public class SkillPanelController : MonoBehaviour
         while (timer > 0)
         {
             // 如果玩家已经点击按钮做出了选择，则跳出循环
-            if (selectedSkill != null)
+            if (selectedSkill != null || forceRandomChoose)
             {
                 break;
             }

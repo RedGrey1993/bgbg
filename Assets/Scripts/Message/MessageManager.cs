@@ -93,6 +93,7 @@ public class MessageManager : MonoBehaviour
 
     public void OnPlayerInput(InputMessage inputMsg)
     {
+        // Debug.Log($"fhhtest, Received InputMessage from PlayerId {inputMsg.PlayerId}, MyInfo.Id {CharacterManager.Instance.MyInfo.Id}, MoveInput: ({inputMsg.MoveInput.X}, {inputMsg.MoveInput.Y}), LookInput: ({inputMsg.LookInput.X}, {inputMsg.LookInput.Y})");
         if (CharacterManager.Instance.playerObjects.TryGetValue(inputMsg.PlayerId, out GameObject playerObject))
         {
             var playerInput = playerObject.GetComponent<CharacterInput>();
