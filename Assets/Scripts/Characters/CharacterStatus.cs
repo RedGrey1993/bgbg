@@ -214,5 +214,12 @@ public class CharacterStatus : MonoBehaviour
             X = transform.position.x,
             Y = transform.position.y
         };
+
+        if (HasPlayerController())
+        {
+            int roomNo = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+            spc.UpdateTipsText(roomNo);
+        }
     }
 }

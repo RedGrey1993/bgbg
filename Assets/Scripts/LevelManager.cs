@@ -110,7 +110,7 @@ public class LevelManager : MonoBehaviour
             List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
             int minTotalRooms = CurrentLevelData.minTotalRooms;
             int maxTotalRooms = CurrentLevelData.maxTotalRooms;
-            int cutNum = UnityEngine.Random.Range(minTotalRooms, maxTotalRooms + 1);
+            int cutNum = UnityEngine.Random.Range(minTotalRooms - 1, maxTotalRooms);
             // cutNum < 100, O(N^2)的插入排序不会太慢
             for (int i = 0; i < cutNum; i++)
             {
@@ -152,7 +152,18 @@ public class LevelManager : MonoBehaviour
 
             Rooms.AddRange(sortedList);
         }
-        
+
+        // 将Rooms按照先从y小到大，再从x小到大的顺序排序，方便后续处理
+        Rooms.Sort((a, b) =>
+        {
+            int result = a.yMin.CompareTo(b.yMin);
+            if (result == 0)
+            {
+                result = a.xMin.CompareTo(b.xMin);
+            }
+            return result;
+        });
+
         RoomGrid = new int[roomMaxWidth / Constants.RoomStep, roomMaxHeight / Constants.RoomStep];
         roomConnections = new HashSet<int>[Rooms.Count];
         for (int i = 0; i < Rooms.Count; i++) roomConnections[i] = new HashSet<int>();
@@ -513,6 +524,7 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.HideBossHealthSlider();
     }
 
+    #region Utils
     public bool InSameRoom(GameObject obj1, GameObject obj2)
     {
         if (obj1 == null || obj2 == null) return false;
@@ -543,4 +555,13 @@ public class LevelManager : MonoBehaviour
         storage.RoomMaxWidth = (uint)roomMaxWidth;
         storage.RoomMaxHeight = (uint)roomMaxHeight;
     }
+
+    public int GetRoomNoByPosition(Vector3 position)
+    {
+        Constants.PositionToIndex(position, out int i, out int j);
+        if (i < 0 || i >= RoomGrid.GetLength(0) || j < 0 || j >= RoomGrid.GetLength(1))
+            return -1;
+        return RoomGrid[i, j];
+    }
+    #endregion
 }

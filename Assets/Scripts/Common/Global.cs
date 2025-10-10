@@ -63,10 +63,6 @@ public static class Constants
     public const string TagPlayerFeet = "PlayerFeet";
     public const string TagEnemy = "Enemy";
     public const string TagWall = "Wall";
-    public const string NameHealthSlider = "HealthSlider";
-    public const string NameExpSlider = "ExpSlider";
-    public const string NameHealthText = "HealthText";
-    public const string NameExpText = "ExpText";
 
     public static readonly int[] LevelUpExp = {
         100,

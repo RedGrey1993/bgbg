@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
     [Header("Input Action Asset")]
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
-    public GameObject statusPanel;
     public GameObject fadePanel;
     public UnityEngine.UI.Image loadingImage;
     public Sprite defaultSprite; // 默认加载图片
@@ -37,18 +36,12 @@ public class UIManager : MonoBehaviour
     public GameObject teleportBeamEffectPrefab; // 传送特效预制体
     #endregion
 
-    public GameObject TeleportBeamEffect;
+    public GameObject TeleportBeamEffect { get; set; }
     private bool isSkillPanelOpen = false;
     private Coroutine flashCoroutine;
 
     private List<Coroutine> infoPanelCoroutines = new List<Coroutine>();
     private HashSet<GameObject> infoTextObjects = new HashSet<GameObject>();
-
-    private UnityEngine.UI.Slider healthSlider;
-    private UnityEngine.UI.Slider expSlider;
-    private TextMeshProUGUI healthText;
-    private TextMeshProUGUI expText;
-    private HexagonRadarChart abilityRadarChart;
 
     private InputAction _toggleSettingsAction;
     private InputAction _toggleSkillPanelAction;
@@ -174,21 +167,12 @@ public class UIManager : MonoBehaviour
 
     public void RegisterLocalPlayer(CharacterStatus localPlayerStatus)
     {
-        localPlayerStatus.OnHealthChanged += UpdateMyStatusUI;
+        var spc = GetComponent<StatusPanelController>();
+        localPlayerStatus.OnHealthChanged += spc.UpdateMyStatusUI;
         localPlayerStatus.OnDied += ShowGameOverScreen;
     }
 
     #region Canvas
-    private void ShowMyStatusUI()
-    {
-        statusPanel.SetActive(true);
-    }
-
-    private void HideMyStatusUI()
-    {
-        statusPanel.SetActive(false);
-    }
-
     public void PlayLoadingAnimation(Action callback, Sprite loadingSprite = null)
     {
         fadePanel.SetActive(true);
@@ -288,82 +272,6 @@ public class UIManager : MonoBehaviour
     {
         bossHealthSlider.value = curHp;
         bossHealthSlider.maxValue = maxHp;
-    }
-
-    public void UpdateMyStatusUI(PlayerState state)
-    {
-        int idx = Mathf.Min(Mathf.Max(0, (int)state.CurrentLevel - 1), Constants.LevelUpExp.Length - 1);
-        int maxExp = Constants.LevelUpExp[idx];
-        if (healthSlider != null)
-        {
-            healthSlider.maxValue = state.MaxHp;
-            healthSlider.value = state.CurrentHp;
-
-            expSlider.maxValue = maxExp;
-            expSlider.value = state.CurrentExp;
-        }
-        else
-        {
-            var sliders = statusPanel.GetComponentsInChildren<UnityEngine.UI.Slider>();
-            foreach (var slider in sliders)
-            {
-                if (slider.name == Constants.NameHealthSlider)
-                {
-                    healthSlider = slider;
-                }
-                else if (slider.name == Constants.NameExpSlider)
-                {
-                    expSlider = slider;
-                }
-            }
-            if (healthSlider != null)
-            {
-                healthSlider.maxValue = state.MaxHp;
-                healthSlider.value = state.CurrentHp;
-
-                expSlider.maxValue = maxExp;
-                expSlider.value = state.CurrentExp;
-            }
-        }
-
-        if (healthText != null)
-        {
-            healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
-            expText.text = $"Data Shards: {state.CurrentExp}/{maxExp}";
-        }
-        else
-        {
-            var healthTexts = statusPanel.GetComponentsInChildren<TextMeshProUGUI>();
-            foreach (var text in healthTexts)
-            {
-                if (text.name == Constants.NameHealthText)
-                {
-                    healthText = text;
-                }
-                else if (text.name == Constants.NameExpText)
-                {
-                    expText = text;
-                }
-            }
-            if (healthText != null)
-            {
-                healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
-                expText.text = $"Data Shards: {state.CurrentExp}/{maxExp}";
-            }
-        }
-
-        if (abilityRadarChart != null)
-        {
-            abilityRadarChart.SetStats(state);
-        }
-        else
-        {
-            abilityRadarChart = statusPanel.GetComponentInChildren<HexagonRadarChart>();
-            if (abilityRadarChart != null)
-            {
-                abilityRadarChart.SetStats(state);
-            }
-        }
     }
 
     #endregion
@@ -493,7 +401,8 @@ public class UIManager : MonoBehaviour
         _mainMenuRoot.AddToClassList("hidden");
         PlayLoadingAnimation(() =>
         {
-            ShowMyStatusUI();
+            var spc = GetComponent<StatusPanelController>();
+            spc.ShowMyStatusUI();
             var storage = GameManager.Instance.LoadLocalStorage();
             GameManager.Instance.StartLocalGame(storage);
         });
@@ -1046,7 +955,8 @@ public class UIManager : MonoBehaviour
         }
 
         Destroy(TeleportBeamEffect);
-        HideMyStatusUI();
+        var spc = GetComponent<StatusPanelController>();
+        spc.HideMyStatusUI();
         HideSettings();
         HideSkillPanel();
         HideFadePanel();

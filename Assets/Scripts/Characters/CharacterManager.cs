@@ -267,7 +267,8 @@ public class CharacterManager : MonoBehaviour
             var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
             pc.enabled = true;
 
-            UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
+            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+            spc.UpdateMyStatusUI(playerStatus.State);
             UIManager.Instance.RegisterLocalPlayer(playerStatus);
 
             // Debug.Log("fhhtest, Created local player object with controller: " + go.name);
@@ -652,7 +653,11 @@ public class CharacterManager : MonoBehaviour
             msg.StateMsg.Players[0].ShootFrequency = playerState.ShootFrequency;
         }
 
-        if (targetCharacterId == MyInfo.Id) UIManager.Instance.UpdateMyStatusUI(playerState);
+        if (targetCharacterId == MyInfo.Id)
+        {
+            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+            spc.UpdateMyStatusUI(playerState);
+        }
         MessageManager.Instance.SendMessage(msg, true);
     }
 
@@ -677,7 +682,11 @@ public class CharacterManager : MonoBehaviour
                     }
                     playerStatus.State.SkillIds.Clear();
                     playerStatus.State.SkillIds.AddRange(ps.SkillIds);
-                    if (ps.PlayerId == MyInfo.Id) UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
+                    if (ps.PlayerId == MyInfo.Id)
+                    {
+                        var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                        spc.UpdateMyStatusUI(playerStatus.State);
+                    }
                 }
             }
         }

@@ -108,8 +108,17 @@ public class GameManager : MonoBehaviour
     public void ToNextStage(Action callback)
     {
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
-        skillPanelController.forceRandomChoose = true;
-        SaveLocalStorage(null);
+        skillPanelController.ForceRandomChoose = true;
+        Vec2 teleportPosition = null;
+        if (UIManager.Instance.TeleportBeamEffect != null)
+        {
+            teleportPosition = new Vec2
+            {
+                X = UIManager.Instance.TeleportBeamEffect.transform.position.x,
+                Y = UIManager.Instance.TeleportBeamEffect.transform.position.y,
+            };
+        }
+        SaveLocalStorage(teleportPosition);
         if (LevelDatabase.Instance.GetLevelData(CurrentStage + 1) != null)
         {
             // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
@@ -129,7 +138,7 @@ public class GameManager : MonoBehaviour
                         storage.PlayerStates.Add(playerStatus.State);
                     }
                 }
-                skillPanelController.forceRandomChoose = false;
+                skillPanelController.ForceRandomChoose = false;
                 // 销毁传送光柱
                 callback?.Invoke();
                 CurrentStage++;

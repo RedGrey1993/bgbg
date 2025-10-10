@@ -35,7 +35,7 @@ public class SkillPanelController : MonoBehaviour
     private Queue<SkillChoiceRequest> skillChoiceQueue = new Queue<SkillChoiceRequest>();
     private bool isChoosing = false;
     // 如果玩家一直不选择技能进入下一关，则设置这个变量为 true，强制在进入下一关之前自动选择一个技能
-    public bool forceRandomChoose = false;
+    public bool ForceRandomChoose { get; set; } = false;
 
     // 用于测试的技能列表
     [Header("Debug & Test")]
@@ -130,7 +130,7 @@ public class SkillPanelController : MonoBehaviour
         while (timer > 0)
         {
             // 如果玩家已经点击按钮做出了选择，则跳出循环
-            if (selectedSkill != null || forceRandomChoose)
+            if (selectedSkill != null || ForceRandomChoose)
             {
                 break;
             }

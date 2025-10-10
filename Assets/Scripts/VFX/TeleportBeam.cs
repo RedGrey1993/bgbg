@@ -100,6 +100,6 @@ public class TeleportBeam : MonoBehaviour
             isTeleporting = false;
         });
         // 可选：你可以在这里添加一个短暂的屏幕闪烁或角色无敌时间
-        Debug.Log($"{player.name} 到达下一关！Stage: {GameManager.Instance.CurrentStage}");
+        Debug.Log($"{player.name} 到达下一关！Stage: {GameManager.Instance.CurrentStage + 1}");
     }
 }
