@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     public GameObject teleportBeamEffectPrefab; // 传送特效预制体
     #endregion
 
-    private GameObject teleportBeamEffect;
+    public GameObject TeleportBeamEffect;
     private bool isSkillPanelOpen = false;
     private Coroutine flashCoroutine;
 
@@ -886,7 +886,7 @@ public class UIManager : MonoBehaviour
     private void ToggleSettingsPanel()
     {
         bool inGame = GameManager.Instance.GameState == GameState.InGame;
-        Debug.Log($"ToggleSettingsPanel called, inGame: {inGame}, {_mainMenuRoot.style.display}, {_settingsPanel.style.display}");
+        // Debug.Log($"ToggleSettingsPanel called, inGame: {inGame}, {_mainMenuRoot.style.display}, {_settingsPanel.style.display}");
         if (!inGame) return; // 仅在游戏中允许ESC键打开设置面板
 
         if (_mainMenuRoot.ClassListContains("hidden") || _settingsPanel.ClassListContains("hidden"))
@@ -1036,7 +1036,7 @@ public class UIManager : MonoBehaviour
             NetworkManager.ActiveLayer?.LeaveLobby();
         }
 
-        Destroy(teleportBeamEffect);
+        Destroy(TeleportBeamEffect);
         HideMyStatusUI();
         HideSettings();
         HideSkillPanel();
@@ -1091,7 +1091,7 @@ public class UIManager : MonoBehaviour
     {
         if (teleportBeamEffectPrefab != null)
         {
-            teleportBeamEffect = Instantiate(teleportBeamEffectPrefab, position, Quaternion.identity);
+            TeleportBeamEffect = Instantiate(teleportBeamEffectPrefab, position, Quaternion.identity);
         }
     }
 

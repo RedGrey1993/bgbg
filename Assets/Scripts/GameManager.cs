@@ -45,10 +45,11 @@ public class GameManager : MonoBehaviour
     }
 
     #region Game Logic
-    public void SaveLocalStorage()
+    public void SaveLocalStorage(Vec2 teleportPosition)
     {
         LocalStorage storage = new LocalStorage();
         storage.CurrentStage = (uint)CurrentStage;
+        storage.TeleportPosition = teleportPosition;
         CharacterManager.Instance.SaveInfoToLocalStorage(storage);
         LevelManager.Instance.SaveInfoToLocalStorage(storage);
         using (var file = File.Create(saveFilePath))
@@ -88,7 +89,16 @@ public class GameManager : MonoBehaviour
     {
         if (IsLocal())
         {
-            SaveLocalStorage();
+            Vec2 teleportPosition = null;
+            if (UIManager.Instance.TeleportBeamEffect != null)
+            {
+                teleportPosition = new Vec2
+                {
+                    X = UIManager.Instance.TeleportBeamEffect.transform.position.x,
+                    Y = UIManager.Instance.TeleportBeamEffect.transform.position.y,
+                };
+            }
+            SaveLocalStorage(teleportPosition);
         }
         GameState = GameState.InMenu;
         StopAllCoroutines();
@@ -99,16 +109,15 @@ public class GameManager : MonoBehaviour
     {
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
         skillPanelController.forceRandomChoose = true;
-        SaveLocalStorage();
-        CurrentStage++;
-        if (LevelDatabase.Instance.GetLevelData(CurrentStage) != null)
+        SaveLocalStorage(null);
+        if (LevelDatabase.Instance.GetLevelData(CurrentStage + 1) != null)
         {
             // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
                 LocalStorage storage = new LocalStorage
                 {
-                    CurrentStage = (uint)CurrentStage,
+                    CurrentStage = (uint)CurrentStage + 1,
                     NextCharacterId = 1,
                 };
                 foreach (var player in CharacterManager.Instance.playerObjects.Values)
@@ -122,6 +131,7 @@ public class GameManager : MonoBehaviour
                 }
                 skillPanelController.forceRandomChoose = false;
                 callback?.Invoke();
+                CurrentStage++;
                 StartLocalGame(storage);
             });
         }

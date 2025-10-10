@@ -66,6 +66,12 @@ public class LevelManager : MonoBehaviour
         // character objects 会随每次的HostTick将状态同步到Client
         CharacterManager.Instance.CreateCharacterObjects(storage);
 
+        if (storage.TeleportPosition != null)
+        {
+            Vec2 pos = storage.TeleportPosition;
+            UIManager.Instance.ShowTeleportBeamEffect(new Vector3(pos.X, pos.Y, 0));
+        }
+
         // StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
     }
 

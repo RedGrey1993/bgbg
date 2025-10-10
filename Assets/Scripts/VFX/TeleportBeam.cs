@@ -96,6 +96,7 @@ public class TeleportBeam : MonoBehaviour
         {
             // 传送完成后的回调
             Destroy(gameObject); // 传送后销毁传送门
+            UIManager.Instance.TeleportBeamEffect = null;
             isTeleporting = false;
         });
         // 可选：你可以在这里添加一个短暂的屏幕闪烁或角色无敌时间

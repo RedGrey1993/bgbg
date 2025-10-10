@@ -161,7 +161,7 @@ public class CharacterManager : MonoBehaviour
         int level = (int)storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData(level);
 
-        if (storage.BossStates.Count > 0)
+        if (storage.BossStates.Count > 0 || storage.TeleportPosition != null)
         {
             for (int i = 0; i < storage.BossStates.Count; i++)
             {
@@ -270,7 +270,7 @@ public class CharacterManager : MonoBehaviour
             UIManager.Instance.UpdateMyStatusUI(playerStatus.State);
             UIManager.Instance.RegisterLocalPlayer(playerStatus);
 
-            Debug.Log("fhhtest, Created local player object with controller: " + go.name);
+            // Debug.Log("fhhtest, Created local player object with controller: " + go.name);
             // 将Main Camera设置为始终跟随当前玩家对象
             CameraFollow cameraFollow = cameraFollowObject.GetComponent<CameraFollow>();
             cameraFollow.target = go.transform;
@@ -439,6 +439,7 @@ public class CharacterManager : MonoBehaviour
 
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
+        storage.NextCharacterId = nextCharacterId;
         storage.PlayerStates.Clear();
         foreach (var player in playerObjects.Values)
         {

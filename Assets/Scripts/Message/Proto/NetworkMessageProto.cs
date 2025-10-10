@@ -50,7 +50,7 @@ namespace NetworkMessageProto {
             "ZGF0ZU1lc3NhZ2USMAoHUGxheWVycxgBIAMoCzIfLk5ldHdvcmtNZXNzYWdl",
             "UHJvdG8uUGxheWVySW5mbyI4CgpQbGF5ZXJJbmZvEhAKCENTdGVhbUlEGAEg",
             "ASgJEgwKBE5hbWUYAiABKAkSCgoCSWQYAyABKA0iNgoRTGVhcm5Ta2lsbE1l",
-            "c3NhZ2USEAoIcGxheWVySWQYASABKA0SDwoHc2tpbGxJZBgCIAEoDSLvAgoM",
+            "c3NhZ2USEAoIcGxheWVySWQYASABKA0SDwoHc2tpbGxJZBgCIAEoDSKkAwoM",
             "TG9jYWxTdG9yYWdlEhQKDEN1cnJlbnRTdGFnZRgBIAEoDRI2CgxQbGF5ZXJT",
             "dGF0ZXMYAiADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRl",
             "EjYKDE1pbmlvblN0YXRlcxgDIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
@@ -59,7 +59,8 @@ namespace NetworkMessageProto {
             "EhUKDUJvc3NQcmVmYWJJZHgYBiADKAUSLQoFUm9vbXMYByADKAsyHi5OZXR3",
             "b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90bxIUCgxSb29tTWF4V2lkdGgYCCAB",
             "KA0SFQoNUm9vbU1heEhlaWdodBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQY",
-            "CiABKA1iBnByb3RvMw=="));
+            "CiABKA0SMwoQVGVsZXBvcnRQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNz",
+            "YWdlUHJvdG8uVmVjMmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -72,7 +73,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LearnSkillMessage), global::NetworkMessageProto.LearnSkillMessage.Parser, new[]{ "PlayerId", "SkillId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabIdx", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabIdx", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition" }, null, null, null, null)
           }));
     }
     #endregion
@@ -3106,6 +3107,7 @@ namespace NetworkMessageProto {
       roomMaxWidth_ = other.roomMaxWidth_;
       roomMaxHeight_ = other.roomMaxHeight_;
       nextCharacterId_ = other.nextCharacterId_;
+      teleportPosition_ = other.teleportPosition_ != null ? other.teleportPosition_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3229,6 +3231,18 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "TeleportPosition" field.</summary>
+    public const int TeleportPositionFieldNumber = 11;
+    private global::NetworkMessageProto.Vec2 teleportPosition_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::NetworkMessageProto.Vec2 TeleportPosition {
+      get { return teleportPosition_; }
+      set {
+        teleportPosition_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3254,6 +3268,7 @@ namespace NetworkMessageProto {
       if (RoomMaxWidth != other.RoomMaxWidth) return false;
       if (RoomMaxHeight != other.RoomMaxHeight) return false;
       if (NextCharacterId != other.NextCharacterId) return false;
+      if (!object.Equals(TeleportPosition, other.TeleportPosition)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3271,6 +3286,7 @@ namespace NetworkMessageProto {
       if (RoomMaxWidth != 0) hash ^= RoomMaxWidth.GetHashCode();
       if (RoomMaxHeight != 0) hash ^= RoomMaxHeight.GetHashCode();
       if (NextCharacterId != 0) hash ^= NextCharacterId.GetHashCode();
+      if (teleportPosition_ != null) hash ^= TeleportPosition.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3311,6 +3327,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(80);
         output.WriteUInt32(NextCharacterId);
       }
+      if (teleportPosition_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(TeleportPosition);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3343,6 +3363,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(80);
         output.WriteUInt32(NextCharacterId);
       }
+      if (teleportPosition_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(TeleportPosition);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3370,6 +3394,9 @@ namespace NetworkMessageProto {
       }
       if (NextCharacterId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NextCharacterId);
+      }
+      if (teleportPosition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TeleportPosition);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3400,6 +3427,12 @@ namespace NetworkMessageProto {
       }
       if (other.NextCharacterId != 0) {
         NextCharacterId = other.NextCharacterId;
+      }
+      if (other.teleportPosition_ != null) {
+        if (teleportPosition_ == null) {
+          TeleportPosition = new global::NetworkMessageProto.Vec2();
+        }
+        TeleportPosition.MergeFrom(other.TeleportPosition);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3462,6 +3495,13 @@ namespace NetworkMessageProto {
             NextCharacterId = input.ReadUInt32();
             break;
           }
+          case 90: {
+            if (teleportPosition_ == null) {
+              TeleportPosition = new global::NetworkMessageProto.Vec2();
+            }
+            input.ReadMessage(TeleportPosition);
+            break;
+          }
         }
       }
     #endif
@@ -3521,6 +3561,13 @@ namespace NetworkMessageProto {
           }
           case 80: {
             NextCharacterId = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            if (teleportPosition_ == null) {
+              TeleportPosition = new global::NetworkMessageProto.Vec2();
+            }
+            input.ReadMessage(TeleportPosition);
             break;
           }
         }
