@@ -1641,6 +1641,7 @@ MonoBehaviour:
   flashImage: {fileID: 527843884}
   bossHealthSlider: {fileID: 1104330255}
   teleportBeamEffectPrefab: {fileID: 4543829782561293807, guid: 6d93781269e02ee4b828c95ecc0b39f8, type: 3}
+  pickupItemPrefab: {fileID: 1897836902397203960, guid: bb6f245da318aad4fb86c74b30704be6, type: 3}
 --- !u!114 &1032489890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1703,6 +1704,7 @@ MonoBehaviour:
   expText: {fileID: 1744355318}
   tipsText: {fileID: 818433014}
   abilityRadarChart: {fileID: 570611709031271719}
+  activeSkillIcon: {fileID: 1492423797}
 --- !u!1 &1042778857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157209194663601704, guid: db441475d3a8ed847835ed75dbb97d4d, type: 3}
       propertyPath: m_Name
-      value: OwnedSkillIcon
+      value: ActiveSkillIcon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2570,6 +2572,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1086787769309233763, guid: db441475d3a8ed847835ed75dbb97d4d, type: 3}
   m_PrefabInstance: {fileID: 1492423795}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492423797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8548841505094215096, guid: db441475d3a8ed847835ed75dbb97d4d, type: 3}
+  m_PrefabInstance: {fileID: 1492423795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe7208724e799b43b6d40b49074da06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillIcon
 --- !u!1 &1509823711
 GameObject:
   m_ObjectHideFlags: 0

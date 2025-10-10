@@ -37,30 +37,30 @@ namespace NetworkMessageProto {
             "CghQbGF5ZXJJZBgBIAEoDRIMCgRUaWNrGAIgASgNEgwKBFR5cGUYAyABKA0S",
             "LAoJTW92ZUlucHV0GAQgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMy",
             "EiwKCUxvb2tJbnB1dBgFIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVj",
-            "MiLaAgoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKA0SEgoKUGxheWVy",
+            "MiLxAgoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKA0SEgoKUGxheWVy",
             "TmFtZRgCIAEoCRINCgVNYXhIcBgDIAEoDRIRCglDdXJyZW50SHAYBCABKA0S",
             "EQoJTW92ZVNwZWVkGAUgASgNEhMKC0J1bGxldFNwZWVkGAYgASgNEg4KBkRh",
             "bWFnZRgHIAEoDRIWCg5TaG9vdEZyZXF1ZW5jeRgIIAEoDRISCgpTaG9vdFJh",
             "bmdlGAkgASgNEhQKDENyaXRpY2FsUmF0ZRgKIAEoDRIUCgxDdXJyZW50TGV2",
             "ZWwYDCABKA0SEgoKQ3VycmVudEV4cBgNIAEoDRIrCghQb3NpdGlvbhgLIAEo",
             "CzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhIQCghTa2lsbElkcxgOIAMo",
-            "DRIgChhDdXJyZW50U3RhZ2VTa2lsbExlYXJuZWQYDyABKAgiVQoSU3RhdGVV",
-            "cGRhdGVNZXNzYWdlEjEKB1BsYXllcnMYASADKAsyIC5OZXR3b3JrTWVzc2Fn",
-            "ZVByb3RvLlBsYXllclN0YXRlEgwKBFRpY2sYAiABKA0iSAoUUGxheWVyc1Vw",
-            "ZGF0ZU1lc3NhZ2USMAoHUGxheWVycxgBIAMoCzIfLk5ldHdvcmtNZXNzYWdl",
-            "UHJvdG8uUGxheWVySW5mbyI4CgpQbGF5ZXJJbmZvEhAKCENTdGVhbUlEGAEg",
-            "ASgJEgwKBE5hbWUYAiABKAkSCgoCSWQYAyABKA0iNgoRTGVhcm5Ta2lsbE1l",
-            "c3NhZ2USEAoIcGxheWVySWQYASABKA0SDwoHc2tpbGxJZBgCIAEoDSKkAwoM",
-            "TG9jYWxTdG9yYWdlEhQKDEN1cnJlbnRTdGFnZRgBIAEoDRI2CgxQbGF5ZXJT",
-            "dGF0ZXMYAiADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRl",
-            "EjYKDE1pbmlvblN0YXRlcxgDIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
-            "UGxheWVyU3RhdGUSFwoPTWluaW9uUHJlZmFiSWR4GAQgAygFEjQKCkJvc3NT",
-            "dGF0ZXMYBSADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRl",
-            "EhUKDUJvc3NQcmVmYWJJZHgYBiADKAUSLQoFUm9vbXMYByADKAsyHi5OZXR3",
-            "b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90bxIUCgxSb29tTWF4V2lkdGgYCCAB",
-            "KA0SFQoNUm9vbU1heEhlaWdodBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQY",
-            "CiABKA0SMwoQVGVsZXBvcnRQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNz",
-            "YWdlUHJvdG8uVmVjMmIGcHJvdG8z"));
+            "DRIgChhDdXJyZW50U3RhZ2VTa2lsbExlYXJuZWQYDyABKAgSFQoNQWN0aXZl",
+            "U2tpbGxJZBgQIAEoDSJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVy",
+            "cxgBIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSDAoE",
+            "VGljaxgCIAEoDSJIChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5ZXJz",
+            "GAEgAygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIjgKClBs",
+            "YXllckluZm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIKCgJJ",
+            "ZBgDIAEoDSI2ChFMZWFyblNraWxsTWVzc2FnZRIQCghwbGF5ZXJJZBgBIAEo",
+            "DRIPCgdza2lsbElkGAIgASgNIqQDCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVu",
+            "dFN0YWdlGAEgASgNEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtN",
+            "ZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMTWluaW9uU3RhdGVzGAMgAygL",
+            "MiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIXCg9NaW5pb25Q",
+            "cmVmYWJJZHgYBCADKAUSNAoKQm9zc1N0YXRlcxgFIAMoCzIgLk5ldHdvcmtN",
+            "ZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSFQoNQm9zc1ByZWZhYklkeBgGIAMo",
+            "BRItCgVSb29tcxgHIAMoCzIeLk5ldHdvcmtNZXNzYWdlUHJvdG8uUmVjdFBy",
+            "b3RvEhQKDFJvb21NYXhXaWR0aBgIIAEoDRIVCg1Sb29tTWF4SGVpZ2h0GAkg",
+            "ASgNEhcKD05leHRDaGFyYWN0ZXJJZBgKIAEoDRIzChBUZWxlcG9ydFBvc2l0",
+            "aW9uGAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -68,7 +68,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.Vec2), global::NetworkMessageProto.Vec2.Parser, new[]{ "X", "Y" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ActiveSkillId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
@@ -1457,6 +1457,7 @@ namespace NetworkMessageProto {
       position_ = other.position_ != null ? other.position_.Clone() : null;
       skillIds_ = other.skillIds_.Clone();
       currentStageSkillLearned_ = other.currentStageSkillLearned_;
+      activeSkillId_ = other.activeSkillId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1663,6 +1664,18 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "ActiveSkillId" field.</summary>
+    public const int ActiveSkillIdFieldNumber = 16;
+    private uint activeSkillId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ActiveSkillId {
+      get { return activeSkillId_; }
+      set {
+        activeSkillId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1693,6 +1706,7 @@ namespace NetworkMessageProto {
       if (!object.Equals(Position, other.Position)) return false;
       if(!skillIds_.Equals(other.skillIds_)) return false;
       if (CurrentStageSkillLearned != other.CurrentStageSkillLearned) return false;
+      if (ActiveSkillId != other.ActiveSkillId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1715,6 +1729,7 @@ namespace NetworkMessageProto {
       if (position_ != null) hash ^= Position.GetHashCode();
       hash ^= skillIds_.GetHashCode();
       if (CurrentStageSkillLearned != false) hash ^= CurrentStageSkillLearned.GetHashCode();
+      if (ActiveSkillId != 0) hash ^= ActiveSkillId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1790,6 +1805,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(120);
         output.WriteBool(CurrentStageSkillLearned);
       }
+      if (ActiveSkillId != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteUInt32(ActiveSkillId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1857,6 +1876,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(120);
         output.WriteBool(CurrentStageSkillLearned);
       }
+      if (ActiveSkillId != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteUInt32(ActiveSkillId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1909,6 +1932,9 @@ namespace NetworkMessageProto {
       size += skillIds_.CalculateSize(_repeated_skillIds_codec);
       if (CurrentStageSkillLearned != false) {
         size += 1 + 1;
+      }
+      if (ActiveSkillId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ActiveSkillId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1967,6 +1993,9 @@ namespace NetworkMessageProto {
       skillIds_.Add(other.skillIds_);
       if (other.CurrentStageSkillLearned != false) {
         CurrentStageSkillLearned = other.CurrentStageSkillLearned;
+      }
+      if (other.ActiveSkillId != 0) {
+        ActiveSkillId = other.ActiveSkillId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2051,6 +2080,10 @@ namespace NetworkMessageProto {
             CurrentStageSkillLearned = input.ReadBool();
             break;
           }
+          case 128: {
+            ActiveSkillId = input.ReadUInt32();
+            break;
+          }
         }
       }
     #endif
@@ -2132,6 +2165,10 @@ namespace NetworkMessageProto {
           }
           case 120: {
             CurrentStageSkillLearned = input.ReadBool();
+            break;
+          }
+          case 128: {
+            ActiveSkillId = input.ReadUInt32();
             break;
           }
         }

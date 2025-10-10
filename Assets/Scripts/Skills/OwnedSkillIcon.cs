@@ -42,7 +42,7 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 调用管理器的静态方法来显示 Tooltip
         SkillTooltip.ShowTooltip_Static(
             SkillData.description +
-            "\n----------------------------------------------------\n" +
+            "\n\n" +
             SkillData.backgroundStory);
     }
 

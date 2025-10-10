@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
     private Dictionary<Vector3Int, List<int>> tileToRooms; // 每个Tile位置包含的房间列表
     private Dictionary<Vector3Int, List<int>> doorTileToRooms; // 每个门的Tile位置包含的房间列表
     private int remainRooms;
-    public List<int> remainRoomsIndex;
+    public List<int> remainRoomsIndex { get; private set; }
     public LevelData CurrentLevelData { get; private set; }
 
     void Awake()

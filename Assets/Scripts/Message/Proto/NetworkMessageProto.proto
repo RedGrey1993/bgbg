@@ -52,6 +52,7 @@ message PlayerState
     Vec2 Position = 11;
     repeated uint32 SkillIds = 14;
     bool CurrentStageSkillLearned = 15;
+    uint32 ActiveSkillId = 16;
 }
 
 message StateUpdateMessage

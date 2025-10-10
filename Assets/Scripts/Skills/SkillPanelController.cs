@@ -42,16 +42,16 @@ public class SkillPanelController : MonoBehaviour
     [SerializeField] private List<SkillData> testSkills1;
     [SerializeField] private List<SkillData> testSkills2;
 
-    public void RandomizeNewSkillChoice()
+    public void RandomizeNewPassiveSkillChoice()
     {
         UIManager.Instance.HideSkillPanel();
         UIManager.Instance.ToggleSkillPanel();
-        var skillNum = SkillDatabase.Instance.Skills.Count;
+        var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
         List<SkillData> skills = new List<SkillData>();
         for (int i = 0; i < Constants.SkillChooseNumber; i++)
         {
             var skillId = Random.Range(0, skillNum);
-            var skillData = SkillDatabase.Instance.Skills[skillId];
+            var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
             skills.Add(skillData);
         }
         AddNewSkillChoice(skills);

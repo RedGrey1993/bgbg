@@ -103,7 +103,7 @@ public class CharacterStatus : MonoBehaviour
             if (HasPlayerController())
             {
                 SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
-                skillPanelController.RandomizeNewSkillChoice();
+                skillPanelController.RandomizeNewPassiveSkillChoice();
             }
         }
         else
@@ -169,6 +169,7 @@ public class CharacterStatus : MonoBehaviour
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {
             UIManager.Instance.ShowTeleportBeamEffect(transform.position);
+            UIManager.Instance.RandomizePickupItem(transform.position);
         }
         CharacterManager.Instance.RemoveObject(State.PlayerId);
         // 如果Player死亡，清除记录（保存一个空记录）

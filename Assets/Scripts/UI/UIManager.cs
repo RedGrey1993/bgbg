@@ -34,9 +34,11 @@ public class UIManager : MonoBehaviour
     public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
     public UnityEngine.UI.Slider bossHealthSlider;
     public GameObject teleportBeamEffectPrefab; // 传送特效预制体
+    public GameObject pickupItemPrefab; // 拾取物品预制体
     #endregion
 
     public GameObject TeleportBeamEffect { get; set; }
+    public GameObject PickupItem { get; set; }
     private bool isSkillPanelOpen = false;
     private Coroutine flashCoroutine;
 
@@ -1010,7 +1012,27 @@ public class UIManager : MonoBehaviour
     {
         if (teleportBeamEffectPrefab != null)
         {
-            TeleportBeamEffect = Instantiate(teleportBeamEffectPrefab, position, Quaternion.identity);
+            int roomNo = LevelManager.Instance.GetRoomNoByPosition(position);
+            var room = LevelManager.Instance.Rooms[roomNo];
+            TeleportBeamEffect = Instantiate(teleportBeamEffectPrefab, room.center, Quaternion.identity);
+        }
+    }
+
+    public void RandomizePickupItem(Vector3 position)
+    {
+        var skillNum = SkillDatabase.Instance.ActiveSkills.Count;
+        var skillId = UnityEngine.Random.Range(0, skillNum);
+        var skillData = SkillDatabase.Instance.ActiveSkills[skillId];
+        ShowPickUpItem(position, skillData);
+    }
+
+    public void ShowPickUpItem(Vector3 position, SkillData skillData)
+    {
+        if (pickupItemPrefab != null && skillData != null)
+        {
+            var item = Instantiate(pickupItemPrefab, position, Quaternion.identity);
+            var itemComponent = item.GetComponent<PickupItem>();
+            itemComponent.SetSkillData(skillData);
         }
     }
 

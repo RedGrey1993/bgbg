@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NetworkMessageProto;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class StatusPanelController : MonoBehaviour
     public TextMeshProUGUI expText;
     public TextMeshProUGUI tipsText;
     public HexagonRadarChart abilityRadarChart;
+    public OwnedSkillIcon activeSkillIcon;
 
     public void ShowMyStatusUI()
     {
@@ -37,9 +39,14 @@ public class StatusPanelController : MonoBehaviour
 
         abilityRadarChart.SetStats(state);
     }
-    
+
     public void UpdateTipsText(int roomNo)
     {
         tipsText.text = $"Stage:{GameManager.Instance.CurrentStage}\nRoom: #{roomNo}";
+    }
+    
+    public void SetActiveSkillIcon(SkillData skillData)
+    {
+        activeSkillIcon.SetSkillData(skillData);
     }
 }

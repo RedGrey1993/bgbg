@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
-  m_Name: Perma-Trigger Jr
+  m_Name: 1-Perma-Trigger Jr
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
-  id: 0
+  id: 1
   skillName: Perma-Trigger Jr.
   description: 'Fire rate x2!
 
