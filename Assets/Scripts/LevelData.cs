@@ -24,5 +24,6 @@ public class LevelData : ScriptableObject
     public int roomMaxHeight = 80;
     public int minAreaPerMinion = 50; // 每多少面积刷1个怪物
     public int maxAreaPerMinion = 100; // 每多少面积刷1个怪物
+    public Sprite gamePassedSprite; // 通关图片
     // public float monsterSpawnChance = 0.8f; // 80%的房间会刷怪
 }

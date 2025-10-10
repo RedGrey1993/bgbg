@@ -9,6 +9,7 @@ using TMPro;
 using System.Collections;
 using System;
 using NetworkMessageProto;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class UIManager : MonoBehaviour
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject statusPanel;
     public GameObject fadePanel;
+    public UnityEngine.UI.Image loadingImage;
+    public Sprite defaultSprite; // 默认加载图片
     // 新增：定义一个动画曲线
     [Tooltip("控制渐变速度的缓动曲线")]
     public AnimationCurve fadeOutCurve;
@@ -186,10 +189,10 @@ public class UIManager : MonoBehaviour
         statusPanel.SetActive(false);
     }
 
-    public void PlayLoadingAnimation(Action callback)
+    public void PlayLoadingAnimation(Action callback, Sprite loadingSprite = null)
     {
         fadePanel.SetActive(true);
-        StartCoroutine(LoadAnimationRoutine(callback));
+        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite));
     }
 
     private IEnumerator FadeRoutine(float targetAlpha, float transitionTime)
@@ -230,19 +233,25 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
     }
 
-    private IEnumerator LoadAnimationRoutine(Action callback)
+    private IEnumerator LoadAnimationRoutine(Action callback, Sprite loadingSprite = null)
     {
+        if (loadingImage != null)
+        {
+            if (loadingSprite != null)
+                loadingImage.sprite = loadingSprite;
+            else
+                loadingImage.sprite = defaultSprite;
+            RectTransform rt = loadingImage.GetComponent<RectTransform>();
+            var spriteWidth = loadingImage.sprite.rect.width;
+            var spriteHeight = loadingImage.sprite.rect.height;
+            var tarWidth = rt.rect.height * (spriteWidth / spriteHeight);
+            rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
+        }
+
         // 1. 触发渐变黑屏动画
         var transitionTime = 1.5f;
         yield return StartCoroutine(FadeRoutine(1f, transitionTime));
-
-        // var loadingContent = fadePanel.GetComponentInChildren<UnityEngine.UI.Video>();
-        // // [可选] 在黑屏后，显示你的加载图片或视频
-        // if (loadingContent != null)
-        // {
-        //     loadingContent.gameObject.SetActive(true);
-        //     // 如果是视频，可以在这里 videoPlayer.Play();
-        // }
+        // 如果是视频，可以在这里 videoPlayer.Play();
 
         // // [可选] 隐藏加载内容
         // if (loadingContent != null)
@@ -1028,7 +1037,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void QuitToMainMenu()
+    public void QuitToMainMenu()
     {
         GameManager.Instance.StopGame();
         if (LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby)

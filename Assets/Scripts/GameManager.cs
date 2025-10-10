@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
                 skillPanelController.forceRandomChoose = false;
+                // 销毁传送光柱
                 callback?.Invoke();
                 CurrentStage++;
                 StartLocalGame(storage);
@@ -137,7 +138,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // TODO: 没有关卡数据了，显示通关界面
+            // 没有关卡数据了，显示通关界面
+            LevelData curLevelData = LevelDatabase.Instance.GetLevelData(CurrentStage);
+            UIManager.Instance.PlayLoadingAnimation(() =>
+            {
+                UIManager.Instance.QuitToMainMenu();
+            }, curLevelData.gamePassedSprite);
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
     }
