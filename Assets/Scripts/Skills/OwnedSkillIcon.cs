@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public SkillData skillData;
+    public SkillData SkillData { get;  private set; }
     private Image srcImage;
 
     void Awake()
@@ -14,16 +14,36 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void Start()
     {
-        srcImage.sprite = skillData.icon;
+        if (SkillData != null)
+        {
+            srcImage.sprite = SkillData.icon;
+            srcImage.color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+
+    public void SetSkillData(SkillData skillData)
+    {
+        SkillData = skillData;
+        if (skillData == null)
+        {
+            srcImage.sprite = null;
+            srcImage.color = new Color(1f, 1f, 1f, 0f);
+        }
+        else
+        {
+            srcImage.sprite = skillData.icon;
+            srcImage.color = new Color(1f, 1f, 1f, 1f);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (SkillData == null) return;
         // 调用管理器的静态方法来显示 Tooltip
         SkillTooltip.ShowTooltip_Static(
-            skillData.description +
+            SkillData.description +
             "\n----------------------------------------------------\n" +
-            skillData.backgroundStory);
+            SkillData.backgroundStory);
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.TextCore.Text;
+using NUnit.Framework;
+
 
 
 #if PROTOBUF
@@ -169,6 +171,11 @@ public class CharacterStatus : MonoBehaviour
             UIManager.Instance.ShowTeleportBeamEffect(transform.position);
         }
         CharacterManager.Instance.RemoveObject(State.PlayerId);
+        // 如果Player死亡，清除记录（保存一个空记录）
+        if (HasPlayerController())
+        {
+            GameManager.Instance.SaveLocalStorage(null);
+        }
     }
 
     public void UpdateHealthSliderUI()

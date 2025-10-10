@@ -77,8 +77,7 @@ public class SkillPanelController : MonoBehaviour
         foreach (var skill in initialSkills)
         {
             GameObject iconObj = Instantiate(ownedSkillIconPrefab, ownedSkillsContainer);
-            iconObj.GetComponent<Image>().sprite = skill.icon;
-            iconObj.GetComponent<OwnedSkillIcon>().skillData = skill;
+            iconObj.GetComponent<OwnedSkillIcon>().SetSkillData(skill);
         }
         // 清理之前的Coroutines
         StopAllCoroutines();
@@ -93,9 +92,9 @@ public class SkillPanelController : MonoBehaviour
         foreach (Transform child in ownedSkillsContainer)
         {
             var icon = child.GetComponent<OwnedSkillIcon>();
-            if (icon != null && icon.skillData != null)
+            if (icon != null && icon.SkillData != null)
             {
-                skillIds.Add(icon.skillData.id);
+                skillIds.Add(icon.SkillData.id);
             }
         }
         return skillIds;
@@ -182,8 +181,7 @@ public class SkillPanelController : MonoBehaviour
 
         // 更新“持有技能”UI
         GameObject iconObj = Instantiate(ownedSkillIconPrefab, ownedSkillsContainer);
-        iconObj.GetComponent<Image>().sprite = newSkill.icon;
-        iconObj.GetComponent<OwnedSkillIcon>().skillData = newSkill;
+        iconObj.GetComponent<OwnedSkillIcon>().SetSkillData(newSkill);
     }
 
     // --- 用于测试的函数 ---

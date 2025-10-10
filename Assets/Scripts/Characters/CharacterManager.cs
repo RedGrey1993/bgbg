@@ -440,6 +440,7 @@ public class CharacterManager : MonoBehaviour
 
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
+        if (playerObjects.Count == 0) return; // no need to save
         storage.NextCharacterId = nextCharacterId;
         storage.PlayerStates.Clear();
         foreach (var player in playerObjects.Values)
