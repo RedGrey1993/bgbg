@@ -82,7 +82,7 @@ public class MessageManager : MonoBehaviour
                     CharacterManager.Instance.CalculateSkillEffect_Host(msg.LearnSkillMsg.SkillId, msg.LearnSkillMsg.PlayerId);
                     break;
                 }
-            case (uint)MessageType.FireRateStateUpdate:
+            case (uint)MessageType.AbilityStateUpdate:
                 {
                     CharacterManager.Instance.UpdateAbilityState_Client(msg);
                     break;

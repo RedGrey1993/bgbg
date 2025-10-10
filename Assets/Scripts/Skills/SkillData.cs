@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SkillData", menuName = "Skills/Skill Data")]
@@ -8,8 +9,6 @@ public class SkillData : ScriptableObject
     [TextArea] public string description;
     [TextArea] public string backgroundStory;
     public Sprite icon;
-
-    // 你还可以在这里添加其他属性，如技能效果、冷却时间等
-    public uint deltaFireRate = 0; // 射击频率变化，0表示不变
-    public ItemChangeType fireRateChangeType = ItemChangeType.Absolute; // 变化类型
+    public bool IsActive = false; // 是否为主动技能
+    public SkillExecutor executor; // 技能执行器接口
 }

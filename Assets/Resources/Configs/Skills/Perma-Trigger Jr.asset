@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
   m_Name: Perma-Trigger Jr
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 0
   skillName: Perma-Trigger Jr.
   description: 'Fire rate x2!
 
@@ -25,5 +26,5 @@ MonoBehaviour:
     can never slow down again. Even if you intend to fire single shots, it will enthusiastically
     express itself in an unrelenting \"rat-a-tat-tat.\""
   icon: {fileID: 5790961822528240157, guid: 34a6ad83367812a4abdb0be61c0b7446, type: 3}
-  deltaFireRate: 100
-  fireRateChangeType: 1
+  IsActive: 0
+  executor: {fileID: 11400000, guid: 70fb85f25d59a4d46a8bb5244cecdff8, type: 2}

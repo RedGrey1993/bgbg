@@ -616,43 +616,22 @@ public class CharacterManager : MonoBehaviour
         var skill = SkillDatabase.Instance.GetSkill(skillId);
         var playerObj = playerObjects[targetCharacterId];
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
-        playerStatus.State.CurrentStageSkillLearned = true;
         var playerState = playerStatus.State;
+        playerState.CurrentStageSkillLearned = true;
         playerState.SkillIds.Add(skillId);
+
+        skill.executor.ExecuteSkill(playerObj, skill);
 
         var msg = new GenericMessage
         {
             Target = (uint)MessageTarget.Others,
-            Type = (uint)MessageType.Unset,
+            Type = (uint)MessageType.AbilityStateUpdate,
             StateMsg = new StateUpdateMessage
             {
                 Tick = (uint)(Time.realtimeSinceStartup * 1000),
-                Players = { new PlayerState {
-                    PlayerId = playerState.PlayerId,
-                    CurrentStageSkillLearned = true,
-                } }
+                Players = { playerState },
             }
         };
-        msg.StateMsg.Players[0].SkillIds.AddRange(playerState.SkillIds);
-
-        if (skill.deltaFireRate != 0)
-        {
-            switch (skill.fireRateChangeType)
-            {
-                case ItemChangeType.Absolute:
-                    {
-                        playerState.ShootFrequency += skill.deltaFireRate;
-                        break;
-                    }
-                case ItemChangeType.Relative:
-                    {
-                        playerState.ShootFrequency = (uint)(playerState.ShootFrequency * (1.0f + skill.deltaFireRate / 100.0f));
-                        break;
-                    }
-            }
-            msg.Type = (uint)MessageType.FireRateStateUpdate;
-            msg.StateMsg.Players[0].ShootFrequency = playerState.ShootFrequency;
-        }
 
         if (targetCharacterId == MyInfo.Id)
         {
@@ -673,16 +652,7 @@ public class CharacterManager : MonoBehaviour
                 var playerStatus = go.GetComponent<CharacterStatus>();
                 if (playerStatus)
                 {
-                    switch (msg.Type)
-                    {
-                        case (uint)MessageType.FireRateStateUpdate:
-                            {
-                                playerStatus.State.ShootFrequency = ps.ShootFrequency;
-                                break;
-                            }
-                    }
-                    playerStatus.State.SkillIds.Clear();
-                    playerStatus.State.SkillIds.AddRange(ps.SkillIds);
+                    playerStatus.State = ps;
                     if (ps.PlayerId == MyInfo.Id)
                     {
                         var spc = UIManager.Instance.GetComponent<StatusPanelController>();

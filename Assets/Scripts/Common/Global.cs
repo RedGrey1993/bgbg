@@ -5,7 +5,7 @@ public enum MessageType
     Unset = 0,
     FullTransformState = 1,
     TransformStateUpdate,
-    FireRateStateUpdate,
+    AbilityStateUpdate,
     Input,
     PlayersUpdate,
     LearnSkill,
@@ -23,7 +23,7 @@ public enum MessageTarget
     Host,
 }
 
-public enum ItemChangeType
+public enum AttrChangeType
 {
     Absolute = 0,
     Relative = 1,

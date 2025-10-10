@@ -17,5 +17,5 @@ MonoBehaviour:
   description: Test skill data, Fireball
   backgroundStory: 
   icon: {fileID: -7343100771688192990, guid: 4cc797a512aeee44fa39d7486ed34359, type: 3}
-  deltaFireRate: 0
-  fireRateChangeType: 0
+  IsActive: 0
+  executor: {fileID: 11400000, guid: e25ff6030c26b9c42b62cb84dde91d61, type: 2}
