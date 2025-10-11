@@ -47,25 +47,25 @@ public class GameManager : MonoBehaviour
     #region Game Logic
     public void SaveLocalStorage(Vec2 teleportPosition)
     {
-        LocalStorage storage = new LocalStorage();
-        CharacterManager.Instance.SaveInfoToLocalStorage(storage);
-        if (storage.PlayerStates.Count == 0)
-        {
-            // Player死亡，从第1关重新开始
-            storage.CurrentStage = 1;
-            storage.NextCharacterId = 1;
-        }
-        else
-        {
-            storage.CurrentStage = (uint)CurrentStage;
-            storage.TeleportPosition = teleportPosition;
-            LevelManager.Instance.SaveInfoToLocalStorage(storage);
-        }
-        using (var file = File.Create(saveFilePath))
-        {
-            SerializeUtil.Serialize(storage, out byte[] data);
-            file.Write(data, 0, data.Length);
-        }
+        // LocalStorage storage = new LocalStorage();
+        // CharacterManager.Instance.SaveInfoToLocalStorage(storage);
+        // if (storage.PlayerStates.Count == 0)
+        // {
+        //     // Player死亡，从第1关重新开始
+        //     storage.CurrentStage = 1;
+        //     storage.NextCharacterId = 1;
+        // }
+        // else
+        // {
+        //     storage.CurrentStage = (uint)CurrentStage;
+        //     storage.TeleportPosition = teleportPosition;
+        //     LevelManager.Instance.SaveInfoToLocalStorage(storage);
+        // }
+        // using (var file = File.Create(saveFilePath))
+        // {
+        //     SerializeUtil.Serialize(storage, out byte[] data);
+        //     file.Write(data, 0, data.Length);
+        // }
     }
     public LocalStorage LoadLocalStorage()
     {

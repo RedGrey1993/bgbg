@@ -2675,6 +2675,7 @@ MonoBehaviour:
   explosionImpulsePrefab: {fileID: 7926851015835408411, guid: ed5b9ccd262dd2f4ab36cd52d52c51f6, type: 3}
   explosionSound: {fileID: 8300000, guid: b1a9cbe880852fa469688498b060cd2c, type: 3}
   pickupItemPrefab: {fileID: 1897836902397203960, guid: bb6f245da318aad4fb86c74b30704be6, type: 3}
+  flashRectPrefab: {fileID: 1759570598138631023, guid: a056d86b8edac7342ab1d0509f8a1dd8, type: 3}
 --- !u!114 &1509823720
 MonoBehaviour:
   m_ObjectHideFlags: 0

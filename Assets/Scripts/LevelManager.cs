@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
     public AudioClip explosionSound;
     public GameObject pickupItemPrefab; // 拾取物品预制体
+    public GameObject flashRectPrefab;
     #endregion
 
     public static LevelManager Instance { get; private set; }
@@ -83,7 +84,7 @@ public class LevelManager : MonoBehaviour
             ShowPickUpItem(new Vector3(pickupItem.Position.X, pickupItem.Position.Y, 0), SkillDatabase.Instance.GetSkill(pickupItem.SkillId));
         }
 
-        // StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
+        StartCoroutine(StartDestroyingRooms(10f)); // 每10秒摧毁一个房间
     }
 
     private void GenerateFloors(TileBase floorTile)
@@ -507,6 +508,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void ShowRedFlashRect(Vector3 position, float width, float height)
+    {
+        var obj = Instantiate(flashRectPrefab, position, Quaternion.identity);
+        ToRemoveBeforeNewStage.Add(obj);
+        FlashRect flashRect = obj.GetComponent<FlashRect>();
+        flashRect.StartFlashing(width, height);
+    }
+
     // 协程函数，每隔一段时间摧毁一个房间
     public IEnumerator StartDestroyingRooms(float interval)
     {
@@ -519,6 +528,7 @@ public class LevelManager : MonoBehaviour
                 yield break; // 退出协程
             }
             UIManager.Instance.ShowInfoPanel($"Warning: room {roomIdx} will be destroyed in", interval);
+            ShowRedFlashRect(new Vector3(Rooms[roomIdx].center.x, Rooms[roomIdx].center.y, 0), Rooms[roomIdx].width, Rooms[roomIdx].height);
             yield return new WaitForSeconds(interval);
             DestroyRoom(roomIdx);
         }
