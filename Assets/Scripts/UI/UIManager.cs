@@ -846,7 +846,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private readonly object _infoLockObject = new object();
+    private readonly object _infoLockObject = new object(); // lock对于本线程来说是可重入的，其它线程才会等待
     public void ShowInfoPanel(string info, float duration)
     {
         bool inGame = GameManager.Instance.GameState == GameState.InGame;

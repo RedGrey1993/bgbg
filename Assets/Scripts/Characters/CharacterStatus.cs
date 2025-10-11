@@ -72,6 +72,15 @@ public class CharacterStatus : MonoBehaviour
         HealthChanged((uint)Mathf.Max(0, curHp));
     }
 
+    public void TakeDamage_Host(uint damage)
+    {
+        if (IsDead()) return;
+        uint curHp = State.CurrentHp - damage;
+        // TODO: 发送this.HealthChanged消息给所有客户端
+        HealthChanged((uint)Mathf.Max(0, curHp));
+    }
+
+
     // 供HOST/CLIENT统一调用
     public void HealthChanged(uint curHp)
     {

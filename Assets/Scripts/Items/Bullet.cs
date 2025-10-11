@@ -22,18 +22,6 @@ public class Bullet : MonoBehaviour
         }      
     }
 
-    // 其他物体的IsTrigger为true，也需要销毁子弹，因为Client中Player的IsTrigger都为true
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        CharacterStatus targetCharacterStatus = other.GetComponent<CharacterStatus>();
-        if (targetCharacterStatus == OwnerStatus)
-        {
-            return; // 不伤害自己，也不销毁碰到自己的子弹
-        }
-        // 当子弹与其他物体发生物理碰撞时销毁子弹
-        Destroy(gameObject);
-    }
-
     // 子弹的IsTrigger为false
     void OnCollisionEnter2D(Collision2D collision)
     {
