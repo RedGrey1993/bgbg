@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     public int[,] RoomGrid { get; private set; }
 
     public List<GameObject> ToRemoveBeforeNewStage { get; set; } = new List<GameObject>();
+    public GameObject BlackHole { get; set; } = null;
     public Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)> PickupItems { get; set; } = new Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)>(); // 关卡中的拾取物品
     private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
     private List<Vector3Int>[] roomToTiles; // 每个房间包含的Tile位置列表
@@ -461,6 +462,16 @@ public class LevelManager : MonoBehaviour
 
     private void DestroyRoom(int roomIdx)
     {
+        if (BlackHole != null && Rooms[roomIdx].Contains(new Vector2(BlackHole.transform.position.x, BlackHole.transform.position.y)))
+        {
+            var my = CharacterManager.Instance.GetMyselfGameObject();
+            var status = my.GetComponent<CharacterStatus>();
+            status.State.ActiveSkillId = Constants.SysBugItemId;
+            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+            spc.UpdateMyStatusUI(status.State);
+            UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at WorldGrid.DeleteSector()]", 5f);
+        }
+
         remainRooms--;
         remainRoomsIndex.Remove(roomIdx);
         // 移除房间连接关系

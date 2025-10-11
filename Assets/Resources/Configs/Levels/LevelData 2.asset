@@ -18,8 +18,8 @@ MonoBehaviour:
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 2
-  minTotalRooms: 1
-  maxTotalRooms: 1
+  minTotalRooms: 2
+  maxTotalRooms: 2
   roomMaxWidth: 40
   roomMaxHeight: 20
   minAreaPerMinion: 500000

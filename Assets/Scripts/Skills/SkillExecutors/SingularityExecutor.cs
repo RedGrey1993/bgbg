@@ -16,6 +16,7 @@ public class SingularityExecutor : SkillExecutor
         Vector3 spawnPosition = playerObj.transform.position;
         GameObject blackHole = Instantiate(blackHolePrefab, spawnPosition, Quaternion.identity);
         LevelManager.Instance.ToRemoveBeforeNewStage.Add(blackHole);
+        LevelManager.Instance.BlackHole = blackHole;
         var blackHoleComponent = blackHole.GetComponent<BlackHole>();
         if (blackHoleComponent != null)
         {

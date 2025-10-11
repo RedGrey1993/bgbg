@@ -63,6 +63,7 @@ public static class Constants
     public const string TagPlayerFeet = "PlayerFeet";
     public const string TagEnemy = "Enemy";
     public const string TagWall = "Wall";
+    public const uint SysBugItemId = 3;
 
     public static readonly int[] LevelUpExp = {
         100,

@@ -44,7 +44,10 @@ public class SkillDatabase : MonoBehaviour
         {
             if (skill.IsActive)
             {
-                ActiveSkills.Add(skill);
+                if (skill.id != Constants.SysBugItemId) // special item, ignore
+                {
+                    ActiveSkills.Add(skill);
+                }
                 ActiveSkillDictionary.Add(skill.id, skill);
             }
             else
