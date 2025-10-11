@@ -7,11 +7,12 @@ public class BlackHole : MonoBehaviour
 {
     public int DamagePerSecond { get; set; } = 5;
     public float DamageInterval { get; set; } = 1.0f;
-    public float TotalInterval { get; set; } = 100.0f;
+    public float TotalInterval { get; set; } = 10.0f;
+    public GameObject Owner { get; set; } = null; // 施放者
 
     private HashSet<GameObject> objectsInZone = new HashSet<GameObject>();
 
-    void Awake()
+    public void StartDamageCoroutine()
     {
         StartCoroutine(DealDamageOverTime());
     }
@@ -19,6 +20,10 @@ public class BlackHole : MonoBehaviour
     // 当有物体进入触发器时调用
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject == Owner)
+        {
+            return; // 不伤害自己
+        }
         var status = other.GetComponent<CharacterStatus>();
         // 尝试从进入的物体上获取HealthController组件
         if (status != null)
@@ -34,6 +39,10 @@ public class BlackHole : MonoBehaviour
     // 当有物体离开触发器时调用
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.gameObject == Owner)
+        {
+            return; // 不伤害自己
+        }
         var status = other.GetComponent<CharacterStatus>();
         if (status != null)
         {

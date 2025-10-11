@@ -42,6 +42,11 @@ public class CharacterStatus : MonoBehaviour
         State.Position = new Vec2();
     }
 
+    void Start()
+    {
+        UpdateHealthSliderUI();
+    }
+
     public bool IsDead()
     {
         return State.CurrentHp <= 0;

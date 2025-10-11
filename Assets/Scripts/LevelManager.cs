@@ -24,9 +24,9 @@ public class LevelManager : MonoBehaviour
     public List<Rect> Rooms { get; private set; }
     public int[,] RoomGrid { get; private set; }
 
+    public List<GameObject> ToRemoveBeforeNewStage { get; set; } = new List<GameObject>();
     public Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)> PickupItems { get; set; } = new Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)>(); // 关卡中的拾取物品
     private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
-    private HashSet<GameObject>[] roomMoveableObjects; // 每个房间中的可移动游戏对象
     private List<Vector3Int>[] roomToTiles; // 每个房间包含的Tile位置列表
     private List<Vector3Int>[] roomToDoorTiles; // 每个房间包含的门的Tile位置列表
     private Dictionary<Vector3Int, List<int>> tileToRooms; // 每个Tile位置包含的房间列表
@@ -177,7 +177,6 @@ public class LevelManager : MonoBehaviour
 
         RoomGrid = new int[roomMaxWidth / Constants.RoomStep, roomMaxHeight / Constants.RoomStep];
         roomConnections = new HashSet<int>[Rooms.Count];
-        roomMoveableObjects = new HashSet<GameObject>[Rooms.Count];
         for (int i = 0; i < Rooms.Count; i++) roomConnections[i] = new HashSet<int>();
         roomToTiles = new List<Vector3Int>[Rooms.Count];
         roomToDoorTiles = new List<Vector3Int>[Rooms.Count];
@@ -540,6 +539,13 @@ public class LevelManager : MonoBehaviour
             Destroy(pickupItem.Item2);
         }
         PickupItems.Clear();
+
+        foreach (var obj in ToRemoveBeforeNewStage)
+        {
+            if (obj != null)
+                Destroy(obj);
+        }
+        ToRemoveBeforeNewStage.Clear();
     }
 
     #region Utils
