@@ -75,10 +75,18 @@ public class SkillDatabase : MonoBehaviour
     }
     public SkillData GetActiveSkill(uint skillId)
     {
-        return ActiveSkillDictionary[skillId];
+        if (ActiveSkillDictionary.ContainsKey(skillId))
+        {
+            return ActiveSkillDictionary[skillId];
+        }
+        return null;
     }
     public SkillData GetPassiveSkill(uint skillId)
     {
-        return PassiveSkillDictionary[skillId];
+        if (PassiveSkillDictionary.ContainsKey(skillId))
+        {
+            return PassiveSkillDictionary[skillId];
+        }
+        return null;
     }
 }

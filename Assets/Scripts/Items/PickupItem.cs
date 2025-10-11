@@ -37,12 +37,9 @@ public class PickupItem : MonoBehaviour
         {
             GameObject player = collision.gameObject;
             var status = player.GetComponent<CharacterStatus>();
-            if (status != null)
-            {
-                status.State.ActiveSkillId = skillData.id;
-            }
+            status.State.ActiveSkillId = skillData.id;
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-            spc.SetActiveSkillIcon(skillData);
+            spc.UpdateMyStatusUI(status.State);
             UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", 3);
             LevelManager.Instance.PickupItems.Remove(Id);
             Destroy(gameObject);

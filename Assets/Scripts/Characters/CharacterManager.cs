@@ -66,11 +66,6 @@ public class CharacterManager : MonoBehaviour
             foreach (var ps in storage.PlayerStates) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
             {
                 CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), ps.PlayerId == MyInfo.Id, ps);
-                if (ps.PlayerId == MyInfo.Id && ps.ActiveSkillId > 0)
-                {
-                    var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                    spc.SetActiveSkillIcon(SkillDatabase.Instance.GetSkill(ps.ActiveSkillId));
-                }
             }
         }
         else

@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-#if PROTOBUF
 using NetworkMessageProto;
-#else
-using NetworkMessageJson;
-#endif
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -15,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private CharacterInput playerInput;
     private InputAction m_MoveAction;
     private InputAction m_LookAction;
+    private InputAction m_JumpAction;
     private static InputSystem_Actions s_InputActions;
 
     void Awake()
@@ -27,8 +24,27 @@ public class PlayerController : MonoBehaviour
 
         m_MoveAction = s_InputActions.Player.Move;
         m_LookAction = s_InputActions.Player.Look;
+        m_JumpAction = s_InputActions.Player.Jump;
 
         playerInput = GetComponent<CharacterInput>();
+    }
+
+    private void OnEnable()
+    {
+        m_MoveAction?.Enable();
+        m_LookAction?.Enable();
+        m_JumpAction?.Enable();
+
+        m_JumpAction.performed += OnJumpPerformed;
+    }
+    
+    private void OnDisable()
+    {
+        m_JumpAction.performed -= OnJumpPerformed;
+
+        m_MoveAction?.Disable();
+        m_LookAction?.Disable();
+        m_JumpAction?.Disable();
     }
 
     void Start()
@@ -73,15 +89,13 @@ public class PlayerController : MonoBehaviour
         MessageManager.Instance.SendMessage(genericMessage, false);
     }
 
-    void OnEnable()
+    private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        m_MoveAction?.Enable();
-        m_LookAction?.Enable();
-    }
-
-    void OnDisable()
-    {
-        m_MoveAction?.Disable();
-        m_LookAction?.Disable();
+        PlayerState state = GetComponent<CharacterStatus>().State;
+        SkillData skillData = SkillDatabase.Instance.GetActiveSkill(state.ActiveSkillId);
+        if (skillData != null)
+        {
+            skillData.executor.ExecuteSkill(gameObject, skillData);
+        }
     }
 }

@@ -69,17 +69,22 @@ public class GameManager : MonoBehaviour
     }
     public LocalStorage LoadLocalStorage()
     {
+        LocalStorage storage;
         if (!File.Exists(saveFilePath))
         {
             Debug.Log("No save file found, starting a new game.");
-            return new LocalStorage
+            storage = new LocalStorage
             {
                 CurrentStage = 1,
                 NextCharacterId = 1,
             };
         }
-        var data = File.ReadAllBytes(saveFilePath);
-        SerializeUtil.Deserialize(data, out LocalStorage storage);
+        else
+        {
+            var data = File.ReadAllBytes(saveFilePath);
+            SerializeUtil.Deserialize(data, out LocalStorage st);
+            storage = st;
+        }
         CurrentStage = Mathf.Max(1, (int)storage.CurrentStage);
         return storage;
     }

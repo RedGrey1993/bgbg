@@ -38,15 +38,13 @@ public class StatusPanelController : MonoBehaviour
         expText.text = $"Data Shards: {state.CurrentExp}/{maxExp}";
 
         abilityRadarChart.SetStats(state);
+
+        SkillData skillData = SkillDatabase.Instance.GetActiveSkill(state.ActiveSkillId);
+        activeSkillIcon.SetSkillData(skillData);
     }
 
     public void UpdateTipsText(int roomNo)
     {
         tipsText.text = $"Stage:{GameManager.Instance.CurrentStage}\nRoom: #{roomNo}";
-    }
-    
-    public void SetActiveSkillIcon(SkillData skillData)
-    {
-        activeSkillIcon.SetSkillData(skillData);
     }
 }
