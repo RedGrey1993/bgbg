@@ -1339,14 +1339,14 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &967428715
@@ -1641,7 +1641,6 @@ MonoBehaviour:
   flashImage: {fileID: 527843884}
   bossHealthSlider: {fileID: 1104330255}
   teleportBeamEffectPrefab: {fileID: 4543829782561293807, guid: 6d93781269e02ee4b828c95ecc0b39f8, type: 3}
-  pickupItemPrefab: {fileID: 1897836902397203960, guid: bb6f245da318aad4fb86c74b30704be6, type: 3}
 --- !u!114 &1032489890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1756,7 +1755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 0.972549, b: 0.73333335, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2675,7 +2674,7 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 3550354129048877229, guid: ba3dff98310ec7947b58568d29221425, type: 3}
   explosionImpulsePrefab: {fileID: 7926851015835408411, guid: ed5b9ccd262dd2f4ab36cd52d52c51f6, type: 3}
   explosionSound: {fileID: 8300000, guid: b1a9cbe880852fa469688498b060cd2c, type: 3}
-  remainRoomsIndex: 
+  pickupItemPrefab: {fileID: 1897836902397203960, guid: bb6f245da318aad4fb86c74b30704be6, type: 3}
 --- !u!114 &1509823720
 MonoBehaviour:
   m_ObjectHideFlags: 0

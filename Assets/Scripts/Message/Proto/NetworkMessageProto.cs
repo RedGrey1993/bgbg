@@ -51,16 +51,20 @@ namespace NetworkMessageProto {
             "GAEgAygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIjgKClBs",
             "YXllckluZm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIKCgJJ",
             "ZBgDIAEoDSI2ChFMZWFyblNraWxsTWVzc2FnZRIQCghwbGF5ZXJJZBgBIAEo",
-            "DRIPCgdza2lsbElkGAIgASgNIqQDCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVu",
-            "dFN0YWdlGAEgASgNEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtN",
-            "ZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMTWluaW9uU3RhdGVzGAMgAygL",
-            "MiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIXCg9NaW5pb25Q",
-            "cmVmYWJJZHgYBCADKAUSNAoKQm9zc1N0YXRlcxgFIAMoCzIgLk5ldHdvcmtN",
-            "ZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSFQoNQm9zc1ByZWZhYklkeBgGIAMo",
-            "BRItCgVSb29tcxgHIAMoCzIeLk5ldHdvcmtNZXNzYWdlUHJvdG8uUmVjdFBy",
-            "b3RvEhQKDFJvb21NYXhXaWR0aBgIIAEoDRIVCg1Sb29tTWF4SGVpZ2h0GAkg",
-            "ASgNEhcKD05leHRDaGFyYWN0ZXJJZBgKIAEoDRIzChBUZWxlcG9ydFBvc2l0",
-            "aW9uGAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyYgZwcm90bzM="));
+            "DRIPCgdza2lsbElkGAIgASgNIlYKClBpY2t1cEl0ZW0SCgoCSWQYASABKA0S",
+            "DwoHU2tpbGxJZBgCIAEoDRIrCghQb3NpdGlvbhgDIAEoCzIZLk5ldHdvcmtN",
+            "ZXNzYWdlUHJvdG8uVmVjMiLaAwoMTG9jYWxTdG9yYWdlEhQKDEN1cnJlbnRT",
+            "dGFnZRgBIAEoDRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsyIC5OZXR3b3JrTWVz",
+            "c2FnZVByb3RvLlBsYXllclN0YXRlEjYKDE1pbmlvblN0YXRlcxgDIAMoCzIg",
+            "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSFwoPTWluaW9uUHJl",
+            "ZmFiSWR4GAQgAygFEjQKCkJvc3NTdGF0ZXMYBSADKAsyIC5OZXR3b3JrTWVz",
+            "c2FnZVByb3RvLlBsYXllclN0YXRlEhUKDUJvc3NQcmVmYWJJZHgYBiADKAUS",
+            "LQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90",
+            "bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdodBgJIAEo",
+            "DRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQb3NpdGlv",
+            "bhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQaWNrdXBJ",
+            "dGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3VwSXRlbWIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -73,7 +77,8 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LearnSkillMessage), global::NetworkMessageProto.LearnSkillMessage.Parser, new[]{ "PlayerId", "SkillId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabIdx", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabIdx", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems" }, null, null, null, null)
           }));
     }
     #endregion
@@ -3100,6 +3105,287 @@ namespace NetworkMessageProto {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PickupItem : pb::IMessage<PickupItem>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PickupItem> _parser = new pb::MessageParser<PickupItem>(() => new PickupItem());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PickupItem> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PickupItem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PickupItem(PickupItem other) : this() {
+      id_ = other.id_;
+      skillId_ = other.skillId_;
+      position_ = other.position_ != null ? other.position_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PickupItem Clone() {
+      return new PickupItem(this);
+    }
+
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private uint id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SkillId" field.</summary>
+    public const int SkillIdFieldNumber = 2;
+    private uint skillId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SkillId {
+      get { return skillId_; }
+      set {
+        skillId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Position" field.</summary>
+    public const int PositionFieldNumber = 3;
+    private global::NetworkMessageProto.Vec2 position_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::NetworkMessageProto.Vec2 Position {
+      get { return position_; }
+      set {
+        position_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PickupItem);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PickupItem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (SkillId != other.SkillId) return false;
+      if (!object.Equals(Position, other.Position)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (SkillId != 0) hash ^= SkillId.GetHashCode();
+      if (position_ != null) hash ^= Position.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Id);
+      }
+      if (SkillId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(SkillId);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Position);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Id);
+      }
+      if (SkillId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(SkillId);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Position);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      if (SkillId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
+      }
+      if (position_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PickupItem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.SkillId != 0) {
+        SkillId = other.SkillId;
+      }
+      if (other.position_ != null) {
+        if (position_ == null) {
+          Position = new global::NetworkMessageProto.Vec2();
+        }
+        Position.MergeFrom(other.Position);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            SkillId = input.ReadUInt32();
+            break;
+          }
+          case 26: {
+            if (position_ == null) {
+              Position = new global::NetworkMessageProto.Vec2();
+            }
+            input.ReadMessage(Position);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            SkillId = input.ReadUInt32();
+            break;
+          }
+          case 26: {
+            if (position_ == null) {
+              Position = new global::NetworkMessageProto.Vec2();
+            }
+            input.ReadMessage(Position);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class LocalStorage : pb::IMessage<LocalStorage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -3114,7 +3400,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[9]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3145,6 +3431,7 @@ namespace NetworkMessageProto {
       roomMaxHeight_ = other.roomMaxHeight_;
       nextCharacterId_ = other.nextCharacterId_;
       teleportPosition_ = other.teleportPosition_ != null ? other.teleportPosition_.Clone() : null;
+      pickupItems_ = other.pickupItems_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3280,6 +3567,17 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "PickupItems" field.</summary>
+    public const int PickupItemsFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.PickupItem> _repeated_pickupItems_codec
+        = pb::FieldCodec.ForMessage(98, global::NetworkMessageProto.PickupItem.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.PickupItem> pickupItems_ = new pbc::RepeatedField<global::NetworkMessageProto.PickupItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::NetworkMessageProto.PickupItem> PickupItems {
+      get { return pickupItems_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3306,6 +3604,7 @@ namespace NetworkMessageProto {
       if (RoomMaxHeight != other.RoomMaxHeight) return false;
       if (NextCharacterId != other.NextCharacterId) return false;
       if (!object.Equals(TeleportPosition, other.TeleportPosition)) return false;
+      if(!pickupItems_.Equals(other.pickupItems_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3324,6 +3623,7 @@ namespace NetworkMessageProto {
       if (RoomMaxHeight != 0) hash ^= RoomMaxHeight.GetHashCode();
       if (NextCharacterId != 0) hash ^= NextCharacterId.GetHashCode();
       if (teleportPosition_ != null) hash ^= TeleportPosition.GetHashCode();
+      hash ^= pickupItems_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3368,6 +3668,7 @@ namespace NetworkMessageProto {
         output.WriteRawTag(90);
         output.WriteMessage(TeleportPosition);
       }
+      pickupItems_.WriteTo(output, _repeated_pickupItems_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3404,6 +3705,7 @@ namespace NetworkMessageProto {
         output.WriteRawTag(90);
         output.WriteMessage(TeleportPosition);
       }
+      pickupItems_.WriteTo(ref output, _repeated_pickupItems_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3435,6 +3737,7 @@ namespace NetworkMessageProto {
       if (teleportPosition_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TeleportPosition);
       }
+      size += pickupItems_.CalculateSize(_repeated_pickupItems_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3471,6 +3774,7 @@ namespace NetworkMessageProto {
         }
         TeleportPosition.MergeFrom(other.TeleportPosition);
       }
+      pickupItems_.Add(other.pickupItems_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3539,6 +3843,10 @@ namespace NetworkMessageProto {
             input.ReadMessage(TeleportPosition);
             break;
           }
+          case 98: {
+            pickupItems_.AddEntriesFrom(input, _repeated_pickupItems_codec);
+            break;
+          }
         }
       }
     #endif
@@ -3605,6 +3913,10 @@ namespace NetworkMessageProto {
               TeleportPosition = new global::NetworkMessageProto.Vec2();
             }
             input.ReadMessage(TeleportPosition);
+            break;
+          }
+          case 98: {
+            pickupItems_.AddEntriesFrom(ref input, _repeated_pickupItems_codec);
             break;
           }
         }

@@ -19,8 +19,7 @@ public class CharacterManager : MonoBehaviour
     public Dictionary<uint, GameObject> bossObjects { get; private set; } = new Dictionary<uint, GameObject>();
     public Dictionary<uint, int> bossPrefabIdx { get; private set; } = new Dictionary<uint, int>();
 
-    public static uint nextCharacterId = 0;
-    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = nextCharacterId++, CSteamID = "PlayerOffline", Name = "Player Offline" };
+    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
     public List<PlayerInfo> Players { get; set; } = new List<PlayerInfo>();
@@ -45,7 +44,7 @@ public class CharacterManager : MonoBehaviour
 
     public void CreateCharacterObjects(LocalStorage storage)
     {
-        nextCharacterId = System.Math.Max(1, storage.NextCharacterId);
+        IdGenerator.SetNextCharacterId((int)System.Math.Max(1, storage.NextCharacterId));
         CreatePlayerObjects(storage);
         CreateMinionObjects(storage);
         CreateBossObjects(storage);
@@ -67,6 +66,11 @@ public class CharacterManager : MonoBehaviour
             foreach (var ps in storage.PlayerStates) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
             {
                 CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), ps.PlayerId == MyInfo.Id, ps);
+                if (ps.PlayerId == MyInfo.Id && ps.ActiveSkillId > 0)
+                {
+                    var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                    spc.SetActiveSkillIcon(SkillDatabase.Instance.GetSkill(ps.ActiveSkillId));
+                }
             }
         }
         else
@@ -132,7 +136,7 @@ public class CharacterManager : MonoBehaviour
                 for (int i = 0; i < minionNum; i++)
                 {
                     var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
-                    uint minionId = nextCharacterId++;
+                    uint minionId = IdGenerator.NextCharacterId();
                     minion.name = $"{minionPrefab.name}{minionId}";
                     minion.tag = Constants.TagEnemy;
                     var minionStatus = minion.GetComponent<CharacterStatus>();
@@ -192,7 +196,7 @@ public class CharacterManager : MonoBehaviour
             GenerateBossPosition(room, out var spawnPosition);
 
             var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
-            uint bossId = nextCharacterId++;
+            uint bossId = IdGenerator.NextCharacterId();
             boss.name = $"{bossPrefab.name}{bossId}";
             boss.tag = Constants.TagEnemy;
             var bossStatus = boss.GetComponent<CharacterStatus>();
@@ -369,16 +373,16 @@ public class CharacterManager : MonoBehaviour
         // clear
         PlayerInfoMap.Clear();
         Players.Clear();
-        nextCharacterId = 0;
+        IdGenerator.SetNextCharacterId(0);
         // add self
-        MyInfo.Id = nextCharacterId++;
+        MyInfo.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
     }
 
     public void AddPlayer(PlayerInfo player)
     {
-        player.Id = nextCharacterId++;
+        player.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[player.Id] = player;
         Players.Add(player);
         CreatePlayerObject(player.Id, ColorFromID(player.Id), false);
@@ -440,8 +444,8 @@ public class CharacterManager : MonoBehaviour
 
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
-        if (playerObjects.Count == 0) return; // no need to save
-        storage.NextCharacterId = nextCharacterId;
+        if (playerObjects.Count == 0) return; // Player死了，游戏结束，下次加载时从第1关重新开始
+        storage.NextCharacterId = IdGenerator.NextCharacterId();
         storage.PlayerStates.Clear();
         foreach (var player in playerObjects.Values)
         {

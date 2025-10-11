@@ -5,6 +5,7 @@ public class PickupItem : MonoBehaviour
 {
     public SkillData skillData;
     private SpriteRenderer sprite;
+    public uint Id { get; set; }
 
     void Awake()
     {
@@ -43,6 +44,7 @@ public class PickupItem : MonoBehaviour
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.SetActiveSkillIcon(skillData);
             UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", 3);
+            LevelManager.Instance.PickupItems.Remove(Id);
             Destroy(gameObject);
         }
     }

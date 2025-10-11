@@ -79,6 +79,13 @@ message LearnSkillMessage
     uint32 skillId = 2;
 }
 
+message PickupItem
+{
+    uint32 Id = 1;
+    uint32 SkillId = 2;
+    Vec2 Position = 3;
+}
+
 message LocalStorage
 {
     uint32 CurrentStage = 1;
@@ -92,4 +99,5 @@ message LocalStorage
     uint32 RoomMaxHeight = 9;
     uint32 NextCharacterId = 10;
     Vec2 TeleportPosition = 11;
+    repeated PickupItem PickupItems = 12;
 }

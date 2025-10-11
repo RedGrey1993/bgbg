@@ -10,17 +10,21 @@ using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
 {
+    #region Inspector Fields
     public Tilemap floorTilemap;
     public Tilemap wallTilemap;
     public TileBase level1WallTile;
     public GameObject explosionEffectPrefab; // 你的粒子特效Prefab
     public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
     public AudioClip explosionSound;
+    public GameObject pickupItemPrefab; // 拾取物品预制体
+    #endregion
 
     public static LevelManager Instance { get; private set; }
     public List<Rect> Rooms { get; private set; }
     public int[,] RoomGrid { get; private set; }
 
+    public Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)> PickupItems { get; set; } = new Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)>(); // 关卡中的拾取物品
     private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
     private HashSet<GameObject>[] roomMoveableObjects; // 每个房间中的可移动游戏对象
     private List<Vector3Int>[] roomToTiles; // 每个房间包含的Tile位置列表
@@ -71,6 +75,12 @@ public class LevelManager : MonoBehaviour
         {
             Vec2 pos = storage.TeleportPosition;
             UIManager.Instance.ShowTeleportBeamEffect(new Vector3(pos.X, pos.Y, 0));
+        }
+
+        PickupItems.Clear();
+        foreach (var pickupItem in storage.PickupItems)
+        {
+            ShowPickUpItem(new Vector3(pickupItem.Position.X, pickupItem.Position.Y, 0), SkillDatabase.Instance.GetSkill(pickupItem.SkillId));
         }
 
         // StartCoroutine(StartDestroyingRooms(1f)); // 每10秒摧毁一个房间
@@ -524,6 +534,12 @@ public class LevelManager : MonoBehaviour
 
         CharacterManager.Instance.ClearCharacterObjects();
         UIManager.Instance.HideBossHealthSlider();
+
+        foreach (var pickupItem in PickupItems.Values)
+        {
+            Destroy(pickupItem.Item2);
+        }
+        PickupItems.Clear();
     }
 
     #region Utils
@@ -556,6 +572,8 @@ public class LevelManager : MonoBehaviour
         var roomMaxHeight = CurrentLevelData.roomMaxHeight;
         storage.RoomMaxWidth = (uint)roomMaxWidth;
         storage.RoomMaxHeight = (uint)roomMaxHeight;
+        storage.PickupItems.Clear();
+        storage.PickupItems.AddRange(PickupItems.Values.Select(v => v.Item1));
     }
 
     public int GetRoomNoByPosition(Vector3 position)
@@ -564,6 +582,34 @@ public class LevelManager : MonoBehaviour
         if (i < 0 || i >= RoomGrid.GetLength(0) || j < 0 || j >= RoomGrid.GetLength(1))
             return -1;
         return RoomGrid[i, j];
+    }
+    #endregion
+
+    #region Pickup Items
+    public void RandomizePickupItem(Vector3 position)
+    {
+        var skillNum = SkillDatabase.Instance.ActiveSkills.Count;
+        var skillId = UnityEngine.Random.Range(0, skillNum);
+        var skillData = SkillDatabase.Instance.ActiveSkills[skillId];
+        ShowPickUpItem(position, skillData);
+    }
+
+    public void ShowPickUpItem(Vector3 position, SkillData skillData)
+    {
+        if (pickupItemPrefab != null && skillData != null)
+        {
+            var item = Instantiate(pickupItemPrefab, position, Quaternion.identity);
+            var itemComponent = item.GetComponent<PickupItem>();
+            itemComponent.SetSkillData(skillData);
+            itemComponent.Id = IdGenerator.NextPickupItemId();
+            NetworkMessageProto.PickupItem protoItem = new NetworkMessageProto.PickupItem
+            {
+                Id = itemComponent.Id,
+                SkillId = skillData.id,
+                Position = new Vec2 { X = position.x, Y = position.y }
+            };
+            PickupItems.Add(itemComponent.Id, (protoItem, item));
+        }
     }
     #endregion
 }
