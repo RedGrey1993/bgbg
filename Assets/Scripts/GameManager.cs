@@ -133,7 +133,10 @@ public class GameManager : MonoBehaviour
             };
         }
         SaveLocalStorage(teleportPosition);
-        if (LevelDatabase.Instance.GetLevelData(CurrentStage + 1) != null)
+        bool hasBugItem = CharacterManager.Instance.MySelfHasSysBug();
+        bool isBugStage = LevelDatabase.Instance.IsSysBugStage(CurrentStage + 1);
+        LevelData nextStage = LevelDatabase.Instance.GetLevelData(CurrentStage + 1);
+        if ((hasBugItem && isBugStage) || (!isBugStage && nextStage != null))
         {
             // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
             UIManager.Instance.PlayLoadingAnimation(() =>

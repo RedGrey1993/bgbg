@@ -24,4 +24,4 @@ MonoBehaviour:
   roomMaxHeight: 20
   minAreaPerMinion: 500000
   maxAreaPerMinion: 1000000
-  gamePassedSprite: {fileID: 0}
+  gamePassedSprite: {fileID: 21300000, guid: a291b30f37d985340a45ca798ed9ec79, type: 3}

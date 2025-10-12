@@ -437,6 +437,17 @@ public class CharacterManager : MonoBehaviour
         return null;
     }
 
+    public bool MySelfHasSysBug()
+    {
+        var my = GetMyselfGameObject();
+        if (my != null)
+        {
+            var status = my.GetComponent<CharacterStatus>();
+            return status.State.ActiveSkillId == Constants.SysBugItemId;
+        }
+        return false;
+    }
+
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
         if (playerObjects.Count == 0) return; // Player死了，游戏结束，下次加载时从第1关重新开始

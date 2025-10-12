@@ -45,6 +45,15 @@ public class LevelDatabase : MonoBehaviour
         Debug.Log($"成功加载 {LevelDatas.Count} 个关卡到数据库。");
     }
 
+    public bool IsSysBugStage(int level)
+    {
+        if (level == LevelDatas.Count)
+        {
+            return true;
+        }
+        return false;
+    }
+
     // 提供一个公共方法来根据ID获取技能
     public LevelData GetLevelData(int level)
     {
