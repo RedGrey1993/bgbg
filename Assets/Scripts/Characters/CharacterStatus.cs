@@ -246,6 +246,7 @@ public class CharacterStatus : MonoBehaviour
             int roomNo = LevelManager.Instance.GetRoomNoByPosition(transform.position);
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.UpdateTipsText(roomNo);
+            LevelManager.Instance.AddToVisitedRooms(transform.position);
         }
     }
 }

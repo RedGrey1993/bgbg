@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "Scriptable Objects/LevelData")]
+[CreateAssetMenu(fileName = "LevelData", menuName = "Level Data")]
 public class LevelData : ScriptableObject
 {
     [Header("Room Prefabs")]

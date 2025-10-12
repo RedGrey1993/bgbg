@@ -243,6 +243,8 @@ public class CharacterManager : MonoBehaviour
             playerStatus.IsAI = false;
         }
 
+        LevelManager.Instance.AddToVisitedRooms(go.transform.position);
+
         playerObjects[playerId] = go;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
         // 上面的注释是老逻辑，新逻辑Client都处理（相当于状态同步的移动预测），但是Host会定期同步统一的状态

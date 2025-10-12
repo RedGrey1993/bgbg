@@ -7,15 +7,16 @@ public class FlashRect : MonoBehaviour
     [Tooltip("需要闪烁的Sprite Renderer")]
     public SpriteRenderer spriteToFlash;
 
-    public float TotalDuration { get; set; } = 10f;
+    private float totalDuration = 10f;
     public float FlashDuration { get; set; } = 0.5f;
     public float FlashInterval { get; set; } = 1f;
 
     /// <summary>
     /// 公共方法，用于从其他脚本触发闪烁效果
     /// </summary>
-    public void StartFlashing(float width, float height)
+    public void StartFlashing(float width, float height, float duration)
     {
+        totalDuration = duration;
         spriteToFlash.enabled = true;
         spriteToFlash.color = new Color(1f, 0f, 0f, 0f); // 初始为透明红色
         gameObject.transform.localScale = new Vector3(width, height, 1f);
@@ -31,7 +32,7 @@ public class FlashRect : MonoBehaviour
         float tmpTime = 0f;
 
         // 在总持续时间内循环
-        while (elapsedTime < TotalDuration)
+        while (elapsedTime < totalDuration)
         {
             while (tmpTime < FlashDuration)
             {
@@ -59,5 +60,6 @@ public class FlashRect : MonoBehaviour
 
         // --- 循环结束后，确保物体是禁用的 ---
         spriteToFlash.enabled = false;
+        Destroy(gameObject);
     }
 }

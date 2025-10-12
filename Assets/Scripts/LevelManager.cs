@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour
     private Dictionary<Vector3Int, List<int>> doorTileToRooms; // 每个门的Tile位置包含的房间列表
     private int remainRooms;
     public List<int> remainRoomsIndex { get; private set; }
+    public List<int> VisitedRooms { get; set; }
+    public bool[] IsVisitedRooms { get; set; }
     public LevelData CurrentLevelData { get; private set; }
 
     void Awake()
@@ -68,7 +70,8 @@ public class LevelManager : MonoBehaviour
         GenerateRooms(wallTile, storage);
 
         UIManager.Instance.ClearInfoPanel();
-        UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
+        if (level == 1)
+            UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
 
         // character objects 会随每次的HostTick将状态同步到Client
         CharacterManager.Instance.CreateCharacterObjects(storage);
@@ -85,7 +88,8 @@ public class LevelManager : MonoBehaviour
             ShowPickUpItem(new Vector3(pickupItem.Position.X, pickupItem.Position.Y, 0), SkillDatabase.Instance.GetSkill(pickupItem.SkillId));
         }
 
-        StartCoroutine(StartDestroyingRooms(10f)); // 每10秒摧毁一个房间
+        float firstRoomBlastInterval = GameManager.Instance.gameConfig.FirstRoomBlastInterval;
+        StartCoroutine(StartDestroyingRooms(firstRoomBlastInterval)); // 每180秒摧毁一个房间
     }
 
     private void GenerateFloors(TileBase floorTile)
@@ -185,6 +189,8 @@ public class LevelManager : MonoBehaviour
         tileToRooms = new Dictionary<Vector3Int, List<int>>();
         doorTileToRooms = new Dictionary<Vector3Int, List<int>>();
         remainRoomsIndex = new List<int>();
+        VisitedRooms = new List<int>();
+        IsVisitedRooms = new bool[Rooms.Count];
         for (int i = 0; i < Rooms.Count; ++i)
         {
             remainRoomsIndex.Add(i);
@@ -399,8 +405,17 @@ public class LevelManager : MonoBehaviour
     private int GetNextDestroyRoomIndex()
     {
         if (remainRooms <= 1) return -1;
-        int idx = UnityEngine.Random.Range(0, remainRoomsIndex.Count);
-        int toDestroy = remainRoomsIndex[idx];
+        int toDestroy;
+        if (VisitedRooms.Count > 1) // 如果 Count == 1，则说明只有当前正在探索的房间，其余的房间要么没探索过，要么已经Destroy
+        {
+            // 当前所在的房间暂时先不Destroy，优先Destroy已经探索完毕的房间
+            int idx = UnityEngine.Random.Range(0, VisitedRooms.Count - 1);
+            toDestroy = VisitedRooms[idx];
+        } else
+        {
+            int idx = UnityEngine.Random.Range(0, remainRoomsIndex.Count);
+            toDestroy = remainRoomsIndex[idx];
+        }
         foreach (var neighbor in roomConnections[toDestroy])
         {
             if (roomConnections[neighbor].Count <= 1)
@@ -474,6 +489,7 @@ public class LevelManager : MonoBehaviour
 
         remainRooms--;
         remainRoomsIndex.Remove(roomIdx);
+        VisitedRooms.Remove(roomIdx);
         // 移除房间连接关系
         foreach (var neighbor in roomConnections[roomIdx])
         {
@@ -519,17 +535,18 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void ShowRedFlashRect(Vector3 position, float width, float height)
+    private void ShowRedFlashRect(Vector3 position, float width, float height, float duration)
     {
         var obj = Instantiate(flashRectPrefab, position, Quaternion.identity);
         ToRemoveBeforeNewStage.Add(obj);
         FlashRect flashRect = obj.GetComponent<FlashRect>();
-        flashRect.StartFlashing(width, height);
+        flashRect.StartFlashing(width, height, duration);
     }
 
     // 协程函数，每隔一段时间摧毁一个房间
     public IEnumerator StartDestroyingRooms(float interval)
     {
+        float redFlashDuration = GameManager.Instance.gameConfig.RedFlashRectDuration;
         while (true)
         {
             int roomIdx = GetNextDestroyRoomIndex();
@@ -539,9 +556,11 @@ public class LevelManager : MonoBehaviour
                 yield break; // 退出协程
             }
             UIManager.Instance.ShowInfoPanel($"Warning: room {roomIdx} will be destroyed in", interval);
-            ShowRedFlashRect(new Vector3(Rooms[roomIdx].center.x, Rooms[roomIdx].center.y, 0), Rooms[roomIdx].width, Rooms[roomIdx].height);
-            yield return new WaitForSeconds(interval);
+            yield return new WaitForSeconds(interval - redFlashDuration);
+            ShowRedFlashRect(new Vector3(Rooms[roomIdx].center.x, Rooms[roomIdx].center.y, 0), Rooms[roomIdx].width, Rooms[roomIdx].height, redFlashDuration);
+            yield return new WaitForSeconds(redFlashDuration);
             DestroyRoom(roomIdx);
+            interval = GameManager.Instance.gameConfig.OtherRoomBlastInterval;; // 第一次间隔3min，第2次间隔2min
         }
     }
 
@@ -609,6 +628,16 @@ public class LevelManager : MonoBehaviour
         if (i < 0 || i >= RoomGrid.GetLength(0) || j < 0 || j >= RoomGrid.GetLength(1))
             return -1;
         return RoomGrid[i, j];
+    }
+
+    public void AddToVisitedRooms(Vector3 position)
+    {
+        int roomId = GetRoomNoByPosition(position);
+        if (!IsVisitedRooms[roomId])
+        {
+            IsVisitedRooms[roomId] = true;
+            VisitedRooms.Add(roomId);
+        }
     }
     #endregion
 

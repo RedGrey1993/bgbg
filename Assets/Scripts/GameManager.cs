@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public GameConfig gameConfig;
     public int CurrentStage { get; private set; } = 1;
     public GameState GameState { get; private set; } = GameState.InMenu;
     private string saveFilePath;
