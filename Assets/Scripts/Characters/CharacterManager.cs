@@ -221,8 +221,8 @@ public class CharacterManager : MonoBehaviour
         // Initialize position
         int roomMaxWidth = LevelManager.Instance.CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = LevelManager.Instance.CurrentLevelData.roomMaxHeight;
-        float posX = UnityEngine.Random.Range(0, roomMaxWidth / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
-        float posY = UnityEngine.Random.Range(0, roomMaxHeight / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
+        float posX = Random.Range(0, roomMaxWidth / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
+        float posY = Random.Range(0, roomMaxHeight / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
         go.transform.position = new Vector2(posX, posY);
         // Set player name
         string playerName = PlayerInfoMap[playerId].Name;

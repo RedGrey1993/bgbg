@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
                     if (playerStatus != null)
                     {
                         playerStatus.State.CurrentStageSkillLearned = false;
+                        playerStatus.State.Position = null;
                         storage.PlayerStates.Add(playerStatus.State);
                     }
                 }
