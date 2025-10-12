@@ -437,6 +437,24 @@ public class CharacterManager : MonoBehaviour
         return null;
     }
 
+    public void DisableMyself()
+    {
+        var my = GetMyselfGameObject();
+        if (my != null)
+        {
+            my.SetActive(false);
+        }
+    }
+
+    public void EnableMyself()
+    {
+        var my = GetMyselfGameObject();
+        if (my != null)
+        {
+            my.SetActive(true);
+        }
+    }
+
     public bool MySelfHasSysBug()
     {
         var my = GetMyselfGameObject();

@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
 
     private InputAction _toggleSettingsAction;
     private InputAction _toggleSkillPanelAction;
+    private InputAction _spacePressedAction;
     private UIDocument _uiDocument;
     private VisualElement _root;
 
@@ -136,6 +137,7 @@ public class UIManager : MonoBehaviour
 
         _toggleSettingsAction = inputActions.FindActionMap("UI").FindAction("ToggleSettings");
         _toggleSkillPanelAction = inputActions.FindActionMap("UI").FindAction("ToggleSkillPanel");
+        _spacePressedAction = inputActions.FindActionMap("Player").FindAction("Jump");
 
         QueryUIElements();
         RegisterButtonCallbacks();
@@ -149,6 +151,7 @@ public class UIManager : MonoBehaviour
     {
         _toggleSettingsAction?.Enable();
         _toggleSkillPanelAction?.Enable();
+        _spacePressedAction?.Enable();
         if (NetworkManager.ActiveLayer != null)
         {
             SubscribeToNetworkEvents();
@@ -159,6 +162,7 @@ public class UIManager : MonoBehaviour
     {
         _toggleSettingsAction?.Disable();
         _toggleSkillPanelAction?.Disable();
+        _spacePressedAction?.Disable();
         if (NetworkManager.ActiveLayer != null)
         {
             UnsubscribeFromNetworkEvents();
@@ -173,10 +177,10 @@ public class UIManager : MonoBehaviour
     }
 
     #region Canvas
-    public void PlayLoadingAnimation(Action callback, Sprite loadingSprite = null)
+    public void PlayLoadingAnimation(Action callback, Sprite loadingSprite = null, bool needPressSpace = true)
     {
         fadePanel.SetActive(true);
-        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite));
+        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace));
     }
 
     private IEnumerator FadeRoutine(float targetAlpha, float transitionTime)
@@ -217,7 +221,7 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
     }
 
-    private IEnumerator LoadAnimationRoutine(Action callback, Sprite loadingSprite = null)
+    private IEnumerator LoadAnimationRoutine(Action callback, Sprite loadingSprite = null, bool needPressSpace = true)
     {
         if (loadingImage != null)
         {
@@ -244,13 +248,20 @@ public class UIManager : MonoBehaviour
         //     // yield return new WaitForSeconds(videoPlayTime);
         //     loadingContent.gameObject.SetActive(false);
         // }
-
-        callback?.Invoke();
         // yield return new WaitForSeconds(transitionTime);
+
+        if (needPressSpace)
+        {
+            // 等待直到 spacePressed 变为 true
+            yield return new WaitUntil(() => _spacePressedAction.IsPressed());
+        }
+        callback?.Invoke();
+        CharacterManager.Instance.DisableMyself();
 
         // 5. 触发渐变显示动画
         transitionTime = 1f;
         yield return StartCoroutine(FadeRoutine(0f, transitionTime));
+        CharacterManager.Instance.EnableMyself();
     }
 
     public void HideFadePanel()
@@ -405,7 +416,7 @@ public class UIManager : MonoBehaviour
             spc.ShowMyStatusUI();
             var storage = GameManager.Instance.LoadLocalStorage();
             GameManager.Instance.StartLocalGame(storage);
-        });
+        }, needPressSpace: false);
     }
 
     private void OnConfirmCreateRoomClicked()

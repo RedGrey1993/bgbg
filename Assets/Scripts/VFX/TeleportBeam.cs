@@ -86,6 +86,9 @@ public class TeleportBeam : MonoBehaviour
 
     private void TeleportToNextLevel(GameObject player)
     {
+        // 避免在传送过程中释放技能或者移动
+        CharacterManager.Instance.DisableMyself();
+        
         // 播放传送音效
         if (teleportSound != null)
         {

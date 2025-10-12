@@ -223,14 +223,17 @@ public class CharacterStatus : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (IsAlive() && IsBoss() && LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
+        if (IsBoss())
         {
-            UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
-            UIManager.Instance.ShowBossHealthSlider();
-        }
-        else
-        {
-            UIManager.Instance.HideBossHealthSlider();
+            if (IsAlive() && LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
+            {
+                UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
+                UIManager.Instance.ShowBossHealthSlider();
+            }
+            else
+            {
+                UIManager.Instance.HideBossHealthSlider();
+            }
         }
         State.Position = new Vec2
         {
