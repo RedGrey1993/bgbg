@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d55d457e7cb165439c45646a6421175, type: 3}
   m_Name: LocalGameConfig
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
-  FirstRoomBlastInterval: 10
-  OtherRoomBlastInterval: 10
-  RedFlashRectDuration: 5
+  FirstRoomBlastInterval: 1000
+  OtherRoomBlastInterval: 1000
+  RedFlashRectDuration: 10

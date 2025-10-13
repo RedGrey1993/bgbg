@@ -79,7 +79,7 @@ public class BlackHole : MonoBehaviour
                 var status = obj.GetComponent<CharacterStatus>();
                 if (status != null && status.IsAlive())
                 {
-                    status.TakeDamage_Host((uint)DamagePerSecond);
+                    status.TakeDamage_Host((uint)DamagePerSecond, Owner.GetComponent<CharacterStatus>());
                 }
             }
         }

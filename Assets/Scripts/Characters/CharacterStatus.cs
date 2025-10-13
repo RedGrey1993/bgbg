@@ -77,10 +77,19 @@ public class CharacterStatus : MonoBehaviour
         HealthChanged((uint)Mathf.Max(0, curHp));
     }
 
-    public void TakeDamage_Host(uint damage)
+    public void TakeDamage_Host(uint damage, CharacterStatus attacker)
     {
         if (IsDead()) return;
         uint curHp = State.CurrentHp - damage;
+        if (curHp <= 0)
+        {
+            // this死亡，提供给attacker经验值
+            uint attackerCurExp = attacker.State.CurrentExp;
+            uint expGained = characterData.ExpGiven;
+            attackerCurExp += expGained;
+            // TODO: 发送attacker.ExpChanged消息给所有客户端
+            attacker.ExpChanged(attackerCurExp);
+        }
         // TODO: 发送this.HealthChanged消息给所有客户端
         HealthChanged((uint)Mathf.Max(0, curHp));
     }

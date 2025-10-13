@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8692624321793663675}
   - component: {fileID: 9019625390070816854}
   - component: {fileID: 1113708177711893829}
+  - component: {fileID: 9027626483612738239}
   m_Layer: 0
   m_Name: GravityCollider
   m_TagString: Untagged
@@ -90,6 +91,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 10
+--- !u!114 &9027626483612738239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918245934068929373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683d6eeec1175f849bbc6604f3f3733e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PointEffectorIgnore
+  pointEffectorCollider: {fileID: 1113708177711893829}
 --- !u!1 &1776552664307082303
 GameObject:
   m_ObjectHideFlags: 0

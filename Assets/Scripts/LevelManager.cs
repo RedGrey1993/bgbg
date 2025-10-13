@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
     public List<int> remainRoomsIndex { get; private set; }
     public List<int> VisitedRooms { get; set; }
     public bool[] IsVisitedRooms { get; set; }
+    public List<int> BossRooms { get; set; }
     public LevelData CurrentLevelData { get; private set; }
 
     void Awake()
@@ -69,7 +70,6 @@ public class LevelManager : MonoBehaviour
         GenerateFloors(floorTile);
         GenerateRooms(wallTile, storage);
 
-        UIManager.Instance.ClearInfoPanel();
         if (level == 1)
             UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
 
@@ -190,6 +190,7 @@ public class LevelManager : MonoBehaviour
         doorTileToRooms = new Dictionary<Vector3Int, List<int>>();
         remainRoomsIndex = new List<int>();
         VisitedRooms = new List<int>();
+        BossRooms = new List<int>();
         IsVisitedRooms = new bool[Rooms.Count];
         for (int i = 0; i < Rooms.Count; ++i)
         {
@@ -418,7 +419,7 @@ public class LevelManager : MonoBehaviour
         }
         foreach (var neighbor in roomConnections[toDestroy])
         {
-            if (roomConnections[neighbor].Count <= 1)
+            if (roomConnections[neighbor].Count <= 1 && !BossRooms.Contains(neighbor))
             {
                 toDestroy = neighbor;
                 Debug.Log($"fhhtest, toDestroy(neighbor): {toDestroy}, {string.Join(",", roomConnections[toDestroy])}");
@@ -446,7 +447,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-        if (connectCnt < remainRooms - 1)
+        if (connectCnt < remainRooms - 1 || BossRooms.Contains(toDestroy))
         {
             // Debug.Log($"fhhtest, room {toDestroy} is a cut node, connected {connectCnt}, remain {remainRooms}");
             // room {toDestroy} is a cut node, select the bfs last leaf node as the destroy room.
@@ -573,6 +574,7 @@ public class LevelManager : MonoBehaviour
 
         CharacterManager.Instance.ClearCharacterObjects();
         UIManager.Instance.HideBossHealthSlider();
+        UIManager.Instance.ClearInfoPanel();
 
         foreach (var pickupItem in PickupItems.Values)
         {
@@ -638,6 +640,12 @@ public class LevelManager : MonoBehaviour
             IsVisitedRooms[roomId] = true;
             VisitedRooms.Add(roomId);
         }
+    }
+
+    public void AddToBossRooms(Vector3 position)
+    {
+        int roomId = GetRoomNoByPosition(position);
+        BossRooms.Add(roomId);
     }
     #endregion
 
