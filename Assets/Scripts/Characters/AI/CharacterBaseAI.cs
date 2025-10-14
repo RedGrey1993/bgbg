@@ -247,5 +247,6 @@ public abstract class CharacterBaseAI : ICharacterAI
     }
     public virtual void OnCollisionEnter(Collision2D collision) { }
     public virtual void OnCollisionStay(Collision2D collision) { }
+    public virtual float OnDeath() { return 0; }
     #endregion
 }

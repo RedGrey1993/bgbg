@@ -1,0 +1,1393 @@
+fileFormatVersion: 2
+guid: 5c1697b2c57e19a4b9e5b48ac2c6d8a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7001721554751180625
+    second: Minion_2_0_GlitchSlime_Death_0
+  - first:
+      213: 3062038062835697966
+    second: Minion_2_0_GlitchSlime_Death_1
+  - first:
+      213: -7036367712875818452
+    second: Minion_2_0_GlitchSlime_Death_2
+  - first:
+      213: 1502656252879220620
+    second: Minion_2_0_GlitchSlime_Death_3
+  - first:
+      213: 7896378540650776595
+    second: Minion_2_0_GlitchSlime_Death_4
+  - first:
+      213: 3541034028122392439
+    second: Minion_2_0_GlitchSlime_Death_5
+  - first:
+      213: -7158333682612512323
+    second: Minion_2_0_GlitchSlime_Death_6
+  - first:
+      213: 2746988196270193089
+    second: Minion_2_0_GlitchSlime_Death_7
+  - first:
+      213: 4180632289650043342
+    second: Minion_2_0_GlitchSlime_Death_8
+  - first:
+      213: -7894880725731776220
+    second: Minion_2_0_GlitchSlime_Death_9
+  - first:
+      213: 3983757527935399977
+    second: Minion_2_0_GlitchSlime_Death_10
+  - first:
+      213: 3862463562234197415
+    second: Minion_2_0_GlitchSlime_Death_11
+  - first:
+      213: -2901077126789479974
+    second: Minion_2_0_GlitchSlime_Death_12
+  - first:
+      213: 6315281245302836994
+    second: Minion_2_0_GlitchSlime_Death_13
+  - first:
+      213: -3647197781911835301
+    second: Minion_2_0_GlitchSlime_Death_14
+  - first:
+      213: -7284143601216200131
+    second: Minion_2_0_GlitchSlime_Death_15
+  - first:
+      213: -5679840540421903643
+    second: Minion_2_0_GlitchSlime_Death_16
+  - first:
+      213: -2249182529956155118
+    second: Minion_2_0_GlitchSlime_Death_17
+  - first:
+      213: -5882559875574351050
+    second: Minion_2_0_GlitchSlime_Death_18
+  - first:
+      213: -3332884270919491669
+    second: Minion_2_0_GlitchSlime_Death_19
+  - first:
+      213: 4417091844570362701
+    second: Minion_2_0_GlitchSlime_Death_20
+  - first:
+      213: 6068530205335976070
+    second: Minion_2_0_GlitchSlime_Death_21
+  - first:
+      213: -1827108111621287488
+    second: Minion_2_0_GlitchSlime_Death_22
+  - first:
+      213: 122303654397296848
+    second: Minion_2_0_GlitchSlime_Death_23
+  - first:
+      213: -3728667541633366815
+    second: Minion_2_0_GlitchSlime_Death_24
+  - first:
+      213: -6175341151627863298
+    second: Minion_2_0_GlitchSlime_Death_25
+  - first:
+      213: -7418215751169826228
+    second: Minion_2_0_GlitchSlime_Death_26
+  - first:
+      213: 3911388288130527981
+    second: Minion_2_0_GlitchSlime_Death_27
+  - first:
+      213: 19107741448927773
+    second: Minion_2_0_GlitchSlime_Death_28
+  - first:
+      213: 4099685529519520782
+    second: Minion_2_0_GlitchSlime_Death_29
+  - first:
+      213: -6021050003079707278
+    second: Minion_2_0_GlitchSlime_Death_30
+  - first:
+      213: -2647839209306077126
+    second: Minion_2_0_GlitchSlime_Death_31
+  - first:
+      213: 3310346059352569536
+    second: Minion_2_0_GlitchSlime_Death_32
+  - first:
+      213: 3565771504314091375
+    second: Minion_2_0_GlitchSlime_Death_33
+  - first:
+      213: -6692027739546259289
+    second: Minion_2_0_GlitchSlime_Death_34
+  - first:
+      213: 7137365537337697353
+    second: Minion_2_0_GlitchSlime_Death_35
+  - first:
+      213: -9102387687681977816
+    second: Minion_2_0_GlitchSlime_Death_36
+  - first:
+      213: 4884220024100537450
+    second: Minion_2_0_GlitchSlime_Death_37
+  - first:
+      213: 7487744638416131436
+    second: Minion_2_0_GlitchSlime_Death_38
+  - first:
+      213: -1540438255128615132
+    second: Minion_2_0_GlitchSlime_Death_39
+  - first:
+      213: -7009261187051572956
+    second: Minion_2_0_GlitchSlime_Death_40
+  - first:
+      213: 6652173519390973164
+    second: Minion_2_0_GlitchSlime_Death_41
+  - first:
+      213: 8564831813013755370
+    second: Minion_2_0_GlitchSlime_Death_42
+  - first:
+      213: -7216832094210248561
+    second: Minion_2_0_GlitchSlime_Death_43
+  - first:
+      213: -8676005080078369501
+    second: Minion_2_0_GlitchSlime_Death_44
+  - first:
+      213: -7433385325566308439
+    second: Minion_2_0_GlitchSlime_Death_45
+  - first:
+      213: -54377552732970021
+    second: Minion_2_0_GlitchSlime_Death_46
+  - first:
+      213: 3688104160652390640
+    second: Minion_2_0_GlitchSlime_Death_47
+  - first:
+      213: -4758161677479520661
+    second: Minion_2_0_GlitchSlime_Death_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15fc32748ac1b2160800000000000000
+      internalID: 7001721554751180625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e290c00156b8e7a20800000000000000
+      internalID: 3062038062835697966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c22520d68dcc95e90800000000000000
+      internalID: -7036367712875818452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8fa26c86e18ad410800000000000000
+      internalID: 1502656252879220620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318c1872272959d60800000000000000
+      internalID: 7896378540650776595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7774ec7ffa7442130800000000000000
+      internalID: 3541034028122392439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9da20317d78ac90800000000000000
+      internalID: -7158333682612512323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c930e8d5334f1620800000000000000
+      internalID: 2746988196270193089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec96e11eae6940a30800000000000000
+      internalID: 4180632289650043342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 429edae0fcfbf6290800000000000000
+      internalID: -7894880725731776220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 928b0e36d56294730800000000000000
+      internalID: 3983757527935399977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a5fbd8452a3a9530800000000000000
+      internalID: 3862463562234197415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1c3b749bd4db7d0800000000000000
+      internalID: -2901077126789479974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20f46f235d264a750800000000000000
+      internalID: 6315281245302836994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d6d87e0fc826dc0800000000000000
+      internalID: -3647197781911835301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32e29cdcf589ea90800000000000000
+      internalID: -7284143601216200131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea2a4f1f172d21b0800000000000000
+      internalID: -5679840540421903643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 211f2fad76c49c0e0800000000000000
+      internalID: -2249182529956155118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63bbc66d5f2fc5ea0800000000000000
+      internalID: -5882559875574351050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf5b5af9673fb1d0800000000000000
+      internalID: -3332884270919491669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4334ef31a9ac4d30800000000000000
+      internalID: 4417091844570362701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68877cdb110c73450800000000000000
+      internalID: 6068530205335976070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c114985adec4a6e0800000000000000
+      internalID: -1827108111621287488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d04513968282b100800000000000000
+      internalID: 122303654397296848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e40a6f40ac114cc0800000000000000
+      internalID: -3728667541633366815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efa9e52e0f7cc4aa0800000000000000
+      internalID: -6175341151627863298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c42a054e3143d0990800000000000000
+      internalID: -7418215751169826228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de2b4a4bcea084630800000000000000
+      internalID: 3911388288130527981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1af58db362e34000800000000000000
+      internalID: 19107741448927773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0cf1dd944205e830800000000000000
+      internalID: 4099685529519520782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275c19f4ceee07ca0800000000000000
+      internalID: -6021050003079707278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38c5fa944cf04bd0800000000000000
+      internalID: -2647839209306077126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c6f257b336b0fd20800000000000000
+      internalID: 3310346059352569536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f670ad87a4a2c7130800000000000000
+      internalID: 3565771504314091375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a0f84d0a342123a0800000000000000
+      internalID: -6692027739546259289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 944e02d04240d0360800000000000000
+      internalID: 7137365537337697353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82293d3ef92dda180800000000000000
+      internalID: -9102387687681977816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64cc55fb3c38c340800000000000000
+      internalID: 4884220024100537450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6511ada310d9e760800000000000000
+      internalID: 7487744638416131436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 427e2ac81934f9ae0800000000000000
+      internalID: -1540438255128615132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 421bbd7461a1abe90800000000000000
+      internalID: -7009261187051572956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec1f873294415c50800000000000000
+      internalID: 6652173519390973164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae556afc7256cd670800000000000000
+      internalID: 8564831813013755370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f80b5fc5279a8db90800000000000000
+      internalID: -7216832094210248561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32db17cd853a89780800000000000000
+      internalID: -8676005080078369501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9afc40f1e6f47d890800000000000000
+      internalID: -7433385325566308439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd3a89567efce3ff0800000000000000
+      internalID: -54377552732970021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f073569137ce2330800000000000000
+      internalID: 3688104160652390640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Death_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66d4f50a2d97fdb0800000000000000
+      internalID: -4758161677479520661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 76a1224637953944da025a55bac99c99
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_2_0_GlitchSlime_Death_0: 7001721554751180625
+      Minion_2_0_GlitchSlime_Death_1: 3062038062835697966
+      Minion_2_0_GlitchSlime_Death_10: 3983757527935399977
+      Minion_2_0_GlitchSlime_Death_11: 3862463562234197415
+      Minion_2_0_GlitchSlime_Death_12: -2901077126789479974
+      Minion_2_0_GlitchSlime_Death_13: 6315281245302836994
+      Minion_2_0_GlitchSlime_Death_14: -3647197781911835301
+      Minion_2_0_GlitchSlime_Death_15: -7284143601216200131
+      Minion_2_0_GlitchSlime_Death_16: -5679840540421903643
+      Minion_2_0_GlitchSlime_Death_17: -2249182529956155118
+      Minion_2_0_GlitchSlime_Death_18: -5882559875574351050
+      Minion_2_0_GlitchSlime_Death_19: -3332884270919491669
+      Minion_2_0_GlitchSlime_Death_2: -7036367712875818452
+      Minion_2_0_GlitchSlime_Death_20: 4417091844570362701
+      Minion_2_0_GlitchSlime_Death_21: 6068530205335976070
+      Minion_2_0_GlitchSlime_Death_22: -1827108111621287488
+      Minion_2_0_GlitchSlime_Death_23: 122303654397296848
+      Minion_2_0_GlitchSlime_Death_24: -3728667541633366815
+      Minion_2_0_GlitchSlime_Death_25: -6175341151627863298
+      Minion_2_0_GlitchSlime_Death_26: -7418215751169826228
+      Minion_2_0_GlitchSlime_Death_27: 3911388288130527981
+      Minion_2_0_GlitchSlime_Death_28: 19107741448927773
+      Minion_2_0_GlitchSlime_Death_29: 4099685529519520782
+      Minion_2_0_GlitchSlime_Death_3: 1502656252879220620
+      Minion_2_0_GlitchSlime_Death_30: -6021050003079707278
+      Minion_2_0_GlitchSlime_Death_31: -2647839209306077126
+      Minion_2_0_GlitchSlime_Death_32: 3310346059352569536
+      Minion_2_0_GlitchSlime_Death_33: 3565771504314091375
+      Minion_2_0_GlitchSlime_Death_34: -6692027739546259289
+      Minion_2_0_GlitchSlime_Death_35: 7137365537337697353
+      Minion_2_0_GlitchSlime_Death_36: -9102387687681977816
+      Minion_2_0_GlitchSlime_Death_37: 4884220024100537450
+      Minion_2_0_GlitchSlime_Death_38: 7487744638416131436
+      Minion_2_0_GlitchSlime_Death_39: -1540438255128615132
+      Minion_2_0_GlitchSlime_Death_4: 7896378540650776595
+      Minion_2_0_GlitchSlime_Death_40: -7009261187051572956
+      Minion_2_0_GlitchSlime_Death_41: 6652173519390973164
+      Minion_2_0_GlitchSlime_Death_42: 8564831813013755370
+      Minion_2_0_GlitchSlime_Death_43: -7216832094210248561
+      Minion_2_0_GlitchSlime_Death_44: -8676005080078369501
+      Minion_2_0_GlitchSlime_Death_45: -7433385325566308439
+      Minion_2_0_GlitchSlime_Death_46: -54377552732970021
+      Minion_2_0_GlitchSlime_Death_47: 3688104160652390640
+      Minion_2_0_GlitchSlime_Death_48: -4758161677479520661
+      Minion_2_0_GlitchSlime_Death_5: 3541034028122392439
+      Minion_2_0_GlitchSlime_Death_6: -7158333682612512323
+      Minion_2_0_GlitchSlime_Death_7: 2746988196270193089
+      Minion_2_0_GlitchSlime_Death_8: 4180632289650043342
+      Minion_2_0_GlitchSlime_Death_9: -7894880725731776220
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

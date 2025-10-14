@@ -4,9 +4,9 @@ using System.Collections;
 using UnityEngine;
 
 // Stomper不会对角线移动
-public class Boss_1_0_PhantomTankAI : CharacterBaseAI
+public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
 {
-    public Boss_1_0_PhantomTankAI(GameObject character) : base(character)
+    public Minion_2_0_GlitchSlimeAI(GameObject character) : base(character)
     {
     }
 
@@ -16,7 +16,6 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (isAttacking) return;
             UpdateAggroTarget();
             UpdateMoveInput();
             UpdateAttackInput();
@@ -24,7 +23,36 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     }
     #endregion
 
-    // 不造成碰撞伤害
+    #region Collision
+    // 史莱姆只造成接触伤害
+    private float nextDamageTime = 0;
+    public override void OnCollisionEnter(Collision2D collision)
+    {
+        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        {
+            if (!collision.gameObject.CompareTag(Constants.TagPlayer))
+            {
+                // Debug.Log($"fhhtest, {character.name} collided with {collision.gameObject.name}, bounce back");
+                // characterInput.MoveInput.x = -characterInput.MoveInput.x;
+                // characterInput.MoveInput.y = -characterInput.MoveInput.y;
+            }
+            else
+            {
+                if (Time.time > nextDamageTime)
+                {
+                    var status = collision.gameObject.GetComponent<CharacterStatus>();
+                    status.TakeDamage_Host(CharacterData.Damage, null);
+                    nextDamageTime = Time.time + 1f / CharacterData.AttackFrequency;
+                }
+            }
+        }
+    }
+
+    public override void OnCollisionStay(Collision2D collision)
+    {
+        OnCollisionEnter(collision);
+    }
+    #endregion
 
     #region Aggro
     private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
@@ -91,7 +119,6 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
         var diff = AggroTarget.transform.position - character.transform.position;
         var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
         Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
         Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
@@ -99,21 +126,13 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         // 在同一间房间，直接追击
         if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
         {
-            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            if (diff.sqrMagnitude > sqrShootRange)
+            // 有仇恨目标时，朝仇恨目标移动
+            if (Mathf.Abs(diffNormalized.x) > 0.1f)
             {
-                if (Mathf.Abs(diffNormalized.x) > 0.1f)
-                {
-                    if (!XNearWall())
-                        diffNormalized.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
-                }
-                characterInput.MoveInput = diffNormalized.normalized;
+                if (!YNearWall())
+                    diffNormalized.y *= 10; // 优先竖着走，再横着着走，避免横竖快速跳转
             }
-            else // 进入攻击范围
-            {
-                // 在攻击距离内左右横跳拉扯
-                characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
-            }
+            characterInput.MoveInput = diffNormalized.normalized;
         }
         else
         {
@@ -131,47 +150,18 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     #endregion
 
     #region Attack
-    private float nextJudgeAtkTime = 0;
+    // 史莱姆只造成接触伤害
     private void UpdateAttackInput()
     {
-        if (AggroTarget != null)
-        {
-            var diff = AggroTarget.transform.position - character.transform.position;
-            var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
-            {
-                if (Time.time >= nextJudgeAtkTime)
-                {
-                    nextJudgeAtkTime = Time.time + 1f;
-                    characterInput.MoveInput = Vector2.zero;
-                    characterInput.LookInput = diff.normalized;
-                    isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                    return;
-                }
-            }
-        }
-        characterInput.LookInput = Vector2.zero;
-    }
 
-    private bool isAttacking = false; // 攻击时无法移动
-    private Coroutine atkCoroutine = null;
-    protected override void AttackAction()
-    {
-        if (atkCoroutine != null) return;
-        ref Vector2 lookInput = ref characterInput.LookInput;
-        if (lookInput.sqrMagnitude < 0.1f) { isAttacking = false; return; }
-        NormalizeLookInput(ref lookInput);
-        atkCoroutine = GameManager.Instance.StartCoroutine(Attack_PhantomTank());
     }
-    private IEnumerator Attack_PhantomTank()
+    #endregion
+    
+    #region OnDeath
+    public override float OnDeath()
     {
-        // 需要AtkFreq时间站定
-        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
-        // 调用父类方法
-        base.AttackAction();
-        isAttacking = false;
-        atkCoroutine = null;
+        animator.SetTrigger("Death");
+        return 2f;
     }
     #endregion
 }

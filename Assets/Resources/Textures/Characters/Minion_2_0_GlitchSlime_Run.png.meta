@@ -1,0 +1,1393 @@
+fileFormatVersion: 2
+guid: 82b165c4835ccfd43ba665baff3b9ae9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9121682239474338983
+    second: Minion_2_0_GlitchSlime_Run_0
+  - first:
+      213: 5763157948176530266
+    second: Minion_2_0_GlitchSlime_Run_1
+  - first:
+      213: -1807214957640723827
+    second: Minion_2_0_GlitchSlime_Run_2
+  - first:
+      213: 9190094325362592800
+    second: Minion_2_0_GlitchSlime_Run_3
+  - first:
+      213: -6103155096764170496
+    second: Minion_2_0_GlitchSlime_Run_4
+  - first:
+      213: -7256051799732427417
+    second: Minion_2_0_GlitchSlime_Run_5
+  - first:
+      213: 8507059068163911630
+    second: Minion_2_0_GlitchSlime_Run_6
+  - first:
+      213: 3064328143808250629
+    second: Minion_2_0_GlitchSlime_Run_7
+  - first:
+      213: -1050199356735720168
+    second: Minion_2_0_GlitchSlime_Run_8
+  - first:
+      213: -5984292733503457718
+    second: Minion_2_0_GlitchSlime_Run_9
+  - first:
+      213: -6034575977013934948
+    second: Minion_2_0_GlitchSlime_Run_10
+  - first:
+      213: 8731370161942800594
+    second: Minion_2_0_GlitchSlime_Run_11
+  - first:
+      213: 5622232633738573550
+    second: Minion_2_0_GlitchSlime_Run_12
+  - first:
+      213: -2689599216656225145
+    second: Minion_2_0_GlitchSlime_Run_13
+  - first:
+      213: 85356791382379711
+    second: Minion_2_0_GlitchSlime_Run_14
+  - first:
+      213: 1245567465902552631
+    second: Minion_2_0_GlitchSlime_Run_15
+  - first:
+      213: 5781391123892713946
+    second: Minion_2_0_GlitchSlime_Run_16
+  - first:
+      213: 1279834356412637150
+    second: Minion_2_0_GlitchSlime_Run_17
+  - first:
+      213: -3077903828966115788
+    second: Minion_2_0_GlitchSlime_Run_18
+  - first:
+      213: 2880552356142008615
+    second: Minion_2_0_GlitchSlime_Run_19
+  - first:
+      213: -4758197711886081771
+    second: Minion_2_0_GlitchSlime_Run_20
+  - first:
+      213: -6113489277052360996
+    second: Minion_2_0_GlitchSlime_Run_21
+  - first:
+      213: 3598926131815901484
+    second: Minion_2_0_GlitchSlime_Run_22
+  - first:
+      213: -1469648284364909183
+    second: Minion_2_0_GlitchSlime_Run_23
+  - first:
+      213: 5770645930557799673
+    second: Minion_2_0_GlitchSlime_Run_24
+  - first:
+      213: -5921636555437844427
+    second: Minion_2_0_GlitchSlime_Run_25
+  - first:
+      213: -7633763000836524631
+    second: Minion_2_0_GlitchSlime_Run_26
+  - first:
+      213: -281215880316429349
+    second: Minion_2_0_GlitchSlime_Run_27
+  - first:
+      213: 1474744830678667726
+    second: Minion_2_0_GlitchSlime_Run_28
+  - first:
+      213: -5937474845889221406
+    second: Minion_2_0_GlitchSlime_Run_29
+  - first:
+      213: -3321923004430690356
+    second: Minion_2_0_GlitchSlime_Run_30
+  - first:
+      213: -3104935472633094859
+    second: Minion_2_0_GlitchSlime_Run_31
+  - first:
+      213: 1200299952226840978
+    second: Minion_2_0_GlitchSlime_Run_32
+  - first:
+      213: -3481345045547469166
+    second: Minion_2_0_GlitchSlime_Run_33
+  - first:
+      213: 5207530862381600488
+    second: Minion_2_0_GlitchSlime_Run_34
+  - first:
+      213: 5897730369534626463
+    second: Minion_2_0_GlitchSlime_Run_35
+  - first:
+      213: 5221490999252255055
+    second: Minion_2_0_GlitchSlime_Run_36
+  - first:
+      213: -418471754561296199
+    second: Minion_2_0_GlitchSlime_Run_37
+  - first:
+      213: 6164454943449207428
+    second: Minion_2_0_GlitchSlime_Run_38
+  - first:
+      213: 6268353724481740016
+    second: Minion_2_0_GlitchSlime_Run_39
+  - first:
+      213: 1956549957228332147
+    second: Minion_2_0_GlitchSlime_Run_40
+  - first:
+      213: 6799469430802665618
+    second: Minion_2_0_GlitchSlime_Run_41
+  - first:
+      213: 1950641322159806485
+    second: Minion_2_0_GlitchSlime_Run_42
+  - first:
+      213: -2989695039859696928
+    second: Minion_2_0_GlitchSlime_Run_43
+  - first:
+      213: 621038568733966097
+    second: Minion_2_0_GlitchSlime_Run_44
+  - first:
+      213: 7456245670430736383
+    second: Minion_2_0_GlitchSlime_Run_45
+  - first:
+      213: 5692121320324752268
+    second: Minion_2_0_GlitchSlime_Run_46
+  - first:
+      213: -5490110677470977916
+    second: Minion_2_0_GlitchSlime_Run_47
+  - first:
+      213: -8159418987396535594
+    second: Minion_2_0_GlitchSlime_Run_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 953742af456496180800000000000000
+      internalID: -9121682239474338983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5bf78d8e99daff40800000000000000
+      internalID: 5763157948176530266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d825d01329b7be6e0800000000000000
+      internalID: -1807214957640723827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c02930916c98f70800000000000000
+      internalID: 9190094325362592800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00fb14086cc3d4ba0800000000000000
+      internalID: -6103155096764170496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7656d1515535d4b90800000000000000
+      internalID: -7256051799732427417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecfec2176252f0670800000000000000
+      internalID: 8507059068163911630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5034ce6163ea68a20800000000000000
+      internalID: 3064328143808250629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8157c6ecf31fc61f0800000000000000
+      internalID: -1050199356735720168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46339b077583fca0800000000000000
+      internalID: -5984292733503457718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c948af71f11e04ca0800000000000000
+      internalID: -6034575977013934948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d8ab09c6ee0c2970800000000000000
+      internalID: 8731370161942800594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee6b892eace260e40800000000000000
+      internalID: 5622232633738573550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c690733cf9caad0800000000000000
+      internalID: -2689599216656225145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbc838dac8f3f2100800000000000000
+      internalID: 85356791382379711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736b7ecc205294110800000000000000
+      internalID: 1245567465902552631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9b8379890ab3050800000000000000
+      internalID: 5781391123892713946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edfd059f092e2c110800000000000000
+      internalID: 1279834356412637150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 436f8a566c61945d0800000000000000
+      internalID: -3077903828966115788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72942c82b17c9f720800000000000000
+      internalID: 2880552356142008615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51124fb146c77fdb0800000000000000
+      internalID: -4758197711886081771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd66227a4e5882ba0800000000000000
+      internalID: -6113489277052360996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c29e1cbbf34f1f130800000000000000
+      internalID: 3598926131815901484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185daa10ca2ca9be0800000000000000
+      internalID: -1469648284364909183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fc737f46e3751050800000000000000
+      internalID: 5770645930557799673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538d8205dee12dda0800000000000000
+      internalID: -5921636555437844427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a57e930ffc6f0690800000000000000
+      internalID: -7633763000836524631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb5a8495abe81cf0800000000000000
+      internalID: -281215880316429349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec112f62c98577410800000000000000
+      internalID: 1474744830678667726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eca4f3f51ad99da0800000000000000
+      internalID: -5937474845889221406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc7d5b5b0a826e1d0800000000000000
+      internalID: -3321923004430690356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53dd13763ad09e4d0800000000000000
+      internalID: -3104935472633094859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2913664727258a010800000000000000
+      internalID: 1200299952226840978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 296b3934027cfafc0800000000000000
+      internalID: -3481345045547469166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee83298abdd44840800000000000000
+      internalID: 5207530862381600488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a05290682f8d150800000000000000
+      internalID: 5897730369534626463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4184503666767840800000000000000
+      internalID: 5221490999252255055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8e6d8082a413af0800000000000000
+      internalID: -418471754561296199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482d0324c1b8c8550800000000000000
+      internalID: 6164454943449207428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc1b32508aadf650800000000000000
+      internalID: 6268353724481740016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37486e1e1df072b10800000000000000
+      internalID: 1956549957228332147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290de141c619c5e50800000000000000
+      internalID: 6799469430802665618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518988392f1121b10800000000000000
+      internalID: 1950641322159806485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea5a6a83387286d0800000000000000
+      internalID: -2989695039859696928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f7431b94f5e9800800000000000000
+      internalID: 621038568733966097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fff7110bee7e97760800000000000000
+      internalID: 7456245670430736383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c836264ce2a7efe40800000000000000
+      internalID: 5692121320324752268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48063cb3d653fc3b0800000000000000
+      internalID: -5490110677470977916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_0_GlitchSlime_Run_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dae6a259abe3ce80800000000000000
+      internalID: -8159418987396535594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 35bd2ba06af8e104690cd6837badccb7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_2_0_GlitchSlime_Run_0: -9121682239474338983
+      Minion_2_0_GlitchSlime_Run_1: 5763157948176530266
+      Minion_2_0_GlitchSlime_Run_10: -6034575977013934948
+      Minion_2_0_GlitchSlime_Run_11: 8731370161942800594
+      Minion_2_0_GlitchSlime_Run_12: 5622232633738573550
+      Minion_2_0_GlitchSlime_Run_13: -2689599216656225145
+      Minion_2_0_GlitchSlime_Run_14: 85356791382379711
+      Minion_2_0_GlitchSlime_Run_15: 1245567465902552631
+      Minion_2_0_GlitchSlime_Run_16: 5781391123892713946
+      Minion_2_0_GlitchSlime_Run_17: 1279834356412637150
+      Minion_2_0_GlitchSlime_Run_18: -3077903828966115788
+      Minion_2_0_GlitchSlime_Run_19: 2880552356142008615
+      Minion_2_0_GlitchSlime_Run_2: -1807214957640723827
+      Minion_2_0_GlitchSlime_Run_20: -4758197711886081771
+      Minion_2_0_GlitchSlime_Run_21: -6113489277052360996
+      Minion_2_0_GlitchSlime_Run_22: 3598926131815901484
+      Minion_2_0_GlitchSlime_Run_23: -1469648284364909183
+      Minion_2_0_GlitchSlime_Run_24: 5770645930557799673
+      Minion_2_0_GlitchSlime_Run_25: -5921636555437844427
+      Minion_2_0_GlitchSlime_Run_26: -7633763000836524631
+      Minion_2_0_GlitchSlime_Run_27: -281215880316429349
+      Minion_2_0_GlitchSlime_Run_28: 1474744830678667726
+      Minion_2_0_GlitchSlime_Run_29: -5937474845889221406
+      Minion_2_0_GlitchSlime_Run_3: 9190094325362592800
+      Minion_2_0_GlitchSlime_Run_30: -3321923004430690356
+      Minion_2_0_GlitchSlime_Run_31: -3104935472633094859
+      Minion_2_0_GlitchSlime_Run_32: 1200299952226840978
+      Minion_2_0_GlitchSlime_Run_33: -3481345045547469166
+      Minion_2_0_GlitchSlime_Run_34: 5207530862381600488
+      Minion_2_0_GlitchSlime_Run_35: 5897730369534626463
+      Minion_2_0_GlitchSlime_Run_36: 5221490999252255055
+      Minion_2_0_GlitchSlime_Run_37: -418471754561296199
+      Minion_2_0_GlitchSlime_Run_38: 6164454943449207428
+      Minion_2_0_GlitchSlime_Run_39: 6268353724481740016
+      Minion_2_0_GlitchSlime_Run_4: -6103155096764170496
+      Minion_2_0_GlitchSlime_Run_40: 1956549957228332147
+      Minion_2_0_GlitchSlime_Run_41: 6799469430802665618
+      Minion_2_0_GlitchSlime_Run_42: 1950641322159806485
+      Minion_2_0_GlitchSlime_Run_43: -2989695039859696928
+      Minion_2_0_GlitchSlime_Run_44: 621038568733966097
+      Minion_2_0_GlitchSlime_Run_45: 7456245670430736383
+      Minion_2_0_GlitchSlime_Run_46: 5692121320324752268
+      Minion_2_0_GlitchSlime_Run_47: -5490110677470977916
+      Minion_2_0_GlitchSlime_Run_48: -8159418987396535594
+      Minion_2_0_GlitchSlime_Run_5: -7256051799732427417
+      Minion_2_0_GlitchSlime_Run_6: 8507059068163911630
+      Minion_2_0_GlitchSlime_Run_7: 3064328143808250629
+      Minion_2_0_GlitchSlime_Run_8: -1050199356735720168
+      Minion_2_0_GlitchSlime_Run_9: -5984292733503457718
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

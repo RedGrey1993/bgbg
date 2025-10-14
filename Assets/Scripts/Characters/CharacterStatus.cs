@@ -22,11 +22,15 @@ public class CharacterStatus : MonoBehaviour
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
 
+    private CharacterInput characterInput;
+    public ICharacterAI CharacterAI => characterInput.CharacterAI;
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
 
     void Awake()
     {
+        characterInput = GetComponent<CharacterInput>();
+
         State.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
         State.PlayerName = "DefaultName";
         State.MaxHp = characterData.MaxHp;
@@ -187,7 +191,15 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // 尸体销毁
-        Destroy(gameObject, 2f);
+        if (CharacterAI != null)
+        {
+            float length = CharacterAI.OnDeath();
+            Destroy(gameObject, length);
+        }
+        else
+        {
+            Destroy(gameObject, 2f);
+        }
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {

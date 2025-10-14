@@ -41,6 +41,7 @@ public enum CharacterType
     // Elite 精英
     // Boss
     Boss_1_0_PhantomTank,
+    Minion_2_0_GlitchSlime,
 }
 
 public enum GameState

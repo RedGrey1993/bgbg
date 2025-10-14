@@ -24,9 +24,7 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
     }
     #endregion
 
-    #region Collision
     // 爆破小子(BusterBot)不造成碰撞伤害
-    #endregion
 
     #region Aggro
     private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标

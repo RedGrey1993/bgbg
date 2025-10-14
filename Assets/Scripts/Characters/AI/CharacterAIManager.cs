@@ -24,6 +24,8 @@ public static class CharacterAIManager
                 return new Minion_1_1_BusterBotAI(character);
             case CharacterType.Boss_1_0_PhantomTank:
                 return new Boss_1_0_PhantomTankAI(character);
+            case CharacterType.Minion_2_0_GlitchSlime:
+                return new Minion_2_0_GlitchSlimeAI(character);
             default:
                 Debug.LogWarning($"[CharacterAIManager] No AI for character type: {characterStatus.characterData.CharacterType}");
                 return null;
