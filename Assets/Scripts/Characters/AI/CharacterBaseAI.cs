@@ -162,7 +162,9 @@ public abstract class CharacterBaseAI : ICharacterAI
         bulletStartPosition += bulletOffset;
 
         // Instantiate the bullet
-        GameObject bullet = UnityEngine.Object.Instantiate(CharacterData.bulletPrefab, bulletStartPosition, Quaternion.identity);
+        GameObject bullet = Object.Instantiate(CharacterData.bulletPrefab, bulletStartPosition, Quaternion.identity);
+        Transform childTransform = character.transform.GetChild(0);
+        bullet.transform.localRotation = childTransform.localRotation;
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript)
         {
@@ -186,7 +188,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         if (lookInput.sqrMagnitude >= 0.1f)
         {
             // 优先将角色面朝射击方向，优先级高于移动方向
-            if (skinnedMeshRenderer != null)
+            if (skinnedMeshRenderer != null || CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
                 Transform childTransform = character.transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
@@ -199,7 +201,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         else if (moveInput.sqrMagnitude >= 0.1f)
         {
             // 将角色面朝移动方向
-            if (skinnedMeshRenderer != null)
+            if (skinnedMeshRenderer != null || CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
                 Transform childTransform = character.transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);

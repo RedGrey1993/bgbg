@@ -46,8 +46,8 @@ public class CharacterManager : MonoBehaviour
     {
         IdGenerator.SetNextCharacterId((int)System.Math.Max(1, storage.NextCharacterId));
         CreatePlayerObjects(storage);
-        CreateMinionObjects(storage);
         CreateBossObjects(storage);
+        CreateMinionObjects(storage);
     }
 
     public void ClearCharacterObjects()
@@ -123,6 +123,9 @@ public class CharacterManager : MonoBehaviour
             }
             foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
             {
+                if (LevelManager.Instance.BossRooms.Contains(roomIdx))
+                    continue;
+                    
                 var room = LevelManager.Instance.Rooms[roomIdx];
                 // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
                 int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
@@ -169,6 +172,7 @@ public class CharacterManager : MonoBehaviour
                 var bossPrefab = levelData.bossPrefabs[prefabIdx];
 
                 var boss = Instantiate(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), Quaternion.identity);
+                boss.transform.localScale = new Vector2(3f, 3f);
                 LevelManager.Instance.AddToBossRooms(boss.transform.position);
 
                 uint bossId = bs.PlayerId;
@@ -192,6 +196,7 @@ public class CharacterManager : MonoBehaviour
             GenerateBossPosition(roomIdx, out var spawnPosition);
 
             var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+            boss.transform.localScale = new Vector2(3f, 3f);
             LevelManager.Instance.AddToBossRooms(boss.transform.position);
 
             uint bossId = IdGenerator.NextCharacterId();

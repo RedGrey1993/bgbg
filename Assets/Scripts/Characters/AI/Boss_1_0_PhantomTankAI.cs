@@ -16,45 +16,16 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
+            if (isAttacking) return;
             UpdateAggroTarget();
             UpdateMoveInput();
             UpdateAttackInput();
         }
     }
+    #endregion
 
-    public override void OnCollisionEnter(Collision2D collision)
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            // if (collision.gameObject.CompareTag(Constants.TagWall) || collision.gameObject.CompareTag(Constants.TagEnemy))
-            // {
-            Debug.Log($"fhhtest, {character.name} collided with {collision.gameObject.name}, bounce back");
-            if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
-            {
-                // 对角线方向，随机翻转水平或垂直方向
-                if (Random.value < 0.5f)
-                {
-                    characterInput.MoveInput.x = -characterInput.MoveInput.x;
-                    characterInput.MoveInput.y = 0;
-                }
-                else
-                {
-                    characterInput.MoveInput.x = 0;
-                    characterInput.MoveInput.y = -characterInput.MoveInput.y;
-                }
-            }
-            else if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f)
-            {
-                characterInput.MoveInput.x = -characterInput.MoveInput.x;
-            }
-            else if (Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
-            {
-                characterInput.MoveInput.y = -characterInput.MoveInput.y;
-            }
-            // }
-        }
-    }
-
+    #region Collision
+    // 爆破小子(BusterBot)不造成碰撞伤害
     #endregion
 
     #region Aggro
@@ -65,24 +36,27 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
             AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            // Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
 
     #region Move
     private float nextMoveInputChangeTime = 0;
-    private float randomMoveInputInterval = 0;
+    private Vector3 targetPos = Vector3.zero;
     private void UpdateMoveInput()
     {
         if (Time.time > nextMoveInputChangeTime)
         {
             if (AggroTarget == null)
             {
-                Move_RandomMove(false);
-                // 每隔随机时间改变一次随机输入
-                randomMoveInputInterval = Random.Range(CharacterData.minRandomMoveInputInterval, CharacterData.maxRandomMoveInputInterval);
-                nextMoveInputChangeTime = Time.time + randomMoveInputInterval;
+                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+                {
+                    var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+                    var collider2D = character.GetComponent<Collider2D>();
+                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
+                }
+                Move_RandomMoveToTarget(targetPos);
             }
             else
             {
@@ -99,11 +73,11 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
-        bool XNearWall() => posXMod < nearWallLowPos || posXMod > nearWallHighPos;
-        bool YNearWall() => posYMod < nearWallLowPos || posYMod > nearWallHighPos;
-        bool NearWall()
+        bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
+        bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
+        bool NearWall(float d = 0)
         {
-            return XNearWall() || YNearWall();
+            return XNearWall(d) || YNearWall(d);
         }
 
         // 在墙壁边缘时，需要尽快改变追击路线，避免来回横跳
@@ -118,6 +92,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
 
         var diff = AggroTarget.transform.position - character.transform.position;
+        var diffNormalized = diff.normalized;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
         Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
@@ -126,63 +101,79 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         // 在同一间房间，直接追击
         if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
         {
-            // 优先穿过门，不管是否在攻击范围内，即在墙边时先快速远离墙
-            if (XNearWall())
-            {
-                characterInput.MoveInput = new Vector2(posXMod < nearWallLowPos ? 1 : -1, 0);
-            }
-            else if (YNearWall())
-            {
-                characterInput.MoveInput = new Vector2(0, posYMod < nearWallLowPos ? 1 : -1);
-            }
             // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            else if (diff.sqrMagnitude > sqrShootRange)
+            if (diff.sqrMagnitude > sqrShootRange)
             {
-                characterInput.MoveInput = (AggroTarget.transform.position - character.transform.position).normalized;
+                if (Mathf.Abs(diffNormalized.x) > 0.1f)
+                {
+                    if (!XNearWall())
+                        diffNormalized.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
+                }
+                characterInput.MoveInput = diffNormalized.normalized;
             }
             else // 进入攻击范围
             {
+                // 在攻击距离内左右横跳拉扯
                 characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
             }
         }
         else
         {
             // 在不同房间，随机移动
-            Move_RandomMove(false);
+            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+            {
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+                var collider2D = character.GetComponent<Collider2D>();
+                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
+            }
+            Move_RandomMoveToTarget(targetPos);
             AggroTarget = null; // 取消仇恨，等待下次重新搜索
         }
     }
     #endregion
 
     #region Attack
+    private float nextJudgeAtkTime = 0;
     private void UpdateAttackInput()
     {
         if (AggroTarget != null)
         {
             var diff = AggroTarget.transform.position - character.transform.position;
             var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
-            // 延迟2s后攻击，降低难度
+            // 进入攻击距离，攻击，只会水平/垂直攻击
             if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
             {
-                // characterInput.LookInput = diff;
-                GameManager.Instance.StartCoroutine(DelaySetAtkInput(diff, 2f));
-            }
-            else
-            {
-                // characterInput.LookInput = Vector2.zero;
-                GameManager.Instance.StartCoroutine(DelaySetAtkInput(Vector2.zero, 2f));
+                if (Time.time >= nextJudgeAtkTime)
+                {
+                    nextJudgeAtkTime = Time.time + 1f;
+                    characterInput.MoveInput = Vector2.zero;
+                    characterInput.LookInput = diff.normalized;
+                    isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+                    return;
+                }
             }
         }
+        characterInput.LookInput = Vector2.zero;
     }
-    private IEnumerator DelaySetAtkInput(Vector2 input, float delay)
+
+    private bool isAttacking = false; // 攻击时无法移动
+    private Coroutine atkCoroutine = null;
+    protected override void AttackAction()
     {
-        while (delay > 0)
-        {
-            delay -= Time.deltaTime;
-            yield return null;
-        }
-        characterInput.LookInput = input;
+        if (atkCoroutine != null) return;
+        ref Vector2 lookInput = ref characterInput.LookInput;
+        if (lookInput.sqrMagnitude < 0.1f) { isAttacking = false; return; }
+        NormalizeLookInput(ref lookInput);
+        atkCoroutine = GameManager.Instance.StartCoroutine(Attack_PhantomTank());
+    }
+    private IEnumerator Attack_PhantomTank()
+    {
+        // 需要AtkFreq时间站定
+        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
+        // 调用父类方法
+        base.AttackAction();
+        isAttacking = false;
+        atkCoroutine = null;
     }
     #endregion
 }
