@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CharacterInput : MonoBehaviour
 {
-    public Vector2 MoveInput;
-    public Vector2 LookInput;
+    public Vector2 MoveInput = Vector2.zero;
+    public Vector2 LookInput = Vector2.zero;
 
     private CharacterStatus characterStatus;
     public CharacterData CharacterData => characterStatus.characterData;
@@ -32,6 +32,11 @@ public class CharacterInput : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        CharacterAI?.OnCollision(collision);
+        CharacterAI?.OnCollisionEnter(collision);
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        CharacterAI?.OnCollisionStay(collision);
     }
 }

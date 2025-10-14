@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PermaTriggerJrExecutor", menuName = "Skills/Effects/Perma Trigger Jr")]
 public class PermaTriggerJrExecutor : SkillExecutor
 {
-    public uint changeFireRate = 100; // 增加射击频率的参数
+    public float changeFireRate = 100; // 增加射击频率的参数
     public AttrChangeType changeType = AttrChangeType.Relative; // 增加方式，绝对值或相对值(百分比)
 
     public override void ExecuteSkill(GameObject playerObj, SkillData skillData)
@@ -19,12 +19,12 @@ public class PermaTriggerJrExecutor : SkillExecutor
             {
                 case AttrChangeType.Absolute:
                     {
-                        playerState.ShootFrequency += changeFireRate;
+                        playerState.AttackFrequency += changeFireRate;
                         break;
                     }
                 case AttrChangeType.Relative:
                     {
-                        playerState.ShootFrequency = (uint)(playerState.ShootFrequency * (1.0f + changeFireRate / 100.0f));
+                        playerState.AttackFrequency = (uint)(playerState.AttackFrequency * (1.0f + changeFireRate / 100.0f));
                         break;
                     }
             }

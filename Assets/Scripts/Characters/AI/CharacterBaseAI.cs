@@ -12,7 +12,7 @@ public abstract class CharacterBaseAI : ICharacterAI
     protected Animator animator;
     protected AudioSource audioSource;
     protected bool isAi = false;
-    protected float nextShootTime = 0f;
+    protected float nextAtkTime = 0f;
 
     protected CharacterBaseAI(GameObject character)
     {
@@ -59,6 +59,16 @@ public abstract class CharacterBaseAI : ICharacterAI
         }
     }
 
+    protected void Move_RandomMoveToTarget(Vector3 targetPos)
+    {
+        var diff = (targetPos - character.transform.position).normalized;
+        if (Mathf.Abs(diff.x) > 0.1f)
+        {
+            diff.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
+        }
+        characterInput.MoveInput = diff.normalized;
+    }
+
     protected void Move_ChaseNearestEnemy()
     {
 
@@ -91,7 +101,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         }
     }
 
-    private void NormalizeLookInput(ref Vector2 lookInput)
+    protected void NormalizeLookInput(ref Vector2 lookInput)
     {
         // Handle diagonal shooting setting
         if (!CharacterData.canAttackDiagonally)
@@ -127,19 +137,19 @@ public abstract class CharacterBaseAI : ICharacterAI
         rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
         animator?.SetFloat("Speed", rb.linearVelocity.magnitude);
     }
-
-    protected void AttackAction()
+    #region Attack
+    protected virtual void AttackAction()
     {
         ref Vector2 lookInput = ref characterInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) return;
-        if (Time.time < nextShootTime) return;
-        nextShootTime = Time.time + 1f / characterStatus.State.ShootFrequency;
+        if (Time.time < nextAtkTime) return;
+        nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
         if (CharacterData.shootSound)
         {
             var audioSrc = character.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.shootSound);
-            UnityEngine.Object.Destroy(audioSrc, CharacterData.shootSound.length);
+            Object.Destroy(audioSrc, CharacterData.shootSound.length);
         }
 
         NormalizeLookInput(ref lookInput);
@@ -165,23 +175,42 @@ public abstract class CharacterBaseAI : ICharacterAI
         // Set the bullet's velocity
         if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
     }
+    #endregion
+
+    #region LookTo
     protected void LookToAction()
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
+        var skinnedMeshRenderer = character.GetComponentInChildren<SkinnedMeshRenderer>();
         if (lookInput.sqrMagnitude >= 0.1f)
         {
-            // 优先将角色面朝射击方向，优先级高于MoveInput
-            Transform childTransform = character.transform.GetChild(0);
-            childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
+            // 优先将角色面朝射击方向，优先级高于移动方向
+            if (skinnedMeshRenderer != null)
+            {
+                Transform childTransform = character.transform.GetChild(0);
+                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
+            }
+            else
+            {
+
+            }
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
         {
-            // 优先将角色面朝移动方向
-            Transform childTransform = character.transform.GetChild(0);
-            childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+            // 将角色面朝移动方向
+            if (skinnedMeshRenderer != null)
+            {
+                Transform childTransform = character.transform.GetChild(0);
+                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+            }
+            else
+            {
+
+            }
         }
     }
+    #endregion
 
     #region ICharacterAI implementation
     public void Update()
@@ -214,6 +243,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         AttackAction();
         LookToAction();
     }
-    public abstract void OnCollision(Collision2D collision);
+    public virtual void OnCollisionEnter(Collision2D collision) { }
+    public virtual void OnCollisionStay(Collision2D collision) { }
     #endregion
 }

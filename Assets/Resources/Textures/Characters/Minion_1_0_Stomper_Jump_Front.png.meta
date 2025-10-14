@@ -1,0 +1,1913 @@
+fileFormatVersion: 2
+guid: a593c9513f56c8f42871388e20539768
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8652213273889645417
+    second: Minion_1_0_Stomper_Jump_Front_0
+  - first:
+      213: 1966210853972031820
+    second: Minion_1_0_Stomper_Jump_Front_1
+  - first:
+      213: -7041565873273022070
+    second: Minion_1_0_Stomper_Jump_Front_2
+  - first:
+      213: 2224615949171873650
+    second: Minion_1_0_Stomper_Jump_Front_3
+  - first:
+      213: 552343631036416928
+    second: Minion_1_0_Stomper_Jump_Front_4
+  - first:
+      213: 1186066572403523743
+    second: Minion_1_0_Stomper_Jump_Front_5
+  - first:
+      213: 1454855615182285843
+    second: Minion_1_0_Stomper_Jump_Front_6
+  - first:
+      213: -1792564730583793176
+    second: Minion_1_0_Stomper_Jump_Front_7
+  - first:
+      213: -5638171783071890742
+    second: Minion_1_0_Stomper_Jump_Front_8
+  - first:
+      213: 7342357052630440978
+    second: Minion_1_0_Stomper_Jump_Front_9
+  - first:
+      213: 845218934864366106
+    second: Minion_1_0_Stomper_Jump_Front_10
+  - first:
+      213: -5542477998852230050
+    second: Minion_1_0_Stomper_Jump_Front_11
+  - first:
+      213: 2730736730815152583
+    second: Minion_1_0_Stomper_Jump_Front_12
+  - first:
+      213: 3593480844182888714
+    second: Minion_1_0_Stomper_Jump_Front_13
+  - first:
+      213: -6277935065714672622
+    second: Minion_1_0_Stomper_Jump_Front_14
+  - first:
+      213: -9212815744229300168
+    second: Minion_1_0_Stomper_Jump_Front_15
+  - first:
+      213: 8938879550638550508
+    second: Minion_1_0_Stomper_Jump_Front_16
+  - first:
+      213: 8127287224318670081
+    second: Minion_1_0_Stomper_Jump_Front_17
+  - first:
+      213: 5118184082476459700
+    second: Minion_1_0_Stomper_Jump_Front_18
+  - first:
+      213: -2996930147038300779
+    second: Minion_1_0_Stomper_Jump_Front_19
+  - first:
+      213: 7162219198810052642
+    second: Minion_1_0_Stomper_Jump_Front_20
+  - first:
+      213: -7985211221327703895
+    second: Minion_1_0_Stomper_Jump_Front_21
+  - first:
+      213: 6414524763914350649
+    second: Minion_1_0_Stomper_Jump_Front_22
+  - first:
+      213: -8096138123610134263
+    second: Minion_1_0_Stomper_Jump_Front_23
+  - first:
+      213: -8722421037477193137
+    second: Minion_1_0_Stomper_Jump_Front_24
+  - first:
+      213: -1851506196744819624
+    second: Minion_1_0_Stomper_Jump_Front_25
+  - first:
+      213: -6094971378834533935
+    second: Minion_1_0_Stomper_Jump_Front_26
+  - first:
+      213: 5591629241825846416
+    second: Minion_1_0_Stomper_Jump_Front_27
+  - first:
+      213: 622365505323275672
+    second: Minion_1_0_Stomper_Jump_Front_28
+  - first:
+      213: -8562464504645348971
+    second: Minion_1_0_Stomper_Jump_Front_29
+  - first:
+      213: -6006616263408928825
+    second: Minion_1_0_Stomper_Jump_Front_30
+  - first:
+      213: -5427600434227258361
+    second: Minion_1_0_Stomper_Jump_Front_31
+  - first:
+      213: -5743225000574229307
+    second: Minion_1_0_Stomper_Jump_Front_32
+  - first:
+      213: 7479433363169932100
+    second: Minion_1_0_Stomper_Jump_Front_33
+  - first:
+      213: -7243097802147489411
+    second: Minion_1_0_Stomper_Jump_Front_34
+  - first:
+      213: 6063305988193174997
+    second: Minion_1_0_Stomper_Jump_Front_35
+  - first:
+      213: 6623291204197578669
+    second: Minion_1_0_Stomper_Jump_Front_36
+  - first:
+      213: 4271133159915862757
+    second: Minion_1_0_Stomper_Jump_Front_37
+  - first:
+      213: 5095521487650657088
+    second: Minion_1_0_Stomper_Jump_Front_38
+  - first:
+      213: 6896784287222899458
+    second: Minion_1_0_Stomper_Jump_Front_39
+  - first:
+      213: -2110390723367898404
+    second: Minion_1_0_Stomper_Jump_Front_40
+  - first:
+      213: 6396298031725548012
+    second: Minion_1_0_Stomper_Jump_Front_41
+  - first:
+      213: -3059703281263272685
+    second: Minion_1_0_Stomper_Jump_Front_42
+  - first:
+      213: -6899150128639627550
+    second: Minion_1_0_Stomper_Jump_Front_43
+  - first:
+      213: 6811228667107588301
+    second: Minion_1_0_Stomper_Jump_Front_44
+  - first:
+      213: -7310512091023149040
+    second: Minion_1_0_Stomper_Jump_Front_45
+  - first:
+      213: -8329721706538432416
+    second: Minion_1_0_Stomper_Jump_Front_46
+  - first:
+      213: -5501588242107358865
+    second: Minion_1_0_Stomper_Jump_Front_47
+  - first:
+      213: 7581786223309455093
+    second: Minion_1_0_Stomper_Jump_Front_48
+  - first:
+      213: 7923459050480140215
+    second: Minion_1_0_Stomper_Jump_Front_49
+  - first:
+      213: 2136518930045812762
+    second: Minion_1_0_Stomper_Jump_Front_50
+  - first:
+      213: 3655962494584853995
+    second: Minion_1_0_Stomper_Jump_Front_51
+  - first:
+      213: -6409758874845436660
+    second: Minion_1_0_Stomper_Jump_Front_52
+  - first:
+      213: -4991123398136524414
+    second: Minion_1_0_Stomper_Jump_Front_53
+  - first:
+      213: -70044091170333289
+    second: Minion_1_0_Stomper_Jump_Front_54
+  - first:
+      213: -1127127238370682264
+    second: Minion_1_0_Stomper_Jump_Front_55
+  - first:
+      213: -2147303656298857193
+    second: Minion_1_0_Stomper_Jump_Front_56
+  - first:
+      213: 1278377778114701443
+    second: Minion_1_0_Stomper_Jump_Front_57
+  - first:
+      213: 4898377386082102384
+    second: Minion_1_0_Stomper_Jump_Front_58
+  - first:
+      213: 4432536023393302304
+    second: Minion_1_0_Stomper_Jump_Front_59
+  - first:
+      213: 3592316423917884993
+    second: Minion_1_0_Stomper_Jump_Front_60
+  - first:
+      213: -2378374268019350582
+    second: Minion_1_0_Stomper_Jump_Front_61
+  - first:
+      213: 8829437714807052126
+    second: Minion_1_0_Stomper_Jump_Front_62
+  - first:
+      213: -4577262415263360270
+    second: Minion_1_0_Stomper_Jump_Front_63
+  - first:
+      213: 2931241583600320894
+    second: Minion_1_0_Stomper_Jump_Front_64
+  - first:
+      213: -2955667464646706126
+    second: Minion_1_0_Stomper_Jump_Front_65
+  - first:
+      213: 2050665072719947896
+    second: Minion_1_0_Stomper_Jump_Front_66
+  - first:
+      213: 7449272674542396956
+    second: Minion_1_0_Stomper_Jump_Front_67
+  - first:
+      213: -8682727864968884401
+    second: Minion_1_0_Stomper_Jump_Front_68
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c53e86ed92de780800000000000000
+      internalID: -8652213273889645417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c493580ba52694b10800000000000000
+      internalID: 1966210853972031820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a895c056525574e90800000000000000
+      internalID: -7041565873273022070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 277de045b6c6fde10800000000000000
+      internalID: 2224615949171873650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a300e12b915aa700800000000000000
+      internalID: 552343631036416928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f90c3187341c57010800000000000000
+      internalID: 1186066572403523743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31c2c6e497fa03410800000000000000
+      internalID: 1454855615182285843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1c8acffd78f17e0800000000000000
+      internalID: -1792564730583793176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac28e57b2a031c1b0800000000000000
+      internalID: -5638171783071890742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c1f1086da45e560800000000000000
+      internalID: 7342357052630440978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a4602a422dabb00800000000000000
+      internalID: 845218934864366106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54bef610a92513b0800000000000000
+      internalID: -5542477998852230050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c1495fa69685e520800000000000000
+      internalID: 2730736730815152583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0121b8e9cb9ed130800000000000000
+      internalID: 3593480844182888714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21cbb15d15b40e8a0800000000000000
+      internalID: -6277935065714672622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 838261864e0852080800000000000000
+      internalID: -9212815744229300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced60d157974d0c70800000000000000
+      internalID: 8938879550638550508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 105b5199bace9c070800000000000000
+      internalID: 8127287224318670081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b661134e41770740800000000000000
+      internalID: 5118184082476459700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5957f11e8e3c866d0800000000000000
+      internalID: -2996930147038300779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2285e8c0a60556360800000000000000
+      internalID: 7162219198810052642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a09c40a3b4de2190800000000000000
+      internalID: -7985211221327703895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 930bf048948f40950800000000000000
+      internalID: 6414524763914350649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90968b1954db4af80800000000000000
+      internalID: -8096138123610134263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a17cf974cb3f680800000000000000
+      internalID: -8722421037477193137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c279b7ce02e46e0800000000000000
+      internalID: -1851506196744819624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_26
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d11560d2df4a6ba0800000000000000
+      internalID: -6094971378834533935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09467b27b25799d40800000000000000
+      internalID: 5591629241825846416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8951041312613a800800000000000000
+      internalID: 622365505323275672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59119be16e30c2980800000000000000
+      internalID: -8562464504645348971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c73d65355634aca0800000000000000
+      internalID: -6006616263408928825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_31
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70cd027692a4da4b0800000000000000
+      internalID: -5427600434227258361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c461a77a47fb40b0800000000000000
+      internalID: -5743225000574229307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_33
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443f2fc14094cc760800000000000000
+      internalID: 7479433363169932100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_34
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d79169dace85b7b90800000000000000
+      internalID: -7243097802147489411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d5c0c6eba0352450800000000000000
+      internalID: 6063305988193174997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da77a2e2248aaeb50800000000000000
+      internalID: 6623291204197578669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea3d21cafc164b30800000000000000
+      internalID: 4271133159915862757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04399c8bbcde6b640800000000000000
+      internalID: 5095521487650657088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_39
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 203aa6cb4cc46bf50800000000000000
+      internalID: 6896784287222899458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_40
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2706481d266b2e0800000000000000
+      internalID: -2110390723367898404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_41
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce1188abb2734c850800000000000000
+      internalID: 6396298031725548012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d9432a310c985d0800000000000000
+      internalID: -3059703281263272685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_43
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee2852e28b4140a0800000000000000
+      internalID: -6899150128639627550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc8b7e2a268568e50800000000000000
+      internalID: 6811228667107588301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_45
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 018fd586cf7db8a90800000000000000
+      internalID: -7310512091023149040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0688aeb9d32e66c80800000000000000
+      internalID: -8329721706538432416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_47
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61a9b874ae66a3b0800000000000000
+      internalID: -5501588242107358865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe7f4b666ae73960800000000000000
+      internalID: 7581786223309455093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bff830b608c5fd60800000000000000
+      internalID: 7923459050480140215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_50
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a104749a5a076ad10800000000000000
+      internalID: 2136518930045812762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_51
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be591e9c4869cb230800000000000000
+      internalID: 3655962494584853995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_52
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c052ee08346fb07a0800000000000000
+      internalID: -6409758874845436660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_53
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2819ee7a6b7fbbab0800000000000000
+      internalID: -4991123398136524414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_54
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d5d2b2547270ff0800000000000000
+      internalID: -70044091170333289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_55
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a9f3c9fb3ab50f0800000000000000
+      internalID: -1127127238370682264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71db86593be3332e0800000000000000
+      internalID: -2147303656298857193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_57
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 388a749e0d5bdb110800000000000000
+      internalID: 1278377778114701443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_58
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07cea39a7488af340800000000000000
+      internalID: 4898377386082102384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_59
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 027fa785708838d30800000000000000
+      internalID: 4432536023393302304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_60
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1465d6031c87ad130800000000000000
+      internalID: 3592316423917884993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_61
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac3e6c354315efed0800000000000000
+      internalID: -2378374268019350582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_62
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e57d28d32d6788a70800000000000000
+      internalID: 8829437714807052126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa1b7ea51c4a70c0800000000000000
+      internalID: -4577262415263360270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_64
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e71c95d90bcdda820800000000000000
+      internalID: 2931241583600320894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_65
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23cbd87c91c5bf6d0800000000000000
+      internalID: -2955667464646706126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_66
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 878e5ccc40d657c10800000000000000
+      internalID: 2050665072719947896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_67
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16af119702216760800000000000000
+      internalID: 7449272674542396956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_0_Stomper_Jump_Front_68
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4fc4278201c08780800000000000000
+      internalID: -8682727864968884401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f8fe79cee668f8e4ab8a0993844d7a09
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_1_0_Stomper_Jump_Front_0: -8652213273889645417
+      Minion_1_0_Stomper_Jump_Front_1: 1966210853972031820
+      Minion_1_0_Stomper_Jump_Front_10: 845218934864366106
+      Minion_1_0_Stomper_Jump_Front_11: -5542477998852230050
+      Minion_1_0_Stomper_Jump_Front_12: 2730736730815152583
+      Minion_1_0_Stomper_Jump_Front_13: 3593480844182888714
+      Minion_1_0_Stomper_Jump_Front_14: -6277935065714672622
+      Minion_1_0_Stomper_Jump_Front_15: -9212815744229300168
+      Minion_1_0_Stomper_Jump_Front_16: 8938879550638550508
+      Minion_1_0_Stomper_Jump_Front_17: 8127287224318670081
+      Minion_1_0_Stomper_Jump_Front_18: 5118184082476459700
+      Minion_1_0_Stomper_Jump_Front_19: -2996930147038300779
+      Minion_1_0_Stomper_Jump_Front_2: -7041565873273022070
+      Minion_1_0_Stomper_Jump_Front_20: 7162219198810052642
+      Minion_1_0_Stomper_Jump_Front_21: -7985211221327703895
+      Minion_1_0_Stomper_Jump_Front_22: 6414524763914350649
+      Minion_1_0_Stomper_Jump_Front_23: -8096138123610134263
+      Minion_1_0_Stomper_Jump_Front_24: -8722421037477193137
+      Minion_1_0_Stomper_Jump_Front_25: -1851506196744819624
+      Minion_1_0_Stomper_Jump_Front_26: -6094971378834533935
+      Minion_1_0_Stomper_Jump_Front_27: 5591629241825846416
+      Minion_1_0_Stomper_Jump_Front_28: 622365505323275672
+      Minion_1_0_Stomper_Jump_Front_29: -8562464504645348971
+      Minion_1_0_Stomper_Jump_Front_3: 2224615949171873650
+      Minion_1_0_Stomper_Jump_Front_30: -6006616263408928825
+      Minion_1_0_Stomper_Jump_Front_31: -5427600434227258361
+      Minion_1_0_Stomper_Jump_Front_32: -5743225000574229307
+      Minion_1_0_Stomper_Jump_Front_33: 7479433363169932100
+      Minion_1_0_Stomper_Jump_Front_34: -7243097802147489411
+      Minion_1_0_Stomper_Jump_Front_35: 6063305988193174997
+      Minion_1_0_Stomper_Jump_Front_36: 6623291204197578669
+      Minion_1_0_Stomper_Jump_Front_37: 4271133159915862757
+      Minion_1_0_Stomper_Jump_Front_38: 5095521487650657088
+      Minion_1_0_Stomper_Jump_Front_39: 6896784287222899458
+      Minion_1_0_Stomper_Jump_Front_4: 552343631036416928
+      Minion_1_0_Stomper_Jump_Front_40: -2110390723367898404
+      Minion_1_0_Stomper_Jump_Front_41: 6396298031725548012
+      Minion_1_0_Stomper_Jump_Front_42: -3059703281263272685
+      Minion_1_0_Stomper_Jump_Front_43: -6899150128639627550
+      Minion_1_0_Stomper_Jump_Front_44: 6811228667107588301
+      Minion_1_0_Stomper_Jump_Front_45: -7310512091023149040
+      Minion_1_0_Stomper_Jump_Front_46: -8329721706538432416
+      Minion_1_0_Stomper_Jump_Front_47: -5501588242107358865
+      Minion_1_0_Stomper_Jump_Front_48: 7581786223309455093
+      Minion_1_0_Stomper_Jump_Front_49: 7923459050480140215
+      Minion_1_0_Stomper_Jump_Front_5: 1186066572403523743
+      Minion_1_0_Stomper_Jump_Front_50: 2136518930045812762
+      Minion_1_0_Stomper_Jump_Front_51: 3655962494584853995
+      Minion_1_0_Stomper_Jump_Front_52: -6409758874845436660
+      Minion_1_0_Stomper_Jump_Front_53: -4991123398136524414
+      Minion_1_0_Stomper_Jump_Front_54: -70044091170333289
+      Minion_1_0_Stomper_Jump_Front_55: -1127127238370682264
+      Minion_1_0_Stomper_Jump_Front_56: -2147303656298857193
+      Minion_1_0_Stomper_Jump_Front_57: 1278377778114701443
+      Minion_1_0_Stomper_Jump_Front_58: 4898377386082102384
+      Minion_1_0_Stomper_Jump_Front_59: 4432536023393302304
+      Minion_1_0_Stomper_Jump_Front_6: 1454855615182285843
+      Minion_1_0_Stomper_Jump_Front_60: 3592316423917884993
+      Minion_1_0_Stomper_Jump_Front_61: -2378374268019350582
+      Minion_1_0_Stomper_Jump_Front_62: 8829437714807052126
+      Minion_1_0_Stomper_Jump_Front_63: -4577262415263360270
+      Minion_1_0_Stomper_Jump_Front_64: 2931241583600320894
+      Minion_1_0_Stomper_Jump_Front_65: -2955667464646706126
+      Minion_1_0_Stomper_Jump_Front_66: 2050665072719947896
+      Minion_1_0_Stomper_Jump_Front_67: 7449272674542396956
+      Minion_1_0_Stomper_Jump_Front_68: -8682727864968884401
+      Minion_1_0_Stomper_Jump_Front_7: -1792564730583793176
+      Minion_1_0_Stomper_Jump_Front_8: -5638171783071890742
+      Minion_1_0_Stomper_Jump_Front_9: 7342357052630440978
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,14 +7,16 @@ public class CharacterData : ScriptableObject
     [Header("Basic Attributes")]
     public CharacterType CharacterType = CharacterType.Unset;
     public AudioClip shootSound;
+    public AudioClip jumpSound;
     public GameObject bulletPrefab;
+    public GameObject shadowPrefab;
     public uint MaxHp;
     public uint MoveSpeed;
     public uint ShootRange;
 
     public uint BulletSpeed = 6;
     public uint Damage = 1;
-    public uint ShootFrequency = 3;
+    public float AttackFrequency = 3;
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
 

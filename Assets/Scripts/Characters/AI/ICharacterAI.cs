@@ -5,5 +5,6 @@ public interface ICharacterAI
 {
     void Update();
     void FixedUpdate();
-    void OnCollision(Collision2D collision);
+    void OnCollisionEnter(Collision2D collision);
+    void OnCollisionStay(Collision2D collision);
 }

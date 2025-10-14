@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   CharacterType: 2
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
+  jumpSound: {fileID: 8300000, guid: c396e19d793f93443a2108e0d7d5d3b9, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
+  shadowPrefab: {fileID: 3848438239513427971, guid: 421c51bcdc6025b4e805719300d94620, type: 3}
   MaxHp: 5
   MoveSpeed: 3
   ShootRange: 4
   BulletSpeed: 6
   Damage: 3
-  ShootFrequency: 2
+  AttackFrequency: 1
   CriticalRate: 0
   ExpGiven: 5
   canMoveDiagonally: 0

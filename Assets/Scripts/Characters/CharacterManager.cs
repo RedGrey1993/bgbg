@@ -108,7 +108,7 @@ public class CharacterManager : MonoBehaviour
         {
             void AreaToNumber(Rect room, out int number, out List<Vector2> positions)
             {
-                int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion);
+                int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion + 1);
                 float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
                 number = Mathf.FloorToInt(area / areaPerMinion);
                 positions = new List<Vector2>();

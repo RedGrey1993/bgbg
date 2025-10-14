@@ -37,34 +37,34 @@ namespace NetworkMessageProto {
             "CghQbGF5ZXJJZBgBIAEoDRIMCgRUaWNrGAIgASgNEgwKBFR5cGUYAyABKA0S",
             "LAoJTW92ZUlucHV0GAQgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMy",
             "EiwKCUxvb2tJbnB1dBgFIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVj",
-            "MiLxAgoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKA0SEgoKUGxheWVy",
+            "MiLyAgoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKA0SEgoKUGxheWVy",
             "TmFtZRgCIAEoCRINCgVNYXhIcBgDIAEoDRIRCglDdXJyZW50SHAYBCABKA0S",
             "EQoJTW92ZVNwZWVkGAUgASgNEhMKC0J1bGxldFNwZWVkGAYgASgNEg4KBkRh",
-            "bWFnZRgHIAEoDRIWCg5TaG9vdEZyZXF1ZW5jeRgIIAEoDRISCgpTaG9vdFJh",
-            "bmdlGAkgASgNEhQKDENyaXRpY2FsUmF0ZRgKIAEoDRIUCgxDdXJyZW50TGV2",
-            "ZWwYDCABKA0SEgoKQ3VycmVudEV4cBgNIAEoDRIrCghQb3NpdGlvbhgLIAEo",
-            "CzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhIQCghTa2lsbElkcxgOIAMo",
-            "DRIgChhDdXJyZW50U3RhZ2VTa2lsbExlYXJuZWQYDyABKAgSFQoNQWN0aXZl",
-            "U2tpbGxJZBgQIAEoDSJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxheWVy",
-            "cxgBIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSDAoE",
-            "VGljaxgCIAEoDSJIChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5ZXJz",
-            "GAEgAygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIjgKClBs",
-            "YXllckluZm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIKCgJJ",
-            "ZBgDIAEoDSI2ChFMZWFyblNraWxsTWVzc2FnZRIQCghwbGF5ZXJJZBgBIAEo",
-            "DRIPCgdza2lsbElkGAIgASgNIlYKClBpY2t1cEl0ZW0SCgoCSWQYASABKA0S",
-            "DwoHU2tpbGxJZBgCIAEoDRIrCghQb3NpdGlvbhgDIAEoCzIZLk5ldHdvcmtN",
-            "ZXNzYWdlUHJvdG8uVmVjMiLaAwoMTG9jYWxTdG9yYWdlEhQKDEN1cnJlbnRT",
-            "dGFnZRgBIAEoDRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsyIC5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlBsYXllclN0YXRlEjYKDE1pbmlvblN0YXRlcxgDIAMoCzIg",
-            "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSFwoPTWluaW9uUHJl",
-            "ZmFiSWR4GAQgAygFEjQKCkJvc3NTdGF0ZXMYBSADKAsyIC5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlBsYXllclN0YXRlEhUKDUJvc3NQcmVmYWJJZHgYBiADKAUS",
-            "LQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90",
-            "bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdodBgJIAEo",
-            "DRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQb3NpdGlv",
-            "bhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQaWNrdXBJ",
-            "dGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3VwSXRlbWIG",
-            "cHJvdG8z"));
+            "bWFnZRgHIAEoDRIXCg9BdHRhY2tGcmVxdWVuY3kYCCABKAISEgoKU2hvb3RS",
+            "YW5nZRgJIAEoDRIUCgxDcml0aWNhbFJhdGUYCiABKA0SFAoMQ3VycmVudExl",
+            "dmVsGAwgASgNEhIKCkN1cnJlbnRFeHAYDSABKA0SKwoIUG9zaXRpb24YCyAB",
+            "KAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISEAoIU2tpbGxJZHMYDiAD",
+            "KA0SIAoYQ3VycmVudFN0YWdlU2tpbGxMZWFybmVkGA8gASgIEhUKDUFjdGl2",
+            "ZVNraWxsSWQYECABKA0iVQoSU3RhdGVVcGRhdGVNZXNzYWdlEjEKB1BsYXll",
+            "cnMYASADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEgwK",
+            "BFRpY2sYAiABKA0iSAoUUGxheWVyc1VwZGF0ZU1lc3NhZ2USMAoHUGxheWVy",
+            "cxgBIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVySW5mbyI4CgpQ",
+            "bGF5ZXJJbmZvEhAKCENTdGVhbUlEGAEgASgJEgwKBE5hbWUYAiABKAkSCgoC",
+            "SWQYAyABKA0iNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoIcGxheWVySWQYASAB",
+            "KA0SDwoHc2tpbGxJZBgCIAEoDSJWCgpQaWNrdXBJdGVtEgoKAklkGAEgASgN",
+            "Eg8KB1NraWxsSWQYAiABKA0SKwoIUG9zaXRpb24YAyABKAsyGS5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLlZlYzIi2gMKDExvY2FsU3RvcmFnZRIUCgxDdXJyZW50",
+            "U3RhZ2UYASABKA0SNgoMUGxheWVyU3RhdGVzGAIgAygLMiAuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI2CgxNaW5pb25TdGF0ZXMYAyADKAsy",
+            "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEhcKD01pbmlvblBy",
+            "ZWZhYklkeBgEIAMoBRI0CgpCb3NzU3RhdGVzGAUgAygLMiAuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIVCg1Cb3NzUHJlZmFiSWR4GAYgAygF",
+            "Ei0KBVJvb21zGAcgAygLMh4uTmV0d29ya01lc3NhZ2VQcm90by5SZWN0UHJv",
+            "dG8SFAoMUm9vbU1heFdpZHRoGAggASgNEhUKDVJvb21NYXhIZWlnaHQYCSAB",
+            "KA0SFwoPTmV4dENoYXJhY3RlcklkGAogASgNEjMKEFRlbGVwb3J0UG9zaXRp",
+            "b24YCyABKAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISNAoLUGlja3Vw",
+            "SXRlbXMYDCADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW1i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -72,7 +72,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.Vec2), global::NetworkMessageProto.Vec2.Parser, new[]{ "X", "Y" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "ShootFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ActiveSkillId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ActiveSkillId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
@@ -1454,7 +1454,7 @@ namespace NetworkMessageProto {
       moveSpeed_ = other.moveSpeed_;
       bulletSpeed_ = other.bulletSpeed_;
       damage_ = other.damage_;
-      shootFrequency_ = other.shootFrequency_;
+      attackFrequency_ = other.attackFrequency_;
       shootRange_ = other.shootRange_;
       criticalRate_ = other.criticalRate_;
       currentLevel_ = other.currentLevel_;
@@ -1565,18 +1565,18 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "ShootFrequency" field.</summary>
-    public const int ShootFrequencyFieldNumber = 8;
-    private uint shootFrequency_;
+    /// <summary>Field number for the "AttackFrequency" field.</summary>
+    public const int AttackFrequencyFieldNumber = 8;
+    private float attackFrequency_;
     /// <summary>
-    /// 每秒发射子弹数
+    /// 攻击频率/每秒发射子弹数
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ShootFrequency {
-      get { return shootFrequency_; }
+    public float AttackFrequency {
+      get { return attackFrequency_; }
       set {
-        shootFrequency_ = value;
+        attackFrequency_ = value;
       }
     }
 
@@ -1703,7 +1703,7 @@ namespace NetworkMessageProto {
       if (MoveSpeed != other.MoveSpeed) return false;
       if (BulletSpeed != other.BulletSpeed) return false;
       if (Damage != other.Damage) return false;
-      if (ShootFrequency != other.ShootFrequency) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AttackFrequency, other.AttackFrequency)) return false;
       if (ShootRange != other.ShootRange) return false;
       if (CriticalRate != other.CriticalRate) return false;
       if (CurrentLevel != other.CurrentLevel) return false;
@@ -1726,7 +1726,7 @@ namespace NetworkMessageProto {
       if (MoveSpeed != 0) hash ^= MoveSpeed.GetHashCode();
       if (BulletSpeed != 0) hash ^= BulletSpeed.GetHashCode();
       if (Damage != 0) hash ^= Damage.GetHashCode();
-      if (ShootFrequency != 0) hash ^= ShootFrequency.GetHashCode();
+      if (AttackFrequency != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AttackFrequency);
       if (ShootRange != 0) hash ^= ShootRange.GetHashCode();
       if (CriticalRate != 0) hash ^= CriticalRate.GetHashCode();
       if (CurrentLevel != 0) hash ^= CurrentLevel.GetHashCode();
@@ -1781,9 +1781,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(56);
         output.WriteUInt32(Damage);
       }
-      if (ShootFrequency != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(ShootFrequency);
+      if (AttackFrequency != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(AttackFrequency);
       }
       if (ShootRange != 0) {
         output.WriteRawTag(72);
@@ -1852,9 +1852,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(56);
         output.WriteUInt32(Damage);
       }
-      if (ShootFrequency != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(ShootFrequency);
+      if (AttackFrequency != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(AttackFrequency);
       }
       if (ShootRange != 0) {
         output.WriteRawTag(72);
@@ -1916,8 +1916,8 @@ namespace NetworkMessageProto {
       if (Damage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Damage);
       }
-      if (ShootFrequency != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShootFrequency);
+      if (AttackFrequency != 0F) {
+        size += 1 + 4;
       }
       if (ShootRange != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShootRange);
@@ -1974,8 +1974,8 @@ namespace NetworkMessageProto {
       if (other.Damage != 0) {
         Damage = other.Damage;
       }
-      if (other.ShootFrequency != 0) {
-        ShootFrequency = other.ShootFrequency;
+      if (other.AttackFrequency != 0F) {
+        AttackFrequency = other.AttackFrequency;
       }
       if (other.ShootRange != 0) {
         ShootRange = other.ShootRange;
@@ -2049,8 +2049,8 @@ namespace NetworkMessageProto {
             Damage = input.ReadUInt32();
             break;
           }
-          case 64: {
-            ShootFrequency = input.ReadUInt32();
+          case 69: {
+            AttackFrequency = input.ReadFloat();
             break;
           }
           case 72: {
@@ -2136,8 +2136,8 @@ namespace NetworkMessageProto {
             Damage = input.ReadUInt32();
             break;
           }
-          case 64: {
-            ShootFrequency = input.ReadUInt32();
+          case 69: {
+            AttackFrequency = input.ReadFloat();
             break;
           }
           case 72: {

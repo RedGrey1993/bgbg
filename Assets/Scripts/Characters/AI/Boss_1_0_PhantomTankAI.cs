@@ -22,7 +22,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         }
     }
 
-    public override void OnCollision(Collision2D collision)
+    public override void OnCollisionEnter(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {

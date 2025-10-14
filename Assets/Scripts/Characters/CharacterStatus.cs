@@ -34,7 +34,7 @@ public class CharacterStatus : MonoBehaviour
         State.MoveSpeed = characterData.MoveSpeed;
         State.BulletSpeed = characterData.BulletSpeed;
         State.Damage = characterData.Damage;
-        State.ShootFrequency = characterData.ShootFrequency;
+        State.AttackFrequency = characterData.AttackFrequency;
         State.ShootRange = characterData.ShootRange;
         State.CriticalRate = characterData.CriticalRate;
         State.CurrentExp = 0;
@@ -81,7 +81,7 @@ public class CharacterStatus : MonoBehaviour
     {
         if (IsDead()) return;
         uint curHp = State.CurrentHp - damage;
-        if (curHp <= 0)
+        if (curHp <= 0 && attacker != null)
         {
             // this死亡，提供给attacker经验值
             uint attackerCurExp = attacker.State.CurrentExp;

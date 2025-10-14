@@ -20,7 +20,7 @@ MonoBehaviour:
   ShootRange: 4
   BulletSpeed: 6
   Damage: 10
-  ShootFrequency: 2
+  AttackFrequency: 1
   CriticalRate: 0
   ExpGiven: 5
   canMoveDiagonally: 0

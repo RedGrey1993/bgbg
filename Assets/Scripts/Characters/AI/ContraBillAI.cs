@@ -20,7 +20,7 @@ public class ContraBillAI : CharacterBaseAI
         }
     }
 
-    public override void OnCollision(Collision2D collision)
+    public override void OnCollisionEnter(Collision2D collision)
     {
         if (isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
         {

@@ -173,7 +173,7 @@ public class HexagonRadarChart : Graphic
     {
         float[] newStats = new float[6];
         newStats[0] = (float)state.Damage / MaxStats[0];          // Damage
-        newStats[1] = (float)state.ShootFrequency / MaxStats[1];  // Shoot Frequency
+        newStats[1] = (float)state.AttackFrequency / MaxStats[1];  // Shoot Frequency
         newStats[2] = (float)state.CriticalRate / MaxStats[2];      // Critical Rate
         newStats[3] = (float)state.MoveSpeed / MaxStats[3];        // Move Speed
         newStats[4] = (float)state.BulletSpeed / MaxStats[4];      // Bullet Speed

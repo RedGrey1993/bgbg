@@ -39,7 +39,7 @@ namespace NetworkMessageJson
         public float MoveSpeed; // 人物移动速度
         public float BulletSpeed; // 子弹飞行速度
         public uint Damage; //  伤害
-        public uint ShootFrequency; // 每秒发射子弹数
+        public float AttackFrequency; // 每秒发射子弹数
         public uint ShootRange; // 子弹最大射程
         public uint CriticalRate; // 暴击率
         public Vec2 Position;
