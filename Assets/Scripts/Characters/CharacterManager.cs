@@ -106,7 +106,7 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            void AreaToNumber(Rect room, out int number, out List<Vector2> positions)
+            void AreaToNumber(Rect room, int roomIdx, out int number, out List<Vector2> positions)
             {
                 int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion + 1);
                 float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
@@ -116,7 +116,7 @@ public class CharacterManager : MonoBehaviour
                 // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
                 for (int i = 0; i < number; i++)
                 {
-                    Vector2 position = new Vector2(Random.Range(room.xMin + 1, room.xMax), Random.Range(room.yMin + 1, room.yMax));
+                    Vector2 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, 1f, 1f);
                     // if (!positions.Contains(position)) // O(n) 太慢了
                     positions.Add(position);
                 }
@@ -127,7 +127,7 @@ public class CharacterManager : MonoBehaviour
                 // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
                 int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
                 var minionPrefab = levelData.normalMinionPrefabs[randomMinionIdx];
-                AreaToNumber(room, out var minionNum, out var spawnPositions);
+                AreaToNumber(room, roomIdx, out var minionNum, out var spawnPositions);
                 for (int i = 0; i < minionNum; i++)
                 {
                     var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
@@ -150,9 +150,9 @@ public class CharacterManager : MonoBehaviour
 
     private void CreateBossObjects(LocalStorage storage)
     {
-        void GenerateBossPosition(Rect room, out Vector2 position)
+        void GenerateBossPosition(int roomIdx, out Vector2 position)
         {
-            position = new Vector2(Random.Range(room.xMin + 1, room.xMax), Random.Range(room.yMin + 1, room.yMax));
+            position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, 3, 3);
         }
 
         ClearBossObjects();
@@ -187,10 +187,9 @@ public class CharacterManager : MonoBehaviour
         else
         {
             var roomIdx = Random.Range(0, LevelManager.Instance.remainRoomsIndex.Count);
-            var room = LevelManager.Instance.Rooms[roomIdx];
             int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
             var bossPrefab = levelData.bossPrefabs[randomBossIdx];
-            GenerateBossPosition(room, out var spawnPosition);
+            GenerateBossPosition(roomIdx, out var spawnPosition);
 
             var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
             LevelManager.Instance.AddToBossRooms(boss.transform.position);

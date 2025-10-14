@@ -36,6 +36,8 @@ public enum CharacterType
     Contra_Bill = 1,
     // Level 1 0, 踩踏者
     Minion_1_0_Stomper,
+    // Level 1 1, 爆破小子
+    Minion_1_1_BusterBot,
     // Elite 精英
     // Boss
     Boss_1_0_PhantomTank,

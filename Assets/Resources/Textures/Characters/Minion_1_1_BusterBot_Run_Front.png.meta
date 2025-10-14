@@ -1,0 +1,1678 @@
+fileFormatVersion: 2
+guid: 911ec2a4076887c4290f50fe4870e576
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5178663314694547976
+    second: Minion_1_1_BusterBot_Run_Front_0
+  - first:
+      213: -1190192862791385708
+    second: Minion_1_1_BusterBot_Run_Front_1
+  - first:
+      213: 7798476218022218178
+    second: Minion_1_1_BusterBot_Run_Front_2
+  - first:
+      213: -8882713572066608692
+    second: Minion_1_1_BusterBot_Run_Front_3
+  - first:
+      213: 3244316439645442069
+    second: Minion_1_1_BusterBot_Run_Front_4
+  - first:
+      213: 4848574991631716179
+    second: Minion_1_1_BusterBot_Run_Front_5
+  - first:
+      213: -3023683872314585064
+    second: Minion_1_1_BusterBot_Run_Front_6
+  - first:
+      213: -2304172371324164025
+    second: Minion_1_1_BusterBot_Run_Front_7
+  - first:
+      213: -4717857389742884004
+    second: Minion_1_1_BusterBot_Run_Front_8
+  - first:
+      213: -8193344413913502671
+    second: Minion_1_1_BusterBot_Run_Front_9
+  - first:
+      213: -7786193118588946197
+    second: Minion_1_1_BusterBot_Run_Front_10
+  - first:
+      213: 7220221692028393817
+    second: Minion_1_1_BusterBot_Run_Front_11
+  - first:
+      213: 6581031354154598251
+    second: Minion_1_1_BusterBot_Run_Front_12
+  - first:
+      213: 6218104619221715501
+    second: Minion_1_1_BusterBot_Run_Front_13
+  - first:
+      213: 2490844582476269864
+    second: Minion_1_1_BusterBot_Run_Front_14
+  - first:
+      213: -7633395790025027728
+    second: Minion_1_1_BusterBot_Run_Front_15
+  - first:
+      213: -7869098362828918374
+    second: Minion_1_1_BusterBot_Run_Front_16
+  - first:
+      213: 2957789134762243345
+    second: Minion_1_1_BusterBot_Run_Front_17
+  - first:
+      213: -4392924957724896082
+    second: Minion_1_1_BusterBot_Run_Front_18
+  - first:
+      213: 3931717483896277282
+    second: Minion_1_1_BusterBot_Run_Front_19
+  - first:
+      213: -748719522478461747
+    second: Minion_1_1_BusterBot_Run_Front_20
+  - first:
+      213: 9133111170743723187
+    second: Minion_1_1_BusterBot_Run_Front_21
+  - first:
+      213: -464289345390644460
+    second: Minion_1_1_BusterBot_Run_Front_22
+  - first:
+      213: 3250422837188731392
+    second: Minion_1_1_BusterBot_Run_Front_23
+  - first:
+      213: -43070589888597052
+    second: Minion_1_1_BusterBot_Run_Front_24
+  - first:
+      213: -86921419229077480
+    second: Minion_1_1_BusterBot_Run_Front_25
+  - first:
+      213: -2662847415784441
+    second: Minion_1_1_BusterBot_Run_Front_26
+  - first:
+      213: -4343652175214159984
+    second: Minion_1_1_BusterBot_Run_Front_27
+  - first:
+      213: 1171225175456814771
+    second: Minion_1_1_BusterBot_Run_Front_28
+  - first:
+      213: -7605536250031741485
+    second: Minion_1_1_BusterBot_Run_Front_29
+  - first:
+      213: -3474717505182166414
+    second: Minion_1_1_BusterBot_Run_Front_30
+  - first:
+      213: -7312910731307872431
+    second: Minion_1_1_BusterBot_Run_Front_31
+  - first:
+      213: -7937237205054152519
+    second: Minion_1_1_BusterBot_Run_Front_32
+  - first:
+      213: -2874061591816406730
+    second: Minion_1_1_BusterBot_Run_Front_33
+  - first:
+      213: -2967087793299850238
+    second: Minion_1_1_BusterBot_Run_Front_34
+  - first:
+      213: 4485396625364351466
+    second: Minion_1_1_BusterBot_Run_Front_35
+  - first:
+      213: -5221668486269917741
+    second: Minion_1_1_BusterBot_Run_Front_36
+  - first:
+      213: -7786815338696956577
+    second: Minion_1_1_BusterBot_Run_Front_37
+  - first:
+      213: 1308092982387661511
+    second: Minion_1_1_BusterBot_Run_Front_38
+  - first:
+      213: -3040786029552727089
+    second: Minion_1_1_BusterBot_Run_Front_39
+  - first:
+      213: 2443548096546411692
+    second: Minion_1_1_BusterBot_Run_Front_40
+  - first:
+      213: 987593395562091784
+    second: Minion_1_1_BusterBot_Run_Front_41
+  - first:
+      213: -1090365960902598119
+    second: Minion_1_1_BusterBot_Run_Front_42
+  - first:
+      213: 2673631090735146627
+    second: Minion_1_1_BusterBot_Run_Front_43
+  - first:
+      213: 3372871315628794808
+    second: Minion_1_1_BusterBot_Run_Front_44
+  - first:
+      213: 6201584297154164516
+    second: Minion_1_1_BusterBot_Run_Front_45
+  - first:
+      213: 8344631954696762702
+    second: Minion_1_1_BusterBot_Run_Front_46
+  - first:
+      213: 671688637710089744
+    second: Minion_1_1_BusterBot_Run_Front_47
+  - first:
+      213: -2939099711061078
+    second: Minion_1_1_BusterBot_Run_Front_48
+  - first:
+      213: 7263655026069427127
+    second: Minion_1_1_BusterBot_Run_Front_49
+  - first:
+      213: -2379984450495299971
+    second: Minion_1_1_BusterBot_Run_Front_50
+  - first:
+      213: 7685996669758863057
+    second: Minion_1_1_BusterBot_Run_Front_51
+  - first:
+      213: 8619936554554818495
+    second: Minion_1_1_BusterBot_Run_Front_52
+  - first:
+      213: 6271708695225371786
+    second: Minion_1_1_BusterBot_Run_Front_53
+  - first:
+      213: -1256325331017018075
+    second: Minion_1_1_BusterBot_Run_Front_54
+  - first:
+      213: 3459297096298179532
+    second: Minion_1_1_BusterBot_Run_Front_55
+  - first:
+      213: -3246875638933631617
+    second: Minion_1_1_BusterBot_Run_Front_56
+  - first:
+      213: 8346347673752766999
+    second: Minion_1_1_BusterBot_Run_Front_57
+  - first:
+      213: 2458078446144560891
+    second: Minion_1_1_BusterBot_Run_Front_58
+  - first:
+      213: -4484977404680472388
+    second: Minion_1_1_BusterBot_Run_Front_59
+  - first:
+      213: 7058563359387115983
+    second: Minion_1_1_BusterBot_Run_Front_60
+  - first:
+      213: -4311650158582211910
+    second: Minion_1_1_BusterBot_Run_Front_61
+  - first:
+      213: -3932882961074719580
+    second: Minion_1_1_BusterBot_Run_Front_62
+  - first:
+      213: 894820927592976131
+    second: Minion_1_1_BusterBot_Run_Front_63
+  - first:
+      213: 640239454168971467
+    second: Minion_1_1_BusterBot_Run_Front_64
+  - first:
+      213: 1943488245146762047
+    second: Minion_1_1_BusterBot_Run_Front_65
+  - first:
+      213: 6599430446468985305
+    second: Minion_1_1_BusterBot_Run_Front_66
+  - first:
+      213: -6728890160347687621
+    second: Minion_1_1_BusterBot_Run_Front_67
+  - first:
+      213: 4188642234828831221
+    second: Minion_1_1_BusterBot_Run_Front_68
+  - first:
+      213: -3443636091739891488
+    second: Minion_1_1_BusterBot_Run_Front_69
+  - first:
+      213: -6789268606249056510
+    second: Minion_1_1_BusterBot_Run_Front_70
+  - first:
+      213: 6078489063846712147
+    second: Minion_1_1_BusterBot_Run_Front_71
+  - first:
+      213: 5084862401372083818
+    second: Minion_1_1_BusterBot_Run_Front_72
+  - first:
+      213: 343655736431722611
+    second: Minion_1_1_BusterBot_Run_Front_73
+  - first:
+      213: -2881625422392515860
+    second: Minion_1_1_BusterBot_Run_Front_74
+  - first:
+      213: -7181437537446165210
+    second: Minion_1_1_BusterBot_Run_Front_75
+  - first:
+      213: 2689021758677210187
+    second: Minion_1_1_BusterBot_Run_Front_76
+  - first:
+      213: 5809721198023872138
+    second: Minion_1_1_BusterBot_Run_Front_77
+  - first:
+      213: -7180382883319323159
+    second: Minion_1_1_BusterBot_Run_Front_78
+  - first:
+      213: -6547116721095595682
+    second: Minion_1_1_BusterBot_Run_Front_79
+  - first:
+      213: -6022834032561858265
+    second: Minion_1_1_BusterBot_Run_Front_80
+  - first:
+      213: 3260133279801117082
+    second: Minion_1_1_BusterBot_Run_Front_81
+  - first:
+      213: -2550793592550065455
+    second: Minion_1_1_BusterBot_Run_Front_82
+  - first:
+      213: -3570087071128645359
+    second: Minion_1_1_BusterBot_Run_Front_83
+  - first:
+      213: -142686215629940524
+    second: Minion_1_1_BusterBot_Run_Front_84
+  - first:
+      213: -5548842212823386607
+    second: Minion_1_1_BusterBot_Run_Front_85
+  - first:
+      213: 2620388640940477879
+    second: Minion_1_1_BusterBot_Run_Front_86
+  - first:
+      213: 8001246011557544403
+    second: Minion_1_1_BusterBot_Run_Front_87
+  - first:
+      213: -7482503938383335779
+    second: Minion_1_1_BusterBot_Run_Front_88
+  - first:
+      213: 2144451206756182501
+    second: Minion_1_1_BusterBot_Run_Front_89
+  - first:
+      213: 3063669406674848423
+    second: Minion_1_1_BusterBot_Run_Front_90
+  - first:
+      213: 3313123598416246010
+    second: Minion_1_1_BusterBot_Run_Front_91
+  - first:
+      213: -2708319667645615834
+    second: Minion_1_1_BusterBot_Run_Front_92
+  - first:
+      213: -8315381766473024148
+    second: Minion_1_1_BusterBot_Run_Front_93
+  - first:
+      213: -1929767654865532778
+    second: Minion_1_1_BusterBot_Run_Front_94
+  - first:
+      213: 5776107913277237776
+    second: Minion_1_1_BusterBot_Run_Front_95
+  - first:
+      213: -8631432633783163604
+    second: Minion_1_1_BusterBot_Run_Front_96
+  - first:
+      213: 6656244155304419262
+    second: Minion_1_1_BusterBot_Run_Front_97
+  - first:
+      213: -7558187640574326169
+    second: Minion_1_1_BusterBot_Run_Front_98
+  - first:
+      213: 5825518185231234915
+    second: Minion_1_1_BusterBot_Run_Front_99
+  - first:
+      213: -177360677846464127
+    second: Minion_1_1_BusterBot_Run_Front_100
+  - first:
+      213: 3562733703288092723
+    second: Minion_1_1_BusterBot_Run_Front_101
+  - first:
+      213: 8314680838330591935
+    second: Minion_1_1_BusterBot_Run_Front_102
+  - first:
+      213: -3433139413739045025
+    second: Minion_1_1_BusterBot_Run_Front_103
+  - first:
+      213: 2171437694911350233
+    second: Minion_1_1_BusterBot_Run_Front_104
+  - first:
+      213: 8504591681014406293
+    second: Minion_1_1_BusterBot_Run_Front_105
+  - first:
+      213: -1605085044347078582
+    second: Minion_1_1_BusterBot_Run_Front_106
+  - first:
+      213: 5507364310125377380
+    second: Minion_1_1_BusterBot_Run_Front_107
+  - first:
+      213: 3302844147425112259
+    second: Minion_1_1_BusterBot_Run_Front_108
+  - first:
+      213: 592866140165597398
+    second: Minion_1_1_BusterBot_Run_Front_109
+  - first:
+      213: -2503354905845545485
+    second: Minion_1_1_BusterBot_Run_Front_110
+  - first:
+      213: 2307905390529387027
+    second: Minion_1_1_BusterBot_Run_Front_111
+  - first:
+      213: 3438846619162118813
+    second: Minion_1_1_BusterBot_Run_Front_112
+  - first:
+      213: 6487279657382599892
+    second: Minion_1_1_BusterBot_Run_Front_113
+  - first:
+      213: 3127785463161371851
+    second: Minion_1_1_BusterBot_Run_Front_114
+  - first:
+      213: -9057773724677416148
+    second: Minion_1_1_BusterBot_Run_Front_115
+  - first:
+      213: 648106335109492432
+    second: Minion_1_1_BusterBot_Run_Front_116
+  - first:
+      213: -4905277627146218550
+    second: Minion_1_1_BusterBot_Run_Front_117
+  - first:
+      213: -5145804006179826254
+    second: Minion_1_1_BusterBot_Run_Front_118
+  - first:
+      213: -364253841878661091
+    second: Minion_1_1_BusterBot_Run_Front_119
+  - first:
+      213: -6294409669023978573
+    second: Minion_1_1_BusterBot_Run_Front_120
+  - first:
+      213: -5262830033027043282
+    second: Minion_1_1_BusterBot_Run_Front_121
+  - first:
+      213: -8214684084774595078
+    second: Minion_1_1_BusterBot_Run_Front_122
+  - first:
+      213: -8685873673078244775
+    second: Minion_1_1_BusterBot_Run_Front_123
+  - first:
+      213: 3067368620730960263
+    second: Minion_1_1_BusterBot_Run_Front_124
+  - first:
+      213: 4051914388049591645
+    second: Minion_1_1_BusterBot_Run_Front_125
+  - first:
+      213: 4640131700036296263
+    second: Minion_1_1_BusterBot_Run_Front_126
+  - first:
+      213: -491873141160113182
+    second: Minion_1_1_BusterBot_Run_Front_127
+  - first:
+      213: -7461762232176311789
+    second: Minion_1_1_BusterBot_Run_Front_128
+  - first:
+      213: -496638193119819228
+    second: Minion_1_1_BusterBot_Run_Front_129
+  - first:
+      213: -3211955641812369966
+    second: Minion_1_1_BusterBot_Run_Front_130
+  - first:
+      213: 7204877831502585519
+    second: Minion_1_1_BusterBot_Run_Front_131
+  - first:
+      213: -870090430309835831
+    second: Minion_1_1_BusterBot_Run_Front_132
+  - first:
+      213: -9032103222197684343
+    second: Minion_1_1_BusterBot_Run_Front_133
+  - first:
+      213: -3586357519727181537
+    second: Minion_1_1_BusterBot_Run_Front_134
+  - first:
+      213: -1647826459303066232
+    second: Minion_1_1_BusterBot_Run_Front_135
+  - first:
+      213: -606115485862898507
+    second: Minion_1_1_BusterBot_Run_Front_136
+  - first:
+      213: 60904402224639176
+    second: Minion_1_1_BusterBot_Run_Front_137
+  - first:
+      213: -538411823835507722
+    second: Minion_1_1_BusterBot_Run_Front_138
+  - first:
+      213: -2439133167322163315
+    second: Minion_1_1_BusterBot_Run_Front_139
+  - first:
+      213: 5021291336226224308
+    second: Minion_1_1_BusterBot_Run_Front_140
+  - first:
+      213: -6436183886059410257
+    second: Minion_1_1_BusterBot_Run_Front_141
+  - first:
+      213: 6904385594865326414
+    second: Minion_1_1_BusterBot_Run_Front_142
+  - first:
+      213: -7239330570951138045
+    second: Minion_1_1_BusterBot_Run_Front_143
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f5d84c2721b128b0800000000000000
+      internalID: -5178663314694547976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d3d1fa5e59b7fe0800000000000000
+      internalID: -1190192862791385708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c9cb8c5dc0c93c60800000000000000
+      internalID: 7798476218022218178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc9bd6f91134ab480800000000000000
+      internalID: -8882713572066608692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510d60cdc90260d20800000000000000
+      internalID: 3244316439645442069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f0d0b1449994340800000000000000
+      internalID: 4848574991631716179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8109c9dc987b906d0800000000000000
+      internalID: -3023683872314585064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74824f1bf6fe500e0800000000000000
+      internalID: -2304172371324164025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b7c6743bdc68eb0800000000000000
+      internalID: -4717857389742884004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c214e6aa46b4e80800000000000000
+      internalID: -8193344413913502671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be83ae59c92e1f390800000000000000
+      internalID: -7786193118588946197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9591ce0ef51633460800000000000000
+      internalID: 7220221692028393817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6fb7181625845b50800000000000000
+      internalID: 6581031354154598251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a0decc4352b4650800000000000000
+      internalID: 6218104619221715501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 829443163f1419220800000000000000
+      internalID: 2490844582476269864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07f8891f8fab01690800000000000000
+      internalID: -7633395790025027728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9179f43bb85bc290800000000000000
+      internalID: -7869098362828918374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115730a0c8d2c0920800000000000000
+      internalID: 2957789134762243345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea41cd196023903c0800000000000000
+      internalID: -4392924957724896082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22984d07834409630800000000000000
+      internalID: 3931717483896277282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcc654aaf830c95f0800000000000000
+      internalID: -748719522478461747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b4e45278345fbe70800000000000000
+      internalID: 9133111170743723187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413fdfedc438e89f0800000000000000
+      internalID: -464289345390644460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 002a3745952db1d20800000000000000
+      internalID: 3250422837188731392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c37c65d68bf66ff0800000000000000
+      internalID: -43070589888597052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8106a730e613bcef0800000000000000
+      internalID: -86921419229077480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_26
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70ce0b5872a86fff0800000000000000
+      internalID: -2662847415784441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097d18c3c5f38b3c0800000000000000
+      internalID: -4343652175214159984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b619177717014010800000000000000
+      internalID: 1171225175456814771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d560829315b37690800000000000000
+      internalID: -7605536250031741485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27219c0c6d257cfc0800000000000000
+      internalID: -3474717505182166414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_31
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f80427f62538a90800000000000000
+      internalID: -7312910731307872431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b0abb6b0d449d190800000000000000
+      internalID: -7937237205054152519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_33
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639703da5384d18d0800000000000000
+      internalID: -2874061591816406730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_34
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20cf6fe4f59c2d6d0800000000000000
+      internalID: -2967087793299850238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9f39357745f3e30800000000000000
+      internalID: 4485396625364351466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d5a7056d28e887b0800000000000000
+      internalID: -5221668486269917741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f55a76da4bcafe390800000000000000
+      internalID: -7786815338696956577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cad56c03a7472210800000000000000
+      internalID: 1308092982387661511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_39
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcb0a868735fcc5d0800000000000000
+      internalID: -3040786029552727089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_40
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca41b3e1c0a39e120800000000000000
+      internalID: 2443548096546411692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_41
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8051005f5f2a4bd00800000000000000
+      internalID: 987593395562091784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91229318fed3ed0f0800000000000000
+      internalID: -1090365960902598119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_43
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38665bfbf45aa1520800000000000000
+      internalID: 2673631090735146627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b3a8216798dece20800000000000000
+      internalID: 3372871315628794808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_45
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 427b3849f04701650800000000000000
+      internalID: 6201584297154164516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e45f2111d861ec370800000000000000
+      internalID: 8344631954696762702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_47
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e306ad141525900800000000000000
+      internalID: 671688637710089744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Run_Front_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa343c587ee85fff0800000000000000
+      internalID: -2939099711061078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 31427eadc9f253f4b90cdf75d26ad3b0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_1_1_BusterBot_Run_Front_0: -5178663314694547976
+      Minion_1_1_BusterBot_Run_Front_1: -1190192862791385708
+      Minion_1_1_BusterBot_Run_Front_10: -7786193118588946197
+      Minion_1_1_BusterBot_Run_Front_11: 7220221692028393817
+      Minion_1_1_BusterBot_Run_Front_12: 6581031354154598251
+      Minion_1_1_BusterBot_Run_Front_13: 6218104619221715501
+      Minion_1_1_BusterBot_Run_Front_14: 2490844582476269864
+      Minion_1_1_BusterBot_Run_Front_15: -7633395790025027728
+      Minion_1_1_BusterBot_Run_Front_16: -7869098362828918374
+      Minion_1_1_BusterBot_Run_Front_17: 2957789134762243345
+      Minion_1_1_BusterBot_Run_Front_18: -4392924957724896082
+      Minion_1_1_BusterBot_Run_Front_19: 3931717483896277282
+      Minion_1_1_BusterBot_Run_Front_2: 7798476218022218178
+      Minion_1_1_BusterBot_Run_Front_20: -748719522478461747
+      Minion_1_1_BusterBot_Run_Front_21: 9133111170743723187
+      Minion_1_1_BusterBot_Run_Front_22: -464289345390644460
+      Minion_1_1_BusterBot_Run_Front_23: 3250422837188731392
+      Minion_1_1_BusterBot_Run_Front_24: -43070589888597052
+      Minion_1_1_BusterBot_Run_Front_25: -86921419229077480
+      Minion_1_1_BusterBot_Run_Front_26: -2662847415784441
+      Minion_1_1_BusterBot_Run_Front_27: -4343652175214159984
+      Minion_1_1_BusterBot_Run_Front_28: 1171225175456814771
+      Minion_1_1_BusterBot_Run_Front_29: -7605536250031741485
+      Minion_1_1_BusterBot_Run_Front_3: -8882713572066608692
+      Minion_1_1_BusterBot_Run_Front_30: -3474717505182166414
+      Minion_1_1_BusterBot_Run_Front_31: -7312910731307872431
+      Minion_1_1_BusterBot_Run_Front_32: -7937237205054152519
+      Minion_1_1_BusterBot_Run_Front_33: -2874061591816406730
+      Minion_1_1_BusterBot_Run_Front_34: -2967087793299850238
+      Minion_1_1_BusterBot_Run_Front_35: 4485396625364351466
+      Minion_1_1_BusterBot_Run_Front_36: -5221668486269917741
+      Minion_1_1_BusterBot_Run_Front_37: -7786815338696956577
+      Minion_1_1_BusterBot_Run_Front_38: 1308092982387661511
+      Minion_1_1_BusterBot_Run_Front_39: -3040786029552727089
+      Minion_1_1_BusterBot_Run_Front_4: 3244316439645442069
+      Minion_1_1_BusterBot_Run_Front_40: 2443548096546411692
+      Minion_1_1_BusterBot_Run_Front_41: 987593395562091784
+      Minion_1_1_BusterBot_Run_Front_42: -1090365960902598119
+      Minion_1_1_BusterBot_Run_Front_43: 2673631090735146627
+      Minion_1_1_BusterBot_Run_Front_44: 3372871315628794808
+      Minion_1_1_BusterBot_Run_Front_45: 6201584297154164516
+      Minion_1_1_BusterBot_Run_Front_46: 8344631954696762702
+      Minion_1_1_BusterBot_Run_Front_47: 671688637710089744
+      Minion_1_1_BusterBot_Run_Front_48: -2939099711061078
+      Minion_1_1_BusterBot_Run_Front_5: 4848574991631716179
+      Minion_1_1_BusterBot_Run_Front_6: -3023683872314585064
+      Minion_1_1_BusterBot_Run_Front_7: -2304172371324164025
+      Minion_1_1_BusterBot_Run_Front_8: -4717857389742884004
+      Minion_1_1_BusterBot_Run_Front_9: -8193344413913502671
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

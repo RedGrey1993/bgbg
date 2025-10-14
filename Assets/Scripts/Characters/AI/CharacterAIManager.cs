@@ -20,6 +20,8 @@ public static class CharacterAIManager
                 return new ContraBillAI(character);
             case CharacterType.Minion_1_0_Stomper:
                 return new Minion_1_0_StomperAI(character);
+            case CharacterType.Minion_1_1_BusterBot:
+                return new Minion_1_1_BusterBotAI(character);
             case CharacterType.Boss_1_0_PhantomTank:
                 return new Boss_1_0_PhantomTankAI(character);
             default:

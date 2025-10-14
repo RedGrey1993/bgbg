@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Boss_1_0_PhantomTank
+  m_Name: Minion_1_1_BusterBot
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  CharacterType: 4
-  shootSound: {fileID: 8300000, guid: 09926e3f4e00d3f4e884a2bf5462e9d2, type: 3}
+  CharacterType: 3
+  shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
+  bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
   shadowPrefab: {fileID: 0}
   MaxHp: 5
-  MoveSpeed: 2
+  MoveSpeed: 3
   ShootRange: 4
-  BulletSpeed: 6
-  Damage: 10
+  BulletSpeed: 4
+  Damage: 3
   AttackFrequency: 1
   CriticalRate: 0
   ExpGiven: 5
