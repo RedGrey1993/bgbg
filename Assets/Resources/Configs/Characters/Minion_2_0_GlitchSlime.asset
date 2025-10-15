@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
   m_Name: Minion_2_0_GlitchSlime
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  CharacterType: 5
   shootSound: {fileID: 0}
   jumpSound: {fileID: 0}
   bulletPrefab: {fileID: 0}
   shadowPrefab: {fileID: 0}
+  deadBodyPrefab: {fileID: 2940360485639069442, guid: 9d80d9ea9ffd0ab4f91d17af927ad826, type: 3}
+  CharacterType: 5
   MaxHp: 5
   MoveSpeed: 3
   ShootRange: 4

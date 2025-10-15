@@ -12,17 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
   m_Name: ContraBill
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  CharacterType: 1
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
+  jumpSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: ab0e70273c1e04f4b8ca79c201b74766, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 3c7b99065d7e75a4a93196c0189c781c, type: 3}
+  shadowPrefab: {fileID: 0}
+  deadBodyPrefab: {fileID: 0}
+  CharacterType: 1
   MaxHp: 30
   MoveSpeed: 5
   ShootRange: 5
   BulletSpeed: 6
   Damage: 1
-  ShootFrequency: 3
+  AttackFrequency: 3
   CriticalRate: 0
   ExpGiven: 200
+  canMoveDiagonally: 1
+  canAttackDiagonally: 0
   AggroRange: 20
   AggroChangeInterval: 2
   minRandomMoveInputInterval: 1

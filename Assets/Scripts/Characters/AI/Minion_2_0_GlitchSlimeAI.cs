@@ -156,12 +156,27 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
 
     }
     #endregion
-    
+
     #region OnDeath
     public override float OnDeath()
     {
         animator.SetTrigger("Death");
-        return 2f;
+        float deathDuration = 2f;
+        GameManager.Instance.StartCoroutine(GenerateDeadBody(deathDuration, CharacterData.deadBodyPrefab, character.transform.position));
+        return deathDuration;
+    }
+    
+    private IEnumerator GenerateDeadBody(float deathDuration, GameObject prefab, Vector3 position)
+    {
+        yield return new WaitForSeconds(deathDuration);
+        var poison = Object.Instantiate(prefab, position, Quaternion.identity);
+        SpriteRenderer sr = poison.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.sortingOrder = -5; // Change the poison's sorting order to be behind alive players
+        }
+        Object.Destroy(poison, 10f);
+        LevelManager.Instance.ToRemoveBeforeNewStage.Add(poison);
     }
     #endregion
 }

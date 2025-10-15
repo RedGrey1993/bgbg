@@ -4,16 +4,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Characters/Character Data")]
 public class CharacterData : ScriptableObject
 {
-    [Header("Basic Attributes")]
-    public CharacterType CharacterType = CharacterType.Unset;
+    [Header("Prefabs")]
     public AudioClip shootSound;
     public AudioClip jumpSound;
+    public AudioClip hurtSound;
     public GameObject bulletPrefab;
     public GameObject shadowPrefab;
+    public GameObject deadBodyPrefab;
+
+    [Header("Basic Attributes")]
+    public CharacterType CharacterType = CharacterType.Unset;
     public uint MaxHp;
     public uint MoveSpeed;
     public uint ShootRange;
-
     public uint BulletSpeed = 6;
     public uint Damage = 1;
     public float AttackFrequency = 3;
