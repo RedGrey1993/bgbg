@@ -1,103 +1,103 @@
 fileFormatVersion: 2
-guid: fd43ed017cb03bc41bd49348232806ea
+guid: 986a69c1e6d42784fbd96b254773ada1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6349387146780862608
-    second: Boss_2_0_MasterTurtle_Run_0
+      213: 2673045255523068320
+    second: Boss_3_0_PokeBoy_Run_0
   - first:
-      213: 1955211778804530786
-    second: Boss_2_0_MasterTurtle_Run_1
+      213: -5465306773063670043
+    second: Boss_3_0_PokeBoy_Run_1
   - first:
-      213: -4467977302117764855
-    second: Boss_2_0_MasterTurtle_Run_2
+      213: -7587813317138517765
+    second: Boss_3_0_PokeBoy_Run_2
   - first:
-      213: 7002284454394247695
-    second: Boss_2_0_MasterTurtle_Run_3
+      213: -3335366653675389038
+    second: Boss_3_0_PokeBoy_Run_3
   - first:
-      213: 3385688877251936541
-    second: Boss_2_0_MasterTurtle_Run_4
+      213: 4854187189791057403
+    second: Boss_3_0_PokeBoy_Run_4
   - first:
-      213: -5960054667701517260
-    second: Boss_2_0_MasterTurtle_Run_5
+      213: 1454782442066155486
+    second: Boss_3_0_PokeBoy_Run_5
   - first:
-      213: 2217219047210520355
-    second: Boss_2_0_MasterTurtle_Run_6
+      213: 7926753834841945769
+    second: Boss_3_0_PokeBoy_Run_6
   - first:
-      213: -2893891813951794136
-    second: Boss_2_0_MasterTurtle_Run_7
+      213: -8878102662118477584
+    second: Boss_3_0_PokeBoy_Run_7
   - first:
-      213: 8273389674518284952
-    second: Boss_2_0_MasterTurtle_Run_8
+      213: -5968456373260302500
+    second: Boss_3_0_PokeBoy_Run_8
   - first:
-      213: 6937618356040052801
-    second: Boss_2_0_MasterTurtle_Run_9
+      213: 6847721613561938105
+    second: Boss_3_0_PokeBoy_Run_9
   - first:
-      213: 954377231673464350
-    second: Boss_2_0_MasterTurtle_Run_10
+      213: 4671563407605501967
+    second: Boss_3_0_PokeBoy_Run_10
   - first:
-      213: 5001139400705406508
-    second: Boss_2_0_MasterTurtle_Run_11
+      213: 4237134856842745431
+    second: Boss_3_0_PokeBoy_Run_11
   - first:
-      213: 8714869479578905272
-    second: Boss_2_0_MasterTurtle_Run_12
+      213: 8654086852103432391
+    second: Boss_3_0_PokeBoy_Run_12
   - first:
-      213: 4844460985266256698
-    second: Boss_2_0_MasterTurtle_Run_13
+      213: 4518882944676822385
+    second: Boss_3_0_PokeBoy_Run_13
   - first:
-      213: -7121456375408127690
-    second: Boss_2_0_MasterTurtle_Run_14
+      213: -8028898345298459452
+    second: Boss_3_0_PokeBoy_Run_14
   - first:
-      213: 1679122229582757148
-    second: Boss_2_0_MasterTurtle_Run_15
+      213: 3279342785884623327
+    second: Boss_3_0_PokeBoy_Run_15
   - first:
-      213: -3093074744646101218
-    second: Boss_2_0_MasterTurtle_Run_16
+      213: -8643769126176034457
+    second: Boss_3_0_PokeBoy_Run_16
   - first:
-      213: -5855676427288016011
-    second: Boss_2_0_MasterTurtle_Run_17
+      213: 6748288867504363269
+    second: Boss_3_0_PokeBoy_Run_17
   - first:
-      213: 4703647884975225869
-    second: Boss_2_0_MasterTurtle_Run_18
+      213: -2144729915596633820
+    second: Boss_3_0_PokeBoy_Run_18
   - first:
-      213: 5553126754950535137
-    second: Boss_2_0_MasterTurtle_Run_19
+      213: -16681170751140417
+    second: Boss_3_0_PokeBoy_Run_19
   - first:
-      213: 2128588698564772017
-    second: Boss_2_0_MasterTurtle_Run_20
+      213: -385473229187707339
+    second: Boss_3_0_PokeBoy_Run_20
   - first:
-      213: -3525860120209292502
-    second: Boss_2_0_MasterTurtle_Run_21
+      213: -8913999140579943690
+    second: Boss_3_0_PokeBoy_Run_21
   - first:
-      213: 4870981813592820409
-    second: Boss_2_0_MasterTurtle_Run_22
+      213: 7411712419727046073
+    second: Boss_3_0_PokeBoy_Run_22
   - first:
-      213: 4452947453627734624
-    second: Boss_2_0_MasterTurtle_Run_23
+      213: 8962475877200358726
+    second: Boss_3_0_PokeBoy_Run_23
   - first:
-      213: 7006929303223724217
-    second: Boss_2_0_MasterTurtle_Run_24
+      213: 3104664031416276792
+    second: Boss_3_0_PokeBoy_Run_24
   - first:
-      213: 8226462032304765992
-    second: Boss_2_0_MasterTurtle_Run_25
+      213: 1422813790836268156
+    second: Boss_3_0_PokeBoy_Run_25
   - first:
-      213: 331812637039593109
-    second: Boss_2_0_MasterTurtle_Run_26
+      213: 8546628074301447606
+    second: Boss_3_0_PokeBoy_Run_26
   - first:
-      213: 8735573660690681180
-    second: Boss_2_0_MasterTurtle_Run_27
+      213: -3730736618255838533
+    second: Boss_3_0_PokeBoy_Run_27
   - first:
-      213: -1508394430572092221
-    second: Boss_2_0_MasterTurtle_Run_28
+      213: 1261353123866508106
+    second: Boss_3_0_PokeBoy_Run_28
   - first:
-      213: 3509639641738573940
-    second: Boss_2_0_MasterTurtle_Run_29
+      213: -8720969987906127757
+    second: Boss_3_0_PokeBoy_Run_29
   - first:
-      213: 4609336144377185194
-    second: Boss_2_0_MasterTurtle_Run_30
+      213: 2096020902200916022
+    second: Boss_3_0_PokeBoy_Run_30
   - first:
-      213: -1994237830462609477
-    second: Boss_2_0_MasterTurtle_Run_31
+      213: 6056558498840425395
+    second: Boss_3_0_PokeBoy_Run_31
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -193,13 +193,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_0
+      name: Boss_3_0_PokeBoy_Run_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 1304
-        width: 181
-        height: 284
+        x: 77
+        y: 1040
+        width: 98
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 098ed4138fd8d1850800000000000000
-      internalID: 6349387146780862608
+      spriteID: 0a9eefb5f70981520800000000000000
+      internalID: 2673045255523068320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_1
+      name: Boss_3_0_PokeBoy_Run_1
       rect:
         serializedVersion: 2
-        x: 292
-        y: 1305
-        width: 181
-        height: 281
+        x: 333
+        y: 1040
+        width: 97
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26ebd40f0ce422b10800000000000000
-      internalID: 1955211778804530786
+      spriteID: 5e6e00342745724b0800000000000000
+      internalID: -5465306773063670043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_2
+      name: Boss_3_0_PokeBoy_Run_2
       rect:
         serializedVersion: 2
-        x: 546
-        y: 1304
-        width: 182
-        height: 282
+        x: 586
+        y: 1039
+        width: 99
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,20 +252,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 90133cae05e8ef1c0800000000000000
-      internalID: -4467977302117764855
+      spriteID: bf0faf17dfba2b690800000000000000
+      internalID: -7587813317138517765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_3
+      name: Boss_3_0_PokeBoy_Run_3
       rect:
         serializedVersion: 2
-        x: 801
-        y: 1303
-        width: 181
-        height: 284
+        x: 841
+        y: 1038
+        width: 100
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,20 +274,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0ab8609c9c1d2160800000000000000
-      internalID: 7002284454394247695
+      spriteID: 29fbef333b566b1d0800000000000000
+      internalID: -3335366653675389038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_4
+      name: Boss_3_0_PokeBoy_Run_4
       rect:
         serializedVersion: 2
-        x: 1056
-        y: 1300
-        width: 181
-        height: 286
+        x: 1095
+        y: 1041
+        width: 101
+        height: 209
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,20 +296,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d11c79088126cfe20800000000000000
-      internalID: 3385688877251936541
+      spriteID: bf56fb0d7898d5340800000000000000
+      internalID: 4854187189791057403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_5
+      name: Boss_3_0_PokeBoy_Run_5
       rect:
         serializedVersion: 2
-        x: 1312
-        y: 1301
-        width: 181
-        height: 286
+        x: 1351
+        y: 1041
+        width: 101
+        height: 209
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,20 +318,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4340eb18bd1a94da0800000000000000
-      internalID: -5960054667701517260
+      spriteID: ed714dc5cec603410800000000000000
+      internalID: 1454782442066155486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_6
+      name: Boss_3_0_PokeBoy_Run_6
       rect:
         serializedVersion: 2
-        x: 1568
-        y: 1301
-        width: 181
-        height: 288
+        x: 1606
+        y: 1037
+        width: 102
+        height: 211
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,20 +340,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 32f8632e9f425ce10800000000000000
-      internalID: 2217219047210520355
+      spriteID: 9a638b37d9c710e60800000000000000
+      internalID: 7926753834841945769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_7
+      name: Boss_3_0_PokeBoy_Run_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 981
-        width: 182
-        height: 288
+        x: 71
+        y: 781
+        width: 101
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,20 +362,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8241efa4ab4d6d7d0800000000000000
-      internalID: -2893891813951794136
+      spriteID: 0f07af0caa4aac480800000000000000
+      internalID: -8878102662118477584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_8
+      name: Boss_3_0_PokeBoy_Run_8
       rect:
         serializedVersion: 2
-        x: 290
-        y: 985
-        width: 181
-        height: 282
+        x: 327
+        y: 780
+        width: 102
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,20 +384,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89a0c0e131cf0d270800000000000000
-      internalID: 8273389674518284952
+      spriteID: c57476efc88cb2da0800000000000000
+      internalID: -5968456373260302500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_9
+      name: Boss_3_0_PokeBoy_Run_9
       rect:
         serializedVersion: 2
-        x: 547
-        y: 984
-        width: 182
-        height: 283
+        x: 584
+        y: 779
+        width: 101
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -406,20 +406,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1403ff2432f574060800000000000000
-      internalID: 6937618356040052801
+      spriteID: 9b0cf19d68ef70f50800000000000000
+      internalID: 6847721613561938105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_10
+      name: Boss_3_0_PokeBoy_Run_10
       rect:
         serializedVersion: 2
-        x: 805
-        y: 981
-        width: 181
-        height: 286
+        x: 840
+        y: 780
+        width: 101
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,20 +428,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e161e932901ae3d00800000000000000
-      internalID: 954377231673464350
+      spriteID: f001a001b2ab4d040800000000000000
+      internalID: 4671563407605501967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_11
+      name: Boss_3_0_PokeBoy_Run_11
       rect:
         serializedVersion: 2
-        x: 1064
-        y: 981
-        width: 180
-        height: 283
+        x: 1096
+        y: 780
+        width: 102
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,20 +450,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c26714ba9cd976540800000000000000
-      internalID: 5001139400705406508
+      spriteID: 7569987f3b35dca30800000000000000
+      internalID: 4237134856842745431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_12
+      name: Boss_3_0_PokeBoy_Run_12
       rect:
         serializedVersion: 2
-        x: 1321
-        y: 982
-        width: 180
-        height: 283
+        x: 1354
+        y: 780
+        width: 100
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,20 +472,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8baa13a4e9f61f870800000000000000
-      internalID: 8714869479578905272
+      spriteID: 7c8e003042e791870800000000000000
+      internalID: 8654086852103432391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_13
+      name: Boss_3_0_PokeBoy_Run_13
       rect:
         serializedVersion: 2
-        x: 1579
-        y: 981
-        width: 179
-        height: 285
+        x: 1610
+        y: 780
+        width: 100
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -494,20 +494,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3bb80b599bfa3340800000000000000
-      internalID: 4844460985266256698
+      spriteID: 17d780b981c46be30800000000000000
+      internalID: 4518882944676822385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_14
+      name: Boss_3_0_PokeBoy_Run_14
       rect:
         serializedVersion: 2
-        x: 44
-        y: 659
-        width: 176
-        height: 289
+        x: 74
+        y: 524
+        width: 101
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -516,20 +516,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6319b5c58218b2d90800000000000000
-      internalID: -7121456375408127690
+      spriteID: 4c483ce6e7f939090800000000000000
+      internalID: -8028898345298459452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_15
+      name: Boss_3_0_PokeBoy_Run_15
       rect:
         serializedVersion: 2
-        x: 300
-        y: 661
-        width: 175
-        height: 288
+        x: 324
+        y: 525
+        width: 108
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -538,20 +538,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1dfdbc75c07d4710800000000000000
-      internalID: 1679122229582757148
+      spriteID: fd1946993e0928d20800000000000000
+      internalID: 3279342785884623327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_16
+      name: Boss_3_0_PokeBoy_Run_16
       rect:
         serializedVersion: 2
-        x: 556
-        y: 663
-        width: 173
-        height: 285
+        x: 580
+        y: 525
+        width: 112
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -560,20 +560,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1713a558e03315d0800000000000000
-      internalID: -3093074744646101218
+      spriteID: 761f9c1c6c92b0880800000000000000
+      internalID: -8643769126176034457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_17
+      name: Boss_3_0_PokeBoy_Run_17
       rect:
         serializedVersion: 2
-        x: 811
-        y: 665
-        width: 173
-        height: 283
+        x: 838
+        y: 526
+        width: 111
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -582,20 +582,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57b8ed760557cbea0800000000000000
-      internalID: -5855676427288016011
+      spriteID: 507125598fcb6ad50800000000000000
+      internalID: 6748288867504363269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_18
+      name: Boss_3_0_PokeBoy_Run_18
       rect:
         serializedVersion: 2
-        x: 1066
-        y: 666
-        width: 173
-        height: 280
+        x: 1095
+        y: 526
+        width: 110
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -604,20 +604,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0c377494d6b64140800000000000000
-      internalID: 4703647884975225869
+      spriteID: 42985b941836c32e0800000000000000
+      internalID: -2144729915596633820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_19
+      name: Boss_3_0_PokeBoy_Run_19
       rect:
         serializedVersion: 2
-        x: 1321
-        y: 666
-        width: 173
-        height: 279
+        x: 1353
+        y: 527
+        width: 102
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -626,20 +626,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e75b85ac5ba01d40800000000000000
-      internalID: 5553126754950535137
+      spriteID: fbdc0f6409cb4cff0800000000000000
+      internalID: -16681170751140417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_20
+      name: Boss_3_0_PokeBoy_Run_20
       rect:
         serializedVersion: 2
-        x: 1575
-        y: 665
-        width: 174
-        height: 279
+        x: 1608
+        y: 526
+        width: 102
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -648,20 +648,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b04dd2c4244a8d10800000000000000
-      internalID: 2128588698564772017
+      spriteID: 53e08dfe32686aaf0800000000000000
+      internalID: -385473229187707339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_21
+      name: Boss_3_0_PokeBoy_Run_21
       rect:
         serializedVersion: 2
-        x: 38
-        y: 344
-        width: 174
-        height: 280
+        x: 71
+        y: 271
+        width: 103
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -670,20 +670,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a238537c6e0a11fc0800000000000000
-      internalID: -3525860120209292502
+      spriteID: 6fa5891920d1b4480800000000000000
+      internalID: -8913999140579943690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_22
+      name: Boss_3_0_PokeBoy_Run_22
       rect:
         serializedVersion: 2
-        x: 293
-        y: 341
-        width: 174
-        height: 285
+        x: 327
+        y: 271
+        width: 102
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -692,20 +692,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ba8692e624399340800000000000000
-      internalID: 4870981813592820409
+      spriteID: 9b57e234d21bbd660800000000000000
+      internalID: 7411712419727046073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_23
+      name: Boss_3_0_PokeBoy_Run_23
       rect:
         serializedVersion: 2
-        x: 548
-        y: 343
-        width: 175
-        height: 285
+        x: 582
+        y: 271
+        width: 103
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -714,20 +714,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06a16f8cd1c0ccd30800000000000000
-      internalID: 4452947453627734624
+      spriteID: 64de888335c116c70800000000000000
+      internalID: 8962475877200358726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_24
+      name: Boss_3_0_PokeBoy_Run_24
       rect:
         serializedVersion: 2
-        x: 804
-        y: 341
-        width: 176
-        height: 287
+        x: 836
+        y: 271
+        width: 105
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -736,20 +736,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b8ece4b31d9d3160800000000000000
-      internalID: 7006929303223724217
+      spriteID: 837df73cc7bf51b20800000000000000
+      internalID: 3104664031416276792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_25
+      name: Boss_3_0_PokeBoy_Run_25
       rect:
         serializedVersion: 2
-        x: 1061
-        y: 342
-        width: 176
-        height: 285
+        x: 1093
+        y: 267
+        width: 104
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -758,20 +758,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82c73c9f1a34a2270800000000000000
-      internalID: 8226462032304765992
+      spriteID: c7c9258ba99deb310800000000000000
+      internalID: 1422813790836268156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_26
+      name: Boss_3_0_PokeBoy_Run_26
       rect:
         serializedVersion: 2
-        x: 1317
-        y: 347
-        width: 176
-        height: 280
+        x: 1349
+        y: 267
+        width: 104
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -780,20 +780,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5960bbad5d5da9400800000000000000
-      internalID: 331812637039593109
+      spriteID: 6bd5e1c93f8bb9670800000000000000
+      internalID: 8546628074301447606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_27
+      name: Boss_3_0_PokeBoy_Run_27
       rect:
         serializedVersion: 2
-        x: 1576
-        y: 344
-        width: 176
-        height: 281
+        x: 1606
+        y: 267
+        width: 103
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -802,20 +802,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5d0aba16fdfa3970800000000000000
-      internalID: 8735573660690681180
+      spriteID: bb2915edfc2c93cc0800000000000000
+      internalID: -3730736618255838533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_28
+      name: Boss_3_0_PokeBoy_Run_28
       rect:
         serializedVersion: 2
-        x: 42
-        y: 21
-        width: 175
-        height: 282
+        x: 70
+        y: 11
+        width: 104
+        height: 219
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -824,20 +824,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c4a298d14b111be0800000000000000
-      internalID: -1508394430572092221
+      spriteID: a4b7464bbf9318110800000000000000
+      internalID: 1261353123866508106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_29
+      name: Boss_3_0_PokeBoy_Run_29
       rect:
         serializedVersion: 2
-        x: 299
-        y: 21
-        width: 175
-        height: 282
+        x: 326
+        y: 11
+        width: 104
+        height: 221
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -846,20 +846,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 478f477c8aeb4b030800000000000000
-      internalID: 3509639641738573940
+      spriteID: 378330e6004e8f680800000000000000
+      internalID: -8720969987906127757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_30
+      name: Boss_3_0_PokeBoy_Run_30
       rect:
         serializedVersion: 2
-        x: 557
-        y: 22
-        width: 174
-        height: 282
+        x: 583
+        y: 11
+        width: 103
+        height: 221
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -868,20 +868,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa388ff4dc6a7ff30800000000000000
-      internalID: 4609336144377185194
+      spriteID: 638ba75c7ef861d10800000000000000
+      internalID: 2096020902200916022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_2_0_MasterTurtle_Run_31
+      name: Boss_3_0_PokeBoy_Run_31
       rect:
         serializedVersion: 2
-        x: 815
-        y: 20
-        width: 171
-        height: 287
+        x: 840
+        y: 12
+        width: 102
+        height: 221
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -890,8 +890,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb761a5524b0354e0800000000000000
-      internalID: -1994237830462609477
+      spriteID: 3b3b1cc9dd73d0450800000000000000
+      internalID: 6056558498840425395
       vertices: []
       indices: 
       edges: []
@@ -910,38 +910,38 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boss_2_0_MasterTurtle_Run_0: 6349387146780862608
-      Boss_2_0_MasterTurtle_Run_1: 1955211778804530786
-      Boss_2_0_MasterTurtle_Run_10: 954377231673464350
-      Boss_2_0_MasterTurtle_Run_11: 5001139400705406508
-      Boss_2_0_MasterTurtle_Run_12: 8714869479578905272
-      Boss_2_0_MasterTurtle_Run_13: 4844460985266256698
-      Boss_2_0_MasterTurtle_Run_14: -7121456375408127690
-      Boss_2_0_MasterTurtle_Run_15: 1679122229582757148
-      Boss_2_0_MasterTurtle_Run_16: -3093074744646101218
-      Boss_2_0_MasterTurtle_Run_17: -5855676427288016011
-      Boss_2_0_MasterTurtle_Run_18: 4703647884975225869
-      Boss_2_0_MasterTurtle_Run_19: 5553126754950535137
-      Boss_2_0_MasterTurtle_Run_2: -4467977302117764855
-      Boss_2_0_MasterTurtle_Run_20: 2128588698564772017
-      Boss_2_0_MasterTurtle_Run_21: -3525860120209292502
-      Boss_2_0_MasterTurtle_Run_22: 4870981813592820409
-      Boss_2_0_MasterTurtle_Run_23: 4452947453627734624
-      Boss_2_0_MasterTurtle_Run_24: 7006929303223724217
-      Boss_2_0_MasterTurtle_Run_25: 8226462032304765992
-      Boss_2_0_MasterTurtle_Run_26: 331812637039593109
-      Boss_2_0_MasterTurtle_Run_27: 8735573660690681180
-      Boss_2_0_MasterTurtle_Run_28: -1508394430572092221
-      Boss_2_0_MasterTurtle_Run_29: 3509639641738573940
-      Boss_2_0_MasterTurtle_Run_3: 7002284454394247695
-      Boss_2_0_MasterTurtle_Run_30: 4609336144377185194
-      Boss_2_0_MasterTurtle_Run_31: -1994237830462609477
-      Boss_2_0_MasterTurtle_Run_4: 3385688877251936541
-      Boss_2_0_MasterTurtle_Run_5: -5960054667701517260
-      Boss_2_0_MasterTurtle_Run_6: 2217219047210520355
-      Boss_2_0_MasterTurtle_Run_7: -2893891813951794136
-      Boss_2_0_MasterTurtle_Run_8: 8273389674518284952
-      Boss_2_0_MasterTurtle_Run_9: 6937618356040052801
+      Boss_3_0_PokeBoy_Run_0: 2673045255523068320
+      Boss_3_0_PokeBoy_Run_1: -5465306773063670043
+      Boss_3_0_PokeBoy_Run_10: 4671563407605501967
+      Boss_3_0_PokeBoy_Run_11: 4237134856842745431
+      Boss_3_0_PokeBoy_Run_12: 8654086852103432391
+      Boss_3_0_PokeBoy_Run_13: 4518882944676822385
+      Boss_3_0_PokeBoy_Run_14: -8028898345298459452
+      Boss_3_0_PokeBoy_Run_15: 3279342785884623327
+      Boss_3_0_PokeBoy_Run_16: -8643769126176034457
+      Boss_3_0_PokeBoy_Run_17: 6748288867504363269
+      Boss_3_0_PokeBoy_Run_18: -2144729915596633820
+      Boss_3_0_PokeBoy_Run_19: -16681170751140417
+      Boss_3_0_PokeBoy_Run_2: -7587813317138517765
+      Boss_3_0_PokeBoy_Run_20: -385473229187707339
+      Boss_3_0_PokeBoy_Run_21: -8913999140579943690
+      Boss_3_0_PokeBoy_Run_22: 7411712419727046073
+      Boss_3_0_PokeBoy_Run_23: 8962475877200358726
+      Boss_3_0_PokeBoy_Run_24: 3104664031416276792
+      Boss_3_0_PokeBoy_Run_25: 1422813790836268156
+      Boss_3_0_PokeBoy_Run_26: 8546628074301447606
+      Boss_3_0_PokeBoy_Run_27: -3730736618255838533
+      Boss_3_0_PokeBoy_Run_28: 1261353123866508106
+      Boss_3_0_PokeBoy_Run_29: -8720969987906127757
+      Boss_3_0_PokeBoy_Run_3: -3335366653675389038
+      Boss_3_0_PokeBoy_Run_30: 2096020902200916022
+      Boss_3_0_PokeBoy_Run_31: 6056558498840425395
+      Boss_3_0_PokeBoy_Run_4: 4854187189791057403
+      Boss_3_0_PokeBoy_Run_5: 1454782442066155486
+      Boss_3_0_PokeBoy_Run_6: 7926753834841945769
+      Boss_3_0_PokeBoy_Run_7: -8878102662118477584
+      Boss_3_0_PokeBoy_Run_8: -5968456373260302500
+      Boss_3_0_PokeBoy_Run_9: 6847721613561938105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

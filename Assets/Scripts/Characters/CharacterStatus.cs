@@ -241,7 +241,11 @@ public class CharacterStatus : MonoBehaviour
 
     public bool IsBoss()
     {
-        if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+        if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
+            || characterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle
+            || characterData.CharacterType == CharacterType.Boss_3_0_PokeBoy
+            || characterData.CharacterType == CharacterType.Boss_4_0_SysGuardian
+            || characterData.CharacterType == CharacterType.Boss_5_0_TheRuler)
         {
             return true;
         }

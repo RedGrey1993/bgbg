@@ -28,6 +28,12 @@ public static class CharacterAIManager
                 return new Minion_2_0_GlitchSlimeAI(character);
             case CharacterType.Boss_2_0_MasterTurtle:
                 return new Boss_2_0_MasterTurtleAI(character);
+            case CharacterType.Boss_3_0_PokeBoy:
+                return new Boss_3_0_PokeBoyAI(character);
+            case CharacterType.Boss_4_0_SysGuardian:
+                return new Boss_4_0_SysGuardianAI(character);
+            case CharacterType.Boss_5_0_TheRuler:
+                return new Boss_5_0_TheRulerAI(character);
             default:
                 Debug.LogWarning($"[CharacterAIManager] No AI for character type: {characterStatus.characterData.CharacterType}");
                 return null;

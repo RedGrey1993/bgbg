@@ -121,9 +121,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5035837120527684100}
   - component: {fileID: 7528162992489926195}
-  - component: {fileID: 2761528381193209298}
   m_Layer: 9
-  m_Name: Boss_2_0_MasterTurtle
+  m_Name: Boss_4_0_SysGuardian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6349387146780862608, guid: fd43ed017cb03bc41bd49348232806ea, type: 3}
+  m_Sprite: {fileID: 5607093253673372020, guid: c05f2015bdd19264ab1cd9cc2eb24730, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,28 +201,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2761528381193209298
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2930555636905794069}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ece76382a37462e40956ef49306545ed, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5082082710013035862
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,11 +286,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6641391400573639146}
   - component: {fileID: 1533166332507140022}
-  - component: {fileID: 954219479960555531}
   - component: {fileID: 1594084724632985206}
   - component: {fileID: 355725702456237306}
+  - component: {fileID: 8141522549504265094}
   m_Layer: 9
-  m_Name: Boss_2_0_MasterTurtle
+  m_Name: Boss_4_0_SysGuardian
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,8 +340,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &954219479960555531
-BoxCollider2D:
+--- !u!114 &1594084724632985206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506378715684145941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5d71d333d3e914281a778ec8e5c31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  MoveInput: {x: 0, y: 0}
+  LookInput: {x: 0, y: 0}
+--- !u!114 &355725702456237306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506378715684145941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  characterData: {fileID: 11400000, guid: a1f9d9c35c212914dab8022978e9a392, type: 2}
+--- !u!70 &8141522549504265094
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -397,45 +401,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.011490583, y: -0.0044448376}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 0.984375, y: 0.984375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.4551187, y: 2.2131696}
-  m_EdgeRadius: 0
---- !u!114 &1594084724632985206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5506378715684145941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5d71d333d3e914281a778ec8e5c31a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
-  MoveInput: {x: 0, y: 0}
-  LookInput: {x: 0, y: 0}
---- !u!114 &355725702456237306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5506378715684145941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  characterData: {fileID: 11400000, guid: e94f46b2678992c4495cf7cd226b8d75, type: 2}
+  m_Offset: {x: 0.027659422, y: 0.011823295}
+  m_Size: {x: 1.929035, y: 1.5699723}
+  m_Direction: 1
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,11 +46,11 @@ public enum CharacterType
     Boss_2_0_MasterTurtle,
     Minion_3_0,
     Minion_3_1,
-    Boss_3_0,
+    Boss_3_0_PokeBoy,
     Minion_4_0,
     Minion_4_1,
-    Boss_4_0,
-    Boss_5_0,
+    Boss_4_0_SysGuardian,
+    Boss_5_0_TheRuler,
 }
 
 public enum GameState
