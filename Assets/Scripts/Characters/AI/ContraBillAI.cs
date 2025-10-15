@@ -180,6 +180,13 @@ public class ContraBillAI : CharacterBaseAI
     }
     #endregion
 
+    #region Running
+    protected override void SetSpeed(float speed)
+    {
+        if (animator) animator.SetFloat("Speed", speed);
+    }
+    #endregion
+
     #region Attack
     private void UpdateAttackInput()
     {

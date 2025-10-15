@@ -42,6 +42,15 @@ public enum CharacterType
     // Boss
     Boss_1_0_PhantomTank,
     Minion_2_0_GlitchSlime,
+    Minion_2_1,
+    Boss_2_0_MasterTurtle,
+    Minion_3_0,
+    Minion_3_1,
+    Boss_3_0,
+    Minion_4_0,
+    Minion_4_1,
+    Boss_4_0,
+    Boss_5_0,
 }
 
 public enum GameState

@@ -135,8 +135,14 @@ public abstract class CharacterBaseAI : ICharacterAI
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
         rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
-        animator?.SetFloat("Speed", rb.linearVelocity.magnitude);
+        SetSpeed(rb.linearVelocity.magnitude);
     }
+    #region Running
+    protected virtual void SetSpeed(float speed)
+    {
+        
+    }
+    #endregion
     #region Attack
     protected virtual void AttackAction()
     {
@@ -165,6 +171,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         GameObject bullet = Object.Instantiate(CharacterData.bulletPrefab, bulletStartPosition, Quaternion.identity);
         Transform childTransform = character.transform.GetChild(0);
         bullet.transform.localRotation = childTransform.localRotation;
+        bullet.transform.localScale = character.transform.localScale;
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript)
         {
@@ -227,7 +234,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         if (characterStatus.IsDead())
         {
             rb.linearVelocity = Vector2.zero;
-            animator?.SetFloat("Speed", 0);
+            SetSpeed(0);
             if (audioSource && audioSource.isPlaying) audioSource.Stop();
             return;
         }
