@@ -172,7 +172,6 @@ public class CharacterManager : MonoBehaviour
                 var bossPrefab = levelData.bossPrefabs[prefabIdx];
 
                 var boss = Instantiate(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), Quaternion.identity);
-                boss.transform.localScale = new Vector2(3f, 3f);
                 LevelManager.Instance.AddToBossRooms(boss.transform.position);
 
                 uint bossId = bs.PlayerId;
@@ -196,7 +195,6 @@ public class CharacterManager : MonoBehaviour
             GenerateBossPosition(roomIdx, out var spawnPosition);
 
             var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
-            boss.transform.localScale = new Vector2(3f, 3f);
             LevelManager.Instance.AddToBossRooms(boss.transform.position);
 
             uint bossId = IdGenerator.NextCharacterId();

@@ -152,7 +152,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private bool isAttacking = false; // 攻击时无法移动
     protected override void AttackAction()
     {
-        base.AttackAction();
+        // base.AttackAction();
         isAttacking = false;
     }
     #endregion
