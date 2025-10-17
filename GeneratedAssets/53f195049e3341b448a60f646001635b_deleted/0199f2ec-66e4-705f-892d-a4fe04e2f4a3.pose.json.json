@@ -1,0 +1,11 @@
+{
+    "asset": "53f195049e3341b448a60f646001635b",
+    "fileName": "0199f2ec-66e4-705f-892d-a4fe04e2f4a3.pose.json",
+    "prompt": "Extend right hand forward",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1371716675,
+    "w3CTraceId": "6f27f2c752362c856fc282bdddb2239c",
+    "isTrimmed": false
+}

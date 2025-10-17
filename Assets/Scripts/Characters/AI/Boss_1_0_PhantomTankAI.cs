@@ -125,6 +125,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
                 targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
             }
             Move_RandomMoveToTarget(targetPos);
+            characterInput.LookInput = Vector2.zero;
             AggroTarget = null; // 取消仇恨，等待下次重新搜索
         }
     }
@@ -139,7 +140,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             var diff = AggroTarget.transform.position - character.transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
             {
                 if (Time.time >= nextJudgeAtkTime)
                 {

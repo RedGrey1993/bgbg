@@ -1,0 +1,11 @@
+{
+    "asset": "53f195049e3341b448a60f646001635b",
+    "fileName": "0199f2eb-5cc8-7b84-bb9e-5aefa4159ad4.pose.json",
+    "prompt": "Extend your right hand vertically forward",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 419774834,
+    "w3CTraceId": "d3b5fa1f980c4c7b4a0aeef53fb5a4da",
+    "isTrimmed": false
+}

@@ -1,0 +1,11 @@
+{
+    "asset": "53f195049e3341b448a60f646001635b",
+    "fileName": "0199f2ef-ebf2-7f12-80dd-4a9697adb2ea.pose.json",
+    "prompt": "use gun to shoot forward with both hands",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1503607829,
+    "w3CTraceId": "2c42adb3a59ac5880aa62535d757f631",
+    "isTrimmed": false
+}

@@ -53,10 +53,14 @@ public class ContraBillAI : CharacterBaseAI
             // }
         }
     }
+    public override float OnDeath() {
+        if (animator) animator.Play("Dying");
+        return 3.5f;
+    }
 
     #endregion
 
-        #region Aggro
+    #region Aggro
     private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
     private void UpdateAggroTarget()
     {
@@ -185,55 +189,61 @@ public class ContraBillAI : CharacterBaseAI
     protected override void SetIdle(Direction dir)
     {
         if (animator) {
-            animator.Play("Player_ContraBill_Idle_Front");
+            animator.SetFloat("Speed", 0);
+            animator.SetInteger("Attack", 0);
         }
     }
     protected override void SetRunDirection(Direction dir)
     {
-        if (dir == Direction.Left)
-        {
-            character.GetComponentInChildren<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            character.GetComponentInChildren<SpriteRenderer>().flipX = false;
-        }
+        // if (dir == Direction.Left)
+        // {
+        //     character.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        // }
+        // else
+        // {
+        //     character.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        // }
         if (animator)
         {
-            if (dir == Direction.Left || dir == Direction.Right)
-            {
-                animator.Play("Player_ContraBill_Run_Right");
-            }
-            else if (dir == Direction.Up)
-            {
-                animator.Play("Player_ContraBill_Run_Back");
-            }
-            else
-            {
-                animator.Play("Player_ContraBill_Run_Front");
-            }
+            animator.SetFloat("Speed", 1);
+            animator.SetInteger("Attack", 0);
+            // if (dir == Direction.Left || dir == Direction.Right)
+            // {
+            //     animator.Play("Player_ContraBill_Run_Right");
+            // }
+            // else if (dir == Direction.Up)
+            // {
+            //     animator.Play("Player_ContraBill_Run_Back");
+            // }
+            // else
+            // {
+            //     animator.Play("Player_ContraBill_Run_Front");
+            // }
         }
     }
     
     protected override void SetAtkDirection(Direction dir)
     {
-        if (dir == Direction.Left)
-        {
-            character.GetComponentInChildren<SpriteRenderer>().flipX = true;
-        } else
-        {
-            character.GetComponentInChildren<SpriteRenderer>().flipX = false;
-        }
+        // if (dir == Direction.Left)
+        // {
+        //     character.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        // } else
+        // {
+        //     character.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        // }
         if (animator)
         {
-            if (characterInput.MoveInput.sqrMagnitude < 0.1f)
-            {
-                animator.Play("Player_ContraBill_Atk_Right");
-            }
-            else
-            {
-                animator.Play("Player_ContraBill_Atk_Run_Right");
-            }
+            if (characterInput.MoveInput.sqrMagnitude > 0.1f) animator.SetFloat("Speed", 1);
+            else animator.SetFloat("Speed", 0);
+            animator.SetInteger("Attack", 1);
+            // if (characterInput.MoveInput.sqrMagnitude < 0.1f)
+            // {
+            //     animator.Play("Player_ContraBill_Atk_Right");
+            // }
+            // else
+            // {
+            //     animator.Play("Player_ContraBill_Atk_Run_Right");
+            // }
         }
     }
     #endregion

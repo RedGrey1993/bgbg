@@ -2831,7 +2831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d120b470d1f674e9c51438d3f0a0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
-  playerPrefab: {fileID: 696006956200170134, guid: c767a963a82e5724ebc5a4bbcefda2d1, type: 3}
+  playerPrefab: {fileID: 696006956200170134, guid: cecee85ce7cd68646872240c56e02996, type: 3}
   playerParent: {fileID: 417062435}
   cameraFollowObject: {fileID: 479583612}
 --- !u!114 &1509823721

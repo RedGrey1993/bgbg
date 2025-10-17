@@ -333,13 +333,13 @@ public class CharacterManager : MonoBehaviour
 
     public void RemoveObject(uint characterId)
     {
-        if (playerObjects.ContainsKey(characterId))
-        {
-            playerObjects.Remove(characterId);
-            PlayerInfoMap.Remove(characterId);
-            Players.RemoveAll(p => p.Id == characterId);
-        }
-        else if (minionObjects.ContainsKey(characterId))
+        // if (playerObjects.ContainsKey(characterId))
+        // {
+        //     playerObjects.Remove(characterId);
+        //     PlayerInfoMap.Remove(characterId);
+        //     Players.RemoveAll(p => p.Id == characterId);
+        // }
+        if (minionObjects.ContainsKey(characterId))
         {
             minionObjects.Remove(characterId);
         }

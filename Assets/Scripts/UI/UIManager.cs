@@ -596,10 +596,11 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.Instance.GameState == GameState.InGame)
         {
-            _mainMenuRoot.RemoveFromClassList("hidden");
-            ShowPanel(_gameOverPanel);
-            bool isInLobby = LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby;
-            _gameOverSpectateButton.style.display = isInLobby ? DisplayStyle.Flex : DisplayStyle.None;
+            // _mainMenuRoot.RemoveFromClassList("hidden");
+            // ShowPanel(_gameOverPanel);
+            // // 如果是联机，可以选择观战
+            // bool isInLobby = LobbyNetworkManager.Instance != null && LobbyNetworkManager.Instance.IsInLobby;
+            // _gameOverSpectateButton.style.display = isInLobby ? DisplayStyle.Flex : DisplayStyle.None;
         }
     }
 

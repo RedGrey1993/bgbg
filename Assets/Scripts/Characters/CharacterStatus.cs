@@ -196,15 +196,15 @@ public class CharacterStatus : MonoBehaviour
             pc.enabled = false;
         }
 
-        // 尸体销毁
+        // 尸体销毁，Player的尸体不销毁，置灰保留在原地
         if (CharacterAI != null)
         {
             float length = CharacterAI.OnDeath();
-            Destroy(gameObject, length);
+            if (!CharacterManager.Instance.playerObjects.ContainsKey(State.PlayerId)) Destroy(gameObject, length);
         }
         else
         {
-            Destroy(gameObject);
+            if (!CharacterManager.Instance.playerObjects.ContainsKey(State.PlayerId)) Destroy(gameObject);
         }
 
         if (IsBoss())
@@ -266,6 +266,10 @@ public class CharacterStatus : MonoBehaviour
             {
                 UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
                 UIManager.Instance.ShowBossHealthSlider();
+            }
+            else
+            {
+                UIManager.Instance.HideBossHealthSlider();
             }
         }
         State.Position = new Vec2

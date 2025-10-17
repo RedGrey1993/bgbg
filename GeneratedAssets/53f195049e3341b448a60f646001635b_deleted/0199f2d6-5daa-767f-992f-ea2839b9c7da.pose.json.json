@@ -1,0 +1,11 @@
+{
+    "asset": "53f195049e3341b448a60f646001635b",
+    "fileName": "0199f2d6-5daa-767f-992f-ea2839b9c7da.pose.json",
+    "prompt": "shooting to front",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 2042098057,
+    "w3CTraceId": "10fb94c5c82a7df24f4da360460f3e5c",
+    "isTrimmed": false
+}
