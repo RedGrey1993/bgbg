@@ -22,9 +22,10 @@ public class UIManager : MonoBehaviour
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject fadePanel;
-    public UnityEngine.UI.Image fadeBackgroundImage;
     public UnityEngine.UI.Image loadingImage;
+    public TextMeshProUGUI loadingText;
     public Sprite defaultSprite; // 默认加载图片
+    public Sprite[] startCgSprites;
     // 新增：定义一个动画曲线
     [Tooltip("控制渐变速度的缓动曲线")]
     public AnimationCurve fadeOutCurve;
@@ -179,18 +180,26 @@ public class UIManager : MonoBehaviour
     }
 
     #region Canvas
-    public void PlayLoadingAnimation(Action callback, Sprite loadingSprite = null, bool needPressSpace = true)
+    public void PlayLoadingAnimation(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "")
     {
         fadePanel.SetActive(true);
-        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace));
+        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace, loadingStr));
     }
 
-    private IEnumerator FadeRoutine(float targetAlpha, float transitionTime)
+    private IEnumerator FadeRoutine(float startAlpha, float targetAlpha, float transitionTime)
     {
         var canvasGroup = fadePanel.GetComponent<CanvasGroup>();
         float elapsedTime = 0f;
-        float startAlpha = canvasGroup.alpha;
 
+        AnimationCurve curve;
+        if (startAlpha < 0.1f)
+        {
+            curve = fadeInCurve;
+        }
+        else
+        {
+            curve = fadeOutCurve;
+        }
         // 当计时器小于设定的过渡时间时，循环执行
         while (elapsedTime < transitionTime)
         {
@@ -200,18 +209,11 @@ public class UIManager : MonoBehaviour
             // 2. 使用动画曲线来评估（转换）这个进度
             // 这会将线性的 timeProgress 映射到你设计的曲线上
             float curveValue;
-            if (startAlpha < 0.1f)
-            {
-                curveValue = fadeOutCurve.Evaluate(timeProgress);
-            }
-            else
-            {
-                curveValue = fadeInCurve.Evaluate(timeProgress);
-            }
+            curveValue = curve.Evaluate(timeProgress);
 
             // 3. 将曲线值用于 Lerp
             canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, curveValue);
-            
+
             // 累加时间
             elapsedTime += Time.deltaTime;
 
@@ -223,24 +225,52 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
     }
 
-    private IEnumerator LoadAnimationRoutine(Action callback, Sprite loadingSprite = null, bool needPressSpace = true)
+    private IEnumerator LoadAnimationRoutine(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "")
     {
-        if (loadingImage != null)
+        if (loadingSprite == null || loadingSprite.Length == 0)
         {
-            if (loadingSprite != null)
-                loadingImage.sprite = loadingSprite;
-            else
-                loadingImage.sprite = defaultSprite;
-            RectTransform rt = loadingImage.GetComponent<RectTransform>();
-            var spriteWidth = loadingImage.sprite.rect.width;
-            var spriteHeight = loadingImage.sprite.rect.height;
-            var tarWidth = rt.rect.height * (spriteWidth / spriteHeight);
-            rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
+            loadingSprite = new Sprite[] { defaultSprite };
+        }
+        var transitionTime = 1f;
+        if (loadingStr != "")
+        {
+            loadingText.text = loadingStr;
+        }
+        else if (needPressSpace)
+        {
+            loadingText.text = "Press Space to Continue";
         }
 
-        // 1. 触发渐变黑屏动画
-        var transitionTime = 1.5f;
-        yield return StartCoroutine(FadeRoutine(1f, transitionTime));
+        foreach (var sprite in loadingSprite)
+        {
+            if (loadingImage != null)
+            {
+                loadingImage.sprite = sprite;
+                RectTransform rt = loadingImage.GetComponent<RectTransform>();
+                var spriteWidth = loadingImage.sprite.rect.width;
+                var spriteHeight = loadingImage.sprite.rect.height;
+                var tarWidth = rt.rect.height * (spriteWidth / spriteHeight);
+                rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
+            }
+            // 触发渐变显示图片动画
+            yield return StartCoroutine(FadeRoutine(0f, 1f, transitionTime));
+
+            if (needPressSpace)
+            {
+                // 等待直到 spacePressed 变为 true
+                yield return new WaitUntil(() => _spacePressedAction.IsPressed());
+            }
+
+            // Last sprite
+            if (sprite == loadingSprite[loadingSprite.Length - 1])
+            {
+                // 加载下一关场景
+                callback?.Invoke();
+            }
+            // 触发渐变隐藏图片动画
+            yield return StartCoroutine(FadeRoutine(1f, 0f, transitionTime));
+        }
+
         // 如果是视频，可以在这里 videoPlayer.Play();
 
         // // [可选] 隐藏加载内容
@@ -251,19 +281,6 @@ public class UIManager : MonoBehaviour
         //     loadingContent.gameObject.SetActive(false);
         // }
         // yield return new WaitForSeconds(transitionTime);
-
-        if (needPressSpace)
-        {
-            // 等待直到 spacePressed 变为 true
-            yield return new WaitUntil(() => _spacePressedAction.IsPressed());
-        }
-        callback?.Invoke();
-        CharacterManager.Instance.DisableMyself();
-
-        // 5. 触发渐变显示动画
-        transitionTime = 1f;
-        yield return StartCoroutine(FadeRoutine(0f, transitionTime));
-        CharacterManager.Instance.EnableMyself();
     }
 
     public void HideFadePanel()
@@ -425,7 +442,7 @@ public class UIManager : MonoBehaviour
                 NextCharacterId = 1,
             };
             GameManager.Instance.StartLocalGame(storage);
-        }, needPressSpace: false);
+        }, loadingSprite: startCgSprites, needPressSpace: true);
     }
 
     private void OnContinueGameClicked()

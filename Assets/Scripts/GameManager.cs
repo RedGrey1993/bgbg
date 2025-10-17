@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
                 UIManager.Instance.QuitToMainMenu();
-            }, curLevelData.gamePassedSprite);
+            }, new Sprite[] { curLevelData.gamePassedSprite });
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
     }
