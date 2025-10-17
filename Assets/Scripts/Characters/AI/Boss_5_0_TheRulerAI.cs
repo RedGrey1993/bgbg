@@ -40,93 +40,10 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     #endregion
 
     #region Move
-    private float nextMoveInputChangeTime = 0;
-    private Vector3 targetPos = Vector3.zero;
+    // 统治者不能移动，会坐在原地，然后召唤或使用一些全场技能
     private void UpdateMoveInput()
     {
-        if (Time.time > nextMoveInputChangeTime)
-        {
-            if (AggroTarget == null)
-            {
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
-                {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                    var collider2D = character.GetComponent<Collider2D>();
-                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
-                }
-                Move_RandomMoveToTarget(targetPos);
-            }
-            else
-            {
-                Move_ChaseInRoom();
-            }
-        }
-    }
-
-    private float chaseMoveInputInterval = 0;
-    private void Move_ChaseInRoom()
-    {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
-        const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
-        const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
-
-        bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
-        bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
-        bool NearWall(float d = 0)
-        {
-            return XNearWall(d) || YNearWall(d);
-        }
-
-        // 在墙壁边缘时，需要尽快改变追击路线，避免来回横跳
-        if (NearWall())
-        {
-            chaseMoveInputInterval = 0;
-        }
-        else
-        {
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-        }
-        nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
-
-        var diff = AggroTarget.transform.position - character.transform.position;
-        var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
-        Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
-
-        // 在同一间房间，直接追击
-        if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
-        {
-            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            if (diff.sqrMagnitude > sqrShootRange)
-            {
-                if (Mathf.Abs(diffNormalized.x) > 0.1f)
-                {
-                    if (!XNearWall())
-                        diffNormalized.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
-                }
-                characterInput.MoveInput = diffNormalized.normalized;
-            }
-            else // 进入攻击范围
-            {
-                // 在攻击距离内左右横跳拉扯
-                characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
-            }
-        }
-        else
-        {
-            // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
-            {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                var collider2D = character.GetComponent<Collider2D>();
-                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
-            }
-            Move_RandomMoveToTarget(targetPos);
-            AggroTarget = null; // 取消仇恨，等待下次重新搜索
-        }
+        
     }
     #endregion
 

@@ -1,0 +1,679 @@
+fileFormatVersion: 2
+guid: 881fd6dbab886ff40956febf211c1a2c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4241046750949491883
+    second: Player_ContraBill_Run_Back_0
+  - first:
+      213: 1436724140347137414
+    second: Player_ContraBill_Run_Back_1
+  - first:
+      213: -3517446946205070574
+    second: Player_ContraBill_Run_Back_2
+  - first:
+      213: -541965105259858338
+    second: Player_ContraBill_Run_Back_3
+  - first:
+      213: -5694352173280649505
+    second: Player_ContraBill_Run_Back_4
+  - first:
+      213: 3856092976725840700
+    second: Player_ContraBill_Run_Back_5
+  - first:
+      213: 4402272359969284591
+    second: Player_ContraBill_Run_Back_6
+  - first:
+      213: 3902320999969033438
+    second: Player_ContraBill_Run_Back_7
+  - first:
+      213: 4148555243855834091
+    second: Player_ContraBill_Run_Back_8
+  - first:
+      213: -6979425127239455498
+    second: Player_ContraBill_Run_Back_9
+  - first:
+      213: -1509196505918226152
+    second: Player_ContraBill_Run_Back_10
+  - first:
+      213: -2320792196464602115
+    second: Player_ContraBill_Run_Back_11
+  - first:
+      213: 4836295952724924258
+    second: Player_ContraBill_Run_Back_12
+  - first:
+      213: -7204050052412309903
+    second: Player_ContraBill_Run_Back_13
+  - first:
+      213: 8234014942128664083
+    second: Player_ContraBill_Run_Back_14
+  - first:
+      213: -2098206842478993567
+    second: Player_ContraBill_Run_Back_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 512
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba44b2acc893bda30800000000000000
+      internalID: 4241046750949491883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_1
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d9e995ef440f310800000000000000
+      internalID: 1436724140347137414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_2
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b0a2f73a48f2fc0800000000000000
+      internalID: -3517446946205070574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_3
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e563454bb9d8a78f0800000000000000
+      internalID: -541965105259858338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_4
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fde12ad4ed899f0b0800000000000000
+      internalID: -5694352173280649505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_5
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c335f92c128938530800000000000000
+      internalID: 3856092976725840700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_6
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe16d7c1363081d30800000000000000
+      internalID: 4402272359969284591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc83ba2644d72630800000000000000
+      internalID: 3902320999969033438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_8
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beb6c19a301a29930800000000000000
+      internalID: 4148555243855834091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_9
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fce47a43d9142f90800000000000000
+      internalID: -6979425127239455498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_10
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811cb7026c14e0be0800000000000000
+      internalID: -1509196505918226152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_11
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df39a3c1bc3eacfd0800000000000000
+      internalID: -2320792196464602115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_12
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26714d29b89fd1340800000000000000
+      internalID: 4836295952724924258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_13
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e74d165a2160c90800000000000000
+      internalID: -7204050052412309903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e66d4d6f8154270800000000000000
+      internalID: 8234014942128664083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_15
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16fdeb85efba1e2e0800000000000000
+      internalID: -2098206842478993567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_16
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27cc1a48a1bbb0c4096c52c3cfd08fba
+      internalID: 1977991932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_17
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491761094cf721a42a7510a3e607ba39
+      internalID: 1123966228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_18
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f57542821ccb64b4b911843c9e24d717
+      internalID: -522257324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_19
+      rect:
+        serializedVersion: 2
+        x: 3289
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94912f75c9e5fb4491af1369704c4cb
+      internalID: -1066136658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_20
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620829df617e18141a1209e3902ad52d
+      internalID: 1303360108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Back_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb23a344172d774f834c910f4b2bfc2
+      internalID: 1021691115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 32aa4c30ca2f4784bab2f5946c848bf2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":4.0},"gridSpriteSize":{"x":657.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Player_ContraBill_Run_Back_0: 4241046750949491883
+      Player_ContraBill_Run_Back_1: 1436724140347137414
+      Player_ContraBill_Run_Back_10: -1509196505918226152
+      Player_ContraBill_Run_Back_11: -2320792196464602115
+      Player_ContraBill_Run_Back_12: 4836295952724924258
+      Player_ContraBill_Run_Back_13: -7204050052412309903
+      Player_ContraBill_Run_Back_14: 8234014942128664083
+      Player_ContraBill_Run_Back_15: -2098206842478993567
+      Player_ContraBill_Run_Back_16: 1977991932
+      Player_ContraBill_Run_Back_17: 1123966228
+      Player_ContraBill_Run_Back_18: -522257324
+      Player_ContraBill_Run_Back_19: -1066136658
+      Player_ContraBill_Run_Back_2: -3517446946205070574
+      Player_ContraBill_Run_Back_20: 1303360108
+      Player_ContraBill_Run_Back_21: 1021691115
+      Player_ContraBill_Run_Back_22: 689556594
+      Player_ContraBill_Run_Back_23: 167981760
+      Player_ContraBill_Run_Back_24: -1980665997
+      Player_ContraBill_Run_Back_25: 294290499
+      Player_ContraBill_Run_Back_26: -1527573417
+      Player_ContraBill_Run_Back_27: -397019642
+      Player_ContraBill_Run_Back_3: -541965105259858338
+      Player_ContraBill_Run_Back_4: -5694352173280649505
+      Player_ContraBill_Run_Back_5: 3856092976725840700
+      Player_ContraBill_Run_Back_6: 4402272359969284591
+      Player_ContraBill_Run_Back_7: 3902320999969033438
+      Player_ContraBill_Run_Back_8: 4148555243855834091
+      Player_ContraBill_Run_Back_9: -6979425127239455498
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

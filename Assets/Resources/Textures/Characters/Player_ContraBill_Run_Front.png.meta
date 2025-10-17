@@ -1,0 +1,1263 @@
+fileFormatVersion: 2
+guid: 6940d3fef1458074ca31a2dd7cf21052
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 36068589644531110
+    second: Player_ContraBill_Run_Front_0
+  - first:
+      213: 3554588512519375103
+    second: Player_ContraBill_Run_Front_1
+  - first:
+      213: 797658653266084690
+    second: Player_ContraBill_Run_Front_2
+  - first:
+      213: -740791780213152391
+    second: Player_ContraBill_Run_Front_3
+  - first:
+      213: 3999438552985041288
+    second: Player_ContraBill_Run_Front_4
+  - first:
+      213: -6207422199654481011
+    second: Player_ContraBill_Run_Front_5
+  - first:
+      213: -2985456488744764680
+    second: Player_ContraBill_Run_Front_6
+  - first:
+      213: 5148040167814051269
+    second: Player_ContraBill_Run_Front_7
+  - first:
+      213: -8326731006308601659
+    second: Player_ContraBill_Run_Front_8
+  - first:
+      213: 6493282969321380578
+    second: Player_ContraBill_Run_Front_9
+  - first:
+      213: -2031522637682723761
+    second: Player_ContraBill_Run_Front_10
+  - first:
+      213: -8021346317659734311
+    second: Player_ContraBill_Run_Front_11
+  - first:
+      213: 3572062607004440218
+    second: Player_ContraBill_Run_Front_12
+  - first:
+      213: -778221518322347211
+    second: Player_ContraBill_Run_Front_13
+  - first:
+      213: 1856767435775342390
+    second: Player_ContraBill_Run_Front_14
+  - first:
+      213: -3697963401986234875
+    second: Player_ContraBill_Run_Front_15
+  - first:
+      213: 2922332604117505229
+    second: Player_ContraBill_Run_Front_16
+  - first:
+      213: 4588028758110655002
+    second: Player_ContraBill_Run_Front_17
+  - first:
+      213: 1371672033168564952
+    second: Player_ContraBill_Run_Front_18
+  - first:
+      213: 3812547215537706922
+    second: Player_ContraBill_Run_Front_19
+  - first:
+      213: -971527069390570249
+    second: Player_ContraBill_Run_Front_20
+  - first:
+      213: -7326561728095373554
+    second: Player_ContraBill_Run_Front_21
+  - first:
+      213: -5524996770933066043
+    second: Player_ContraBill_Run_Front_22
+  - first:
+      213: -1123857251835552209
+    second: Player_ContraBill_Run_Front_23
+  - first:
+      213: 5756025892507740389
+    second: Player_ContraBill_Run_Front_24
+  - first:
+      213: 2270408253622813020
+    second: Player_ContraBill_Run_Front_25
+  - first:
+      213: -2395741852942034273
+    second: Player_ContraBill_Run_Front_26
+  - first:
+      213: 5766720055412862389
+    second: Player_ContraBill_Run_Front_27
+  - first:
+      213: 9155420808542993243
+    second: Player_ContraBill_Run_Front_28
+  - first:
+      213: -5709910981093270530
+    second: Player_ContraBill_Run_Front_29
+  - first:
+      213: 2746544948546386515
+    second: Player_ContraBill_Run_Front_30
+  - first:
+      213: -333484168102452204
+    second: Player_ContraBill_Run_Front_31
+  - first:
+      213: -6171156088048656670
+    second: Player_ContraBill_Run_Front_32
+  - first:
+      213: 7568025910478168849
+    second: Player_ContraBill_Run_Front_33
+  - first:
+      213: -7371183699958304527
+    second: Player_ContraBill_Run_Front_34
+  - first:
+      213: 2601885983177293219
+    second: Player_ContraBill_Run_Front_35
+  - first:
+      213: 3632295577353885584
+    second: Player_ContraBill_Run_Front_36
+  - first:
+      213: 6148943541229416752
+    second: Player_ContraBill_Run_Front_37
+  - first:
+      213: 6485078628005215307
+    second: Player_ContraBill_Run_Front_38
+  - first:
+      213: -5400008926837559369
+    second: Player_ContraBill_Run_Front_39
+  - first:
+      213: -4873123552753585341
+    second: Player_ContraBill_Run_Front_40
+  - first:
+      213: -3611114027577684187
+    second: Player_ContraBill_Run_Front_41
+  - first:
+      213: -9180050527948512848
+    second: Player_ContraBill_Run_Front_42
+  - first:
+      213: -2995990591618341820
+    second: Player_ContraBill_Run_Front_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 512
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_0
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 6179
+        width: 559
+        height: 907
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a5cf41f034208000800000000000000
+      internalID: 36068589644531110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_1
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 6183
+        width: 588
+        height: 903
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8c66b4b6f645130800000000000000
+      internalID: 3554588512519375103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_2
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 6197
+        width: 641
+        height: 903
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25301f7a15ad11b00800000000000000
+      internalID: 797658653266084690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_3
+      rect:
+        serializedVersion: 2
+        x: 3306
+        y: 6204
+        width: 658
+        height: 899
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975addffccd28b5f0800000000000000
+      internalID: -740791780213152391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_4
+      rect:
+        serializedVersion: 2
+        x: 4335
+        y: 6193
+        width: 675
+        height: 924
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 889fcab8c2cd08730800000000000000
+      internalID: 3999438552985041288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_5
+      rect:
+        serializedVersion: 2
+        x: 5364
+        y: 6193
+        width: 679
+        height: 924
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8388b2d56ecad9a0800000000000000
+      internalID: -6207422199654481011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_6
+      rect:
+        serializedVersion: 2
+        x: 6389
+        y: 6179
+        width: 683
+        height: 928
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fabbff14278196d0800000000000000
+      internalID: -2985456488744764680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_7
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 5150
+        width: 675
+        height: 921
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c5bff3d143817740800000000000000
+      internalID: 5148040167814051269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_8
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 5157
+        width: 668
+        height: 903
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c0beb44442817c80800000000000000
+      internalID: -8326731006308601659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_9
+      rect:
+        serializedVersion: 2
+        x: 2294
+        y: 5164
+        width: 651
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ea9e7c2576cc1a50800000000000000
+      internalID: 6493282969321380578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_10
+      rect:
+        serializedVersion: 2
+        x: 3316
+        y: 5178
+        width: 609
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44b1cbace49ec3e0800000000000000
+      internalID: -2031522637682723761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_11
+      rect:
+        serializedVersion: 2
+        x: 4338
+        y: 5164
+        width: 592
+        height: 921
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9def083e5047ea090800000000000000
+      internalID: -8021346317659734311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_12
+      rect:
+        serializedVersion: 2
+        x: 5364
+        y: 5164
+        width: 560
+        height: 931
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9694f5f304829130800000000000000
+      internalID: 3572062607004440218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_13
+      rect:
+        serializedVersion: 2
+        x: 6389
+        y: 5164
+        width: 550
+        height: 931
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 533d4dbf6a33335f0800000000000000
+      internalID: -778221518322347211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_14
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 4125
+        width: 550
+        height: 931
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 637f6ef252094c910800000000000000
+      internalID: 1856767435775342390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_15
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 4118
+        width: 550
+        height: 931
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5062738e0e13eacc0800000000000000
+      internalID: -3697963401986234875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_16
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 4128
+        width: 578
+        height: 910
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc457ff25063e8820800000000000000
+      internalID: 2922332604117505229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_17
+      rect:
+        serializedVersion: 2
+        x: 3302
+        y: 4135
+        width: 609
+        height: 907
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a12567ad8d3fbaf30800000000000000
+      internalID: 4588028758110655002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_18
+      rect:
+        serializedVersion: 2
+        x: 4328
+        y: 4153
+        width: 658
+        height: 903
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d2a95d5278290310800000000000000
+      internalID: 1371672033168564952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_19
+      rect:
+        serializedVersion: 2
+        x: 5353
+        y: 4149
+        width: 665
+        height: 910
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa797872e73e8e430800000000000000
+      internalID: 3812547215537706922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_20
+      rect:
+        serializedVersion: 2
+        x: 6386
+        y: 4143
+        width: 679
+        height: 927
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fc7c4b17417482f0800000000000000
+      internalID: -971527069390570249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_21
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 3120
+        width: 690
+        height: 924
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0737e31de2d25a90800000000000000
+      internalID: -7326561728095373554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_22
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 3106
+        width: 686
+        height: 931
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c6ba53a5b44353b0800000000000000
+      internalID: -5524996770933066043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_23
+      rect:
+        serializedVersion: 2
+        x: 2294
+        y: 3103
+        width: 679
+        height: 920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2e581ea8c14760f0800000000000000
+      internalID: -1123857251835552209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_24
+      rect:
+        serializedVersion: 2
+        x: 3317
+        y: 3106
+        width: 671
+        height: 907
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e8efd07d0381ef40800000000000000
+      internalID: 5756025892507740389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_25
+      rect:
+        serializedVersion: 2
+        x: 4342
+        y: 3127
+        width: 633
+        height: 896
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c518d4c074c128f10800000000000000
+      internalID: 2270408253622813020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_26
+      rect:
+        serializedVersion: 2
+        x: 5364
+        y: 3131
+        width: 619
+        height: 896
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a9ad95a7d90ced0800000000000000
+      internalID: -2395741852942034273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_27
+      rect:
+        serializedVersion: 2
+        x: 6389
+        y: 3120
+        width: 581
+        height: 921
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd21064651870050800000000000000
+      internalID: 5766720055412862389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_28
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 2105
+        width: 564
+        height: 917
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5bbc66c7b69e0f70800000000000000
+      internalID: 9155420808542993243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_29
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 2091
+        width: 549
+        height: 928
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efb55d0173252c0b0800000000000000
+      internalID: -5709910981093270530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_30
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 2077
+        width: 553
+        height: 935
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a30c13410bd1620800000000000000
+      internalID: 2746544948546386515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_31
+      rect:
+        serializedVersion: 2
+        x: 3309
+        y: 2081
+        width: 564
+        height: 916
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 414690e7ae93f5bf0800000000000000
+      internalID: -333484168102452204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_32
+      rect:
+        serializedVersion: 2
+        x: 4331
+        y: 2088
+        width: 585
+        height: 903
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eede5eeb36ab5aa0800000000000000
+      internalID: -6171156088048656670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_33
+      rect:
+        serializedVersion: 2
+        x: 5353
+        y: 2105
+        width: 644
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 113e00de777070960800000000000000
+      internalID: 7568025910478168849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_34
+      rect:
+        serializedVersion: 2
+        x: 6382
+        y: 2105
+        width: 658
+        height: 906
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f0f5d5aa7b44b990800000000000000
+      internalID: -7371183699958304527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_35
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 1080
+        width: 672
+        height: 917
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3adb95d2481cb1420800000000000000
+      internalID: 2601885983177293219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_36
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1069
+        width: 675
+        height: 928
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09796673591886230800000000000000
+      internalID: 3632295577353885584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_37
+      rect:
+        serializedVersion: 2
+        x: 2294
+        y: 1055
+        width: 672
+        height: 921
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03179ee729f655550800000000000000
+      internalID: 6148943541229416752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_38
+      rect:
+        serializedVersion: 2
+        x: 3320
+        y: 1066
+        width: 675
+        height: 903
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4c7aba17a0aff950800000000000000
+      internalID: 6485078628005215307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_39
+      rect:
+        serializedVersion: 2
+        x: 4339
+        y: 1083
+        width: 643
+        height: 896
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bfa8e3dd705f05b0800000000000000
+      internalID: -5400008926837559369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_40
+      rect:
+        serializedVersion: 2
+        x: 5364
+        y: 1076
+        width: 616
+        height: 907
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 343788b92ff2f5cb0800000000000000
+      internalID: -4873123552753585341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_41
+      rect:
+        serializedVersion: 2
+        x: 6389
+        y: 1069
+        width: 574
+        height: 924
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f4dc6aceeb2edc0800000000000000
+      internalID: -3611114027577684187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_42
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 44
+        width: 567
+        height: 927
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1ed7dcea8e99080800000000000000
+      internalID: -9180050527948512848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Run_Front_43
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 26
+        width: 542
+        height: 928
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4442d2c2e6a1c66d0800000000000000
+      internalID: -2995990591618341820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ebf33928f7ec473488ee3b1625842a2a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":5.0},"gridSpriteSize":{"x":1024.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Player_ContraBill_Run_Front_0: 36068589644531110
+      Player_ContraBill_Run_Front_1: 3554588512519375103
+      Player_ContraBill_Run_Front_10: -2031522637682723761
+      Player_ContraBill_Run_Front_11: -8021346317659734311
+      Player_ContraBill_Run_Front_12: 3572062607004440218
+      Player_ContraBill_Run_Front_13: -778221518322347211
+      Player_ContraBill_Run_Front_14: 1856767435775342390
+      Player_ContraBill_Run_Front_15: -3697963401986234875
+      Player_ContraBill_Run_Front_16: 2922332604117505229
+      Player_ContraBill_Run_Front_17: 4588028758110655002
+      Player_ContraBill_Run_Front_18: 1371672033168564952
+      Player_ContraBill_Run_Front_19: 3812547215537706922
+      Player_ContraBill_Run_Front_2: 797658653266084690
+      Player_ContraBill_Run_Front_20: -971527069390570249
+      Player_ContraBill_Run_Front_21: -7326561728095373554
+      Player_ContraBill_Run_Front_22: -5524996770933066043
+      Player_ContraBill_Run_Front_23: -1123857251835552209
+      Player_ContraBill_Run_Front_24: 5756025892507740389
+      Player_ContraBill_Run_Front_25: 2270408253622813020
+      Player_ContraBill_Run_Front_26: -2395741852942034273
+      Player_ContraBill_Run_Front_27: 5766720055412862389
+      Player_ContraBill_Run_Front_28: 9155420808542993243
+      Player_ContraBill_Run_Front_29: -5709910981093270530
+      Player_ContraBill_Run_Front_3: -740791780213152391
+      Player_ContraBill_Run_Front_30: 2746544948546386515
+      Player_ContraBill_Run_Front_31: -333484168102452204
+      Player_ContraBill_Run_Front_32: -6171156088048656670
+      Player_ContraBill_Run_Front_33: 7568025910478168849
+      Player_ContraBill_Run_Front_34: -7371183699958304527
+      Player_ContraBill_Run_Front_35: 2601885983177293219
+      Player_ContraBill_Run_Front_36: 3632295577353885584
+      Player_ContraBill_Run_Front_37: 6148943541229416752
+      Player_ContraBill_Run_Front_38: 6485078628005215307
+      Player_ContraBill_Run_Front_39: -5400008926837559369
+      Player_ContraBill_Run_Front_4: 3999438552985041288
+      Player_ContraBill_Run_Front_40: -4873123552753585341
+      Player_ContraBill_Run_Front_41: -3611114027577684187
+      Player_ContraBill_Run_Front_42: -9180050527948512848
+      Player_ContraBill_Run_Front_43: -2995990591618341820
+      Player_ContraBill_Run_Front_5: -6207422199654481011
+      Player_ContraBill_Run_Front_6: -2985456488744764680
+      Player_ContraBill_Run_Front_7: 5148040167814051269
+      Player_ContraBill_Run_Front_8: -8326731006308601659
+      Player_ContraBill_Run_Front_9: 6493282969321380578
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

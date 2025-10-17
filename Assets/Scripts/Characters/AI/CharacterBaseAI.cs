@@ -135,10 +135,17 @@ public abstract class CharacterBaseAI : ICharacterAI
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
         rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
-        SetSpeed(rb.linearVelocity.magnitude);
     }
     #region Running
-    protected virtual void SetSpeed(float speed)
+    protected virtual void SetIdle(Direction dir)
+    {
+
+    }
+    protected virtual void SetRunDirection(Direction dir)
+    {
+        
+    }
+    protected virtual void SetAtkDirection(Direction dir)
     {
         
     }
@@ -200,9 +207,21 @@ public abstract class CharacterBaseAI : ICharacterAI
                 Transform childTransform = character.transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
             }
-            else
+            if (lookInput.x > 0.1f)
             {
-
+                SetAtkDirection(Direction.Right);
+            }
+            else if (lookInput.x < -0.1f)
+            {
+                SetAtkDirection(Direction.Left);
+            }
+            else if (lookInput.y > 0.1f)
+            {
+                SetAtkDirection(Direction.Up);
+            }
+            else if (lookInput.y < -0.1f)
+            {
+                SetAtkDirection(Direction.Down);
             }
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
@@ -213,10 +232,26 @@ public abstract class CharacterBaseAI : ICharacterAI
                 Transform childTransform = character.transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
             }
-            else
+            if (moveInput.x > 0.1f)
             {
-
+                SetRunDirection(Direction.Right);
             }
+            else if (moveInput.x < -0.1f)
+            {
+                SetRunDirection(Direction.Left);
+            }
+            else if (moveInput.y > 0.1f)
+            {
+                SetRunDirection(Direction.Up);
+            }
+            else if (moveInput.y < -0.1f)
+            {
+                SetRunDirection(Direction.Down);
+            }
+        }
+        else
+        {
+            SetIdle(Direction.Down);
         }
     }
     #endregion
@@ -234,7 +269,6 @@ public abstract class CharacterBaseAI : ICharacterAI
         if (characterStatus.IsDead())
         {
             rb.linearVelocity = Vector2.zero;
-            SetSpeed(0);
             if (audioSource && audioSource.isPlaying) audioSource.Stop();
             return;
         }

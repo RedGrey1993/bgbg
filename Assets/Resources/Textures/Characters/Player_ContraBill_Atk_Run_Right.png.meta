@@ -1,0 +1,1393 @@
+fileFormatVersion: 2
+guid: c28652430d760d242a999cd50b6e6261
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2342809521724714550
+    second: Player_ContraBill_Atk_Run_Right_0
+  - first:
+      213: 1966192211696380798
+    second: Player_ContraBill_Atk_Run_Right_1
+  - first:
+      213: -6050287880530025597
+    second: Player_ContraBill_Atk_Run_Right_2
+  - first:
+      213: 6236854298310575484
+    second: Player_ContraBill_Atk_Run_Right_3
+  - first:
+      213: -7676562881866755450
+    second: Player_ContraBill_Atk_Run_Right_4
+  - first:
+      213: -2808142455402455655
+    second: Player_ContraBill_Atk_Run_Right_5
+  - first:
+      213: 6170184332775100208
+    second: Player_ContraBill_Atk_Run_Right_6
+  - first:
+      213: 2784325331574492235
+    second: Player_ContraBill_Atk_Run_Right_7
+  - first:
+      213: -4789629481975531310
+    second: Player_ContraBill_Atk_Run_Right_8
+  - first:
+      213: 2982915992860274858
+    second: Player_ContraBill_Atk_Run_Right_9
+  - first:
+      213: -637012106500198095
+    second: Player_ContraBill_Atk_Run_Right_10
+  - first:
+      213: -7364837155932728020
+    second: Player_ContraBill_Atk_Run_Right_11
+  - first:
+      213: -1622752733767792979
+    second: Player_ContraBill_Atk_Run_Right_12
+  - first:
+      213: 6282912972914055044
+    second: Player_ContraBill_Atk_Run_Right_13
+  - first:
+      213: 2968589260909073979
+    second: Player_ContraBill_Atk_Run_Right_14
+  - first:
+      213: 8512807468528301889
+    second: Player_ContraBill_Atk_Run_Right_15
+  - first:
+      213: 8142666077440999342
+    second: Player_ContraBill_Atk_Run_Right_16
+  - first:
+      213: -7412019630798902761
+    second: Player_ContraBill_Atk_Run_Right_17
+  - first:
+      213: -9194803544840864790
+    second: Player_ContraBill_Atk_Run_Right_18
+  - first:
+      213: 1355945604638684916
+    second: Player_ContraBill_Atk_Run_Right_19
+  - first:
+      213: 4451297897589697045
+    second: Player_ContraBill_Atk_Run_Right_20
+  - first:
+      213: 1858856130889238634
+    second: Player_ContraBill_Atk_Run_Right_21
+  - first:
+      213: 3452702006101997213
+    second: Player_ContraBill_Atk_Run_Right_22
+  - first:
+      213: 4299368538909030397
+    second: Player_ContraBill_Atk_Run_Right_23
+  - first:
+      213: -1123974887463300405
+    second: Player_ContraBill_Atk_Run_Right_24
+  - first:
+      213: 8808692895488597209
+    second: Player_ContraBill_Atk_Run_Right_25
+  - first:
+      213: -6043369087955364102
+    second: Player_ContraBill_Atk_Run_Right_26
+  - first:
+      213: 5271857842785211685
+    second: Player_ContraBill_Atk_Run_Right_27
+  - first:
+      213: -3327000566655311954
+    second: Player_ContraBill_Atk_Run_Right_28
+  - first:
+      213: 6421567633766253801
+    second: Player_ContraBill_Atk_Run_Right_29
+  - first:
+      213: -2447329963080747706
+    second: Player_ContraBill_Atk_Run_Right_30
+  - first:
+      213: -531209957488085758
+    second: Player_ContraBill_Atk_Run_Right_31
+  - first:
+      213: 495758705611928589
+    second: Player_ContraBill_Atk_Run_Right_32
+  - first:
+      213: -3511285156929576926
+    second: Player_ContraBill_Atk_Run_Right_33
+  - first:
+      213: 1704804549533247232
+    second: Player_ContraBill_Atk_Run_Right_34
+  - first:
+      213: -6944147054261003190
+    second: Player_ContraBill_Atk_Run_Right_35
+  - first:
+      213: 5856147038904635826
+    second: Player_ContraBill_Atk_Run_Right_36
+  - first:
+      213: -3426523311703834343
+    second: Player_ContraBill_Atk_Run_Right_37
+  - first:
+      213: -8022763356154225942
+    second: Player_ContraBill_Atk_Run_Right_38
+  - first:
+      213: -8444183245284937134
+    second: Player_ContraBill_Atk_Run_Right_39
+  - first:
+      213: 7543559036749515038
+    second: Player_ContraBill_Atk_Run_Right_40
+  - first:
+      213: 3493274800434375177
+    second: Player_ContraBill_Atk_Run_Right_41
+  - first:
+      213: -189613414741239944
+    second: Player_ContraBill_Atk_Run_Right_42
+  - first:
+      213: -7816033039925618062
+    second: Player_ContraBill_Atk_Run_Right_43
+  - first:
+      213: 758872268088178766
+    second: Player_ContraBill_Atk_Run_Right_44
+  - first:
+      213: 7572838539739953835
+    second: Player_ContraBill_Atk_Run_Right_45
+  - first:
+      213: 1368785204635967969
+    second: Player_ContraBill_Atk_Run_Right_46
+  - first:
+      213: -2037710867465695512
+    second: Player_ContraBill_Atk_Run_Right_47
+  - first:
+      213: -1136358147073383991
+    second: Player_ContraBill_Atk_Run_Right_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac11239172bac7fd0800000000000000
+      internalID: -2342809521724714550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7b6d423661594b10800000000000000
+      internalID: 1966192211696380798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 383282c7a3f090ca0800000000000000
+      internalID: -6050287880530025597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c758ba6a0f1cd8650800000000000000
+      internalID: 6236854298310575484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 682126a2bbe577590800000000000000
+      internalID: -7676562881866755450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99d1b03a0597709d0800000000000000
+      internalID: -2808142455402455655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_6
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3072
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f8db9a5f5e0a550800000000000000
+      internalID: 6170184332775100208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4c8e971329e3a620800000000000000
+      internalID: 2784325331574492235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d83c19dc51d78db0800000000000000
+      internalID: -4789629481975531310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa0b4459a42756920800000000000000
+      internalID: 2982915992860274858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_10
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 131be6a3dd0e827f0800000000000000
+      internalID: -637012106500198095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_11
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c25180490a7dac990800000000000000
+      internalID: -7364837155932728020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_12
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da60a718cf2da79e0800000000000000
+      internalID: -1622752733767792979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_13
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4875c318f04613750800000000000000
+      internalID: 6282912972914055044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36568c543c823920800000000000000
+      internalID: 2968589260909073979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_15
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147fbe23a41932670800000000000000
+      internalID: 8512807468528301889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf7e7ed7af800170800000000000000
+      internalID: 8142666077440999342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_17
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a62069a67332990800000000000000
+      internalID: -7412019630798902761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebf14264ee756080800000000000000
+      internalID: -9194803544840864790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_19
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f6bd33e75941d210800000000000000
+      internalID: 1355945604638684916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_20
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2048
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ae6479adf26cd30800000000000000
+      internalID: 4451297897589697045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a68c53a6dcbfbc910800000000000000
+      internalID: 1858856130889238634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d96fcfc6e267aef20800000000000000
+      internalID: 3452702006101997213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_23
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df7b92838ec6aab30800000000000000
+      internalID: 4299368538909030397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_24
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc25a408bc6d660f0800000000000000
+      internalID: -1123974887463300405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_25
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dcda1b9483ce3a70800000000000000
+      internalID: 8808692895488597209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_26
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af618d965d3a12ca0800000000000000
+      internalID: -6043369087955364102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_27
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 525d199c6c6692940800000000000000
+      internalID: 5271857842785211685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf9cf0ac9e14d1d0800000000000000
+      internalID: -3327000566655311954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_29
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e488cf6dbdfd1950800000000000000
+      internalID: 6421567633766253801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_30
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 645f6667d56590ed0800000000000000
+      internalID: -2447329963080747706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_31
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 205b5ceab53c0a8f0800000000000000
+      internalID: -531209957488085758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_32
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d047e468ae941e600800000000000000
+      internalID: 495758705611928589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_33
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2206c1cd0c8654fc0800000000000000
+      internalID: -3511285156929576926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_34
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007266294bea8a710800000000000000
+      internalID: 1704804549533247232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4c92babb0f61af90800000000000000
+      internalID: -6944147054261003190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_36
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1dd5664b6354150800000000000000
+      internalID: 5856147038904635826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_37
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9114c47d33b8270d0800000000000000
+      internalID: -3426523311703834343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_38
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea1867eb3b69a090800000000000000
+      internalID: -8022763356154225942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_39
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2527c7ed31c30da80800000000000000
+      internalID: -8444183245284937134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_40
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1984a7f9fa10b860800000000000000
+      internalID: 7543559036749515038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_41
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90ae6be3cea9a7030800000000000000
+      internalID: 3493274800434375177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87713b99a9b5e5df0800000000000000
+      internalID: -189613414741239944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_43
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a548e7c5fd78390800000000000000
+      internalID: -7816033039925618062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e487a41ae4e088a00800000000000000
+      internalID: 758872268088178766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_45
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baa769e7780281960800000000000000
+      internalID: 7572838539739953835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_46
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e1232834e6eef210800000000000000
+      internalID: 1368785204635967969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_47
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee01c523c898b3e0800000000000000
+      internalID: -2037710867465695512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_ContraBill_Atk_Run_Right_48
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1e1123948da30f0800000000000000
+      internalID: -1136358147073383991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b24d4fa85476078498d94e863ea84eed
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":7.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Player_ContraBill_Atk_Run_Right_0: -2342809521724714550
+      Player_ContraBill_Atk_Run_Right_1: 1966192211696380798
+      Player_ContraBill_Atk_Run_Right_10: -637012106500198095
+      Player_ContraBill_Atk_Run_Right_11: -7364837155932728020
+      Player_ContraBill_Atk_Run_Right_12: -1622752733767792979
+      Player_ContraBill_Atk_Run_Right_13: 6282912972914055044
+      Player_ContraBill_Atk_Run_Right_14: 2968589260909073979
+      Player_ContraBill_Atk_Run_Right_15: 8512807468528301889
+      Player_ContraBill_Atk_Run_Right_16: 8142666077440999342
+      Player_ContraBill_Atk_Run_Right_17: -7412019630798902761
+      Player_ContraBill_Atk_Run_Right_18: -9194803544840864790
+      Player_ContraBill_Atk_Run_Right_19: 1355945604638684916
+      Player_ContraBill_Atk_Run_Right_2: -6050287880530025597
+      Player_ContraBill_Atk_Run_Right_20: 4451297897589697045
+      Player_ContraBill_Atk_Run_Right_21: 1858856130889238634
+      Player_ContraBill_Atk_Run_Right_22: 3452702006101997213
+      Player_ContraBill_Atk_Run_Right_23: 4299368538909030397
+      Player_ContraBill_Atk_Run_Right_24: -1123974887463300405
+      Player_ContraBill_Atk_Run_Right_25: 8808692895488597209
+      Player_ContraBill_Atk_Run_Right_26: -6043369087955364102
+      Player_ContraBill_Atk_Run_Right_27: 5271857842785211685
+      Player_ContraBill_Atk_Run_Right_28: -3327000566655311954
+      Player_ContraBill_Atk_Run_Right_29: 6421567633766253801
+      Player_ContraBill_Atk_Run_Right_3: 6236854298310575484
+      Player_ContraBill_Atk_Run_Right_30: -2447329963080747706
+      Player_ContraBill_Atk_Run_Right_31: -531209957488085758
+      Player_ContraBill_Atk_Run_Right_32: 495758705611928589
+      Player_ContraBill_Atk_Run_Right_33: -3511285156929576926
+      Player_ContraBill_Atk_Run_Right_34: 1704804549533247232
+      Player_ContraBill_Atk_Run_Right_35: -6944147054261003190
+      Player_ContraBill_Atk_Run_Right_36: 5856147038904635826
+      Player_ContraBill_Atk_Run_Right_37: -3426523311703834343
+      Player_ContraBill_Atk_Run_Right_38: -8022763356154225942
+      Player_ContraBill_Atk_Run_Right_39: -8444183245284937134
+      Player_ContraBill_Atk_Run_Right_4: -7676562881866755450
+      Player_ContraBill_Atk_Run_Right_40: 7543559036749515038
+      Player_ContraBill_Atk_Run_Right_41: 3493274800434375177
+      Player_ContraBill_Atk_Run_Right_42: -189613414741239944
+      Player_ContraBill_Atk_Run_Right_43: -7816033039925618062
+      Player_ContraBill_Atk_Run_Right_44: 758872268088178766
+      Player_ContraBill_Atk_Run_Right_45: 7572838539739953835
+      Player_ContraBill_Atk_Run_Right_46: 1368785204635967969
+      Player_ContraBill_Atk_Run_Right_47: -2037710867465695512
+      Player_ContraBill_Atk_Run_Right_48: -1136358147073383991
+      Player_ContraBill_Atk_Run_Right_5: -2808142455402455655
+      Player_ContraBill_Atk_Run_Right_6: 6170184332775100208
+      Player_ContraBill_Atk_Run_Right_7: 2784325331574492235
+      Player_ContraBill_Atk_Run_Right_8: -4789629481975531310
+      Player_ContraBill_Atk_Run_Right_9: 2982915992860274858
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

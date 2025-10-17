@@ -53,6 +53,14 @@ public enum CharacterType
     Boss_5_0_TheRuler,
 }
 
+public enum Direction
+{
+    Down = 0,
+    Left,
+    Up,
+    Right,
+}
+
 public enum GameState
 {
     InMenu = 0,

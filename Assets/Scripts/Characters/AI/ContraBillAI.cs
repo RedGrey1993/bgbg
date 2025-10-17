@@ -1,5 +1,6 @@
 
 
+using Unity.AppUI.Core;
 using UnityEngine;
 
 public class ContraBillAI : CharacterBaseAI
@@ -181,9 +182,59 @@ public class ContraBillAI : CharacterBaseAI
     #endregion
 
     #region Running
-    protected override void SetSpeed(float speed)
+    protected override void SetIdle(Direction dir)
     {
-        if (animator) animator.SetFloat("Speed", speed);
+        if (animator) {
+            animator.Play("Player_ContraBill_Idle_Front");
+        }
+    }
+    protected override void SetRunDirection(Direction dir)
+    {
+        if (dir == Direction.Left)
+        {
+            character.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            character.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        if (animator)
+        {
+            if (dir == Direction.Left || dir == Direction.Right)
+            {
+                animator.Play("Player_ContraBill_Run_Right");
+            }
+            else if (dir == Direction.Up)
+            {
+                animator.Play("Player_ContraBill_Run_Back");
+            }
+            else
+            {
+                animator.Play("Player_ContraBill_Run_Front");
+            }
+        }
+    }
+    
+    protected override void SetAtkDirection(Direction dir)
+    {
+        if (dir == Direction.Left)
+        {
+            character.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        } else
+        {
+            character.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        if (animator)
+        {
+            if (characterInput.MoveInput.sqrMagnitude < 0.1f)
+            {
+                animator.Play("Player_ContraBill_Atk_Right");
+            }
+            else
+            {
+                animator.Play("Player_ContraBill_Atk_Run_Right");
+            }
+        }
     }
     #endregion
 

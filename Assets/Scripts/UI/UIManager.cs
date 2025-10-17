@@ -442,7 +442,8 @@ public class UIManager : MonoBehaviour
                 NextCharacterId = 1,
             };
             GameManager.Instance.StartLocalGame(storage);
-        }, loadingSprite: startCgSprites, needPressSpace: true);
+        }, needPressSpace: false);
+        // }, loadingSprite: startCgSprites, needPressSpace: true);
     }
 
     private void OnContinueGameClicked()
