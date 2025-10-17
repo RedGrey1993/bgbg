@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject fadePanel;
+    public UnityEngine.UI.Image fadeBackgroundImage;
     public UnityEngine.UI.Image loadingImage;
     public Sprite defaultSprite; // 默认加载图片
     // 新增：定义一个动画曲线

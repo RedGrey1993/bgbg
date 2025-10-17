@@ -45,22 +45,27 @@ public class CharacterManager : MonoBehaviour
     public void CreateCharacterObjects(LocalStorage storage)
     {
         IdGenerator.SetNextCharacterId((int)System.Math.Max(1, storage.NextCharacterId));
+        // 先创建玩家对象
         CreatePlayerObjects(storage);
+        // 初始boss和玩家对象不能在同一个房间
         CreateBossObjects(storage);
+        // 初始minion和boss/player不能在同一个房间
         CreateMinionObjects(storage);
     }
 
     public void ClearCharacterObjects()
     {
         ClearPlayerObjects();
-        ClearMinionObjects();
         ClearBossObjects();
+        ClearMinionObjects();
     }
 
+    private List<int> playerRooms;
     // 初始化玩家对象，动态数据，游戏过程中也在不断变化，刚开始只有Host自己，Client都是通过后续的OnPlayerJoined事件添加
     private void CreatePlayerObjects(LocalStorage storage)
     {
         ClearPlayerObjects();
+        playerRooms = new List<int>();
         if (storage.PlayerStates.Count > 0)
         {
             foreach (var ps in storage.PlayerStates) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
@@ -123,7 +128,7 @@ public class CharacterManager : MonoBehaviour
             }
             foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
             {
-                if (LevelManager.Instance.BossRooms.Contains(roomIdx))
+                if (LevelManager.Instance.BossRooms.Contains(roomIdx) || playerRooms.Contains(roomIdx))
                     continue;
                     
                 var room = LevelManager.Instance.Rooms[roomIdx];
@@ -190,6 +195,8 @@ public class CharacterManager : MonoBehaviour
         else
         {
             var roomIdx = Random.Range(0, LevelManager.Instance.remainRoomsIndex.Count);
+            if (playerRooms.Contains(roomIdx))
+                roomIdx = (roomIdx + 1) % LevelManager.Instance.remainRoomsIndex.Count;
             int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
             var bossPrefab = levelData.bossPrefabs[randomBossIdx];
             GenerateBossPosition(roomIdx, out var spawnPosition);
@@ -250,6 +257,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         LevelManager.Instance.AddToVisitedRooms(go.transform.position);
+        playerRooms.Add(LevelManager.Instance.GetRoomNoByPosition(go.transform.position));
 
         playerObjects[playerId] = go;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理

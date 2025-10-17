@@ -204,8 +204,14 @@ public class CharacterStatus : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject, 2f);
+            Destroy(gameObject);
         }
+
+        if (IsBoss())
+        {
+            UIManager.Instance.HideBossHealthSlider();
+        }
+
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {
@@ -260,10 +266,6 @@ public class CharacterStatus : MonoBehaviour
             {
                 UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
                 UIManager.Instance.ShowBossHealthSlider();
-            }
-            else
-            {
-                UIManager.Instance.HideBossHealthSlider();
             }
         }
         State.Position = new Vec2
