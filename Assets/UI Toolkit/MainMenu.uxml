@@ -5,7 +5,8 @@
         <ui:Label text="Blast Grid Battle Grounds" name="game-title" class="game-title" />
         <ui:Label text="v1.0.0" name="version-label" class="version-label" />
         <ui:VisualElement name="MainMenuPanel" class="menu-panel">
-            <ui:Button name="LocalGameButton" text="Local Game" class="menu-button" />
+            <ui:Button name="StartGameButton" text="Start Game" class="menu-button" />
+            <ui:Button name="ContinueGameButton" text="Continue Game" class="menu-button" />
             <ui:Button name="OnlineGameButton" text="Online Game" class="menu-button" />
             <ui:Button name="SettingsButton" text="Settings" class="menu-button" />
             <ui:Button name="QuitButton" text="Quit Game" class="menu-button" />

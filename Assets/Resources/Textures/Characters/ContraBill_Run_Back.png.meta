@@ -1,0 +1,811 @@
+fileFormatVersion: 2
+guid: a76f7dfc263d42c41851eb4f2d78992d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3283395675771467565
+    second: ContraBill_Run_Back_0
+  - first:
+      213: 3627663212467261373
+    second: ContraBill_Run_Back_1
+  - first:
+      213: -8851935979320008524
+    second: ContraBill_Run_Back_2
+  - first:
+      213: -4239970999580368000
+    second: ContraBill_Run_Back_3
+  - first:
+      213: 5273000336315146429
+    second: ContraBill_Run_Back_4
+  - first:
+      213: -9213534838288648270
+    second: ContraBill_Run_Back_5
+  - first:
+      213: -2094198880944686510
+    second: ContraBill_Run_Back_6
+  - first:
+      213: 3044875389534578332
+    second: ContraBill_Run_Back_7
+  - first:
+      213: -1439697979580497821
+    second: ContraBill_Run_Back_8
+  - first:
+      213: -5759470508369730755
+    second: ContraBill_Run_Back_9
+  - first:
+      213: -4744454080288635067
+    second: ContraBill_Run_Back_10
+  - first:
+      213: -4152864612799177192
+    second: ContraBill_Run_Back_11
+  - first:
+      213: 3504878292107680490
+    second: ContraBill_Run_Back_12
+  - first:
+      213: -2833901901855964565
+    second: ContraBill_Run_Back_13
+  - first:
+      213: 982026349639152320
+    second: ContraBill_Run_Back_14
+  - first:
+      213: 7827509977382452341
+    second: ContraBill_Run_Back_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 512
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d8869077090f62d0800000000000000
+      internalID: -3283395675771467565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_1
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbf0dd7b87c085230800000000000000
+      internalID: 3627663212467261373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_2
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0a12a502b972580800000000000000
+      internalID: -8851935979320008524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_3
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 083ed0817d89825c0800000000000000
+      internalID: -4239970999580368000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_4
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0649a4ed57d2940800000000000000
+      internalID: 5273000336315146429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_5
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b77e1641e2f22080800000000000000
+      internalID: -9213534838288648270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_6
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 3072
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a754c9639efe2e0800000000000000
+      internalID: -2094198880944686510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c96a98ac802914a20800000000000000
+      internalID: 3044875389534578332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_8
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360c14fb05a250ce0800000000000000
+      internalID: -1439697979580497821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_9
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d33a84e66104210b0800000000000000
+      internalID: -5759470508369730755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_10
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5474e33b620582eb0800000000000000
+      internalID: -4744454080288635067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_11
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e90d133af0e56c0800000000000000
+      internalID: -4152864612799177192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_12
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea5e0eac34d3a030800000000000000
+      internalID: 3504878292107680490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_13
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 2048
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6242932c35fba8d0800000000000000
+      internalID: -2833901901855964565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c2b05213cbd0ad00800000000000000
+      internalID: 982026349639152320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_15
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57cf4bd3ad6e0ac60800000000000000
+      internalID: 7827509977382452341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_16
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3710d584f0bd164390773e3f3f69efd
+      internalID: -1971678374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_17
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2e2c28d583ad84aa8d8a1ff9b06918
+      internalID: -761623229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_18
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbe73448eb52c5498ce89b6e2913c75
+      internalID: 1782862533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_19
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8f023a6dea5734fadc7004ed159640
+      internalID: -1733376289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_20
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 1024
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c18a5dbf879881408e58e7476e241ae
+      internalID: -1903569196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2905c13f1f4878044a17d4d9dc04c6d8
+      internalID: -951101198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_22
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ab1e722f6eda84b931553511db4377
+      internalID: 1308533707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_23
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f84dc50972b6d44183d369b0cbc5a95
+      internalID: 996353301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_24
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7d4b8863ea7354c847f03b2fc98111
+      internalID: -111957579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_25
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e6ab908b947b24ca09036a0176e34a
+      internalID: -1599169778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_26
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c2af6a9bc1d9a64084fd583a3ad69bd
+      internalID: -1075476020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ContraBill_Run_Back_27
+      rect:
+        serializedVersion: 2
+        x: 3942
+        y: 0
+        width: 657
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e3d9a1992df51459d2b015a4f1f239
+      internalID: 1099372867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c3e13be6fee6a1c41b7226fc32762a66
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":4.0},"gridSpriteSize":{"x":657.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      ContraBill_Run_Back_0: -3283395675771467565
+      ContraBill_Run_Back_1: 3627663212467261373
+      ContraBill_Run_Back_10: -4744454080288635067
+      ContraBill_Run_Back_11: -4152864612799177192
+      ContraBill_Run_Back_12: 3504878292107680490
+      ContraBill_Run_Back_13: -2833901901855964565
+      ContraBill_Run_Back_14: 982026349639152320
+      ContraBill_Run_Back_15: 7827509977382452341
+      ContraBill_Run_Back_16: -1971678374
+      ContraBill_Run_Back_17: -761623229
+      ContraBill_Run_Back_18: 1782862533
+      ContraBill_Run_Back_19: -1733376289
+      ContraBill_Run_Back_2: -8851935979320008524
+      ContraBill_Run_Back_20: -1903569196
+      ContraBill_Run_Back_21: -951101198
+      ContraBill_Run_Back_22: 1308533707
+      ContraBill_Run_Back_23: 996353301
+      ContraBill_Run_Back_24: -111957579
+      ContraBill_Run_Back_25: -1599169778
+      ContraBill_Run_Back_26: -1075476020
+      ContraBill_Run_Back_27: 1099372867
+      ContraBill_Run_Back_3: -4239970999580368000
+      ContraBill_Run_Back_4: 5273000336315146429
+      ContraBill_Run_Back_5: -9213534838288648270
+      ContraBill_Run_Back_6: -2094198880944686510
+      ContraBill_Run_Back_7: 3044875389534578332
+      ContraBill_Run_Back_8: -1439697979580497821
+      ContraBill_Run_Back_9: -5759470508369730755
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

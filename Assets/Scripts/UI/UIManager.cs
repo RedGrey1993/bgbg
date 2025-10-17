@@ -59,7 +59,8 @@ public class UIManager : MonoBehaviour
     private VisualElement _settingsPanel;
 
     // --- Main Menu Buttons ---
-    private Button _localGameButton;
+    private Button _startGameButton;
+    private Button _continueGameButton;
     private Button _onlineGameButton;
     private Button _settingsButton;
     private Button _quitButton;
@@ -302,7 +303,8 @@ public class UIManager : MonoBehaviour
         _winningPanel = _root.Q<VisualElement>("WinningPanel");
 
         // Main Menu Panel
-        _localGameButton = _root.Q<Button>("LocalGameButton");
+        _startGameButton = _root.Q<Button>("StartGameButton");
+        _continueGameButton = _root.Q<Button>("ContinueGameButton");
         _onlineGameButton = _root.Q<Button>("OnlineGameButton");
         _settingsButton = _root.Q<Button>("SettingsButton");
         _quitButton = _root.Q<Button>("QuitButton");
@@ -352,7 +354,8 @@ public class UIManager : MonoBehaviour
 
     private void RegisterButtonCallbacks()
     {
-        _localGameButton.clicked += OnLocalGameClicked;
+        _startGameButton.clicked += OnStartGameClicked;
+        _continueGameButton.clicked += OnContinueGameClicked;
         _onlineGameButton.clicked += () => ShowPanel(_onlineMenuPanel);
         _settingsButton.clicked += () => ShowSettings();
         _quitButton.clicked += OnQuitClicked;
@@ -407,7 +410,24 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    private void OnLocalGameClicked()
+    private void OnStartGameClicked()
+    {
+        _mainMenuRoot.AddToClassList("hidden");
+        PlayLoadingAnimation(() =>
+        {
+            var spc = GetComponent<StatusPanelController>();
+            spc.ShowMyStatusUI();
+            // Create a new empty storage for a new game
+            var storage = new LocalStorage
+            {
+                CurrentStage = 1,
+                NextCharacterId = 1,
+            };
+            GameManager.Instance.StartLocalGame(storage);
+        }, needPressSpace: false);
+    }
+
+    private void OnContinueGameClicked()
     {
         _mainMenuRoot.AddToClassList("hidden");
         PlayLoadingAnimation(() =>
@@ -510,6 +530,12 @@ public class UIManager : MonoBehaviour
         if (panelToShow != null)
         {
             panelToShow.RemoveFromClassList("hidden");
+        }
+
+        if (panelToShow == _mainMenuPanel)
+        {
+            var storage = GameManager.Instance.LoadLocalStorage();
+            _continueGameButton.SetEnabled(storage.PlayerStates.Count > 0);
         }
 
         if (panelToShow == _createRoomPanel)
