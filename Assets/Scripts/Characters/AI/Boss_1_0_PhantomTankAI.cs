@@ -48,13 +48,15 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 3)
                 {
                     var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
                     var collider2D = character.GetComponent<Collider2D>();
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 Move_RandomMoveToTarget(targetPos);
+                chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
+                nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
             }
             else
             {

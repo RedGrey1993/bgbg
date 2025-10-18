@@ -53,7 +53,7 @@ namespace NetworkMessageProto {
             "SWQYAyABKA0iNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoIcGxheWVySWQYASAB",
             "KA0SDwoHc2tpbGxJZBgCIAEoDSJWCgpQaWNrdXBJdGVtEgoKAklkGAEgASgN",
             "Eg8KB1NraWxsSWQYAiABKA0SKwoIUG9zaXRpb24YAyABKAsyGS5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlZlYzIi2gMKDExvY2FsU3RvcmFnZRIUCgxDdXJyZW50",
+            "TWVzc2FnZVByb3RvLlZlYzIi8AMKDExvY2FsU3RvcmFnZRIUCgxDdXJyZW50",
             "U3RhZ2UYASABKA0SNgoMUGxheWVyU3RhdGVzGAIgAygLMiAuTmV0d29ya01l",
             "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI2CgxNaW5pb25TdGF0ZXMYAyADKAsy",
             "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEhcKD01pbmlvblBy",
@@ -63,8 +63,8 @@ namespace NetworkMessageProto {
             "dG8SFAoMUm9vbU1heFdpZHRoGAggASgNEhUKDVJvb21NYXhIZWlnaHQYCSAB",
             "KA0SFwoPTmV4dENoYXJhY3RlcklkGAogASgNEjMKEFRlbGVwb3J0UG9zaXRp",
             "b24YCyABKAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISNAoLUGlja3Vw",
-            "SXRlbXMYDCADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW1i",
-            "BnByb3RvMw=="));
+            "SXRlbXMYDCADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW0S",
+            "FAoMUGFzc2VkU3RhZ2VzGA0gAygFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -78,7 +78,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LearnSkillMessage), global::NetworkMessageProto.LearnSkillMessage.Parser, new[]{ "PlayerId", "SkillId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabIdx", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabIdx", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages" }, null, null, null, null)
           }));
     }
     #endregion
@@ -3432,6 +3432,7 @@ namespace NetworkMessageProto {
       nextCharacterId_ = other.nextCharacterId_;
       teleportPosition_ = other.teleportPosition_ != null ? other.teleportPosition_.Clone() : null;
       pickupItems_ = other.pickupItems_.Clone();
+      passedStages_ = other.passedStages_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3578,6 +3579,17 @@ namespace NetworkMessageProto {
       get { return pickupItems_; }
     }
 
+    /// <summary>Field number for the "PassedStages" field.</summary>
+    public const int PassedStagesFieldNumber = 13;
+    private static readonly pb::FieldCodec<int> _repeated_passedStages_codec
+        = pb::FieldCodec.ForInt32(106);
+    private readonly pbc::RepeatedField<int> passedStages_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> PassedStages {
+      get { return passedStages_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3605,6 +3617,7 @@ namespace NetworkMessageProto {
       if (NextCharacterId != other.NextCharacterId) return false;
       if (!object.Equals(TeleportPosition, other.TeleportPosition)) return false;
       if(!pickupItems_.Equals(other.pickupItems_)) return false;
+      if(!passedStages_.Equals(other.passedStages_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3624,6 +3637,7 @@ namespace NetworkMessageProto {
       if (NextCharacterId != 0) hash ^= NextCharacterId.GetHashCode();
       if (teleportPosition_ != null) hash ^= TeleportPosition.GetHashCode();
       hash ^= pickupItems_.GetHashCode();
+      hash ^= passedStages_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3669,6 +3683,7 @@ namespace NetworkMessageProto {
         output.WriteMessage(TeleportPosition);
       }
       pickupItems_.WriteTo(output, _repeated_pickupItems_codec);
+      passedStages_.WriteTo(output, _repeated_passedStages_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3706,6 +3721,7 @@ namespace NetworkMessageProto {
         output.WriteMessage(TeleportPosition);
       }
       pickupItems_.WriteTo(ref output, _repeated_pickupItems_codec);
+      passedStages_.WriteTo(ref output, _repeated_passedStages_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3738,6 +3754,7 @@ namespace NetworkMessageProto {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TeleportPosition);
       }
       size += pickupItems_.CalculateSize(_repeated_pickupItems_codec);
+      size += passedStages_.CalculateSize(_repeated_passedStages_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3775,6 +3792,7 @@ namespace NetworkMessageProto {
         TeleportPosition.MergeFrom(other.TeleportPosition);
       }
       pickupItems_.Add(other.pickupItems_);
+      passedStages_.Add(other.passedStages_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3847,6 +3865,11 @@ namespace NetworkMessageProto {
             pickupItems_.AddEntriesFrom(input, _repeated_pickupItems_codec);
             break;
           }
+          case 106:
+          case 104: {
+            passedStages_.AddEntriesFrom(input, _repeated_passedStages_codec);
+            break;
+          }
         }
       }
     #endif
@@ -3917,6 +3940,11 @@ namespace NetworkMessageProto {
           }
           case 98: {
             pickupItems_.AddEntriesFrom(ref input, _repeated_pickupItems_codec);
+            break;
+          }
+          case 106:
+          case 104: {
+            passedStages_.AddEntriesFrom(ref input, _repeated_passedStages_codec);
             break;
           }
         }

@@ -205,7 +205,8 @@ public abstract class CharacterBaseAI : ICharacterAI
             if (skinnedMeshRenderer != null || CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
                 Transform childTransform = character.transform.GetChild(0);
-                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
+                // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
+                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput);
             }
             if (lookInput.x > 0.1f)
             {
@@ -230,7 +231,8 @@ public abstract class CharacterBaseAI : ICharacterAI
             if (skinnedMeshRenderer != null || CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
                 Transform childTransform = character.transform.GetChild(0);
-                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+                // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput);
             }
             if (moveInput.x > 0.1f)
             {

@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using NetworkMessageProto;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameConfig gameConfig;
     public int CurrentStage { get; private set; } = 1;
     public GameState GameState { get; private set; } = GameState.InMenu;
+    public HashSet<int> PassedStages { get; private set; } = new HashSet<int>();
     private string saveFilePath;
 
     void Awake()
@@ -60,6 +63,8 @@ public class GameManager : MonoBehaviour
         // {
         //     storage.CurrentStage = (uint)CurrentStage;
         //     storage.TeleportPosition = teleportPosition;
+        //     storage.PassedStages.Clear();
+        //     storage.PassedStages.AddRange(PassedStages);
         //     LevelManager.Instance.SaveInfoToLocalStorage(storage);
         // }
         // using (var file = File.Create(saveFilePath))
@@ -87,6 +92,10 @@ public class GameManager : MonoBehaviour
             storage = st;
         }
         CurrentStage = Mathf.Max(1, (int)storage.CurrentStage);
+        // TODO: Debug，调试用，固定前4关，后续修改
+        // PassedStages.Clear();
+        // PassedStages.AddRange(storage.PassedStages);
+        PassedStages = new HashSet<int> { 2, 3, 4, 5 };
         return storage;
     }
 
@@ -133,6 +142,7 @@ public class GameManager : MonoBehaviour
                 Y = UIManager.Instance.TeleportBeamEffect.transform.position.y,
             };
         }
+        PassedStages.Add(CurrentStage);
         SaveLocalStorage(teleportPosition);
         bool hasBugItem = CharacterManager.Instance.MySelfHasSysBug();
         bool isBugStage = LevelDatabase.Instance.IsSysBugStage(CurrentStage + 1);
