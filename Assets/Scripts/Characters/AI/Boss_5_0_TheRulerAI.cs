@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 // Stomper不会对角线移动
@@ -81,37 +82,25 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         {
             isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
 
-            // float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
-            // if (hpRatio > 0.7f)
-            // {
-            //     int rndSkillId = Random.Range(0, 2);
-            //     if (rndSkillId == 0)
-            //     {
-            //         while (existingBosses.Count < 2 && bossIdx < prevBossPrefabs.Count)
-            //         {
-            //             // 召唤之前的boss
-            //             int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-            //             var room = LevelManager.Instance.Rooms[roomId];
-            //             int extentsX = 3, extentsY = 3;
-            //             int theRulerHeight = 3;
-            //             var rndX = Random.Range(room.xMin + 1 + extentsX + 0.1f, room.xMin + room.width - extentsX - 0.1f);
-            //             var rndY = Random.Range(room.yMin + 1 + extentsY + 0.1f, room.yMin + room.height - theRulerHeight - extentsY - 0.1f);
-            //             Vector2 position = new Vector2(rndX, rndY);
-            //             GameObject boss = Object.Instantiate(prevBossPrefabs[bossIdx++], position, Quaternion.identity);
-            //             existingBosses.Add(boss);
-            //         }
-            //     } else
-            //     {
+            float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
+            if (hpRatio > 0.7f)
+            {
+                int rndSkillId = Random.Range(0, 2);
+                if (rndSkillId == 0)
+                {
+                    if (!isSummoning) GameManager.Instance.StartCoroutine(Summon());
+                } else
+                {
                     
-            //     }
+                }
                 
-            // } else if (hpRatio > 0.3f)
-            // {
+            } else if (hpRatio > 0.3f)
+            {
                 
-            // } else
-            // {
+            } else
+            {
                 
-            // }
+            }
         }
     }
 
@@ -120,6 +109,61 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     {
         // base.AttackAction();
         isAttacking = false;
+    }
+
+    private bool isSummoning = false;
+    private IEnumerator Summon()
+    {
+        isSummoning = true;
+        var virtualScreen = character.transform.GetChild(2).gameObject;
+        virtualScreen.SetActive(true);
+        var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
+        var animClips = screenAnim.runtimeAnimatorController.animationClips;
+        float showTime = 0.5f, dismissTime = 0.5f;
+        foreach (var clip in animClips)
+        {
+            if (clip.name == "VirtualScreenShowing")
+            {
+                showTime = clip.length;
+            }
+            else if (clip.name == "VirtualScreenDismiss")
+            {
+                dismissTime = clip.length;
+            }
+        }
+
+        yield return new WaitForSeconds(showTime);
+
+        var rulerClips = animator.runtimeAnimatorController.animationClips;
+        float summonTime = 0.5f;
+        foreach (var clip in rulerClips)
+        {
+            if (clip.name == "Pointing")
+            {
+                summonTime = clip.length;
+            }
+        }
+        animator.SetTrigger("Pointing");
+        yield return new WaitForSeconds(summonTime);
+
+        screenAnim.Play("VirtualScreenDismiss");
+
+        // while (existingBosses.Count < 2 && bossIdx < prevBossPrefabs.Count)
+        // {
+        //     // 召唤之前的boss
+        //     int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        //     var room = LevelManager.Instance.Rooms[roomId];
+        //     int extentsX = 3, extentsY = 3;
+        //     int theRulerHeight = 3;
+        //     var rndX = Random.Range(room.xMin + 1 + extentsX + 0.1f, room.xMin + room.width - extentsX - 0.1f);
+        //     var rndY = Random.Range(room.yMin + 1 + extentsY + 0.1f, room.yMin + room.height - theRulerHeight - extentsY - 0.1f);
+        //     Vector2 position = new Vector2(rndX, rndY);
+        //     GameObject boss = Object.Instantiate(prevBossPrefabs[bossIdx++], position, Quaternion.identity);
+        //     existingBosses.Add(boss);
+        // }
+        yield return new WaitForSeconds(dismissTime);
+        virtualScreen.SetActive(false);
+        isSummoning = false;
     }
     #endregion
 }

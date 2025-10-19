@@ -134,7 +134,8 @@ public abstract class CharacterBaseAI : ICharacterAI
 
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
-        rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
+        if (rb.bodyType != RigidbodyType2D.Static)
+            rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
     }
     #region Running
     protected virtual void SetIdle(Direction dir)
