@@ -22,6 +22,8 @@ public class CharacterData : ScriptableObject
     public float AttackFrequency = 3;
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
+    public Vector2Int spawnOffsets = new Vector2Int { x = -2, y = -2 }; // -1 -> left/bottom, 0 -> center, 1 -> right/top
+    public Bounds bound = new Bounds(Vector3.zero, Vector3.one * 4);
 
     [Header("Movement Settings")]
     public bool canMoveDiagonally = true;

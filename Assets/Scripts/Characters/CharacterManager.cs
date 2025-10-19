@@ -158,9 +158,15 @@ public class CharacterManager : MonoBehaviour
 
     private void CreateBossObjects(LocalStorage storage)
     {
-        void GenerateBossPosition(int roomIdx, out Vector2 position)
+        void GenerateBossPosition(int roomIdx, Vector2Int bossSpawnOffset, Bounds bound, out Vector2 position)
         {
-            position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, 3, 3);
+            if (bossSpawnOffset.x < -1 || bossSpawnOffset.y < -1)
+            {
+                position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
+            } else
+            {
+                position = LevelManager.Instance.GetPositionInRoom(roomIdx, bossSpawnOffset, bound);
+            }
         }
 
         ClearBossObjects();
@@ -199,7 +205,10 @@ public class CharacterManager : MonoBehaviour
                 roomIdx = (roomIdx + 1) % LevelManager.Instance.remainRoomsIndex.Count;
             int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
             var bossPrefab = levelData.bossPrefabs[randomBossIdx];
-            GenerateBossPosition(roomIdx, out var spawnPosition);
+            var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
+            var spawnOffset = characterData.spawnOffsets;
+            var spawnBound = characterData.bound;
+            GenerateBossPosition(roomIdx, spawnOffset, spawnBound, out var spawnPosition);
 
             var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
             LevelManager.Instance.AddToBossRooms(boss.transform.position);

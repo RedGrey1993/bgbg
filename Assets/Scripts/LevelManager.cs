@@ -660,6 +660,39 @@ public class LevelManager : MonoBehaviour
     {
         return GetRandomPositionInRoom(roomId, bound.extents.x, bound.extents.y);
     }
+
+    public Vector2 GetPositionInRoom(int roomId, Vector2Int offset, Bounds bound)
+    {
+        var pos = new Vector2();
+        var room = Rooms[roomId];
+        if (offset.x < 0)
+        {
+            pos.x = room.xMin + 1 + bound.extents.x + 0.1f;
+        }
+        else if (offset.x == 0)
+        {
+            pos.x = room.xMin + 1 + (room.width - 1) / 2;
+        }
+        else
+        {
+            pos.x = room.xMin + room.width - bound.extents.x - 0.1f;
+        }
+
+        if (offset.y < 0)
+        {
+            pos.y = room.yMin + 1 + bound.extents.y + 0.1f;
+        }
+        else if (offset.y == 0)
+        {
+            pos.y = room.yMin + 1 + (room.height - 1) / 2;
+        }
+        else
+        {
+            pos.y = room.yMin + room.height - bound.extents.y - 0.1f;
+        }
+
+        return pos;
+    }
     #endregion
 
     #region Pickup Items

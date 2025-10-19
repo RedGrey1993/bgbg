@@ -206,7 +206,8 @@ public abstract class CharacterBaseAI : ICharacterAI
             {
                 Transform childTransform = character.transform.GetChild(0);
                 // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
-                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput);
+                // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput); // 30度
+                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookInput); // 45度
             }
             if (lookInput.x > 0.1f)
             {
@@ -232,7 +233,8 @@ public abstract class CharacterBaseAI : ICharacterAI
             {
                 Transform childTransform = character.transform.GetChild(0);
                 // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
-                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput);
+                // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
+                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
             }
             if (moveInput.x > 0.1f)
             {
