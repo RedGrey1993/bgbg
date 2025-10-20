@@ -14,6 +14,7 @@ public class CharacterData : ScriptableObject
     public GameObject deadBodyPrefab;
     public GameObject explosionEffectPrefab;
     public GameObject summonEffectPrefab;
+    public GameObject teleportEffectPrefab;
     #endregion
 
     #region Basic Attributes

@@ -90,31 +90,39 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
             existingBosses.RemoveAll(obj => obj == null);
             float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
-            if (hpRatio > 0.4f)
+            // if (hpRatio > 0.4f)
+            // {
+            //     int rndSkillId = Random.Range(0, 2);
+            //     if (rndSkillId == 0 && bossIdx < prevBossPrefabs.Count && existingBosses.Count < 2)
+            //     {
+            //         if (!isSummoning && !isExplosion)
+            //         {
+            //             Debug.Log("fhhtest, Summon::::::");
+            //             GameManager.Instance.StartCoroutine(Summon());
+            //         }
+            //     }
+            //     else
+            //     {
+            //         if (!isSummoning && !isExplosion)
+            //         {
+            //             Debug.Log("fhhtest, Explosion::::::");
+            //             GameManager.Instance.StartCoroutine(Explosion());
+            //         }
+            //     }
+
+                // }
+            // else
+            if (hpRatio > 0.1f)
             {
-                int rndSkillId = Random.Range(0, 2);
-                if (rndSkillId == 0 && bossIdx < prevBossPrefabs.Count && existingBosses.Count < 2)
+                if (!isTeleporting)
                 {
-                    if (!isSummoning && !isExplosion)
-                    {
-                        Debug.Log("fhhtest, Summon::::::");
-                        GameManager.Instance.StartCoroutine(Summon());
-                    }
-                } else
-                {
-                    if (!isSummoning && !isExplosion)
-                    {
-                        Debug.Log("fhhtest, Explosion::::::");
-                        GameManager.Instance.StartCoroutine(Explosion());
-                    }
+                    Debug.Log("fhhtest, Teleport::::::");
+                    GameManager.Instance.StartCoroutine(Teleport());
                 }
-                
-            } else if (hpRatio > 0.1f)
+            }
+            else
             {
-                
-            } else
-            {
-                
+
             }
         }
         isAttacking = false;
@@ -297,5 +305,86 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         yield return new WaitForSeconds(particleSystem.main.duration);
         Object.Destroy(explosionEffect);
     }
+    #endregion
+
+    #region 技能3，传送+高频率boss大招
+    private bool isTeleporting = false;
+    private IEnumerator Teleport()
+    {
+        isTeleporting = true;
+        var teleportPrefab = CharacterData.teleportEffectPrefab;
+        var teleportEffect1 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, character.transform.position);
+        var particleSystem1 = teleportEffect1.GetComponentInChildren<ParticleSystem>();
+        yield return new WaitForSeconds(particleSystem1.main.duration / 2);
+        SetTheRulerAlpha(0f);
+        yield return new WaitForSeconds(particleSystem1.main.duration / 2);
+        Object.Destroy(teleportEffect1);
+
+        var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        var room = LevelManager.Instance.Rooms[roomId];
+        var targetPos = room.center;
+        int rnd = Random.Range(0, 4);
+        Vector2 lookTo = Vector2.down;
+        switch (rnd)
+        {
+            case 0: // left
+                {
+                    targetPos.x = room.xMin + 1 + CharacterData.bound.extents.y;
+                    targetPos.y = Random.Range(room.yMin + 1 + CharacterData.bound.extents.x, room.yMax - CharacterData.bound.extents.x);
+                    lookTo = new Vector2(1, 0);
+                    break;
+                }
+            case 1: // right
+                {
+                    targetPos.x = room.xMax - CharacterData.bound.extents.y;
+                    targetPos.y = Random.Range(room.yMin + 1 + CharacterData.bound.extents.x, room.yMax - CharacterData.bound.extents.x);
+                    lookTo = new Vector2(-1, 0);
+                    break;
+                }
+            case 2: // top
+                {
+                    targetPos.x = Random.Range(room.xMin + 1 + CharacterData.bound.extents.x, room.xMax - CharacterData.bound.extents.x);
+                    targetPos.y = room.yMax - CharacterData.bound.extents.y;
+                    lookTo = new Vector2(0, -1);
+                    break;
+                }
+            case 3: // bottom
+                {
+                    targetPos.x = Random.Range(room.xMin + 1 + CharacterData.bound.extents.x, room.xMax - CharacterData.bound.extents.x);
+                    targetPos.y = room.yMin + 1 + CharacterData.bound.extents.y;
+                    lookTo = new Vector2(0, 1);
+                    break;
+                }
+        }
+        Transform childTransform1 = character.transform.GetChild(0);
+        childTransform1.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
+        Transform childTransform2 = character.transform.GetChild(1);
+        childTransform2.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
+        Transform childTransform3 = character.transform.GetChild(2);
+        childTransform3.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
+
+        var teleportEffect2 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, targetPos);
+        var particleSystem2 = teleportEffect2.GetComponentInChildren<ParticleSystem>();
+        character.transform.position = targetPos;
+        yield return new WaitForSeconds(particleSystem2.main.duration / 2);
+        SetTheRulerAlpha(1f);
+        yield return new WaitForSeconds(particleSystem2.main.duration / 2);
+        Object.Destroy(teleportEffect2);
+        isTeleporting = false;
+    }
+
+    private void SetTheRulerAlpha(float to)
+    {
+        SkinnedMeshRenderer skinnedMeshRenderer = character.GetComponentInChildren<SkinnedMeshRenderer>();
+        var color1 = skinnedMeshRenderer.material.color;
+        MeshRenderer meshRenderer = character.GetComponentInChildren<MeshRenderer>();
+        var color2 = meshRenderer.material.color;
+        color1.a = color2.a = to;
+        skinnedMeshRenderer.material.color = color1;
+        meshRenderer.material.color = color2;
+    }
+    #endregion
+
+    #region 技能4，格式化+连续爆炸
     #endregion
 }
