@@ -69,6 +69,17 @@ public abstract class CharacterBaseAI : ICharacterAI
         characterInput.MoveInput = diff.normalized;
     }
 
+    protected void Move_RandomMoveToTarget(Vector3 targetPos, Bounds bound, Rect room)
+    {
+        var diff = (targetPos - character.transform.position).normalized;
+        // 因为左右移动时都是旋转90/270度的，所以使用bound.extents.y
+        if (Mathf.Abs(diff.x) > 0.1f && targetPos.x > room.xMin + 1 + bound.extents.y && targetPos.x < room.xMax - bound.extents.y)
+        {
+            diff.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
+        }
+        characterInput.MoveInput = diff.normalized;
+    }
+
     protected void Move_ChaseNearestEnemy()
     {
 
@@ -154,6 +165,7 @@ public abstract class CharacterBaseAI : ICharacterAI
     #region Attack
     protected virtual void AttackAction()
     {
+        if (character == null) return;
         ref Vector2 lookInput = ref characterInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) return;
         if (Time.time < nextAtkTime) return;
@@ -169,7 +181,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         NormalizeLookInput(ref lookInput);
         // 获取Player的位置
         // 获取Player碰撞体的边界位置
-        Bounds playerBounds = character.GetComponent<Collider2D>().bounds;
+        Bounds playerBounds = character.GetComponentInChildren<Collider2D>().bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
         Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
         Vector2 bulletStartPosition = character.transform.position;
@@ -203,12 +215,17 @@ public abstract class CharacterBaseAI : ICharacterAI
         if (lookInput.sqrMagnitude >= 0.1f)
         {
             // 优先将角色面朝射击方向，优先级高于移动方向
-            if (skinnedMeshRenderer != null || CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+            if (skinnedMeshRenderer != null)
             {
                 Transform childTransform = character.transform.GetChild(0);
                 // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
                 // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput); // 30度
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookInput); // 45度
+            }
+            else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+            {
+                Transform childTransform = character.transform.GetChild(0);
+                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
             }
             if (lookInput.x > 0.1f)
             {
@@ -230,12 +247,17 @@ public abstract class CharacterBaseAI : ICharacterAI
         else if (moveInput.sqrMagnitude >= 0.1f)
         {
             // 将角色面朝移动方向
-            if (skinnedMeshRenderer != null || CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+            if (skinnedMeshRenderer != null)
             {
                 Transform childTransform = character.transform.GetChild(0);
                 // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
                 // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
+            }
+            else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+            {
+                Transform childTransform = character.transform.GetChild(0);
+                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
             }
             if (moveInput.x > 0.1f)
             {

@@ -12,21 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
   m_Name: Boss_1_0_PhantomTank
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  CharacterType: 4
   shootSound: {fileID: 8300000, guid: 09926e3f4e00d3f4e884a2bf5462e9d2, type: 3}
   jumpSound: {fileID: 0}
+  hurtSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: a3e45b601093d5e4e9b77ff83f0818d0, type: 3}
   shadowPrefab: {fileID: 0}
+  phantomChargePrefab: {fileID: 5506378715684145941, guid: 99146fadb974a624bae5818803cbdb30, type: 3}
+  deadBodyPrefab: {fileID: 0}
+  explosionEffectPrefab: {fileID: 0}
+  summonEffectPrefab: {fileID: 0}
+  teleportEffectPrefab: {fileID: 0}
+  CharacterType: 4
   MaxHp: 5
   MoveSpeed: 2
   ShootRange: 10
   BulletSpeed: 6
   Damage: 10
-  AttackFrequency: 0.5
+  AttackFrequency: 0.75
   CriticalRate: 0
   ExpGiven: 5
+  spawnOffsets: {x: -2, y: -2}
+  bound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 3, y: 3, z: 3}
   canMoveDiagonally: 0
-  canAttackDiagonally: 0
+  canAttackDiagonally: 1
   AggroRange: 15
   AggroChangeInterval: 2
   minRandomMoveInputInterval: 1

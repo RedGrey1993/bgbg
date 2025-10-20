@@ -10,8 +10,13 @@ public class CharacterData : ScriptableObject
     public AudioClip jumpSound;
     public AudioClip hurtSound;
     public GameObject bulletPrefab;
+    // Minion 1 0 Stomper
     public GameObject shadowPrefab;
+    // Boss 1 0 Phantom Tank
+    public GameObject phantomChargePrefab;
+    // Minion 2 0 Glitch Slime
     public GameObject deadBodyPrefab;
+    // Boss 5 0 The Ruler
     public GameObject explosionEffectPrefab;
     public GameObject summonEffectPrefab;
     public GameObject teleportEffectPrefab;

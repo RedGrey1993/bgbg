@@ -666,7 +666,8 @@ public class LevelManager : MonoBehaviour
 
     public Vector2 GetRandomPositionInRoom(int roomId, Bounds bound)
     {
-        return GetRandomPositionInRoom(roomId, bound.extents.x, bound.extents.y);
+        var maxExtent = Mathf.Max(bound.extents.x, bound.extents.y);
+        return GetRandomPositionInRoom(roomId, maxExtent, maxExtent);
     }
 
     public Vector2 GetPositionInRoom(int roomId, Vector2Int offset, Bounds bound)

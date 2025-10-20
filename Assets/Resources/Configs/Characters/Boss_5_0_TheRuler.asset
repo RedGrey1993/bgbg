@@ -17,6 +17,7 @@ MonoBehaviour:
   hurtSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
+  phantomChargePrefab: {fileID: 5506378715684145941, guid: 99146fadb974a624bae5818803cbdb30, type: 3}
   deadBodyPrefab: {fileID: 0}
   explosionEffectPrefab: {fileID: 725748389856807714, guid: fa5a5796973fb6149aba1a2947bac025, type: 3}
   summonEffectPrefab: {fileID: 3280519133390621005, guid: 951ee9729bc3a2d45a9b38177d819e3d, type: 3}
@@ -27,7 +28,7 @@ MonoBehaviour:
   ShootRange: 10
   BulletSpeed: 6
   Damage: 10
-  AttackFrequency: 0.5
+  AttackFrequency: 1
   CriticalRate: 0
   ExpGiven: 5
   spawnOffsets: {x: 0, y: 1}

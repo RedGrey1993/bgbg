@@ -116,7 +116,14 @@ public static class Constants
 
     public static void PositionToIndex(Vector2 position, out int x, out int y)
     {
-        x = (int)position.x / RoomStep;
-        y = (int)position.y / RoomStep;
+        if (position.x < 0 || position.y < 0)
+        {
+            x = -1;
+            y = -1;
+        } else
+        {     
+            x = (int)position.x / RoomStep;
+            y = (int)position.y / RoomStep;
+        }
     }
 }
