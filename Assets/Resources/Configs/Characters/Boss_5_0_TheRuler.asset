@@ -18,6 +18,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
+  explosionEffectPrefab: {fileID: 725748389856807714, guid: fa5a5796973fb6149aba1a2947bac025, type: 3}
+  summonEffectPrefab: {fileID: 3280519133390621005, guid: 951ee9729bc3a2d45a9b38177d819e3d, type: 3}
   CharacterType: 14
   MaxHp: 5
   MoveSpeed: 2

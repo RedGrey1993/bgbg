@@ -7,6 +7,8 @@ public class LevelData : ScriptableObject
 {
     [Header("Room Prefabs")]
     public TileBase floorTile; // 每一关对应的地板瓦片列表
+    public TileBase explosionTile;
+    public TileBase wallTile; // 每一关对应的墙壁瓦片列表
     // public List<GameObject> corridorPrefabs; // 过道/连接件列表
     // public GameObject startRoomPrefab; // 起始房间
     // public GameObject bossRoomPrefab; // Boss 房间

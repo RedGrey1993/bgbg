@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Characters/Character Data")]
 public class CharacterData : ScriptableObject
 {
+    #region Prefabs
     [Header("Prefabs")]
     public AudioClip shootSound;
     public AudioClip jumpSound;
@@ -11,7 +12,11 @@ public class CharacterData : ScriptableObject
     public GameObject bulletPrefab;
     public GameObject shadowPrefab;
     public GameObject deadBodyPrefab;
+    public GameObject explosionEffectPrefab;
+    public GameObject summonEffectPrefab;
+    #endregion
 
+    #region Basic Attributes
     [Header("Basic Attributes")]
     public CharacterType CharacterType = CharacterType.Unset;
     public uint MaxHp;
@@ -24,6 +29,7 @@ public class CharacterData : ScriptableObject
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
     public Vector2Int spawnOffsets = new Vector2Int { x = -2, y = -2 }; // -1 -> left/bottom, 0 -> center, 1 -> right/top
     public Bounds bound = new Bounds(Vector3.zero, Vector3.one * 4);
+    #endregion
 
     [Header("Movement Settings")]
     public bool canMoveDiagonally = true;

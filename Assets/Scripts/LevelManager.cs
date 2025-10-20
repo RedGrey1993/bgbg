@@ -11,14 +11,16 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoBehaviour
 {
     #region Inspector Fields
-    public Tilemap floorTilemap;
     public Tilemap wallTilemap;
+    public Tilemap floorTilemap;
+    public Tilemap highlightTilemap;
     public TileBase level1WallTile;
     public GameObject explosionEffectPrefab; // 你的粒子特效Prefab
     public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
     public AudioClip explosionSound;
     public GameObject pickupItemPrefab; // 拾取物品预制体
     public GameObject flashRectPrefab;
+    public GameObject temporaryObjectParent;
     #endregion
 
     public static LevelManager Instance { get; private set; }
@@ -571,6 +573,7 @@ public class LevelManager : MonoBehaviour
 
         wallTilemap.ClearAllTiles();
         floorTilemap.ClearAllTiles();
+        highlightTilemap.ClearAllTiles();
 
         CharacterManager.Instance.ClearCharacterObjects();
         UIManager.Instance.HideBossHealthSlider();
@@ -588,6 +591,11 @@ public class LevelManager : MonoBehaviour
                 Destroy(obj);
         }
         ToRemoveBeforeNewStage.Clear();
+
+        foreach (Transform child in temporaryObjectParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     #region Utils
@@ -693,6 +701,24 @@ public class LevelManager : MonoBehaviour
 
         return pos;
     }
+
+    public void SetFloorTileExplosionWarning(Vector3Int pos)
+    {
+        highlightTilemap.SetTile(pos, CurrentLevelData.explosionTile);
+    }
+
+    public void ResetFloorTile(Vector3Int pos)
+    {
+        highlightTilemap.SetTile(pos, null);
+    }
+
+    public GameObject InstantiateTemporaryObject(GameObject prefab, Vector3 position)
+    {
+        var obj = Instantiate(prefab, temporaryObjectParent.transform);
+        obj.transform.position = position;
+        return obj;
+    }
+
     #endregion
 
     #region Pickup Items
