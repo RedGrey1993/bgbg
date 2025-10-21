@@ -15,21 +15,33 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  energyWaveAccumulateSound: {fileID: 8300000, guid: 4083d969bac2f77428ed9304a9467542, type: 3}
+  energyWaveShootSound: {fileID: 8300000, guid: 1f1c899b2041c23459d7d781f85cb975, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
+  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
+  energyWavePrefab: {fileID: 1977356882097113535, guid: 5429d081cc0ed3e439c5ebe40fc206b3, type: 3}
+  explosionEffectPrefab: {fileID: 0}
+  summonEffectPrefab: {fileID: 0}
+  teleportEffectPrefab: {fileID: 0}
+  accumulateEffectPrefab: {fileID: 0}
   CharacterType: 7
   MaxHp: 5
-  MoveSpeed: 2
-  ShootRange: 10
+  MoveSpeed: 3
+  ShootRange: 8
   BulletSpeed: 6
   Damage: 10
-  AttackFrequency: 0.5
+  AttackFrequency: 0.34
   CriticalRate: 0
   ExpGiven: 5
+  spawnOffsets: {x: -2, y: -2}
+  bound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 0
   canAttackDiagonally: 1
-  AggroRange: 15
+  AggroRange: 10000
   AggroChangeInterval: 2
   minRandomMoveInputInterval: 1
   maxRandomMoveInputInterval: 6

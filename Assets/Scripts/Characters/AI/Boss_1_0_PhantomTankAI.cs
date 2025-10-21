@@ -16,9 +16,10 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (isAttacking) return;
+            if (isAiming) return;
             UpdateAggroTarget();
             UpdateMoveInput();
+            if (isMoving) return;
             UpdateAttackInput();
         }
     }
@@ -67,19 +68,30 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         }
     }
 
+    private void Move_RandomMoveToTarget(Vector3 targetPos, Bounds bound, Rect room)
+    {
+        var diff = (targetPos - character.transform.position).normalized;
+        // 因为PhantomTank左右移动时都是旋转90/270度的，所以使用bound.extents.y
+        if (Mathf.Abs(diff.x) > 0.1f && targetPos.x > room.xMin + 1 + bound.extents.y && targetPos.x < room.xMax - bound.extents.y)
+        {
+            diff.x *= 10; // 优先横着走，再直着走，避免横竖快速跳转
+        }
+        characterInput.MoveInput = diff.normalized;
+    }
+
     private void Move_ChaseInRoom()
     {
         float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
+        // float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
         bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
-        bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
-        bool NearWall(float d = 0)
-        {
-            return XNearWall(d) || YNearWall(d);
-        }
+        // bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
+        // bool NearWall(float d = 0)
+        // {
+        //     return XNearWall(d) || YNearWall(d);
+        // }
 
         var diff = AggroTarget.transform.position - character.transform.position;
         var diffNormalized = diff.normalized;
@@ -129,37 +141,41 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         {
             var diff = AggroTarget.transform.position - character.transform.position;
             var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击
+            // 进入攻击距离，攻击，boss都能够斜向攻击
             // if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
             if (Mathf.Abs(diff.x) <= atkRange || Mathf.Abs(diff.y) <= atkRange)
             {
                 characterInput.MoveInput = Vector2.zero;
                 characterInput.LookInput = diff.normalized;
-                isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate->AttackAction执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+                isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate->AttackAction执行动作的时候，在下一帧Update就把LookInput设置为0的问题
                 return;
             }
         }
         characterInput.LookInput = Vector2.zero;
     }
 
-    private bool isAttacking = false; // 攻击时无法移动
+    private bool isAiming = false; // 瞄准时无法移动
+    private bool isMoving = false;
     private Coroutine shootCoroutine = null;
     private Coroutine chargeCoroutine = null;
     protected override void AttackAction()
     {
-        if (shootCoroutine != null && chargeCoroutine != null) return;
-        ref Vector2 lookInput = ref characterInput.LookInput;
-        if (lookInput.sqrMagnitude < 0.1f) { isAttacking = false; return; }
-        NormalizeLookInput(ref lookInput);
-        var rnd = Random.Range(0, 2);
-        if (rnd == 0 || chargeCoroutine != null)
+        if (isAiming)
         {
-            shootCoroutine = GameManager.Instance.StartCoroutine(Attack_Shoot());
-            isAttacking = false;
-        } else
-        {
-            chargeCoroutine = GameManager.Instance.StartCoroutine(Attack_Charge());
-            isAttacking = false;
+            if (shootCoroutine != null && chargeCoroutine != null) return;
+            ref Vector2 lookInput = ref characterInput.LookInput;
+            if (lookInput.sqrMagnitude < 0.1f) { isAiming = false; return; }
+            NormalizeLookInput(ref lookInput);
+            var rnd = Random.Range(0, 2);
+            if (rnd == 0 || chargeCoroutine != null)
+            {
+                shootCoroutine = GameManager.Instance.StartCoroutine(Attack_Shoot());
+            }
+            else
+            {
+                chargeCoroutine = GameManager.Instance.StartCoroutine(Attack_Charge());
+                isAiming = false; // 幻影冲锋时还能够射击或者移动
+            }
         }
     }
 
@@ -171,6 +187,13 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         // 调用父类方法
         base.AttackAction();
         shootCoroutine = null;
+        isAiming = false;
+
+        isMoving = true;
+        characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
+        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+        yield return new WaitForSeconds(Random.Range(1, 3f));
+        isMoving = false;
     }
 
     // 冲锋，十字幻影形式冲锋
@@ -179,7 +202,9 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
         int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
-        var targetPos = AggroTarget.transform.position;
+        Vector2 targetPos = room.center;
+        if (AggroTarget != null)
+            targetPos = AggroTarget.transform.position;
         var horizontalStartPos = targetPos;
         int dir = Random.Range(0, 2);
         Vector2 horizontalVelocity = Vector2.zero;

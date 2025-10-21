@@ -10,7 +10,7 @@ public class BlackHole : MonoBehaviour
     public float TotalInterval { get; set; } = 10.0f;
     public GameObject Owner { get; set; } = null; // 施放者
 
-    private HashSet<GameObject> objectsInZone = new HashSet<GameObject>();
+    private HashSet<CharacterStatus> statusInZone = new HashSet<CharacterStatus>();
 
     public void StartDamageCoroutine()
     {
@@ -20,18 +20,20 @@ public class BlackHole : MonoBehaviour
     // 当有物体进入触发器时调用
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == Owner)
+        if (other.gameObject == Owner) return; // 不伤害自己
+        var status = other.GetComponentInParent<CharacterStatus>();
+        if (status == null)
         {
-            return; // 不伤害自己
+            status = other.GetComponentInChildren<CharacterStatus>();
         }
-        var status = other.GetComponent<CharacterStatus>();
+        if (status.gameObject == Owner) return; // 不伤害自己
         // 尝试从进入的物体上获取HealthController组件
         if (status != null)
         {
             // 如果目标不在列表中，则添加它
-            if (!objectsInZone.Contains(other.gameObject))
+            if (!statusInZone.Contains(status))
             {
-                objectsInZone.Add(other.gameObject);
+                statusInZone.Add(status);
             }
         }
     }
@@ -39,17 +41,19 @@ public class BlackHole : MonoBehaviour
     // 当有物体离开触发器时调用
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == Owner)
+        if (other.gameObject == Owner) return; // 不伤害自己
+        var status = other.GetComponentInParent<CharacterStatus>();
+        if (status == null)
         {
-            return; // 不伤害自己
+            status = other.GetComponentInChildren<CharacterStatus>();
         }
-        var status = other.GetComponent<CharacterStatus>();
+        if (status.gameObject == Owner) return; // 不伤害自己
         if (status != null)
         {
             // 如果目标在列表中，则移除它
-            if (objectsInZone.Contains(other.gameObject))
+            if (statusInZone.Contains(status))
             {
-                objectsInZone.Remove(other.gameObject);
+                statusInZone.Remove(status);
             }
         }
     }
@@ -64,19 +68,18 @@ public class BlackHole : MonoBehaviour
             yield return new WaitForSeconds(DamageInterval);
             TotalInterval -= DamageInterval;
 
-            objectsInZone.RemoveWhere(obj => obj == null
-                || obj.GetComponent<CharacterStatus>() == null
-                || !obj.GetComponent<CharacterStatus>().IsAlive());
+            statusInZone.RemoveWhere(obj => obj == null
+                || obj.gameObject == null
+                || !obj.IsAlive());
 
             // 创建一个当前区域内目标的快照（副本）
-            List<GameObject> currentTargets;
+            List<CharacterStatus> currentStatus;
             // 避免Unity主线程进入OnTriggerXXX时，修改objectsInZone导致遍历错误
-            currentTargets = new List<GameObject>(objectsInZone);
+            currentStatus = new List<CharacterStatus>(statusInZone);
 
             // 对列表中的每个目标造成伤害
-            foreach (var obj in currentTargets)
+            foreach (var status in currentStatus)
             {
-                var status = obj.GetComponent<CharacterStatus>();
                 if (status != null && status.IsAlive())
                 {
                     status.TakeDamage_Host((uint)DamagePerSecond, Owner.GetComponent<CharacterStatus>());

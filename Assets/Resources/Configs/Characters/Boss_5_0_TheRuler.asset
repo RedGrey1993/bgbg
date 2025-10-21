@@ -15,13 +15,17 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  energyWaveAccumulateSound: {fileID: 8300000, guid: 4083d969bac2f77428ed9304a9467542, type: 3}
+  energyWaveShootSound: {fileID: 8300000, guid: 1f1c899b2041c23459d7d781f85cb975, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
   phantomChargePrefab: {fileID: 5506378715684145941, guid: 99146fadb974a624bae5818803cbdb30, type: 3}
   deadBodyPrefab: {fileID: 0}
+  energyWavePrefab: {fileID: 1977356882097113535, guid: 5429d081cc0ed3e439c5ebe40fc206b3, type: 3}
   explosionEffectPrefab: {fileID: 725748389856807714, guid: fa5a5796973fb6149aba1a2947bac025, type: 3}
   summonEffectPrefab: {fileID: 3280519133390621005, guid: 951ee9729bc3a2d45a9b38177d819e3d, type: 3}
   teleportEffectPrefab: {fileID: 7761031033666763820, guid: 1eb833340b41fb444b576c4dced8d4dc, type: 3}
+  accumulateEffectPrefab: {fileID: 9027514048236820045, guid: 37f7760cdb8ca2e49bf311ba1faa70a9, type: 3}
   CharacterType: 14
   MaxHp: 5
   MoveSpeed: 2
@@ -37,7 +41,7 @@ MonoBehaviour:
     m_Extent: {x: 4, y: 3, z: 0}
   canMoveDiagonally: 0
   canAttackDiagonally: 1
-  AggroRange: 15
+  AggroRange: 10000
   AggroChangeInterval: 2
   minRandomMoveInputInterval: 1
   maxRandomMoveInputInterval: 6

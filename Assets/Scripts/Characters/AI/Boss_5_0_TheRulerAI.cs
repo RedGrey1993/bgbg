@@ -36,7 +36,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (isAttacking) return;
+            if (isAiming) return;
             UpdateAggroTarget();
             UpdateMoveInput();
             UpdateAttackInput();
@@ -73,17 +73,17 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         characterInput.LookInput = Vector2.zero;
         if (AggroTarget != null && LevelManager.Instance.InSameRoom(character, AggroTarget))
         {
-            isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+            isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
         }
     }
 
-    private bool isAttacking = false; // 攻击时无法移动
+    private bool isAiming = false; // 瞄准时无法移动
     // private HashSet<int> existingBosses = new HashSet<int>();
     private List<GameObject> existingBosses = new ();
     private int bossIdx = 0;
     protected override void AttackAction()
     {
-        if (isAttacking)
+        if (isAiming)
         {
             if (Time.time < nextAtkTime) return;
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -98,7 +98,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             //         if (!isSummoning && !isExplosion)
             //         {
             //             Debug.Log("fhhtest, Summon::::::");
-            //             GameManager.Instance.StartCoroutine(Summon());
+            //             characterStatus.StartCoroutine(Summon());
             //         }
             //     }
             //     else
@@ -106,7 +106,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             //         if (!isSummoning && !isExplosion)
             //         {
             //             Debug.Log("fhhtest, Explosion::::::");
-            //             GameManager.Instance.StartCoroutine(Explosion());
+            //             characterStatus.StartCoroutine(Explosion());
             //         }
             //     }
 
@@ -117,7 +117,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 if (!isTeleporting)
                 {
                     Debug.Log("fhhtest, Teleport::::::");
-                    GameManager.Instance.StartCoroutine(Teleport());
+                    characterStatus.StartCoroutine(Teleport());
                 }
             }
             else
@@ -125,7 +125,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
             }
         }
-        isAttacking = false;
+        isAiming = false;
     }
     #endregion
 
@@ -235,7 +235,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         float explosionRatio = 0.6f;
         int tileNumber = (int)((room.width - 1) * (room.height - 1) * explosionRatio);
         List<Vector2Int> tilePositions = new List<Vector2Int>();
-        Vector2Int startPos = new Vector2Int((int)AggroTarget.transform.position.x, (int)AggroTarget.transform.position.y);
+        Vector2Int startPos = new Vector2Int((int)room.center.x, (int)room.center.y);
+        if (AggroTarget != null) 
+            startPos = new Vector2Int((int)AggroTarget.transform.position.x, (int)AggroTarget.transform.position.y);
         tilePositions.Add(startPos);
         HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
         visited.Add(startPos);
@@ -284,7 +286,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
         foreach (var tilePos in tilePositions)
         {
-            GameManager.Instance.StartCoroutine(PlayExplosionEffect(tilePos));
+            characterStatus.StartCoroutine(PlayExplosionEffect(tilePos));
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -321,8 +323,10 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         Object.Destroy(teleportEffect1);
 
         // int rndAtk = Random.Range(0, 4);
-        if (chargeCoroutine == null)
-            chargeCoroutine = GameManager.Instance.StartCoroutine(Boss1_PhantomTank_Charge());
+        // if (chargeCoroutine == null)
+        //     chargeCoroutine = characterStatus.StartCoroutine(Boss1_PhantomTank_Charge());
+        if (energyWaveCoroutine == null)
+            energyWaveCoroutine = characterStatus.StartCoroutine(Boss2_EnergyWave(9));
 
         var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
@@ -395,7 +399,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
         int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
-        var targetPos = AggroTarget.transform.position;
+        Vector2 targetPos = room.center;
+        if (AggroTarget != null)
+            targetPos = AggroTarget.transform.position;
         var horizontalStartPos = targetPos;
         int dir = Random.Range(0, 2);
         Vector2 horizontalVelocity = Vector2.zero;
@@ -451,6 +457,59 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         Object.Destroy(verticalPhantomCharge);
 
         chargeCoroutine = null;
+    }
+
+    private Coroutine energyWaveCoroutine = null;
+    private int rotateDir = 1;
+    private IEnumerator Boss2_EnergyWave(int count)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+        var vfx = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.accumulateEffectPrefab, room.center);
+        if (CharacterData.energyWaveAccumulateSound)
+        {
+            var audioSrc = character.AddComponent<AudioSource>();
+            audioSrc.PlayOneShot(CharacterData.energyWaveAccumulateSound);
+            Object.Destroy(audioSrc, CharacterData.energyWaveAccumulateSound.length);
+        }
+        yield return new WaitForSeconds(1.6f);
+        Vector2 lookInput = Vector2.right;
+        if (AggroTarget != null)
+            lookInput = characterInput.LookInput = AggroTarget.transform.position - character.transform.position;
+        // 攻击0.5s之前的位置，给玩家一些缓冲时间
+        yield return new WaitForSeconds(0.5f);
+        Object.Destroy(vfx);
+
+        float angle = 360f / count;
+        Quaternion rotationPlus = Quaternion.Euler(0, 0, angle);
+        for (int i = 0; i < count; i++)
+        {
+            // 计算子弹的初始位置，稍微偏离玩家边界
+            Vector2 waveOffset = lookInput.normalized;
+            Vector2 waveStartPosition = room.center;
+            waveStartPosition += waveOffset;
+
+            var energeWave = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.energyWavePrefab, waveStartPosition);
+            EnergyWave energyWaveScript = energeWave.GetComponent<EnergyWave>();
+            energyWaveScript.StartPosition = waveStartPosition;
+            energyWaveScript.Direction = lookInput.normalized;
+            energyWaveScript.OwnerStatus = characterStatus;
+            energyWaveScript.Rotate = count > 1 ? rotateDir : 0;
+
+            lookInput = rotationPlus * lookInput;
+            Object.Destroy(energeWave, 2.5f);
+        }
+        rotateDir = -rotateDir;
+
+        if (CharacterData.energyWaveShootSound)
+        {
+            var audioSrc = character.AddComponent<AudioSource>();
+            audioSrc.PlayOneShot(CharacterData.energyWaveShootSound);
+            Object.Destroy(audioSrc, CharacterData.energyWaveShootSound.length);
+        }
+
+        yield return new WaitForSeconds(2.5f);
+        energyWaveCoroutine = null;
     }
     #endregion
 

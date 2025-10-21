@@ -64,18 +64,7 @@ public abstract class CharacterBaseAI : ICharacterAI
         var diff = (targetPos - character.transform.position).normalized;
         if (Mathf.Abs(diff.x) > 0.1f)
         {
-            diff.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
-        }
-        characterInput.MoveInput = diff.normalized;
-    }
-
-    protected void Move_RandomMoveToTarget(Vector3 targetPos, Bounds bound, Rect room)
-    {
-        var diff = (targetPos - character.transform.position).normalized;
-        // 因为左右移动时都是旋转90/270度的，所以使用bound.extents.y
-        if (Mathf.Abs(diff.x) > 0.1f && targetPos.x > room.xMin + 1 + bound.extents.y && targetPos.x < room.xMax - bound.extents.y)
-        {
-            diff.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
+            diff.x *= 10; // 优先横着走，再直着走，避免横竖快速跳转
         }
         characterInput.MoveInput = diff.normalized;
     }
@@ -146,7 +135,10 @@ public abstract class CharacterBaseAI : ICharacterAI
         // Apply movement directly
         // velocity is deprecated, use linearVelocity instead
         if (rb.bodyType != RigidbodyType2D.Static)
-            rb.linearVelocity = moveInput * characterStatus.State.MoveSpeed;
+        {
+            rb.linearVelocity = (moveInput + characterInput.MoveAdditionalInput) * characterStatus.State.MoveSpeed;
+            characterInput.MoveAdditionalInput = Vector2.zero;
+        }
     }
     #region Running
     protected virtual void SetIdle(Direction dir)
@@ -188,9 +180,8 @@ public abstract class CharacterBaseAI : ICharacterAI
         bulletStartPosition += bulletOffset;
 
         // Instantiate the bullet
-        GameObject bullet = Object.Instantiate(CharacterData.bulletPrefab, bulletStartPosition, Quaternion.identity);
-        Transform childTransform = character.transform.GetChild(0);
-        bullet.transform.localRotation = childTransform.localRotation;
+        GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+        bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
         bullet.transform.localScale = character.transform.localScale;
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript)
@@ -207,7 +198,7 @@ public abstract class CharacterBaseAI : ICharacterAI
     #endregion
 
     #region LookTo
-    protected void LookToAction()
+    protected virtual void LookToAction()
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
@@ -309,9 +300,9 @@ public abstract class CharacterBaseAI : ICharacterAI
         // 所有客户端都能调用，包括Host自己
         // 包括不需要严格同步的操作，如物理引擎模拟等相关操作
         // Do Client Action;
+        LookToAction();
         MoveAction(); // Client 的 Move类似于移动预测，最终还是会同步到Host的权威位置
         AttackAction();
-        LookToAction();
     }
     public virtual void OnCollisionEnter(Collision2D collision) { }
     public virtual void OnCollisionStay(Collision2D collision) { }
