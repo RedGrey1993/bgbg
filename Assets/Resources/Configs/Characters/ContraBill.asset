@@ -27,7 +27,7 @@ MonoBehaviour:
   teleportEffectPrefab: {fileID: 0}
   accumulateEffectPrefab: {fileID: 0}
   CharacterType: 1
-  MaxHp: 3000
+  MaxHp: 30
   MoveSpeed: 5
   ShootRange: 5
   BulletSpeed: 6
