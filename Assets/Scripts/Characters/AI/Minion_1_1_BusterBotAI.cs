@@ -3,13 +3,11 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+
 // Stomper不会对角线移动
 public class Minion_1_1_BusterBotAI : CharacterBaseAI
 {
-    public Minion_1_1_BusterBotAI(GameObject character) : base(character)
-    {
-    }
-
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
     protected override void GenerateAILogic()
@@ -33,8 +31,8 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -48,10 +46,10 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
                 {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                    var collider2D = character.GetComponent<Collider2D>();
+                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                    var collider2D = GetComponent<Collider2D>();
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 Move_RandomMoveToTarget(targetPos);
@@ -66,8 +64,8 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
     private float chaseMoveInputInterval = 0;
     private void Move_ChaseInRoom()
     {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
+        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
+        float posYMod = transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
@@ -89,11 +87,11 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         }
         nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
 
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
+        Constants.PositionToIndex(transform.position, out int sx, out int sy);
         Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
 
         // 在同一间房间，直接追击
@@ -130,10 +128,10 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         else
         {
             // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                var collider2D = character.GetComponent<Collider2D>();
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                var collider2D = GetComponent<Collider2D>();
                 targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
             }
             Move_RandomMoveToTarget(targetPos);
@@ -148,7 +146,7 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
     {
         if (AggroTarget != null)
         {
-            var diff = AggroTarget.transform.position - character.transform.position;
+            var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，爆破小子(BusterBot)只会水平/垂直攻击
             if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))

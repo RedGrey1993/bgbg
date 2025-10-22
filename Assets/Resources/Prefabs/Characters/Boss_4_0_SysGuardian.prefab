@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 1594084724632985206}
   - component: {fileID: 355725702456237306}
   - component: {fileID: 8141522549504265094}
+  - component: {fileID: -8125802729352896537}
   m_Layer: 9
   m_Name: Boss_4_0_SysGuardian
   m_TagString: Enemy
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
   MoveInput: {x: 0, y: 0}
+  MoveAdditionalInput: {x: 0, y: 0}
   LookInput: {x: 0, y: 0}
 --- !u!114 &355725702456237306
 MonoBehaviour:
@@ -404,6 +406,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.027659422, y: 0.011823295}
   m_Size: {x: 1.929035, y: 1.5699723}
   m_Direction: 1
+--- !u!114 &-8125802729352896537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506378715684145941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2788f9841a2714fb036db87518f554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss_4_0_SysGuardianAI
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0

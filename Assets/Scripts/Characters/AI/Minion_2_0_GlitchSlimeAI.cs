@@ -1,15 +1,14 @@
 
 
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+
+[RequireComponent(typeof(Collider2D))]
 
 // Stomper不会对角线移动
 public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
 {
-    public Minion_2_0_GlitchSlimeAI(GameObject character) : base(character)
-    {
-    }
-
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
     protected override void GenerateAILogic()
@@ -26,7 +25,7 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     #region Collision
     // 史莱姆只造成接触伤害
     private float nextDamageTime = 0;
-    public override void OnCollisionEnter(Collision2D collision)
+    public void ProcessCollisionDamage(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
@@ -48,9 +47,14 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
         }
     }
 
-    public override void OnCollisionStay(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        OnCollisionEnter(collision);
+        ProcessCollisionDamage(collision);
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        ProcessCollisionDamage(collision);
     }
     #endregion
 
@@ -61,8 +65,8 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -76,10 +80,10 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
                 {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                    var collider2D = character.GetComponent<Collider2D>();
+                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                    var collider2D = GetComponent<Collider2D>();
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 Move_RandomMoveToTarget(targetPos);
@@ -94,8 +98,8 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     private float chaseMoveInputInterval = 0;
     private void Move_ChaseInRoom()
     {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
+        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
+        float posYMod = transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
@@ -117,10 +121,10 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
         }
         nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
 
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
+        Constants.PositionToIndex(transform.position, out int sx, out int sy);
         Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
 
         // 在同一间房间，直接追击
@@ -137,10 +141,10 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
         else
         {
             // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                var collider2D = character.GetComponent<Collider2D>();
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                var collider2D = GetComponent<Collider2D>();
                 targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
             }
             Move_RandomMoveToTarget(targetPos);
@@ -162,7 +166,7 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     {
         animator.SetTrigger("Death");
         float deathDuration = 2f;
-        GameManager.Instance.StartCoroutine(GenerateDeadBody(deathDuration, CharacterData.deadBodyPrefab, character.transform.position));
+        GameManager.Instance.StartCoroutine(GenerateDeadBody(deathDuration, CharacterData.deadBodyPrefab, transform.position));
         return deathDuration;
     }
     

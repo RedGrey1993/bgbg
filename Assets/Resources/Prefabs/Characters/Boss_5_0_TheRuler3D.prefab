@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1240948171261194774}
   - component: {fileID: 7173131251571810398}
   - component: {fileID: 1798042335145779105}
+  - component: {fileID: 4485939492831895075}
   m_Layer: 9
   m_Name: Boss_5_0_TheRuler3D
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInput
   MoveInput: {x: 0, y: 0}
+  MoveAdditionalInput: {x: 0, y: 0}
   LookInput: {x: 0, y: 0}
 --- !u!114 &7173131251571810398
 MonoBehaviour:
@@ -130,6 +132,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.00000023841858, y: -0.09259701}
   m_Size: {x: 1.8492751, y: 5.39176}
   m_Direction: 0
+--- !u!114 &4485939492831895075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696006956200170134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69729f7b3e5b0564d8e70b4d955b1f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss_5_0_TheRulerAI
+  prevBossPrefabs: []
 --- !u!1 &2380667436673660461
 GameObject:
   m_ObjectHideFlags: 0

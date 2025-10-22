@@ -8,6 +8,9 @@ using NUnit.Framework;
 
 #if PROTOBUF
 using NetworkMessageProto;
+
+[RequireComponent(typeof(ICharacterAI))]
+[RequireComponent(typeof(CharacterInput))]
 #else
 using NetworkMessageJson;
 #endif
@@ -22,14 +25,15 @@ public class CharacterStatus : MonoBehaviour
     public event Action<PlayerState> OnHealthChanged;
     public event Action OnDied;
 
+    private ICharacterAI characterAI;
     private CharacterInput characterInput;
-    public ICharacterAI CharacterAI => characterInput.CharacterAI;
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
 
     void Awake()
     {
         characterInput = GetComponent<CharacterInput>();
+        characterAI = GetComponent<ICharacterAI>();
 
         State.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
         State.PlayerName = "DefaultName";
@@ -197,9 +201,9 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // 尸体销毁，Player的尸体不销毁，置灰保留在原地
-        if (CharacterAI != null)
+        if (characterAI != null)
         {
-            float length = CharacterAI.OnDeath();
+            float length = characterAI.OnDeath();
             if (!CharacterManager.Instance.playerObjects.ContainsKey(State.PlayerId)) Destroy(gameObject, length);
         }
         else

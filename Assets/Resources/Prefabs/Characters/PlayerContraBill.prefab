@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 7173131251571810398}
   - component: {fileID: 8595861815966908792}
   - component: {fileID: 342258856623930588}
+  - component: {fileID: 1429915345373593624}
   m_Layer: 0
   m_Name: PlayerContraBill
   m_TagString: Untagged
@@ -157,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInput
   MoveInput: {x: 0, y: 0}
+  MoveAdditionalInput: {x: 0, y: 0}
   LookInput: {x: 0, y: 0}
 --- !u!114 &7173131251571810398
 MonoBehaviour:
@@ -305,6 +307,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.08461219, y: -0.008199215}
   m_Size: {x: 0.995396, y: 1.8643181}
   m_Direction: 0
+--- !u!114 &1429915345373593624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696006956200170134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84511391e462dee41bbc48e256fbf2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContraBillAI
 --- !u!1 &2814763320079350983
 GameObject:
   m_ObjectHideFlags: 0

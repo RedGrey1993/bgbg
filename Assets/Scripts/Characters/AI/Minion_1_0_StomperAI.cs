@@ -3,13 +3,11 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+
 // Stomper不会对角线移动
 public class Minion_1_0_StomperAI : CharacterBaseAI
 {
-    public Minion_1_0_StomperAI(GameObject character) : base(character)
-    {
-    }
-
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
     protected override void GenerateAILogic()
@@ -26,7 +24,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
 
     #region Collision
     private float nextDamageTime = 0;
-    public override void OnCollisionEnter(Collision2D collision)
+    public void ProcessCollisionDamage(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
@@ -55,9 +53,14 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         }
     }
 
-    public override void OnCollisionStay(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        OnCollisionEnter(collision);
+        ProcessCollisionDamage(collision);
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        ProcessCollisionDamage(collision);
     }
     #endregion
 
@@ -68,8 +71,8 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -83,10 +86,10 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
                 {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                    var collider2D = character.GetComponent<Collider2D>();
+                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                    var collider2D = GetComponent<Collider2D>();
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 Move_RandomMoveToTarget(targetPos);
@@ -101,8 +104,8 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     private float chaseMoveInputInterval = 0;
     private void Move_ChaseInRoom()
     {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
+        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
+        float posYMod = transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
@@ -124,11 +127,11 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         }
         nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
 
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
+        Constants.PositionToIndex(transform.position, out int sx, out int sy);
         Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
 
         // 在同一间房间，直接追击
@@ -174,10 +177,10 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         else
         {
             // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                var collider2D = character.GetComponent<Collider2D>();
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                var collider2D = GetComponent<Collider2D>();
                 targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
             }
             Move_RandomMoveToTarget(targetPos);
@@ -192,7 +195,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     {
         if (AggroTarget != null)
         {
-            var diff = AggroTarget.transform.position - character.transform.position;
+            var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
             if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
@@ -236,22 +239,22 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     private IEnumerator JumpToTarget(Vector3 targetPos, float jumpHeight, float jumpDuration = 4.3f)
     {
         float elapsedTime = 0;
-        var collider2D = character.GetComponent<Collider2D>();
+        var collider2D = GetComponent<Collider2D>();
         var characterBound = collider2D.bounds;
-        var shadowPos = character.transform.position;
+        var shadowPos = transform.position;
         shadowPos.y -= characterBound.extents.y;
         var shadowObj = Object.Instantiate(CharacterData.shadowPrefab, shadowPos, Quaternion.identity);
         LevelManager.Instance.ToRemoveBeforeNewStage.Add(shadowObj);
 
         animator.SetTrigger("Jump");
-        var audioSrc = character.AddComponent<AudioSource>();
+        var audioSrc = gameObject.AddComponent<AudioSource>();
         audioSrc.PlayOneShot(CharacterData.jumpSound);
         Object.Destroy(audioSrc, CharacterData.jumpSound.length);
 
         float prepareJumpDuration = 2.3f;
         float afterJumpDuration = jumpDuration - 3.1f;
         yield return new WaitForSeconds(prepareJumpDuration);
-        Vector3 startPos = character.transform.position;
+        Vector3 startPos = transform.position;
         jumpDuration -= prepareJumpDuration;
         jumpDuration -= afterJumpDuration;
         while (elapsedTime < jumpDuration)
@@ -268,7 +271,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             {
                 collider2D.isTrigger = false;
             }
-            character.transform.position = new Vector3(x, y, z);
+            transform.position = new Vector3(x, y, z);
             shadowObj.transform.position = new Vector3(x, y - characterBound.extents.y, 0);
             if (elapsedTime > jumpDuration / 2)
                 isJumpingDown = true;
@@ -277,7 +280,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             yield return null;
         }
         yield return new WaitForSeconds(afterJumpDuration);
-        character.transform.position = targetPos;
+        transform.position = targetPos;
         characterInput.LookInput = Vector2.zero;
         isAttacking = false;
         isJumpingDown = false;

@@ -2,9 +2,11 @@
 
 using UnityEngine;
 
-public abstract class CharacterBaseAI : ICharacterAI
+[RequireComponent(typeof(CharacterInput))]
+[RequireComponent(typeof(CharacterStatus))]
+[RequireComponent(typeof(Rigidbody2D))]
+public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 {
-    protected GameObject character;
     protected CharacterInput characterInput;
     protected CharacterStatus characterStatus;
     protected CharacterData CharacterData => characterStatus.characterData;
@@ -14,20 +16,19 @@ public abstract class CharacterBaseAI : ICharacterAI
     protected bool isAi = false;
     protected float nextAtkTime = 0f;
 
-    protected CharacterBaseAI(GameObject character)
+    public void Awake()
     {
-        this.character = character;
-        characterInput = character.GetComponent<CharacterInput>();
-        characterStatus = character.GetComponent<CharacterStatus>();
+        characterInput = GetComponent<CharacterInput>();
+        characterStatus = GetComponent<CharacterStatus>();
         // Get the Rigidbody2D component
-        rb = character.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         // Configure Rigidbody2D
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.gravityScale = 0f; // Disable gravity for 2D top-down movement
-        animator = character.GetComponentInChildren<Animator>();
-        audioSource = character.GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         isAi = characterStatus.IsAI;
-        Debug.Log($"fhhtest, [CharacterBaseAI] CharacterBaseAI created for character: {character.name}, is AI: {isAi}");
+        Debug.Log($"fhhtest, [CharacterBaseAI] CharacterBaseAI created for character: {name}, is AI: {isAi}");
     }
 
     protected void Move_RandomMove(bool canMoveDiagonally = true)
@@ -61,7 +62,7 @@ public abstract class CharacterBaseAI : ICharacterAI
 
     protected void Move_RandomMoveToTarget(Vector3 targetPos)
     {
-        var diff = (targetPos - character.transform.position).normalized;
+        var diff = (targetPos - transform.position).normalized;
         if (Mathf.Abs(diff.x) > 0.1f)
         {
             diff.x *= 10; // 优先横着走，再直着走，避免横竖快速跳转
@@ -140,7 +141,7 @@ public abstract class CharacterBaseAI : ICharacterAI
             characterInput.MoveAdditionalInput = Vector2.zero;
         }
     }
-    #region Running
+    #region Animation
     protected virtual void SetIdle(Direction dir)
     {
 
@@ -157,7 +158,6 @@ public abstract class CharacterBaseAI : ICharacterAI
     #region Attack
     protected virtual void AttackAction()
     {
-        if (character == null) return;
         ref Vector2 lookInput = ref characterInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) return;
         if (Time.time < nextAtkTime) return;
@@ -165,7 +165,7 @@ public abstract class CharacterBaseAI : ICharacterAI
 
         if (CharacterData.shootSound)
         {
-            var audioSrc = character.AddComponent<AudioSource>();
+            var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.shootSound);
             Object.Destroy(audioSrc, CharacterData.shootSound.length);
         }
@@ -173,16 +173,16 @@ public abstract class CharacterBaseAI : ICharacterAI
         NormalizeLookInput(ref lookInput);
         // 获取Player的位置
         // 获取Player碰撞体的边界位置
-        Bounds playerBounds = character.GetComponentInChildren<Collider2D>().bounds;
+        Bounds playerBounds = GetComponentInChildren<Collider2D>().bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
         Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
-        Vector2 bulletStartPosition = character.transform.position;
+        Vector2 bulletStartPosition = transform.position;
         bulletStartPosition += bulletOffset;
 
         // Instantiate the bullet
         GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
         bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
-        bullet.transform.localScale = character.transform.localScale;
+        bullet.transform.localScale = transform.localScale;
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript)
         {
@@ -202,20 +202,20 @@ public abstract class CharacterBaseAI : ICharacterAI
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
-        var skinnedMeshRenderer = character.GetComponentInChildren<SkinnedMeshRenderer>();
+        var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         if (lookInput.sqrMagnitude >= 0.1f)
         {
             // 优先将角色面朝射击方向，优先级高于移动方向
             if (skinnedMeshRenderer != null)
             {
-                Transform childTransform = character.transform.GetChild(0);
+                Transform childTransform = transform.GetChild(0);
                 // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
                 // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput); // 30度
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookInput); // 45度
             }
             else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
-                Transform childTransform = character.transform.GetChild(0);
+                Transform childTransform = transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
             }
             if (lookInput.x > 0.1f)
@@ -240,14 +240,14 @@ public abstract class CharacterBaseAI : ICharacterAI
             // 将角色面朝移动方向
             if (skinnedMeshRenderer != null)
             {
-                Transform childTransform = character.transform.GetChild(0);
+                Transform childTransform = transform.GetChild(0);
                 // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
                 // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
             }
             else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
-                Transform childTransform = character.transform.GetChild(0);
+                Transform childTransform = transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
             }
             if (moveInput.x > 0.1f)
@@ -274,7 +274,7 @@ public abstract class CharacterBaseAI : ICharacterAI
     }
     #endregion
 
-    #region ICharacterAI implementation
+    #region Update/FixedUpdate
     public void Update()
     {
         if (isAi)// 有玩家控制时不启用AI
@@ -304,8 +304,9 @@ public abstract class CharacterBaseAI : ICharacterAI
         MoveAction(); // Client 的 Move类似于移动预测，最终还是会同步到Host的权威位置
         AttackAction();
     }
-    public virtual void OnCollisionEnter(Collision2D collision) { }
-    public virtual void OnCollisionStay(Collision2D collision) { }
+    #endregion
+
+    #region ICharacterAI implementation
     public virtual float OnDeath() { return 0; }
     #endregion
 }

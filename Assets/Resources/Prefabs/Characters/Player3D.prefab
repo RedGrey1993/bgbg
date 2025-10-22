@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 1240948171261194774}
   - component: {fileID: 7173131251571810398}
   - component: {fileID: 8595861815966908792}
+  - component: {fileID: -5390456585222977190}
   m_Layer: 0
   m_Name: Player3D
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInput
   MoveInput: {x: 0, y: 0}
+  MoveAdditionalInput: {x: 0, y: 0}
   LookInput: {x: 0, y: 0}
 --- !u!114 &7173131251571810398
 MonoBehaviour:
@@ -314,6 +316,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5390456585222977190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696006956200170134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84511391e462dee41bbc48e256fbf2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContraBillAI
 --- !u!1 &2814763320079350983
 GameObject:
   m_ObjectHideFlags: 0

@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 1594084724632985206}
   - component: {fileID: 355725702456237306}
   - component: {fileID: 8141522549504265094}
+  - component: {fileID: 2813037684172497762}
   m_Layer: 9
   m_Name: Boss_3_0_PokeBoy
   m_TagString: Enemy
@@ -315,6 +316,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.018637657, y: 0.08023083}
   m_Size: {x: 0.85244346, y: 1.9702814}
   m_Direction: 0
+--- !u!114 &2813037684172497762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506378715684145941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3ee40d028e8ea42bad129f7aba460b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss_3_0_PokeBoyAI
+  pokeball: {fileID: 6958645844443391151}
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,11 +1498,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: PokeBall2_500_face
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
+--- !u!1 &6958645844443391151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
+  m_PrefabInstance: {fileID: 7805717093508635134}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7771457219064479253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6167cb79166061249aa50df93c4c4982, type: 3}

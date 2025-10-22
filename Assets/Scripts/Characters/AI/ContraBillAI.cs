@@ -1,14 +1,7 @@
-
-
-using Unity.AppUI.Core;
 using UnityEngine;
 
 public class ContraBillAI : CharacterBaseAI
 {
-    public ContraBillAI(GameObject character) : base(character)
-    {
-    }
-
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
     protected override void GenerateAILogic()
@@ -21,13 +14,13 @@ public class ContraBillAI : CharacterBaseAI
         }
     }
 
-    public override void OnCollisionEnter(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
             // if (collision.gameObject.CompareTag(Constants.TagWall) || collision.gameObject.CompareTag(Constants.TagEnemy))
             // {
-            Debug.Log($"fhhtest, {character.name} collided with {collision.gameObject.name}, bounce back");
+            Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back");
             if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
             {
                 // 对角线方向，随机翻转水平或垂直方向
@@ -67,8 +60,8 @@ public class ContraBillAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -97,8 +90,8 @@ public class ContraBillAI : CharacterBaseAI
     private float chaseMoveInputInterval = 0;
     private void Move_ChaseAcrossRooms()
     {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
+        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
+        float posYMod = transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
 
@@ -120,10 +113,10 @@ public class ContraBillAI : CharacterBaseAI
         }
         nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
 
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(character.transform.position, out int sx, out int sy);
+        Constants.PositionToIndex(transform.position, out int sx, out int sy);
         Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
 
         // 在同一间房间，直接追击
@@ -141,7 +134,7 @@ public class ContraBillAI : CharacterBaseAI
             // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
             else if (diff.sqrMagnitude > sqrShootRange)
             {
-                characterInput.MoveInput = (AggroTarget.transform.position - character.transform.position).normalized;
+                characterInput.MoveInput = (AggroTarget.transform.position - transform.position).normalized;
             }
             else // 进入攻击范围
             {
@@ -258,7 +251,7 @@ public class ContraBillAI : CharacterBaseAI
     }
     private void Attack_ShootToTarget()
     {
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // 进入攻击距离，直接射击
         if (diff.sqrMagnitude <= sqrShootRange)

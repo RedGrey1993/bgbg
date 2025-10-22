@@ -3,13 +3,11 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+
 // Stomper不会对角线移动
 public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
 {
-    public Boss_2_0_MasterTurtleAI(GameObject character) : base(character)
-    {
-    }
-
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
     protected override void GenerateAILogic()
@@ -34,8 +32,8 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -49,10 +47,10 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
                 {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                    var collider2D = character.GetComponent<Collider2D>();
+                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                    var collider2D = GetComponent<Collider2D>();
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 Move_RandomMoveToTarget(targetPos);
@@ -69,7 +67,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     private float chaseMoveInputInterval = 0;
     private void Move_ChaseInRoom()
     {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
+        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
         // float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
@@ -92,12 +90,12 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         // }
         // nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
 
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
 
         // 在同一间房间，直接追击
-        if (LevelManager.Instance.InSameRoom(character, AggroTarget))
+        if (LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
             // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
             if (diff.sqrMagnitude > sqrShootRange)
@@ -118,10 +116,10 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         else
         {
             // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                var collider2D = character.GetComponent<Collider2D>();
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                var collider2D = GetComponent<Collider2D>();
                 targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
             }
             Move_RandomMoveToTarget(targetPos);
@@ -151,13 +149,13 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
-        var skinnedMeshRenderer = character.GetComponentInChildren<SkinnedMeshRenderer>();
+        var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         if (lookInput.sqrMagnitude >= 0.1f)
         {
             // 优先将角色面朝射击方向，优先级高于移动方向
             if (skinnedMeshRenderer != null)
             {
-                Transform childTransform = character.transform.GetChild(0);
+                Transform childTransform = transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0f, -0.866f, 0.5f), lookInput); // 60度
             }
         }
@@ -166,7 +164,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             // 将角色面朝移动方向
             if (skinnedMeshRenderer != null)
             {
-                Transform childTransform = character.transform.GetChild(0);
+                Transform childTransform = transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0f, -0.866f, 0.5f), moveInput); // 60度
             }
             if (moveInput.sqrMagnitude > 0.1f)
@@ -184,9 +182,9 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #region Attack
     private void UpdateAttackInput()
     {
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(character, AggroTarget))
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
-            var diff = AggroTarget.transform.position - character.transform.position;
+            var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，boss都能够斜向攻击
             if (diff.sqrMagnitude <= atkRange * atkRange)
@@ -212,7 +210,6 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             if (shootCoroutine != null || energyWaveCoroutine != null) return;
             ref Vector2 lookInput = ref characterInput.LookInput;
             if (lookInput.sqrMagnitude < 0.1f) { isAiming = false; return; }
-            if (character == null) { isAiming = false; return; }
             if (Time.time < nextAtkTime) { isAiming = false; return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
             NormalizeLookInput(ref lookInput);
@@ -248,33 +245,27 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #region 技能1/3，发射1/2个龟壳
     private IEnumerator Attack_Shoot(bool doubleBullet)
     {
-        if (character == null)
-        {
-            shootCoroutine = null;
-            isAiming = false;
-            yield break;
-        }
         // TODO: 播放拿着龟壳准备释放的动作
         animator.Play("丢飞盘");
         yield return new WaitForSeconds(1.1f);
         var lookInput = Vector2.right;
         if (AggroTarget != null) 
-            lookInput = characterInput.LookInput = AggroTarget.transform.position - character.transform.position;
+            lookInput = characterInput.LookInput = AggroTarget.transform.position - transform.position;
         // // 攻击0.5s之前的位置，给玩家一些缓冲时间
         yield return new WaitForSeconds(0.5f);
         if (CharacterData.shootSound)
         {
-            var audioSrc = character.AddComponent<AudioSource>();
+            var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.shootSound);
-            Object.Destroy(audioSrc, CharacterData.shootSound.length);
+            Destroy(audioSrc, CharacterData.shootSound.length);
         }
 
         // 获取Player的位置
         // 获取Player碰撞体的边界位置
-        Bounds playerBounds = character.GetComponentInChildren<Collider2D>().bounds;
+        Bounds playerBounds = GetComponentInChildren<Collider2D>().bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
         Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
-        Vector2 bulletStartPosition = character.transform.position;
+        Vector2 bulletStartPosition = transform.position;
         bulletStartPosition += bulletOffset;
 
         int bulletNum = 1;
@@ -293,7 +284,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             // Instantiate the bullet
             GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
             bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, atkDir);
-            bullet.transform.localScale = character.transform.localScale;
+            bullet.transform.localScale = transform.localScale;
             BounceBullet bulletScript = bullet.GetComponent<BounceBullet>();
             if (bulletScript)
             {
@@ -328,32 +319,26 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #region 技能2/4，发射1/8个能量波
     private IEnumerator Attack_EnergyWave(int count)
     {
-        if (character == null)
-        {
-            energyWaveCoroutine = null;
-            isAiming = false;
-            yield break;
-        }
         animator.Play("施法并扔出");
         yield return new WaitForSeconds(0.5f);
-        var vfx = character.transform.GetChild(0).GetChild(0).gameObject;
+        var vfx = transform.GetChild(0).GetChild(0).gameObject;
         vfx.SetActive(true);
         if (CharacterData.energyWaveAccumulateSound)
         {
-            var audioSrc = character.AddComponent<AudioSource>();
+            var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.energyWaveAccumulateSound);
             Object.Destroy(audioSrc, CharacterData.energyWaveAccumulateSound.length);
         }
         yield return new WaitForSeconds(1.6f);
         var lookInput = Vector2.right;
         if (AggroTarget != null) 
-            lookInput = characterInput.LookInput = AggroTarget.transform.position - character.transform.position;
+            lookInput = characterInput.LookInput = AggroTarget.transform.position - transform.position;
         // 攻击0.5s之前的位置，给玩家一些缓冲时间
         yield return new WaitForSeconds(0.5f);
         vfx.SetActive(false);
 
         // 获取Player碰撞体的边界位置
-        Bounds playerBounds = character.GetComponentInChildren<Collider2D>().bounds;
+        Bounds playerBounds = GetComponentInChildren<Collider2D>().bounds;
 
         float angle = 360f / count;
         Quaternion rotationPlus = Quaternion.Euler(0, 0, angle);
@@ -361,7 +346,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         {
             // 计算子弹的初始位置，稍微偏离玩家边界
             Vector2 waveOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
-            Vector2 waveStartPosition = character.transform.position;
+            Vector2 waveStartPosition = transform.position;
             waveStartPosition += waveOffset;
 
             var energeWave = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.energyWavePrefab, waveStartPosition);
@@ -378,7 +363,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
 
         if (CharacterData.energyWaveShootSound)
         {
-            var audioSrc = character.AddComponent<AudioSource>();
+            var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.energyWaveShootSound);
             Object.Destroy(audioSrc, CharacterData.energyWaveShootSound.length);
         }

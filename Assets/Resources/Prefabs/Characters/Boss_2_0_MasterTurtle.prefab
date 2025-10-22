@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 1594084724632985206}
   - component: {fileID: 355725702456237306}
   - component: {fileID: 128535696000846103}
+  - component: {fileID: 2532915848748502569}
   m_Layer: 9
   m_Name: Boss_2_0_MasterTurtle
   m_TagString: Enemy
@@ -315,6 +316,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0020876229, y: -0.010437965}
   m_Size: {x: 0.98849636, y: 1.6471536}
   m_Direction: 0
+--- !u!114 &2532915848748502569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506378715684145941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324d3b3483a217848bbb05abb1e9baab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss_2_0_MasterTurtleAI
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0

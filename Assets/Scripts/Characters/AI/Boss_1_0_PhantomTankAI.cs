@@ -6,10 +6,6 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
-    public Boss_1_0_PhantomTankAI(GameObject character) : base(character)
-    {
-    }
-
     #region ICharacterAI implementation
     private float nextAggroChangeTime = 0;
     protected override void GenerateAILogic()
@@ -34,8 +30,8 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -50,10 +46,10 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         {
             if (AggroTarget == null)
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-                if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 3)
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 3)
                 {
-                    var collider2D = character.GetComponentInChildren<Collider2D>();
+                    var collider2D = GetComponentInChildren<Collider2D>();
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 var bossBound = CharacterData.bound;
@@ -70,7 +66,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
     private void Move_RandomMoveToTarget(Vector3 targetPos, Bounds bound, Rect room)
     {
-        var diff = (targetPos - character.transform.position).normalized;
+        var diff = (targetPos - transform.position).normalized;
         // 因为PhantomTank左右移动时都是旋转90/270度的，所以使用bound.extents.y
         if (Mathf.Abs(diff.x) > 0.1f && targetPos.x > room.xMin + 1 + bound.extents.y && targetPos.x < room.xMax - bound.extents.y)
         {
@@ -81,7 +77,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
     private void Move_ChaseInRoom()
     {
-        float posXMod = character.transform.position.x.PositiveMod(Constants.RoomStep);
+        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
         // float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
         const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
         const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
@@ -93,13 +89,13 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         //     return XNearWall(d) || YNearWall(d);
         // }
 
-        var diff = AggroTarget.transform.position - character.transform.position;
+        var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
 
         // 在同一间房间，直接追击
-        if (LevelManager.Instance.InSameRoom(character, AggroTarget))
+        if (LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
             // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
             if (diff.sqrMagnitude > sqrShootRange)
@@ -120,10 +116,10 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         else
         {
             // 在不同房间，随机移动
-            var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
-            if (targetPos == Vector3.zero || Vector3.Distance(character.transform.position, targetPos) < 1)
+            var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
             {
-                var collider2D = character.GetComponentInChildren<Collider2D>();
+                var collider2D = GetComponentInChildren<Collider2D>();
                 targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
             }
             var bossBound = CharacterData.bound;
@@ -137,9 +133,9 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     #region Attack
     private void UpdateAttackInput()
     {
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(character, AggroTarget))
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
-            var diff = AggroTarget.transform.position - character.transform.position;
+            var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，boss都能够斜向攻击
             // if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
@@ -200,7 +196,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     private IEnumerator Attack_Charge()
     {
         yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
         Vector2 targetPos = room.center;
         if (AggroTarget != null)
@@ -251,7 +247,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         hrb.linearVelocity = horizontalVelocity;
         vrb.linearVelocity = verticalVelocity;
 
-        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, character) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, character))
+        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, gameObject) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, gameObject))
         {
             yield return null;
         }

@@ -1,16 +1,12 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 
 // Stomper不会对角线移动
 public class Boss_5_0_TheRulerAI : CharacterBaseAI
 {
-    public List<GameObject> prevBossPrefabs;
-    public Boss_5_0_TheRulerAI(GameObject character) : base(character)
+    private List<GameObject> prevBossPrefabs;
+    public void Start()
     {
         prevBossPrefabs = new List<GameObject>();
         foreach (int stage in GameManager.Instance.PassedStages)
@@ -53,8 +49,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(character, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {character.name} aggro target: {AggroTarget?.name}");
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
     #endregion
@@ -71,7 +67,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private void UpdateAttackInput()
     {
         characterInput.LookInput = Vector2.zero;
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(character, AggroTarget))
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
             isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
         }
@@ -98,7 +94,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             //         if (!isSummoning && !isExplosion)
             //         {
             //             Debug.Log("fhhtest, Summon::::::");
-            //             characterStatus.StartCoroutine(Summon());
+            //             StartCoroutine(Summon());
             //         }
             //     }
             //     else
@@ -106,7 +102,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             //         if (!isSummoning && !isExplosion)
             //         {
             //             Debug.Log("fhhtest, Explosion::::::");
-            //             characterStatus.StartCoroutine(Explosion());
+            //             StartCoroutine(Explosion());
             //         }
             //     }
 
@@ -117,7 +113,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 if (!isTeleporting)
                 {
                     Debug.Log("fhhtest, Teleport::::::");
-                    characterStatus.StartCoroutine(Teleport());
+                    StartCoroutine(Teleport());
                 }
             }
             else
@@ -134,7 +130,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private IEnumerator Summon()
     {
         isSummoning = true;
-        var virtualScreen = character.transform.GetChild(2).gameObject;
+        var virtualScreen = transform.GetChild(2).gameObject;
         virtualScreen.SetActive(true);
         var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
         var animClips = screenAnim.runtimeAnimatorController.animationClips;
@@ -171,7 +167,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         while (existingBosses.Count < 2 && bossIdx < prevBossPrefabs.Count)
         {
             // 召唤之前的boss
-            int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+            int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
             var room = LevelManager.Instance.Rooms[roomId];
             var bossPrefab = prevBossPrefabs[bossIdx++];
             var charData = bossPrefab.GetComponent<CharacterStatus>().characterData;
@@ -196,7 +192,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private IEnumerator Explosion()
     {
         isExplosion = true;
-        var virtualScreen = character.transform.GetChild(2).gameObject;
+        var virtualScreen = transform.GetChild(2).gameObject;
         virtualScreen.SetActive(true);
         var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
         var animClips = screenAnim.runtimeAnimatorController.animationClips;
@@ -227,11 +223,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         animator.SetTrigger("Pointing");
         yield return new WaitForSeconds(summonTime);
 
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
 
         Bounds bossBound = CharacterData.bound;
-        var bossPos = character.transform.position;
+        var bossPos = transform.position;
         float explosionRatio = 0.6f;
         int tileNumber = (int)((room.width - 1) * (room.height - 1) * explosionRatio);
         List<Vector2Int> tilePositions = new List<Vector2Int>();
@@ -286,7 +282,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
         foreach (var tilePos in tilePositions)
         {
-            characterStatus.StartCoroutine(PlayExplosionEffect(tilePos));
+            StartCoroutine(PlayExplosionEffect(tilePos));
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -315,7 +311,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     {
         isTeleporting = true;
         var teleportPrefab = CharacterData.teleportEffectPrefab;
-        var teleportEffect1 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, character.transform.position);
+        var teleportEffect1 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, transform.position);
         var particleSystem1 = teleportEffect1.GetComponentInChildren<ParticleSystem>();
         yield return new WaitForSeconds(particleSystem1.main.duration / 2);
         SetTheRulerAlpha(0f);
@@ -324,11 +320,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
         // int rndAtk = Random.Range(0, 4);
         // if (chargeCoroutine == null)
-        //     chargeCoroutine = characterStatus.StartCoroutine(Boss1_PhantomTank_Charge());
+        //     chargeCoroutine = StartCoroutine(Boss1_PhantomTank_Charge());
         if (energyWaveCoroutine == null)
-            energyWaveCoroutine = characterStatus.StartCoroutine(Boss2_EnergyWave(9));
+            energyWaveCoroutine = StartCoroutine(Boss2_EnergyWave(9));
 
-        var roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
         var targetPos = room.center;
         int rnd = Random.Range(0, 4);
@@ -364,16 +360,16 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                     break;
                 }
         }
-        Transform childTransform1 = character.transform.GetChild(0);
+        Transform childTransform1 = transform.GetChild(0);
         childTransform1.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
-        Transform childTransform2 = character.transform.GetChild(1);
+        Transform childTransform2 = transform.GetChild(1);
         childTransform2.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
-        Transform childTransform3 = character.transform.GetChild(2);
+        Transform childTransform3 = transform.GetChild(2);
         childTransform3.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
 
         var teleportEffect2 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, targetPos);
         var particleSystem2 = teleportEffect2.GetComponentInChildren<ParticleSystem>();
-        character.transform.position = targetPos;
+        transform.position = targetPos;
         yield return new WaitForSeconds(particleSystem2.main.duration / 2);
         SetTheRulerAlpha(1f);
         yield return new WaitForSeconds(particleSystem2.main.duration / 2);
@@ -383,9 +379,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
     private void SetTheRulerAlpha(float to)
     {
-        SkinnedMeshRenderer skinnedMeshRenderer = character.GetComponentInChildren<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         var color1 = skinnedMeshRenderer.material.color;
-        MeshRenderer meshRenderer = character.GetComponentInChildren<MeshRenderer>();
+        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
         var color2 = meshRenderer.material.color;
         color1.a = color2.a = to;
         skinnedMeshRenderer.material.color = color1;
@@ -397,7 +393,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private IEnumerator Boss1_PhantomTank_Charge()
     {
         yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
         Vector2 targetPos = room.center;
         if (AggroTarget != null)
@@ -448,13 +444,13 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         hrb.linearVelocity = horizontalVelocity;
         vrb.linearVelocity = verticalVelocity;
 
-        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, character) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, character))
+        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, gameObject) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, gameObject))
         {
             yield return null;
         }
 
-        Object.Destroy(horizontalPhantomCharge);
-        Object.Destroy(verticalPhantomCharge);
+        Destroy(horizontalPhantomCharge);
+        Destroy(verticalPhantomCharge);
 
         chargeCoroutine = null;
     }
@@ -463,19 +459,19 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private int rotateDir = 1;
     private IEnumerator Boss2_EnergyWave(int count)
     {
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(character.transform.position);
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
         var vfx = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.accumulateEffectPrefab, room.center);
         if (CharacterData.energyWaveAccumulateSound)
         {
-            var audioSrc = character.AddComponent<AudioSource>();
+            var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.energyWaveAccumulateSound);
             Object.Destroy(audioSrc, CharacterData.energyWaveAccumulateSound.length);
         }
         yield return new WaitForSeconds(1.6f);
         Vector2 lookInput = Vector2.right;
         if (AggroTarget != null)
-            lookInput = characterInput.LookInput = AggroTarget.transform.position - character.transform.position;
+            lookInput = characterInput.LookInput = AggroTarget.transform.position - transform.position;
         // 攻击0.5s之前的位置，给玩家一些缓冲时间
         yield return new WaitForSeconds(0.5f);
         Object.Destroy(vfx);
@@ -503,7 +499,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
         if (CharacterData.energyWaveShootSound)
         {
-            var audioSrc = character.AddComponent<AudioSource>();
+            var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.energyWaveShootSound);
             Object.Destroy(audioSrc, CharacterData.energyWaveShootSound.length);
         }
