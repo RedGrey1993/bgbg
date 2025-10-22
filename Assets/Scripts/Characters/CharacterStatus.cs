@@ -69,7 +69,7 @@ public class CharacterStatus : MonoBehaviour
     // TODO: 联机模式的逻辑待考虑，想法：将计算完之后的状态发送给客户端，HOST本身忽略，客户端根据事件更新UI
     public void TakeDamage_Host(CharacterStatus attacker)
     {
-        if (IsDead()) return;
+        if (IsDead() || attacker == null) return;
         uint damage = attacker.State.Damage;
         uint curHp = State.CurrentHp - damage;
         if (curHp <= 0)
@@ -85,6 +85,8 @@ public class CharacterStatus : MonoBehaviour
         HealthChanged((uint)Mathf.Max(0, curHp));
     }
 
+    // 造成伤害时，attacker可能已经死了，有时候仍然需要正常造成伤害
+    // 也有时候是一些道具造成的伤害，这时attacker为null
     public void TakeDamage_Host(uint damage, CharacterStatus attacker)
     {
         if (IsDead()) return;
@@ -186,13 +188,6 @@ public class CharacterStatus : MonoBehaviour
             canvas.sortingOrder = -5; // Change sorting order to be behind alive players
         }
 
-        // Destroy Collider2D to allow bullets to pass through
-        Collider2D col = GetComponent<Collider2D>();
-        if (col != null)
-        {
-            Destroy(col);
-        }
-
         // Disable PlayerController
         PlayerController pc = GetComponent<PlayerController>();
         if (pc != null)
@@ -247,6 +242,12 @@ public class CharacterStatus : MonoBehaviour
                 healthSlider.value = State.CurrentHp;
             }
         }
+
+        if (IsBoss() && LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
+        {
+            UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
+            UIManager.Instance.ShowBossHealthSlider();
+        }
     }
 
     public bool IsBoss()
@@ -266,12 +267,7 @@ public class CharacterStatus : MonoBehaviour
     {
         if (IsBoss())
         {
-            if (IsAlive() && LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
-            {
-                UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
-                UIManager.Instance.ShowBossHealthSlider();
-            }
-            else
+            if (!IsAlive() || !LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
             {
                 UIManager.Instance.HideBossHealthSlider();
             }

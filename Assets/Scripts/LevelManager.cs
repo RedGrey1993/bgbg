@@ -27,7 +27,6 @@ public class LevelManager : MonoBehaviour
     public List<Rect> Rooms { get; private set; }
     public int[,] RoomGrid { get; private set; }
 
-    public List<GameObject> ToRemoveBeforeNewStage { get; set; } = new List<GameObject>();
     public GameObject BlackHole { get; set; } = null;
     public Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)> PickupItems { get; set; } = new Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)>(); // 关卡中的拾取物品
     private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
@@ -540,8 +539,7 @@ public class LevelManager : MonoBehaviour
 
     private void ShowRedFlashRect(Vector3 position, float width, float height, float duration)
     {
-        var obj = Instantiate(flashRectPrefab, position, Quaternion.identity);
-        ToRemoveBeforeNewStage.Add(obj);
+        var obj = InstantiateTemporaryObject(flashRectPrefab, position);
         FlashRect flashRect = obj.GetComponent<FlashRect>();
         flashRect.StartFlashing(width, height, duration);
     }
@@ -584,13 +582,6 @@ public class LevelManager : MonoBehaviour
             Destroy(pickupItem.Item2);
         }
         PickupItems.Clear();
-
-        foreach (var obj in ToRemoveBeforeNewStage)
-        {
-            if (obj != null)
-                Destroy(obj);
-        }
-        ToRemoveBeforeNewStage.Clear();
 
         foreach (Transform child in temporaryObjectParent.transform)
         {

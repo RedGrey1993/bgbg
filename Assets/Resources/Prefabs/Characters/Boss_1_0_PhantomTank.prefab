@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b60c31cbdd39c43ba8a1ed8ffc8ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_1_0_PhantomTankAI
+  chargeEffectPrefab: {fileID: 904662820145583817, guid: 986d090fe3b130743a995a92abfa2000, type: 3}
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193152610034553094}
-  - component: {fileID: 6519300485883109321}
+  - component: {fileID: 5934903570267035288}
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -627,7 +628,7 @@ Transform:
   - {fileID: 5035837120527684100}
   m_Father: {fileID: 6641391400573639146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &6519300485883109321
+--- !u!60 &5934903570267035288
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

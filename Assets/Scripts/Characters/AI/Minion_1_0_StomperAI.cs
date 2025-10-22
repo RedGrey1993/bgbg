@@ -8,33 +8,13 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Minion_1_0_StomperAI : CharacterBaseAI
 {
-    #region ICharacterAI implementation
-    private float nextAggroChangeTime = 0;
-    protected override void GenerateAILogic()
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (isAttacking) return;
-            UpdateAggroTarget();
-            UpdateMoveInput();
-            UpdateAttackInput();
-        }
-    }
-    #endregion
-
     #region Collision
     private float nextDamageTime = 0;
     public void ProcessCollisionDamage(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (!collision.gameObject.CompareTag(Constants.TagPlayer))
-            {
-                // Debug.Log($"fhhtest, {character.name} collided with {collision.gameObject.name}, bounce back");
-                // characterInput.MoveInput.x = -characterInput.MoveInput.x;
-                // characterInput.MoveInput.y = -characterInput.MoveInput.y;
-            }
-            else
+            if (collision.gameObject.CompareTag(Constants.TagPlayer))
             {
                 if (Time.time > nextDamageTime)
                 {
@@ -53,203 +33,116 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
         ProcessCollisionDamage(collision);
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    protected override void SubclassCollisionStay2D(Collision2D collision)
     {
         ProcessCollisionDamage(collision);
     }
     #endregion
 
-    #region Aggro
-    private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
-    private void UpdateAggroTarget()
+    #region AI Logic / Update Input
+    // 不会贴墙，距离墙1单位距离时会沿着墙走
+    protected override void Move_ChaseInRoom()
     {
-        if (Time.time >= nextAggroChangeTime)
-        {
-            nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
-        }
-    }
-    #endregion
-
-    #region Move
-    private float nextMoveInputChangeTime = 0;
-    private Vector3 targetPos = Vector3.zero;
-    private void UpdateMoveInput()
-    {
-        if (Time.time > nextMoveInputChangeTime)
-        {
-            if (AggroTarget == null)
-            {
-                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
-                {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                    var collider2D = GetComponent<Collider2D>();
-                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
-                }
-                Move_RandomMoveToTarget(targetPos);
-            }
-            else
-            {
-                Move_ChaseInRoom();
-            }
-        }
-    }
-
-    private float chaseMoveInputInterval = 0;
-    private void Move_ChaseInRoom()
-    {
-        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = transform.position.y.PositiveMod(Constants.RoomStep);
-        const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
-        const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
-
-        bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
-        bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
-        bool NearWall(float d = 0)
-        {
-            return XNearWall(d) || YNearWall(d);
-        }
-
-        // 在墙壁边缘时，需要尽快改变追击路线，避免来回横跳
-        if (NearWall())
-        {
-            chaseMoveInputInterval = 0;
-        }
-        else
-        {
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-        }
-        nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
-
         var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
         var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(transform.position, out int sx, out int sy);
-        Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
 
-        // 在同一间房间，直接追击
-        if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
+        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
+        if (diff.sqrMagnitude > sqrShootRange)
         {
-            // // 优先穿过门，不管是否在攻击范围内，即在墙边时先快速远离墙
-            // if (XNearWall())
-            // {
-            //     characterInput.MoveInput = new Vector2(posXMod < nearWallLowPos ? 1 : -1, 0);
-            // }
-            // else if (YNearWall())
-            // {
-            //     characterInput.MoveInput = new Vector2(0, posYMod < nearWallLowPos ? 1 : -1);
-            // }
-            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            if (diff.sqrMagnitude > sqrShootRange)
+            if (Mathf.Abs(diffNormalized.x) > 0.1f)
             {
-                if (Mathf.Abs(diffNormalized.x) > 0.1f)
-                {
-                    if (!XNearWall())
-                        diffNormalized.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
-                }
-                characterInput.MoveInput = diffNormalized.normalized;
+                if (!XNearWall())
+                    diffNormalized.x *= 10; // 优先横着走，再竖着走，避免横竖快速跳转
             }
-            else // 进入攻击范围
-            {
-                if (XNearWall(1))
-                {
-                    characterInput.MoveInput = new Vector2(0, diffNormalized.y);
-                }
-                else if (YNearWall(1))
-                {
-                    characterInput.MoveInput = new Vector2(diffNormalized.x, 0);
-                }
-                else
-                {
-                    characterInput.MoveInput = diffNormalized;
-                }
-                // 在攻击距离内左右横跳拉扯
-                // characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
-            }
+            characterInput.MoveInput = diffNormalized.normalized;
         }
-        else
+        else // 进入攻击范围
         {
-            // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+            if (XNearWall(1)) // 靠近竖墙，先竖着走，否则很容易撞墙
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                var collider2D = GetComponent<Collider2D>();
-                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
+                characterInput.MoveInput = new Vector2(0, diffNormalized.y);
             }
-            Move_RandomMoveToTarget(targetPos);
-            AggroTarget = null; // 取消仇恨，等待下次重新搜索
+            else if (YNearWall(1)) // 靠近横墙，先横着走，否则很容易撞墙
+            {
+                characterInput.MoveInput = new Vector2(diffNormalized.x, 0);
+            }
+            else // 走距离大的方向
+            {
+                characterInput.MoveInput = diffNormalized;
+            }
         }
     }
     #endregion
 
-    #region Attack
     private float nextJudgeAtkTime = 0;
-    private void UpdateAttackInput()
+    // Stomper（踩踏者）不能斜着攻击
+    protected override void UpdateAttackInput()
     {
-        if (AggroTarget != null)
+        if (!isAiming)
         {
-            var diff = AggroTarget.transform.position - transform.position;
-            var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
             {
-                if (Time.time >= nextJudgeAtkTime)
+                var diff = AggroTarget.transform.position - transform.position;
+                var atkRange = characterStatus.State.ShootRange;
+                // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
+                if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
                 {
-                    nextJudgeAtkTime = Time.time + 1f;
-                    // characterInput.LookInput = diff;
-                    // 50% 概率朝目标移动（Stomper通过碰撞造成伤害）
-                    int probability = Random.Range(0, 100);
-                    // 处于水平一条线时，50% 概率跳跃踩踏攻击
-                    if (probability < 100 && Mathf.Abs(diff.y) < 0.5f)
+                    if (Time.time >= nextJudgeAtkTime)
                     {
-                        characterInput.MoveInput = Vector2.zero;
-                        characterInput.LookInput = diff.normalized;
-                        isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                        return;
+                        nextJudgeAtkTime = Time.time + 1f;
+                        // 处于水平一条线时，跳跃踩踏攻击
+                        if (Mathf.Abs(diff.y) < 0.5f)
+                        {
+                            characterInput.LookInput = diff.normalized;
+                            isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+                            return;
+                        }
                     }
                 }
             }
+            characterInput.LookInput = Vector2.zero;
         }
-        characterInput.LookInput = Vector2.zero;
     }
 
-    private bool isAttacking = false;
+    #region Attack Action
     private bool isJumpingDown = false;
     private Coroutine jumpCoroutine = null;
     protected override void AttackAction()
     {
-        if (jumpCoroutine != null) return;
+        if (isAiming && !isAttack)
+        {
+            isAiming = false;
+            if (jumpCoroutine != null) return;
+            if (characterInput.LookInput.sqrMagnitude < 0.1f) return;
+            if (Time.time < nextAtkTime) return;
 
-        ref Vector2 lookInput = ref characterInput.LookInput;
-        if (lookInput.sqrMagnitude < 0.1f) return;
-        if (Time.time < nextAtkTime) return;
-        nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
-        NormalizeLookInput(ref lookInput);
-        jumpCoroutine = GameManager.Instance.StartCoroutine(JumpToTarget(AggroTarget.transform.position, 5));
+            jumpCoroutine = StartCoroutine(JumpToTarget(AggroTarget.transform.position, 5));
+        }
     }
     
     private IEnumerator JumpToTarget(Vector3 targetPos, float jumpHeight, float jumpDuration = 4.3f)
     {
+        isAttack = true;
+
         float elapsedTime = 0;
         var collider2D = GetComponent<Collider2D>();
         var characterBound = collider2D.bounds;
         var shadowPos = transform.position;
         shadowPos.y -= characterBound.extents.y;
-        var shadowObj = Object.Instantiate(CharacterData.shadowPrefab, shadowPos, Quaternion.identity);
-        LevelManager.Instance.ToRemoveBeforeNewStage.Add(shadowObj);
+        var shadowObj = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.shadowPrefab, shadowPos);
 
         animator.SetTrigger("Jump");
         var audioSrc = gameObject.AddComponent<AudioSource>();
         audioSrc.PlayOneShot(CharacterData.jumpSound);
-        Object.Destroy(audioSrc, CharacterData.jumpSound.length);
+        Destroy(audioSrc, CharacterData.jumpSound.length);
 
         float prepareJumpDuration = 2.3f;
         float afterJumpDuration = jumpDuration - 3.1f;
@@ -260,10 +153,12 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         while (elapsedTime < jumpDuration)
         {
             float x = Mathf.Lerp(startPos.x, targetPos.x, elapsedTime / jumpDuration);
-            float y = Mathf.Lerp(startPos.y, targetPos.y, elapsedTime / jumpDuration);
             // 抛物线
-            float z = -(jumpHeight - jumpHeight * 4 / (jumpDuration * jumpDuration) * (elapsedTime - jumpDuration / 2) * (elapsedTime - jumpDuration / 2));
-            if (characterBound.size.y < Mathf.Abs(z))
+            // float y = Mathf.Lerp(startPos.y, targetPos.y, elapsedTime / jumpDuration);
+            // float z = -(jumpHeight - jumpHeight * 4 / (jumpDuration * jumpDuration) * (elapsedTime - jumpDuration / 2) * (elapsedTime - jumpDuration / 2));
+            float y = startPos.y + jumpHeight - jumpHeight * 4 / (jumpDuration * jumpDuration) * (elapsedTime - jumpDuration / 2) * (elapsedTime - jumpDuration / 2);
+            float z = 0;
+            if (characterBound.size.y < Mathf.Abs(y - startPos.y))
             {
                 collider2D.isTrigger = true;
             }
@@ -272,7 +167,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
                 collider2D.isTrigger = false;
             }
             transform.position = new Vector3(x, y, z);
-            shadowObj.transform.position = new Vector3(x, y - characterBound.extents.y, 0);
+            shadowObj.transform.position = new Vector3(x, startPos.y - characterBound.extents.y, 0);
             if (elapsedTime > jumpDuration / 2)
                 isJumpingDown = true;
 
@@ -280,12 +175,13 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             yield return null;
         }
         yield return new WaitForSeconds(afterJumpDuration);
-        transform.position = targetPos;
+        // transform.position = targetPos; // 只会水平跳，所以不用设置到targetPos，否则可能会出现不完全水平，最后会突然跳到目标位置的问题
         characterInput.LookInput = Vector2.zero;
-        isAttacking = false;
         isJumpingDown = false;
-        Object.Destroy(shadowObj);
+        Destroy(shadowObj);
+
         jumpCoroutine = null;
+        isAttack = false;
     }
     #endregion
 }

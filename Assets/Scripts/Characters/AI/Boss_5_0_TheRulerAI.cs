@@ -6,7 +6,7 @@ using UnityEngine;
 public class Boss_5_0_TheRulerAI : CharacterBaseAI
 {
     private List<GameObject> prevBossPrefabs;
-    public void Start()
+    protected override void SubclassStart()
     {
         prevBossPrefabs = new List<GameObject>();
         foreach (int stage in GameManager.Instance.PassedStages)
@@ -26,45 +26,15 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         }
     }
 
-    #region ICharacterAI implementation
-    private float nextAggroChangeTime = 0;
-    protected override void GenerateAILogic()
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (isAiming) return;
-            UpdateAggroTarget();
-            UpdateMoveInput();
-            UpdateAttackInput();
-        }
-    }
-    #endregion
-
-    // 不造成碰撞伤害
-
-    #region Aggro
-    private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
-    private void UpdateAggroTarget()
-    {
-        if (Time.time >= nextAggroChangeTime)
-        {
-            nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
-        }
-    }
-    #endregion
-
-    #region Move
+    #region AI Logic / Update Input
     // 统治者不能移动，会坐在原地，然后召唤或使用一些全场技能
-    private void UpdateMoveInput()
+    protected override void UpdateMoveInput()
     {
         characterInput.MoveInput = Vector2.zero;
     }
-    #endregion
 
-    #region Attack
-    private void UpdateAttackInput()
+    // 统治者不需要设置LookInput，他在协程中直接攻击最新的目标位置
+    protected override void UpdateAttackInput()
     {
         characterInput.LookInput = Vector2.zero;
         if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
@@ -72,8 +42,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
         }
     }
+    #endregion
 
-    private bool isAiming = false; // 瞄准时无法移动
+    #region Attack Action
     // private HashSet<int> existingBosses = new HashSet<int>();
     private List<GameObject> existingBosses = new ();
     private int bossIdx = 0;
@@ -86,40 +57,42 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
             existingBosses.RemoveAll(obj => obj == null);
             float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
-            // if (hpRatio > 0.4f)
-            // {
-            //     int rndSkillId = Random.Range(0, 2);
-            //     if (rndSkillId == 0 && bossIdx < prevBossPrefabs.Count && existingBosses.Count < 2)
-            //     {
-            //         if (!isSummoning && !isExplosion)
-            //         {
-            //             Debug.Log("fhhtest, Summon::::::");
-            //             StartCoroutine(Summon());
-            //         }
-            //     }
-            //     else
-            //     {
-            //         if (!isSummoning && !isExplosion)
-            //         {
-            //             Debug.Log("fhhtest, Explosion::::::");
-            //             StartCoroutine(Explosion());
-            //         }
-            //     }
-
-                // }
-            // else
-            if (hpRatio > 0.1f)
+            if (hpRatio > 0.4f)
             {
-                if (!isTeleporting)
+                int rndSkillId = Random.Range(0, 2);
+                if (rndSkillId == 0 && bossIdx < prevBossPrefabs.Count && existingBosses.Count < 2)
                 {
-                    Debug.Log("fhhtest, Teleport::::::");
-                    StartCoroutine(Teleport());
+                    if (!isSummoning && !isExplosion)
+                    {
+                        Debug.Log("fhhtest, Summon::::::");
+                        StartCoroutine(Summon());
+                    }
+                }
+                else
+                {
+                    if (!isSummoning && !isExplosion)
+                    {
+                        Debug.Log("fhhtest, Explosion::::::");
+                        StartCoroutine(Explosion());
+                    }
                 }
             }
-            else
-            {
-
-            }
+            // else
+            // if (hpRatio > 0.1f)
+            // {
+            //     if (!isTeleporting)
+            //     {
+            //         Debug.Log("fhhtest, Teleport::::::");
+            //         StartCoroutine(Teleport());
+            //     }
+            // }
+            // else
+            // {
+            //     // TODO: 终极格式化；
+            //     // 1.格式化进度条，100%后直接秒杀玩家，要在这之前杀死boss；
+            //     // 2.房间不断爆炸（一次性爆炸所有grid，不再每隔0.1s爆炸一个grid），干扰玩家；
+            //     // 3.传送逃离，躲避玩家伤害
+            // }
         }
         isAiming = false;
     }
@@ -178,7 +151,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             Vector2 position = new Vector2(rndX, rndY);
             GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.summonEffectPrefab, position);
             yield return new WaitForSeconds(1.5f);
-            Object.Destroy(summonEffect);
+            Destroy(summonEffect);
             GameObject boss = LevelManager.Instance.InstantiateTemporaryObject(bossPrefab, position);
             existingBosses.Add(boss);
         }

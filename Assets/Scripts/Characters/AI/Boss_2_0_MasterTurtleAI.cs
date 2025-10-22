@@ -8,126 +8,6 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
 {
-    #region ICharacterAI implementation
-    private float nextAggroChangeTime = 0;
-    protected override void GenerateAILogic()
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (isAiming) return;
-            UpdateAggroTarget();
-            UpdateMoveInput();
-            if (isMoving) return;
-            UpdateAttackInput();
-        }
-    }
-    #endregion
-
-    // 不造成碰撞伤害
-
-    #region Aggro
-    private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
-    private void UpdateAggroTarget()
-    {
-        if (Time.time >= nextAggroChangeTime)
-        {
-            nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
-        }
-    }
-    #endregion
-
-    #region Move
-    private float nextMoveInputChangeTime = 0;
-    private Vector3 targetPos = Vector3.zero;
-    private void UpdateMoveInput()
-    {
-        if (Time.time > nextMoveInputChangeTime)
-        {
-            if (AggroTarget == null)
-            {
-                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
-                {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                    var collider2D = GetComponent<Collider2D>();
-                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
-                }
-                Move_RandomMoveToTarget(targetPos);
-            }
-            else
-            {
-                Move_ChaseInRoom();
-            }
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
-        }
-    }
-
-    private float chaseMoveInputInterval = 0;
-    private void Move_ChaseInRoom()
-    {
-        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
-        // float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
-        const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
-        const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
-
-        bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
-        // bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
-        // bool NearWall(float d = 0)
-        // {
-        //     return XNearWall(d) || YNearWall(d);
-        // }
-
-        // // 在墙壁边缘时，需要尽快改变追击路线，避免来回横跳
-        // if (NearWall())
-        // {
-        //     chaseMoveInputInterval = 0;
-        // }
-        // else
-        // {
-        //     chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-        // }
-        // nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
-
-        var diff = AggroTarget.transform.position - transform.position;
-        var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-
-        // 在同一间房间，直接追击
-        if (LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
-        {
-            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            if (diff.sqrMagnitude > sqrShootRange)
-            {
-                if (Mathf.Abs(diffNormalized.x) > 0.1f)
-                {
-                    if (!XNearWall())
-                        diffNormalized.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
-                }
-                characterInput.MoveInput = diffNormalized.normalized;
-            }
-            else // 进入攻击范围
-            {
-                // 在攻击距离内左右横跳拉扯
-                characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
-            }
-        }
-        else
-        {
-            // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
-            {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                var collider2D = GetComponent<Collider2D>();
-                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
-            }
-            Move_RandomMoveToTarget(targetPos);
-            AggroTarget = null; // 取消仇恨，等待下次重新搜索
-        }
-    }
-    #endregion
-
     #region Animation
     protected void SetIdleAnimation()
     {
@@ -179,40 +59,19 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     }
     #endregion
 
-    #region Attack
-    private void UpdateAttackInput()
-    {
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
-        {
-            var diff = AggroTarget.transform.position - transform.position;
-            var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，boss都能够斜向攻击
-            if (diff.sqrMagnitude <= atkRange * atkRange)
-            {
-                characterInput.MoveInput = Vector2.zero;
-                characterInput.LookInput = diff.normalized;
-                isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                return;
-            }
-        }
-        characterInput.LookInput = Vector2.zero;
-    }
-
-    private bool isAiming = false; // 瞄准时无法移动
-    private bool isMoving = false;
+    #region Attack Action
     private Coroutine shootCoroutine = null;
     private Coroutine energyWaveCoroutine = null;
     protected override void AttackAction()
     {
-        if (isAiming)
+        if (isAiming && !isAttack)
         {
+            isAiming = false;
             // Master Turtle一次只能使用一种技能
-            if (shootCoroutine != null || energyWaveCoroutine != null) return;
-            ref Vector2 lookInput = ref characterInput.LookInput;
-            if (lookInput.sqrMagnitude < 0.1f) { isAiming = false; return; }
-            if (Time.time < nextAtkTime) { isAiming = false; return; }
+            if (shootCoroutine != null || energyWaveCoroutine != null) { return; }
+            if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
+            if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-            NormalizeLookInput(ref lookInput);
 
             float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
             var rnd = Random.Range(0, 2);
@@ -220,22 +79,22 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             {
                 if (rnd == 0)
                 {
-                    shootCoroutine = characterStatus.StartCoroutine(Attack_Shoot(false));
+                    shootCoroutine = StartCoroutine(Attack_Shoot(false));
                 }
                 else
                 {
-                    energyWaveCoroutine = characterStatus.StartCoroutine(Attack_EnergyWave(1));
+                    energyWaveCoroutine = StartCoroutine(Attack_EnergyWave(1));
                 }
             }
             else
             {
                 if (rnd == 0)
                 {
-                    shootCoroutine = characterStatus.StartCoroutine(Attack_Shoot(true));
+                    shootCoroutine = StartCoroutine(Attack_Shoot(true));
                 }
                 else
                 {
-                    energyWaveCoroutine = characterStatus.StartCoroutine(Attack_EnergyWave(9));
+                    energyWaveCoroutine = StartCoroutine(Attack_EnergyWave(9));
                 }
             }
         }
@@ -245,6 +104,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #region 技能1/3，发射1/2个龟壳
     private IEnumerator Attack_Shoot(bool doubleBullet)
     {
+        isAttack = true;
         // TODO: 播放拿着龟壳准备释放的动作
         animator.Play("丢飞盘");
         yield return new WaitForSeconds(1.1f);
@@ -304,14 +164,12 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         yield return new WaitForSeconds(1f);
 
         shootCoroutine = null;
-        isAiming = false;
+        isAttack = false;
 
-        isMoving = true;
         characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
         animator.Play("Mutant Walking");
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
         yield return new WaitForSeconds(Random.Range(1, 3f));
-        isMoving = false;
     }
     #endregion
 
@@ -319,6 +177,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #region 技能2/4，发射1/8个能量波
     private IEnumerator Attack_EnergyWave(int count)
     {
+        isAttack = true;
         animator.Play("施法并扔出");
         yield return new WaitForSeconds(0.5f);
         var vfx = transform.GetChild(0).GetChild(0).gameObject;
@@ -327,7 +186,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.energyWaveAccumulateSound);
-            Object.Destroy(audioSrc, CharacterData.energyWaveAccumulateSound.length);
+            Destroy(audioSrc, CharacterData.energyWaveAccumulateSound.length);
         }
         yield return new WaitForSeconds(1.6f);
         var lookInput = Vector2.right;
@@ -357,7 +216,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             energyWaveScript.Rotate = count > 1 ? rotateDir : 0;
 
             lookInput = rotationPlus * lookInput;
-            Object.Destroy(energeWave, 2.5f);
+            Destroy(energeWave, 2.5f);
         }
         rotateDir = -rotateDir;
 
@@ -365,7 +224,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.energyWaveShootSound);
-            Object.Destroy(audioSrc, CharacterData.energyWaveShootSound.length);
+            Destroy(audioSrc, CharacterData.energyWaveShootSound.length);
         }
 
         yield return new WaitForSeconds(2.5f);
@@ -377,14 +236,12 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         }
 
         energyWaveCoroutine = null;
-        isAiming = false;
+        isAttack = false;
 
-        isMoving = true;
         characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
         animator.Play("Mutant Walking");
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
         yield return new WaitForSeconds(Random.Range(1, 3f));
-        isMoving = false;
     }
     #endregion
 }

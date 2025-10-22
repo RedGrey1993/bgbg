@@ -11,10 +11,14 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected CharacterStatus characterStatus;
     protected CharacterData CharacterData => characterStatus.characterData;
     protected Rigidbody2D rb;
+    protected Collider2D col2D;
     protected Animator animator;
     protected AudioSource audioSource;
     protected bool isAi = false;
     protected float nextAtkTime = 0f;
+
+    protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
+    protected bool isAttack = false; // 攻击时不能移动
 
     public void Awake()
     {
@@ -25,40 +29,19 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         // Configure Rigidbody2D
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.gravityScale = 0f; // Disable gravity for 2D top-down movement
+        col2D = GetComponentInChildren<Collider2D>();
         animator = GetComponentInChildren<Animator>();
-        audioSource = GetComponent<AudioSource>();
-        isAi = characterStatus.IsAI;
-        Debug.Log($"fhhtest, [CharacterBaseAI] CharacterBaseAI created for character: {name}, is AI: {isAi}");
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
-    protected void Move_RandomMove(bool canMoveDiagonally = true)
+    public void Start()
     {
-        if (canMoveDiagonally)
-        {
-            int horizontalDir = Random.Range(-1, 2);
-            int verticalDir = Random.Range(-1, 2);
-            characterInput.MoveInput = new Vector2(horizontalDir, verticalDir).normalized;
-        }
-        else
-        {
-            int dir = Random.Range(0, 4);
-            switch (dir)
-            {
-                case 0:
-                    characterInput.MoveInput = Vector2.up;
-                    break;
-                case 1:
-                    characterInput.MoveInput = Vector2.down;
-                    break;
-                case 2:
-                    characterInput.MoveInput = Vector2.left;
-                    break;
-                case 3:
-                    characterInput.MoveInput = Vector2.right;
-                    break;
-            }
-        }
+        isAi = characterStatus.IsAI;
+        SubclassStart();
+        Debug.Log($"fhhtest, CharacterAI created for character: {name}, is AI: {isAi}");
     }
+
+    protected virtual void SubclassStart() { }
 
     protected void Move_RandomMoveToTarget(Vector3 targetPos)
     {
@@ -70,62 +53,299 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         characterInput.MoveInput = diff.normalized;
     }
 
-    protected void Move_ChaseNearestEnemy()
-    {
-
-    }
-
     protected bool IsAlive()
     {
         return characterStatus.IsAlive();
     }
 
-    protected void NormalizeMoveInput(ref Vector2 moveInput)
+    #region Collision
+    protected float nextBounceTime = 0;
+    protected bool isBouncingBack = false;
+    protected void BounceBack(Collision2D collision)
     {
-        // Handle diagonal movement setting
-        if (!CharacterData.canMoveDiagonally)
+        if (Time.time > nextBounceTime && isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            // Prioritize the axis with larger absolute value
-            if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+            nextBounceTime = Time.time + 1f;
+            isBouncingBack = true;
+            // 碰到墙还好，不反弹，碰到角色时很可能会互相卡住，所以需要反弹分开
+            if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
-                moveInput = new Vector2(moveInput.x, 0).normalized;
-            }
-            else
-            {
-                moveInput = new Vector2(0, moveInput.y).normalized;
+                Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back");
+                if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
+                {
+                    // 对角线方向，随机翻转水平或垂直方向
+                    if (Random.value < 0.5f)
+                    {
+                        characterInput.MoveInput.x = -characterInput.MoveInput.x;
+                        characterInput.MoveInput.y = 0;
+                    }
+                    else
+                    {
+                        characterInput.MoveInput.x = 0;
+                        characterInput.MoveInput.y = -characterInput.MoveInput.y;
+                    }
+                }
+                else if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f)
+                {
+                    characterInput.MoveInput.x = -characterInput.MoveInput.x;
+                }
+                else if (Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
+                {
+                    characterInput.MoveInput.y = -characterInput.MoveInput.y;
+                }
             }
         }
-        // Normalize for consistent speed in all directions
-        else // (playerStatus.canMoveDiagonally)
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        BounceBack(collision);
+        SubclassCollisionEnter2D(collision);
+    }
+
+    protected virtual void SubclassCollisionEnter2D(Collision2D collision) { }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        BounceBack(collision);
+        SubclassCollisionStay2D(collision);
+    }
+
+    protected virtual void SubclassCollisionStay2D(Collision2D collision) { }
+    #endregion
+
+    #region AI Logic / Update Input
+    // 对于非玩家操作的角色，根据逻辑寻找仇恨目标、生成移动和攻击输出
+    protected virtual void GenerateAILogic()
+    {
+        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            moveInput = moveInput.normalized;
+            if (isAttack) { characterInput.MoveInput = Vector2.zero; return; }
+            UpdateAggroTarget();
+
+            UpdateMoveInput();
+            characterInput.NormalizeMoveInput();
+
+            UpdateAttackInput();
+            characterInput.NormalizeLookInput();
         }
     }
 
-    protected void NormalizeLookInput(ref Vector2 lookInput)
+    private float nextAggroChangeTime = 0;
+    protected GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
+    // 寻找距离最近的Player作为仇恨目标
+    protected virtual void UpdateAggroTarget()
     {
-        // Handle diagonal shooting setting
-        if (!CharacterData.canAttackDiagonally)
+        if (Time.time >= nextAggroChangeTime)
         {
-            // Restrict look input to horizontal or vertical only
-            if (Mathf.Abs(lookInput.x) > Mathf.Abs(lookInput.y))
-            {
-                lookInput = new Vector2(lookInput.x, 0).normalized;
-            }
-            else
-            {
-                lookInput = new Vector2(0, lookInput.y).normalized;
-            }
+            nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
+            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
 
-    protected abstract void GenerateAILogic();
+    protected float nextMoveInputChangeTime = 0;
+    protected Vector3 targetPos = Vector3.zero;
+    protected float chaseMoveInputInterval = 0;
+    // 没有仇恨目标：随机一个目标位置，然后移动到目标位置
+    // 有仇恨目标：追逐仇恨目标，直到进入攻击范围；优先横向移动；进入攻击范围后则左右拉扯
+    protected virtual void UpdateMoveInput()
+    {
+        if (Time.time > nextMoveInputChangeTime)
+        {
+            if (AggroTarget == null || !LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+            {
+                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+                {
+                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
+                }
+                Move_RandomMoveToTarget(targetPos);
+            }
+            else
+            {
+                if (isBouncingBack) isBouncingBack = false;
+                else Move_ChaseInRoom();
+            }
+            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
+            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
+        }
+    }
+
+    // 在攻击范围内时，将LookInput设为指向仇恨目标的方向，可以斜向攻击
+    protected virtual void UpdateAttackInput()
+    {
+        if (!isAiming)
+        {
+            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+            {
+                var diff = AggroTarget.transform.position - transform.position;
+                var atkRange = characterStatus.State.ShootRange;
+                // 进入攻击距离，攻击，boss都能够斜向攻击
+                if (diff.sqrMagnitude <= atkRange * atkRange)
+                {
+                    characterInput.LookInput = diff.normalized;
+                    isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+                    return;
+                }
+            }
+            characterInput.LookInput = Vector2.zero;
+        }
+    }
+
+    protected bool XNearWall(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return (transform.position.x < room.xMin + 1 + col2D.bounds.extents.x + d)
+            || (transform.position.x > room.xMax - col2D.bounds.extents.x - d);
+    }
+
+    protected bool XNearLeftWall(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return transform.position.x < room.xMin + 1 + col2D.bounds.extents.x + d;
+    }
+
+    protected bool YNearWall(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return (transform.position.y < room.yMin + 1 + col2D.bounds.extents.y + d)
+            || (transform.position.y > room.yMax - col2D.bounds.extents.y - d);
+    }
+
+    protected bool YNearBottomWall(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return transform.position.y < room.yMin + 1 + col2D.bounds.extents.y + d;
+    }
+
+    protected float NeareastDoorY(Rect room)
+    {
+        int step = Constants.RoomStep;
+        float tmpY = room.yMin + step / 2;
+        float nearestDoorY = tmpY;
+        while (tmpY + step < room.yMax)
+        {
+            if (tmpY < transform.position.y && tmpY + step > transform.position.y)
+            {
+                if (transform.position.y - tmpY < step / 2)
+                    nearestDoorY = tmpY;
+                else
+                    nearestDoorY = tmpY + step;
+                break;
+            }
+            tmpY += step;
+        }
+        return nearestDoorY;
+    }
+
+    protected bool YHigherThanDoor(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return transform.position.y > NeareastDoorY(room) + d;
+    }
+
+    protected bool YLowerThanDoor(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return transform.position.y < NeareastDoorY(room) - d;
+    }
+
+    protected float NeareastDoorX(Rect room)
+    {
+        int step = Constants.RoomStep;
+        float tmpX = room.xMin + step / 2;
+        float nearestDoorX = tmpX;
+        while (tmpX + step < room.xMax)
+        {
+            if (tmpX < transform.position.x && tmpX + step > transform.position.x)
+            {
+                if (transform.position.x - tmpX < step / 2)
+                    nearestDoorX = tmpX;
+                else
+                    nearestDoorX = tmpX + step;
+                break;
+            }
+            tmpX += step;
+        }
+        return nearestDoorX;
+    }
+
+    protected bool XRighterThanDoor(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return transform.position.x > NeareastDoorX(room) + d;
+    }
+
+    protected bool XLefterThanDoor(float d = 0.1f)
+    {
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        Rect room = LevelManager.Instance.Rooms[roomId];
+
+        return transform.position.x < NeareastDoorX(room) - d;
+    }
+
+    // 朝仇恨目标移动，优先横向移动；进入攻击范围后则左右拉扯
+    protected virtual void Move_ChaseInRoom()
+    {
+        var diff = AggroTarget.transform.position - transform.position;
+        var diffNormalized = diff.normalized;
+        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
+        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
+
+        // 在同一间房间，直接追击
+        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
+        if (diff.sqrMagnitude > sqrShootRange)
+        {
+            if (Mathf.Abs(diffNormalized.x) > 0.1f)
+            {
+                if (!XNearWall()) // 只要不靠墙；优先横着走，再直着走，避免横竖快速跳转
+                    diffNormalized.x *= 10;
+            }
+            characterInput.MoveInput = diffNormalized.normalized;
+        }
+        else // 进入攻击范围
+        {
+            // 在攻击距离内左右横跳拉扯
+            characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
+        }
+    }
+    #endregion
+
+    #region Animation
+    protected virtual void SetIdleAnimation(Direction dir)
+    {
+
+    }
+    protected virtual void SetRunAnimation(Direction dir)
+    {
+        
+    }
+    protected virtual void SetAtkAnimation(Direction dir)
+    {
+
+    }
+    #endregion
+
+    #region Move Action
     protected void MoveAction()
     {
-        ref Vector2 moveInput = ref characterInput.MoveInput;
+        Vector2 moveInput = characterInput.MoveInput;
         if (moveInput.sqrMagnitude >= 0.1f)
         {
-            NormalizeMoveInput(ref moveInput);
             if (audioSource && !audioSource.isPlaying) audioSource.Play();
         }
         else
@@ -141,24 +361,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             characterInput.MoveAdditionalInput = Vector2.zero;
         }
     }
-    #region Animation
-    protected virtual void SetIdle(Direction dir)
-    {
-
-    }
-    protected virtual void SetRunDirection(Direction dir)
-    {
-        
-    }
-    protected virtual void SetAtkDirection(Direction dir)
-    {
-        
-    }
     #endregion
-    #region Attack
+
+    #region Attack Action
     protected virtual void AttackAction()
     {
-        ref Vector2 lookInput = ref characterInput.LookInput;
+        Vector2 lookInput = characterInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) return;
         if (Time.time < nextAtkTime) return;
         nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -167,10 +375,9 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
             audioSrc.PlayOneShot(CharacterData.shootSound);
-            Object.Destroy(audioSrc, CharacterData.shootSound.length);
+            Destroy(audioSrc, CharacterData.shootSound.length);
         }
 
-        NormalizeLookInput(ref lookInput);
         // 获取Player的位置
         // 获取Player碰撞体的边界位置
         Bounds playerBounds = GetComponentInChildren<Collider2D>().bounds;
@@ -197,13 +404,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     }
     #endregion
 
-    #region LookTo
+    #region LookTo Action
     protected virtual void LookToAction()
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
         var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        if (lookInput.sqrMagnitude >= 0.1f)
+        if (lookInput.sqrMagnitude >= 0.1f && isAttack)
         {
             // 优先将角色面朝射击方向，优先级高于移动方向
             if (skinnedMeshRenderer != null)
@@ -220,19 +427,19 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             }
             if (lookInput.x > 0.1f)
             {
-                SetAtkDirection(Direction.Right);
+                SetAtkAnimation(Direction.Right);
             }
             else if (lookInput.x < -0.1f)
             {
-                SetAtkDirection(Direction.Left);
+                SetAtkAnimation(Direction.Left);
             }
             else if (lookInput.y > 0.1f)
             {
-                SetAtkDirection(Direction.Up);
+                SetAtkAnimation(Direction.Up);
             }
             else if (lookInput.y < -0.1f)
             {
-                SetAtkDirection(Direction.Down);
+                SetAtkAnimation(Direction.Down);
             }
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
@@ -248,28 +455,29 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
             {
                 Transform childTransform = transform.GetChild(0);
+                Debug.Log($"fhhtest, {name} moveInput: {moveInput}");
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
             }
             if (moveInput.x > 0.1f)
             {
-                SetRunDirection(Direction.Right);
+                SetRunAnimation(Direction.Right);
             }
             else if (moveInput.x < -0.1f)
             {
-                SetRunDirection(Direction.Left);
+                SetRunAnimation(Direction.Left);
             }
             else if (moveInput.y > 0.1f)
             {
-                SetRunDirection(Direction.Up);
+                SetRunAnimation(Direction.Up);
             }
             else if (moveInput.y < -0.1f)
             {
-                SetRunDirection(Direction.Down);
+                SetRunAnimation(Direction.Down);
             }
         }
         else
         {
-            SetIdle(Direction.Down);
+            SetIdleAnimation(Direction.Down);
         }
     }
     #endregion

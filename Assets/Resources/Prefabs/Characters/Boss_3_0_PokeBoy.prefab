@@ -217,7 +217,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1193152610034553094}
@@ -329,6 +329,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_3_0_PokeBoyAI
   pokeball: {fileID: 6958645844443391151}
+  summonPokeEffectPrefab: {fileID: 5824670795371433373, guid: 3fe64f898fed61140963ab0c4dd5b2c2, type: 3}
+  pokeMinionPrefabs:
+  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
+  - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
+  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  pokeMinionRebornTime: 15
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0

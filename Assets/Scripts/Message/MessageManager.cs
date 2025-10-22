@@ -103,6 +103,8 @@ public class MessageManager : MonoBehaviour
                 // 上面的注释是老逻辑，现在最新的逻辑是所有输入指令都由Client自己处理，但Host会定期同步执行后的状态
                 playerInput.MoveInput = new Vector2(inputMsg.MoveInput.X, inputMsg.MoveInput.Y);
                 playerInput.LookInput = new Vector2(inputMsg.LookInput.X, inputMsg.LookInput.Y);
+                playerInput.NormalizeMoveInput();
+                playerInput.NormalizeLookInput();
             }
         }
     }

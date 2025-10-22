@@ -53,8 +53,6 @@ public class CharacterData : ScriptableObject
     public uint AggroRange = 20;
     public float AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
 
-    public float minRandomMoveInputInterval = 1;
-    public float maxRandomMoveInputInterval = 6;
     // 每隔随机0.5-1秒改变一次追击输入
     public float minChaseMoveInputInterval = 0.5f;
     public float maxChaseMoveInputInterval = 1f;

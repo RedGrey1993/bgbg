@@ -1,6 +1,7 @@
 
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -9,151 +10,169 @@ using UnityEngine;
 public class Boss_3_0_PokeBoyAI : CharacterBaseAI
 {
     public GameObject pokeball;
+    public GameObject summonPokeEffectPrefab;
+    public List<GameObject> pokeMinionPrefabs;
+    public int pokeMinionRebornTime = 15;
 
-    #region ICharacterAI implementation
-    private float nextAggroChangeTime = 0;
-    protected override void GenerateAILogic()
+    private List<float> pokeMinionDeadTime;
+
+    protected override void SubclassStart()
     {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        pokeMinionDeadTime = new List<float>();
+        foreach (var prefab in pokeMinionPrefabs)
         {
-            if (isAttacking) return;
-            UpdateAggroTarget();
-            UpdateMoveInput();
-            UpdateAttackInput();
+            pokeMinionDeadTime.Add(-pokeMinionRebornTime);
+        }
+    }
+
+    #region Animation
+    protected override void SetIdleAnimation(Direction dir)
+    {
+        if (animator)
+        {
+            animator.SetFloat("Speed", 0);
+        }
+    }
+
+    protected override void SetRunAnimation(Direction dir)
+    {
+        if (animator)
+        {
+            animator.SetFloat("Speed", 1);
         }
     }
     #endregion
 
-    // 不造成碰撞伤害
-
-    #region Aggro
-    private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
-    private void UpdateAggroTarget()
+    #region Attack Action
+    private List<(GameObject, int)> existingPokes = new();
+    private Coroutine summonCoroutine;
+    protected override void AttackAction()
     {
-        if (Time.time >= nextAggroChangeTime)
+        if (isAiming && !isAttack)
         {
-            nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
-        }
-    }
-    #endregion
+            isAiming = false;
+            if (summonCoroutine != null) { return; }
+            ref Vector2 lookInput = ref characterInput.LookInput;
+            if (lookInput.sqrMagnitude < 0.1f) { return; }
+            if (Time.time < nextAtkTime) { return; }
 
-    #region Move
-    private float nextMoveInputChangeTime = 0;
-    private Vector3 targetPos = Vector3.zero;
-    private void UpdateMoveInput()
-    {
-        if (Time.time > nextMoveInputChangeTime)
-        {
-            if (AggroTarget == null)
+            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+            characterInput.NormalizeLookInput();
+
+            foreach ((GameObject, int) poke in existingPokes)
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+                if (poke.Item1 == null)
                 {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                    var collider2D = GetComponent<Collider2D>();
-                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
+                    pokeMinionDeadTime[poke.Item2] = Time.time;
                 }
-                Move_RandomMoveToTarget(targetPos);
+            }
+            existingPokes.RemoveAll(obj => obj.Item1 == null);
+
+            float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
+            // 召唤pokes 15s后会复活
+            if (hpRatio > 0.6f)
+            {
+                if (existingPokes.Count < 1)
+                {
+                    StartCoroutine(SummonPokes(1));
+                }
+            }
+            else if (hpRatio > 0.3f)
+            {
+                if (existingPokes.Count < 2)
+                {
+                    StartCoroutine(SummonPokes(2));
+                }
             }
             else
             {
-                Move_ChaseInRoom();
-            }
-        }
-    }
-
-    private float chaseMoveInputInterval = 0;
-    private void Move_ChaseInRoom()
-    {
-        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
-        float posYMod = transform.position.y.PositiveMod(Constants.RoomStep);
-        const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
-        const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
-
-        bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
-        bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
-        bool NearWall(float d = 0)
-        {
-            return XNearWall(d) || YNearWall(d);
-        }
-
-        // 在墙壁边缘时，需要尽快改变追击路线，避免来回横跳
-        if (NearWall())
-        {
-            chaseMoveInputInterval = 0;
-        }
-        else
-        {
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-        }
-        nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
-
-        var diff = AggroTarget.transform.position - transform.position;
-        var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-        Constants.PositionToIndex(transform.position, out int sx, out int sy);
-        Constants.PositionToIndex(AggroTarget.transform.position, out int tx, out int ty);
-
-        // 在同一间房间，直接追击
-        if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
-        {
-            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            if (diff.sqrMagnitude > sqrShootRange)
-            {
-                if (Mathf.Abs(diffNormalized.x) > 0.1f)
+                if (existingPokes.Count < 3)
                 {
-                    if (!XNearWall())
-                        diffNormalized.x *= 10; // 优先横着走，在直着走，避免横竖快速跳转
+                    StartCoroutine(SummonPokes(3));
                 }
-                characterInput.MoveInput = diffNormalized.normalized;
             }
-            else // 进入攻击范围
+
+            if (existingPokes.Count > 0)
             {
-                // 在攻击距离内左右横跳拉扯
-                characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
+                // TODO: 随机强化存在的Pokes：加速(SpeedUp)/狂暴(Rage)
             }
-        }
-        else
-        {
-            // 在不同房间，随机移动
-            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+
+            if (AggroTarget != null)
             {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                var collider2D = GetComponent<Collider2D>();
-                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
+                var tarStatus = AggroTarget.GetComponent<CharacterStatus>();
+                float tarHpRatio = (float)tarStatus.State.CurrentHp / tarStatus.State.MaxHp;
+                if (tarHpRatio < 0.25f)
+                {
+                    // TODO: 扔红白球攻击
+                }
             }
-            Move_RandomMoveToTarget(targetPos);
-            AggroTarget = null; // 取消仇恨，等待下次重新搜索
         }
     }
     #endregion
 
-    #region Attack
-    private void UpdateAttackInput()
+    #region 技能1，召唤小怪
+    private int pokeIdx = 0;
+    private IEnumerator SummonPokes(int count)
     {
-        if (AggroTarget != null)
-        {
-            var diff = AggroTarget.transform.position - transform.position;
-            var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，会斜向攻击
-            if (diff.sqrMagnitude <= atkRange * atkRange)
-            {
-                characterInput.MoveInput = Vector2.zero;
-                characterInput.LookInput = diff.normalized;
-                isAttacking = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                return;
-            }
-        }
-        characterInput.LookInput = Vector2.zero;
-    }
+        isAttack = true;
 
-    private bool isAttacking = false; // 攻击时无法移动
-    protected override void AttackAction()
-    {
-        base.AttackAction();
-        isAttacking = false;
+        int needCount = count - existingPokes.Count;
+        List<(GameObject, int)> alivePokePrefabs = new();
+        int initPokeIdx = pokeIdx;
+        while (true)
+        {
+            if (Time.time > pokeMinionDeadTime[pokeIdx] + pokeMinionRebornTime)
+            {
+                alivePokePrefabs.Add((pokeMinionPrefabs[pokeIdx], pokeIdx));
+                pokeMinionDeadTime[pokeIdx] = Time.time + 10000f;
+            }
+            pokeIdx = (pokeIdx + 1) % pokeMinionPrefabs.Count;
+            if (alivePokePrefabs.Count >= needCount) break;
+            if (pokeIdx == initPokeIdx) break;
+        }
+        if (alivePokePrefabs.Count <= 0)
+        {
+            summonCoroutine = null;
+            isAttack = false;
+
+            characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
+            animator.Play("Male Walking");
+            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+            yield return new WaitForSeconds(Random.Range(1, 3f));
+            yield break;
+        }
+
+        animator.Play("Throw Object");
+        yield return new WaitForSeconds(0.87f);
+
+        int idx = 0;
+        while (existingPokes.Count < count && idx < alivePokePrefabs.Count)
+        {
+            // 召唤小弟
+            int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+            var room = LevelManager.Instance.Rooms[roomId];
+            var pokePrefab = alivePokePrefabs[idx++];
+            Vector2 summonPosition = transform.position;
+            summonPosition += characterInput.LookInput * CharacterData.ShootRange;
+            if (summonPosition.x < room.xMin + 2) summonPosition.x = room.xMin + 2;
+            else if (summonPosition.x > room.xMax - 1) summonPosition.x = room.xMax - 1;
+            if (summonPosition.y < room.yMin + 2) summonPosition.y = room.yMin + 2;
+            else if (summonPosition.y > room.yMax - 1) summonPosition.y = room.yMax - 1;
+
+            GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
+            yield return new WaitForSeconds(1.5f);
+            Destroy(summonEffect);
+            GameObject pokeMinion = LevelManager.Instance.InstantiateTemporaryObject(pokePrefab.Item1, summonPosition);
+            existingPokes.Add((pokeMinion, pokePrefab.Item2));
+        }
+
+        summonCoroutine = null;
+        isAttack = false;
+
+        characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
+        animator.Play("Male Walking");
+        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+        yield return new WaitForSeconds(Random.Range(1, 3f));
     }
     #endregion
 }

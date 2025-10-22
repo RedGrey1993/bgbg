@@ -6,45 +6,16 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
-    #region ICharacterAI implementation
-    private float nextAggroChangeTime = 0;
-    protected override void GenerateAILogic()
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (isAiming) return;
-            UpdateAggroTarget();
-            UpdateMoveInput();
-            if (isMoving) return;
-            UpdateAttackInput();
-        }
-    }
-    #endregion
+    public GameObject chargeEffectPrefab;
 
-    // 不造成碰撞伤害
-
-    #region Aggro
-    private GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
-    private void UpdateAggroTarget()
-    {
-        if (Time.time >= nextAggroChangeTime)
-        {
-            nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
-            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
-        }
-    }
-    #endregion
-
-    #region Move
-    private float nextMoveInputChangeTime = 0;
-    private float chaseMoveInputInterval = 0;
-    private Vector3 targetPos = Vector3.zero;
-    private void UpdateMoveInput()
+    #region AI Logic / Update Input
+    // 和Base方法不同的地方：随机朝目标移动时考虑自身的bound大小
+    // collider2D在子节点上，因为collider要和子节点一起旋转
+    protected override void UpdateMoveInput()
     {
         if (Time.time > nextMoveInputChangeTime)
         {
-            if (AggroTarget == null)
+            if (AggroTarget == null || !LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
             {
                 var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
                 if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 3)
@@ -53,6 +24,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
                 }
                 var bossBound = CharacterData.bound;
+                // 随机朝目标移动时考虑自身的bound大小
                 Move_RandomMoveToTarget(targetPos, bossBound, LevelManager.Instance.Rooms[roomId]);
             }
             else
@@ -75,102 +47,54 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         characterInput.MoveInput = diff.normalized;
     }
 
-    private void Move_ChaseInRoom()
+    // 和Base方法不同的地方：不计算sqrt距离，只单独比较x/y距离（保留着是为了后续可能会改为不能斜向攻击）
+    protected override void UpdateAttackInput()
     {
-        float posXMod = transform.position.x.PositiveMod(Constants.RoomStep);
-        // float posYMod = character.transform.position.y.PositiveMod(Constants.RoomStep);
-        const float nearWallLowPos = Constants.WallMaxThickness + Constants.CharacterMaxRadius;
-        const float nearWallHighPos = Constants.RoomStep - Constants.CharacterMaxRadius;
-
-        bool XNearWall(float d = 0) => posXMod < nearWallLowPos + d || posXMod > nearWallHighPos - d;
-        // bool YNearWall(float d = 0) => posYMod < nearWallLowPos + d || posYMod > nearWallHighPos - d;
-        // bool NearWall(float d = 0)
-        // {
-        //     return XNearWall(d) || YNearWall(d);
-        // }
-
-        var diff = AggroTarget.transform.position - transform.position;
-        var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-
-        // 在同一间房间，直接追击
-        if (LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+        if (!isAiming)
         {
-            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-            if (diff.sqrMagnitude > sqrShootRange)
+            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
             {
-                if (Mathf.Abs(diffNormalized.x) > 0.1f)
+                var diff = AggroTarget.transform.position - transform.position;
+                var atkRange = characterStatus.State.ShootRange;
+                // 进入攻击距离，攻击，boss都能够斜向攻击
+                // if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
+                if (Mathf.Abs(diff.x) <= atkRange || Mathf.Abs(diff.y) <= atkRange)
                 {
-                    if (!XNearWall())
-                        diffNormalized.x *= 10; // 优先横着走，再直着走，避免横竖快速跳转
+                    characterInput.LookInput = diff.normalized;
+                    isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate->AttackAction执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+                    return;
                 }
-                characterInput.MoveInput = diffNormalized.normalized;
             }
-            else // 进入攻击范围
-            {
-                // 在攻击距离内左右横跳拉扯
-                characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
-            }
-        }
-        else
-        {
-            // 在不同房间，随机移动
-            var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
-            {
-                var collider2D = GetComponentInChildren<Collider2D>();
-                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, collider2D.bounds);
-            }
-            var bossBound = CharacterData.bound;
-            Move_RandomMoveToTarget(targetPos, bossBound, LevelManager.Instance.Rooms[roomId]);
             characterInput.LookInput = Vector2.zero;
-            AggroTarget = null; // 取消仇恨，等待下次重新搜索
         }
     }
     #endregion
 
-    #region Attack
-    private void UpdateAttackInput()
-    {
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
-        {
-            var diff = AggroTarget.transform.position - transform.position;
-            var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，boss都能够斜向攻击
-            // if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
-            if (Mathf.Abs(diff.x) <= atkRange || Mathf.Abs(diff.y) <= atkRange)
-            {
-                characterInput.MoveInput = Vector2.zero;
-                characterInput.LookInput = diff.normalized;
-                isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate->AttackAction执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                return;
-            }
-        }
-        characterInput.LookInput = Vector2.zero;
-    }
-
-    private bool isAiming = false; // 瞄准时无法移动
-    private bool isMoving = false;
+    #region Attack Action
     private Coroutine shootCoroutine = null;
     private Coroutine chargeCoroutine = null;
     protected override void AttackAction()
     {
-        if (isAiming)
+        if (isAiming && !isAttack)
         {
-            if (shootCoroutine != null && chargeCoroutine != null) return;
-            ref Vector2 lookInput = ref characterInput.LookInput;
-            if (lookInput.sqrMagnitude < 0.1f) { isAiming = false; return; }
-            NormalizeLookInput(ref lookInput);
+            isAiming = false;
+            // 所有技能都在释放中，则不能再释放技能
+            // 幻影冲锋时还能够射击或者移动
+            if (shootCoroutine != null && chargeCoroutine != null) { return; }
+            if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
+            if (Time.time < nextAtkTime) { return; }
+            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+
             var rnd = Random.Range(0, 2);
             if (rnd == 0 || chargeCoroutine != null)
             {
-                shootCoroutine = GameManager.Instance.StartCoroutine(Attack_Shoot());
+                
+                shootCoroutine = StartCoroutine(Attack_Shoot());
             }
             else
             {
-                chargeCoroutine = GameManager.Instance.StartCoroutine(Attack_Charge());
-                isAiming = false; // 幻影冲锋时还能够射击或者移动
+                // 幻影冲锋时还能够射击或者移动
+                chargeCoroutine = StartCoroutine(Attack_Charge());
             }
         }
     }
@@ -178,29 +102,30 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     // 射击
     private IEnumerator Attack_Shoot()
     {
+        isAttack = true;
         // 需要AtkFreq时间架设炮台
         yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
         // 调用父类方法
         base.AttackAction();
         shootCoroutine = null;
-        isAiming = false;
+        isAttack = false;
 
-        isMoving = true;
         characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
         yield return new WaitForSeconds(Random.Range(1, 3f));
-        isMoving = false;
     }
 
     // 冲锋，十字幻影形式冲锋
     private IEnumerator Attack_Charge()
     {
-        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
+        // 幻影冲锋时还能够射击或者移动，所以不设置isAttack = true;
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
         Vector2 targetPos = room.center;
         if (AggroTarget != null)
             targetPos = AggroTarget.transform.position;
+        var chargeEffect = LevelManager.Instance.InstantiateTemporaryObject(chargeEffectPrefab, targetPos);
+        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
         var horizontalStartPos = targetPos;
         int dir = Random.Range(0, 2);
         Vector2 horizontalVelocity = Vector2.zero;
@@ -252,8 +177,9 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             yield return null;
         }
 
-        Object.Destroy(horizontalPhantomCharge);
-        Object.Destroy(verticalPhantomCharge);
+        Destroy(chargeEffect);
+        Destroy(horizontalPhantomCharge);
+        Destroy(verticalPhantomCharge);
 
         chargeCoroutine = null;
     }

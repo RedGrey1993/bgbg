@@ -14,23 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 0}
   jumpSound: {fileID: 0}
+  hurtSound: {fileID: 0}
+  energyWaveAccumulateSound: {fileID: 0}
+  energyWaveShootSound: {fileID: 0}
   bulletPrefab: {fileID: 0}
   shadowPrefab: {fileID: 0}
+  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 2940360485639069442, guid: 9d80d9ea9ffd0ab4f91d17af927ad826, type: 3}
+  energyWavePrefab: {fileID: 0}
+  explosionEffectPrefab: {fileID: 0}
+  summonEffectPrefab: {fileID: 0}
+  teleportEffectPrefab: {fileID: 0}
+  accumulateEffectPrefab: {fileID: 0}
   CharacterType: 5
   MaxHp: 5
   MoveSpeed: 3
-  ShootRange: 4
+  ShootRange: 0
   BulletSpeed: 6
   Damage: 3
   AttackFrequency: 1
   CriticalRate: 0
   ExpGiven: 5
+  spawnOffsets: {x: -2, y: -2}
+  bound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 0
   canAttackDiagonally: 0
   AggroRange: 15
   AggroChangeInterval: 2
-  minRandomMoveInputInterval: 1
-  maxRandomMoveInputInterval: 6
   minChaseMoveInputInterval: 0.5
   maxChaseMoveInputInterval: 1
