@@ -9,6 +9,7 @@ public class CharacterManager : MonoBehaviour
     // Inspector fields
     public GameObject playerPrefab;
     public Transform playerParent;
+    public Transform bossParant;
     public GameObject cameraFollowObject;
 
     public static CharacterManager Instance { get; private set; }
@@ -17,9 +18,9 @@ public class CharacterManager : MonoBehaviour
     public Dictionary<uint, GameObject> minionObjects { get; private set; } = new Dictionary<uint, GameObject>();
     public Dictionary<uint, int> minionPrefabIdx { get; private set; } = new Dictionary<uint, int>();
     public Dictionary<uint, GameObject> bossObjects { get; private set; } = new Dictionary<uint, GameObject>();
-    public Dictionary<uint, int> bossPrefabIdx { get; private set; } = new Dictionary<uint, int>();
+    public Dictionary<uint, BossPrefabInfo> bossPrefabInfos { get; private set; } = new Dictionary<uint, BossPrefabInfo>();
 
-    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
+    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = (uint)IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
     public List<PlayerInfo> Players { get; set; } = new List<PlayerInfo>();
@@ -139,7 +140,7 @@ public class CharacterManager : MonoBehaviour
                 for (int i = 0; i < minionNum; i++)
                 {
                     var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
-                    uint minionId = IdGenerator.NextCharacterId();
+                    uint minionId = (uint)IdGenerator.NextCharacterId();
                     minion.name = $"{minionPrefab.name}{minionId}";
                     minion.tag = Constants.TagEnemy;
                     var minionStatus = minion.GetComponent<CharacterStatus>();
@@ -171,31 +172,19 @@ public class CharacterManager : MonoBehaviour
 
         ClearBossObjects();
         
-        int level = (int)storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData(level);
+        int stage = (int)storage.CurrentStage;
+        var levelData = LevelDatabase.Instance.GetLevelData(stage);
 
         if (storage.BossStates.Count > 0 || storage.TeleportPosition != null)
         {
             for (int i = 0; i < storage.BossStates.Count; i++)
             {
                 var bs = storage.BossStates[i];
-                var prefabIdx = storage.BossPrefabIdx[i];
-                var bossPrefab = levelData.bossPrefabs[prefabIdx];
+                var prefabInfo = storage.BossPrefabInfos[i];
+                var bossPrefab = levelData.bossPrefabs[prefabInfo.PrefabId];
 
-                var boss = Instantiate(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), Quaternion.identity);
+                var boss = InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), stage, prefabInfo.PrefabId, bs);
                 LevelManager.Instance.AddToBossRooms(boss.transform.position);
-
-                uint bossId = bs.PlayerId;
-                boss.name = $"{bossPrefab.name}{bossId}";
-                boss.tag = Constants.TagEnemy;
-                var bossStatus = boss.GetComponent<CharacterStatus>();
-                if (bossStatus != null)
-                {
-                    bossStatus.State = bs;
-                }
-
-                bossObjects[bossId] = boss;
-                bossPrefabIdx[bossId] = prefabIdx;
             }
         }
         else
@@ -210,21 +199,8 @@ public class CharacterManager : MonoBehaviour
             var spawnBound = characterData.bound;
             GenerateBossPosition(roomIdx, spawnOffset, spawnBound, out var spawnPosition);
 
-            var boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+            var boss = InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
             LevelManager.Instance.AddToBossRooms(boss.transform.position);
-
-            uint bossId = IdGenerator.NextCharacterId();
-            boss.name = $"{bossPrefab.name}{bossId}";
-            boss.tag = Constants.TagEnemy;
-            var bossStatus = boss.GetComponent<CharacterStatus>();
-            if (bossStatus != null)
-            {
-                bossStatus.State.PlayerId = bossId;
-                bossStatus.State.PlayerName = boss.name;
-            }
-
-            bossObjects[bossId] = boss;
-            bossPrefabIdx[bossId] = randomBossIdx;
         }
     }
 
@@ -326,9 +302,12 @@ public class CharacterManager : MonoBehaviour
 
     private void ClearBossObjects()
     {
-        foreach (var go in bossObjects.Values) { if (go != null) Destroy(go); }
+        foreach (Transform child in bossParant)
+        {
+            Destroy(child.gameObject);
+        }
         bossObjects.Clear();
-        bossPrefabIdx.Clear();
+        bossPrefabInfos.Clear();
     }
 
     private void RemovePlayerObject(uint playerId)
@@ -395,14 +374,14 @@ public class CharacterManager : MonoBehaviour
         Players.Clear();
         IdGenerator.SetNextCharacterId(0);
         // add self
-        MyInfo.Id = IdGenerator.NextCharacterId();
+        MyInfo.Id = (uint)IdGenerator.NextCharacterId();
         PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
     }
 
     public void AddPlayer(PlayerInfo player)
     {
-        player.Id = IdGenerator.NextCharacterId();
+        player.Id = (uint)IdGenerator.NextCharacterId();
         PlayerInfoMap[player.Id] = player;
         Players.Add(player);
         CreatePlayerObject(player.Id, ColorFromID(player.Id), false);
@@ -428,6 +407,30 @@ public class CharacterManager : MonoBehaviour
             PlayersMsg = pu
         };
         MessageManager.Instance.SendMessage(genericMessage, true);
+    }
+
+    void FixedUpdate()
+    {
+        var my = GetMyselfGameObject();
+        bool showBossHpSlider = false;
+        foreach (Transform child in bossParant)
+        {
+            var bossStatus = child.gameObject.GetComponent<CharacterStatus>();
+            if (bossStatus != null && bossStatus.IsAlive() && LevelManager.Instance.InSameRoom(my, child.gameObject))
+            {
+                showBossHpSlider = true;
+                break;
+            }
+        }
+
+        if (showBossHpSlider)
+        {
+            UIManager.Instance.ShowBossHealthSlider();
+        }
+        else
+        {
+            UIManager.Instance.HideBossHealthSlider();
+        }
     }
 
     #region Utils
@@ -494,7 +497,7 @@ public class CharacterManager : MonoBehaviour
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
         if (playerObjects.Count == 0) return; // Player死了，游戏结束，下次加载时从第1关重新开始
-        storage.NextCharacterId = IdGenerator.NextCharacterId();
+        storage.NextCharacterId = (uint)IdGenerator.NextCharacterId();
         storage.PlayerStates.Clear();
         foreach (var player in playerObjects.Values)
         {
@@ -520,14 +523,49 @@ public class CharacterManager : MonoBehaviour
         foreach (var bossId in bossObjects.Keys)
         {
             var boss = bossObjects[bossId];
-            var prefabIdx = bossPrefabIdx[bossId];
+            var prefabInfo = bossPrefabInfos[bossId];
             var bossStatus = boss.GetComponent<CharacterStatus>();
             if (bossStatus != null)
             {
                 storage.BossStates.Add(bossStatus.State);
-                storage.BossPrefabIdx.Add(prefabIdx);
+                storage.BossPrefabInfos.Add(prefabInfo);
             }
         }
+    }
+
+    public GameObject InstantiateBossObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState bs)
+    {
+        var boss = Instantiate(prefab, bossParant);
+        boss.transform.position = position;
+
+        uint bossId;
+        if (bs != null) bossId = bs.PlayerId;
+        else bossId = (uint)IdGenerator.NextCharacterId();
+            
+        boss.name = $"{prefab.name}{bossId}";
+        boss.tag = Constants.TagEnemy;
+
+        
+        if (boss.TryGetComponent<CharacterStatus>(out var bossStatus))
+        {
+            if (bs != null)
+            {
+                bossStatus.State = bs;
+            }
+            else
+            {
+                bossStatus.State.PlayerId = bossId;
+                bossStatus.State.PlayerName = boss.name;
+            }
+        }
+
+        bossObjects[bossId] = boss;
+        bossPrefabInfos[bossId] = new BossPrefabInfo
+        {
+            StageId = stageId,
+            PrefabId = prefabId
+        };
+        return boss;
     }
     #endregion
 

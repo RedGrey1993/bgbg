@@ -5,14 +5,14 @@ public static class IdGenerator
     private static int _characterId = 0;
     private static int _pickupItemId = 0;
 
-    public static uint NextCharacterId()
+    public static int NextCharacterId()
     {
-        return (uint)Interlocked.Increment(ref _characterId);
+        return Interlocked.Increment(ref _characterId);
     }
 
-    public static uint NextPickupItemId()
+    public static int NextPickupItemId()
     {
-        return (uint)Interlocked.Increment(ref _pickupItemId);
+        return Interlocked.Increment(ref _pickupItemId);
     }
 
     public static void SetNextCharacterId(int nextId)

@@ -1,28 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using NetworkMessageProto;
 using UnityEngine;
 
 // Stomper不会对角线移动
 public class Boss_5_0_TheRulerAI : CharacterBaseAI
 {
-    private List<GameObject> prevBossPrefabs;
+    private List<BossPrefabInfo> prevBossPrefabInfos;
     protected override void SubclassStart()
     {
-        prevBossPrefabs = new List<GameObject>();
+        prevBossPrefabInfos = new List<BossPrefabInfo>();
         foreach (int stage in GameManager.Instance.PassedStages)
         {
             LevelData levelData = LevelDatabase.Instance.GetLevelData(stage);
-            foreach (var bossPrefab in levelData.bossPrefabs)
+            for (int i = 0; i < levelData.bossPrefabs.Count; ++i)
             {
-                prevBossPrefabs.Add(bossPrefab);
+                prevBossPrefabInfos.Add(new BossPrefabInfo
+                {
+                    StageId = stage,
+                    PrefabId = i,
+                });
             }
         }
         // 随机排序prevBossPrefabs；Fisher-Yates 洗牌算法，时间复杂度为 O(n)，且能保证每个排列出现的概率相等
         System.Random rng = new ();
-        for (int i = prevBossPrefabs.Count - 1; i > 0; i--)
+        for (int i = prevBossPrefabInfos.Count - 1; i > 0; i--)
         {
             int j = rng.Next(i + 1);
-            (prevBossPrefabs[i], prevBossPrefabs[j]) = (prevBossPrefabs[j], prevBossPrefabs[i]); // 交换元素
+            (prevBossPrefabInfos[i], prevBossPrefabInfos[j]) = (prevBossPrefabInfos[j], prevBossPrefabInfos[i]); // 交换元素
         }
     }
 
@@ -60,7 +65,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             if (hpRatio > 0.4f)
             {
                 int rndSkillId = Random.Range(0, 2);
-                if (rndSkillId == 0 && bossIdx < prevBossPrefabs.Count && existingBosses.Count < 2)
+                if (rndSkillId == 0 && bossIdx < prevBossPrefabInfos.Count && existingBosses.Count < 2)
                 {
                     if (!isSummoning && !isExplosion)
                     {
@@ -137,12 +142,13 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         yield return new WaitForSeconds(dismissTime);
         virtualScreen.SetActive(false);
 
-        while (existingBosses.Count < 2 && bossIdx < prevBossPrefabs.Count)
+        while (existingBosses.Count < 2 && bossIdx < prevBossPrefabInfos.Count)
         {
             // 召唤之前的boss
             int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
             var room = LevelManager.Instance.Rooms[roomId];
-            var bossPrefab = prevBossPrefabs[bossIdx++];
+            var bossPrefabInfo = prevBossPrefabInfos[bossIdx++];
+            var bossPrefab = LevelDatabase.Instance.GetBossPrefab(bossPrefabInfo.StageId, bossPrefabInfo.PrefabId);
             var charData = bossPrefab.GetComponent<CharacterStatus>().characterData;
             int extentsX = (int)charData.bound.extents.x, extentsY = (int)charData.bound.extents.y;
             int theRulerHeight = (int)CharacterData.bound.extents.y;
@@ -152,7 +158,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.summonEffectPrefab, position);
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
-            GameObject boss = LevelManager.Instance.InstantiateTemporaryObject(bossPrefab, position);
+
+
+            GameObject boss = CharacterManager.Instance.InstantiateBossObject(bossPrefab, position, bossPrefabInfo.StageId, bossPrefabInfo.PrefabId, null);
             existingBosses.Add(boss);
         }
 

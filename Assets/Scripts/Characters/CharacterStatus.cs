@@ -206,11 +206,6 @@ public class CharacterStatus : MonoBehaviour
             if (!CharacterManager.Instance.playerObjects.ContainsKey(State.PlayerId)) Destroy(gameObject);
         }
 
-        if (IsBoss())
-        {
-            UIManager.Instance.HideBossHealthSlider();
-        }
-
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
         {
@@ -243,10 +238,9 @@ public class CharacterStatus : MonoBehaviour
             }
         }
 
-        if (IsBoss() && LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
+        if (IsBoss())
         {
             UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
-            UIManager.Instance.ShowBossHealthSlider();
         }
     }
 
@@ -265,13 +259,6 @@ public class CharacterStatus : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (IsBoss())
-        {
-            if (!IsAlive() || !LevelManager.Instance.InSameRoom(gameObject, CharacterManager.Instance.GetMyselfGameObject()))
-            {
-                UIManager.Instance.HideBossHealthSlider();
-            }
-        }
         State.Position = new Vec2
         {
             X = transform.position.x,

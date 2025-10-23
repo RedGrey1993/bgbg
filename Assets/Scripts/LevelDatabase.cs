@@ -64,4 +64,9 @@ public class LevelDatabase : MonoBehaviour
         }
         return LevelDictionary[level];
     }
+
+    public GameObject GetBossPrefab(int stageId, int prefabId)
+    {
+        return LevelDictionary[stageId].bossPrefabs[prefabId];
+    }
 }

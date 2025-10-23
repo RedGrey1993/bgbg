@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
     public int[,] RoomGrid { get; private set; }
 
     public GameObject BlackHole { get; set; } = null;
-    public Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)> PickupItems { get; set; } = new Dictionary<uint, (NetworkMessageProto.PickupItem, GameObject)>(); // 关卡中的拾取物品
+    public Dictionary<int, (NetworkMessageProto.PickupItem, GameObject)> PickupItems { get; set; } = new Dictionary<int, (NetworkMessageProto.PickupItem, GameObject)>(); // 关卡中的拾取物品
     private HashSet<int>[] roomConnections; // 每个房间连接的房间列表
     private List<Vector3Int>[] roomToTiles; // 每个房间包含的Tile位置列表
     private List<Vector3Int>[] roomToDoorTiles; // 每个房间包含的门的Tile位置列表

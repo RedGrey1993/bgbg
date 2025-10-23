@@ -81,9 +81,15 @@ message LearnSkillMessage
 
 message PickupItem
 {
-    uint32 Id = 1;
+    int32 Id = 1;
     uint32 SkillId = 2;
     Vec2 Position = 3;
+}
+
+message BossPrefabInfo
+{
+    int32 StageId = 1;
+    int32 PrefabId = 2;
 }
 
 message LocalStorage
@@ -93,7 +99,7 @@ message LocalStorage
     repeated PlayerState MinionStates = 3;
     repeated int32 MinionPrefabIdx = 4;
     repeated PlayerState BossStates = 5;
-    repeated int32 BossPrefabIdx = 6;
+    repeated BossPrefabInfo BossPrefabInfos = 6;
     repeated RectProto Rooms = 7;
     uint32 RoomMaxWidth = 8;
     uint32 RoomMaxHeight = 9;

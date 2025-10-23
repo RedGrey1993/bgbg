@@ -5,7 +5,7 @@ public class PickupItem : MonoBehaviour
 {
     public SkillData skillData;
     private SpriteRenderer sprite;
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     void Awake()
     {

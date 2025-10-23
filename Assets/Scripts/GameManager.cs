@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
-        PassedStages = new HashSet<int> { 2, 3, 4, 5 };
+        PassedStages = new HashSet<int> { 2, 3, 4 };
         return storage;
     }
 
