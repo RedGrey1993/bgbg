@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 770355298123434326}
   - component: {fileID: 8042123147592859776}
   - component: {fileID: 6362783968868489497}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Minion_2_0_GlitchSlime_Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}

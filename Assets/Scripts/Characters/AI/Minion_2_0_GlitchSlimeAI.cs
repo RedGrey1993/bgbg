@@ -21,8 +21,8 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
                 if (Time.time > nextDamageTime)
                 {
                     var status = collision.gameObject.GetComponent<CharacterStatus>();
-                    status.TakeDamage_Host(CharacterData.Damage, null);
-                    nextDamageTime = Time.time + 1f / CharacterData.AttackFrequency;
+                    status.TakeDamage_Host(characterStatus.State.Damage, null);
+                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                 }
             }
         }

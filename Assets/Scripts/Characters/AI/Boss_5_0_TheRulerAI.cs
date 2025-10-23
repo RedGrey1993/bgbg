@@ -365,7 +365,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     // 冲锋，十字幻影形式冲锋
     private IEnumerator Boss1_PhantomTank_Charge()
     {
-        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
+        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
         Vector2 targetPos = room.center;

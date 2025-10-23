@@ -104,9 +104,9 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     {
         isAttack = true;
         // 需要AtkFreq时间架设炮台
-        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
+        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         // 调用父类方法
-        base.AttackAction();
+        AttackShoot(characterInput.LookInput);
         shootCoroutine = null;
         isAttack = false;
 
@@ -125,7 +125,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         if (AggroTarget != null)
             targetPos = AggroTarget.transform.position;
         var chargeEffect = LevelManager.Instance.InstantiateTemporaryObject(chargeEffectPrefab, targetPos);
-        yield return new WaitForSeconds(1f / CharacterData.AttackFrequency);
+        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         var horizontalStartPos = targetPos;
         int dir = Random.Range(0, 2);
         Vector2 horizontalVelocity = Vector2.zero;

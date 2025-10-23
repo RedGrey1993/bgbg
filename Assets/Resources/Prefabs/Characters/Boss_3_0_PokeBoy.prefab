@@ -330,11 +330,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss_3_0_PokeBoyAI
   pokeball: {fileID: 6958645844443391151}
   summonPokeEffectPrefab: {fileID: 5824670795371433373, guid: 3fe64f898fed61140963ab0c4dd5b2c2, type: 3}
+  speedupEffectPrefab: {fileID: 904662820145583817, guid: 44268a9c408d370468cd8b065223e5e9, type: 3}
+  rageEffectPrefab: {fileID: 119183615461286708, guid: 9f49bba8ffd508b4e8f1e2f3f4bbbdfe, type: 3}
   pokeMinionPrefabs:
   - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
   - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
   pokeMinionRebornTime: 15
+  pokeMinionBuffTime: 5
 --- !u!1 &5727804542918915976
 GameObject:
   m_ObjectHideFlags: 0

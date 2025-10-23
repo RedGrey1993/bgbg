@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5035837120527684100}
   - component: {fileID: 7528162992489926195}
   - component: {fileID: 2761528381193209298}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Boss_1_0_PhantomTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6641391400573639146}
   - component: {fileID: 4379905033219862096}
   - component: {fileID: 3347375637609734646}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Boss_1_0_PhantomTank_Charge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193152610034553094}
   - component: {fileID: 6519300485883109321}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}

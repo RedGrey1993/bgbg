@@ -364,13 +364,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Attack Action
-    protected virtual void AttackAction()
+    protected void AttackShoot(Vector2 lookInput)
     {
-        Vector2 lookInput = characterInput.LookInput;
-        if (lookInput.sqrMagnitude < 0.1f) return;
-        if (Time.time < nextAtkTime) return;
-        nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-
         if (CharacterData.shootSound)
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -401,6 +396,15 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         // Set the bullet's velocity
         if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
+    }
+    protected virtual void AttackAction()
+    {
+        Vector2 lookInput = characterInput.LookInput;
+        if (lookInput.sqrMagnitude < 0.1f) return;
+        if (Time.time < nextAtkTime) return;
+        nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+
+        AttackShoot(lookInput);
     }
     #endregion
 

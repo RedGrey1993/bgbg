@@ -11,8 +11,11 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
 {
     public GameObject pokeball;
     public GameObject summonPokeEffectPrefab;
+    public GameObject speedupEffectPrefab;
+    public GameObject rageEffectPrefab;
     public List<GameObject> pokeMinionPrefabs;
     public int pokeMinionRebornTime = 15;
+    public int pokeMinionBuffTime = 5;
 
     private List<float> pokeMinionDeadTime;
 
@@ -46,18 +49,20 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     #region Attack Action
     private List<(GameObject, int)> existingPokes = new();
     private Coroutine summonCoroutine;
+    private Coroutine strengthenCoroutine;
+    private Coroutine throwPokeballCoroutine;
+    private float nextStrengthenTime = 0;
     protected override void AttackAction()
     {
         if (isAiming && !isAttack)
         {
             isAiming = false;
-            if (summonCoroutine != null) { return; }
-            ref Vector2 lookInput = ref characterInput.LookInput;
-            if (lookInput.sqrMagnitude < 0.1f) { return; }
+            // 所有技能都在释放中，则不能再释放技能
+            if (summonCoroutine != null && strengthenCoroutine != null && throwPokeballCoroutine != null) { return; }
+            if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
 
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-            characterInput.NormalizeLookInput();
 
             foreach ((GameObject, int) poke in existingPokes)
             {
@@ -68,33 +73,37 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             }
             existingPokes.RemoveAll(obj => obj.Item1 == null);
 
+            if (existingPokes.Count > 0)
+            {
+                if (Time.time > nextStrengthenTime)
+                {
+                    nextStrengthenTime = Time.time + Random.Range(pokeMinionBuffTime + 1, pokeMinionBuffTime * 2);
+                    strengthenCoroutine = StartCoroutine(StrengthenPokes());
+                }
+            }
+
             float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
             // 召唤pokes 15s后会复活
             if (hpRatio > 0.6f)
             {
                 if (existingPokes.Count < 1)
                 {
-                    StartCoroutine(SummonPokes(1));
+                    summonCoroutine = StartCoroutine(SummonPokes(1));
                 }
             }
             else if (hpRatio > 0.3f)
             {
                 if (existingPokes.Count < 2)
                 {
-                    StartCoroutine(SummonPokes(2));
+                    summonCoroutine = StartCoroutine(SummonPokes(2));
                 }
             }
             else
             {
                 if (existingPokes.Count < 3)
                 {
-                    StartCoroutine(SummonPokes(3));
+                    summonCoroutine = StartCoroutine(SummonPokes(3));
                 }
-            }
-
-            if (existingPokes.Count > 0)
-            {
-                // TODO: 随机强化存在的Pokes：加速(SpeedUp)/狂暴(Rage)
             }
 
             if (AggroTarget != null)
@@ -103,7 +112,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
                 float tarHpRatio = (float)tarStatus.State.CurrentHp / tarStatus.State.MaxHp;
                 if (tarHpRatio < 0.25f)
                 {
-                    // TODO: 扔红白球攻击
+                    throwPokeballCoroutine = StartCoroutine(ThrowPokeball());
                 }
             }
         }
@@ -135,7 +144,6 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             summonCoroutine = null;
             isAttack = false;
 
-            characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
             animator.Play("Male Walking");
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
             yield return new WaitForSeconds(Random.Range(1, 3f));
@@ -169,7 +177,90 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         summonCoroutine = null;
         isAttack = false;
 
-        characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
+        animator.Play("Male Walking");
+        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+        yield return new WaitForSeconds(Random.Range(1, 3f));
+    }
+    #endregion
+
+    #region 技能2，强化小弟
+    private IEnumerator StrengthenPokes()
+    {
+        isAttack = true;
+        if (existingPokes.Count > 0)
+        {
+            characterInput.LookInput = existingPokes[0].Item1.transform.position - transform.position;
+            animator.Play("挥手冲锋");
+            yield return new WaitForSeconds(0.67f);
+
+            foreach (var (poke, idx) in existingPokes)
+            {
+                if (poke == null) continue;
+                var rnd = Random.Range(0, 2);
+                if (rnd == 0) // speedup
+                {
+                    var speedupEffect = LevelManager.Instance.InstantiateTemporaryObject(speedupEffectPrefab, poke.transform.position);
+                    Destroy(speedupEffect, 3);
+                    StartCoroutine(SpeedUp(poke));
+                }
+                else // rage
+                {
+                    var rageEffect = LevelManager.Instance.InstantiateTemporaryObject(rageEffectPrefab, poke.transform.position);
+                    Destroy(rageEffect, 3);
+                    StartCoroutine(Rage(poke));
+                }
+            }
+        }
+
+        strengthenCoroutine = null;
+        isAttack = false;
+
+        animator.Play("Male Walking");
+        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+        yield return new WaitForSeconds(Random.Range(1, 3f));
+    }
+
+    private IEnumerator SpeedUp(GameObject poke)
+    {
+        var status = poke.GetComponent<CharacterStatus>();
+        status.State.MoveSpeed *= 2;
+
+        yield return new WaitForSeconds(pokeMinionBuffTime);
+        status.State.MoveSpeed /= 2;
+    }
+
+    private IEnumerator Rage(GameObject poke)
+    {
+        var status = poke.GetComponent<CharacterStatus>();
+        status.State.Damage *= 2;
+        var sr = poke.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.red;
+        }
+
+        yield return new WaitForSeconds(pokeMinionBuffTime);
+        status.State.Damage /= 2;
+        if (sr != null)
+        {
+            sr.color = Color.white;
+        }
+    }
+    #endregion
+    
+    #region 技能3，扔红白球
+    private IEnumerator ThrowPokeball()
+    {
+        isAttack = true;
+        animator.Play("Throw Object");
+        pokeball.SetActive(true);
+        yield return new WaitForSeconds(0.87f);
+        pokeball.SetActive(false);
+        AttackShoot(characterInput.LookInput);
+        
+        throwPokeballCoroutine = null;
+        isAttack = false;
+
         animator.Play("Male Walking");
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
         yield return new WaitForSeconds(Random.Range(1, 3f));

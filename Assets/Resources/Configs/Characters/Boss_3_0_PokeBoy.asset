@@ -15,23 +15,33 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: e1392070b39b5554db77561abcf34d61, type: 3}
+  energyWaveAccumulateSound: {fileID: 0}
+  energyWaveShootSound: {fileID: 0}
+  bulletPrefab: {fileID: 7906872621619036891, guid: c098a2cbb2389ee429ddf14c0c1f3831, type: 3}
   shadowPrefab: {fileID: 0}
+  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
+  energyWavePrefab: {fileID: 0}
+  explosionEffectPrefab: {fileID: 0}
+  summonEffectPrefab: {fileID: 0}
+  teleportEffectPrefab: {fileID: 0}
+  accumulateEffectPrefab: {fileID: 0}
   CharacterType: 10
   MaxHp: 5
   MoveSpeed: 2
   ShootRange: 10
   BulletSpeed: 6
-  Damage: 10
+  Damage: 20
   AttackFrequency: 0.5
   CriticalRate: 0
   ExpGiven: 5
+  spawnOffsets: {x: -2, y: -2}
+  bound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 0
   canAttackDiagonally: 1
   AggroRange: 15
   AggroChangeInterval: 2
-  minRandomMoveInputInterval: 1
-  maxRandomMoveInputInterval: 6
   minChaseMoveInputInterval: 0.5
   maxChaseMoveInputInterval: 1
