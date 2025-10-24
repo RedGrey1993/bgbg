@@ -48,13 +48,13 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     #endregion
 
     #region OnDeath
-    public override float OnDeath()
+    public override void OnDeath()
     {
         animator.SetTrigger("Death");
         float deathDuration = 2f;
         // 由于需要死后留下尸体，gameObject被Destroy后协程仍然存活，因此使用GameManager启动协程
         GameManager.Instance.StartCoroutine(GenerateDeadBody(deathDuration, CharacterData.deadBodyPrefab, transform.position));
-        return deathDuration;
+        Destroy(gameObject, deathDuration);
     }
     
     private IEnumerator GenerateDeadBody(float deathDuration, GameObject prefab, Vector3 position)

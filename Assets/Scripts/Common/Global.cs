@@ -51,6 +51,7 @@ public enum CharacterType
     Minion_4_1,
     Boss_4_0_SysGuardian,
     Boss_5_0_TheRuler,
+    Boss_4_0_SysGuardianFloatingTurret,
 }
 
 public enum Direction

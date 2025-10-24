@@ -3,10 +3,10 @@ using UnityEngine;
 public class ContraBillAI : CharacterBaseAI
 {
     #region ICharacterAI implementation
-    public override float OnDeath()
+    public override void OnDeath()
     {
         if (animator) animator.Play("Dying");
-        return 3.5f;
+        Destroy(gameObject, 3.5f);
     }
     #endregion
 
@@ -204,4 +204,10 @@ public class ContraBillAI : CharacterBaseAI
         }
     }
     #endregion
+
+    protected override void SubclassFixedUpdate()
+    {
+        if (characterInput.LookInput.sqrMagnitude > 0.1f) isAttack = true;
+        else isAttack = false;
+    }
 }

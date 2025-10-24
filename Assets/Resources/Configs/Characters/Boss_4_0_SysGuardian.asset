@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
   m_Name: Boss_4_0_SysGuardian
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
+  shootSound: {fileID: 8300000, guid: 044480876ac7cbf4daf4a4a972a4c240, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
   energyWaveAccumulateSound: {fileID: 0}
   energyWaveShootSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
+  bulletPrefab: {fileID: 7906872621619036891, guid: 04be8e3a8ee1d704086fa8c14869d807, type: 3}
   shadowPrefab: {fileID: 0}
   phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
   CharacterType: 13
   MaxHp: 5
   MoveSpeed: 2
-  ShootRange: 10
+  ShootRange: 40
   BulletSpeed: 6
   Damage: 10
   AttackFrequency: 0.5
@@ -41,7 +41,7 @@ MonoBehaviour:
     m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 0
   canAttackDiagonally: 1
-  AggroRange: 15
+  AggroRange: 10000
   AggroChangeInterval: 2
   minChaseMoveInputInterval: 0.5
   maxChaseMoveInputInterval: 1

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca2bc8d917ebdf74fa89db7462c705e9
+guid: ee2fd892eb09c4e478205e08aa1f3821
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7180350694572422372
-    second: TurtleBullet_0
+      213: -5416291459939886162
+    second: Hy21_Mesh_SysGuardian_FloatingTurret_3000_face_metallic_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
-  spriteBorder: {x: 89, y: 58, z: 9, w: 59}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TurtleBullet_0
+      name: Hy21_Mesh_SysGuardian_FloatingTurret_3000_face_metallic_0
       rect:
         serializedVersion: 2
-        x: 111
-        y: 82
-        width: 111
-        height: 94
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1b084f16154a5c90800000000000000
-      internalID: -7180350694572422372
+      spriteID: eab1d4a2d9775d4b0800000000000000
+      internalID: -5416291459939886162
       vertices: []
       indices: 
       edges: []
@@ -125,8 +125,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TurtleBullet_0: -7180350694572422372
+      Hy21_Mesh_SysGuardian_FloatingTurret_3000_face_metallic_0: -5416291459939886162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

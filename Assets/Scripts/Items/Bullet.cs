@@ -19,10 +19,38 @@ public class Bullet : MonoBehaviour
             || Time.time - bornTime > 5f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则5秒后自动销毁
         {
             Destroy(gameObject);
-        }      
+        }
     }
 
-    // 子弹的IsTrigger为false
+    // 激光子弹的IsTrigger使true
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (GameManager.Instance.IsLocalOrHost())
+        {
+            // 检测是否碰撞到Player
+            if (other.gameObject.CompareTag(Constants.TagPlayer) || other.gameObject.CompareTag(Constants.TagEnemy))
+            {
+                CharacterStatus targetCharacterStatus = other.gameObject.GetComponent<CharacterStatus>();
+                if (targetCharacterStatus == OwnerStatus)
+                {
+                    return; // 不伤害自己，也不销毁碰到自己的子弹
+                }
+                if (targetCharacterStatus?.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
+                {
+                    ; // 敌人之间不互相伤害；但还是会销毁子弹
+                }
+                else if (targetCharacterStatus != null)
+                {
+                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
+                }
+            } else if (other.gameObject.CompareTag(Constants.TagWall))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    // 大多数子弹的IsTrigger为false
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost())

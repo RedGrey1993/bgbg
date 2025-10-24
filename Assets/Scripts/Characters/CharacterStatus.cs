@@ -1,20 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using UnityEngine.TextCore.Text;
-using NUnit.Framework;
 
-
-
-#if PROTOBUF
 using NetworkMessageProto;
 
 [RequireComponent(typeof(ICharacterAI))]
-[RequireComponent(typeof(CharacterInput))]
-#else
-using NetworkMessageJson;
-#endif
-
 public class CharacterStatus : MonoBehaviour
 {
     public PlayerState State = new PlayerState();
@@ -26,13 +16,11 @@ public class CharacterStatus : MonoBehaviour
     public event Action OnDied;
 
     private ICharacterAI characterAI;
-    private CharacterInput characterInput;
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
 
     void Awake()
     {
-        characterInput = GetComponent<CharacterInput>();
         characterAI = GetComponent<ICharacterAI>();
 
         State.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
@@ -189,22 +177,13 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // Disable PlayerController
-        PlayerController pc = GetComponent<PlayerController>();
-        if (pc != null)
+        if (TryGetComponent<PlayerController>(out var pc))
         {
             pc.enabled = false;
         }
 
         // 尸体销毁，Player的尸体不销毁，置灰保留在原地
-        if (characterAI != null)
-        {
-            float length = characterAI.OnDeath();
-            if (!CharacterManager.Instance.playerObjects.ContainsKey(State.PlayerId)) Destroy(gameObject, length);
-        }
-        else
-        {
-            if (!CharacterManager.Instance.playerObjects.ContainsKey(State.PlayerId)) Destroy(gameObject);
-        }
+        characterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
 
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))

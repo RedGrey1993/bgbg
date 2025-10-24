@@ -493,7 +493,10 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             if (characterStatus.IsAlive()) GenerateAILogic();
         }
+        SubclassUpdate();
     }
+
+    protected virtual void SubclassUpdate() { }
     public void FixedUpdate()
     {
         if (characterStatus.IsDead())
@@ -512,13 +515,18 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         // 所有客户端都能调用，包括Host自己
         // 包括不需要严格同步的操作，如物理引擎模拟等相关操作
         // Do Client Action;
-        LookToAction();
         MoveAction(); // Client 的 Move类似于移动预测，最终还是会同步到Host的权威位置
         AttackAction();
+        LookToAction();
+
+        SubclassFixedUpdate();
     }
+    protected virtual void SubclassFixedUpdate() { }
     #endregion
 
     #region ICharacterAI implementation
-    public virtual float OnDeath() { return 0; }
+    public virtual void OnDeath() {
+        Destroy(gameObject);
+    }
     #endregion
 }
