@@ -35,11 +35,13 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
 
     protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
+        BounceBack(collision);
         ProcessCollisionDamage(collision);
     }
 
     protected override void SubclassCollisionStay2D(Collision2D collision)
     {
+        BounceBack(collision);
         ProcessCollisionDamage(collision);
     }
     #endregion

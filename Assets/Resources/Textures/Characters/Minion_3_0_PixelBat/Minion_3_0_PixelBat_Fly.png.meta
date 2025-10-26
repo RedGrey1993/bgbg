@@ -1,0 +1,923 @@
+fileFormatVersion: 2
+guid: 320ca64c02626c247a32ae3c5ba739c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5030622358589868781
+    second: Minion_3_0_PixelBat_Fly_0
+  - first:
+      213: 9008043071266737736
+    second: Minion_3_0_PixelBat_Fly_1
+  - first:
+      213: 5345262316243032117
+    second: Minion_3_0_PixelBat_Fly_2
+  - first:
+      213: -8145696883624058708
+    second: Minion_3_0_PixelBat_Fly_3
+  - first:
+      213: 4571302814987704399
+    second: Minion_3_0_PixelBat_Fly_4
+  - first:
+      213: 5729342199963162025
+    second: Minion_3_0_PixelBat_Fly_5
+  - first:
+      213: -6965770743714179839
+    second: Minion_3_0_PixelBat_Fly_6
+  - first:
+      213: -4850739022099244662
+    second: Minion_3_0_PixelBat_Fly_7
+  - first:
+      213: -386767655911057908
+    second: Minion_3_0_PixelBat_Fly_8
+  - first:
+      213: -6191046352371415575
+    second: Minion_3_0_PixelBat_Fly_9
+  - first:
+      213: 1918587984694464875
+    second: Minion_3_0_PixelBat_Fly_10
+  - first:
+      213: -6840908051623300650
+    second: Minion_3_0_PixelBat_Fly_11
+  - first:
+      213: 5010873350498898854
+    second: Minion_3_0_PixelBat_Fly_12
+  - first:
+      213: 4838472401232750216
+    second: Minion_3_0_PixelBat_Fly_13
+  - first:
+      213: 248538628218234795
+    second: Minion_3_0_PixelBat_Fly_14
+  - first:
+      213: -7745124956516572639
+    second: Minion_3_0_PixelBat_Fly_15
+  - first:
+      213: 598321820446836008
+    second: Minion_3_0_PixelBat_Fly_16
+  - first:
+      213: -8108121911070900436
+    second: Minion_3_0_PixelBat_Fly_17
+  - first:
+      213: -649367917584192061
+    second: Minion_3_0_PixelBat_Fly_18
+  - first:
+      213: 6466337835216921844
+    second: Minion_3_0_PixelBat_Fly_19
+  - first:
+      213: 8706752215440394387
+    second: Minion_3_0_PixelBat_Fly_20
+  - first:
+      213: 3809150428300443147
+    second: Minion_3_0_PixelBat_Fly_21
+  - first:
+      213: -1946914342143108552
+    second: Minion_3_0_PixelBat_Fly_22
+  - first:
+      213: -2043642259764079117
+    second: Minion_3_0_PixelBat_Fly_23
+  - first:
+      213: -5610798836350374946
+    second: Minion_3_0_PixelBat_Fly_24
+  - first:
+      213: -1583820011507399593
+    second: Minion_3_0_PixelBat_Fly_25
+  - first:
+      213: -4695479296048718945
+    second: Minion_3_0_PixelBat_Fly_26
+  - first:
+      213: -4235496899069708650
+    second: Minion_3_0_PixelBat_Fly_27
+  - first:
+      213: 8560369213035627059
+    second: Minion_3_0_PixelBat_Fly_28
+  - first:
+      213: -8653762022456586507
+    second: Minion_3_0_PixelBat_Fly_29
+  - first:
+      213: -5536921988606651847
+    second: Minion_3_0_PixelBat_Fly_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 2195
+        width: 415
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dea03eab16c50d540800000000000000
+      internalID: 5030622358589868781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 2196
+        width: 414
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84ec548527ff20d70800000000000000
+      internalID: 9008043071266737736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 2196
+        width: 413
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53892f691cf2e2a40800000000000000
+      internalID: 5345262316243032117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 2189
+        width: 424
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca0e49397dba4fe80800000000000000
+      internalID: -8145696883624058708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_4
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 2185
+        width: 432
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f48d510c0b7807f30800000000000000
+      internalID: 4571302814987704399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_5
+      rect:
+        serializedVersion: 2
+        x: 2620
+        y: 2180
+        width: 408
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a595712066b28f40800000000000000
+      internalID: 5729342199963162025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_6
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 2179
+        width: 407
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1059b123a6c945f90800000000000000
+      internalID: -6965770743714179839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_7
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1667
+        width: 408
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8916a94f86beacb0800000000000000
+      internalID: -4850739022099244662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_8
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1669
+        width: 425
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c069fcabddce1aaf0800000000000000
+      internalID: -386767655911057908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_9
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1670
+        width: 424
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e58ce2e42cf41aa0800000000000000
+      internalID: -6191046352371415575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_10
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 1670
+        width: 423
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61db026b9130aa10800000000000000
+      internalID: 1918587984694464875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_11
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 1666
+        width: 434
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d132e92f563011a0800000000000000
+      internalID: -6840908051623300650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_12
+      rect:
+        serializedVersion: 2
+        x: 2607
+        y: 1666
+        width: 428
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a355f673c23a8540800000000000000
+      internalID: 5010873350498898854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_13
+      rect:
+        serializedVersion: 2
+        x: 3138
+        y: 1668
+        width: 398
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886620b7305b52340800000000000000
+      internalID: 4838472401232750216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_14
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1158
+        width: 398
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba729e7c09cf27300800000000000000
+      internalID: 248538628218234795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_15
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1160
+        width: 416
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12221d133e9c38490800000000000000
+      internalID: -7745124956516572639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_16
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1158
+        width: 422
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8254911968aad4800800000000000000
+      internalID: 598321820446836008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_17
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 1155
+        width: 415
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2fbe0f941a2a7f80800000000000000
+      internalID: -8108121911070900436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_18
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1154
+        width: 415
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cdebd7c15bfcf6f0800000000000000
+      internalID: -649367917584192061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_19
+      rect:
+        serializedVersion: 2
+        x: 2608
+        y: 1151
+        width: 421
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f4e5c1400c0db950800000000000000
+      internalID: 6466337835216921844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_20
+      rect:
+        serializedVersion: 2
+        x: 3116
+        y: 1148
+        width: 432
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3988ba4720994d870800000000000000
+      internalID: 8706752215440394387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_21
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 633
+        width: 418
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0effdef122dcd430800000000000000
+      internalID: 3809150428300443147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_22
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 633
+        width: 419
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a527498bb2bf4e0800000000000000
+      internalID: -1946914342143108552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_23
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 636
+        width: 400
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f519c2413683a3e0800000000000000
+      internalID: -2043642259764079117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_24
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 639
+        width: 417
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edb29258f207222b0800000000000000
+      internalID: -5610798836350374946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_25
+      rect:
+        serializedVersion: 2
+        x: 2098
+        y: 640
+        width: 423
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75442f94714250ae0800000000000000
+      internalID: -1583820011507399593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_26
+      rect:
+        serializedVersion: 2
+        x: 2609
+        y: 640
+        width: 423
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b90dc357e46deb0800000000000000
+      internalID: -4695479296048718945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_27
+      rect:
+        serializedVersion: 2
+        x: 3116
+        y: 638
+        width: 430
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6967eabc20e7835c0800000000000000
+      internalID: -4235496899069708650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_28
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 126
+        width: 437
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332cd29c17a8cc670800000000000000
+      internalID: 8560369213035627059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_29
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 127
+        width: 412
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe85b84a49a7e780800000000000000
+      internalID: -8653762022456586507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_0_PixelBat_Fly_30
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 129
+        width: 402
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9321d0889c6e823b0800000000000000
+      internalID: -5536921988606651847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Minion_3_0_PixelBat_Fly_0: 5030622358589868781
+      Minion_3_0_PixelBat_Fly_1: 9008043071266737736
+      Minion_3_0_PixelBat_Fly_10: 1918587984694464875
+      Minion_3_0_PixelBat_Fly_11: -6840908051623300650
+      Minion_3_0_PixelBat_Fly_12: 5010873350498898854
+      Minion_3_0_PixelBat_Fly_13: 4838472401232750216
+      Minion_3_0_PixelBat_Fly_14: 248538628218234795
+      Minion_3_0_PixelBat_Fly_15: -7745124956516572639
+      Minion_3_0_PixelBat_Fly_16: 598321820446836008
+      Minion_3_0_PixelBat_Fly_17: -8108121911070900436
+      Minion_3_0_PixelBat_Fly_18: -649367917584192061
+      Minion_3_0_PixelBat_Fly_19: 6466337835216921844
+      Minion_3_0_PixelBat_Fly_2: 5345262316243032117
+      Minion_3_0_PixelBat_Fly_20: 8706752215440394387
+      Minion_3_0_PixelBat_Fly_21: 3809150428300443147
+      Minion_3_0_PixelBat_Fly_22: -1946914342143108552
+      Minion_3_0_PixelBat_Fly_23: -2043642259764079117
+      Minion_3_0_PixelBat_Fly_24: -5610798836350374946
+      Minion_3_0_PixelBat_Fly_25: -1583820011507399593
+      Minion_3_0_PixelBat_Fly_26: -4695479296048718945
+      Minion_3_0_PixelBat_Fly_27: -4235496899069708650
+      Minion_3_0_PixelBat_Fly_28: 8560369213035627059
+      Minion_3_0_PixelBat_Fly_29: -8653762022456586507
+      Minion_3_0_PixelBat_Fly_3: -8145696883624058708
+      Minion_3_0_PixelBat_Fly_30: -5536921988606651847
+      Minion_3_0_PixelBat_Fly_4: 4571302814987704399
+      Minion_3_0_PixelBat_Fly_5: 5729342199963162025
+      Minion_3_0_PixelBat_Fly_6: -6965770743714179839
+      Minion_3_0_PixelBat_Fly_7: -4850739022099244662
+      Minion_3_0_PixelBat_Fly_8: -386767655911057908
+      Minion_3_0_PixelBat_Fly_9: -6191046352371415575
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

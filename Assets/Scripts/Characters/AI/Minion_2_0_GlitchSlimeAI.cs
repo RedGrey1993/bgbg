@@ -30,11 +30,13 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
 
     protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
+        BounceBack(collision);
         ProcessCollisionDamage(collision);
     }
 
     protected override void SubclassCollisionStay2D(Collision2D collision)
     {
+        BounceBack(collision);
         ProcessCollisionDamage(collision);
     }
     #endregion

@@ -44,7 +44,7 @@ public enum CharacterType
     Minion_2_0_GlitchSlime,
     Minion_2_1_SpikeTurtle,
     Boss_2_0_MasterTurtle,
-    Minion_3_0,
+    Minion_3_0_PixelBat,
     Minion_3_1,
     Boss_3_0_PokeBoy,
     Minion_4_0,

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 // Stomper不会对角线移动
-public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
+public class Minion_3_0_PixelBatAI : CharacterBaseAI
 {
     #region Collision
     private float nextDamageTime = 0;
@@ -22,26 +22,6 @@ public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
         }
     }
 
-    protected override void BounceBack(Collision2D collision)
-    {
-        if (Time.time > nextBounceTime && isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            nextBounceTime = Time.time + 1f;
-            isBouncingBack = true;
-            // 碰到任何物体都镜面反射弹开
-            {
-                 ContactPoint2D contact = collision.contacts[0];
-                Vector2 normal = contact.normal;
-
-                // 使用 Vector3.Reflect 计算反射向量
-                // 参数1: 入射向量 (即碰撞前的速度)
-                // 参数2: 法线
-                Vector2 reflectionDirection = Vector2.Reflect(characterInput.MoveInput, normal);
-                characterInput.MoveInput = reflectionDirection.normalized;
-            }
-        }
-    }
-
     protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
         BounceBack(collision);
@@ -56,14 +36,25 @@ public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
     #endregion
 
     #region AI Logic / Update Input
-    protected override void SubclassStart()
-    {
-        characterInput.MoveInput = new Vector2(2 * Random.Range(0, 2) - 1, 2 * Random.Range(0, 2) - 1).normalized;
-        
-    }
     protected override void UpdateMoveInput()
     {
-        // characterInput.MoveInput = Vector2.zero;
+        if (Time.time > nextMoveInputChangeTime)
+        {
+            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+            {
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
+            }
+            if (isBouncingBack) isBouncingBack = false;
+            else Move_RandomFlyToTarget(targetPos);
+            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
+            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
+        }
+    }
+
+    protected void Move_RandomFlyToTarget(Vector3 targetPos)
+    {
+        characterInput.MoveInput = (targetPos - transform.position).normalized;
     }
 
     protected override void UpdateAttackInput()
