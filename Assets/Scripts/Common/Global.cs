@@ -45,7 +45,7 @@ public enum CharacterType
     Minion_2_1_SpikeTurtle,
     Boss_2_0_MasterTurtle,
     Minion_3_0_PixelBat,
-    Minion_3_1,
+    Minion_3_1_SkeletonMage,
     Boss_3_0_PokeBoy,
     Minion_4_0,
     Minion_4_1,

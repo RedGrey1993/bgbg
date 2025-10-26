@@ -1,0 +1,577 @@
+fileFormatVersion: 2
+guid: 7b9760f5c4e976449986d6894387d3a1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3174711960022292990
+    second: Minion_3_1_SkeletonMage_Run_0
+  - first:
+      213: -219314845971451381
+    second: Minion_3_1_SkeletonMage_Run_1
+  - first:
+      213: 8987644741590548660
+    second: Minion_3_1_SkeletonMage_Run_2
+  - first:
+      213: 6003025319512018621
+    second: Minion_3_1_SkeletonMage_Run_3
+  - first:
+      213: -3233446101299053459
+    second: Minion_3_1_SkeletonMage_Run_4
+  - first:
+      213: 7518595800849855525
+    second: Minion_3_1_SkeletonMage_Run_5
+  - first:
+      213: 5533487285883063935
+    second: Minion_3_1_SkeletonMage_Run_6
+  - first:
+      213: -5084092401292450605
+    second: Minion_3_1_SkeletonMage_Run_7
+  - first:
+      213: -1505394676924139349
+    second: Minion_3_1_SkeletonMage_Run_8
+  - first:
+      213: -1898973469052406636
+    second: Minion_3_1_SkeletonMage_Run_9
+  - first:
+      213: -2647403578820094390
+    second: Minion_3_1_SkeletonMage_Run_10
+  - first:
+      213: 3673725409061636436
+    second: Minion_3_1_SkeletonMage_Run_11
+  - first:
+      213: 2579770885438653118
+    second: Minion_3_1_SkeletonMage_Run_12
+  - first:
+      213: -1513281584760064692
+    second: Minion_3_1_SkeletonMage_Run_13
+  - first:
+      213: 4146543987613454426
+    second: Minion_3_1_SkeletonMage_Run_14
+  - first:
+      213: -6916209385267729062
+    second: Minion_3_1_SkeletonMage_Run_15
+  - first:
+      213: 1707166284107227905
+    second: Minion_3_1_SkeletonMage_Run_16
+  - first:
+      213: 8381075658210615277
+    second: Minion_3_1_SkeletonMage_Run_17
+  - first:
+      213: -7226660486548047632
+    second: Minion_3_1_SkeletonMage_Run_18
+  - first:
+      213: 7704285557437288690
+    second: Minion_3_1_SkeletonMage_Run_19
+  - first:
+      213: -1074221764330199240
+    second: Minion_3_1_SkeletonMage_Run_20
+  - first:
+      213: -860605928007580903
+    second: Minion_3_1_SkeletonMage_Run_21
+  - first:
+      213: -6228692160626041914
+    second: Minion_3_1_SkeletonMage_Run_22
+  - first:
+      213: -1600999189479009367
+    second: Minion_3_1_SkeletonMage_Run_23
+  - first:
+      213: -7589381250037395569
+    second: Minion_3_1_SkeletonMage_Run_24
+  - first:
+      213: -4563007887307121763
+    second: Minion_3_1_SkeletonMage_Run_25
+  - first:
+      213: 1179989428924058938
+    second: Minion_3_1_SkeletonMage_Run_26
+  - first:
+      213: -8770639900771090286
+    second: Minion_3_1_SkeletonMage_Run_27
+  - first:
+      213: 9024316230893690646
+    second: Minion_3_1_SkeletonMage_Run_28
+  - first:
+      213: 7282189333645836539
+    second: Minion_3_1_SkeletonMage_Run_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9105115b7de0c20800000000000000
+      internalID: 3174711960022292990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b02f6ef3f46d4fcf0800000000000000
+      internalID: -219314845971451381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b089ed16478abc70800000000000000
+      internalID: 8987644741590548660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbe803309b70f4350800000000000000
+      internalID: 6003025319512018621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6cb2b307ed7023d0800000000000000
+      internalID: -3233446101299053459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 524366fab0b675860800000000000000
+      internalID: 7518595800849855525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_6
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e433c6e55eacc40800000000000000
+      internalID: 5533487285883063935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d463bfc5eca179b0800000000000000
+      internalID: -5084092401292450605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba83c2b6483cb1be0800000000000000
+      internalID: -1505394676924139349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4947d3be0bd75a5e0800000000000000
+      internalID: -1898973469052406636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_10
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46945bb878824bd0800000000000000
+      internalID: -2647403578820094390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_11
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45902799bc1bbf230800000000000000
+      internalID: 3673725409061636436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_12
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb2477cb3ff2dc320800000000000000
+      internalID: 2579770885438653118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_13
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c457c379a6ebffae0800000000000000
+      internalID: -1513281584760064692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a505b3399cb7b8930800000000000000
+      internalID: 4146543987613454426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Run_15
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5de4ee2530b400a0800000000000000
+      internalID: -6916209385267729062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1023e66bf3d6a914482039c6ee5dd855
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_3_1_SkeletonMage_Run_0: 3174711960022292990
+      Minion_3_1_SkeletonMage_Run_1: -219314845971451381
+      Minion_3_1_SkeletonMage_Run_10: -2647403578820094390
+      Minion_3_1_SkeletonMage_Run_11: 3673725409061636436
+      Minion_3_1_SkeletonMage_Run_12: 2579770885438653118
+      Minion_3_1_SkeletonMage_Run_13: -1513281584760064692
+      Minion_3_1_SkeletonMage_Run_14: 4146543987613454426
+      Minion_3_1_SkeletonMage_Run_15: -6916209385267729062
+      Minion_3_1_SkeletonMage_Run_2: 8987644741590548660
+      Minion_3_1_SkeletonMage_Run_3: 6003025319512018621
+      Minion_3_1_SkeletonMage_Run_4: -3233446101299053459
+      Minion_3_1_SkeletonMage_Run_5: 7518595800849855525
+      Minion_3_1_SkeletonMage_Run_6: 5533487285883063935
+      Minion_3_1_SkeletonMage_Run_7: -5084092401292450605
+      Minion_3_1_SkeletonMage_Run_8: -1505394676924139349
+      Minion_3_1_SkeletonMage_Run_9: -1898973469052406636
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

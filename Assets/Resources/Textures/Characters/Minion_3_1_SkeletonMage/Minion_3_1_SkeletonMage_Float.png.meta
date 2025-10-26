@@ -1,0 +1,847 @@
+fileFormatVersion: 2
+guid: 4fc88b28f5416fe4f9627962ba1e0284
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5197840760120410618
+    second: Minion_3_1_SkeletonMage_Float_0
+  - first:
+      213: 441465821630653780
+    second: Minion_3_1_SkeletonMage_Float_1
+  - first:
+      213: -7155825749854263988
+    second: Minion_3_1_SkeletonMage_Float_2
+  - first:
+      213: -4432844595200155196
+    second: Minion_3_1_SkeletonMage_Float_3
+  - first:
+      213: -4296787147218488045
+    second: Minion_3_1_SkeletonMage_Float_4
+  - first:
+      213: -8421649997974045591
+    second: Minion_3_1_SkeletonMage_Float_5
+  - first:
+      213: 2928408744261450242
+    second: Minion_3_1_SkeletonMage_Float_6
+  - first:
+      213: 4263700224266936567
+    second: Minion_3_1_SkeletonMage_Float_7
+  - first:
+      213: -7686969325795633198
+    second: Minion_3_1_SkeletonMage_Float_8
+  - first:
+      213: 4075520900984041333
+    second: Minion_3_1_SkeletonMage_Float_9
+  - first:
+      213: 2952697792754869143
+    second: Minion_3_1_SkeletonMage_Float_10
+  - first:
+      213: -1753958013920859434
+    second: Minion_3_1_SkeletonMage_Float_11
+  - first:
+      213: -3139457914489933233
+    second: Minion_3_1_SkeletonMage_Float_12
+  - first:
+      213: -1699834313025698290
+    second: Minion_3_1_SkeletonMage_Float_13
+  - first:
+      213: 8036916849401766510
+    second: Minion_3_1_SkeletonMage_Float_14
+  - first:
+      213: 1684274534184623239
+    second: Minion_3_1_SkeletonMage_Float_15
+  - first:
+      213: 1101748466271609107
+    second: Minion_3_1_SkeletonMage_Float_16
+  - first:
+      213: 4903610767959130191
+    second: Minion_3_1_SkeletonMage_Float_17
+  - first:
+      213: -5255730793497156105
+    second: Minion_3_1_SkeletonMage_Float_18
+  - first:
+      213: -6812802658204819339
+    second: Minion_3_1_SkeletonMage_Float_19
+  - first:
+      213: -8377018434032464307
+    second: Minion_3_1_SkeletonMage_Float_20
+  - first:
+      213: -131019502845289108
+    second: Minion_3_1_SkeletonMage_Float_21
+  - first:
+      213: -7681419215638652916
+    second: Minion_3_1_SkeletonMage_Float_22
+  - first:
+      213: -7095095277775571105
+    second: Minion_3_1_SkeletonMage_Float_23
+  - first:
+      213: 2886175238592289002
+    second: Minion_3_1_SkeletonMage_Float_24
+  - first:
+      213: 8579418226494986997
+    second: Minion_3_1_SkeletonMage_Float_25
+  - first:
+      213: 6422235227462576879
+    second: Minion_3_1_SkeletonMage_Float_26
+  - first:
+      213: -1477310072411303662
+    second: Minion_3_1_SkeletonMage_Float_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ef9f53e5f8dd7b0800000000000000
+      internalID: -5197840760120410618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45565c663d6602600800000000000000
+      internalID: 441465821630653780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45e759c46661bc90800000000000000
+      internalID: -7155825749854263988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c1a59ea35f5b72c0800000000000000
+      internalID: -4432844595200155196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 315f39edadebe54c0800000000000000
+      internalID: -4296787147218488045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96c761852f9402b80800000000000000
+      internalID: -8421649997974045591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_6
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20af9decc3cc3a820800000000000000
+      internalID: 2928408744261450242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f02f2093c4bb2b30800000000000000
+      internalID: 4263700224266936567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d790a02026625590800000000000000
+      internalID: -7686969325795633198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f65d99aa82f8830800000000000000
+      internalID: 4075520900984041333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_10
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 793eb3a9ff61af820800000000000000
+      internalID: 2952697792754869143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_11
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da2c4daa70b8a7e0800000000000000
+      internalID: -1753958013920859434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_12
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f42f98b09a76e64d0800000000000000
+      internalID: -3139457914489933233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_13
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06451bc2b9f868e0800000000000000
+      internalID: -1699834313025698290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e62a1f90b4dd88f60800000000000000
+      internalID: 8036916849401766510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_15
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c9f42e3cebf5710800000000000000
+      internalID: 1684274534184623239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31163fb84623a4f00800000000000000
+      internalID: 1101748466271609107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_17
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f400cf453002d0440800000000000000
+      internalID: 4903610767959130191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f5258a70b4ef07b0800000000000000
+      internalID: -5255730793497156105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_19
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5706dd004101471a0800000000000000
+      internalID: -6812802658204819339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_20
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e889a1e1adebb80800000000000000
+      internalID: -8377018434032464307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6d1242d4768e2ef0800000000000000
+      internalID: -131019502845289108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_22
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c089ff8dbed166590800000000000000
+      internalID: -7681419215638652916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_23
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f57b2a0bf68298d90800000000000000
+      internalID: -7095095277775571105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_24
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae852df7611cd0820800000000000000
+      internalID: 2886175238592289002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_25
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fadeb9db67301770800000000000000
+      internalID: 8579418226494986997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_26
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fea28e4b9ec502950800000000000000
+      internalID: 6422235227462576879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_3_1_SkeletonMage_Float_27
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21151d6f05a8f7be0800000000000000
+      internalID: -1477310072411303662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d73ee57935e8f484c841afb06029749a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_3_1_SkeletonMage_Float_0: -5197840760120410618
+      Minion_3_1_SkeletonMage_Float_1: 441465821630653780
+      Minion_3_1_SkeletonMage_Float_10: 2952697792754869143
+      Minion_3_1_SkeletonMage_Float_11: -1753958013920859434
+      Minion_3_1_SkeletonMage_Float_12: -3139457914489933233
+      Minion_3_1_SkeletonMage_Float_13: -1699834313025698290
+      Minion_3_1_SkeletonMage_Float_14: 8036916849401766510
+      Minion_3_1_SkeletonMage_Float_15: 1684274534184623239
+      Minion_3_1_SkeletonMage_Float_16: 1101748466271609107
+      Minion_3_1_SkeletonMage_Float_17: 4903610767959130191
+      Minion_3_1_SkeletonMage_Float_18: -5255730793497156105
+      Minion_3_1_SkeletonMage_Float_19: -6812802658204819339
+      Minion_3_1_SkeletonMage_Float_2: -7155825749854263988
+      Minion_3_1_SkeletonMage_Float_20: -8377018434032464307
+      Minion_3_1_SkeletonMage_Float_21: -131019502845289108
+      Minion_3_1_SkeletonMage_Float_22: -7681419215638652916
+      Minion_3_1_SkeletonMage_Float_23: -7095095277775571105
+      Minion_3_1_SkeletonMage_Float_24: 2886175238592289002
+      Minion_3_1_SkeletonMage_Float_25: 8579418226494986997
+      Minion_3_1_SkeletonMage_Float_26: 6422235227462576879
+      Minion_3_1_SkeletonMage_Float_27: -1477310072411303662
+      Minion_3_1_SkeletonMage_Float_3: -4432844595200155196
+      Minion_3_1_SkeletonMage_Float_4: -4296787147218488045
+      Minion_3_1_SkeletonMage_Float_5: -8421649997974045591
+      Minion_3_1_SkeletonMage_Float_6: 2928408744261450242
+      Minion_3_1_SkeletonMage_Float_7: 4263700224266936567
+      Minion_3_1_SkeletonMage_Float_8: -7686969325795633198
+      Minion_3_1_SkeletonMage_Float_9: 4075520900984041333
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
