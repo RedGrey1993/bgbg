@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 4efb277cf169e8847a6dc62ee389d486
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5723212201054556565
+    second: Minion_2_1_SpikeTurtle_Run2_0
+  - first:
+      213: 6948725122806970243
+    second: Minion_2_1_SpikeTurtle_Run2_1
+  - first:
+      213: 3177317354778081539
+    second: Minion_2_1_SpikeTurtle_Run2_2
+  - first:
+      213: 1425263665718132015
+    second: Minion_2_1_SpikeTurtle_Run2_3
+  - first:
+      213: 8665568025880680184
+    second: Minion_2_1_SpikeTurtle_Run2_4
+  - first:
+      213: -1003111415631981198
+    second: Minion_2_1_SpikeTurtle_Run2_5
+  - first:
+      213: 3284606372365044506
+    second: Minion_2_1_SpikeTurtle_Run2_6
+  - first:
+      213: -5150620870618927231
+    second: Minion_2_1_SpikeTurtle_Run2_7
+  - first:
+      213: 4825394866434046931
+    second: Minion_2_1_SpikeTurtle_Run2_8
+  - first:
+      213: -7950352282730498227
+    second: Minion_2_1_SpikeTurtle_Run2_9
+  - first:
+      213: 5889448334142184374
+    second: Minion_2_1_SpikeTurtle_Run2_10
+  - first:
+      213: 887645108641060053
+    second: Minion_2_1_SpikeTurtle_Run2_11
+  - first:
+      213: -6405551786368338518
+    second: Minion_2_1_SpikeTurtle_Run2_12
+  - first:
+      213: 1803681318227479380
+    second: Minion_2_1_SpikeTurtle_Run2_13
+  - first:
+      213: -8124185200073231370
+    second: Minion_2_1_SpikeTurtle_Run2_14
+  - first:
+      213: -8928744328561154152
+    second: Minion_2_1_SpikeTurtle_Run2_15
+  - first:
+      213: -7520870160791956499
+    second: Minion_2_1_SpikeTurtle_Run2_16
+  - first:
+      213: -456901314135410681
+    second: Minion_2_1_SpikeTurtle_Run2_17
+  - first:
+      213: 8309838793731604914
+    second: Minion_2_1_SpikeTurtle_Run2_18
+  - first:
+      213: 4793008675441205622
+    second: Minion_2_1_SpikeTurtle_Run2_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_0
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1176
+        width: 226
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e26f573d01390b0800000000000000
+      internalID: -5723212201054556565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_1
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1177
+        width: 226
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 387fdbaeea4de6060800000000000000
+      internalID: 6948725122806970243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_2
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 1177
+        width: 226
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3093b3ecc49181c20800000000000000
+      internalID: 3177317354778081539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_3
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 1178
+        width: 226
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d766aa0cd87c310800000000000000
+      internalID: 1425263665718132015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_4
+      rect:
+        serializedVersion: 2
+        x: 2197
+        y: 1179
+        width: 227
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f6d9971538424870800000000000000
+      internalID: 8665568025880680184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_5
+      rect:
+        serializedVersion: 2
+        x: 2708
+        y: 1180
+        width: 228
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275dd117b7b3412f0800000000000000
+      internalID: -1003111415631981198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_6
+      rect:
+        serializedVersion: 2
+        x: 3220
+        y: 1181
+        width: 228
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1b8dc3d714459d20800000000000000
+      internalID: 3284606372365044506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_7
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 671
+        width: 229
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18fab0a7b915588b0800000000000000
+      internalID: -5150620870618927231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_8
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 668
+        width: 230
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3db7bc2a01f37f240800000000000000
+      internalID: 4825394866434046931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_9
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 657
+        width: 231
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d47f1acb8bcaaa190800000000000000
+      internalID: -7950352282730498227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_10
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 653
+        width: 232
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bb9f876e068bb150800000000000000
+      internalID: 5889448334142184374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_11
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 662
+        width: 233
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d4d92bf58c815c00800000000000000
+      internalID: 887645108641060053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_12
+      rect:
+        serializedVersion: 2
+        x: 2702
+        y: 668
+        width: 234
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa5752f9698ea17a0800000000000000
+      internalID: -6405551786368338518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_13
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 676
+        width: 236
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b05f44a96f70910800000000000000
+      internalID: 1803681318227479380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_14
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 168
+        width: 236
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f33624ba98114f80800000000000000
+      internalID: -8124185200073231370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_15
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 166
+        width: 236
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89724d5f65ab61480800000000000000
+      internalID: -8928744328561154152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_16
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 163
+        width: 237
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de31920af6080a790800000000000000
+      internalID: -7520870160791956499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_17
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 154
+        width: 238
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708bc81fca2c8a9f0800000000000000
+      internalID: -456901314135410681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_18
+      rect:
+        serializedVersion: 2
+        x: 2192
+        y: 154
+        width: 237
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b102210b5a725370800000000000000
+      internalID: 8309838793731604914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_2_1_SpikeTurtle_Run2_19
+      rect:
+        serializedVersion: 2
+        x: 2704
+        y: 145
+        width: 238
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 671e901feff248240800000000000000
+      internalID: 4793008675441205622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Minion_2_1_SpikeTurtle_Run2_0: -5723212201054556565
+      Minion_2_1_SpikeTurtle_Run2_1: 6948725122806970243
+      Minion_2_1_SpikeTurtle_Run2_10: 5889448334142184374
+      Minion_2_1_SpikeTurtle_Run2_11: 887645108641060053
+      Minion_2_1_SpikeTurtle_Run2_12: -6405551786368338518
+      Minion_2_1_SpikeTurtle_Run2_13: 1803681318227479380
+      Minion_2_1_SpikeTurtle_Run2_14: -8124185200073231370
+      Minion_2_1_SpikeTurtle_Run2_15: -8928744328561154152
+      Minion_2_1_SpikeTurtle_Run2_16: -7520870160791956499
+      Minion_2_1_SpikeTurtle_Run2_17: -456901314135410681
+      Minion_2_1_SpikeTurtle_Run2_18: 8309838793731604914
+      Minion_2_1_SpikeTurtle_Run2_19: 4793008675441205622
+      Minion_2_1_SpikeTurtle_Run2_2: 3177317354778081539
+      Minion_2_1_SpikeTurtle_Run2_3: 1425263665718132015
+      Minion_2_1_SpikeTurtle_Run2_4: 8665568025880680184
+      Minion_2_1_SpikeTurtle_Run2_5: -1003111415631981198
+      Minion_2_1_SpikeTurtle_Run2_6: 3284606372365044506
+      Minion_2_1_SpikeTurtle_Run2_7: -5150620870618927231
+      Minion_2_1_SpikeTurtle_Run2_8: 4825394866434046931
+      Minion_2_1_SpikeTurtle_Run2_9: -7950352282730498227
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

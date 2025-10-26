@@ -16,14 +16,14 @@ MonoBehaviour:
   explosionTile: {fileID: 11400000, guid: 57971f3ff262b4d4fbe6d4e01983181b, type: 2}
   wallTile: {fileID: 11400000, guid: 36c0ac87a3f14014197c33090a5f9d06, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  - {fileID: 5506378715684145941, guid: e6e280379e6a7c14298acaf26b8c3a9f, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 89c8ba24a8bb0514ba1d76f87f457f5c, type: 3}
   level: 1
-  minTotalRooms: 2
-  maxTotalRooms: 2
+  minTotalRooms: 3
+  maxTotalRooms: 3
   roomMaxWidth: 80
-  roomMaxHeight: 40
+  roomMaxHeight: 80
   minAreaPerMinion: 200
   maxAreaPerMinion: 200
   gamePassedSprite: {fileID: 0}

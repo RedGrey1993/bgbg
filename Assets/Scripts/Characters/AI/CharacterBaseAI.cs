@@ -61,7 +61,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region Collision
     protected float nextBounceTime = 0;
     protected bool isBouncingBack = false;
-    protected void BounceBack(Collision2D collision)
+    protected virtual void BounceBack(Collision2D collision)
     {
         if (Time.time > nextBounceTime && isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
@@ -409,6 +409,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region LookTo Action
+    private bool NeedChangeLookDir()
+    {
+        return CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
+            || CharacterData.CharacterType == CharacterType.Minion_2_1_SpikeTurtle;
+    }
     protected virtual void LookToAction()
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
@@ -424,7 +429,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput); // 30度
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookInput); // 45度
             }
-            else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+            else if (NeedChangeLookDir())
             {
                 Transform childTransform = transform.GetChild(0);
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
@@ -456,7 +461,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
                 childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
             }
-            else if (CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank)
+            else if (NeedChangeLookDir())
             {
                 Transform childTransform = transform.GetChild(0);
                 Debug.Log($"fhhtest, {name} moveInput: {moveInput}");

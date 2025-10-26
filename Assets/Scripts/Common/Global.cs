@@ -42,7 +42,7 @@ public enum CharacterType
     // Boss
     Boss_1_0_PhantomTank,
     Minion_2_0_GlitchSlime,
-    Minion_2_1,
+    Minion_2_1_SpikeTurtle,
     Boss_2_0_MasterTurtle,
     Minion_3_0,
     Minion_3_1,
