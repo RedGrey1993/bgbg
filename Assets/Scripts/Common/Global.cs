@@ -48,7 +48,7 @@ public enum CharacterType
     Minion_3_1_SkeletonMage,
     Boss_3_0_PokeBoy,
     Minion_4_0_HealerSprite,
-    Minion_4_1,
+    Minion_4_1_KamikazeShip,
     Boss_4_0_SysGuardian,
     Boss_5_0_TheRuler,
     Boss_4_0_SysGuardianFloatingTurret,

@@ -345,7 +345,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Move Action
-    protected void MoveAction()
+    protected virtual void MoveAction()
     {
         Vector2 moveInput = characterInput.MoveInput;
         if (moveInput.sqrMagnitude >= 0.1f)
@@ -416,7 +416,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     private bool NeedChangeLookDir()
     {
         return CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
-            || CharacterData.CharacterType == CharacterType.Minion_2_1_SpikeTurtle;
+            || CharacterData.CharacterType == CharacterType.Minion_2_1_SpikeTurtle
+            || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip;
     }
     protected virtual void LookToAction()
     {
@@ -468,7 +469,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             else if (NeedChangeLookDir())
             {
                 Transform childTransform = transform.GetChild(0);
-                Debug.Log($"fhhtest, {name} moveInput: {moveInput}");
+                // Debug.Log($"fhhtest, {name} moveInput: {moveInput}");
                 childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
             }
             if (moveInput.x > 0.1f)

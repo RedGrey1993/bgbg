@@ -3807,6 +3807,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bace8af6253632c45ac674b20f85c7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelDatabase
+--- !u!1001 &1519997513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1729484653}
+    m_Modifications:
+    - target: {fileID: 4966335488773358617, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966335488773358617, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_Name
+      value: Minion_4_1_KamikazeShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+--- !u!4 &1519997514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6641391400573639146, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+  m_PrefabInstance: {fileID: 1519997513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1573720806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,6 +4056,7 @@ Transform:
   - {fileID: 160730433}
   - {fileID: 341664305}
   - {fileID: 548228766}
+  - {fileID: 1519997514}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744355316
