@@ -456,6 +456,27 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
+    public List<GameObject> FindNearbyMinionsInRange(GameObject character, uint range)
+    {
+        List<GameObject> nearbyMinions = new ();
+        float sqrRange = range * range;
+        foreach (var kvp in minionObjects)
+        {
+            // 跳过自己
+            if (kvp.Value == character) continue;
+            var status = kvp.Value.GetComponent<CharacterStatus>();
+            if (status != null && !status.IsDead())
+            {
+                Vector2 toPlayer = kvp.Value.transform.position - character.transform.position;
+                float distSqr = toPlayer.sqrMagnitude;
+                if (distSqr <= sqrRange)
+                {
+                    nearbyMinions.Add(kvp.Value);
+                }
+            }
+        }
+        return nearbyMinions;
+    }
     public GameObject GetMyselfGameObject()
     {
         if (playerObjects.TryGetValue(MyInfo.Id, out GameObject go))

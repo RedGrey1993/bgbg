@@ -134,7 +134,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
     }
 
-    private float nextAggroChangeTime = 0;
+    protected float nextAggroChangeTime = 0;
     protected GameObject AggroTarget { get; set; } = null; // 当前仇恨目标
     // 寻找距离最近的Player作为仇恨目标
     protected virtual void UpdateAggroTarget()
