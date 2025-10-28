@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// 挂载在CFXR Explosion Smoke 2 Solo (HDR) Prefab上
 public class ExplosionDamage : MonoBehaviour
 {
     [Header("爆炸参数")]
@@ -7,7 +8,7 @@ public class ExplosionDamage : MonoBehaviour
     public float explosionRadius = 1f;
 
     [Tooltip("造成的伤害值")]
-    public uint damageAmount = 5;
+    public int damageAmount = 5;
 
     [Header("目标设置")]
     [Tooltip("指定要伤害的目标层级，优化性能")]
@@ -35,7 +36,7 @@ public class ExplosionDamage : MonoBehaviour
 
                 // 4. 获取玩家身上的生命值脚本组件
                 CharacterStatus status = col.GetComponent<CharacterStatus>();
-                
+
                 // 5. 如果找到了生命值脚本，就调用受伤方法
                 if (status != null)
                 {

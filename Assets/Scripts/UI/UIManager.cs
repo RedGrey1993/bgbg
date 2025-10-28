@@ -298,7 +298,7 @@ public class UIManager : MonoBehaviour
         bossHealthSlider.gameObject.SetActive(false);
     }
 
-    public void UpdateBossHealthSlider(uint curHp, uint maxHp)
+    public void UpdateBossHealthSlider(int curHp, int maxHp)
     {
         bossHealthSlider.value = curHp;
         bossHealthSlider.maxValue = maxHp;

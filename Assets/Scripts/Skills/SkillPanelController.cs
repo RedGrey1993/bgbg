@@ -37,11 +37,6 @@ public class SkillPanelController : MonoBehaviour
     // 如果玩家一直不选择技能进入下一关，则设置这个变量为 true，强制在进入下一关之前自动选择一个技能
     public bool ForceRandomChoose { get; set; } = false;
 
-    // 用于测试的技能列表
-    [Header("Debug & Test")]
-    [SerializeField] private List<SkillData> testSkills1;
-    [SerializeField] private List<SkillData> testSkills2;
-
     public void RandomizeNewPassiveSkillChoice()
     {
         UIManager.Instance.HideSkillPanel();
@@ -52,7 +47,7 @@ public class SkillPanelController : MonoBehaviour
         {
             // var skillId = Random.Range(0, skillNum);
             // var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
-            uint skillId = 5;
+            uint skillId = 6;
             var skillData = SkillDatabase.Instance.GetPassiveSkill(skillId);
             skills.Add(skillData);
         }
@@ -187,6 +182,7 @@ public class SkillPanelController : MonoBehaviour
     }
 
     // --- 用于测试的函数 ---
+    private int curSkillId = 0;
     void Update()
     {
 #if DEBUG
@@ -194,14 +190,17 @@ public class SkillPanelController : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             Debug.Log("添加第一组技能到队列...");
-            AddNewSkillChoice(testSkills1);
-        }
-
-        // 按下 "2" 键，添加第二组技能到队列
-        if (Keyboard.current != null && Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            Debug.Log("添加第二组技能到队列...");
-            AddNewSkillChoice(testSkills2);
+            UIManager.Instance.HideSkillPanel();
+            UIManager.Instance.ToggleSkillPanel();
+            var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
+            List<SkillData> testSkills = new List<SkillData>();
+            for (int i = 0; i < 3; i++)
+            {
+                var skillData = SkillDatabase.Instance.PassiveSkills[curSkillId];
+                testSkills.Add(skillData);
+            }
+            curSkillId = (curSkillId + 1) % skillNum;
+            AddNewSkillChoice(testSkills);
         }
 #endif
     }

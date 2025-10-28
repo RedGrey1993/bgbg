@@ -39,8 +39,6 @@ public class CharacterStatus : MonoBehaviour
         State.Position = new Vec2();
 
         bulletState.ShootNum = 1;
-        bulletState.ShootAngleRange = 0;
-        bulletState.PenetrateCount = 0;
     }
 
     void Start()
@@ -63,8 +61,8 @@ public class CharacterStatus : MonoBehaviour
     public void TakeDamage_Host(CharacterStatus attacker)
     {
         if (IsDead() || attacker == null) return;
-        uint damage = attacker.State.Damage;
-        uint curHp = State.CurrentHp - damage;
+        int damage = attacker.State.Damage;
+        int curHp = State.CurrentHp - damage;
         if (curHp <= 0)
         {
             // this死亡，提供给attacker经验值
@@ -75,15 +73,15 @@ public class CharacterStatus : MonoBehaviour
             attacker.ExpChanged(attackerCurExp);
         }
         // TODO: 发送this.HealthChanged消息给所有客户端
-        HealthChanged((uint)Mathf.Max(0, curHp));
+        HealthChanged(Mathf.Max(0, curHp));
     }
 
     // 造成伤害时，attacker可能已经死了，有时候仍然需要正常造成伤害
     // 也有时候是一些道具造成的伤害，这时attacker为null
-    public void TakeDamage_Host(uint damage, CharacterStatus attacker)
+    public void TakeDamage_Host(int damage, CharacterStatus attacker)
     {
         if (IsDead()) return;
-        uint curHp = State.CurrentHp - damage;
+        int curHp = State.CurrentHp - damage;
         if (curHp <= 0 && attacker != null)
         {
             // this死亡，提供给attacker经验值
@@ -94,12 +92,12 @@ public class CharacterStatus : MonoBehaviour
             attacker.ExpChanged(attackerCurExp);
         }
         // TODO: 发送this.HealthChanged消息给所有客户端
-        HealthChanged((uint)Mathf.Max(0, curHp));
+        HealthChanged(Mathf.Max(0, curHp));
     }
 
 
     // 供HOST/CLIENT统一调用
-    public void HealthChanged(uint curHp)
+    public void HealthChanged(int curHp)
     {
         if (characterData.hurtSound != null && curHp < State.CurrentHp)
         {
