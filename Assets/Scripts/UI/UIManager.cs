@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     [Tooltip("控制渐变速度的缓动曲线")]
     public AnimationCurve fadeOutCurve;
     public AnimationCurve fadeInCurve;
-    [SerializeField] private Animator skillPanelAnimator;
+    [SerializeField] private GameObject skillPanel;
     [SerializeField] private Transform infoPanelContainer;
     [SerializeField] private GameObject infoTextPrefab;
     public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     public GameObject TeleportBeamEffect { get; set; }
-    private bool isSkillPanelOpen = false;
     private Coroutine flashCoroutine;
 
     private List<Coroutine> infoPanelCoroutines = new List<Coroutine>();
@@ -880,27 +879,34 @@ public class UIManager : MonoBehaviour
     {
         bool inGame = GameManager.Instance.GameState == GameState.InGame;
         if (!inGame) return; // 仅在游戏中允许打开技能面板
-        if (skillPanelAnimator == null) return;
+        if (skillPanel == null) return;
 
-        isSkillPanelOpen = !isSkillPanelOpen;
-        if (isSkillPanelOpen)
+        if (skillPanel.activeSelf)
         {
-            skillPanelAnimator.SetTrigger("Show");
+            StartCoroutine(HideSkillPanel());
         }
         else
         {
-            skillPanelAnimator.SetTrigger("Hide");
+            StartCoroutine(OpenSkillPanel());
         }
     }
 
-    public void HideSkillPanel()
+    public IEnumerator HideSkillPanel()
     {
-        if (skillPanelAnimator == null) return;
-        if (isSkillPanelOpen)
-        {
-            isSkillPanelOpen = false;
-            skillPanelAnimator.SetTrigger("Hide");
-        }
+        if (skillPanel == null) yield break;
+        if (!skillPanel.activeSelf) yield break;
+        skillPanel.GetComponent<Animator>().Play("SkillPanelSlideOut");
+        yield return new WaitForSeconds(0.5f);
+        skillPanel.SetActive(false);
+    }
+
+    public IEnumerator OpenSkillPanel()
+    {
+        if (skillPanel == null) yield break;
+        if (skillPanel.activeSelf) yield break;
+        skillPanel.SetActive(true);
+        skillPanel.GetComponent<Animator>().Play("SkillPanelSlideIn");
+        yield return new WaitForSeconds(0.5f);
     }
 
     private readonly object _infoLockObject = new object(); // lock对于本线程来说是可重入的，其它线程才会等待
@@ -930,7 +936,7 @@ public class UIManager : MonoBehaviour
             if (infoTextObjects.Count > 0)
             {
                 Animator animator = infoPanelContainer.GetComponent<Animator>();
-                animator.SetTrigger("Hide");
+                animator.Play("SkillPanelSlideOut");
             }
             infoTextObjects.Clear();
         }
@@ -947,7 +953,7 @@ public class UIManager : MonoBehaviour
             if (infoTextObjects.Count == 0)
             {
                 Animator animator = infoPanelContainer.GetComponent<Animator>();
-                animator.SetTrigger("Show");
+                animator.Play("SkillPanelSlideIn");
             }
             infoTextObjects.Add(infoTextObj);
         }
@@ -967,7 +973,7 @@ public class UIManager : MonoBehaviour
             if (infoTextObjects.Count == 0)
             {
                 Animator animator = infoTextObj.GetComponentInParent<Animator>();
-                animator.SetTrigger("Hide");
+                animator.Play("SkillPanelSlideOut");
             }
         }
     }
@@ -1015,7 +1021,7 @@ public class UIManager : MonoBehaviour
         var spc = GetComponent<StatusPanelController>();
         spc.HideMyStatusUI();
         HideSettings();
-        HideSkillPanel();
+        StartCoroutine(HideSkillPanel());
         HideFadePanel();
         _mainMenuRoot.RemoveFromClassList("hidden");
         ShowPanel(_mainMenuPanel);

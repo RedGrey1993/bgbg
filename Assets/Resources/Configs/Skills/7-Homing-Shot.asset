@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 7-Homing-Shot
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 7
+  skillName: Homing Shot
+  description: Your bullets will slowly track nearby enemies automatically, and the
+    more stacks, the more precise the tracking.
+  backgroundStory: 
+  icon: {fileID: -7912430970267577344, guid: d21e5d2185ad3d94d9fb0dbb578c9aca, type: 3}
+  IsActive: 0
+  executor: {fileID: 11400000, guid: 38e31441eb037b0498e2ccd505dd5a9b, type: 2}

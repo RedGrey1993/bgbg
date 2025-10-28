@@ -2360,7 +2360,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  skillPanelAnimator: {fileID: 1174580999}
+  skillPanel: {fileID: 1174580995}
   infoPanelContainer: {fileID: 2113039090}
   infoTextPrefab: {fileID: 6454285101987984534, guid: 415c4d0ac4d2a864483ea66b5f4f54aa, type: 3}
   flashImage: {fileID: 527843884}
@@ -2851,7 +2851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1174580996
 RectTransform:
   m_ObjectHideFlags: 0

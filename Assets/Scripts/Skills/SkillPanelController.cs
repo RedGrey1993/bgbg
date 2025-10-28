@@ -39,16 +39,13 @@ public class SkillPanelController : MonoBehaviour
 
     public void RandomizeNewPassiveSkillChoice()
     {
-        UIManager.Instance.HideSkillPanel();
-        UIManager.Instance.ToggleSkillPanel();
+        StartCoroutine(UIManager.Instance.OpenSkillPanel());
         var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
         List<SkillData> skills = new List<SkillData>();
         for (int i = 0; i < Constants.SkillChooseNumber; i++)
         {
-            // var skillId = Random.Range(0, skillNum);
-            // var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
-            uint skillId = 6;
-            var skillData = SkillDatabase.Instance.GetPassiveSkill(skillId);
+            var skillId = Random.Range(0, skillNum);
+            var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
             skills.Add(skillData);
         }
         AddNewSkillChoice(skills);
@@ -151,7 +148,7 @@ public class SkillPanelController : MonoBehaviour
         // 4. 应用技能并清理UI
         LearnNewSkill(selectedSkill);
         learnableSkillsPanel.SetActive(false);
-        UIManager.Instance.HideSkillPanel(); // 关闭技能面板
+        StartCoroutine(UIManager.Instance.HideSkillPanel()); // 关闭技能面板
     }
 
     private void PopulateAndSetupLearnableSkills(List<SkillData> skills, System.Action<SkillData> callback)
@@ -190,13 +187,13 @@ public class SkillPanelController : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             Debug.Log("添加第一组技能到队列...");
-            UIManager.Instance.HideSkillPanel();
-            UIManager.Instance.ToggleSkillPanel();
+            StartCoroutine(UIManager.Instance.OpenSkillPanel());
             var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
             List<SkillData> testSkills = new List<SkillData>();
             for (int i = 0; i < 3; i++)
             {
-                var skillData = SkillDatabase.Instance.PassiveSkills[curSkillId];
+                // var skillData = SkillDatabase.Instance.PassiveSkills[curSkillId];
+                var skillData = SkillDatabase.Instance.GetPassiveSkill(7);
                 testSkills.Add(skillData);
             }
             curSkillId = (curSkillId + 1) % skillNum;

@@ -10,9 +10,9 @@ public class Bullet : MonoBehaviour
     public BulletState bulletState { get; set; } // 子弹强化状态
     public Collider2D LastCollider { get; set; } = null;
     public GameObject AggroTarget { get; set; } = null;
-    public int splitCount = 0;
+    public int SplitCount { get; set; } = 0;
+    public int HomingForce { get; set; } = 0;
     public int penetrateCount = 0;
-    public int homingForce = 0;
     private float bornTime;
     private Collider2D col2D;
     private Rigidbody2D rb;
@@ -30,7 +30,8 @@ public class Bullet : MonoBehaviour
         if (bulletState != null)
         {
             if (bulletState.PenetrateCount > penetrateCount) penetrateCount = bulletState.PenetrateCount;
-            if (bulletState.SplitCount > splitCount) splitCount = bulletState.SplitCount;
+            if (bulletState.SplitCount > SplitCount) SplitCount = bulletState.SplitCount;
+            if (bulletState.HomingForce > HomingForce) HomingForce = bulletState.HomingForce;
         }
         if (Damage == 0) Damage = OwnerStatus.State.Damage;
         col2D.enabled = true;
@@ -49,10 +50,10 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (AggroTarget != null && homingForce > 0)
+        if (AggroTarget != null && HomingForce > 0)
         {
             var diff = AggroTarget.transform.position - transform.position;
-            rb.AddForce(diff.normalized * homingForce, ForceMode2D.Force);
+            rb.AddForce(diff.normalized * HomingForce, ForceMode2D.Force);
             transform.localRotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized);
         }
     }
@@ -81,7 +82,7 @@ public class Bullet : MonoBehaviour
                 }
 
                 penetrateCount--;
-                splitCount--;
+                SplitCount--;
                 if (targetCharacterStatus?.transform.root.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.transform.root.CompareTag(Constants.TagEnemy) == true)
                 {
                     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
@@ -89,7 +90,7 @@ public class Bullet : MonoBehaviour
                 else if (targetCharacterStatus != null)
                 {
                     targetCharacterStatus.TakeDamage_Host(Damage, OwnerStatus);
-                    if (splitCount >= 0) // 左右各相距45度分裂为2颗子弹
+                    if (SplitCount >= 0) // 左右各相距45度分裂为2颗子弹
                     {
                         var startPos = transform.position;
                         var startDir = Quaternion.Euler(0, 0, -45) * rb.linearVelocity.normalized;
@@ -104,7 +105,7 @@ public class Bullet : MonoBehaviour
                             bs.Damage = Damage > 1 ? (Damage / 2) : 1;
                             var bState = bulletState.Clone();
                             bState.PenetrateCount = penetrateCount;
-                            bState.SplitCount = splitCount;
+                            bState.SplitCount = SplitCount;
                             bs.bulletState = bState;
                             bs.LastCollider = other;
 

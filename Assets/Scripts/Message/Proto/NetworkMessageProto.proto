@@ -61,6 +61,7 @@ message BulletState
     int32 ShootAngleRange = 2;
     int32 PenetrateCount = 3;
     int32 SplitCount = 4;
+    int32 HomingForce = 5;
 }
 
 message StateUpdateMessage
