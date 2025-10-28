@@ -6,7 +6,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 
-// Stomper不会对角线移动
 public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
 {
     #region Collision

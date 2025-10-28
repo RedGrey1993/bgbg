@@ -5,9 +5,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Stomper不会对角线移动
 public class Minion_4_0_HealerSpriteAI : CharacterBaseAI
 {
+    #region Collision
+    private float nextDamageTime = 0;
+    private void ProcessCollisionDamage(Collision2D collision)
+    {
+        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        {
+            if (collision.gameObject.CompareTag(Constants.TagPlayer))
+            {
+                if (Time.time > nextDamageTime)
+                {
+                    var status = collision.gameObject.GetComponent<CharacterStatus>();
+                    status.TakeDamage_Host(characterStatus.State.Damage, null);
+                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                }
+            }
+        }
+    }
+
+    // 不会移动，不需要BounceBack
+    protected override void SubclassCollisionEnter2D(Collision2D collision)
+    {
+        ProcessCollisionDamage(collision);
+    }
+
+    protected override void SubclassCollisionStay2D(Collision2D collision)
+    {
+        ProcessCollisionDamage(collision);
+    }
+    #endregion
+
     #region AI Logic / Update Input
     private List<GameObject> healerTargets;
     protected override void UpdateAggroTarget()

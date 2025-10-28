@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        if (bulletState.PenetrateCount > penetrateCount)
+        if (bulletState != null && bulletState.PenetrateCount > penetrateCount)
         {
             penetrateCount = bulletState.PenetrateCount;
         }
