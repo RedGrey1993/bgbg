@@ -28,7 +28,7 @@ message RectProto
 
 message InputMessage
 {
-    uint32 PlayerId = 1;
+    int32 PlayerId = 1;
     uint32 Tick = 2;
     uint32 Type = 3;
     Vec2 MoveInput = 4;
@@ -37,7 +37,7 @@ message InputMessage
 
 message PlayerState
 {
-    uint32 PlayerId = 1;
+    int32 PlayerId = 1;
     string PlayerName = 2;
     int32 MaxHp = 3;
     int32 CurrentHp = 4;
@@ -78,12 +78,12 @@ message PlayerInfo
 {
     string CSteamID = 1; // CSteamID or a string for local players
     string Name = 2;
-    uint32 Id = 3;
+    int32 Id = 3;
 }
 
 message LearnSkillMessage
 {
-    uint32 playerId = 1;
+    int32 playerId = 1;
     uint32 skillId = 2;
 }
 
@@ -100,12 +100,18 @@ message BossPrefabInfo
     int32 PrefabId = 2;
 }
 
+message MinionPrefabInfo
+{
+    int32 StageId = 1;
+    int32 PrefabId = 2;
+}
+
 message LocalStorage
 {
     uint32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
     repeated PlayerState MinionStates = 3;
-    repeated int32 MinionPrefabIdx = 4;
+    repeated MinionPrefabInfo MinionPrefabInfos = 4;
     repeated PlayerState BossStates = 5;
     repeated BossPrefabInfo BossPrefabInfos = 6;
     repeated RectProto Rooms = 7;

@@ -34,10 +34,10 @@ namespace NetworkMessageProto {
             "dG8uTGVhcm5Ta2lsbE1lc3NhZ2UiHAoEVmVjMhIJCgFYGAEgASgCEgkKAVkY",
             "AiABKAIiQAoJUmVjdFByb3RvEgkKAVgYASABKAISCQoBWRgCIAEoAhINCgVX",
             "aWR0aBgDIAEoAhIOCgZIZWlnaHQYBCABKAIimAEKDElucHV0TWVzc2FnZRIQ",
-            "CghQbGF5ZXJJZBgBIAEoDRIMCgRUaWNrGAIgASgNEgwKBFR5cGUYAyABKA0S",
+            "CghQbGF5ZXJJZBgBIAEoBRIMCgRUaWNrGAIgASgNEgwKBFR5cGUYAyABKA0S",
             "LAoJTW92ZUlucHV0GAQgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMy",
             "EiwKCUxvb2tJbnB1dBgFIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVj",
-            "MiLyAgoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKA0SEgoKUGxheWVy",
+            "MiLyAgoLUGxheWVyU3RhdGUSEAoIUGxheWVySWQYASABKAUSEgoKUGxheWVy",
             "TmFtZRgCIAEoCRINCgVNYXhIcBgDIAEoBRIRCglDdXJyZW50SHAYBCABKAUS",
             "EQoJTW92ZVNwZWVkGAUgASgNEhMKC0J1bGxldFNwZWVkGAYgASgNEg4KBkRh",
             "bWFnZRgHIAEoBRIXCg9BdHRhY2tGcmVxdWVuY3kYCCABKAISEgoKU2hvb3RS",
@@ -52,23 +52,26 @@ namespace NetworkMessageProto {
             "YXllclN0YXRlEgwKBFRpY2sYAiABKA0iSAoUUGxheWVyc1VwZGF0ZU1lc3Nh",
             "Z2USMAoHUGxheWVycxgBIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxh",
             "eWVySW5mbyI4CgpQbGF5ZXJJbmZvEhAKCENTdGVhbUlEGAEgASgJEgwKBE5h",
-            "bWUYAiABKAkSCgoCSWQYAyABKA0iNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoI",
-            "cGxheWVySWQYASABKA0SDwoHc2tpbGxJZBgCIAEoDSJWCgpQaWNrdXBJdGVt",
+            "bWUYAiABKAkSCgoCSWQYAyABKAUiNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoI",
+            "cGxheWVySWQYASABKAUSDwoHc2tpbGxJZBgCIAEoDSJWCgpQaWNrdXBJdGVt",
             "EgoKAklkGAEgASgFEg8KB1NraWxsSWQYAiABKA0SKwoIUG9zaXRpb24YAyAB",
             "KAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYklu",
-            "Zm8SDwoHU3RhZ2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSKXBAoMTG9j",
-            "YWxTdG9yYWdlEhQKDEN1cnJlbnRTdGFnZRgBIAEoDRI2CgxQbGF5ZXJTdGF0",
-            "ZXMYAiADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjYK",
-            "DE1pbmlvblN0YXRlcxgDIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxh",
-            "eWVyU3RhdGUSFwoPTWluaW9uUHJlZmFiSWR4GAQgAygFEjQKCkJvc3NTdGF0",
-            "ZXMYBSADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjwK",
-            "D0Jvc3NQcmVmYWJJbmZvcxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
-            "Qm9zc1ByZWZhYkluZm8SLQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2Fn",
-            "ZVByb3RvLlJlY3RQcm90bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9v",
-            "bU1heEhlaWdodBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQ",
-            "VGVsZXBvcnRQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
-            "VmVjMhI0CgtQaWNrdXBJdGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJv",
-            "dG8uUGlja3VwSXRlbRIUCgxQYXNzZWRTdGFnZXMYDSADKAViBnByb3RvMw=="));
+            "Zm8SDwoHU3RhZ2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSI1ChBNaW5p",
+            "b25QcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiAB",
+            "KAUiwAQKDExvY2FsU3RvcmFnZRIUCgxDdXJyZW50U3RhZ2UYASABKA0SNgoM",
+            "UGxheWVyU3RhdGVzGAIgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5",
+            "ZXJTdGF0ZRI2CgxNaW5pb25TdGF0ZXMYAyADKAsyIC5OZXR3b3JrTWVzc2Fn",
+            "ZVByb3RvLlBsYXllclN0YXRlEkAKEU1pbmlvblByZWZhYkluZm9zGAQgAygL",
+            "MiUuTmV0d29ya01lc3NhZ2VQcm90by5NaW5pb25QcmVmYWJJbmZvEjQKCkJv",
+            "c3NTdGF0ZXMYBSADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0",
+            "YXRlEjwKD0Jvc3NQcmVmYWJJbmZvcxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uQm9zc1ByZWZhYkluZm8SLQoFUm9vbXMYByADKAsyHi5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLlJlY3RQcm90bxIUCgxSb29tTWF4V2lkdGgYCCABKA0S",
+            "FQoNUm9vbU1heEhlaWdodBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQYCiAB",
+            "KA0SMwoQVGVsZXBvcnRQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uVmVjMhI0CgtQaWNrdXBJdGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNz",
+            "YWdlUHJvdG8uUGlja3VwSXRlbRIUCgxQYXNzZWRTdGFnZXMYDSADKAViBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,7 +87,8 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LearnSkillMessage), global::NetworkMessageProto.LearnSkillMessage.Parser, new[]{ "PlayerId", "SkillId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabIdx", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1105,10 +1109,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "PlayerId" field.</summary>
     public const int PlayerIdFieldNumber = 1;
-    private uint playerId_;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlayerId {
+    public int PlayerId {
       get { return playerId_; }
       set {
         playerId_ = value;
@@ -1215,7 +1219,7 @@ namespace NetworkMessageProto {
     #else
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PlayerId);
+        output.WriteInt32(PlayerId);
       }
       if (Tick != 0) {
         output.WriteRawTag(16);
@@ -1245,7 +1249,7 @@ namespace NetworkMessageProto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PlayerId);
+        output.WriteInt32(PlayerId);
       }
       if (Tick != 0) {
         output.WriteRawTag(16);
@@ -1274,7 +1278,7 @@ namespace NetworkMessageProto {
     public int CalculateSize() {
       int size = 0;
       if (PlayerId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (Tick != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tick);
@@ -1341,7 +1345,7 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            PlayerId = input.ReadUInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
@@ -1386,7 +1390,7 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            PlayerId = input.ReadUInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
@@ -1480,10 +1484,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "PlayerId" field.</summary>
     public const int PlayerIdFieldNumber = 1;
-    private uint playerId_;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlayerId {
+    public int PlayerId {
       get { return playerId_; }
       set {
         playerId_ = value;
@@ -1761,7 +1765,7 @@ namespace NetworkMessageProto {
     #else
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PlayerId);
+        output.WriteInt32(PlayerId);
       }
       if (PlayerName.Length != 0) {
         output.WriteRawTag(18);
@@ -1832,7 +1836,7 @@ namespace NetworkMessageProto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PlayerId);
+        output.WriteInt32(PlayerId);
       }
       if (PlayerName.Length != 0) {
         output.WriteRawTag(18);
@@ -1902,7 +1906,7 @@ namespace NetworkMessageProto {
     public int CalculateSize() {
       int size = 0;
       if (PlayerId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (PlayerName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerName);
@@ -2028,7 +2032,7 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            PlayerId = input.ReadUInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 18: {
@@ -2115,7 +2119,7 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            PlayerId = input.ReadUInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 18: {
@@ -2985,10 +2989,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "Id" field.</summary>
     public const int IdFieldNumber = 3;
-    private uint id_;
+    private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
+    public int Id {
       get { return id_; }
       set {
         id_ = value;
@@ -3051,7 +3055,7 @@ namespace NetworkMessageProto {
       }
       if (Id != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(Id);
+        output.WriteInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3073,7 +3077,7 @@ namespace NetworkMessageProto {
       }
       if (Id != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(Id);
+        output.WriteInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3092,7 +3096,7 @@ namespace NetworkMessageProto {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3143,7 +3147,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 24: {
-            Id = input.ReadUInt32();
+            Id = input.ReadInt32();
             break;
           }
         }
@@ -3174,7 +3178,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 24: {
-            Id = input.ReadUInt32();
+            Id = input.ReadInt32();
             break;
           }
         }
@@ -3232,10 +3236,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "playerId" field.</summary>
     public const int PlayerIdFieldNumber = 1;
-    private uint playerId_;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlayerId {
+    public int PlayerId {
       get { return playerId_; }
       set {
         playerId_ = value;
@@ -3300,7 +3304,7 @@ namespace NetworkMessageProto {
     #else
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PlayerId);
+        output.WriteInt32(PlayerId);
       }
       if (SkillId != 0) {
         output.WriteRawTag(16);
@@ -3318,7 +3322,7 @@ namespace NetworkMessageProto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PlayerId);
+        output.WriteInt32(PlayerId);
       }
       if (SkillId != 0) {
         output.WriteRawTag(16);
@@ -3335,7 +3339,7 @@ namespace NetworkMessageProto {
     public int CalculateSize() {
       int size = 0;
       if (PlayerId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (SkillId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
@@ -3378,7 +3382,7 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            PlayerId = input.ReadUInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
@@ -3405,7 +3409,7 @@ namespace NetworkMessageProto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            PlayerId = input.ReadUInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
@@ -3936,6 +3940,241 @@ namespace NetworkMessageProto {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MinionPrefabInfo : pb::IMessage<MinionPrefabInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MinionPrefabInfo> _parser = new pb::MessageParser<MinionPrefabInfo>(() => new MinionPrefabInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MinionPrefabInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MinionPrefabInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MinionPrefabInfo(MinionPrefabInfo other) : this() {
+      stageId_ = other.stageId_;
+      prefabId_ = other.prefabId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MinionPrefabInfo Clone() {
+      return new MinionPrefabInfo(this);
+    }
+
+    /// <summary>Field number for the "StageId" field.</summary>
+    public const int StageIdFieldNumber = 1;
+    private int stageId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int StageId {
+      get { return stageId_; }
+      set {
+        stageId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PrefabId" field.</summary>
+    public const int PrefabIdFieldNumber = 2;
+    private int prefabId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PrefabId {
+      get { return prefabId_; }
+      set {
+        prefabId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MinionPrefabInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MinionPrefabInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (StageId != other.StageId) return false;
+      if (PrefabId != other.PrefabId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (StageId != 0) hash ^= StageId.GetHashCode();
+      if (PrefabId != 0) hash ^= PrefabId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (StageId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(StageId);
+      }
+      if (PrefabId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PrefabId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (StageId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(StageId);
+      }
+      if (PrefabId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PrefabId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (StageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(StageId);
+      }
+      if (PrefabId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PrefabId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MinionPrefabInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.StageId != 0) {
+        StageId = other.StageId;
+      }
+      if (other.PrefabId != 0) {
+        PrefabId = other.PrefabId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            StageId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PrefabId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            StageId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PrefabId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class LocalStorage : pb::IMessage<LocalStorage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -3950,7 +4189,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[12]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3973,7 +4212,7 @@ namespace NetworkMessageProto {
       currentStage_ = other.currentStage_;
       playerStates_ = other.playerStates_.Clone();
       minionStates_ = other.minionStates_.Clone();
-      minionPrefabIdx_ = other.minionPrefabIdx_.Clone();
+      minionPrefabInfos_ = other.minionPrefabInfos_.Clone();
       bossStates_ = other.bossStates_.Clone();
       bossPrefabInfos_ = other.bossPrefabInfos_.Clone();
       rooms_ = other.rooms_.Clone();
@@ -4026,15 +4265,15 @@ namespace NetworkMessageProto {
       get { return minionStates_; }
     }
 
-    /// <summary>Field number for the "MinionPrefabIdx" field.</summary>
-    public const int MinionPrefabIdxFieldNumber = 4;
-    private static readonly pb::FieldCodec<int> _repeated_minionPrefabIdx_codec
-        = pb::FieldCodec.ForInt32(34);
-    private readonly pbc::RepeatedField<int> minionPrefabIdx_ = new pbc::RepeatedField<int>();
+    /// <summary>Field number for the "MinionPrefabInfos" field.</summary>
+    public const int MinionPrefabInfosFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.MinionPrefabInfo> _repeated_minionPrefabInfos_codec
+        = pb::FieldCodec.ForMessage(34, global::NetworkMessageProto.MinionPrefabInfo.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.MinionPrefabInfo> minionPrefabInfos_ = new pbc::RepeatedField<global::NetworkMessageProto.MinionPrefabInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> MinionPrefabIdx {
-      get { return minionPrefabIdx_; }
+    public pbc::RepeatedField<global::NetworkMessageProto.MinionPrefabInfo> MinionPrefabInfos {
+      get { return minionPrefabInfos_; }
     }
 
     /// <summary>Field number for the "BossStates" field.</summary>
@@ -4158,7 +4397,7 @@ namespace NetworkMessageProto {
       if (CurrentStage != other.CurrentStage) return false;
       if(!playerStates_.Equals(other.playerStates_)) return false;
       if(!minionStates_.Equals(other.minionStates_)) return false;
-      if(!minionPrefabIdx_.Equals(other.minionPrefabIdx_)) return false;
+      if(!minionPrefabInfos_.Equals(other.minionPrefabInfos_)) return false;
       if(!bossStates_.Equals(other.bossStates_)) return false;
       if(!bossPrefabInfos_.Equals(other.bossPrefabInfos_)) return false;
       if(!rooms_.Equals(other.rooms_)) return false;
@@ -4178,7 +4417,7 @@ namespace NetworkMessageProto {
       if (CurrentStage != 0) hash ^= CurrentStage.GetHashCode();
       hash ^= playerStates_.GetHashCode();
       hash ^= minionStates_.GetHashCode();
-      hash ^= minionPrefabIdx_.GetHashCode();
+      hash ^= minionPrefabInfos_.GetHashCode();
       hash ^= bossStates_.GetHashCode();
       hash ^= bossPrefabInfos_.GetHashCode();
       hash ^= rooms_.GetHashCode();
@@ -4212,7 +4451,7 @@ namespace NetworkMessageProto {
       }
       playerStates_.WriteTo(output, _repeated_playerStates_codec);
       minionStates_.WriteTo(output, _repeated_minionStates_codec);
-      minionPrefabIdx_.WriteTo(output, _repeated_minionPrefabIdx_codec);
+      minionPrefabInfos_.WriteTo(output, _repeated_minionPrefabInfos_codec);
       bossStates_.WriteTo(output, _repeated_bossStates_codec);
       bossPrefabInfos_.WriteTo(output, _repeated_bossPrefabInfos_codec);
       rooms_.WriteTo(output, _repeated_rooms_codec);
@@ -4250,7 +4489,7 @@ namespace NetworkMessageProto {
       }
       playerStates_.WriteTo(ref output, _repeated_playerStates_codec);
       minionStates_.WriteTo(ref output, _repeated_minionStates_codec);
-      minionPrefabIdx_.WriteTo(ref output, _repeated_minionPrefabIdx_codec);
+      minionPrefabInfos_.WriteTo(ref output, _repeated_minionPrefabInfos_codec);
       bossStates_.WriteTo(ref output, _repeated_bossStates_codec);
       bossPrefabInfos_.WriteTo(ref output, _repeated_bossPrefabInfos_codec);
       rooms_.WriteTo(ref output, _repeated_rooms_codec);
@@ -4287,7 +4526,7 @@ namespace NetworkMessageProto {
       }
       size += playerStates_.CalculateSize(_repeated_playerStates_codec);
       size += minionStates_.CalculateSize(_repeated_minionStates_codec);
-      size += minionPrefabIdx_.CalculateSize(_repeated_minionPrefabIdx_codec);
+      size += minionPrefabInfos_.CalculateSize(_repeated_minionPrefabInfos_codec);
       size += bossStates_.CalculateSize(_repeated_bossStates_codec);
       size += bossPrefabInfos_.CalculateSize(_repeated_bossPrefabInfos_codec);
       size += rooms_.CalculateSize(_repeated_rooms_codec);
@@ -4322,7 +4561,7 @@ namespace NetworkMessageProto {
       }
       playerStates_.Add(other.playerStates_);
       minionStates_.Add(other.minionStates_);
-      minionPrefabIdx_.Add(other.minionPrefabIdx_);
+      minionPrefabInfos_.Add(other.minionPrefabInfos_);
       bossStates_.Add(other.bossStates_);
       bossPrefabInfos_.Add(other.bossPrefabInfos_);
       rooms_.Add(other.rooms_);
@@ -4374,9 +4613,8 @@ namespace NetworkMessageProto {
             minionStates_.AddEntriesFrom(input, _repeated_minionStates_codec);
             break;
           }
-          case 34:
-          case 32: {
-            minionPrefabIdx_.AddEntriesFrom(input, _repeated_minionPrefabIdx_codec);
+          case 34: {
+            minionPrefabInfos_.AddEntriesFrom(input, _repeated_minionPrefabInfos_codec);
             break;
           }
           case 42: {
@@ -4450,9 +4688,8 @@ namespace NetworkMessageProto {
             minionStates_.AddEntriesFrom(ref input, _repeated_minionStates_codec);
             break;
           }
-          case 34:
-          case 32: {
-            minionPrefabIdx_.AddEntriesFrom(ref input, _repeated_minionPrefabIdx_codec);
+          case 34: {
+            minionPrefabInfos_.AddEntriesFrom(ref input, _repeated_minionPrefabInfos_codec);
             break;
           }
           case 42: {

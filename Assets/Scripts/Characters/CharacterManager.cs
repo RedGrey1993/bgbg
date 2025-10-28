@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NetworkMessageProto;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
@@ -10,21 +11,22 @@ public class CharacterManager : MonoBehaviour
     public GameObject playerPrefab;
     public Transform playerParent;
     public Transform bossParant;
+    public Transform minionParant;
     public GameObject cameraFollowObject;
 
     public static CharacterManager Instance { get; private set; }
 
-    public Dictionary<uint, GameObject> playerObjects { get; private set; } = new Dictionary<uint, GameObject>();
-    public Dictionary<uint, GameObject> minionObjects { get; private set; } = new Dictionary<uint, GameObject>();
-    public Dictionary<uint, int> minionPrefabIdx { get; private set; } = new Dictionary<uint, int>();
-    public Dictionary<uint, GameObject> bossObjects { get; private set; } = new Dictionary<uint, GameObject>();
-    public Dictionary<uint, BossPrefabInfo> bossPrefabInfos { get; private set; } = new Dictionary<uint, BossPrefabInfo>();
+    public Dictionary<int, GameObject> playerObjects { get; private set; } = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> minionObjects { get; private set; } = new Dictionary<int, GameObject>();
+    public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
+    public Dictionary<int, GameObject> bossObjects { get; private set; } = new Dictionary<int, GameObject>();
+    public Dictionary<int, BossPrefabInfo> bossPrefabInfos { get; private set; } = new Dictionary<int, BossPrefabInfo>();
 
-    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = (uint)IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
+    public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
     // Runtime data
     // 离线模式下，Players只包括MyInfo，在联机房间中，Players则包括所有在线的玩家
     public List<PlayerInfo> Players { get; set; } = new List<PlayerInfo>();
-    public Dictionary<uint, PlayerInfo> PlayerInfoMap { get; set; } = new Dictionary<uint, PlayerInfo>();
+    public Dictionary<int, PlayerInfo> PlayerInfoMap { get; set; } = new Dictionary<int, PlayerInfo>();
 
     private float lastFullStateSentTime = 0.0f;
     void Awake()
@@ -87,26 +89,18 @@ public class CharacterManager : MonoBehaviour
     {
         ClearMinionObjects();
 
+        int stage = (int)storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData((int)storage.CurrentStage);
+
         if (storage.MinionStates.Count > 0)
         {
             for (int i = 0; i < storage.MinionStates.Count; i++)
             {
                 var ms = storage.MinionStates[i];
-                var prefabIdx = storage.MinionPrefabIdx[i];
-                var minionPrefab = levelData.normalMinionPrefabs[prefabIdx];
-                var minion = Instantiate(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), Quaternion.identity);
-                uint minionId = ms.PlayerId;
-                minion.name = $"{minionPrefab.name}{minionId}";
-                minion.tag = Constants.TagEnemy;
-                var minionStatus = minion.GetComponent<CharacterStatus>();
-                if (minionStatus != null)
-                {
-                    minionStatus.State = ms;
-                }
+                var prefabInfo = storage.MinionPrefabInfos[i];
+                var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
 
-                minionObjects[minionId] = minion;
-                minionPrefabIdx[minionId] = prefabIdx;
+                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms);
             }
             return;
         }
@@ -139,19 +133,7 @@ public class CharacterManager : MonoBehaviour
                 AreaToNumber(room, roomIdx, out var minionNum, out var spawnPositions);
                 for (int i = 0; i < minionNum; i++)
                 {
-                    var minion = Instantiate(minionPrefab, spawnPositions[i], Quaternion.identity);
-                    uint minionId = (uint)IdGenerator.NextCharacterId();
-                    minion.name = $"{minionPrefab.name}{minionId}";
-                    minion.tag = Constants.TagEnemy;
-                    var minionStatus = minion.GetComponent<CharacterStatus>();
-                    if (minionStatus != null)
-                    {
-                        minionStatus.State.PlayerId = minionId;
-                        minionStatus.State.PlayerName = minion.name;
-                    }
-
-                    minionObjects[minionId] = minion;
-                    minionPrefabIdx[minionId] = randomMinionIdx;
+                    InstantiateMinionObject(minionPrefab, spawnPositions[i], stage, randomMinionIdx, null);
                 }
             }
         }
@@ -204,7 +186,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void CreatePlayerObject(uint playerId, Color color, bool needController = false, PlayerState initState = null)
+    private void CreatePlayerObject(int playerId, Color color, bool needController = false, PlayerState initState = null)
     {
         if (playerObjects.ContainsKey(playerId)) return;
 
@@ -295,9 +277,12 @@ public class CharacterManager : MonoBehaviour
 
     private void ClearMinionObjects()
     {
-        foreach (var go in minionObjects.Values) { if (go != null) Destroy(go); }
+        foreach (Transform child in minionParant)
+        {
+            Destroy(child.gameObject);
+        }
         minionObjects.Clear();
-        minionPrefabIdx.Clear();
+        bossPrefabInfos.Clear();
     }
 
     private void ClearBossObjects()
@@ -310,7 +295,7 @@ public class CharacterManager : MonoBehaviour
         bossPrefabInfos.Clear();
     }
 
-    private void RemovePlayerObject(uint playerId)
+    private void RemovePlayerObject(int playerId)
     {
         if (playerObjects.TryGetValue(playerId, out GameObject go))
         {
@@ -319,7 +304,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public void RemoveObject(uint characterId)
+    public void RemoveObject(int characterId)
     {
         // if (playerObjects.ContainsKey(characterId))
         // {
@@ -337,10 +322,10 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private Color ColorFromID(uint playerId)
+    private Color ColorFromID(int playerId)
     {
         // Use a stable hash function (FNV-1a) for consistent results across platforms and runs
-        uint hash = FNV1a(playerId);
+        uint hash = FNV1a((uint)playerId);
         // Mix the hash bits to improve distribution and ensure visual distinction for similar IDs
         uint mixedHash = Mix(hash);
         // Use the mixed hash to generate a hue value
@@ -374,14 +359,14 @@ public class CharacterManager : MonoBehaviour
         Players.Clear();
         IdGenerator.SetNextCharacterId(0);
         // add self
-        MyInfo.Id = (uint)IdGenerator.NextCharacterId();
+        MyInfo.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[MyInfo.Id] = MyInfo;
         Players.Add(MyInfo);
     }
 
     public void AddPlayer(PlayerInfo player)
     {
-        player.Id = (uint)IdGenerator.NextCharacterId();
+        player.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[player.Id] = player;
         Players.Add(player);
         CreatePlayerObject(player.Id, ColorFromID(player.Id), false);
@@ -434,7 +419,7 @@ public class CharacterManager : MonoBehaviour
     }
 
     #region Utils
-    public GameObject FindNearestPlayerInRange(GameObject character, uint range)
+    public GameObject FindNearestPlayerInRange(GameObject character, int range)
     {
         GameObject nearestPlayer = null;
         float nearestDistanceSqr = range * range;
@@ -456,7 +441,53 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
-    public GameObject FindSamelinePlayerInRange(GameObject character, uint range)
+    public GameObject FindNearestEnemyInAngle(GameObject character, Vector2 shootDir, int rangeAngle, int aggroRange)
+    {
+        GameObject nearestEnemy = null;
+        float nearestDistanceSqr = aggroRange * aggroRange;
+        foreach (Transform child in minionParant)
+        {
+            // 跳过自己
+            if (child.gameObject == character) continue;
+            var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
+            foreach (var status in minionStatuses)
+            {
+                if (status != null && !status.IsDead())
+                {
+                    Vector2 toMinion = status.transform.position - character.transform.position;
+                    float distSqr = toMinion.sqrMagnitude;
+                    if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toMinion) < rangeAngle)
+                    {
+                        nearestDistanceSqr = distSqr;
+                        nearestEnemy = status.gameObject;
+                    }
+                }
+            }
+        }
+
+        foreach (Transform child in bossParant)
+        {
+            // 跳过自己
+            if (child.gameObject == character) continue;
+            var bossStatuses = child.GetComponentsInChildren<CharacterStatus>();
+            foreach (var status in bossStatuses)
+            {
+                if (status != null && !status.IsDead())
+                {
+                    Vector2 toBoss = status.transform.position - character.transform.position;
+                    float distSqr = toBoss.sqrMagnitude;
+                    if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toBoss) < rangeAngle)
+                    {
+                        nearestDistanceSqr = distSqr;
+                        nearestEnemy = status.gameObject;
+                    }
+                }
+            }
+        }
+
+        return nearestEnemy;
+    }
+    public GameObject FindSamelinePlayerInRange(GameObject character, int range)
     {
         GameObject nearestPlayer = null;
         float nearestDistanceSqr = range * range;
@@ -484,7 +515,7 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
-    public List<GameObject> FindNearbyMinionsInRange(GameObject character, uint range)
+    public List<GameObject> FindNearbyMinionsInRange(GameObject character, int range)
     {
         List<GameObject> nearbyMinions = new ();
         float sqrRange = range * range;
@@ -560,12 +591,12 @@ public class CharacterManager : MonoBehaviour
         foreach (var minionId in minionObjects.Keys)
         {
             var minion = minionObjects[minionId];
-            var prefabIdx = minionPrefabIdx[minionId];
+            var prefabInfo = minionPrefabInfos[minionId];
             var minionStatus = minion.GetComponent<CharacterStatus>();
             if (minionStatus != null)
             {
                 storage.MinionStates.Add(minionStatus.State);
-                storage.MinionPrefabIdx.Add(prefabIdx);
+                storage.MinionPrefabInfos.Add(prefabInfo);
             }
         }
         storage.BossStates.Clear();
@@ -587,14 +618,14 @@ public class CharacterManager : MonoBehaviour
         var boss = Instantiate(prefab, bossParant);
         boss.transform.position = position;
 
-        uint bossId;
+        int bossId;
         if (bs != null) bossId = bs.PlayerId;
-        else bossId = (uint)IdGenerator.NextCharacterId();
-            
+        else bossId = IdGenerator.NextCharacterId();
+
         boss.name = $"{prefab.name}{bossId}";
         boss.tag = Constants.TagEnemy;
 
-        
+
         if (boss.TryGetComponent<CharacterStatus>(out var bossStatus))
         {
             if (bs != null)
@@ -615,6 +646,41 @@ public class CharacterManager : MonoBehaviour
             PrefabId = prefabId
         };
         return boss;
+    }
+    
+    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms)
+    {
+        var minion = Instantiate(prefab, minionParant);
+        minion.transform.position = position;
+
+        int minionId;
+        if (ms != null) minionId = ms.PlayerId;
+        else minionId = IdGenerator.NextCharacterId();
+            
+        minion.name = $"{prefab.name}{minionId}";
+        minion.tag = Constants.TagEnemy;
+
+        
+        if (minion.TryGetComponent<CharacterStatus>(out var minionStatus))
+        {
+            if (ms != null)
+            {
+                minionStatus.State = ms;
+            }
+            else
+            {
+                minionStatus.State.PlayerId = minionId;
+                minionStatus.State.PlayerName = minion.name;
+            }
+        }
+
+        minionObjects[minionId] = minion;
+        minionPrefabInfos[minionId] = new MinionPrefabInfo
+        {
+            StageId = stageId,
+            PrefabId = prefabId
+        };
+        return minion;
     }
     #endregion
 
@@ -751,7 +817,7 @@ public class CharacterManager : MonoBehaviour
         MessageManager.Instance.SendMessage(msg, true);
     }
 
-    public void CalculateSkillEffect_Host(uint skillId, uint targetCharacterId)
+    public void CalculateSkillEffect_Host(uint skillId, int targetCharacterId)
     {
         var skill = SkillDatabase.Instance.GetSkill(skillId);
         var playerObj = playerObjects[targetCharacterId];

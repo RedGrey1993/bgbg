@@ -144,7 +144,7 @@ public class CharacterStatus : MonoBehaviour
         OnHealthChanged?.Invoke(State);
     }
 
-    private bool HasPlayerController()
+    public bool HasPlayerController()
     {
         return GetComponent<PlayerController>() != null;
     }

@@ -2401,14 +2401,6 @@ MonoBehaviour:
   skillChoiceButtonPrefab: {fileID: 2299674220110527827, guid: 6334b599132f81544b733459d5f7122c, type: 3}
   timerText: {fileID: 306613133}
   choiceTime: 30
-  testSkills1:
-  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
-  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
-  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
-  testSkills2:
-  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
-  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
-  - {fileID: 11400000, guid: f8e898311e39d054b92d094f37bba2b1, type: 2}
 --- !u!114 &1032489892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3782,6 +3774,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 696006956200170134, guid: cecee85ce7cd68646872240c56e02996, type: 3}
   playerParent: {fileID: 417062435}
   bossParant: {fileID: 372696294}
+  minionParant: {fileID: 122761002}
   cameraFollowObject: {fileID: 479583612}
 --- !u!114 &1509823721
 MonoBehaviour:

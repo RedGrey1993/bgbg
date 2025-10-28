@@ -390,6 +390,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         int stepAngle = bulletState.ShootNum > 1 ? bulletState.ShootAngleRange / (bulletState.ShootNum - 1) : 0;
         Quaternion rotationPlus = Quaternion.Euler(0, 0, stepAngle);
 
+        GameObject tarMinion = null;
+        if (characterStatus.HasPlayerController())
+        {
+            tarMinion = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45, CharacterData.AggroRange);
+        }
+
         for (int i = 0; i < bulletState.ShootNum; i++)
         {
             // Instantiate the bullet
@@ -402,6 +408,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 bulletScript.OwnerStatus = characterStatus;
                 bulletScript.StartPosition = bulletStartPosition;
                 bulletScript.bulletState = bulletState;
+                bulletScript.AggroTarget = tarMinion;
             }
 
             // Get the bullet's Rigidbody2D component

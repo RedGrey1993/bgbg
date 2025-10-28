@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Enemy
   - PlayerFeet
+  - Shield
   layers:
   - Default
   - TransparentFX

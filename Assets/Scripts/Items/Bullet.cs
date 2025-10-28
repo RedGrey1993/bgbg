@@ -9,8 +9,10 @@ public class Bullet : MonoBehaviour
     public int Damage { get; set; } = 0;
     public BulletState bulletState { get; set; } // 子弹强化状态
     public Collider2D LastCollider { get; set; } = null;
+    public GameObject AggroTarget { get; set; } = null;
     public int splitCount = 0;
     public int penetrateCount = 0;
+    public int homingForce = 0;
     private float bornTime;
     private Collider2D col2D;
     private Rigidbody2D rb;
@@ -42,6 +44,16 @@ public class Bullet : MonoBehaviour
             || Time.time - bornTime > 5f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则5秒后自动销毁
         {
             Destroy(gameObject);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (AggroTarget != null && homingForce > 0)
+        {
+            var diff = AggroTarget.transform.position - transform.position;
+            rb.AddForce(diff.normalized * homingForce, ForceMode2D.Force);
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized);
         }
     }
 

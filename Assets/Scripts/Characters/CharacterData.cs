@@ -50,7 +50,7 @@ public class CharacterData : ScriptableObject
 
     [Header("AI Settings")]
     // NPC相关设置
-    public uint AggroRange = 20;
+    public int AggroRange = 20;
     public float AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
 
     // 每隔随机0.5-1秒改变一次追击输入

@@ -19,4 +19,4 @@ MonoBehaviour:
   backgroundStory: 
   icon: {fileID: -4244075370678806860, guid: ea5c86e843fbd054dbf00055a2c5e61e, type: 3}
   IsActive: 0
-  executor: {fileID: 11400000, guid: a203ea30285adf846bddccd9d5d7c207, type: 2}
+  executor: {fileID: 11400000, guid: 62043bd0d1de413409ad8cc6ad7593a5, type: 2}
