@@ -8,6 +8,7 @@ using NetworkMessageProto;
 public class CharacterStatus : MonoBehaviour
 {
     public PlayerState State = new PlayerState();
+    public BulletState bulletState = new BulletState();
     // 在预制体上的Inspector面板中设置
     [Header("Character Settings")]
     public CharacterData characterData;
@@ -36,6 +37,10 @@ public class CharacterStatus : MonoBehaviour
         State.CurrentExp = 0;
         State.CurrentLevel = 1;
         State.Position = new Vec2();
+
+        bulletState.ShootNum = 1;
+        bulletState.ShootAngleRange = 0;
+        bulletState.PenetrateCount = 0;
     }
 
     void Start()

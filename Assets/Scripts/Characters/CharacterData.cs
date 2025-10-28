@@ -32,7 +32,7 @@ public class CharacterData : ScriptableObject
     public CharacterType CharacterType = CharacterType.Unset;
     public uint MaxHp;
     public uint MoveSpeed;
-    public uint ShootRange;
+    public int ShootRange;
     public uint BulletSpeed = 6;
     public uint Damage = 1;
     public float AttackFrequency = 3;

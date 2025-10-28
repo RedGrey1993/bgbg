@@ -385,21 +385,32 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         Vector2 bulletStartPosition = transform.position;
         bulletStartPosition += bulletOffset;
 
-        // Instantiate the bullet
-        GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
-        bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
-        bullet.transform.localScale = transform.localScale;
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        if (bulletScript)
-        {
-            bulletScript.OwnerStatus = characterStatus;
-            bulletScript.StartPosition = bulletStartPosition;
-        }
+        var bulletState = characterStatus.bulletState;
+        var startDir = Quaternion.Euler(0, 0, -bulletState.ShootAngleRange / 2) * lookInput.normalized;
+        int stepAngle = bulletState.ShootNum > 1 ? bulletState.ShootAngleRange / (bulletState.ShootNum - 1) : 0;
+        Quaternion rotationPlus = Quaternion.Euler(0, 0, stepAngle);
 
-        // Get the bullet's Rigidbody2D component
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        // Set the bullet's velocity
-        if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
+        for (int i = 0; i < bulletState.ShootNum; i++)
+        {
+            // Instantiate the bullet
+            GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+            bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
+            bullet.transform.localScale = transform.localScale;
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            if (bulletScript)
+            {
+                bulletScript.OwnerStatus = characterStatus;
+                bulletScript.StartPosition = bulletStartPosition;
+                bulletScript.bulletState = bulletState;
+            }
+
+            // Get the bullet's Rigidbody2D component
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            // Set the bullet's velocity
+            if (bulletRb) bulletRb.linearVelocity = startDir * characterStatus.State.BulletSpeed;
+
+            startDir = rotationPlus * startDir;
+        }
     }
     protected virtual void AttackAction()
     {

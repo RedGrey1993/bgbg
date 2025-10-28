@@ -41,32 +41,34 @@ namespace NetworkMessageProto {
             "TmFtZRgCIAEoCRINCgVNYXhIcBgDIAEoDRIRCglDdXJyZW50SHAYBCABKA0S",
             "EQoJTW92ZVNwZWVkGAUgASgNEhMKC0J1bGxldFNwZWVkGAYgASgNEg4KBkRh",
             "bWFnZRgHIAEoDRIXCg9BdHRhY2tGcmVxdWVuY3kYCCABKAISEgoKU2hvb3RS",
-            "YW5nZRgJIAEoDRIUCgxDcml0aWNhbFJhdGUYCiABKA0SFAoMQ3VycmVudExl",
+            "YW5nZRgJIAEoBRIUCgxDcml0aWNhbFJhdGUYCiABKA0SFAoMQ3VycmVudExl",
             "dmVsGAwgASgNEhIKCkN1cnJlbnRFeHAYDSABKA0SKwoIUG9zaXRpb24YCyAB",
             "KAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISEAoIU2tpbGxJZHMYDiAD",
             "KA0SIAoYQ3VycmVudFN0YWdlU2tpbGxMZWFybmVkGA8gASgIEhUKDUFjdGl2",
-            "ZVNraWxsSWQYECABKA0iVQoSU3RhdGVVcGRhdGVNZXNzYWdlEjEKB1BsYXll",
-            "cnMYASADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEgwK",
-            "BFRpY2sYAiABKA0iSAoUUGxheWVyc1VwZGF0ZU1lc3NhZ2USMAoHUGxheWVy",
-            "cxgBIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVySW5mbyI4CgpQ",
-            "bGF5ZXJJbmZvEhAKCENTdGVhbUlEGAEgASgJEgwKBE5hbWUYAiABKAkSCgoC",
-            "SWQYAyABKA0iNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoIcGxheWVySWQYASAB",
-            "KA0SDwoHc2tpbGxJZBgCIAEoDSJWCgpQaWNrdXBJdGVtEgoKAklkGAEgASgF",
-            "Eg8KB1NraWxsSWQYAiABKA0SKwoIUG9zaXRpb24YAyABKAsyGS5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYkluZm8SDwoHU3RhZ2VJ",
-            "ZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSKXBAoMTG9jYWxTdG9yYWdlEhQK",
-            "DEN1cnJlbnRTdGFnZRgBIAEoDRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsyIC5O",
-            "ZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjYKDE1pbmlvblN0YXRl",
-            "cxgDIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSFwoP",
-            "TWluaW9uUHJlZmFiSWR4GAQgAygFEjQKCkJvc3NTdGF0ZXMYBSADKAsyIC5O",
-            "ZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjwKD0Jvc3NQcmVmYWJJ",
-            "bmZvcxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdlUHJvdG8uQm9zc1ByZWZhYklu",
-            "Zm8SLQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJlY3RQ",
-            "cm90bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdodBgJ",
-            "IAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQb3Np",
-            "dGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQaWNr",
-            "dXBJdGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3VwSXRl",
-            "bRIUCgxQYXNzZWRTdGFnZXMYDSADKAViBnByb3RvMw=="));
+            "ZVNraWxsSWQYECABKA0iUAoLQnVsbGV0U3RhdGUSEAoIU2hvb3ROdW0YASAB",
+            "KAUSFwoPU2hvb3RBbmdsZVJhbmdlGAIgASgFEhYKDlBlbmV0cmF0ZUNvdW50",
+            "GAMgASgFIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIxCgdQbGF5ZXJzGAEgAygL",
+            "MiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIMCgRUaWNrGAIg",
+            "ASgNIkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAKB1BsYXllcnMYASADKAsy",
+            "Hy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllckluZm8iOAoKUGxheWVySW5m",
+            "bxIQCghDU3RlYW1JRBgBIAEoCRIMCgROYW1lGAIgASgJEgoKAklkGAMgASgN",
+            "IjYKEUxlYXJuU2tpbGxNZXNzYWdlEhAKCHBsYXllcklkGAEgASgNEg8KB3Nr",
+            "aWxsSWQYAiABKA0iVgoKUGlja3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2ls",
+            "bElkGAIgASgNEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQ",
+            "cm90by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUS",
+            "EAoIUHJlZmFiSWQYAiABKAUilwQKDExvY2FsU3RvcmFnZRIUCgxDdXJyZW50",
+            "U3RhZ2UYASABKA0SNgoMUGxheWVyU3RhdGVzGAIgAygLMiAuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI2CgxNaW5pb25TdGF0ZXMYAyADKAsy",
+            "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEhcKD01pbmlvblBy",
+            "ZWZhYklkeBgEIAMoBRI0CgpCb3NzU3RhdGVzGAUgAygLMiAuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI8Cg9Cb3NzUHJlZmFiSW5mb3MYBiAD",
+            "KAsyIy5OZXR3b3JrTWVzc2FnZVByb3RvLkJvc3NQcmVmYWJJbmZvEi0KBVJv",
+            "b21zGAcgAygLMh4uTmV0d29ya01lc3NhZ2VQcm90by5SZWN0UHJvdG8SFAoM",
+            "Um9vbU1heFdpZHRoGAggASgNEhUKDVJvb21NYXhIZWlnaHQYCSABKA0SFwoP",
+            "TmV4dENoYXJhY3RlcklkGAogASgNEjMKEFRlbGVwb3J0UG9zaXRpb24YCyAB",
+            "KAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISNAoLUGlja3VwSXRlbXMY",
+            "DCADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFz",
+            "c2VkU3RhZ2VzGA0gAygFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -75,6 +77,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ActiveSkillId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id" }, null, null, null, null),
@@ -1585,13 +1588,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "ShootRange" field.</summary>
     public const int ShootRangeFieldNumber = 9;
-    private uint shootRange_;
+    private int shootRange_;
     /// <summary>
     /// 攻击范围，不一定是射击
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ShootRange {
+    public int ShootRange {
       get { return shootRange_; }
       set {
         shootRange_ = value;
@@ -1790,7 +1793,7 @@ namespace NetworkMessageProto {
       }
       if (ShootRange != 0) {
         output.WriteRawTag(72);
-        output.WriteUInt32(ShootRange);
+        output.WriteInt32(ShootRange);
       }
       if (CriticalRate != 0) {
         output.WriteRawTag(80);
@@ -1861,7 +1864,7 @@ namespace NetworkMessageProto {
       }
       if (ShootRange != 0) {
         output.WriteRawTag(72);
-        output.WriteUInt32(ShootRange);
+        output.WriteInt32(ShootRange);
       }
       if (CriticalRate != 0) {
         output.WriteRawTag(80);
@@ -1923,7 +1926,7 @@ namespace NetworkMessageProto {
         size += 1 + 4;
       }
       if (ShootRange != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShootRange);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ShootRange);
       }
       if (CriticalRate != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CriticalRate);
@@ -2057,7 +2060,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 72: {
-            ShootRange = input.ReadUInt32();
+            ShootRange = input.ReadInt32();
             break;
           }
           case 80: {
@@ -2144,7 +2147,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 72: {
-            ShootRange = input.ReadUInt32();
+            ShootRange = input.ReadInt32();
             break;
           }
           case 80: {
@@ -2187,6 +2190,278 @@ namespace NetworkMessageProto {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class BulletState : pb::IMessage<BulletState>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<BulletState> _parser = new pb::MessageParser<BulletState>(() => new BulletState());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<BulletState> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public BulletState() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public BulletState(BulletState other) : this() {
+      shootNum_ = other.shootNum_;
+      shootAngleRange_ = other.shootAngleRange_;
+      penetrateCount_ = other.penetrateCount_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public BulletState Clone() {
+      return new BulletState(this);
+    }
+
+    /// <summary>Field number for the "ShootNum" field.</summary>
+    public const int ShootNumFieldNumber = 1;
+    private int shootNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ShootNum {
+      get { return shootNum_; }
+      set {
+        shootNum_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ShootAngleRange" field.</summary>
+    public const int ShootAngleRangeFieldNumber = 2;
+    private int shootAngleRange_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ShootAngleRange {
+      get { return shootAngleRange_; }
+      set {
+        shootAngleRange_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PenetrateCount" field.</summary>
+    public const int PenetrateCountFieldNumber = 3;
+    private int penetrateCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PenetrateCount {
+      get { return penetrateCount_; }
+      set {
+        penetrateCount_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as BulletState);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(BulletState other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ShootNum != other.ShootNum) return false;
+      if (ShootAngleRange != other.ShootAngleRange) return false;
+      if (PenetrateCount != other.PenetrateCount) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ShootNum != 0) hash ^= ShootNum.GetHashCode();
+      if (ShootAngleRange != 0) hash ^= ShootAngleRange.GetHashCode();
+      if (PenetrateCount != 0) hash ^= PenetrateCount.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ShootNum != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ShootNum);
+      }
+      if (ShootAngleRange != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ShootAngleRange);
+      }
+      if (PenetrateCount != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PenetrateCount);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ShootNum != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ShootNum);
+      }
+      if (ShootAngleRange != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ShootAngleRange);
+      }
+      if (PenetrateCount != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PenetrateCount);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ShootNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ShootNum);
+      }
+      if (ShootAngleRange != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ShootAngleRange);
+      }
+      if (PenetrateCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PenetrateCount);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(BulletState other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ShootNum != 0) {
+        ShootNum = other.ShootNum;
+      }
+      if (other.ShootAngleRange != 0) {
+        ShootAngleRange = other.ShootAngleRange;
+      }
+      if (other.PenetrateCount != 0) {
+        PenetrateCount = other.PenetrateCount;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ShootNum = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ShootAngleRange = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PenetrateCount = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ShootNum = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ShootAngleRange = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PenetrateCount = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class StateUpdateMessage : pb::IMessage<StateUpdateMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2201,7 +2476,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[5]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2425,7 +2700,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[6]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2612,7 +2887,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[7]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2887,7 +3162,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[8]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3122,7 +3397,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[9]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3403,7 +3678,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[10]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3638,7 +3913,7 @@ namespace NetworkMessageProto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[11]; }
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -50,8 +50,10 @@ public class SkillPanelController : MonoBehaviour
         List<SkillData> skills = new List<SkillData>();
         for (int i = 0; i < Constants.SkillChooseNumber; i++)
         {
-            var skillId = Random.Range(0, skillNum);
-            var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+            // var skillId = Random.Range(0, skillNum);
+            // var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+            uint skillId = 5;
+            var skillData = SkillDatabase.Instance.GetPassiveSkill(skillId);
             skills.Add(skillData);
         }
         AddNewSkillChoice(skills);

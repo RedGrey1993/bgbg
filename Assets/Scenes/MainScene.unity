@@ -190,9 +190,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 122761002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Minions
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -791,9 +791,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372696294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bosses
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1199,9 +1199,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 417062435}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Players
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

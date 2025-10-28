@@ -1,14 +1,29 @@
+using NetworkMessageProto;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public Vector2 StartPosition { get; set; } // 子弹发射时，Player会设置这颗子弹的起始位置
     public CharacterStatus OwnerStatus { get; set; } // 这颗子弹的操作者是谁
+    public BulletState bulletState { get; set; } // 子弹强化状态
+    public int penetrateCount = 0;
     private float bornTime;
+    private Collider2D col2D;
 
     void Awake()
     {
         bornTime = Time.time;
+        col2D = GetComponentInChildren<Collider2D>();
+        col2D.enabled = false;
+    }
+
+    void Start()
+    {
+        if (bulletState.PenetrateCount > penetrateCount)
+        {
+            penetrateCount = bulletState.PenetrateCount;
+        }
+        col2D.enabled = true;
     }
 
     void Update()
@@ -22,28 +37,32 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // 激光子弹的IsTrigger使true
+    // 激光子弹的IsTrigger是true
     void OnTriggerEnter2D(Collider2D other)
     {
         if (GameManager.Instance.IsLocalOrHost())
         {
             // 检测是否碰撞到Player
-            if (other.gameObject.CompareTag(Constants.TagPlayer) || other.gameObject.CompareTag(Constants.TagEnemy))
+            if (other.transform.root.CompareTag(Constants.TagPlayer) || other.transform.root.CompareTag(Constants.TagEnemy))
             {
-                CharacterStatus targetCharacterStatus = other.gameObject.GetComponent<CharacterStatus>();
+                CharacterStatus targetCharacterStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
                 if (targetCharacterStatus == OwnerStatus)
                 {
                     return; // 不伤害自己，也不销毁碰到自己的子弹
                 }
-                if (targetCharacterStatus?.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
+
+                penetrateCount--;
+                if (targetCharacterStatus?.transform.root.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.transform.root.CompareTag(Constants.TagEnemy) == true)
                 {
-                    ; // 敌人之间不互相伤害；但还是会销毁子弹
+                    if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
                 }
                 else if (targetCharacterStatus != null)
                 {
                     targetCharacterStatus.TakeDamage_Host(OwnerStatus);
+                    if (penetrateCount < 0) Destroy(gameObject);
                 }
-            } else if (other.gameObject.CompareTag(Constants.TagWall))
+            }
+            else // if (other.gameObject.CompareTag(Constants.TagWall))
             {
                 Destroy(gameObject);
             }
@@ -58,7 +77,7 @@ public class Bullet : MonoBehaviour
             // 检测是否碰撞到Player
             if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
-                CharacterStatus targetCharacterStatus = collision.gameObject.GetComponent<CharacterStatus>();
+                CharacterStatus targetCharacterStatus = collision.gameObject.GetComponentInParent<CharacterStatus>();
                 if (targetCharacterStatus == OwnerStatus)
                 {
                     return; // 不伤害自己，也不销毁碰到自己的子弹

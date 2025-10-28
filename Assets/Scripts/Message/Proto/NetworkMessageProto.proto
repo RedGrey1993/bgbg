@@ -45,7 +45,7 @@ message PlayerState
     uint32 BulletSpeed = 6; // 子弹飞行速度
     uint32 Damage = 7; //  伤害
     float AttackFrequency = 8; // 攻击频率/每秒发射子弹数
-    uint32 ShootRange = 9; // 攻击范围，不一定是射击
+    int32 ShootRange = 9; // 攻击范围，不一定是射击
     uint32 CriticalRate = 10; // 暴击率
     uint32 CurrentLevel = 12;
     uint32 CurrentExp = 13;
@@ -53,6 +53,13 @@ message PlayerState
     repeated uint32 SkillIds = 14;
     bool CurrentStageSkillLearned = 15;
     uint32 ActiveSkillId = 16;
+}
+
+message BulletState
+{
+    int32 ShootNum = 1;
+    int32 ShootAngleRange = 2;
+    int32 PenetrateCount = 3;
 }
 
 message StateUpdateMessage
