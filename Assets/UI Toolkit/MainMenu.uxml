@@ -9,7 +9,7 @@
             <ui:Button name="ContinueGameButton" text="Continue Game" class="menu-button" />
             <ui:Button name="OnlineGameButton" text="Online Game" class="menu-button" />
             <ui:Button name="SettingsButton" text="Settings" class="menu-button" />
-            <ui:Button name="QuitButton" text="Quit Game" class="menu-button" />
+            <ui:Button name="QuitButton" text="Quit" class="menu-button" />
         </ui:VisualElement>
         <ui:VisualElement name="OnlineMenuPanel" class="menu-panel hidden">
             <ui:Label text="Online Mode" class="panel-title" />

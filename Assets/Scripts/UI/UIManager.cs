@@ -427,9 +427,8 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    private void OnStartGameClicked()
+    private void StartNewGame()
     {
-        _mainMenuRoot.AddToClassList("hidden");
         PlayLoadingAnimation(() =>
         {
             var spc = GetComponent<StatusPanelController>();
@@ -443,6 +442,39 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.StartLocalGame(storage);
         }, needPressSpace: false);
         // }, loadingSprite: startCgSprites, needPressSpace: true);
+    }
+
+    private void OnStartGameClicked()
+    {
+        _mainMenuRoot.AddToClassList("hidden");
+        if (GameManager.Instance.HasValidStorage())
+        {
+            DialogManager.Instance.ShowDialog(
+                "\"Start Game\" will erase your progress. Are you sure to continue? If you want to continue your progress, please click \"Cancel\" and click \"Continue Game\" in the main menu.",
+
+                // --- 这是“确定”的回调 ---
+                () =>
+                {
+                    Debug.Log("玩家点击了【确定】。");
+                    // 在这里写下“继续”的逻辑
+                    StartNewGame();
+                },
+
+                // --- 这是“取消”的回调 ---
+                () =>
+                {
+                    Debug.Log("玩家点击了【取消】。");
+                    // 在这里写下“返回”的逻辑
+                    // （对话框会自动关闭）
+                    _mainMenuRoot.RemoveFromClassList("hidden");
+                    ShowPanel(_mainMenuPanel);
+                }
+            );
+        }
+        else
+        {
+            StartNewGame();
+        }
     }
 
     private void OnContinueGameClicked()
@@ -552,8 +584,7 @@ public class UIManager : MonoBehaviour
 
         if (panelToShow == _mainMenuPanel)
         {
-            var storage = GameManager.Instance.LoadLocalStorage();
-            _continueGameButton.SetEnabled(storage.PlayerStates.Count > 0);
+            _continueGameButton.SetEnabled(GameManager.Instance.HasValidStorage());
         }
 
         if (panelToShow == _createRoomPanel)

@@ -99,6 +99,12 @@ public class GameManager : MonoBehaviour
         return storage;
     }
 
+    public bool HasValidStorage()
+    {
+        var storage = LoadLocalStorage();
+        return storage.PlayerStates.Count > 0;
+    }
+
     // TODO: 后续StartOnlineGame需要将关卡消息同步到Client
 
     // StartGame前，如果是联机模式，则所有玩家的Players都已经收集完毕，不能再调用InitializeMySelf
