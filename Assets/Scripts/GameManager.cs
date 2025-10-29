@@ -99,10 +99,14 @@ public class GameManager : MonoBehaviour
         return storage;
     }
 
-    public bool HasValidStorage()
+    public bool HasValidStorage(LocalStorage storage)
     {
-        var storage = LoadLocalStorage();
         return storage.PlayerStates.Count > 0;
+    }
+
+    public bool StartFromChooseCharacter(LocalStorage storage)
+    {
+        return storage.PlayerStates.Count <= 0;
     }
 
     // TODO: 后续StartOnlineGame需要将关卡消息同步到Client
@@ -112,6 +116,9 @@ public class GameManager : MonoBehaviour
     {
         GameState = GameState.InGame;
         StopAllCoroutines();
+        var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+        spc.ShowMyStatusUI();
+
         LevelManager.Instance.ClearLevel();
         LevelManager.Instance.GenerateLevel(storage);
     }

@@ -25,6 +25,7 @@ public class CharacterData : ScriptableObject
     public GameObject summonEffectPrefab;
     public GameObject teleportEffectPrefab;
     public GameObject accumulateEffectPrefab;
+    public Sprite figure;
     #endregion
 
     #region Basic Attributes

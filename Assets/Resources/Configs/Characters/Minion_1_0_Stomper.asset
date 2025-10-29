@@ -26,6 +26,7 @@ MonoBehaviour:
   summonEffectPrefab: {fileID: 0}
   teleportEffectPrefab: {fileID: 0}
   accumulateEffectPrefab: {fileID: 0}
+  figure: {fileID: 363609790572661340, guid: 00168d820fc9ec044ac3265d27c6ef7b, type: 3}
   CharacterType: 2
   MaxHp: 5
   MoveSpeed: 3

@@ -13,6 +13,7 @@ public class CharacterManager : MonoBehaviour
     public Transform bossParant;
     public Transform minionParant;
     public GameObject cameraFollowObject;
+    public GameObject miniStatusPrefab;
 
     public static CharacterManager Instance { get; private set; }
 
@@ -237,6 +238,15 @@ public class CharacterManager : MonoBehaviour
 
         // 将血条显示到玩家对象的头上
         var miniStatusCanvas = go.GetComponentInChildren<Canvas>();
+        if (miniStatusCanvas == null)
+        {
+            var col2D = go.GetComponentInChildren<Collider2D>();
+            var tarPos = go.transform.position;
+            tarPos.y += col2D.bounds.extents.y + 0.5f;
+            var obj = Instantiate(miniStatusPrefab, tarPos, Quaternion.identity);
+            obj.transform.SetParent(go.transform);
+            miniStatusCanvas = obj.GetComponent<Canvas>();
+        }
         var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>();
         if (playerNameText != null)
         {
@@ -246,7 +256,7 @@ public class CharacterManager : MonoBehaviour
         if (needController)
         {
             // Add controller to local player
-            var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
+            if (!go.TryGetComponent<PlayerController>(out var pc)) pc = go.AddComponent<PlayerController>();
             pc.enabled = true;
 
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();

@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 52a22912a7f188145a804934435fb4e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1686782042344333758
+    second: Minion_1_1_BusterBot_Front1_0
+  - first:
+      213: 1582981509647576035
+    second: Minion_1_1_BusterBot_Front1_1
+  - first:
+      213: -2992487192982231856
+    second: Minion_1_1_BusterBot_Front1_2
+  - first:
+      213: 1459980313242695761
+    second: Minion_1_1_BusterBot_Front1_3
+  - first:
+      213: -8797268945937470337
+    second: Minion_1_1_BusterBot_Front1_4
+  - first:
+      213: 4275750990597954976
+    second: Minion_1_1_BusterBot_Front1_5
+  - first:
+      213: 7255232989756662695
+    second: Minion_1_1_BusterBot_Front1_6
+  - first:
+      213: -746967772924039210
+    second: Minion_1_1_BusterBot_Front1_7
+  - first:
+      213: -7068297267027784101
+    second: Minion_1_1_BusterBot_Front1_8
+  - first:
+      213: -2427818969496531509
+    second: Minion_1_1_BusterBot_Front1_9
+  - first:
+      213: -6866294729893501422
+    second: Minion_1_1_BusterBot_Front1_10
+  - first:
+      213: -4289590927595013049
+    second: Minion_1_1_BusterBot_Front1_11
+  - first:
+      213: -2074274296738321218
+    second: Minion_1_1_BusterBot_Front1_12
+  - first:
+      213: 5724326401297817480
+    second: Minion_1_1_BusterBot_Front1_13
+  - first:
+      213: -4545737014184225280
+    second: Minion_1_1_BusterBot_Front1_14
+  - first:
+      213: -7716953523632438679
+    second: Minion_1_1_BusterBot_Front1_15
+  - first:
+      213: 7302996723008971008
+    second: Minion_1_1_BusterBot_Front1_16
+  - first:
+      213: 8520586838404934733
+    second: Minion_1_1_BusterBot_Front1_17
+  - first:
+      213: 6730599346360225947
+    second: Minion_1_1_BusterBot_Front1_18
+  - first:
+      213: -1170391644941051692
+    second: Minion_1_1_BusterBot_Front1_19
+  - first:
+      213: 7956529910282783648
+    second: Minion_1_1_BusterBot_Front1_20
+  - first:
+      213: 6125887617655676487
+    second: Minion_1_1_BusterBot_Front1_21
+  - first:
+      213: -2931332507885851724
+    second: Minion_1_1_BusterBot_Front1_22
+  - first:
+      213: -4585967080435833849
+    second: Minion_1_1_BusterBot_Front1_23
+  - first:
+      213: -408298376325210584
+    second: Minion_1_1_BusterBot_Front1_24
+  - first:
+      213: 8641461145236749408
+    second: Minion_1_1_BusterBot_Front1_25
+  - first:
+      213: -4181876343682820793
+    second: Minion_1_1_BusterBot_Front1_26
+  - first:
+      213: -1123904036420504308
+    second: Minion_1_1_BusterBot_Front1_27
+  - first:
+      213: 1391431928929057252
+    second: Minion_1_1_BusterBot_Front1_28
+  - first:
+      213: 6008209216083749271
+    second: Minion_1_1_BusterBot_Front1_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_1_1_BusterBot_Front1_0
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 0
+        width: 834
+        height: 1111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24ede806ba85798e0800000000000000
+      internalID: -1686782042344333758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e7a0f956465ea8347a7f6d02ed13725b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1246.0,"y":1111.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_1_1_BusterBot_Front1_0: -1686782042344333758
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

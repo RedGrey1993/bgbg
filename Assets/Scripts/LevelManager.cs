@@ -625,6 +625,7 @@ public class LevelManager : MonoBehaviour
 
     public int GetRoomNoByPosition(Vector3 position)
     {
+        if (RoomGrid == null) return -1;
         Constants.PositionToIndex(position, out int i, out int j);
         if (i < 0 || i >= RoomGrid.GetLength(0) || j < 0 || j >= RoomGrid.GetLength(1))
             return -1;

@@ -36,7 +36,15 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     public void Start()
     {
-        isAi = characterStatus.IsAI;
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        if (roomId == 0)
+        {
+            isAi = false;
+        }
+        else
+        {
+            isAi = characterStatus.IsAI;
+        }
         SubclassStart();
         Debug.Log($"fhhtest, CharacterAI created for character: {name}, is AI: {isAi}");
     }

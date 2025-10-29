@@ -10,6 +10,7 @@ using System.Collections;
 using System;
 using NetworkMessageProto;
 using Unity.VisualScripting;
+using UnityEngine.SocialPlatforms;
 
 public class UIManager : MonoBehaviour
 {
@@ -427,27 +428,37 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    private void StartNewGame()
+    private void StartGame(LocalStorage storage)
     {
-        PlayLoadingAnimation(() =>
+        if (GameManager.Instance.StartFromChooseCharacter(storage))
         {
-            var spc = GetComponent<StatusPanelController>();
-            spc.ShowMyStatusUI();
-            // Create a new empty storage for a new game
-            var storage = new LocalStorage
+            SelectCharacterManager.Instance.RegisterEnterButtonPressed(() =>
             {
-                CurrentStage = 1,
-                NextCharacterId = 1,
-            };
-            GameManager.Instance.StartLocalGame(storage);
-        }, needPressSpace: false);
-        // }, loadingSprite: startCgSprites, needPressSpace: true);
+                PlayLoadingAnimation(() =>
+                {
+                    GameManager.Instance.StartLocalGame(storage);
+                }, needPressSpace: false);
+            });
+            PlayLoadingAnimation(() =>
+            {
+                SelectCharacterManager.Instance.Show();
+            }, needPressSpace: false);
+        }
+        else
+        {
+            PlayLoadingAnimation(() =>
+            {
+                GameManager.Instance.StartLocalGame(storage);
+            }, needPressSpace: false);
+            // }, loadingSprite: startCgSprites, needPressSpace: true);
+        }
     }
 
     private void OnStartGameClicked()
     {
         _mainMenuRoot.AddToClassList("hidden");
-        if (GameManager.Instance.HasValidStorage())
+        var storage = GameManager.Instance.LoadLocalStorage();
+        if (GameManager.Instance.HasValidStorage(storage))
         {
             DialogManager.Instance.ShowDialog(
                 "\"Start Game\" will erase your progress. Are you sure to continue? If you want to continue your progress, please click \"Cancel\" and click \"Continue Game\" in the main menu.",
@@ -457,7 +468,7 @@ public class UIManager : MonoBehaviour
                 {
                     Debug.Log("玩家点击了【确定】。");
                     // 在这里写下“继续”的逻辑
-                    StartNewGame();
+                    StartGame(storage);
                 },
 
                 // --- 这是“取消”的回调 ---
@@ -473,20 +484,15 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            StartNewGame();
+            StartGame(storage);
         }
     }
 
     private void OnContinueGameClicked()
     {
         _mainMenuRoot.AddToClassList("hidden");
-        PlayLoadingAnimation(() =>
-        {
-            var spc = GetComponent<StatusPanelController>();
-            spc.ShowMyStatusUI();
-            var storage = GameManager.Instance.LoadLocalStorage();
-            GameManager.Instance.StartLocalGame(storage);
-        }, needPressSpace: false);
+        var storage = GameManager.Instance.LoadLocalStorage();
+        StartGame(storage);
     }
 
     private void OnConfirmCreateRoomClicked()
@@ -584,7 +590,8 @@ public class UIManager : MonoBehaviour
 
         if (panelToShow == _mainMenuPanel)
         {
-            _continueGameButton.SetEnabled(GameManager.Instance.HasValidStorage());
+            var storage = GameManager.Instance.LoadLocalStorage();
+            _continueGameButton.SetEnabled(GameManager.Instance.HasValidStorage(storage));
         }
 
         if (panelToShow == _createRoomPanel)
