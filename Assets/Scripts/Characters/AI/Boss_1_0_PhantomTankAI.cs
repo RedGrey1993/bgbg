@@ -89,7 +89,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             if (rnd == 0 || chargeCoroutine != null)
             {
                 
-                shootCoroutine = StartCoroutine(Attack_Shoot());
+                shootCoroutine = StartCoroutine(Attack_Shoot(characterInput.LookInput));
             }
             else
             {
@@ -100,19 +100,21 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     }
 
     // 射击
-    private IEnumerator Attack_Shoot()
+    private IEnumerator Attack_Shoot(Vector2 lookInput)
     {
         isAttack = true;
         // 需要AtkFreq时间架设炮台
         yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         // 调用父类方法
-        AttackShoot(characterInput.LookInput);
+        AttackShoot(lookInput);
         shootCoroutine = null;
-        isAttack = false;
+        isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput
 
-        characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
-        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
-        yield return new WaitForSeconds(Random.Range(1, 3f));
+        if (isAi)
+        {
+            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+            yield return new WaitForSeconds(Random.Range(1, 3f));
+        }
     }
 
     // 冲锋，十字幻影形式冲锋
@@ -125,6 +127,8 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         if (AggroTarget != null)
             targetPos = AggroTarget.transform.position;
         var chargeEffect = LevelManager.Instance.InstantiateTemporaryObject(chargeEffectPrefab, targetPos);
+        chargeEffect.tag = gameObject.tag;
+        if (chargeEffect.layer == LayerMask.NameToLayer("Default")) chargeEffect.layer = gameObject.layer;
         yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         var horizontalStartPos = targetPos;
         int dir = Random.Range(0, 2);
@@ -162,6 +166,11 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
         var horizontalPhantomCharge = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.phantomChargePrefab, horizontalStartPos);
         var verticalPhantomCharge = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.phantomChargePrefab, verticalStartPos);
+        horizontalPhantomCharge.tag = gameObject.tag;
+        if (horizontalPhantomCharge.layer == LayerMask.NameToLayer("Default")) horizontalPhantomCharge.layer = gameObject.layer;
+        verticalPhantomCharge.tag = gameObject.tag;
+        if (verticalPhantomCharge.layer == LayerMask.NameToLayer("Default")) verticalPhantomCharge.layer = gameObject.layer;
+
         horizontalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
         verticalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
 
@@ -184,4 +193,9 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         chargeCoroutine = null;
     }
     #endregion
+
+    protected override void SubclassFixedUpdate()
+    {
+        if (characterInput.LookInput.sqrMagnitude > 0.1f) isAiming = true;
+    }
 }

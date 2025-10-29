@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4992561073915373673}
   - component: {fileID: 594919404366040402}
   - component: {fileID: 3290699277078385714}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TankBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3568c4de614af4c92446820075c99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  penetrateCount: 0
 --- !u!70 &3290699277078385714
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6f184813a4d12d4408c82e97c6734ff6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -162,7 +163,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

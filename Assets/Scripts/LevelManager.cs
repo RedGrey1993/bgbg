@@ -635,7 +635,7 @@ public class LevelManager : MonoBehaviour
     public void AddToVisitedRooms(Vector3 position)
     {
         int roomId = GetRoomNoByPosition(position);
-        if (!IsVisitedRooms[roomId])
+        if (roomId >= 0 && !IsVisitedRooms[roomId])
         {
             IsVisitedRooms[roomId] = true;
             VisitedRooms.Add(roomId);

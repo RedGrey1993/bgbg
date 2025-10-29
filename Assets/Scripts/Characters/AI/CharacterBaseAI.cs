@@ -37,7 +37,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public void Start()
     {
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-        if (roomId == 0)
+        if (roomId < 0)
         {
             isAi = false;
         }
@@ -408,6 +408,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             // Instantiate the bullet
             GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+            bullet.tag = gameObject.tag;
+            if (bullet.layer == LayerMask.NameToLayer("Default")) bullet.layer = gameObject.layer;
             bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
             bullet.transform.localScale = transform.localScale;
             Bullet bulletScript = bullet.GetComponent<Bullet>();
@@ -525,16 +527,19 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region Update/FixedUpdate
     public void Update()
     {
+        SubclassUpdate();
+
         if (isAi)// 有玩家控制时不启用AI
         {
             if (characterStatus.IsAlive()) GenerateAILogic();
         }
-        SubclassUpdate();
     }
 
     protected virtual void SubclassUpdate() { }
     public void FixedUpdate()
     {
+        SubclassFixedUpdate();
+
         if (characterStatus.IsDead())
         {
             rb.linearVelocity = Vector2.zero;
@@ -555,7 +560,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         AttackAction();
         LookToAction();
 
-        SubclassFixedUpdate();
     }
     protected virtual void SubclassFixedUpdate() { }
     #endregion

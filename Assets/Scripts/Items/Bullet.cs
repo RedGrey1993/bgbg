@@ -63,6 +63,7 @@ public class Bullet : MonoBehaviour
     {
         if (GameManager.Instance.IsLocalOrHost())
         {
+            if (other.isTrigger) return;
             if (!other.gameObject.activeSelf) return;
             // 避免分裂出的子弹在同一个碰撞体销毁并触发伤害
             if (LastCollider == other) return;
@@ -73,17 +74,18 @@ public class Bullet : MonoBehaviour
                 return;
             }
             // 检测是否碰撞到Player
-            if (other.transform.root.CompareTag(Constants.TagPlayer) || other.transform.root.CompareTag(Constants.TagEnemy))
+            if (other.CompareTag(Constants.TagPlayer) || other.CompareTag(Constants.TagEnemy)
+                || other.transform.root.CompareTag(Constants.TagPlayer) || other.transform.root.CompareTag(Constants.TagEnemy))
             {
                 CharacterStatus targetCharacterStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
-                if (targetCharacterStatus == OwnerStatus)
-                {
+                if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
+                { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                     return; // 不伤害自己，也不销毁碰到自己的子弹
                 }
 
                 penetrateCount--;
                 SplitCount--;
-                if (targetCharacterStatus?.transform.root.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.transform.root.CompareTag(Constants.TagEnemy) == true)
+                if (targetCharacterStatus?.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
                 {
                     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
                 }
@@ -134,7 +136,7 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
                 CharacterStatus targetCharacterStatus = collision.gameObject.GetComponentInParent<CharacterStatus>();
-                if (targetCharacterStatus == OwnerStatus)
+                if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
                 {
                     return; // 不伤害自己，也不销毁碰到自己的子弹
                 }

@@ -19,7 +19,8 @@ public class ShotgunProtocolExecutor : SkillExecutor
         }
 
         var bulletState = playerStatus.bulletState;
-        bulletState.ShootNum += 5;
+        if (bulletState.ShootNum == 1) bulletState.ShootNum = 5;
+        else bulletState.ShootNum += 5;
         bulletState.ShootAngleRange = 120;
     }
 }

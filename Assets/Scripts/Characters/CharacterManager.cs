@@ -194,8 +194,12 @@ public class CharacterManager : MonoBehaviour
         GameObject go = Instantiate(playerPrefab, playerParent);
         go.name = $"Player{playerId}";
         go.tag = Constants.TagPlayer;
+        go.layer = LayerMask.NameToLayer(Constants.TagPlayer);
         var feet = go.transform.Find("Feet");
-        if (feet != null) feet.tag = Constants.TagPlayerFeet;
+        if (feet != null)
+        {
+            feet.tag = Constants.TagPlayerFeet;
+        }
         // set color by steamId for distinctness
         var rend = go.GetComponent<SpriteRenderer>();
         if (rend != null) rend.color = color;
@@ -669,7 +673,6 @@ public class CharacterManager : MonoBehaviour
             
         minion.name = $"{prefab.name}{minionId}";
         minion.tag = Constants.TagEnemy;
-
         
         if (minion.TryGetComponent<CharacterStatus>(out var minionStatus))
         {

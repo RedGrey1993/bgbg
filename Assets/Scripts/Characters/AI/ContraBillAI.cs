@@ -179,6 +179,7 @@ public class ContraBillAI : CharacterBaseAI
         }
     }
 
+    #region Attack Input
     protected override void UpdateAttackInput()
     {
         if (AggroTarget != null)
@@ -188,7 +189,6 @@ public class ContraBillAI : CharacterBaseAI
     }
     #endregion
 
-    #region Attack Action
     private void Attack_ShootToTarget()
     {
         var diff = AggroTarget.transform.position - transform.position;
