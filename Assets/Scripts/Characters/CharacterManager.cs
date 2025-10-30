@@ -175,15 +175,16 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            var roomIdx = Random.Range(0, LevelManager.Instance.remainRoomsIndex.Count);
-            if (playerRooms.Contains(roomIdx))
-                roomIdx = (roomIdx + 1) % LevelManager.Instance.remainRoomsIndex.Count;
+            var ascRooms = LevelManager.Instance.GetAscRooms();
+            var roomId = ascRooms.Count - 1;
+            while (playerRooms.Contains(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center)))
+                roomId = (roomId - 1 + ascRooms.Count) % ascRooms.Count;
             int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
             var bossPrefab = levelData.bossPrefabs[randomBossIdx];
             var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
             var spawnOffset = characterData.spawnOffsets;
             var spawnBound = characterData.bound;
-            GenerateBossPosition(roomIdx, spawnOffset, spawnBound, out var spawnPosition);
+            GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center), spawnOffset, spawnBound, out var spawnPosition);
 
             var boss = InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
             LevelManager.Instance.AddToBossRooms(boss.transform.position);
@@ -210,9 +211,9 @@ public class CharacterManager : MonoBehaviour
         // Initialize position
         int roomMaxWidth = LevelManager.Instance.CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = LevelManager.Instance.CurrentLevelData.roomMaxHeight;
-        float posX = Random.Range(0, roomMaxWidth / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
-        float posY = Random.Range(0, roomMaxHeight / Constants.RoomStep) * Constants.RoomStep + Constants.RoomStep / 2;
-        go.transform.position = new Vector2(posX, posY);
+        var ascRooms = LevelManager.Instance.GetAscRooms();
+        var roomId = Random.Range(0, Mathf.Max(ascRooms.Count / 2, 1));
+        go.transform.position = ascRooms[roomId].center;
         // Set player name
         string playerName = PlayerInfoMap[playerId].Name;
         var playerStatus = go.GetComponent<CharacterStatus>();

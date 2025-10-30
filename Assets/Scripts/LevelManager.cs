@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,6 +124,8 @@ public class LevelManager : MonoBehaviour
             roomMaxWidth = CurrentLevelData.roomMaxWidth;
             roomMaxHeight = CurrentLevelData.roomMaxHeight;
 
+            int bossRoomNum = 1;
+            int bossRoomMinWidth = Constants.RoomStep * 2;
             List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
             int minTotalRooms = CurrentLevelData.minTotalRooms;
             int maxTotalRooms = CurrentLevelData.maxTotalRooms;
@@ -135,27 +136,44 @@ public class LevelManager : MonoBehaviour
                 if (sortedList.Count == 0) break;
                 Rect room = sortedList[0];
                 sortedList.RemoveAt(0);
-                bool horizontalCut = UnityEngine.Random.value > 0.5f;
-                if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > 20)
+                bool horizontalCut = UnityEngine.Random.value > 0.5f || i == 0;
+                if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > Constants.RoomStep)
                 {
                     int roomHeight = Mathf.CeilToInt(room.height);
                     int segNum = roomHeight / Constants.RoomStep;
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
                     Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomStep);
                     Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomStep);
+                    if (Mathf.RoundToInt(room1.width) >= bossRoomMinWidth) bossRoomNum++;
                     // 按照面积从大到小顺序的顺序，加入到List中
                     int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
                     if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
                     int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
                     if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
                 }
-                else if ((room.height < room.width || (room.height == room.width && !horizontalCut)) && room.width > 20)
+                else if ((room.height < room.width || (room.height == room.width && !horizontalCut)) && room.width > Constants.RoomStep)
                 {
                     int roomWidth = Mathf.CeilToInt(room.width);
                     int segNum = roomWidth / Constants.RoomStep;
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
                     Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomStep, room.height);
                     Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomStep, room.height);
+                    if (Mathf.RoundToInt(room1.width) < bossRoomMinWidth && Mathf.RoundToInt(room2.width) < bossRoomMinWidth)
+                    {
+                        if (bossRoomNum == 1)
+                        {
+                            Rooms.Add(room);
+                            continue;
+                        }
+                        else
+                        {
+                            bossRoomNum--;
+                        }
+                    }
+                    else if (Mathf.RoundToInt(room1.width) >= bossRoomMinWidth && Mathf.RoundToInt(room2.width) >= bossRoomMinWidth)
+                    {
+                        bossRoomNum++;
+                    }
                     // 按照面积从大到小顺序的顺序，加入到List中
                     int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
                     if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
@@ -630,6 +648,17 @@ public class LevelManager : MonoBehaviour
         if (i < 0 || i >= RoomGrid.GetLength(0) || j < 0 || j >= RoomGrid.GetLength(1))
             return -1;
         return RoomGrid[i, j];
+    }
+
+    public List<Rect> GetAscRooms()
+    {
+        List<int> ascRoomIds = remainRoomsIndex.OrderBy(id => Rooms[id].width * Rooms[id].height).ToList();
+        List<Rect> rooms = new();
+        foreach (var id in ascRoomIds)
+        {
+            rooms.Add(Rooms[id]);
+        }
+        return rooms;
     }
 
     public void AddToVisitedRooms(Vector3 position)
