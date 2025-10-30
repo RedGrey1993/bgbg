@@ -14,7 +14,7 @@ public class SelectCharacterManager : MonoBehaviour
     [Header("UI 引用")]
     [SerializeField] private GameObject rootPanel;
     [SerializeField] private List<UnityEngine.UI.Image> characterImages; // 数量固定为5
-    [SerializeField] private List<GameObject> characterPrefabs;
+    [SerializeField] public List<GameObject> characterPrefabs;
 
     void Awake()
     {
@@ -101,7 +101,7 @@ public class SelectCharacterManager : MonoBehaviour
             if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame)
             {
                 Debug.Log("fhhtest, enterKey pressed");
-                CharacterManager.Instance.playerPrefab = characterPrefabs[(leftPrevIdx + 2) % characterPrefabs.Count];
+                CharacterManager.Instance.MyInfo.PrefabId = (leftPrevIdx + 2) % characterPrefabs.Count;
                 enterPressedCallback?.Invoke();
                 Hide();
             }

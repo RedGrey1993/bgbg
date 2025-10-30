@@ -101,6 +101,7 @@ public class Bullet : MonoBehaviour
                         {
                             var newBullet = LevelManager.Instance.InstantiateTemporaryObject(OwnerStatus.characterData.bulletPrefab, startPos);
                             newBullet.transform.localScale = transform.localScale / 2;
+                            newBullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
                             var bs = newBullet.GetComponent<Bullet>();
                             bs.StartPosition = startPos;
                             bs.OwnerStatus = OwnerStatus;

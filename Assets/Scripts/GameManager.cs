@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int CurrentStage { get; private set; } = 1;
     public GameState GameState { get; private set; } = GameState.InMenu;
     public HashSet<int> PassedStages { get; private set; } = new HashSet<int>();
+    public LocalStorage Storage { get; private set; } = null;
     private string saveFilePath;
 
     void Awake()
@@ -23,10 +24,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
 
-    void Start()
-    {
         saveFilePath = Path.Combine(Application.persistentDataPath, "savedata.bin");
     }
 
@@ -51,35 +49,39 @@ public class GameManager : MonoBehaviour
     #region Game Logic
     public void SaveLocalStorage(Vec2 teleportPosition)
     {
-        // LocalStorage storage = new LocalStorage();
-        // CharacterManager.Instance.SaveInfoToLocalStorage(storage);
-        // if (storage.PlayerStates.Count == 0)
-        // {
-        //     // Player死亡，从第1关重新开始
-        //     storage.CurrentStage = 1;
-        //     storage.NextCharacterId = 1;
-        // }
-        // else
-        // {
-        //     storage.CurrentStage = (uint)CurrentStage;
-        //     storage.TeleportPosition = teleportPosition;
-        //     storage.PassedStages.Clear();
-        //     storage.PassedStages.AddRange(PassedStages);
-        //     LevelManager.Instance.SaveInfoToLocalStorage(storage);
-        // }
-        // using (var file = File.Create(saveFilePath))
-        // {
-        //     SerializeUtil.Serialize(storage, out byte[] data);
-        //     file.Write(data, 0, data.Length);
-        // }
+        LocalStorage storage = new LocalStorage();
+        CharacterManager.Instance.SaveInfoToLocalStorage(storage);
+        if (storage.PlayerStates.Count == 0)
+        {
+            // Player死亡，从第1关重新开始
+            storage.CurrentStage = 1;
+            storage.NextCharacterId = 1;
+        }
+        else
+        {
+            storage.CurrentStage = CurrentStage;
+            storage.TeleportPosition = teleportPosition;
+            storage.PassedStages.Clear();
+            storage.PassedStages.AddRange(PassedStages);
+            LevelManager.Instance.SaveInfoToLocalStorage(storage);
+        }
+        using (var file = File.Create(saveFilePath))
+        {
+            Storage = storage;
+            SerializeUtil.Serialize(storage, out byte[] data);
+            file.Write(data, 0, data.Length);
+        }
     }
     public LocalStorage LoadLocalStorage()
     {
-        LocalStorage storage;
+        if (Storage != null)
+        {
+            return Storage;
+        }
         if (!File.Exists(saveFilePath))
         {
             Debug.Log("No save file found, starting a new game.");
-            storage = new LocalStorage
+            Storage = new LocalStorage
             {
                 CurrentStage = 1,
                 NextCharacterId = 1,
@@ -89,14 +91,29 @@ public class GameManager : MonoBehaviour
         {
             var data = File.ReadAllBytes(saveFilePath);
             SerializeUtil.Deserialize(data, out LocalStorage st);
-            storage = st;
+            Storage = st;
         }
-        CurrentStage = Mathf.Max(1, (int)storage.CurrentStage);
+        CurrentStage = Mathf.Max(1, Storage.CurrentStage);
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
         PassedStages = new HashSet<int> { 2, 3, 4 };
-        return storage;
+        return Storage;
+    }
+
+    public LocalStorage ClearLocalStorage()
+    {
+        Storage = new LocalStorage
+        {
+            CurrentStage = 1,
+            NextCharacterId = 1,
+        };
+        CurrentStage = Mathf.Max(1, Storage.CurrentStage);
+        // TODO: Debug，调试用，固定前4关，后续修改
+        // PassedStages.Clear();
+        // PassedStages.AddRange(storage.PassedStages);
+        PassedStages = new HashSet<int> { 2, 3, 4 };
+        return Storage;
     }
 
     public bool HasValidStorage(LocalStorage storage)
@@ -167,7 +184,7 @@ public class GameManager : MonoBehaviour
             {
                 LocalStorage storage = new LocalStorage
                 {
-                    CurrentStage = (uint)CurrentStage + 1,
+                    CurrentStage = CurrentStage + 1,
                     NextCharacterId = 1,
                 };
                 foreach (var player in CharacterManager.Instance.playerObjects.Values)

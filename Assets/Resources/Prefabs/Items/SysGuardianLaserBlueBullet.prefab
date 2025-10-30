@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5473995998911060806}
   - component: {fileID: 4268008598126313579}
   - component: {fileID: 2376996308081804679}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SysGuardianLaserBlueBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

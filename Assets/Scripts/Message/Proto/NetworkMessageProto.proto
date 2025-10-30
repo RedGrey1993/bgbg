@@ -80,6 +80,7 @@ message PlayerInfo
     string CSteamID = 1; // CSteamID or a string for local players
     string Name = 2;
     int32 Id = 3;
+    int32 PrefabId = 4;
 }
 
 message LearnSkillMessage
@@ -109,8 +110,10 @@ message MinionPrefabInfo
 
 message LocalStorage
 {
-    uint32 CurrentStage = 1;
+    // next index = 15
+    int32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
+    repeated int32 PlayerPrefabIds = 14;
     repeated PlayerState MinionStates = 3;
     repeated MinionPrefabInfo MinionPrefabInfos = 4;
     repeated PlayerState BossStates = 5;

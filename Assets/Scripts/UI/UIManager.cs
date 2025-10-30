@@ -468,6 +468,7 @@ public class UIManager : MonoBehaviour
                 {
                     Debug.Log("玩家点击了【确定】。");
                     // 在这里写下“继续”的逻辑
+                    storage = GameManager.Instance.ClearLocalStorage();
                     StartGame(storage);
                 },
 

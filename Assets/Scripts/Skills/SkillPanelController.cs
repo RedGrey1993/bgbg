@@ -193,7 +193,7 @@ public class SkillPanelController : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 // var skillData = SkillDatabase.Instance.PassiveSkills[curSkillId];
-                var skillData = SkillDatabase.Instance.GetPassiveSkill(7);
+                var skillData = SkillDatabase.Instance.GetPassiveSkill(6);
                 testSkills.Add(skillData);
             }
             curSkillId = (curSkillId + 1) % skillNum;

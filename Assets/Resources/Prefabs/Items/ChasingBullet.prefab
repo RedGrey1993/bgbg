@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9042242494330737271}
   - component: {fileID: 6458209097191086300}
   - component: {fileID: 4114434379368855875}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: ChasingBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

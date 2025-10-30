@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4992561073915373673}
   - component: {fileID: 594919404366040402}
   - component: {fileID: 9042242494330737271}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: PokeBullet3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3568c4de614af4c92446820075c99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  penetrateCount: 0
 --- !u!58 &9042242494330737271
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -173,6 +174,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
       propertyPath: m_Name
       value: PokeBall2_500_face
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4992561073915373673}
   - component: {fileID: 4268008598126313579}
   - component: {fileID: -6047665504377539115}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TurtleBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

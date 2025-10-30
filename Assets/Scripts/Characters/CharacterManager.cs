@@ -8,7 +8,6 @@ using UnityEngine;
 public class CharacterManager : MonoBehaviour
 {
     // Inspector fields
-    public GameObject playerPrefab;
     public Transform playerParent;
     public Transform bossParant;
     public Transform minionParant;
@@ -17,6 +16,7 @@ public class CharacterManager : MonoBehaviour
 
     public static CharacterManager Instance { get; private set; }
 
+    public Dictionary<int, int> PlayerPrefabIds { get; set; } = new Dictionary<int, int>();
     public Dictionary<int, GameObject> playerObjects { get; private set; } = new Dictionary<int, GameObject>();
     public Dictionary<int, GameObject> minionObjects { get; private set; } = new Dictionary<int, GameObject>();
     public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
@@ -72,16 +72,19 @@ public class CharacterManager : MonoBehaviour
         playerRooms = new List<int>();
         if (storage.PlayerStates.Count > 0)
         {
-            foreach (var ps in storage.PlayerStates) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
+            for (int i = 0; i < storage.PlayerStates.Count; i++) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
             {
-                CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), ps.PlayerId == MyInfo.Id, ps);
+                var ps = storage.PlayerStates[i];
+                int prefabId = storage.PlayerPrefabIds[i];
+                CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), prefabId, ps.PlayerId == MyInfo.Id, ps);
             }
         }
         else
         {
             foreach (var player in Players)
             {
-                CreatePlayerObject(player.Id, ColorFromID(player.Id), player.Id == MyInfo.Id);
+                int prefabId = player.PrefabId;
+                CreatePlayerObject(player.Id, ColorFromID(player.Id), prefabId, player.Id == MyInfo.Id);
             }
         }
     }
@@ -90,7 +93,7 @@ public class CharacterManager : MonoBehaviour
     {
         ClearMinionObjects();
 
-        int stage = (int)storage.CurrentStage;
+        int stage = storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData((int)storage.CurrentStage);
 
         if (storage.MinionStates.Count > 0)
@@ -187,10 +190,11 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void CreatePlayerObject(int playerId, Color color, bool needController = false, PlayerState initState = null)
+    private void CreatePlayerObject(int playerId, Color color, int prefabId, bool needController = false, PlayerState initState = null)
     {
         if (playerObjects.ContainsKey(playerId)) return;
 
+        var playerPrefab = SelectCharacterManager.Instance.characterPrefabs[prefabId];
         GameObject go = Instantiate(playerPrefab, playerParent);
         go.name = $"Player{playerId}";
         go.tag = Constants.TagPlayer;
@@ -232,6 +236,7 @@ public class CharacterManager : MonoBehaviour
         playerRooms.Add(LevelManager.Instance.GetRoomNoByPosition(go.transform.position));
 
         playerObjects[playerId] = go;
+        PlayerPrefabIds[playerId] = prefabId;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
         // 上面的注释是老逻辑，新逻辑Client都处理（相当于状态同步的移动预测），但是Host会定期同步统一的状态
         // if (!IsLocalOrHost())
@@ -296,7 +301,7 @@ public class CharacterManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         minionObjects.Clear();
-        bossPrefabInfos.Clear();
+        minionPrefabInfos.Clear();
     }
 
     private void ClearBossObjects()
@@ -383,7 +388,7 @@ public class CharacterManager : MonoBehaviour
         player.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[player.Id] = player;
         Players.Add(player);
-        CreatePlayerObject(player.Id, ColorFromID(player.Id), false);
+        CreatePlayerObject(player.Id, ColorFromID(player.Id), player.PrefabId, false);
         SendPlayersUpdateToAll();
     }
 
@@ -593,15 +598,19 @@ public class CharacterManager : MonoBehaviour
         if (playerObjects.Count == 0) return; // Player死了，游戏结束，下次加载时从第1关重新开始
         storage.NextCharacterId = (uint)IdGenerator.NextCharacterId();
         storage.PlayerStates.Clear();
-        foreach (var player in playerObjects.Values)
+        storage.PlayerPrefabIds.Clear();
+        foreach (var playerId in playerObjects.Keys)
         {
-            var playerStatus = player.GetComponent<CharacterStatus>();
+            var playerStatus = playerObjects[playerId].GetComponent<CharacterStatus>();
+            var playerPrefabId = PlayerPrefabIds[playerId];
             if (playerStatus != null)
             {
                 storage.PlayerStates.Add(playerStatus.State);
+                storage.PlayerPrefabIds.Add(playerPrefabId);
             }
         }
         storage.MinionStates.Clear();
+        storage.MinionPrefabInfos.Clear();
         foreach (var minionId in minionObjects.Keys)
         {
             var minion = minionObjects[minionId];
@@ -614,6 +623,7 @@ public class CharacterManager : MonoBehaviour
             }
         }
         storage.BossStates.Clear();
+        storage.BossPrefabInfos.Clear();
         foreach (var bossId in bossObjects.Keys)
         {
             var boss = bossObjects[bossId];
@@ -784,7 +794,7 @@ public class CharacterManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            if (!playerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), ps.PlayerId == MyInfo.Id);
+            if (!playerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), PlayerInfoMap[ps.PlayerId].PrefabId, ps.PlayerId == MyInfo.Id);
             if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
