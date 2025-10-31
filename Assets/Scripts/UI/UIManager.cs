@@ -922,28 +922,38 @@ public class UIManager : MonoBehaviour
 
         if (skillPanel.activeSelf)
         {
-            StartCoroutine(HideSkillPanel());
+            HideSkillPanel();
         }
         else
         {
-            StartCoroutine(OpenSkillPanel());
+            OpenSkillPanel();
         }
     }
 
-    public IEnumerator HideSkillPanel()
+    public void HideSkillPanel()
     {
-        if (skillPanel == null) yield break;
-        if (!skillPanel.activeSelf) yield break;
+        if (skillPanel == null) return;
+        if (!skillPanel.activeSelf) return;
+        StartCoroutine(HideSkillPanelAnim());
+    }
+
+    public IEnumerator HideSkillPanelAnim()
+    {
         skillPanel.GetComponent<Animator>().Play("SkillPanelSlideOut");
         yield return new WaitForSeconds(0.5f);
         skillPanel.SetActive(false);
     }
 
-    public IEnumerator OpenSkillPanel()
+    public void OpenSkillPanel()
     {
-        if (skillPanel == null) yield break;
-        if (skillPanel.activeSelf) yield break;
+        if (skillPanel == null) return;
+        if (skillPanel.activeSelf) return;
         skillPanel.SetActive(true);
+        StartCoroutine(OpenSkillPanelAnim());
+    }
+
+    public IEnumerator OpenSkillPanelAnim()
+    {
         skillPanel.GetComponent<Animator>().Play("SkillPanelSlideIn");
         yield return new WaitForSeconds(0.5f);
     }
@@ -1060,7 +1070,7 @@ public class UIManager : MonoBehaviour
         var spc = GetComponent<StatusPanelController>();
         spc.HideMyStatusUI();
         HideSettings();
-        StartCoroutine(HideSkillPanel());
+        HideSkillPanel();
         HideFadePanel();
         _mainMenuRoot.RemoveFromClassList("hidden");
         ShowPanel(_mainMenuPanel);

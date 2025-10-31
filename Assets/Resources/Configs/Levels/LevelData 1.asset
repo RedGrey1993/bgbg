@@ -18,11 +18,11 @@ MonoBehaviour:
   normalMinionPrefabs:
   - {fileID: 5506378715684145941, guid: ca4136794166b3b439b8b630c5b4f3d1, type: 3}
   bossPrefabs:
-  - {fileID: 5506378715684145941, guid: 89c8ba24a8bb0514ba1d76f87f457f5c, type: 3}
+  - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 1
   minTotalRooms: 3
   maxTotalRooms: 3
-  roomMaxWidth: 40
+  roomMaxWidth: 60
   roomMaxHeight: 40
   minAreaPerMinion: 100
   maxAreaPerMinion: 100

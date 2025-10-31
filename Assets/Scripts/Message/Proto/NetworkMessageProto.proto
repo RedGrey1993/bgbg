@@ -110,9 +110,10 @@ message MinionPrefabInfo
 
 message LocalStorage
 {
-    // next index = 15
+    // next index = 16
     int32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
+    repeated BulletState BulletStates = 15;
     repeated int32 PlayerPrefabIds = 14;
     repeated PlayerState MinionStates = 3;
     repeated MinionPrefabInfo MinionPrefabInfos = 4;

@@ -123,7 +123,7 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
             else if (flyiedToPos)
             {
                 // 玩家和boss在同一个房间时，且已经飞到四角了，则浮动炮塔绕房间四周飞行，并每隔1s朝玩家方向发射半圆形弹幕（弹幕速度不快）
-                float eps = amplitude + 0.5f;
+                float eps = 2 * amplitude + 0.5f;
                 for (int i = 0; i < floatingTurrets.Count; i++)
                 {
                     GameObject go = floatingTurrets[i];

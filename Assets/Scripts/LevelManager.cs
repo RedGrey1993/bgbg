@@ -105,6 +105,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+
+    private int bossRoomNum = 1;
+    private int bossRoomMinWidth = Constants.RoomStep * 2;
+    private int bossRoomMinHeight = Constants.RoomStep * 2;
     // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可
     // TODO: 发送房间数据给Client
     private void GenerateRooms(TileBase wallTile, LocalStorage storage)
@@ -124,8 +128,9 @@ public class LevelManager : MonoBehaviour
             roomMaxWidth = CurrentLevelData.roomMaxWidth;
             roomMaxHeight = CurrentLevelData.roomMaxHeight;
 
-            int bossRoomNum = 1;
-            int bossRoomMinWidth = Constants.RoomStep * 2;
+            bossRoomNum = 1;
+            bossRoomMinWidth = Constants.RoomStep * 2;
+            bossRoomMinHeight = Constants.RoomStep * 2;
             List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
             int minTotalRooms = CurrentLevelData.minTotalRooms;
             int maxTotalRooms = CurrentLevelData.maxTotalRooms;
@@ -136,7 +141,7 @@ public class LevelManager : MonoBehaviour
                 if (sortedList.Count == 0) break;
                 Rect room = sortedList[0];
                 sortedList.RemoveAt(0);
-                bool horizontalCut = UnityEngine.Random.value > 0.5f || i == 0;
+                bool horizontalCut = UnityEngine.Random.value > 0.5f;
                 if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > Constants.RoomStep)
                 {
                     int roomHeight = Mathf.CeilToInt(room.height);
@@ -144,7 +149,23 @@ public class LevelManager : MonoBehaviour
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
                     Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomStep);
                     Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomStep);
-                    if (Mathf.RoundToInt(room1.width) >= bossRoomMinWidth) bossRoomNum++;
+                    if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
+                    {
+                        bossRoomNum--;
+                        if (Mathf.RoundToInt(room1.height) >= bossRoomMinHeight)
+                        {
+                            bossRoomNum++;
+                        }
+                        if (Mathf.RoundToInt(room2.height) >= bossRoomMinHeight)
+                        {
+                            bossRoomNum++;
+                        }
+                        if (bossRoomNum == 0)
+                        {
+                            Rooms.Add(room);
+                            continue;
+                        }
+                    }
                     // 按照面积从大到小顺序的顺序，加入到List中
                     int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
                     if (index1 < 0) sortedList.Add(room1); else sortedList.Insert(index1, room1);
@@ -158,21 +179,22 @@ public class LevelManager : MonoBehaviour
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
                     Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomStep, room.height);
                     Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomStep, room.height);
-                    if (Mathf.RoundToInt(room1.width) < bossRoomMinWidth && Mathf.RoundToInt(room2.width) < bossRoomMinWidth)
+                    if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
                     {
-                        if (bossRoomNum == 1)
+                        bossRoomNum--;
+                        if (Mathf.RoundToInt(room1.width) >= bossRoomMinWidth)
+                        {
+                            bossRoomNum++;
+                        }
+                        if (Mathf.RoundToInt(room2.width) >= bossRoomMinWidth)
+                        {
+                            bossRoomNum++;
+                        }
+                        if (bossRoomNum == 0)
                         {
                             Rooms.Add(room);
                             continue;
                         }
-                        else
-                        {
-                            bossRoomNum--;
-                        }
-                    }
-                    else if (Mathf.RoundToInt(room1.width) >= bossRoomMinWidth && Mathf.RoundToInt(room2.width) >= bossRoomMinWidth)
-                    {
-                        bossRoomNum++;
                     }
                     // 按照面积从大到小顺序的顺序，加入到List中
                     int index1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
@@ -650,13 +672,23 @@ public class LevelManager : MonoBehaviour
         return RoomGrid[i, j];
     }
 
-    public List<Rect> GetAscRooms()
+    // 不是单纯的按照面积大小排序，而是：面积最小的房间放在最前面，符合boss房间要求的房间放在最后面
+    public List<Rect> GetAreaAscRooms()
     {
         List<int> ascRoomIds = remainRoomsIndex.OrderBy(id => Rooms[id].width * Rooms[id].height).ToList();
         List<Rect> rooms = new();
-        foreach (var id in ascRoomIds)
+        for (int i = ascRoomIds.Count - 1; i >= 0; i--)
         {
-            rooms.Add(Rooms[id]);
+            int id = ascRoomIds[i];
+            var room = Rooms[id];
+            if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
+            {
+                rooms.Add(room);
+            }
+            else
+            {
+                rooms.Insert(0, room);
+            }
         }
         return rooms;
     }

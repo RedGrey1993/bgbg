@@ -49,7 +49,7 @@ public class CharacterManager : MonoBehaviour
     public void CreateCharacterObjects(LocalStorage storage)
     {
         IdGenerator.SetNextCharacterId((int)System.Math.Max(1, storage.NextCharacterId));
-        // 先创建玩家对象
+        // 玩家对象和boss对象不能在相同的房间
         CreatePlayerObjects(storage);
         // 初始boss和玩家对象不能在同一个房间
         CreateBossObjects(storage);
@@ -76,7 +76,8 @@ public class CharacterManager : MonoBehaviour
             {
                 var ps = storage.PlayerStates[i];
                 int prefabId = storage.PlayerPrefabIds[i];
-                CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), prefabId, ps.PlayerId == MyInfo.Id, ps);
+                var bs = storage.BulletStates[i];
+                CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), prefabId, ps.PlayerId == MyInfo.Id, ps, bs);
             }
         }
         else
@@ -175,10 +176,10 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            var ascRooms = LevelManager.Instance.GetAscRooms();
+            var ascRooms = LevelManager.Instance.GetAreaAscRooms();
             var roomId = ascRooms.Count - 1;
-            while (playerRooms.Contains(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center)))
-                roomId = (roomId - 1 + ascRooms.Count) % ascRooms.Count;
+            if (playerRooms.Contains(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center)))
+                return;
             int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
             var bossPrefab = levelData.bossPrefabs[randomBossIdx];
             var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
@@ -191,7 +192,8 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void CreatePlayerObject(int playerId, Color color, int prefabId, bool needController = false, PlayerState initState = null)
+    private void CreatePlayerObject(int playerId, Color color, int prefabId,
+        bool needController = false, PlayerState initState = null, BulletState initBulletState = null)
     {
         if (playerObjects.ContainsKey(playerId)) return;
 
@@ -211,7 +213,7 @@ public class CharacterManager : MonoBehaviour
         // Initialize position
         int roomMaxWidth = LevelManager.Instance.CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = LevelManager.Instance.CurrentLevelData.roomMaxHeight;
-        var ascRooms = LevelManager.Instance.GetAscRooms();
+        var ascRooms = LevelManager.Instance.GetAreaAscRooms();
         var roomId = Random.Range(0, Mathf.Max(ascRooms.Count / 2, 1));
         go.transform.position = ascRooms[roomId].center;
         // Set player name
@@ -230,6 +232,12 @@ public class CharacterManager : MonoBehaviour
                 playerStatus.State.PlayerId = playerId;
                 playerStatus.State.PlayerName = playerName;
             }
+
+            if (initBulletState != null)
+            {
+                playerStatus.bulletState = initBulletState;
+            }
+
             playerStatus.IsAI = false;
         }
 
@@ -607,6 +615,7 @@ public class CharacterManager : MonoBehaviour
             if (playerStatus != null)
             {
                 storage.PlayerStates.Add(playerStatus.State);
+                storage.BulletStates.Add(playerStatus.bulletState);
                 storage.PlayerPrefabIds.Add(playerPrefabId);
             }
         }

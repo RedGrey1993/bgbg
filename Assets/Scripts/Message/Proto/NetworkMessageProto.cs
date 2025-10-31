@@ -58,21 +58,22 @@ namespace NetworkMessageProto {
             "GAEgASgFEg8KB1NraWxsSWQYAiABKA0SKwoIUG9zaXRpb24YAyABKAsyGS5O",
             "ZXR3b3JrTWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYkluZm8SDwoH",
             "U3RhZ2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSI1ChBNaW5pb25QcmVm",
-            "YWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUi2QQK",
+            "YWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUikQUK",
             "DExvY2FsU3RvcmFnZRIUCgxDdXJyZW50U3RhZ2UYASABKAUSNgoMUGxheWVy",
             "U3RhdGVzGAIgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0",
-            "ZRIXCg9QbGF5ZXJQcmVmYWJJZHMYDiADKAUSNgoMTWluaW9uU3RhdGVzGAMg",
-            "AygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRJAChFNaW5p",
-            "b25QcmVmYWJJbmZvcxgEIAMoCzIlLk5ldHdvcmtNZXNzYWdlUHJvdG8uTWlu",
-            "aW9uUHJlZmFiSW5mbxI0CgpCb3NzU3RhdGVzGAUgAygLMiAuTmV0d29ya01l",
-            "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI8Cg9Cb3NzUHJlZmFiSW5mb3MYBiAD",
-            "KAsyIy5OZXR3b3JrTWVzc2FnZVByb3RvLkJvc3NQcmVmYWJJbmZvEi0KBVJv",
-            "b21zGAcgAygLMh4uTmV0d29ya01lc3NhZ2VQcm90by5SZWN0UHJvdG8SFAoM",
-            "Um9vbU1heFdpZHRoGAggASgNEhUKDVJvb21NYXhIZWlnaHQYCSABKA0SFwoP",
-            "TmV4dENoYXJhY3RlcklkGAogASgNEjMKEFRlbGVwb3J0UG9zaXRpb24YCyAB",
-            "KAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISNAoLUGlja3VwSXRlbXMY",
-            "DCADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFz",
-            "c2VkU3RhZ2VzGA0gAygFYgZwcm90bzM="));
+            "ZRI2CgxCdWxsZXRTdGF0ZXMYDyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3Rv",
+            "LkJ1bGxldFN0YXRlEhcKD1BsYXllclByZWZhYklkcxgOIAMoBRI2CgxNaW5p",
+            "b25TdGF0ZXMYAyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0",
+            "YXRlEkAKEU1pbmlvblByZWZhYkluZm9zGAQgAygLMiUuTmV0d29ya01lc3Nh",
+            "Z2VQcm90by5NaW5pb25QcmVmYWJJbmZvEjQKCkJvc3NTdGF0ZXMYBSADKAsy",
+            "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjwKD0Jvc3NQcmVm",
+            "YWJJbmZvcxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdlUHJvdG8uQm9zc1ByZWZh",
+            "YkluZm8SLQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJl",
+            "Y3RQcm90bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdo",
+            "dBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQ",
+            "b3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQ",
+            "aWNrdXBJdGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3Vw",
+            "SXRlbRIUCgxQYXNzZWRTdGFnZXMYDSADKAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -89,7 +90,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4286,6 +4287,7 @@ namespace NetworkMessageProto {
     public LocalStorage(LocalStorage other) : this() {
       currentStage_ = other.currentStage_;
       playerStates_ = other.playerStates_.Clone();
+      bulletStates_ = other.bulletStates_.Clone();
       playerPrefabIds_ = other.playerPrefabIds_.Clone();
       minionStates_ = other.minionStates_.Clone();
       minionPrefabInfos_ = other.minionPrefabInfos_.Clone();
@@ -4311,7 +4313,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 15
+    /// next index = 16
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4331,6 +4333,17 @@ namespace NetworkMessageProto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::NetworkMessageProto.PlayerState> PlayerStates {
       get { return playerStates_; }
+    }
+
+    /// <summary>Field number for the "BulletStates" field.</summary>
+    public const int BulletStatesFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.BulletState> _repeated_bulletStates_codec
+        = pb::FieldCodec.ForMessage(122, global::NetworkMessageProto.BulletState.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.BulletState> bulletStates_ = new pbc::RepeatedField<global::NetworkMessageProto.BulletState>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::NetworkMessageProto.BulletState> BulletStates {
+      get { return bulletStates_; }
     }
 
     /// <summary>Field number for the "PlayerPrefabIds" field.</summary>
@@ -4486,6 +4499,7 @@ namespace NetworkMessageProto {
       }
       if (CurrentStage != other.CurrentStage) return false;
       if(!playerStates_.Equals(other.playerStates_)) return false;
+      if(!bulletStates_.Equals(other.bulletStates_)) return false;
       if(!playerPrefabIds_.Equals(other.playerPrefabIds_)) return false;
       if(!minionStates_.Equals(other.minionStates_)) return false;
       if(!minionPrefabInfos_.Equals(other.minionPrefabInfos_)) return false;
@@ -4507,6 +4521,7 @@ namespace NetworkMessageProto {
       int hash = 1;
       if (CurrentStage != 0) hash ^= CurrentStage.GetHashCode();
       hash ^= playerStates_.GetHashCode();
+      hash ^= bulletStates_.GetHashCode();
       hash ^= playerPrefabIds_.GetHashCode();
       hash ^= minionStates_.GetHashCode();
       hash ^= minionPrefabInfos_.GetHashCode();
@@ -4566,6 +4581,7 @@ namespace NetworkMessageProto {
       pickupItems_.WriteTo(output, _repeated_pickupItems_codec);
       passedStages_.WriteTo(output, _repeated_passedStages_codec);
       playerPrefabIds_.WriteTo(output, _repeated_playerPrefabIds_codec);
+      bulletStates_.WriteTo(output, _repeated_bulletStates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4605,6 +4621,7 @@ namespace NetworkMessageProto {
       pickupItems_.WriteTo(ref output, _repeated_pickupItems_codec);
       passedStages_.WriteTo(ref output, _repeated_passedStages_codec);
       playerPrefabIds_.WriteTo(ref output, _repeated_playerPrefabIds_codec);
+      bulletStates_.WriteTo(ref output, _repeated_bulletStates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -4619,6 +4636,7 @@ namespace NetworkMessageProto {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentStage);
       }
       size += playerStates_.CalculateSize(_repeated_playerStates_codec);
+      size += bulletStates_.CalculateSize(_repeated_bulletStates_codec);
       size += playerPrefabIds_.CalculateSize(_repeated_playerPrefabIds_codec);
       size += minionStates_.CalculateSize(_repeated_minionStates_codec);
       size += minionPrefabInfos_.CalculateSize(_repeated_minionPrefabInfos_codec);
@@ -4655,6 +4673,7 @@ namespace NetworkMessageProto {
         CurrentStage = other.CurrentStage;
       }
       playerStates_.Add(other.playerStates_);
+      bulletStates_.Add(other.bulletStates_);
       playerPrefabIds_.Add(other.playerPrefabIds_);
       minionStates_.Add(other.minionStates_);
       minionPrefabInfos_.Add(other.minionPrefabInfos_);
@@ -4758,6 +4777,10 @@ namespace NetworkMessageProto {
             playerPrefabIds_.AddEntriesFrom(input, _repeated_playerPrefabIds_codec);
             break;
           }
+          case 122: {
+            bulletStates_.AddEntriesFrom(input, _repeated_bulletStates_codec);
+            break;
+          }
         }
       }
     #endif
@@ -4836,6 +4859,10 @@ namespace NetworkMessageProto {
           case 114:
           case 112: {
             playerPrefabIds_.AddEntriesFrom(ref input, _repeated_playerPrefabIds_codec);
+            break;
+          }
+          case 122: {
+            bulletStates_.AddEntriesFrom(ref input, _repeated_bulletStates_codec);
             break;
           }
         }

@@ -39,7 +39,7 @@ public class SkillPanelController : MonoBehaviour
 
     public void RandomizeNewPassiveSkillChoice()
     {
-        StartCoroutine(UIManager.Instance.OpenSkillPanel());
+        UIManager.Instance.OpenSkillPanel();
         var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
         List<SkillData> skills = new List<SkillData>();
         for (int i = 0; i < Constants.SkillChooseNumber; i++)
@@ -64,6 +64,7 @@ public class SkillPanelController : MonoBehaviour
 
     public void Initialize(List<SkillData> initialSkills)
     {
+        UIManager.Instance.OpenSkillPanel();
         foreach (Transform child in ownedSkillsContainer)
         {
             if (child.GetComponent<OwnedSkillIcon>() != null) Destroy(child.gameObject);
@@ -148,7 +149,7 @@ public class SkillPanelController : MonoBehaviour
         // 4. 应用技能并清理UI
         LearnNewSkill(selectedSkill);
         learnableSkillsPanel.SetActive(false);
-        StartCoroutine(UIManager.Instance.HideSkillPanel()); // 关闭技能面板
+        UIManager.Instance.HideSkillPanel(); // 关闭技能面板
     }
 
     private void PopulateAndSetupLearnableSkills(List<SkillData> skills, System.Action<SkillData> callback)
@@ -187,7 +188,7 @@ public class SkillPanelController : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             Debug.Log("添加第一组技能到队列...");
-            StartCoroutine(UIManager.Instance.OpenSkillPanel());
+            UIManager.Instance.OpenSkillPanel();
             var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
             List<SkillData> testSkills = new List<SkillData>();
             for (int i = 0; i < 3; i++)

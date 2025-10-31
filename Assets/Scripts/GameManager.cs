@@ -187,14 +187,18 @@ public class GameManager : MonoBehaviour
                     CurrentStage = CurrentStage + 1,
                     NextCharacterId = 1,
                 };
-                foreach (var player in CharacterManager.Instance.playerObjects.Values)
+                foreach (var playerId in CharacterManager.Instance.playerObjects.Keys)
                 {
+                    var player = CharacterManager.Instance.playerObjects[playerId];
+                    var playerPrefabId = CharacterManager.Instance.PlayerPrefabIds[playerId];
                     var playerStatus = player.GetComponent<CharacterStatus>();
                     if (playerStatus != null)
                     {
                         playerStatus.State.CurrentStageSkillLearned = false;
                         playerStatus.State.Position = null;
                         storage.PlayerStates.Add(playerStatus.State);
+                        storage.BulletStates.Add(playerStatus.bulletState);
+                        storage.PlayerPrefabIds.Add(playerPrefabId);
                     }
                 }
                 skillPanelController.ForceRandomChoose = false;

@@ -5580,7 +5580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0067d7729e3f59241959cd0305bf0e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_4_0_SysGuardianFloatingTurretAI
-  stepAngle: 45
+  stepAngle: 30
   shootEffect: {fileID: 3924602816803906902}
 --- !u!1 &2557195690277195897
 GameObject:
@@ -6206,7 +6206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0067d7729e3f59241959cd0305bf0e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_4_0_SysGuardianFloatingTurretAI
-  stepAngle: 45
+  stepAngle: 30
   shootEffect: {fileID: 6244203902365970676}
 --- !u!1 &4392302925158299474
 GameObject:
@@ -17005,7 +17005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0067d7729e3f59241959cd0305bf0e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_4_0_SysGuardianFloatingTurretAI
-  stepAngle: 45
+  stepAngle: 30
   shootEffect: {fileID: 5373446630062760439}
 --- !u!1 &7890129600020444529
 GameObject:
@@ -17180,7 +17180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0067d7729e3f59241959cd0305bf0e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_4_0_SysGuardianFloatingTurretAI
-  stepAngle: 45
+  stepAngle: 30
   shootEffect: {fileID: 1018575718699242734}
 --- !u!1 &8508833022414615125
 GameObject:

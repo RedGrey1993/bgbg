@@ -49,8 +49,8 @@ public class Boss_4_0_SysGuardianFloatingTurretAI : CharacterBaseAI
             Destroy(audioSrc, CharacterData.shootSound.length);
         }
 
-        var startDir = Quaternion.Euler(0, 0, -90) * shootDir.normalized;
-        int num = 180 / stepAngle;
+        var startDir = Quaternion.Euler(0, 0, -60) * shootDir.normalized;
+        int num = 120 / stepAngle;
         Quaternion rotationPlus = Quaternion.Euler(0, 0, stepAngle);
 
         for (int i = 0; i <= num; i++)
