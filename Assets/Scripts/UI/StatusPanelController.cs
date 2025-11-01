@@ -45,6 +45,6 @@ public class StatusPanelController : MonoBehaviour
 
     public void UpdateTipsText(int roomNo)
     {
-        tipsText.text = $"Stage:{GameManager.Instance.CurrentStage}\nRoom: #{roomNo}";
+        tipsText.text = $"Stage:{GameManager.Instance.Storage.CurrentStage}\nRoom: #{roomNo}";
     }
 }

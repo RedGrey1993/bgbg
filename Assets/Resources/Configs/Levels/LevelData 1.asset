@@ -16,7 +16,7 @@ MonoBehaviour:
   explosionTile: {fileID: 11400000, guid: 57971f3ff262b4d4fbe6d4e01983181b, type: 2}
   wallTile: {fileID: 11400000, guid: 36c0ac87a3f14014197c33090a5f9d06, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: ca4136794166b3b439b8b630c5b4f3d1, type: 3}
+  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 1

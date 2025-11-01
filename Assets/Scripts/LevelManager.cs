@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateLevel(LocalStorage storage)
     {
-        int level = (int)storage.CurrentStage;
+        int level = storage.CurrentStage;
         Debug.Log($"################# 生成第 {level} 关 #################");
         CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
         TileBase floorTile = CurrentLevelData.floorTile;

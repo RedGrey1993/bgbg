@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameConfig gameConfig;
-    public int CurrentStage { get; private set; } = 1;
     public GameState GameState { get; private set; } = GameState.InMenu;
     public HashSet<int> PassedStages { get; private set; } = new HashSet<int>();
     public LocalStorage Storage { get; private set; } = null;
@@ -47,30 +46,56 @@ public class GameManager : MonoBehaviour
     }
 
     #region Game Logic
-    public void SaveLocalStorage(Vec2 teleportPosition)
+    public void SaveLocalStorage(Vec2 teleportPosition, bool newLevel = false, bool restart = false)
     {
-        LocalStorage storage = new LocalStorage();
-        CharacterManager.Instance.SaveInfoToLocalStorage(storage);
-        if (storage.PlayerStates.Count == 0)
+        if (restart)
         {
-            // Player死亡，从第1关重新开始
-            storage.CurrentStage = 1;
-            storage.NextCharacterId = 1;
+            // 通关后清空上一把数据并恢复到第一关
+            LevelManager.Instance.ClearLevel();
+        }
+        CharacterManager.Instance.SaveInfoToLocalStorage(Storage);
+        if (Storage.PlayerStates.Count == 0)
+        {
+            // Player死亡或通关一次，从第1关重新开始
+            Storage.CurrentStage = 1;
+            Storage.NextCharacterId = 1;
+            Storage.Rooms.Clear();
+            Storage.TeleportPosition = null;
+            Storage.PickupItems.Clear();
+            Storage.PassedStages.Clear();
+            Storage.NewLevel = true;
         }
         else
         {
-            storage.CurrentStage = CurrentStage;
-            storage.TeleportPosition = teleportPosition;
-            storage.PassedStages.Clear();
-            storage.PassedStages.AddRange(PassedStages);
-            LevelManager.Instance.SaveInfoToLocalStorage(storage);
+            if (newLevel) // 如果是开始新的关卡时保存记录，这时候player新的位置还没生成
+            {
+                foreach (var state in Storage.PlayerStates)
+                {
+                    state.Position = null;
+                    state.CurrentStageSkillLearned = false;
+                }
+                Storage.CurrentStage++;
+                Storage.MinionStates.Clear();
+                Storage.MinionPrefabInfos.Clear();
+                Storage.BossStates.Clear();
+                Storage.BossPrefabInfos.Clear();
+                Storage.Rooms.Clear();
+                Storage.PickupItems.Clear();
+            }
+            else
+            {
+                // 保存Rooms信息
+                LevelManager.Instance.SaveInfoToLocalStorage(Storage);
+            }
+
+            Storage.NewLevel = newLevel;
+            Storage.TeleportPosition = teleportPosition;
+            Storage.PassedStages.Clear();
+            Storage.PassedStages.AddRange(PassedStages);
         }
-        using (var file = File.Create(saveFilePath))
-        {
-            Storage = storage;
-            SerializeUtil.Serialize(storage, out byte[] data);
-            file.Write(data, 0, data.Length);
-        }
+        using var file = File.Create(saveFilePath);
+        SerializeUtil.Serialize(Storage, out byte[] data);
+        file.Write(data, 0, data.Length);
     }
     public LocalStorage LoadLocalStorage()
     {
@@ -85,6 +110,7 @@ public class GameManager : MonoBehaviour
             {
                 CurrentStage = 1,
                 NextCharacterId = 1,
+                NewLevel = true,
             };
         }
         else
@@ -93,11 +119,13 @@ public class GameManager : MonoBehaviour
             SerializeUtil.Deserialize(data, out LocalStorage st);
             Storage = st;
         }
-        CurrentStage = Mathf.Max(1, Storage.CurrentStage);
+        if (Storage.CurrentStage < 1) Storage.CurrentStage = 1;
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
         PassedStages = new HashSet<int> { 2, 3, 4 };
+
+        Debug.Log($"fhhtest, LoadLocalStorage: {Storage}, {Storage.Achievement1NewCycle}");
         return Storage;
     }
 
@@ -107,8 +135,8 @@ public class GameManager : MonoBehaviour
         {
             CurrentStage = 1,
             NextCharacterId = 1,
+            NewLevel = true,
         };
-        CurrentStage = Mathf.Max(1, Storage.CurrentStage);
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
@@ -118,7 +146,8 @@ public class GameManager : MonoBehaviour
 
     public bool HasValidStorage(LocalStorage storage)
     {
-        return storage.PlayerStates.Count > 0;
+        return storage.PlayerStates.Count > 0 || storage.Achievement1NewCycle
+            || storage.Achievement2Mirror || storage.Achievement3InfiniteLonely;
     }
 
     public bool StartFromChooseCharacter(LocalStorage storage)
@@ -163,57 +192,47 @@ public class GameManager : MonoBehaviour
     {
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
         skillPanelController.ForceRandomChoose = true;
-        Vec2 teleportPosition = null;
-        if (UIManager.Instance.TeleportBeamEffect != null)
-        {
-            teleportPosition = new Vec2
-            {
-                X = UIManager.Instance.TeleportBeamEffect.transform.position.x,
-                Y = UIManager.Instance.TeleportBeamEffect.transform.position.y,
-            };
-        }
-        PassedStages.Add(CurrentStage);
-        SaveLocalStorage(teleportPosition);
+        PassedStages.Add(Storage.CurrentStage);
         bool hasBugItem = CharacterManager.Instance.MySelfHasSysBug();
-        bool isBugStage = LevelDatabase.Instance.IsSysBugStage(CurrentStage + 1);
-        LevelData nextStage = LevelDatabase.Instance.GetLevelData(CurrentStage + 1);
+        bool isBugStage = LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage + 1);
+        LevelData nextStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage + 1);
         if ((hasBugItem && isBugStage) || (!isBugStage && nextStage != null))
         {
             // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
-                LocalStorage storage = new LocalStorage
-                {
-                    CurrentStage = CurrentStage + 1,
-                    NextCharacterId = 1,
-                };
-                foreach (var playerId in CharacterManager.Instance.playerObjects.Keys)
-                {
-                    var player = CharacterManager.Instance.playerObjects[playerId];
-                    var playerPrefabId = CharacterManager.Instance.PlayerPrefabIds[playerId];
-                    var playerStatus = player.GetComponent<CharacterStatus>();
-                    if (playerStatus != null)
-                    {
-                        playerStatus.State.CurrentStageSkillLearned = false;
-                        playerStatus.State.Position = null;
-                        storage.PlayerStates.Add(playerStatus.State);
-                        storage.BulletStates.Add(playerStatus.bulletState);
-                        storage.PlayerPrefabIds.Add(playerPrefabId);
-                    }
-                }
+                SaveLocalStorage(null, newLevel: true);
                 skillPanelController.ForceRandomChoose = false;
+
                 // 销毁传送光柱
                 callback?.Invoke();
-                CurrentStage++;
-                StartLocalGame(storage);
+                StartLocalGame(Storage);
             });
         }
         else
         {
             // 没有关卡数据了，显示通关界面
-            LevelData curLevelData = LevelDatabase.Instance.GetLevelData(CurrentStage);
+            if (LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage))
+            {
+                if (Storage.Achievement2Mirror == true)
+                {
+                    Storage.Achievement3InfiniteLonely = true;
+                }
+                else
+                {
+                    Storage.Achievement2Mirror = true;
+                }
+            }
+            else
+            {
+                Storage.Achievement1NewCycle = true;
+            }
+            LevelData curLevelData = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
+                SaveLocalStorage(null, restart: true);
+                skillPanelController.ForceRandomChoose = false;
+
                 UIManager.Instance.QuitToMainMenu();
             }, new Sprite[] { curLevelData.gamePassedSprite });
             Debug.Log("没有更多关卡数据了，游戏结束！");

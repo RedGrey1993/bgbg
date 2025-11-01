@@ -58,7 +58,7 @@ namespace NetworkMessageProto {
             "GAEgASgFEg8KB1NraWxsSWQYAiABKA0SKwoIUG9zaXRpb24YAyABKAsyGS5O",
             "ZXR3b3JrTWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYkluZm8SDwoH",
             "U3RhZ2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSI1ChBNaW5pb25QcmVm",
-            "YWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUikQUK",
+            "YWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUigQYK",
             "DExvY2FsU3RvcmFnZRIUCgxDdXJyZW50U3RhZ2UYASABKAUSNgoMUGxheWVy",
             "U3RhdGVzGAIgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0",
             "ZRI2CgxCdWxsZXRTdGF0ZXMYDyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3Rv",
@@ -73,7 +73,10 @@ namespace NetworkMessageProto {
             "dBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQ",
             "b3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQ",
             "aWNrdXBJdGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3Vw",
-            "SXRlbRIUCgxQYXNzZWRTdGFnZXMYDSADKAViBnByb3RvMw=="));
+            "SXRlbRIUCgxQYXNzZWRTdGFnZXMYDSADKAUSHAoUQWNoaWV2ZW1lbnQxTmV3",
+            "Q3ljbGUYECABKAgSGgoSQWNoaWV2ZW1lbnQyTWlycm9yGBEgASgIEiIKGkFj",
+            "aGlldmVtZW50M0luZmluaXRlTG9uZWx5GBIgASgIEhAKCE5ld0xldmVsGBMg",
+            "ASgIYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -90,7 +93,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4300,6 +4303,10 @@ namespace NetworkMessageProto {
       teleportPosition_ = other.teleportPosition_ != null ? other.teleportPosition_.Clone() : null;
       pickupItems_ = other.pickupItems_.Clone();
       passedStages_ = other.passedStages_.Clone();
+      achievement1NewCycle_ = other.achievement1NewCycle_;
+      achievement2Mirror_ = other.achievement2Mirror_;
+      achievement3InfiniteLonely_ = other.achievement3InfiniteLonely_;
+      newLevel_ = other.newLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4313,7 +4320,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 16
+    /// next index = 20
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4482,6 +4489,54 @@ namespace NetworkMessageProto {
       get { return passedStages_; }
     }
 
+    /// <summary>Field number for the "Achievement1NewCycle" field.</summary>
+    public const int Achievement1NewCycleFieldNumber = 16;
+    private bool achievement1NewCycle_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Achievement1NewCycle {
+      get { return achievement1NewCycle_; }
+      set {
+        achievement1NewCycle_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Achievement2Mirror" field.</summary>
+    public const int Achievement2MirrorFieldNumber = 17;
+    private bool achievement2Mirror_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Achievement2Mirror {
+      get { return achievement2Mirror_; }
+      set {
+        achievement2Mirror_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Achievement3InfiniteLonely" field.</summary>
+    public const int Achievement3InfiniteLonelyFieldNumber = 18;
+    private bool achievement3InfiniteLonely_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Achievement3InfiniteLonely {
+      get { return achievement3InfiniteLonely_; }
+      set {
+        achievement3InfiniteLonely_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NewLevel" field.</summary>
+    public const int NewLevelFieldNumber = 19;
+    private bool newLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool NewLevel {
+      get { return newLevel_; }
+      set {
+        newLevel_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -4512,6 +4567,10 @@ namespace NetworkMessageProto {
       if (!object.Equals(TeleportPosition, other.TeleportPosition)) return false;
       if(!pickupItems_.Equals(other.pickupItems_)) return false;
       if(!passedStages_.Equals(other.passedStages_)) return false;
+      if (Achievement1NewCycle != other.Achievement1NewCycle) return false;
+      if (Achievement2Mirror != other.Achievement2Mirror) return false;
+      if (Achievement3InfiniteLonely != other.Achievement3InfiniteLonely) return false;
+      if (NewLevel != other.NewLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4534,6 +4593,10 @@ namespace NetworkMessageProto {
       if (teleportPosition_ != null) hash ^= TeleportPosition.GetHashCode();
       hash ^= pickupItems_.GetHashCode();
       hash ^= passedStages_.GetHashCode();
+      if (Achievement1NewCycle != false) hash ^= Achievement1NewCycle.GetHashCode();
+      if (Achievement2Mirror != false) hash ^= Achievement2Mirror.GetHashCode();
+      if (Achievement3InfiniteLonely != false) hash ^= Achievement3InfiniteLonely.GetHashCode();
+      if (NewLevel != false) hash ^= NewLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4582,6 +4645,22 @@ namespace NetworkMessageProto {
       passedStages_.WriteTo(output, _repeated_passedStages_codec);
       playerPrefabIds_.WriteTo(output, _repeated_playerPrefabIds_codec);
       bulletStates_.WriteTo(output, _repeated_bulletStates_codec);
+      if (Achievement1NewCycle != false) {
+        output.WriteRawTag(128, 1);
+        output.WriteBool(Achievement1NewCycle);
+      }
+      if (Achievement2Mirror != false) {
+        output.WriteRawTag(136, 1);
+        output.WriteBool(Achievement2Mirror);
+      }
+      if (Achievement3InfiniteLonely != false) {
+        output.WriteRawTag(144, 1);
+        output.WriteBool(Achievement3InfiniteLonely);
+      }
+      if (NewLevel != false) {
+        output.WriteRawTag(152, 1);
+        output.WriteBool(NewLevel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4622,6 +4701,22 @@ namespace NetworkMessageProto {
       passedStages_.WriteTo(ref output, _repeated_passedStages_codec);
       playerPrefabIds_.WriteTo(ref output, _repeated_playerPrefabIds_codec);
       bulletStates_.WriteTo(ref output, _repeated_bulletStates_codec);
+      if (Achievement1NewCycle != false) {
+        output.WriteRawTag(128, 1);
+        output.WriteBool(Achievement1NewCycle);
+      }
+      if (Achievement2Mirror != false) {
+        output.WriteRawTag(136, 1);
+        output.WriteBool(Achievement2Mirror);
+      }
+      if (Achievement3InfiniteLonely != false) {
+        output.WriteRawTag(144, 1);
+        output.WriteBool(Achievement3InfiniteLonely);
+      }
+      if (NewLevel != false) {
+        output.WriteRawTag(152, 1);
+        output.WriteBool(NewLevel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -4657,6 +4752,18 @@ namespace NetworkMessageProto {
       }
       size += pickupItems_.CalculateSize(_repeated_pickupItems_codec);
       size += passedStages_.CalculateSize(_repeated_passedStages_codec);
+      if (Achievement1NewCycle != false) {
+        size += 2 + 1;
+      }
+      if (Achievement2Mirror != false) {
+        size += 2 + 1;
+      }
+      if (Achievement3InfiniteLonely != false) {
+        size += 2 + 1;
+      }
+      if (NewLevel != false) {
+        size += 2 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -4697,6 +4804,18 @@ namespace NetworkMessageProto {
       }
       pickupItems_.Add(other.pickupItems_);
       passedStages_.Add(other.passedStages_);
+      if (other.Achievement1NewCycle != false) {
+        Achievement1NewCycle = other.Achievement1NewCycle;
+      }
+      if (other.Achievement2Mirror != false) {
+        Achievement2Mirror = other.Achievement2Mirror;
+      }
+      if (other.Achievement3InfiniteLonely != false) {
+        Achievement3InfiniteLonely = other.Achievement3InfiniteLonely;
+      }
+      if (other.NewLevel != false) {
+        NewLevel = other.NewLevel;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -4781,6 +4900,22 @@ namespace NetworkMessageProto {
             bulletStates_.AddEntriesFrom(input, _repeated_bulletStates_codec);
             break;
           }
+          case 128: {
+            Achievement1NewCycle = input.ReadBool();
+            break;
+          }
+          case 136: {
+            Achievement2Mirror = input.ReadBool();
+            break;
+          }
+          case 144: {
+            Achievement3InfiniteLonely = input.ReadBool();
+            break;
+          }
+          case 152: {
+            NewLevel = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -4863,6 +4998,22 @@ namespace NetworkMessageProto {
           }
           case 122: {
             bulletStates_.AddEntriesFrom(ref input, _repeated_bulletStates_codec);
+            break;
+          }
+          case 128: {
+            Achievement1NewCycle = input.ReadBool();
+            break;
+          }
+          case 136: {
+            Achievement2Mirror = input.ReadBool();
+            break;
+          }
+          case 144: {
+            Achievement3InfiniteLonely = input.ReadBool();
+            break;
+          }
+          case 152: {
+            NewLevel = input.ReadBool();
             break;
           }
         }

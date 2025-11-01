@@ -64,7 +64,7 @@ public class SkillPanelController : MonoBehaviour
 
     public void Initialize(List<SkillData> initialSkills)
     {
-        UIManager.Instance.OpenSkillPanel();
+        UIManager.Instance.EnableSkillPanel();
         foreach (Transform child in ownedSkillsContainer)
         {
             if (child.GetComponent<OwnedSkillIcon>() != null) Destroy(child.gameObject);
@@ -79,6 +79,7 @@ public class SkillPanelController : MonoBehaviour
         skillChoiceQueue.Clear();
         isChoosing = false;
         learnableSkillsPanel.SetActive(false);
+        UIManager.Instance.DisableSkillPanel();
     }
 
     public List<uint> GetOwnedSkillIds()

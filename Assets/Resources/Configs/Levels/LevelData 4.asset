@@ -16,10 +16,10 @@ MonoBehaviour:
   explosionTile: {fileID: 0}
   wallTile: {fileID: 0}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
+  - {fileID: 5506378715684145941, guid: ca4136794166b3b439b8b630c5b4f3d1, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 89c8ba24a8bb0514ba1d76f87f457f5c, type: 3}
-  level: 5
+  level: 4
   minTotalRooms: 2
   maxTotalRooms: 2
   roomMaxWidth: 40

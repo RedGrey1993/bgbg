@@ -26,10 +26,10 @@ public class BlackHole : MonoBehaviour
         {
             status = other.GetComponentInChildren<CharacterStatus>();
         }
-        if (status.gameObject == Owner) return; // 不伤害自己
         // 尝试从进入的物体上获取HealthController组件
         if (status != null)
         {
+            if (status.gameObject == Owner) return; // 不伤害自己
             // 如果目标不在列表中，则添加它
             if (!statusInZone.Contains(status))
             {
@@ -47,9 +47,9 @@ public class BlackHole : MonoBehaviour
         {
             status = other.GetComponentInChildren<CharacterStatus>();
         }
-        if (status.gameObject == Owner) return; // 不伤害自己
         if (status != null)
         {
+            if (status.gameObject == Owner) return; // 不伤害自己
             // 如果目标在列表中，则移除它
             if (statusInZone.Contains(status))
             {

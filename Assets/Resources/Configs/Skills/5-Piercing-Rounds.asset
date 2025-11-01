@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   id: 5
   skillName: Piercing Rounds
-  description: 'Piercing Rounds: Your bullets can penetrate 1 enemy. Can be picked
-    up multiple times for stacking effects.'
+  description: Your bullets can penetrate 1 enemy. Can be picked up multiple times
+    for stacking effects.
   backgroundStory: 
   icon: {fileID: 21300000, guid: ea4ec91ce5565a84fa504e2f2ab54db3, type: 3}
   IsActive: 0

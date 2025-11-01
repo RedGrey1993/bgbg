@@ -958,6 +958,20 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
+    public void EnableSkillPanel()
+    {
+        if (skillPanel == null) return;
+        if (skillPanel.activeSelf) return;
+        skillPanel.SetActive(true);
+    }
+
+    public void DisableSkillPanel()
+    {
+        if (skillPanel == null) return;
+        if (!skillPanel.activeSelf) return;
+        skillPanel.SetActive(false);
+    }
+
     private readonly object _infoLockObject = new object(); // lock对于本线程来说是可重入的，其它线程才会等待
     public void ShowInfoPanel(string info, float duration)
     {

@@ -41,6 +41,8 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (SkillData == null) return;
         // 调用管理器的静态方法来显示 Tooltip
         SkillTooltip.ShowTooltip_Static(
+            SkillData.skillName +
+            "\n\n" +
             SkillData.description +
             "\n\n" +
             SkillData.backgroundStory);

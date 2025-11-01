@@ -16,8 +16,8 @@ public class CharacterManager : MonoBehaviour
 
     public static CharacterManager Instance { get; private set; }
 
-    public Dictionary<int, int> PlayerPrefabIds { get; set; } = new Dictionary<int, int>();
     public Dictionary<int, GameObject> playerObjects { get; private set; } = new Dictionary<int, GameObject>();
+    public Dictionary<int, int> PlayerPrefabIds { get; set; } = new Dictionary<int, int>();
     public Dictionary<int, GameObject> minionObjects { get; private set; } = new Dictionary<int, GameObject>();
     public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
     public Dictionary<int, GameObject> bossObjects { get; private set; } = new Dictionary<int, GameObject>();
@@ -97,7 +97,7 @@ public class CharacterManager : MonoBehaviour
         int stage = storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData((int)storage.CurrentStage);
 
-        if (storage.MinionStates.Count > 0)
+        if (!storage.NewLevel)
         {
             for (int i = 0; i < storage.MinionStates.Count; i++)
             {
@@ -107,7 +107,6 @@ public class CharacterManager : MonoBehaviour
 
                 InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms);
             }
-            return;
         }
         else
         {
@@ -130,7 +129,7 @@ public class CharacterManager : MonoBehaviour
             {
                 if (LevelManager.Instance.BossRooms.Contains(roomIdx) || playerRooms.Contains(roomIdx))
                     continue;
-                    
+
                 var room = LevelManager.Instance.Rooms[roomIdx];
                 // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
                 int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
@@ -162,7 +161,7 @@ public class CharacterManager : MonoBehaviour
         int stage = (int)storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData(stage);
 
-        if (storage.BossStates.Count > 0 || storage.TeleportPosition != null)
+        if (!storage.NewLevel)
         {
             for (int i = 0; i < storage.BossStates.Count; i++)
             {
@@ -301,6 +300,7 @@ public class CharacterManager : MonoBehaviour
     {
         foreach (var go in playerObjects.Values) { if (go != null) Destroy(go); }
         playerObjects.Clear();
+        PlayerPrefabIds.Clear();
     }
 
     private void ClearMinionObjects()
@@ -604,10 +604,9 @@ public class CharacterManager : MonoBehaviour
 
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
-        if (playerObjects.Count == 0) return; // Player死了，游戏结束，下次加载时从第1关重新开始
-        storage.NextCharacterId = (uint)IdGenerator.NextCharacterId();
         storage.PlayerStates.Clear();
         storage.PlayerPrefabIds.Clear();
+        storage.BulletStates.Clear();
         foreach (var playerId in playerObjects.Keys)
         {
             var playerStatus = playerObjects[playerId].GetComponent<CharacterStatus>();
@@ -621,6 +620,12 @@ public class CharacterManager : MonoBehaviour
         }
         storage.MinionStates.Clear();
         storage.MinionPrefabInfos.Clear();
+        storage.BossStates.Clear();
+        storage.BossPrefabInfos.Clear();
+
+        if (playerObjects.Count == 0) return; // Player死了，或者通关后清空上一把的状态，游戏结束，下次加载时从第1关重新开始
+        storage.NextCharacterId = (uint)IdGenerator.NextCharacterId();
+
         foreach (var minionId in minionObjects.Keys)
         {
             var minion = minionObjects[minionId];
@@ -632,8 +637,7 @@ public class CharacterManager : MonoBehaviour
                 storage.MinionPrefabInfos.Add(prefabInfo);
             }
         }
-        storage.BossStates.Clear();
-        storage.BossPrefabInfos.Clear();
+        
         foreach (var bossId in bossObjects.Keys)
         {
             var boss = bossObjects[bossId];
