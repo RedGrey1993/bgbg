@@ -18,6 +18,14 @@ message Vec2
     float Y = 2;
 }
 
+message ColorProto
+{
+    float R = 1;
+    float G = 2;
+    float B = 3;
+    float A = 4;
+}
+
 message RectProto
 {
     float X = 1;
@@ -53,6 +61,8 @@ message PlayerState
     repeated uint32 SkillIds = 14;
     bool CurrentStageSkillLearned = 15;
     uint32 ActiveSkillId = 16;
+    float Scale = 17;
+    ColorProto Color = 18;
 }
 
 message BulletState

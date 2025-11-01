@@ -1,4 +1,5 @@
 using System;
+using NetworkMessageProto;
 using UnityEngine;
 public enum MessageType
 {
@@ -114,6 +115,11 @@ public static class Constants
         if (n <= 0) throw new ArgumentException("模数必须为正数", nameof(n));
         float r = a % n;
         return r >= 0 ? r : r + n;
+    }
+
+    public static Color ToColor(this ColorProto c)
+    {
+        return new Color(c.R, c.G, c.B, c.A);
     }
 
     public static void PositionToIndex(Vector2 position, out int x, out int y)

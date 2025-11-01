@@ -59,8 +59,8 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         {
             if (Mathf.Abs(diffNormalized.x) > 0.1f)
             {
-                if (!XNearWall())
-                    diffNormalized.x *= 10; // 优先横着走，再竖着走，避免横竖快速跳转
+                if (!YNearWall())
+                    diffNormalized.y *= 10; // 优先竖着走，再横着走，避免横竖快速跳转，且更能触发横向的跳跃踩踏
             }
             characterInput.MoveInput = diffNormalized.normalized;
         }

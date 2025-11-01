@@ -105,7 +105,7 @@ public class CharacterManager : MonoBehaviour
                 var prefabInfo = storage.MinionPrefabInfos[i];
                 var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
 
-                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms);
+                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms, ms.Color.ToColor());
             }
         }
         else
@@ -137,7 +137,16 @@ public class CharacterManager : MonoBehaviour
                 AreaToNumber(room, roomIdx, out var minionNum, out var spawnPositions);
                 for (int i = 0; i < minionNum; i++)
                 {
-                    InstantiateMinionObject(minionPrefab, spawnPositions[i], stage, randomMinionIdx, null);
+                    // 10%的概率生成精英怪
+                    float scale = 1f;
+                    Color color = Color.white;
+                    if (Random.value < 0.1f)
+                    {
+                        scale = Random.Range(1.3f, 2.5f);
+                        // 更偏向于亮色
+                        color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1f);
+                    }
+                    InstantiateMinionObject(minionPrefab, spawnPositions[i], stage, randomMinionIdx, null, color, scale);
                 }
             }
         }
@@ -206,9 +215,6 @@ public class CharacterManager : MonoBehaviour
         {
             feet.tag = Constants.TagPlayerFeet;
         }
-        // set color by steamId for distinctness
-        var rend = go.GetComponent<SpriteRenderer>();
-        if (rend != null) rend.color = color;
         // Initialize position
         int roomMaxWidth = LevelManager.Instance.CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = LevelManager.Instance.CurrentLevelData.roomMaxHeight;
@@ -222,14 +228,13 @@ public class CharacterManager : MonoBehaviour
         {
             if (initState != null)
             {
-                playerStatus.State = initState;
-                if (initState.Position != null)
-                    go.transform.position = new Vector2(initState.Position.X, initState.Position.Y);
+                playerStatus.SetState(initState);
             }
             else
             {
                 playerStatus.State.PlayerId = playerId;
                 playerStatus.State.PlayerName = playerName;
+                playerStatus.SetColor(color);
             }
 
             if (initBulletState != null)
@@ -352,6 +357,10 @@ public class CharacterManager : MonoBehaviour
 
     private Color ColorFromID(int playerId)
     {
+        if (playerId <= 1)
+        {
+            return Color.white;
+        }
         // Use a stable hash function (FNV-1a) for consistent results across platforms and runs
         uint hash = FNV1a((uint)playerId);
         // Mix the hash bits to improve distribution and ensure visual distinction for similar IDs
@@ -686,7 +695,8 @@ public class CharacterManager : MonoBehaviour
         return boss;
     }
     
-    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms)
+    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms,
+        Color color, float scale = 1f)
     {
         var minion = Instantiate(prefab, minionParant);
         minion.transform.position = position;
@@ -702,12 +712,28 @@ public class CharacterManager : MonoBehaviour
         {
             if (ms != null)
             {
-                minionStatus.State = ms;
+                minionStatus.SetState(ms);
             }
             else
             {
                 minionStatus.State.PlayerId = minionId;
                 minionStatus.State.PlayerName = minion.name;
+                if (scale > 1.1f)
+                {
+                    minionStatus.State.Damage = (int)(minionStatus.State.Damage * scale);
+                    minionStatus.State.MoveSpeed = (uint)(minionStatus.State.MoveSpeed * scale);
+                    minionStatus.State.BulletSpeed = (uint)(minionStatus.State.BulletSpeed * scale);
+                    minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
+                    minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
+                    minionStatus.State.ShootRange = (int)(minionStatus.State.ShootRange * scale);
+                }
+                minionStatus.SetColor(color);
+                minionStatus.SetScale(scale);
+            }
+            var rb = minion.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.mass *= minionStatus.State.Scale;
             }
         }
 

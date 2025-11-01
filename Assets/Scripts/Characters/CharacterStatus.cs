@@ -37,6 +37,7 @@ public class CharacterStatus : MonoBehaviour
         State.CurrentExp = 0;
         State.CurrentLevel = 1;
         State.Position = new Vec2();
+        State.Scale = 1;
 
         bulletState.ShootNum = 1;
     }
@@ -154,24 +155,15 @@ public class CharacterStatus : MonoBehaviour
     {
         GameManager.Instance.CheckWinningCondition_Host();
 
-        // Change player color to gray
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
         {
-            sr.color = Color.gray;
             sr.sortingOrder = -5; // Change sorting order to be behind alive players
-        }
-
-        SkinnedMeshRenderer meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        Debug.Log($"fhhtest, char {transform.name} meshRenderer {meshRenderer}");
-        if (meshRenderer != null)
-        {
-            Material grayMaterial = new Material(meshRenderer.material);
-            grayMaterial.color = Color.gray;
-            meshRenderer.material = grayMaterial;
-
             // 渲染层级对SkinnedMeshRenderer不管用
         }
+
+        // 死亡后设置颜色为灰色
+        SetColor(Color.gray);
 
         Canvas canvas = GetComponentInChildren<Canvas>();
         if (canvas != null)
@@ -201,6 +193,59 @@ public class CharacterStatus : MonoBehaviour
         {
             GameManager.Instance.SaveLocalStorage(null);
         }
+    }
+
+    public void SetColor(Color color)
+    {
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = color;
+        }
+
+        SkinnedMeshRenderer skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        if (skinnedMeshRenderer != null)
+        {
+            Material grayMaterial = new Material(skinnedMeshRenderer.material);
+            grayMaterial.color = color;
+            skinnedMeshRenderer.material = grayMaterial;
+        }
+
+        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            Material grayMaterial = new Material(meshRenderer.material);
+            grayMaterial.color = color;
+            meshRenderer.material = grayMaterial;
+        }
+
+        State.Color = new ColorProto
+        {
+            R = color.r,
+            G = color.g,
+            B = color.b,
+            A = color.a
+        };
+    }
+
+    public void SetScale(float scale)
+    {
+        transform.localScale = new Vector3(scale, scale, 1);
+        State.Scale = scale;
+    }
+
+    public void SetState(PlayerState state)
+    {
+        State = state;
+        if (State.Position != null)
+        {
+            transform.position = new Vector2(state.Position.X, state.Position.Y);
+        }
+        if (State.Color != null)
+        {
+            SetColor(state.Color.ToColor());
+        }
+        SetScale(State.Scale);
     }
 
     public void UpdateHealthSliderUI()
@@ -241,11 +286,8 @@ public class CharacterStatus : MonoBehaviour
 
     void FixedUpdate()
     {
-        State.Position = new Vec2
-        {
-            X = transform.position.x,
-            Y = transform.position.y
-        };
+        State.Position.X = transform.position.x;
+        State.Position.Y = transform.position.y;
 
         if (HasPlayerController())
         {
