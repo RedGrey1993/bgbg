@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: LevelData 4
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   floorTile: {fileID: 11400000, guid: f3901e6e4404d8445866279c9c661900, type: 2}
+  explosionTile: {fileID: 0}
+  wallTile: {fileID: 0}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: 96b2df61cb1caf64c805b5a8b9c64325, type: 3}
+  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   bossPrefabs:
-  - {fileID: 5506378715684145941, guid: 1634a816d8766b64a8953461c4e61da1, type: 3}
-  level: 4
-  minTotalRooms: 1
-  maxTotalRooms: 1
+  - {fileID: 5506378715684145941, guid: 89c8ba24a8bb0514ba1d76f87f457f5c, type: 3}
+  level: 5
+  minTotalRooms: 2
+  maxTotalRooms: 2
   roomMaxWidth: 40
   roomMaxHeight: 20
   minAreaPerMinion: 500000
   maxAreaPerMinion: 1000000
-  gamePassedSprite: {fileID: 0}
+  gamePassedSprite: {fileID: 21300000, guid: a291b30f37d985340a45ca798ed9ec79, type: 3}

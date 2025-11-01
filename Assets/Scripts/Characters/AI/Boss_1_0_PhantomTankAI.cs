@@ -50,23 +50,19 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     // 和Base方法不同的地方：不计算sqrt距离，只单独比较x/y距离（保留着是为了后续可能会改为不能斜向攻击）
     protected override void UpdateAttackInput()
     {
-        if (!isAiming)
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
-            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+            var diff = AggroTarget.transform.position - transform.position;
+            var atkRange = characterStatus.State.ShootRange;
+            // 进入攻击距离，攻击，boss都能够斜向攻击
+            // if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
+            if (Mathf.Abs(diff.x) <= atkRange || Mathf.Abs(diff.y) <= atkRange)
             {
-                var diff = AggroTarget.transform.position - transform.position;
-                var atkRange = characterStatus.State.ShootRange;
-                // 进入攻击距离，攻击，boss都能够斜向攻击
-                // if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.2f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.2f))
-                if (Mathf.Abs(diff.x) <= atkRange || Mathf.Abs(diff.y) <= atkRange)
-                {
-                    characterInput.LookInput = diff.normalized;
-                    isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate->AttackAction执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                    return;
-                }
+                characterInput.LookInput = diff.normalized;
+                return;
             }
-            characterInput.LookInput = Vector2.zero;
         }
+        characterInput.LookInput = Vector2.zero;
     }
     #endregion
 
@@ -75,12 +71,11 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     private Coroutine chargeCoroutine = null;
     protected override void AttackAction()
     {
-        if (isAiming && !isAttack)
+        if (!isAttack)
         {
-            isAiming = false;
             // 所有技能都在释放中，则不能再释放技能
             // 幻影冲锋时还能够射击或者移动
-            if (shootCoroutine != null && chargeCoroutine != null) { return; }
+            if (shootCoroutine != null && chargeCoroutine != null) { return; } // 在协程都未执行完毕的时候可以移动
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -88,8 +83,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             var rnd = Random.Range(0, 2);
             if (rnd == 0 || chargeCoroutine != null)
             {
-                
-                shootCoroutine = StartCoroutine(Attack_Shoot(characterInput.LookInput));
+                shootCoroutine ??= StartCoroutine(Attack_Shoot(characterInput.LookInput));
             }
             else
             {
@@ -107,14 +101,18 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         // 调用父类方法
         AttackShoot(lookInput);
-        shootCoroutine = null;
-        isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput
 
+        // isAttack = false后才能移动
+        isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput
         if (isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
-            yield return new WaitForSeconds(Random.Range(1, 3f));
+            var waitTime = Random.Range(1, 3f);
+            Debug.Log($"fhhtest, waitTime {waitTime}, isAttack {isAttack}");
+            yield return new WaitForSeconds(waitTime);
         }
+        // shootCoroutine = null后才能再次使用该技能
+        shootCoroutine = null;
     }
 
     // 冲锋，十字幻影形式冲锋
@@ -196,6 +194,11 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
     protected override void SubclassFixedUpdate()
     {
-        if (characterInput.LookInput.sqrMagnitude > 0.1f) isAiming = true;
+        // 攻击时不要改变朝向，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
+        if (isAttack)
+        {
+            characterInput.MoveInput = Vector2.zero;
+            characterInput.LookInput = Vector2.zero;
+        }
     }
 }

@@ -33,19 +33,22 @@ public class PickupItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.TagPlayer))
+        if (collision.CompareTag(Constants.TagPlayer)) // bullet的tag也可能是Player，layer是bullets
         {
             GameObject player = collision.gameObject;
-            var status = player.GetComponent<CharacterStatus>();
-            status.State.ActiveSkillId = skillData.id;
-            if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+            var status = player.GetComponentInParent<CharacterStatus>();
+            if (status != null)
             {
-                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                spc.UpdateMyStatusUI(status.State);
-                UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", 3);
+                status.State.ActiveSkillId = skillData.id;
+                if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+                {
+                    var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                    spc.UpdateMyStatusUI(status.State);
+                    UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", 3);
+                }
+                LevelManager.Instance.PickupItems.Remove(Id);
+                Destroy(gameObject);
             }
-            LevelManager.Instance.PickupItems.Remove(Id);
-            Destroy(gameObject);
         }
     }
 }
