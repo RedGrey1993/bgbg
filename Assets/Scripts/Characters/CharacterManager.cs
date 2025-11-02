@@ -369,12 +369,30 @@ public class CharacterManager : MonoBehaviour
     //     return new Color(r, g, b, 1f);
     // }
 
+    // private uint FNV1a(uint id)
+    // {
+    //     const uint FNV_prime = 16777619;
+    //     uint hash = 2166136261;
+    //     hash ^= id;
+    //     hash *= FNV_prime;
+    //     return hash;
+    // }
+
+    // private uint Mix(uint x)
+    // {
+    //     x = (x ^ (x >> 16)) * 0x85ebca6b;
+    //     x = (x ^ (x >> 13)) * 0xc2b2ae35;
+    //     x = x ^ (x >> 16);
+    //     return x;
+    // }
+
     private Color RandomColor()
     {
         // 更偏向于右上角比较明显的颜色
         Color color = new Color();
         color.a = 1;
-        if (Random.Range(0, 3) == 0)
+        int rnd = Random.Range(0, 3);
+        if (rnd == 0)
         {
             if (Random.value > 0.5f)
             {
@@ -388,7 +406,7 @@ public class CharacterManager : MonoBehaviour
             }
             color.b = Random.Range(0, 1f);
         }
-        else if (Random.Range(0, 3) == 1)
+        else if (rnd == 1)
         {
             if (Random.value > 0.5f)
             {
@@ -402,7 +420,7 @@ public class CharacterManager : MonoBehaviour
             }
             color.r = Random.Range(0, 1f);
         }
-        else if (Random.Range(0, 3) == 2)
+        else // if (rnd == 2)
         {
             if (Random.value > 0.5f)
             {
@@ -417,23 +435,6 @@ public class CharacterManager : MonoBehaviour
             color.g = Random.Range(0, 1f);
         }
         return color;
-    }
-
-    private uint FNV1a(uint id)
-    {
-        const uint FNV_prime = 16777619;
-        uint hash = 2166136261;
-        hash ^= id;
-        hash *= FNV_prime;
-        return hash;
-    }
-
-    private uint Mix(uint x)
-    {
-        x = (x ^ (x >> 16)) * 0x85ebca6b;
-        x = (x ^ (x >> 13)) * 0xc2b2ae35;
-        x = x ^ (x >> 16);
-        return x;
     }
 
     public void InitializeMySelf()

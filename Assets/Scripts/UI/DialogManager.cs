@@ -51,10 +51,11 @@ public class DialogManager : MonoBehaviour
     /// <param name="message">要显示的提示信息</param>
     /// <param name="onConfirm">点击“确定”时要执行的方法</param>
     /// <param name="onCancel">点击“取消”时要执行的方法</param>
-    public void ShowDialog(string message, Action onConfirm, Action onCancel = null)
+    public void ShowDialog(string message, Color color, Action onConfirm, Action onCancel = null)
     {
         // 1. 设置文本
         messageText.text = message;
+        messageText.color = color;
 
         // 2. 存储回调
         // (这种方式确保了回调被正确“捕获”)

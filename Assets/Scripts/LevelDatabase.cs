@@ -47,11 +47,12 @@ public class LevelDatabase : MonoBehaviour
 
     public bool IsSysBugStage(int level)
     {
-        if (level == LevelDatas.Count)
-        {
-            return true;
-        }
-        return false;
+        return level == LevelDatas.Count;
+    }
+
+    public bool IsSysGuardianLevel(int level)
+    {
+        return level == LevelDatas.Count - 1;
     }
 
     // 提供一个公共方法来根据ID获取技能

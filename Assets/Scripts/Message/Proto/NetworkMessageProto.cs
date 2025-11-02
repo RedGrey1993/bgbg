@@ -61,7 +61,7 @@ namespace NetworkMessageProto {
             "bElkGAIgASgNEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQ",
             "cm90by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUS",
             "EAoIUHJlZmFiSWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFn",
-            "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIoEGCgxMb2NhbFN0b3JhZ2US",
+            "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIp0GCgxMb2NhbFN0b3JhZ2US",
             "FAoMQ3VycmVudFN0YWdlGAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIg",
             "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3Rh",
             "dGVzGA8gAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIX",
@@ -78,7 +78,8 @@ namespace NetworkMessageProto {
             "KAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFzc2Vk",
             "U3RhZ2VzGA0gAygFEhwKFEFjaGlldmVtZW50MU5ld0N5Y2xlGBAgASgIEhoK",
             "EkFjaGlldmVtZW50Mk1pcnJvchgRIAEoCBIiChpBY2hpZXZlbWVudDNJbmZp",
-            "bml0ZUxvbmVseRgSIAEoCBIQCghOZXdMZXZlbBgTIAEoCGIGcHJvdG8z"));
+            "bml0ZUxvbmVseRgSIAEoCBIQCghOZXdMZXZlbBgTIAEoCBIaChJTaG93ZWRT",
+            "eXNFcnJMb2dUaXAYFCABKAhiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -96,7 +97,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4702,6 +4703,7 @@ namespace NetworkMessageProto {
       achievement2Mirror_ = other.achievement2Mirror_;
       achievement3InfiniteLonely_ = other.achievement3InfiniteLonely_;
       newLevel_ = other.newLevel_;
+      showedSysErrLogTip_ = other.showedSysErrLogTip_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4715,7 +4717,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 20
+    /// next index = 21
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4932,6 +4934,18 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "ShowedSysErrLogTip" field.</summary>
+    public const int ShowedSysErrLogTipFieldNumber = 20;
+    private bool showedSysErrLogTip_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ShowedSysErrLogTip {
+      get { return showedSysErrLogTip_; }
+      set {
+        showedSysErrLogTip_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -4966,6 +4980,7 @@ namespace NetworkMessageProto {
       if (Achievement2Mirror != other.Achievement2Mirror) return false;
       if (Achievement3InfiniteLonely != other.Achievement3InfiniteLonely) return false;
       if (NewLevel != other.NewLevel) return false;
+      if (ShowedSysErrLogTip != other.ShowedSysErrLogTip) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4992,6 +5007,7 @@ namespace NetworkMessageProto {
       if (Achievement2Mirror != false) hash ^= Achievement2Mirror.GetHashCode();
       if (Achievement3InfiniteLonely != false) hash ^= Achievement3InfiniteLonely.GetHashCode();
       if (NewLevel != false) hash ^= NewLevel.GetHashCode();
+      if (ShowedSysErrLogTip != false) hash ^= ShowedSysErrLogTip.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5056,6 +5072,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(152, 1);
         output.WriteBool(NewLevel);
       }
+      if (ShowedSysErrLogTip != false) {
+        output.WriteRawTag(160, 1);
+        output.WriteBool(ShowedSysErrLogTip);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5112,6 +5132,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(152, 1);
         output.WriteBool(NewLevel);
       }
+      if (ShowedSysErrLogTip != false) {
+        output.WriteRawTag(160, 1);
+        output.WriteBool(ShowedSysErrLogTip);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5157,6 +5181,9 @@ namespace NetworkMessageProto {
         size += 2 + 1;
       }
       if (NewLevel != false) {
+        size += 2 + 1;
+      }
+      if (ShowedSysErrLogTip != false) {
         size += 2 + 1;
       }
       if (_unknownFields != null) {
@@ -5210,6 +5237,9 @@ namespace NetworkMessageProto {
       }
       if (other.NewLevel != false) {
         NewLevel = other.NewLevel;
+      }
+      if (other.ShowedSysErrLogTip != false) {
+        ShowedSysErrLogTip = other.ShowedSysErrLogTip;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5311,6 +5341,10 @@ namespace NetworkMessageProto {
             NewLevel = input.ReadBool();
             break;
           }
+          case 160: {
+            ShowedSysErrLogTip = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -5409,6 +5443,10 @@ namespace NetworkMessageProto {
           }
           case 152: {
             NewLevel = input.ReadBool();
+            break;
+          }
+          case 160: {
+            ShowedSysErrLogTip = input.ReadBool();
             break;
           }
         }

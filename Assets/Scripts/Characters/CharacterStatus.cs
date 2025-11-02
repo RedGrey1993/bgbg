@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 using NetworkMessageProto;
 
@@ -13,8 +12,8 @@ public class CharacterStatus : MonoBehaviour
     [Header("Character Settings")]
     public CharacterData characterData;
 
-    public event Action<PlayerState> OnHealthChanged;
-    public event Action OnDied;
+    public event System.Action<PlayerState> OnHealthChanged;
+    public event System.Action OnDied;
 
     private ICharacterAI characterAI;
     private Slider healthSlider;
@@ -179,6 +178,43 @@ public class CharacterStatus : MonoBehaviour
 
         // 尸体销毁，Player的尸体不销毁，置灰保留在原地
         characterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
+        
+        // 如果是精英怪，概率掉落系统日志
+        if (State.Scale > 1.1f && GameManager.Instance.IsLocal() &&
+            GameManager.Instance.IsSysGuardianLevel() && !GameManager.Instance.Storage.ShowedSysErrLogTip)
+        {
+            // TODO: uncomment it
+            // if (Random.value < 0.05f)
+            {
+                Time.timeScale = 0;
+                GameManager.Instance.Storage.ShowedSysErrLogTip = true;
+                DialogManager.Instance.ShowDialog(
+                    "The Minion Dropped a System Error Log Fragment!\n" +
+                    "// ERROR LOG: 0x7E3A1\n" +
+                    "// PROCESS: SystemPurge.exe\n" +
+                    "// TIMESTAMP: [REDACTED]\n" +
+                    "//\n" +
+                    "// EXCEPTION: Deletion failed on Sector 73-Delta.\n" +
+                    "// CAUSE: Unhandled conflict with active process 'Singularity'.\n" +
+                    "// ATTEMPTING to force format... [FAILED].\n" +
+                    "//\n" +
+                    "// RESULT: Cascade failure. Grid integrity compromised.\n" +
+                    "// Generated anomaly object 'SYS.BUG'. Recommending immediate quarantine.",
+
+                    Color.red,
+
+                    () =>
+                    {
+                        Time.timeScale = 1;
+                    },
+
+                    () =>
+                    {
+                        Time.timeScale = 1;
+                    }
+                );
+            }
+        }
 
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
@@ -230,8 +266,11 @@ public class CharacterStatus : MonoBehaviour
 
     public void SetScale(float scale)
     {
-        transform.localScale = new Vector3(scale, scale, 1);
-        State.Scale = scale;
+        if (!IsBoss())
+        {
+            transform.localScale = new Vector3(scale, scale, 1);
+            State.Scale = scale;
+        }
     }
 
     public void SetState(PlayerState state)
@@ -286,8 +325,11 @@ public class CharacterStatus : MonoBehaviour
 
     void FixedUpdate()
     {
-        State.Position.X = transform.position.x;
-        State.Position.Y = transform.position.y;
+        State.Position = new Vec2
+        {
+            X = transform.position.x,
+            Y = transform.position.y
+        };
 
         if (HasPlayerController())
         {

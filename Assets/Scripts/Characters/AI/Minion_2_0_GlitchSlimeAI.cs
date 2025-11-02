@@ -62,6 +62,7 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     {
         yield return new WaitForSeconds(deathDuration);
         var poison = LevelManager.Instance.InstantiateTemporaryObject(prefab, position);
+        poison.transform.localScale = transform.localScale;
         SpriteRenderer sr = poison.GetComponent<SpriteRenderer>();
         if (sr != null)
         {

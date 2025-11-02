@@ -120,7 +120,7 @@ message MinionPrefabInfo
 
 message LocalStorage
 {
-    // next index = 20
+    // next index = 21
     int32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
     repeated BulletState BulletStates = 15;
@@ -140,4 +140,5 @@ message LocalStorage
     bool Achievement2Mirror = 17;
     bool Achievement3InfiniteLonely = 18;
     bool NewLevel = 19;
+    bool ShowedSysErrLogTip = 20;
 }

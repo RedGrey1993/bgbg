@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
             Storage.PickupItems.Clear();
             Storage.PassedStages.Clear();
             Storage.NewLevel = true;
+            Storage.ShowedSysErrLogTip = false;
         }
         else
         {
@@ -188,6 +189,7 @@ public class GameManager : MonoBehaviour
         LevelManager.Instance.ClearLevel();
         CharacterManager.Instance.InitializeMySelf();
     }
+
     public void ToNextStage(Action callback)
     {
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
@@ -238,6 +240,14 @@ public class GameManager : MonoBehaviour
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
     }
+
+    public bool IsSysGuardianLevel()
+    {
+        // TODO: 临时，测试用
+        return true;
+        // return LevelDatabase.Instance.IsSysGuardianLevel(Storage.CurrentStage);
+    }
+
     #endregion
 
     public void HostTick(float dt)
