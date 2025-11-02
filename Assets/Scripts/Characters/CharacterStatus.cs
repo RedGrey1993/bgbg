@@ -7,7 +7,7 @@ using NetworkMessageProto;
 [RequireComponent(typeof(ICharacterAI))]
 public class CharacterStatus : MonoBehaviour
 {
-    public PlayerState State = new PlayerState();
+    public PlayerState State { get; private set; } = new PlayerState();
     public BulletState bulletState = new BulletState();
     // 在预制体上的Inspector面板中设置
     [Header("Character Settings")]

@@ -22,8 +22,13 @@ MonoBehaviour:
   level: 5
   minTotalRooms: 2
   maxTotalRooms: 2
+  totalRooms:
+    min: 2
+    max: 2
   roomMaxWidth: 40
   roomMaxHeight: 20
-  minAreaPerMinion: 500000
-  maxAreaPerMinion: 1000000
+  areaPerMinion:
+    min: 500000
+    max: 1000000
   gamePassedSprite: {fileID: 21300000, guid: 8c85e2497f023c54386b210d1a4ea872, type: 3}
+  eliteSpawnChance: 0.1

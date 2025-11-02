@@ -22,8 +22,13 @@ MonoBehaviour:
   level: 1
   minTotalRooms: 3
   maxTotalRooms: 3
-  roomMaxWidth: 60
+  totalRooms:
+    min: 3
+    max: 3
+  roomMaxWidth: 80
   roomMaxHeight: 40
-  minAreaPerMinion: 100
-  maxAreaPerMinion: 100
+  areaPerMinion:
+    min: 100
+    max: 100
   gamePassedSprite: {fileID: 0}
+  eliteSpawnChance: 0.1

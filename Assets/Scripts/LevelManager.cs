@@ -132,9 +132,8 @@ public class LevelManager : MonoBehaviour
             bossRoomMinWidth = Constants.RoomStep * 2;
             bossRoomMinHeight = Constants.RoomStep * 2;
             List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
-            int minTotalRooms = CurrentLevelData.minTotalRooms;
-            int maxTotalRooms = CurrentLevelData.maxTotalRooms;
-            int cutNum = UnityEngine.Random.Range(minTotalRooms - 1, maxTotalRooms);
+            var totalRooms = CurrentLevelData.totalRooms;
+            int cutNum = UnityEngine.Random.Range(totalRooms.min - 1, totalRooms.max);
             // cutNum < 100, O(N^2)的插入排序不会太慢
             for (int i = 0; i < cutNum; i++)
             {

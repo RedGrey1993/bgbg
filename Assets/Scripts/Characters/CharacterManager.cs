@@ -77,7 +77,7 @@ public class CharacterManager : MonoBehaviour
                 var ps = storage.PlayerStates[i];
                 int prefabId = storage.PlayerPrefabIds[i];
                 var bs = storage.BulletStates[i];
-                CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), prefabId, ps.PlayerId == MyInfo.Id, ps, bs);
+                CreatePlayerObject(ps.PlayerId, prefabId, ps.PlayerId == MyInfo.Id, ps, bs);
             }
         }
         else
@@ -85,7 +85,7 @@ public class CharacterManager : MonoBehaviour
             foreach (var player in Players)
             {
                 int prefabId = player.PrefabId;
-                CreatePlayerObject(player.Id, ColorFromID(player.Id), prefabId, player.Id == MyInfo.Id);
+                CreatePlayerObject(player.Id, prefabId, player.Id == MyInfo.Id);
             }
         }
     }
@@ -95,7 +95,7 @@ public class CharacterManager : MonoBehaviour
         ClearMinionObjects();
 
         int stage = storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData((int)storage.CurrentStage);
+        var levelData = LevelDatabase.Instance.GetLevelData(storage.CurrentStage);
 
         if (!storage.NewLevel)
         {
@@ -105,14 +105,14 @@ public class CharacterManager : MonoBehaviour
                 var prefabInfo = storage.MinionPrefabInfos[i];
                 var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
 
-                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms, ms.Color.ToColor());
+                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms);
             }
         }
         else
         {
             void AreaToNumber(Rect room, int roomIdx, out int number, out List<Vector2> positions)
             {
-                int areaPerMinion = Random.Range(levelData.minAreaPerMinion, levelData.maxAreaPerMinion + 1);
+                int areaPerMinion = Random.Range(levelData.areaPerMinion.min, levelData.areaPerMinion.max + 1);
                 float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
                 number = Mathf.FloorToInt(area / areaPerMinion);
                 positions = new List<Vector2>();
@@ -139,14 +139,11 @@ public class CharacterManager : MonoBehaviour
                 {
                     // 10%的概率生成精英怪
                     float scale = 1f;
-                    Color color = Color.white;
-                    if (Random.value < 0.1f)
+                    if (Random.value < levelData.eliteSpawnChance)
                     {
-                        scale = Random.Range(1.3f, 2.5f);
-                        // 更偏向于亮色
-                        color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1f);
+                        scale = Random.Range(levelData.eliteScaleRange.min, levelData.eliteScaleRange.max);
                     }
-                    InstantiateMinionObject(minionPrefab, spawnPositions[i], stage, randomMinionIdx, null, color, scale);
+                    InstantiateMinionObject(minionPrefab, spawnPositions[i], stage, randomMinionIdx, null, scale);
                 }
             }
         }
@@ -200,7 +197,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void CreatePlayerObject(int playerId, Color color, int prefabId,
+    private void CreatePlayerObject(int playerId, int prefabId,
         bool needController = false, PlayerState initState = null, BulletState initBulletState = null)
     {
         if (playerObjects.ContainsKey(playerId)) return;
@@ -234,7 +231,7 @@ public class CharacterManager : MonoBehaviour
             {
                 playerStatus.State.PlayerId = playerId;
                 playerStatus.State.PlayerName = playerName;
-                playerStatus.SetColor(color);
+                playerStatus.SetColor(playerId <= 1 ? Color.white : RandomColor());
             }
 
             if (initBulletState != null)
@@ -355,21 +352,71 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private Color ColorFromID(int playerId)
+    // private Color ColorFromID(int playerId)
+    // {
+    //     if (playerId <= 1)
+    //     {
+    //         return Color.white;
+    //     }
+    //     // Use a stable hash function (FNV-1a) for consistent results across platforms and runs
+    //     uint hash = FNV1a((uint)playerId);
+    //     // Mix the hash bits to improve distribution and ensure visual distinction for similar IDs
+    //     uint mixedHash = Mix(hash);
+    //     // Use the mixed hash to generate a hue value
+    //     float r = (mixedHash & 0xFF) / 255f;
+    //     float g = ((mixedHash >> 8) & 0xFF) / 255f;
+    //     float b = ((mixedHash >> 16) & 0xFF) / 255f;
+    //     return new Color(r, g, b, 1f);
+    // }
+
+    private Color RandomColor()
     {
-        if (playerId <= 1)
+        // 更偏向于右上角比较明显的颜色
+        Color color = new Color();
+        color.a = 1;
+        if (Random.Range(0, 3) == 0)
         {
-            return Color.white;
+            if (Random.value > 0.5f)
+            {
+                color.r = 1;
+                color.g = 0;
+            }
+            else
+            {
+                color.r = 0;
+                color.g = 1;
+            }
+            color.b = Random.Range(0, 1f);
         }
-        // Use a stable hash function (FNV-1a) for consistent results across platforms and runs
-        uint hash = FNV1a((uint)playerId);
-        // Mix the hash bits to improve distribution and ensure visual distinction for similar IDs
-        uint mixedHash = Mix(hash);
-        // Use the mixed hash to generate a hue value
-        float r = (mixedHash & 0xFF) / 255f;
-        float g = ((mixedHash >> 8) & 0xFF) / 255f;
-        float b = ((mixedHash >> 16) & 0xFF) / 255f;
-        return new Color(r, g, b, 1f);
+        else if (Random.Range(0, 3) == 1)
+        {
+            if (Random.value > 0.5f)
+            {
+                color.g = 1;
+                color.b = 0;
+            }
+            else
+            {
+                color.g = 0;
+                color.b = 1;
+            }
+            color.r = Random.Range(0, 1f);
+        }
+        else if (Random.Range(0, 3) == 2)
+        {
+            if (Random.value > 0.5f)
+            {
+                color.b = 1;
+                color.r = 0;
+            }
+            else
+            {
+                color.b = 0;
+                color.r = 1;
+            }
+            color.g = Random.Range(0, 1f);
+        }
+        return color;
     }
 
     private uint FNV1a(uint id)
@@ -406,7 +453,7 @@ public class CharacterManager : MonoBehaviour
         player.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[player.Id] = player;
         Players.Add(player);
-        CreatePlayerObject(player.Id, ColorFromID(player.Id), player.PrefabId, false);
+        CreatePlayerObject(player.Id, player.PrefabId, false);
         SendPlayersUpdateToAll();
     }
 
@@ -677,7 +724,7 @@ public class CharacterManager : MonoBehaviour
         {
             if (bs != null)
             {
-                bossStatus.State = bs;
+                bossStatus.SetState(bs);
             }
             else
             {
@@ -695,8 +742,7 @@ public class CharacterManager : MonoBehaviour
         return boss;
     }
     
-    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms,
-        Color color, float scale = 1f)
+    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms, float scale = 1f)
     {
         var minion = Instantiate(prefab, minionParant);
         minion.transform.position = position;
@@ -726,12 +772,15 @@ public class CharacterManager : MonoBehaviour
                     minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
                     minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
                     minionStatus.State.ShootRange = (int)(minionStatus.State.ShootRange * scale);
+                    minionStatus.SetColor(RandomColor());
                 }
-                minionStatus.SetColor(color);
+                else
+                {
+                    minionStatus.SetColor(Color.white);
+                }
                 minionStatus.SetScale(scale);
             }
-            var rb = minion.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (minion.TryGetComponent<Rigidbody2D>(out var rb))
             {
                 rb.mass *= minionStatus.State.Scale;
             }
@@ -834,7 +883,7 @@ public class CharacterManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            if (!playerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, ColorFromID(ps.PlayerId), PlayerInfoMap[ps.PlayerId].PrefabId, ps.PlayerId == MyInfo.Id);
+            if (!playerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, PlayerInfoMap[ps.PlayerId].PrefabId, ps.PlayerId == MyInfo.Id);
             if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
@@ -921,7 +970,7 @@ public class CharacterManager : MonoBehaviour
                 var playerStatus = go.GetComponent<CharacterStatus>();
                 if (playerStatus)
                 {
-                    playerStatus.State = ps;
+                    playerStatus.SetState(ps);
                     if (ps.PlayerId == MyInfo.Id)
                     {
                         var spc = UIManager.Instance.GetComponent<StatusPanelController>();
