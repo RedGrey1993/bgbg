@@ -195,7 +195,8 @@ public class GameManager : MonoBehaviour
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
         skillPanelController.ForceRandomChoose = true;
         PassedStages.Add(Storage.CurrentStage);
-        bool hasBugItem = CharacterManager.Instance.MySelfHasSysBug();
+        // TODO: Debug hasBugItem
+        bool hasBugItem = true; // = CharacterManager.Instance.MySelfHasSysBug();
         bool isBugStage = LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage + 1);
         LevelData nextStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage + 1);
         if ((hasBugItem && isBugStage) || (!isBugStage && nextStage != null))
@@ -223,6 +224,10 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Storage.Achievement2Mirror = true;
+                    var status = CharacterManager.Instance.GetMyselfGameObject().GetComponent<CharacterStatus>();
+                    Storage.NewRulerPlayerState = status.State;
+                    Storage.NewRulerBulletState = status.bulletState;
+                    Storage.NewRulerPrefabId = CharacterManager.Instance.PlayerPrefabIds[CharacterManager.Instance.MyInfo.Id];
                 }
             }
             else

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NetworkMessageProto;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
@@ -22,6 +21,7 @@ public class CharacterManager : MonoBehaviour
     public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
     public Dictionary<int, GameObject> bossObjects { get; private set; } = new Dictionary<int, GameObject>();
     public Dictionary<int, BossPrefabInfo> bossPrefabInfos { get; private set; } = new Dictionary<int, BossPrefabInfo>();
+    public GameObject NewRulerGo { get; private set; }
 
     public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
     // Runtime data
@@ -164,36 +164,60 @@ public class CharacterManager : MonoBehaviour
 
         ClearBossObjects();
         
-        int stage = (int)storage.CurrentStage;
+        int stage = storage.CurrentStage;
         var levelData = LevelDatabase.Instance.GetLevelData(stage);
 
-        if (!storage.NewLevel)
+        if (LevelDatabase.Instance.IsSysBugStage(stage) && storage.NewRulerPlayerState != null)
         {
-            for (int i = 0; i < storage.BossStates.Count; i++)
-            {
-                var bs = storage.BossStates[i];
-                var prefabInfo = storage.BossPrefabInfos[i];
-                var bossPrefab = levelData.bossPrefabs[prefabInfo.PrefabId];
-
-                var boss = InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), stage, prefabInfo.PrefabId, bs);
-                LevelManager.Instance.AddToBossRooms(boss.transform.position);
-            }
-        }
-        else
-        {
+            var prefab = SelectCharacterManager.Instance.characterPrefabs[storage.NewRulerPrefabId];
+            NewRulerGo = Instantiate(prefab, bossParant);
             var ascRooms = LevelManager.Instance.GetAreaAscRooms();
             var roomId = ascRooms.Count - 1;
-            if (playerRooms.Contains(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center)))
-                return;
             int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
             var bossPrefab = levelData.bossPrefabs[randomBossIdx];
             var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
             var spawnOffset = characterData.spawnOffsets;
             var spawnBound = characterData.bound;
             GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center), spawnOffset, spawnBound, out var spawnPosition);
+            NewRulerGo.transform.position = spawnPosition;
 
-            var boss = InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
-            LevelManager.Instance.AddToBossRooms(boss.transform.position);
+            NewRulerGo.name = $"{prefab.name}NewRuler";
+            NewRulerGo.tag = Constants.TagEnemy;
+
+            var bossStatus = NewRulerGo.GetComponent<CharacterStatus>();
+            bossStatus.SetState(storage.NewRulerPlayerState);
+            bossStatus.bulletState = storage.NewRulerBulletState;
+            bossStatus.IsBoss = true;
+            LevelManager.Instance.AddToBossRooms(NewRulerGo.transform.position);
+        }
+        else
+        {
+            if (!storage.NewLevel)
+            {
+                for (int i = 0; i < storage.BossStates.Count; i++)
+                {
+                    var bs = storage.BossStates[i];
+                    var prefabInfo = storage.BossPrefabInfos[i];
+                    var bossPrefab = levelData.bossPrefabs[prefabInfo.PrefabId];
+
+                    var boss = InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), stage, prefabInfo.PrefabId, bs);
+                    LevelManager.Instance.AddToBossRooms(boss.transform.position);
+                }
+            }
+            else
+            {
+                var ascRooms = LevelManager.Instance.GetAreaAscRooms();
+                var roomId = ascRooms.Count - 1;
+                int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
+                var bossPrefab = levelData.bossPrefabs[randomBossIdx];
+                var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
+                var spawnOffset = characterData.spawnOffsets;
+                var spawnBound = characterData.bound;
+                GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center), spawnOffset, spawnBound, out var spawnPosition);
+
+                var boss = InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
+                LevelManager.Instance.AddToBossRooms(boss.transform.position);
+            }
         }
     }
 
@@ -694,7 +718,7 @@ public class CharacterManager : MonoBehaviour
                 storage.MinionPrefabInfos.Add(prefabInfo);
             }
         }
-        
+
         foreach (var bossId in bossObjects.Keys)
         {
             var boss = bossObjects[bossId];
@@ -705,6 +729,12 @@ public class CharacterManager : MonoBehaviour
                 storage.BossStates.Add(bossStatus.State);
                 storage.BossPrefabInfos.Add(prefabInfo);
             }
+        }
+        
+        if (NewRulerGo != null) {
+            var status = NewRulerGo.GetComponent<CharacterStatus>();
+            storage.NewRulerPlayerState = status.State;
+            storage.NewRulerBulletState = status.bulletState;
         }
     }
 
@@ -732,6 +762,7 @@ public class CharacterManager : MonoBehaviour
                 bossStatus.State.PlayerId = bossId;
                 bossStatus.State.PlayerName = boss.name;
             }
+            bossStatus.IsBoss = true;
         }
 
         bossObjects[bossId] = boss;

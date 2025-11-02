@@ -18,6 +18,7 @@ public class CharacterStatus : MonoBehaviour
     private ICharacterAI characterAI;
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
+    public bool IsBoss { get; set; } = false;
 
     void Awake()
     {
@@ -266,7 +267,7 @@ public class CharacterStatus : MonoBehaviour
 
     public void SetScale(float scale)
     {
-        if (!IsBoss())
+        if (!IsBossFunc())
         {
             transform.localScale = new Vector3(scale, scale, 1);
             State.Scale = scale;
@@ -304,13 +305,13 @@ public class CharacterStatus : MonoBehaviour
             }
         }
 
-        if (IsBoss())
+        if (IsBoss)
         {
             UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
         }
     }
 
-    public bool IsBoss()
+    public bool IsBossFunc()
     {
         if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
             || characterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle

@@ -12,6 +12,21 @@ public class ContraBillAI : CharacterBaseAI
 
     #region AI Logic / Update Input
     // 会跨房间追逐
+    protected override void GenerateAILogic()
+    {
+        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        {
+            // ContraBill支持边移动边攻击
+            // if (isAttack) { characterInput.MoveInput = Vector2.zero; return; }
+            UpdateAggroTarget();
+
+            UpdateMoveInput();
+            characterInput.NormalizeMoveInput();
+
+            UpdateAttackInput();
+            characterInput.NormalizeLookInput();
+        }
+    }
     protected override void UpdateMoveInput()
     {
         if (Time.time > nextMoveInputChangeTime)
@@ -82,12 +97,12 @@ public class ContraBillAI : CharacterBaseAI
             if (tx != sx) // 房间的x坐标不同
             {
                 // 比最近的竖门位置高，往斜下走
-                if (YHigherThanDoor())
+                if (YHigherThanDoor(1f - col2D.bounds.extents.y))
                 {
                     characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), -1);
                 }
                 // 比最近的竖门位置低，往斜上走
-                else if (YLowerThanDoor())
+                else if (YLowerThanDoor(1f - col2D.bounds.extents.y))
                 {
                     characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), 1);
                 }
@@ -99,12 +114,12 @@ public class ContraBillAI : CharacterBaseAI
             else if (ty != sy) // 房间的y坐标不同
             {
                 // 在最近的横门的右边，往左斜方走
-                if (XRighterThanDoor())
+                if (XRighterThanDoor(1f - col2D.bounds.extents.x))
                 {
                     characterInput.MoveInput = new Vector2(-1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }
                 // 在最近的横门的左边，往右斜方走
-                else if (XLefterThanDoor())
+                else if (XLefterThanDoor(1f - col2D.bounds.extents.x))
                 {
                     characterInput.MoveInput = new Vector2(1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }
@@ -153,7 +168,7 @@ public class ContraBillAI : CharacterBaseAI
             // }
         }
     }
-    
+
     protected override void SetAtkAnimation(Direction dir)
     {
         // if (dir == Direction.Left)
@@ -178,36 +193,25 @@ public class ContraBillAI : CharacterBaseAI
             // }
         }
     }
+    #endregion
 
     #region Attack Input
     protected override void UpdateAttackInput()
     {
         if (AggroTarget != null)
         {
-            Attack_ShootToTarget();
+            var diff = AggroTarget.transform.position - transform.position;
+            var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
+            // 进入攻击距离，直接射击
+            if (diff.sqrMagnitude <= sqrShootRange)
+            {
+                characterInput.LookInput = diff;
+            }
+            else
+            {
+                characterInput.LookInput = Vector2.zero;
+            }
         }
     }
     #endregion
-
-    private void Attack_ShootToTarget()
-    {
-        var diff = AggroTarget.transform.position - transform.position;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // 进入攻击距离，直接射击
-        if (diff.sqrMagnitude <= sqrShootRange)
-        {
-            characterInput.LookInput = diff;
-        }
-        else
-        {
-            characterInput.LookInput = Vector2.zero;
-        }
-    }
-    #endregion
-
-    protected override void SubclassFixedUpdate()
-    {
-        if (characterInput.LookInput.sqrMagnitude > 0.1f) isAttack = true;
-        else isAttack = false;
-    }
 }

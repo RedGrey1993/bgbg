@@ -74,11 +74,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         if (Time.time > nextBounceTime && isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
             nextBounceTime = Time.time + 1f;
-            isBouncingBack = true;
             // 碰到墙还好，不反弹，碰到角色时很可能会互相卡住，所以需要反弹分开
             if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
                 Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back");
+                isBouncingBack = true;
                 if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
                 {
                     // 对角线方向，随机翻转水平或垂直方向
@@ -431,12 +431,17 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     }
     protected virtual void AttackAction()
     {
-        Vector2 lookInput = characterInput.LookInput;
-        if (lookInput.sqrMagnitude < 0.1f) return;
-        if (Time.time < nextAtkTime) return;
-        nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+        if (!isAttack) // 默认不支持边移动边攻击
+        {
+            Vector2 lookInput = characterInput.LookInput;
+            if (lookInput.sqrMagnitude < 0.1f) return;
+            if (Time.time < nextAtkTime) return;
+            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
-        AttackShoot(lookInput);
+            isAttack = true;
+            AttackShoot(lookInput);
+            isAttack = false;
+        }
     }
     #endregion
 

@@ -61,7 +61,7 @@ namespace NetworkMessageProto {
             "bElkGAIgASgNEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQ",
             "cm90by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUS",
             "EAoIUHJlZmFiSWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFn",
-            "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIp0GCgxMb2NhbFN0b3JhZ2US",
+            "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIrUHCgxMb2NhbFN0b3JhZ2US",
             "FAoMQ3VycmVudFN0YWdlGAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIg",
             "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3Rh",
             "dGVzGA8gAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIX",
@@ -79,7 +79,10 @@ namespace NetworkMessageProto {
             "U3RhZ2VzGA0gAygFEhwKFEFjaGlldmVtZW50MU5ld0N5Y2xlGBAgASgIEhoK",
             "EkFjaGlldmVtZW50Mk1pcnJvchgRIAEoCBIiChpBY2hpZXZlbWVudDNJbmZp",
             "bml0ZUxvbmVseRgSIAEoCBIQCghOZXdMZXZlbBgTIAEoCBIaChJTaG93ZWRT",
-            "eXNFcnJMb2dUaXAYFCABKAhiBnByb3RvMw=="));
+            "eXNFcnJMb2dUaXAYFCABKAgSPQoTTmV3UnVsZXJQbGF5ZXJTdGF0ZRgVIAEo",
+            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSPQoTTmV3UnVs",
+            "ZXJCdWxsZXRTdGF0ZRgWIAEoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVs",
+            "bGV0U3RhdGUSGAoQTmV3UnVsZXJQcmVmYWJJZBgXIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -97,7 +100,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4704,6 +4707,9 @@ namespace NetworkMessageProto {
       achievement3InfiniteLonely_ = other.achievement3InfiniteLonely_;
       newLevel_ = other.newLevel_;
       showedSysErrLogTip_ = other.showedSysErrLogTip_;
+      newRulerPlayerState_ = other.newRulerPlayerState_ != null ? other.newRulerPlayerState_.Clone() : null;
+      newRulerBulletState_ = other.newRulerBulletState_ != null ? other.newRulerBulletState_.Clone() : null;
+      newRulerPrefabId_ = other.newRulerPrefabId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4717,7 +4723,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 21
+    /// next index = 24
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4946,6 +4952,42 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "NewRulerPlayerState" field.</summary>
+    public const int NewRulerPlayerStateFieldNumber = 21;
+    private global::NetworkMessageProto.PlayerState newRulerPlayerState_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::NetworkMessageProto.PlayerState NewRulerPlayerState {
+      get { return newRulerPlayerState_; }
+      set {
+        newRulerPlayerState_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NewRulerBulletState" field.</summary>
+    public const int NewRulerBulletStateFieldNumber = 22;
+    private global::NetworkMessageProto.BulletState newRulerBulletState_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::NetworkMessageProto.BulletState NewRulerBulletState {
+      get { return newRulerBulletState_; }
+      set {
+        newRulerBulletState_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NewRulerPrefabId" field.</summary>
+    public const int NewRulerPrefabIdFieldNumber = 23;
+    private int newRulerPrefabId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int NewRulerPrefabId {
+      get { return newRulerPrefabId_; }
+      set {
+        newRulerPrefabId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -4981,6 +5023,9 @@ namespace NetworkMessageProto {
       if (Achievement3InfiniteLonely != other.Achievement3InfiniteLonely) return false;
       if (NewLevel != other.NewLevel) return false;
       if (ShowedSysErrLogTip != other.ShowedSysErrLogTip) return false;
+      if (!object.Equals(NewRulerPlayerState, other.NewRulerPlayerState)) return false;
+      if (!object.Equals(NewRulerBulletState, other.NewRulerBulletState)) return false;
+      if (NewRulerPrefabId != other.NewRulerPrefabId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5008,6 +5053,9 @@ namespace NetworkMessageProto {
       if (Achievement3InfiniteLonely != false) hash ^= Achievement3InfiniteLonely.GetHashCode();
       if (NewLevel != false) hash ^= NewLevel.GetHashCode();
       if (ShowedSysErrLogTip != false) hash ^= ShowedSysErrLogTip.GetHashCode();
+      if (newRulerPlayerState_ != null) hash ^= NewRulerPlayerState.GetHashCode();
+      if (newRulerBulletState_ != null) hash ^= NewRulerBulletState.GetHashCode();
+      if (NewRulerPrefabId != 0) hash ^= NewRulerPrefabId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5076,6 +5124,18 @@ namespace NetworkMessageProto {
         output.WriteRawTag(160, 1);
         output.WriteBool(ShowedSysErrLogTip);
       }
+      if (newRulerPlayerState_ != null) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(NewRulerPlayerState);
+      }
+      if (newRulerBulletState_ != null) {
+        output.WriteRawTag(178, 1);
+        output.WriteMessage(NewRulerBulletState);
+      }
+      if (NewRulerPrefabId != 0) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(NewRulerPrefabId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5136,6 +5196,18 @@ namespace NetworkMessageProto {
         output.WriteRawTag(160, 1);
         output.WriteBool(ShowedSysErrLogTip);
       }
+      if (newRulerPlayerState_ != null) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(NewRulerPlayerState);
+      }
+      if (newRulerBulletState_ != null) {
+        output.WriteRawTag(178, 1);
+        output.WriteMessage(NewRulerBulletState);
+      }
+      if (NewRulerPrefabId != 0) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(NewRulerPrefabId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5185,6 +5257,15 @@ namespace NetworkMessageProto {
       }
       if (ShowedSysErrLogTip != false) {
         size += 2 + 1;
+      }
+      if (newRulerPlayerState_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(NewRulerPlayerState);
+      }
+      if (newRulerBulletState_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(NewRulerBulletState);
+      }
+      if (NewRulerPrefabId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NewRulerPrefabId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5240,6 +5321,21 @@ namespace NetworkMessageProto {
       }
       if (other.ShowedSysErrLogTip != false) {
         ShowedSysErrLogTip = other.ShowedSysErrLogTip;
+      }
+      if (other.newRulerPlayerState_ != null) {
+        if (newRulerPlayerState_ == null) {
+          NewRulerPlayerState = new global::NetworkMessageProto.PlayerState();
+        }
+        NewRulerPlayerState.MergeFrom(other.NewRulerPlayerState);
+      }
+      if (other.newRulerBulletState_ != null) {
+        if (newRulerBulletState_ == null) {
+          NewRulerBulletState = new global::NetworkMessageProto.BulletState();
+        }
+        NewRulerBulletState.MergeFrom(other.NewRulerBulletState);
+      }
+      if (other.NewRulerPrefabId != 0) {
+        NewRulerPrefabId = other.NewRulerPrefabId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5345,6 +5441,24 @@ namespace NetworkMessageProto {
             ShowedSysErrLogTip = input.ReadBool();
             break;
           }
+          case 170: {
+            if (newRulerPlayerState_ == null) {
+              NewRulerPlayerState = new global::NetworkMessageProto.PlayerState();
+            }
+            input.ReadMessage(NewRulerPlayerState);
+            break;
+          }
+          case 178: {
+            if (newRulerBulletState_ == null) {
+              NewRulerBulletState = new global::NetworkMessageProto.BulletState();
+            }
+            input.ReadMessage(NewRulerBulletState);
+            break;
+          }
+          case 184: {
+            NewRulerPrefabId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -5447,6 +5561,24 @@ namespace NetworkMessageProto {
           }
           case 160: {
             ShowedSysErrLogTip = input.ReadBool();
+            break;
+          }
+          case 170: {
+            if (newRulerPlayerState_ == null) {
+              NewRulerPlayerState = new global::NetworkMessageProto.PlayerState();
+            }
+            input.ReadMessage(NewRulerPlayerState);
+            break;
+          }
+          case 178: {
+            if (newRulerBulletState_ == null) {
+              NewRulerBulletState = new global::NetworkMessageProto.BulletState();
+            }
+            input.ReadMessage(NewRulerBulletState);
+            break;
+          }
+          case 184: {
+            NewRulerPrefabId = input.ReadInt32();
             break;
           }
         }
