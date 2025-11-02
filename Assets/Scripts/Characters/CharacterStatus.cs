@@ -218,17 +218,32 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // 如果是最后一只boss
-        if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId))
+        if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId)
+            || CharacterManager.Instance.NewRulerGo == gameObject)
         {
             UIManager.Instance.ShowTeleportBeamEffect(transform.position);
             if (!CharacterManager.Instance.MySelfHasSysBug())
                 LevelManager.Instance.RandomizePickupItem(transform.position);
+
+            if (CharacterManager.Instance.NewRulerGo == gameObject)
+            {
+                GameManager.Instance.Storage.NewRulerPlayerState = null;
+                GameManager.Instance.Storage.NewRulerBulletState = null;
+                GameManager.Instance.SaveLocalStorage(null);
+            }
         }
         CharacterManager.Instance.RemoveObject(State.PlayerId);
         // 如果Player死亡，清除记录（保存一个空记录）
         if (HasPlayerController())
         {
-            GameManager.Instance.SaveLocalStorage(null);
+            UIManager.Instance.PlayLoadingAnimation(() =>
+            {
+                GameManager.Instance.SaveLocalStorage(null, restart: true);
+                SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+                skillPanelController.ForceRandomChoose = false;
+
+                UIManager.Instance.QuitToMainMenu();
+            });
         }
     }
 
@@ -267,7 +282,7 @@ public class CharacterStatus : MonoBehaviour
 
     public void SetScale(float scale)
     {
-        if (!IsBossFunc())
+        if (!IsBoss)
         {
             transform.localScale = new Vector3(scale, scale, 1);
             State.Scale = scale;
@@ -311,18 +326,18 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    public bool IsBossFunc()
-    {
-        if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
-            || characterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle
-            || characterData.CharacterType == CharacterType.Boss_3_0_PokeBoy
-            || characterData.CharacterType == CharacterType.Boss_4_0_SysGuardian
-            || characterData.CharacterType == CharacterType.Boss_5_0_TheRuler)
-        {
-            return true;
-        }
-        return false;
-    }
+    // public bool IsBossFunc()
+    // {
+    //     if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
+    //         || characterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle
+    //         || characterData.CharacterType == CharacterType.Boss_3_0_PokeBoy
+    //         || characterData.CharacterType == CharacterType.Boss_4_0_SysGuardian
+    //         || characterData.CharacterType == CharacterType.Boss_5_0_TheRuler)
+    //     {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     void FixedUpdate()
     {

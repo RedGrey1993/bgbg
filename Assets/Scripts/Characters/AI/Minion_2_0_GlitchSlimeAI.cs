@@ -54,15 +54,15 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
         animator.SetTrigger("Death");
         float deathDuration = 2f;
         // 由于需要死后留下尸体，gameObject被Destroy后协程仍然存活，因此使用GameManager启动协程
-        GameManager.Instance.StartCoroutine(GenerateDeadBody(deathDuration, CharacterData.deadBodyPrefab, transform.position));
+        GameManager.Instance.StartCoroutine(GenerateDeadBody(deathDuration, CharacterData.deadBodyPrefab, transform.position, transform.localScale));
         Destroy(gameObject, deathDuration);
     }
     
-    private IEnumerator GenerateDeadBody(float deathDuration, GameObject prefab, Vector3 position)
+    private IEnumerator GenerateDeadBody(float deathDuration, GameObject prefab, Vector3 position, Vector3 scale)
     {
         yield return new WaitForSeconds(deathDuration);
         var poison = LevelManager.Instance.InstantiateTemporaryObject(prefab, position);
-        poison.transform.localScale = transform.localScale;
+        poison.transform.localScale = scale;
         SpriteRenderer sr = poison.GetComponent<SpriteRenderer>();
         if (sr != null)
         {

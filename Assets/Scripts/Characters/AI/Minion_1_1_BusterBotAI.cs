@@ -45,60 +45,52 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
     }
     #endregion
 
-    private float nextJudgeAtkTime = 0;
     protected override void UpdateAttackInput()
     {
-        if (!isAiming)
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
-            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+            var diff = AggroTarget.transform.position - transform.position;
+            var atkRange = characterStatus.State.ShootRange;
+            // 进入攻击距离，攻击，爆破小子(BusterBot)只会水平/垂直攻击
+            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
             {
-                var diff = AggroTarget.transform.position - transform.position;
-                var atkRange = characterStatus.State.ShootRange;
-                // 进入攻击距离，攻击，爆破小子(BusterBot)只会水平/垂直攻击
-                if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
-                {
-                    if (Time.time >= nextJudgeAtkTime)
-                    {
-                        nextJudgeAtkTime = Time.time + 1f;
-                        characterInput.LookInput = diff.normalized;
-                        isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                        return;
-                    }
-                }
+                characterInput.LookInput = diff.normalized;
+                return;
             }
-            characterInput.LookInput = Vector2.zero;
         }
+        characterInput.LookInput = Vector2.zero;
     }
 
     #region Attack Action
     private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {
-        if (isAiming && !isAttack)
+        if (!isAttack)
         {
-            isAiming = false;
             if (atkCoroutine != null) return;
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
-            atkCoroutine = StartCoroutine(Attack_BusterBot());
+            atkCoroutine = StartCoroutine(Attack_BusterBot(characterInput.LookInput));
         }
     }
-    private IEnumerator Attack_BusterBot()
+    private IEnumerator Attack_BusterBot(Vector2 lookInput)
     {
         isAttack = true;
         // 需要AtkFreq时间站定
         yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         // 调用父类方法
-        AttackShoot(characterInput.LookInput);
+        AttackShoot(lookInput);
 
-        atkCoroutine = null;
         isAttack = false;
 
-        characterInput.LookInput = Vector2.zero; // 避免移动时不改变朝向
-        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
-        yield return new WaitForSeconds(Random.Range(1, 3f));
+        if (isAi)
+        {
+            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+            yield return new WaitForSeconds(Random.Range(1, 3f));
+        }
+        atkCoroutine = null;
     }
     #endregion
 }

@@ -33,10 +33,14 @@ public class PickupItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.TagPlayer)) // bullet的tag也可能是Player，layer是bullets
+        if (collision.CompareTag(Constants.TagPlayer) || collision.transform.parent.CompareTag(Constants.TagPlayer)) // bullet的tag也可能是Player，layer是bullets
         {
             GameObject player = collision.gameObject;
             var status = player.GetComponentInParent<CharacterStatus>();
+            if (status == null)
+            {
+                status = player.GetComponentInChildren<CharacterStatus>();
+            }
             if (status != null)
             {
                 status.State.ActiveSkillId = skillData.id;
@@ -44,7 +48,7 @@ public class PickupItem : MonoBehaviour
                 {
                     var spc = UIManager.Instance.GetComponent<StatusPanelController>();
                     spc.UpdateMyStatusUI(status.State);
-                    UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", 3);
+                    UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
                 }
                 LevelManager.Instance.PickupItems.Remove(Id);
                 Destroy(gameObject);

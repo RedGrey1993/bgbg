@@ -75,7 +75,7 @@ public class Bullet : MonoBehaviour
             }
             // 检测是否碰撞到Player
             if (other.CompareTag(Constants.TagPlayer) || other.CompareTag(Constants.TagEnemy)
-                || other.transform.root.CompareTag(Constants.TagPlayer) || other.transform.root.CompareTag(Constants.TagEnemy))
+                || other.transform.parent.CompareTag(Constants.TagPlayer) || other.transform.parent.CompareTag(Constants.TagEnemy))
             {
                 CharacterStatus targetCharacterStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
                 if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)

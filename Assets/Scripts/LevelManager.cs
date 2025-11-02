@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
         GenerateRooms(wallTile, storage);
 
         if (level == 1)
-            UIManager.Instance.ShowInfoPanel("Happy Game!", 5);
+            UIManager.Instance.ShowInfoPanel("Happy Game!", Color.pink, 5);
 
         // character objects 会随每次的HostTick将状态同步到Client
         CharacterManager.Instance.CreateCharacterObjects(storage);
@@ -525,7 +525,7 @@ public class LevelManager : MonoBehaviour
             status.State.ActiveSkillId = Constants.SysBugItemId;
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.UpdateMyStatusUI(status.State);
-            UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at WorldGrid.DeleteSector()]", 5f);
+            UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at Grid.Delete()]", Color.red, 5f);
         }
 
         remainRooms--;
@@ -595,7 +595,7 @@ public class LevelManager : MonoBehaviour
                 Debug.Log("No more rooms can be destroyed.");
                 yield break; // 退出协程
             }
-            UIManager.Instance.ShowInfoPanel($"Warning: room {roomIdx} will be destroyed in", interval);
+            UIManager.Instance.ShowInfoPanel($"Warning: room {roomIdx} will be destroyed in", Color.yellow, interval);
             yield return new WaitForSeconds(interval - redFlashDuration);
             ShowRedFlashRect(new Vector3(Rooms[roomIdx].center.x, Rooms[roomIdx].center.y, 0), Rooms[roomIdx].width, Rooms[roomIdx].height, redFlashDuration);
             yield return new WaitForSeconds(redFlashDuration);

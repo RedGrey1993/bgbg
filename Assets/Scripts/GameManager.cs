@@ -220,12 +220,15 @@ public class GameManager : MonoBehaviour
                 if (Storage.Achievement2Mirror == true)
                 {
                     Storage.Achievement3InfiniteLonely = true;
+                    Storage.NewRulerPlayerState = null;
+                    Storage.NewRulerBulletState = null;
                 }
                 else
                 {
                     Storage.Achievement2Mirror = true;
                     var status = CharacterManager.Instance.GetMyselfGameObject().GetComponent<CharacterStatus>();
                     Storage.NewRulerPlayerState = status.State;
+                    Storage.NewRulerPlayerState.PlayerId = Constants.NewRulerPlayerId;
                     Storage.NewRulerBulletState = status.bulletState;
                     Storage.NewRulerPrefabId = CharacterManager.Instance.PlayerPrefabIds[CharacterManager.Instance.MyInfo.Id];
                 }

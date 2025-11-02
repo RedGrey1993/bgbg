@@ -439,6 +439,29 @@ public class UIManager : MonoBehaviour
                     GameManager.Instance.StartLocalGame(storage);
                 }, needPressSpace: false);
             });
+
+            ref var states = ref SelectCharacterManager.Instance.characterLockStates;
+            if (storage.Achievement3InfiniteLonely)
+            {
+                for (int i = 0; i < states.Count; i++)
+                {
+                    states[i] = false;
+                }
+            }
+            else if (storage.Achievement2Mirror)
+            {
+                for (int i = 0; i < states.Count; i++)
+                {
+                    states[i] = i == 0; // only lock contra bill
+                }
+            }
+            else
+            {
+                for (int i = 0; i < states.Count; i++)
+                {
+                    states[i] = i != 0; // lock others except contra bill
+                }
+            }
             PlayLoadingAnimation(() =>
             {
                 SelectCharacterManager.Instance.Show();
@@ -975,12 +998,12 @@ public class UIManager : MonoBehaviour
     }
 
     private readonly object _infoLockObject = new object(); // lock对于本线程来说是可重入的，其它线程才会等待
-    public void ShowInfoPanel(string info, float duration)
+    public void ShowInfoPanel(string info, Color color, float duration)
     {
-        bool inGame = GameManager.Instance.GameState == GameState.InGame;
-        if (!inGame) return; // 仅在游戏中允许打开信息面板
+        // bool inGame = GameManager.Instance.GameState == GameState.InGame;
+        // if (!inGame) return; // 仅在游戏中允许打开信息面板
 
-        infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, duration)));
+        infoPanelCoroutines.Add(StartCoroutine(ShowInfoTextForDuration(info, color, duration)));
     }
 
     public void ClearInfoPanel()
@@ -1009,7 +1032,7 @@ public class UIManager : MonoBehaviour
     }
 
     // 显示信息并倒计时
-    private IEnumerator ShowInfoTextForDuration(string info, float duration)
+    private IEnumerator ShowInfoTextForDuration(string info, Color color, float duration)
     {
         GameObject infoTextObj = Instantiate(infoTextPrefab, infoPanelContainer);
         TextMeshProUGUI infoText = infoTextObj.GetComponentInChildren<TextMeshProUGUI>();
@@ -1023,6 +1046,7 @@ public class UIManager : MonoBehaviour
             infoTextObjects.Add(infoTextObj);
         }
 
+        infoText.color = color;
         float timer = duration;
         while (timer > 0)
         {

@@ -185,9 +185,10 @@ public class CharacterManager : MonoBehaviour
             NewRulerGo.tag = Constants.TagEnemy;
 
             var bossStatus = NewRulerGo.GetComponent<CharacterStatus>();
+            bossStatus.IsBoss = true;
+            if (storage.NewRulerPlayerState.CurrentHp <= 0) storage.NewRulerPlayerState.CurrentHp = 1;
             bossStatus.SetState(storage.NewRulerPlayerState);
             bossStatus.bulletState = storage.NewRulerBulletState;
-            bossStatus.IsBoss = true;
             LevelManager.Instance.AddToBossRooms(NewRulerGo.transform.position);
         }
         else
@@ -234,6 +235,7 @@ public class CharacterManager : MonoBehaviour
         var feet = go.transform.Find("Feet");
         if (feet != null)
         {
+            feet.gameObject.SetActive(true);
             feet.tag = Constants.TagPlayerFeet;
         }
         // Initialize position
@@ -257,6 +259,7 @@ public class CharacterManager : MonoBehaviour
                 playerStatus.State.PlayerName = playerName;
                 playerStatus.SetColor(playerId <= 1 ? Color.white : RandomColor());
             }
+            playerStatus.SetScale(1);
 
             if (initBulletState != null)
             {
@@ -363,6 +366,7 @@ public class CharacterManager : MonoBehaviour
         // if (playerObjects.ContainsKey(characterId))
         // {
         //     playerObjects.Remove(characterId);
+        //     PlayerPrefabIds.Remove(characterId);
         //     PlayerInfoMap.Remove(characterId);
         //     Players.RemoveAll(p => p.Id == characterId);
         // }
@@ -753,6 +757,7 @@ public class CharacterManager : MonoBehaviour
 
         if (boss.TryGetComponent<CharacterStatus>(out var bossStatus))
         {
+            bossStatus.IsBoss = true;
             if (bs != null)
             {
                 bossStatus.SetState(bs);
@@ -762,7 +767,6 @@ public class CharacterManager : MonoBehaviour
                 bossStatus.State.PlayerId = bossId;
                 bossStatus.State.PlayerName = boss.name;
             }
-            bossStatus.IsBoss = true;
         }
 
         bossObjects[bossId] = boss;
