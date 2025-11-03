@@ -45,6 +45,7 @@ message InputMessage
 
 message PlayerState
 {
+    // next index = 20
     int32 PlayerId = 1;
     string PlayerName = 2;
     int32 MaxHp = 3;
@@ -60,6 +61,7 @@ message PlayerState
     Vec2 Position = 11;
     repeated int32 SkillIds = 14;
     bool CurrentStageSkillLearned = 15;
+    repeated int32 ToLearnedSkillIds = 19;
     int32 ActiveSkillId = 16;
     float Scale = 17;
     ColorProto Color = 18;

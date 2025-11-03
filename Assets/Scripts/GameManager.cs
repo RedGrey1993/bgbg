@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
                 {
                     state.Position = null;
                     state.CurrentStageSkillLearned = false;
+                    state.ToLearnedSkillIds.Clear();
                 }
                 Storage.CurrentStage++;
                 Storage.MinionStates.Clear();

@@ -321,7 +321,7 @@ public class CharacterManager : MonoBehaviour
             List<SkillData> ownedSkills = initState != null ? initState.SkillIds.Select(id => SkillDatabase.Instance.GetSkill(id)).ToList() : new List<SkillData>();
             skillPanelController.Initialize(ownedSkills);
             if (initState == null || !initState.CurrentStageSkillLearned)
-                skillPanelController.RandomizeNewPassiveSkillChoice();
+                skillPanelController.RandomizeNewPassiveSkillChoice(playerStatus.State);
         }
     }
 
@@ -972,6 +972,7 @@ public class CharacterManager : MonoBehaviour
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
         var playerState = playerStatus.State;
         playerState.CurrentStageSkillLearned = true;
+        playerState.ToLearnedSkillIds.Clear();
         playerState.SkillIds.Add(skillId);
 
         skill.executor.ExecuteSkill(playerObj, skill);

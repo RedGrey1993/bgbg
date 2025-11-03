@@ -134,7 +134,7 @@ public class CharacterStatus : MonoBehaviour
             if (HasPlayerController())
             {
                 SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
-                skillPanelController.RandomizeNewPassiveSkillChoice();
+                skillPanelController.RandomizeNewPassiveSkillChoice(State);
             }
         }
         else

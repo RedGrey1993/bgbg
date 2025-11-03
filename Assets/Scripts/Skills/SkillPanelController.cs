@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using NetworkMessageProto;
 
 // 将一组待选技能封装成一个请求
 public class SkillChoiceRequest
@@ -37,32 +37,48 @@ public class SkillPanelController : MonoBehaviour
     // 如果玩家一直不选择技能进入下一关，则设置这个变量为 true，强制在进入下一关之前自动选择一个技能
     public bool ForceRandomChoose { get; set; } = false;
 
-    public void RandomizeNewPassiveSkillChoice()
+    public void RandomizeNewPassiveSkillChoice(PlayerState initState)
     {
+        initState.CurrentStageSkillLearned = false;
         UIManager.Instance.ShowSkillPanel();
-        var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
         List<SkillData> skills = new List<SkillData>();
-        HashSet<int> selectedSkillIds = new HashSet<int>
+        if (initState.ToLearnedSkillIds.Count > 0)
         {
-            Constants.HealthRecoverySkillId
-        };
-        SkillData skillData;
-        for (int i = 0; i < Constants.SkillChooseNumber; i++)
-        {
-            var skillId = Random.Range(0, skillNum);
-            skillData = SkillDatabase.Instance.PassiveSkills[skillId];
-            while (selectedSkillIds.Contains(skillData.id))
+            foreach (var skillId in initState.ToLearnedSkillIds)
             {
-                skillId = Random.Range(0, skillNum);
-                skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+                var skillData = SkillDatabase.Instance.GetPassiveSkill(skillId);
+                skills.Add(skillData);
             }
-            selectedSkillIds.Add(skillData.id);
-            skills.Add(skillData);
         }
-        if (GameManager.Instance.Storage.CurrentStage != 1)
+        else
         {
-            skillData = SkillDatabase.Instance.GetPassiveSkill(Constants.HealthRecoverySkillId);
-            skills[^1] = skillData;
+            var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
+            HashSet<int> selectedSkillIds = new HashSet<int>
+            {
+                Constants.HealthRecoverySkillId
+            };
+            SkillData skillData;
+            for (int i = 0; i < Constants.SkillChooseNumber; i++)
+            {
+                var skillId = Random.Range(0, skillNum);
+                skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+                while (selectedSkillIds.Contains(skillData.id))
+                {
+                    skillId = Random.Range(0, skillNum);
+                    skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+                }
+                selectedSkillIds.Add(skillData.id);
+                skills.Add(skillData);
+            }
+            if (GameManager.Instance.Storage.CurrentStage != 1)
+            {
+                skillData = SkillDatabase.Instance.GetPassiveSkill(Constants.HealthRecoverySkillId);
+                skills[^1] = skillData;
+            }
+            foreach(var skill in skills)
+            {
+                initState.ToLearnedSkillIds.Add(skill.id);
+            }
         }
         AddNewSkillChoice(skills);
     }
