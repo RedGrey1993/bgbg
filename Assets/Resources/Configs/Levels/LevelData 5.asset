@@ -18,10 +18,8 @@ MonoBehaviour:
   normalMinionPrefabs:
   - {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
   bossPrefabs:
-  - {fileID: 696006956200170134, guid: d3e0d0ee05b365f47ac4c3c9aadb875f, type: 3}
+  - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 5
-  minTotalRooms: 2
-  maxTotalRooms: 2
   totalRooms:
     min: 2
     max: 2
@@ -32,3 +30,6 @@ MonoBehaviour:
     max: 1000000
   gamePassedSprite: {fileID: 21300000, guid: 8c85e2497f023c54386b210d1a4ea872, type: 3}
   eliteSpawnChance: 0.1
+  eliteScaleRange:
+    min: 1.3
+    max: 2.5

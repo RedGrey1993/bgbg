@@ -256,7 +256,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         pokeball.SetActive(true);
         yield return new WaitForSeconds(0.87f);
         pokeball.SetActive(false);
-        AttackShoot(characterInput.LookInput);
+        StartCoroutine(AttackShoot(characterInput.LookInput));
         
         throwPokeballCoroutine = null;
         isAttack = false;

@@ -244,7 +244,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         int step = Constants.RoomStep;
         float tmpY = room.yMin + step / 2;
         float nearestDoorY = tmpY;
-        while (tmpY + step < room.yMax)
+        while (tmpY < room.yMax)
         {
             if (tmpY < transform.position.y && tmpY + step > transform.position.y)
             {
@@ -280,7 +280,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         int step = Constants.RoomStep;
         float tmpX = room.xMin + step / 2;
         float nearestDoorX = tmpX;
-        while (tmpX + step < room.xMax)
+        while (tmpX < room.xMax)
         {
             if (tmpX < transform.position.x && tmpX + step > transform.position.x)
             {
@@ -575,8 +575,16 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region ICharacterAI implementation
-    public virtual void OnDeath() {
+    public virtual void OnDeath()
+    {
         Destroy(gameObject);
     }
     #endregion
+
+    void OnDestroy()
+    {
+        SubclassOnDestroy();
+    }
+
+    protected virtual void SubclassOnDestroy() { }
 }

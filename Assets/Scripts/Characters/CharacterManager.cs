@@ -511,19 +511,23 @@ public class CharacterManager : MonoBehaviour
     {
         var my = GetMyselfGameObject();
         bool showBossHpSlider = false;
+        int curHp = 0;
+        int maxHp = 0;
         foreach (Transform child in bossParant)
         {
             var bossStatus = child.gameObject.GetComponent<CharacterStatus>();
             if (bossStatus != null && bossStatus.IsAlive() && LevelManager.Instance.InSameRoom(my, child.gameObject))
             {
                 showBossHpSlider = true;
+                curHp = bossStatus.State.CurrentHp;
+                maxHp = bossStatus.State.MaxHp;
                 break;
             }
         }
 
         if (showBossHpSlider)
         {
-            UIManager.Instance.ShowBossHealthSlider();
+            UIManager.Instance.ShowBossHealthSlider(curHp, maxHp);
         }
         else
         {
@@ -539,7 +543,7 @@ public class CharacterManager : MonoBehaviour
         foreach (var kvp in playerObjects)
         {
             // 跳过自己
-            if (kvp.Value == character) continue;
+            if (kvp.Value == null || kvp.Value == character) continue;
             var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
             if (playerStatus != null && !playerStatus.IsDead())
             {

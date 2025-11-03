@@ -26,10 +26,11 @@ MonoBehaviour:
   summonEffectPrefab: {fileID: 3280519133390621005, guid: 951ee9729bc3a2d45a9b38177d819e3d, type: 3}
   teleportEffectPrefab: {fileID: 7761031033666763820, guid: 1eb833340b41fb444b576c4dced8d4dc, type: 3}
   accumulateEffectPrefab: {fileID: 9027514048236820045, guid: 37f7760cdb8ca2e49bf311ba1faa70a9, type: 3}
+  figure: {fileID: 0}
   CharacterType: 14
-  MaxHp: 5
+  MaxHp: 20
   MoveSpeed: 2
-  ShootRange: 10
+  ShootRange: 100
   BulletSpeed: 6
   Damage: 10
   AttackFrequency: 1
@@ -43,7 +44,5 @@ MonoBehaviour:
   canAttackDiagonally: 1
   AggroRange: 10000
   AggroChangeInterval: 2
-  minRandomMoveInputInterval: 1
-  maxRandomMoveInputInterval: 6
   minChaseMoveInputInterval: 0.5
   maxChaseMoveInputInterval: 1

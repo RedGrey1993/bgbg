@@ -206,12 +206,10 @@ public class ContraBillAI : CharacterBaseAI
             if (diff.sqrMagnitude <= sqrShootRange)
             {
                 characterInput.LookInput = diff;
-            }
-            else
-            {
-                characterInput.LookInput = Vector2.zero;
+                return;
             }
         }
+        characterInput.LookInput = Vector2.zero;
     }
     #endregion
 }

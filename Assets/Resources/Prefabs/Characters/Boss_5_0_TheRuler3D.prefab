@@ -144,6 +144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69729f7b3e5b0564d8e70b4d955b1f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_5_0_TheRulerAI
+  pokeMinionPrefabs:
+  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
+  - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
+  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  summonPokeEffectPrefab: {fileID: 5824670795371433373, guid: 3fe64f898fed61140963ab0c4dd5b2c2, type: 3}
+  speedupEffectPrefab: {fileID: 904662820145583817, guid: 44268a9c408d370468cd8b065223e5e9, type: 3}
+  rageEffectPrefab: {fileID: 119183615461286708, guid: 9f49bba8ffd508b4e8f1e2f3f4bbbdfe, type: 3}
+  pokeMinionBuffTime: 5
+  formatPanel: {fileID: 0}
 --- !u!1 &2380667436673660461
 GameObject:
   m_ObjectHideFlags: 0

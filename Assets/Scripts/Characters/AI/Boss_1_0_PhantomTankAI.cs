@@ -100,7 +100,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         // 需要AtkFreq时间架设炮台
         yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         // 调用父类方法
-        AttackShoot(lookInput);
+        StartCoroutine(AttackShoot(lookInput));
 
         // isAttack = false后才能移动
         isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput

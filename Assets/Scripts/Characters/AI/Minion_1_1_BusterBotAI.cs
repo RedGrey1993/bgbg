@@ -81,7 +81,7 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         // 需要AtkFreq时间站定
         yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
         // 调用父类方法
-        AttackShoot(lookInput);
+        StartCoroutine(AttackShoot(lookInput));
 
         isAttack = false;
 

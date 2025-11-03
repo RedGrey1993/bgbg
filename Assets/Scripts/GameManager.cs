@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
-        PassedStages = new HashSet<int> { 2, 3, 4 };
+        PassedStages = new HashSet<int> { 2, 3, 5 };
 
         Debug.Log($"fhhtest, LoadLocalStorage: {Storage}, {Storage.Achievement1NewCycle}");
         return Storage;
@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
-        PassedStages = new HashSet<int> { 2, 3, 4 };
+        PassedStages = new HashSet<int> { 2, 3, 5 };
         return Storage;
     }
 

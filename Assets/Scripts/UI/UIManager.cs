@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     public UnityEngine.UI.Image flashImage; // 用于屏幕闪烁效果
     public UnityEngine.UI.Slider bossHealthSlider;
     public GameObject teleportBeamEffectPrefab; // 传送特效预制体
+    public GameObject formatPanel;
     #endregion
 
     public GameObject TeleportBeamEffect { get; set; }
@@ -179,10 +180,10 @@ public class UIManager : MonoBehaviour
     }
 
     #region Canvas
-    public void PlayLoadingAnimation(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "")
+    public void PlayLoadingAnimation(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "", float slideInTime = 1f, float slideOutTime = 1f)
     {
         fadePanel.SetActive(true);
-        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace, loadingStr));
+        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace, loadingStr, slideInTime, slideOutTime));
     }
 
     private IEnumerator FadeRoutine(float startAlpha, float targetAlpha, float transitionTime)
@@ -224,13 +225,12 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
     }
 
-    private IEnumerator LoadAnimationRoutine(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "")
+    private IEnumerator LoadAnimationRoutine(Action callback, Sprite[] loadingSprite, bool needPressSpace, string loadingStr, float slideInTime, float slideOutTime)
     {
         if (loadingSprite == null || loadingSprite.Length == 0)
         {
             loadingSprite = new Sprite[] { defaultSprite };
         }
-        var transitionTime = 1f;
         if (loadingStr != "")
         {
             loadingText.text = loadingStr;
@@ -252,7 +252,7 @@ public class UIManager : MonoBehaviour
                 rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
             }
             // 触发渐变显示图片动画
-            yield return StartCoroutine(FadeRoutine(0f, 1f, transitionTime));
+            yield return StartCoroutine(FadeRoutine(0f, 1f, slideInTime));
 
             if (needPressSpace)
             {
@@ -267,7 +267,7 @@ public class UIManager : MonoBehaviour
                 callback?.Invoke();
             }
             // 触发渐变隐藏图片动画
-            yield return StartCoroutine(FadeRoutine(1f, 0f, transitionTime));
+            yield return StartCoroutine(FadeRoutine(1f, 0f, slideOutTime));
         }
 
         // 如果是视频，可以在这里 videoPlayer.Play();
@@ -287,9 +287,14 @@ public class UIManager : MonoBehaviour
         fadePanel.SetActive(false);
     }
 
-    public void ShowBossHealthSlider()
+    public void ShowBossHealthSlider(int curHp, int maxHp)
     {
         bossHealthSlider.gameObject.SetActive(true);
+        if (bossHealthSlider.value == 0)
+        {
+            bossHealthSlider.value = curHp;
+            bossHealthSlider.maxValue = maxHp;
+        }
     }
 
     public void HideBossHealthSlider()

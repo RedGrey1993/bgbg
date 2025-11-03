@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using NetworkMessageProto;
+using TMPro;
 using UnityEngine;
 
 // Stomper不会对角线移动
 public class Boss_5_0_TheRulerAI : CharacterBaseAI
 {
+    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
+
+    // Inspector
+    [SerializeField] private List<GameObject> pokeMinionPrefabs;
+    [SerializeField] private GameObject summonPokeEffectPrefab;
+    [SerializeField] private GameObject speedupEffectPrefab;
+    [SerializeField] private GameObject rageEffectPrefab;
+    [SerializeField] private int pokeMinionBuffTime = 5;
+
     private List<BossPrefabInfo> prevBossPrefabInfos;
     protected override void SubclassStart()
     {
@@ -55,7 +65,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private int bossIdx = 0;
     protected override void AttackAction()
     {
-        if (isAiming)
+        if (isAiming && AggroTarget != null)
         {
             if (Time.time < nextAtkTime) return;
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -67,37 +77,36 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 int rndSkillId = Random.Range(0, 2);
                 if (rndSkillId == 0 && bossIdx < prevBossPrefabInfos.Count && existingBosses.Count < 2)
                 {
-                    if (!isSummoning && !isExplosion)
+                    if (!isSummoning)
                     {
                         Debug.Log("fhhtest, Summon::::::");
-                        StartCoroutine(Summon());
+                        StartCoroutine(SummonBoss());
                     }
                 }
                 else
                 {
-                    if (!isSummoning && !isExplosion)
+                    if (explosionCoroutine == null)
                     {
                         Debug.Log("fhhtest, Explosion::::::");
-                        StartCoroutine(Explosion());
+                        explosionCoroutine = StartCoroutine(Explosion());
                     }
                 }
             }
-            // else
-            // if (hpRatio > 0.1f)
-            // {
-            //     if (!isTeleporting)
-            //     {
-            //         Debug.Log("fhhtest, Teleport::::::");
-            //         StartCoroutine(Teleport());
-            //     }
-            // }
-            // else
-            // {
-            //     // TODO: 终极格式化；
-            //     // 1.格式化进度条，100%后直接秒杀玩家，要在这之前杀死boss；
-            //     // 2.房间不断爆炸（一次性爆炸所有grid，不再每隔0.1s爆炸一个grid），干扰玩家；
-            //     // 3.传送逃离，躲避玩家伤害
-            // }
+            else if (hpRatio > 0.1f)
+            {
+                if (teleportCoroutine == null)
+                {
+                    Debug.Log("fhhtest, Teleport::::::");
+                    teleportCoroutine = StartCoroutine(TeleportAndPreviousBossAttack());
+                }
+            }
+            else
+            {
+                // TODO: 终极格式化，时间设置为合理的时间，15s或30s；
+                formattingCoroutine ??= StartCoroutine(Formatting(10f, AggroTarget));
+                explosionCoroutine ??= StartCoroutine(Explosion(true));
+                teleportCoroutine ??= StartCoroutine(TeleportAndPreviousBossAttack(false));
+            }
         }
         isAiming = false;
     }
@@ -105,7 +114,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
     #region 技能1，召唤
     private bool isSummoning = false;
-    private IEnumerator Summon()
+    private IEnumerator SummonBoss()
     {
         isSummoning = true;
         var virtualScreen = transform.GetChild(2).gameObject;
@@ -169,10 +178,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     #endregion
 
     #region 技能2，爆炸
-    private bool isExplosion = false;
-    private IEnumerator Explosion()
+    private Coroutine explosionCoroutine;
+    private IEnumerator Explosion(bool explosionSameTime = false)
     {
-        isExplosion = true;
         var virtualScreen = transform.GetChild(2).gameObject;
         virtualScreen.SetActive(true);
         var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
@@ -264,7 +272,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         foreach (var tilePos in tilePositions)
         {
             StartCoroutine(PlayExplosionEffect(tilePos));
-            yield return new WaitForSeconds(0.1f);
+            if (!explosionSameTime) yield return new WaitForSeconds(0.02f);
         }
 
         yield return new WaitForSeconds(1f);
@@ -273,7 +281,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             LevelManager.Instance.ResetFloorTile(new Vector3Int(tilePos.x, tilePos.y, 0));
         }
 
-        isExplosion = false;
+        explosionCoroutine = null;
     }
 
     private IEnumerator PlayExplosionEffect(Vector2Int position)
@@ -287,10 +295,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     #endregion
 
     #region 技能3，传送+高频率boss大招
-    private bool isTeleporting = false;
-    private IEnumerator Teleport()
+    private Coroutine teleportCoroutine = null;
+    private IEnumerator TeleportAndPreviousBossAttack(bool attack = true)
     {
-        isTeleporting = true;
         var teleportPrefab = CharacterData.teleportEffectPrefab;
         var teleportEffect1 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, transform.position);
         var particleSystem1 = teleportEffect1.GetComponentInChildren<ParticleSystem>();
@@ -299,11 +306,16 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         yield return new WaitForSeconds(particleSystem1.main.duration / 2);
         Object.Destroy(teleportEffect1);
 
-        // int rndAtk = Random.Range(0, 4);
-        // if (chargeCoroutine == null)
-        //     chargeCoroutine = StartCoroutine(Boss1_PhantomTank_Charge());
-        if (energyWaveCoroutine == null)
-            energyWaveCoroutine = StartCoroutine(Boss2_EnergyWave(9));
+        if (attack)
+        {
+            int rndAtk = Random.Range(0, 3);
+            if (rndAtk == 0)
+                chargeCoroutine ??= StartCoroutine(Boss1_PhantomTank_Charge());
+            else if (rndAtk == 1)
+                energyWaveCoroutine ??= StartCoroutine(Boss2_EnergyWave(9));
+            else if (rndAtk == 2)
+                summonPokesCoroutine ??= StartCoroutine(Boss3_SummonAndStrengthenPokes(3));
+        }
 
         var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
@@ -355,7 +367,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         SetTheRulerAlpha(1f);
         yield return new WaitForSeconds(particleSystem2.main.duration / 2);
         Object.Destroy(teleportEffect2);
-        isTeleporting = false;
+        teleportCoroutine = null;
     }
 
     private void SetTheRulerAlpha(float to)
@@ -488,8 +500,133 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         yield return new WaitForSeconds(2.5f);
         energyWaveCoroutine = null;
     }
+
+    private int pokeIdx = 0;
+    private List<GameObject> existingPokes = new();
+    private Coroutine summonPokesCoroutine = null;
+    private IEnumerator Boss3_SummonAndStrengthenPokes(int count)
+    {
+        existingPokes.RemoveAll(obj => obj == null);
+        int needCount = count - existingPokes.Count;
+
+        while (existingPokes.Count < count)
+        {
+            // 召唤小弟
+            int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+            var room = LevelManager.Instance.Rooms[roomId];
+            var pokePrefab = pokeMinionPrefabs[pokeIdx];
+            pokeIdx = (pokeIdx + 1) % pokeMinionPrefabs.Count;
+
+            var col2d = pokePrefab.GetComponentInChildren<Collider2D>();
+            Vector2 summonPosition = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2d.bounds);
+
+            GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
+            yield return new WaitForSeconds(1.5f);
+            Destroy(summonEffect);
+            GameObject pokeMinion = LevelManager.Instance.InstantiateTemporaryObject(pokePrefab, summonPosition);
+            existingPokes.Add(pokeMinion);
+        }
+
+        if (existingPokes.Count > 0)
+        {
+            foreach (var poke in existingPokes)
+            {
+                if (poke == null) continue;
+                var rnd = Random.Range(0, 2);
+                // speedup
+                {
+                    var speedupEffect = LevelManager.Instance.InstantiateTemporaryObject(speedupEffectPrefab, poke.transform.position);
+                    Destroy(speedupEffect, 3);
+                    StartCoroutine(SpeedUp(poke));
+                    yield return new WaitForSeconds(0.5f);
+                }
+                // rage
+                {
+                    var rageEffect = LevelManager.Instance.InstantiateTemporaryObject(rageEffectPrefab, poke.transform.position);
+                    Destroy(rageEffect, 3);
+                    StartCoroutine(Rage(poke));
+                }
+            }
+        }
+
+        summonPokesCoroutine = null;
+    }
+
+    private IEnumerator SpeedUp(GameObject poke)
+    {
+        var status = poke.GetComponent<CharacterStatus>();
+        status.State.MoveSpeed *= 2;
+
+        yield return new WaitForSeconds(pokeMinionBuffTime);
+        status.State.MoveSpeed /= 2;
+    }
+
+    private IEnumerator Rage(GameObject poke)
+    {
+        var status = poke.GetComponent<CharacterStatus>();
+        status.State.Damage *= 2;
+        var sr = poke.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.red;
+        }
+
+        yield return new WaitForSeconds(pokeMinionBuffTime);
+        status.State.Damage /= 2;
+        if (sr != null)
+        {
+            sr.color = Color.white;
+        }
+    }
     #endregion
 
     #region 技能4，格式化+连续爆炸
+    private Coroutine formattingCoroutine = null;
+    private IEnumerator Formatting(float duration, GameObject aggroTarget)
+    {
+        UIManager.Instance.formatPanel.SetActive(true);
+        var virtualScreen = transform.GetChild(2).gameObject;
+        virtualScreen.SetActive(true);
+        var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
+        var animClips = screenAnim.runtimeAnimatorController.animationClips;
+        float showTime = 0.5f;
+        foreach (var clip in animClips)
+        {
+            if (clip.name == "VirtualScreenShowing")
+            {
+                showTime = clip.length;
+            }
+        }
+
+        yield return new WaitForSeconds(showTime);
+
+        var textObj = UIManager.Instance.formatPanel.GetComponentInChildren<TextMeshProUGUI>();
+        var slider = UIManager.Instance.formatPanel.GetComponentInChildren<UnityEngine.UI.Slider>();
+        slider.maxValue = 100;
+
+        float startTime = Time.time;
+        while (Time.time < startTime + duration)
+        {
+            int percent = Mathf.CeilToInt((Time.time - startTime) / duration * 100);
+            textObj.text = $"SYSTEM PURGE, FORMATTING {percent}%...";
+            slider.value = percent;
+            yield return _waitForSeconds1;
+        }
+        slider.value = 100;
+        textObj.text = "SYSTEM PURGE, FORMATTING COMPLETE!";
+        if (aggroTarget != null)
+        {
+            var playerStatus = aggroTarget.GetComponent<CharacterStatus>();
+            playerStatus.TakeDamage_Host(10000, null);
+        }
+
+        UIManager.Instance.formatPanel.SetActive(false);
+        // formattingCoroutine = null;
+    }
     #endregion
+
+    protected override void SubclassOnDestroy()
+    {
+        UIManager.Instance.formatPanel.SetActive(false);
+    }
 }

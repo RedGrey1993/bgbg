@@ -28,8 +28,8 @@ MonoBehaviour:
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: -1686782042344333758, guid: 52a22912a7f188145a804934435fb4e1, type: 3}
   CharacterType: 3
-  MaxHp: 500
-  MoveSpeed: 20
+  MaxHp: 5
+  MoveSpeed: 5
   ShootRange: 4
   BulletSpeed: 4
   Damage: 3
