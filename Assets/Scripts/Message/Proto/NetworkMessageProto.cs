@@ -61,7 +61,7 @@ namespace NetworkMessageProto {
             "bElkGAIgASgNEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQ",
             "cm90by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUS",
             "EAoIUHJlZmFiSWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFn",
-            "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIrUHCgxMb2NhbFN0b3JhZ2US",
+            "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIu8HCgxMb2NhbFN0b3JhZ2US",
             "FAoMQ3VycmVudFN0YWdlGAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIg",
             "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3Rh",
             "dGVzGA8gAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIX",
@@ -82,7 +82,9 @@ namespace NetworkMessageProto {
             "eXNFcnJMb2dUaXAYFCABKAgSPQoTTmV3UnVsZXJQbGF5ZXJTdGF0ZRgVIAEo",
             "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSPQoTTmV3UnVs",
             "ZXJCdWxsZXRTdGF0ZRgWIAEoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVs",
-            "bGV0U3RhdGUSGAoQTmV3UnVsZXJQcmVmYWJJZBgXIAEoBWIGcHJvdG8z"));
+            "bGV0U3RhdGUSGAoQTmV3UnVsZXJQcmVmYWJJZBgXIAEoBRIZChFOeHREZXN0",
+            "b3J5Um9vbUlkeBgYIAEoBRIdChVEZXN0b3J5Um9vbVJlbWFpblRpbWUYGSAB",
+            "KAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -100,7 +102,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4710,6 +4712,8 @@ namespace NetworkMessageProto {
       newRulerPlayerState_ = other.newRulerPlayerState_ != null ? other.newRulerPlayerState_.Clone() : null;
       newRulerBulletState_ = other.newRulerBulletState_ != null ? other.newRulerBulletState_.Clone() : null;
       newRulerPrefabId_ = other.newRulerPrefabId_;
+      nxtDestoryRoomIdx_ = other.nxtDestoryRoomIdx_;
+      destoryRoomRemainTime_ = other.destoryRoomRemainTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4723,7 +4727,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 24
+    /// next index = 26
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4988,6 +4992,30 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "NxtDestoryRoomIdx" field.</summary>
+    public const int NxtDestoryRoomIdxFieldNumber = 24;
+    private int nxtDestoryRoomIdx_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int NxtDestoryRoomIdx {
+      get { return nxtDestoryRoomIdx_; }
+      set {
+        nxtDestoryRoomIdx_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DestoryRoomRemainTime" field.</summary>
+    public const int DestoryRoomRemainTimeFieldNumber = 25;
+    private float destoryRoomRemainTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DestoryRoomRemainTime {
+      get { return destoryRoomRemainTime_; }
+      set {
+        destoryRoomRemainTime_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -5026,6 +5054,8 @@ namespace NetworkMessageProto {
       if (!object.Equals(NewRulerPlayerState, other.NewRulerPlayerState)) return false;
       if (!object.Equals(NewRulerBulletState, other.NewRulerBulletState)) return false;
       if (NewRulerPrefabId != other.NewRulerPrefabId) return false;
+      if (NxtDestoryRoomIdx != other.NxtDestoryRoomIdx) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DestoryRoomRemainTime, other.DestoryRoomRemainTime)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5056,6 +5086,8 @@ namespace NetworkMessageProto {
       if (newRulerPlayerState_ != null) hash ^= NewRulerPlayerState.GetHashCode();
       if (newRulerBulletState_ != null) hash ^= NewRulerBulletState.GetHashCode();
       if (NewRulerPrefabId != 0) hash ^= NewRulerPrefabId.GetHashCode();
+      if (NxtDestoryRoomIdx != 0) hash ^= NxtDestoryRoomIdx.GetHashCode();
+      if (DestoryRoomRemainTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DestoryRoomRemainTime);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5136,6 +5168,14 @@ namespace NetworkMessageProto {
         output.WriteRawTag(184, 1);
         output.WriteInt32(NewRulerPrefabId);
       }
+      if (NxtDestoryRoomIdx != 0) {
+        output.WriteRawTag(192, 1);
+        output.WriteInt32(NxtDestoryRoomIdx);
+      }
+      if (DestoryRoomRemainTime != 0F) {
+        output.WriteRawTag(205, 1);
+        output.WriteFloat(DestoryRoomRemainTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5208,6 +5248,14 @@ namespace NetworkMessageProto {
         output.WriteRawTag(184, 1);
         output.WriteInt32(NewRulerPrefabId);
       }
+      if (NxtDestoryRoomIdx != 0) {
+        output.WriteRawTag(192, 1);
+        output.WriteInt32(NxtDestoryRoomIdx);
+      }
+      if (DestoryRoomRemainTime != 0F) {
+        output.WriteRawTag(205, 1);
+        output.WriteFloat(DestoryRoomRemainTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5266,6 +5314,12 @@ namespace NetworkMessageProto {
       }
       if (NewRulerPrefabId != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(NewRulerPrefabId);
+      }
+      if (NxtDestoryRoomIdx != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NxtDestoryRoomIdx);
+      }
+      if (DestoryRoomRemainTime != 0F) {
+        size += 2 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5336,6 +5390,12 @@ namespace NetworkMessageProto {
       }
       if (other.NewRulerPrefabId != 0) {
         NewRulerPrefabId = other.NewRulerPrefabId;
+      }
+      if (other.NxtDestoryRoomIdx != 0) {
+        NxtDestoryRoomIdx = other.NxtDestoryRoomIdx;
+      }
+      if (other.DestoryRoomRemainTime != 0F) {
+        DestoryRoomRemainTime = other.DestoryRoomRemainTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5459,6 +5519,14 @@ namespace NetworkMessageProto {
             NewRulerPrefabId = input.ReadInt32();
             break;
           }
+          case 192: {
+            NxtDestoryRoomIdx = input.ReadInt32();
+            break;
+          }
+          case 205: {
+            DestoryRoomRemainTime = input.ReadFloat();
+            break;
+          }
         }
       }
     #endif
@@ -5579,6 +5647,14 @@ namespace NetworkMessageProto {
           }
           case 184: {
             NewRulerPrefabId = input.ReadInt32();
+            break;
+          }
+          case 192: {
+            NxtDestoryRoomIdx = input.ReadInt32();
+            break;
+          }
+          case 205: {
+            DestoryRoomRemainTime = input.ReadFloat();
             break;
           }
         }

@@ -39,7 +39,7 @@ public class SkillPanelController : MonoBehaviour
 
     public void RandomizeNewPassiveSkillChoice()
     {
-        UIManager.Instance.OpenSkillPanel();
+        UIManager.Instance.ShowSkillPanel();
         var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
         List<SkillData> skills = new List<SkillData>();
         for (int i = 0; i < Constants.SkillChooseNumber; i++)
@@ -189,7 +189,7 @@ public class SkillPanelController : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             Debug.Log("添加第一组技能到队列...");
-            UIManager.Instance.OpenSkillPanel();
+            UIManager.Instance.ShowSkillPanel();
             var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
             List<SkillData> testSkills = new List<SkillData>();
             for (int i = 0; i < 3; i++)

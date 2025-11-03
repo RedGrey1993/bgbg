@@ -43,7 +43,6 @@ public class UIManager : MonoBehaviour
     private Coroutine flashCoroutine;
 
     private List<Coroutine> infoPanelCoroutines = new List<Coroutine>();
-    private HashSet<GameObject> infoTextObjects = new HashSet<GameObject>();
 
     private InputAction _toggleSettingsAction;
     private InputAction _toggleSkillPanelAction;
@@ -951,7 +950,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            OpenSkillPanel();
+            ShowSkillPanel();
         }
     }
 
@@ -969,15 +968,15 @@ public class UIManager : MonoBehaviour
         skillPanel.SetActive(false);
     }
 
-    public void OpenSkillPanel()
+    public void ShowSkillPanel()
     {
         if (skillPanel == null) return;
         if (skillPanel.activeSelf) return;
         skillPanel.SetActive(true);
-        StartCoroutine(OpenSkillPanelAnim());
+        StartCoroutine(ShowSkillPanelAnim());
     }
 
-    public IEnumerator OpenSkillPanelAnim()
+    public IEnumerator ShowSkillPanelAnim()
     {
         skillPanel.GetComponent<Animator>().Play("SkillPanelSlideIn");
         yield return new WaitForSeconds(0.5f);
@@ -997,7 +996,6 @@ public class UIManager : MonoBehaviour
         skillPanel.SetActive(false);
     }
 
-    private readonly object _infoLockObject = new object(); // lock对于本线程来说是可重入的，其它线程才会等待
     public void ShowInfoPanel(string info, Color color, float duration)
     {
         // bool inGame = GameManager.Instance.GameState == GameState.InGame;
@@ -1015,19 +1013,11 @@ public class UIManager : MonoBehaviour
                 StopCoroutine(coroutine);
             }
         }
-        lock (_infoLockObject)
+        foreach (Transform child in infoPanelContainer)
         {
-            foreach (var infoTextObj in infoTextObjects)
-            {
-                Destroy(infoTextObj);
-            }
-            if (infoTextObjects.Count > 0)
-            {
-                Animator animator = infoPanelContainer.GetComponent<Animator>();
-                animator.Play("SkillPanelSlideOut");
-            }
-            infoTextObjects.Clear();
+            Destroy(child.gameObject);
         }
+        infoPanelContainer.gameObject.SetActive(false);
         infoPanelCoroutines.Clear();
     }
 
@@ -1036,15 +1026,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject infoTextObj = Instantiate(infoTextPrefab, infoPanelContainer);
         TextMeshProUGUI infoText = infoTextObj.GetComponentInChildren<TextMeshProUGUI>();
-        lock (_infoLockObject)
-        {
-            if (infoTextObjects.Count == 0)
-            {
-                Animator animator = infoPanelContainer.GetComponent<Animator>();
-                animator.Play("SkillPanelSlideIn");
-            }
-            infoTextObjects.Add(infoTextObj);
-        }
+        ShowInfoPanel();
 
         infoText.color = color;
         float timer = duration;
@@ -1056,15 +1038,34 @@ public class UIManager : MonoBehaviour
         }
         Destroy(infoTextObj);
 
-        lock (_infoLockObject)
-        {
-            infoTextObjects.Remove(infoTextObj);
-            if (infoTextObjects.Count == 0)
-            {
-                Animator animator = infoTextObj.GetComponentInParent<Animator>();
-                animator.Play("SkillPanelSlideOut");
-            }
-        }
+        HideInfoPanel();
+    }
+
+    public void ShowInfoPanel()
+    {
+        if (infoPanelContainer.gameObject.activeSelf) return;
+        infoPanelContainer.gameObject.SetActive(true);
+        StartCoroutine(ShowInfoPanelAnim());
+    }
+
+    public void HideInfoPanel()
+    {
+        if (!infoPanelContainer.gameObject.activeSelf) return;
+        if (infoPanelContainer.childCount > 0) return;
+        StartCoroutine(HideInfoPanelAnim());
+    }
+
+    public IEnumerator ShowInfoPanelAnim()
+    {
+        infoPanelContainer.GetComponent<Animator>().Play("SkillPanelSlideIn");
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    public IEnumerator HideInfoPanelAnim()
+    {
+        infoPanelContainer.GetComponent<Animator>().Play("SkillPanelSlideOut");
+        yield return new WaitForSeconds(0.5f);
+        infoPanelContainer.gameObject.SetActive(false);
     }
 
     private void ShowSettings()

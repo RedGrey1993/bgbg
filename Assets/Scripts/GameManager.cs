@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
             Storage.PassedStages.Clear();
             Storage.NewLevel = true;
             Storage.ShowedSysErrLogTip = false;
+            Storage.NxtDestoryRoomIdx = -1;
+            Storage.DestoryRoomRemainTime = 0;
         }
         else
         {
@@ -82,6 +84,8 @@ public class GameManager : MonoBehaviour
                 Storage.BossPrefabInfos.Clear();
                 Storage.Rooms.Clear();
                 Storage.PickupItems.Clear();
+                Storage.NxtDestoryRoomIdx = -1;
+                Storage.DestoryRoomRemainTime = 0;
             }
             else
             {

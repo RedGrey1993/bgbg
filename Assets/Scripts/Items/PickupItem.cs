@@ -33,14 +33,10 @@ public class PickupItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.TagPlayer) || collision.transform.parent.CompareTag(Constants.TagPlayer)) // bullet的tag也可能是Player，layer是bullets
+        if (collision.CompareTag(Constants.TagPlayerFeet)) // bullet的tag也可能是Player，layer是bullets
         {
             GameObject player = collision.gameObject;
             var status = player.GetComponentInParent<CharacterStatus>();
-            if (status == null)
-            {
-                status = player.GetComponentInChildren<CharacterStatus>();
-            }
             if (status != null)
             {
                 status.State.ActiveSkillId = skillData.id;

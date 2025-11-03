@@ -88,8 +88,15 @@ public class LevelManager : MonoBehaviour
             ShowPickUpItem(new Vector3(pickupItem.Position.X, pickupItem.Position.Y, 0), SkillDatabase.Instance.GetSkill(pickupItem.SkillId));
         }
 
-        float firstRoomBlastInterval = GameManager.Instance.gameConfig.FirstRoomBlastInterval;
-        StartCoroutine(StartDestroyingRooms(firstRoomBlastInterval)); // 每180秒摧毁一个房间
+        if (storage.NxtDestoryRoomIdx != -1 && storage.DestoryRoomRemainTime > 0)
+        {
+            StartCoroutine(StartDestroyingRooms(storage.DestoryRoomRemainTime, storage.NxtDestoryRoomIdx));
+        }
+        else
+        {
+            float firstRoomBlastInterval = GameManager.Instance.gameConfig.FirstRoomBlastInterval;
+            StartCoroutine(StartDestroyingRooms(firstRoomBlastInterval)); // 每180秒摧毁一个房间
+        }
     }
 
     private void GenerateFloors(TileBase floorTile)
@@ -584,22 +591,49 @@ public class LevelManager : MonoBehaviour
     }
 
     // 协程函数，每隔一段时间摧毁一个房间
-    public IEnumerator StartDestroyingRooms(float interval)
+    private int nxtDestoryRoomIdx = -1;
+    private float destoryRoomRemainTime = -1;
+    public IEnumerator StartDestroyingRooms(float interval, int firstDestoryRoomIdx = -1)
     {
+        if (interval <= 0)
+            yield break;
+
         float redFlashDuration = GameManager.Instance.gameConfig.RedFlashRectDuration;
+
+        bool isFirst = true;
         while (true)
         {
-            int roomIdx = GetNextDestroyRoomIndex();
-            if (roomIdx == -1)
+            if (isFirst && firstDestoryRoomIdx != -1)
             {
+                isFirst = false;
+                nxtDestoryRoomIdx = firstDestoryRoomIdx;
+            }
+            else
+            {
+                nxtDestoryRoomIdx = GetNextDestroyRoomIndex();
+            }
+            if (nxtDestoryRoomIdx == -1)
+            {
+                destoryRoomRemainTime = -1;
                 Debug.Log("No more rooms can be destroyed.");
                 yield break; // 退出协程
             }
-            UIManager.Instance.ShowInfoPanel($"Warning: room {roomIdx} will be destroyed in", Color.yellow, interval);
-            yield return new WaitForSeconds(interval - redFlashDuration);
-            ShowRedFlashRect(new Vector3(Rooms[roomIdx].center.x, Rooms[roomIdx].center.y, 0), Rooms[roomIdx].width, Rooms[roomIdx].height, redFlashDuration);
-            yield return new WaitForSeconds(redFlashDuration);
-            DestroyRoom(roomIdx);
+            float startTime = Time.time;
+            UIManager.Instance.ShowInfoPanel($"Warning: room {nxtDestoryRoomIdx} will be destroyed in", Color.yellow, interval);
+            while (Time.time - startTime < interval - redFlashDuration)
+            {
+                destoryRoomRemainTime = interval - (Time.time - startTime);
+                yield return new WaitForSeconds(1f);
+            }
+            ShowRedFlashRect(new Vector3(Rooms[nxtDestoryRoomIdx].center.x, Rooms[nxtDestoryRoomIdx].center.y, 0),
+                            Rooms[nxtDestoryRoomIdx].width, Rooms[nxtDestoryRoomIdx].height, redFlashDuration);
+            while (Time.time - startTime < interval)
+            {
+                destoryRoomRemainTime = interval - (Time.time - startTime);
+                yield return new WaitForSeconds(1f);
+            }
+            DestroyRoom(nxtDestoryRoomIdx);
+            nxtDestoryRoomIdx = -1;
             interval = GameManager.Instance.gameConfig.OtherRoomBlastInterval;; // 第一次间隔3min，第2次间隔2min
         }
     }
@@ -660,6 +694,8 @@ public class LevelManager : MonoBehaviour
         storage.RoomMaxHeight = (uint)roomMaxHeight;
         storage.PickupItems.Clear();
         storage.PickupItems.AddRange(PickupItems.Values.Select(v => v.Item1));
+        storage.NxtDestoryRoomIdx = nxtDestoryRoomIdx;
+        storage.DestoryRoomRemainTime = destoryRoomRemainTime;
     }
 
     public int GetRoomNoByPosition(Vector3 position)
