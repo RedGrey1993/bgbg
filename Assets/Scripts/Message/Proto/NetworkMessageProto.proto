@@ -58,9 +58,9 @@ message PlayerState
     uint32 CurrentLevel = 12;
     uint32 CurrentExp = 13;
     Vec2 Position = 11;
-    repeated uint32 SkillIds = 14;
+    repeated int32 SkillIds = 14;
     bool CurrentStageSkillLearned = 15;
-    uint32 ActiveSkillId = 16;
+    int32 ActiveSkillId = 16;
     float Scale = 17;
     ColorProto Color = 18;
 }
@@ -96,13 +96,13 @@ message PlayerInfo
 message LearnSkillMessage
 {
     int32 playerId = 1;
-    uint32 skillId = 2;
+    int32 skillId = 2;
 }
 
 message PickupItem
 {
     int32 Id = 1;
-    uint32 SkillId = 2;
+    int32 SkillId = 2;
     Vec2 Position = 3;
 }
 

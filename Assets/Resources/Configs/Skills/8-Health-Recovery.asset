@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
-  m_Name: FireballTest
+  m_Name: 8-Health-Recovery
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
-  id: 9999
-  skillName: Fireball Test
-  description: Test skill data, Fireball
+  id: 8
+  skillName: Health Recovery
+  description: Restores 50% of maximum HP
   backgroundStory: 
-  icon: {fileID: -7343100771688192990, guid: 4cc797a512aeee44fa39d7486ed34359, type: 3}
+  icon: {fileID: 9008983151185501802, guid: ec7f99d1573bbf447b4080f22cfddc6f, type: 3}
   IsActive: 0
-  executor: {fileID: 11400000, guid: e25ff6030c26b9c42b62cb84dde91d61, type: 2}
+  executor: {fileID: 11400000, guid: 4c5826a7ace21d048addf45228bf8100, type: 2}

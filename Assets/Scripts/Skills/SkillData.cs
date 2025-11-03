@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillData", menuName = "Skills/Skill Data")]
 public class SkillData : ScriptableObject
 {
-    public uint id;
+    public int id;
     public string skillName;
     [TextArea] public string description;
     [TextArea] public string backgroundStory;

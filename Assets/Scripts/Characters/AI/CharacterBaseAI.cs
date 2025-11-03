@@ -1,5 +1,6 @@
 
 
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterInput))]
@@ -376,8 +377,9 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Attack Action
-    protected void AttackShoot(Vector2 lookInput)
+    protected IEnumerator AttackShoot(Vector2 lookInput)
     {
+        isAttack = true;
         if (CharacterData.shootSound)
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -428,19 +430,22 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             startDir = rotationPlus * startDir;
         }
+        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
+        shootCoroutine = null;
+        isAttack = false;
     }
+    private Coroutine shootCoroutine = null;
     protected virtual void AttackAction()
     {
         if (!isAttack) // 默认不支持边移动边攻击
         {
             Vector2 lookInput = characterInput.LookInput;
             if (lookInput.sqrMagnitude < 0.1f) return;
-            if (Time.time < nextAtkTime) return;
-            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+            if (shootCoroutine != null) return;
+            // if (Time.time < nextAtkTime) return;
+            // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
-            isAttack = true;
-            AttackShoot(lookInput);
-            isAttack = false;
+            shootCoroutine = StartCoroutine(AttackShoot(lookInput));
         }
     }
     #endregion

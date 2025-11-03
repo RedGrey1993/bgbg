@@ -45,8 +45,8 @@ namespace NetworkMessageProto {
             "ASgCEhIKClNob290UmFuZ2UYCSABKAUSFAoMQ3JpdGljYWxSYXRlGAogASgN",
             "EhQKDEN1cnJlbnRMZXZlbBgMIAEoDRISCgpDdXJyZW50RXhwGA0gASgNEisK",
             "CFBvc2l0aW9uGAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyEhAK",
-            "CFNraWxsSWRzGA4gAygNEiAKGEN1cnJlbnRTdGFnZVNraWxsTGVhcm5lZBgP",
-            "IAEoCBIVCg1BY3RpdmVTa2lsbElkGBAgASgNEg0KBVNjYWxlGBEgASgCEi4K",
+            "CFNraWxsSWRzGA4gAygFEiAKGEN1cnJlbnRTdGFnZVNraWxsTGVhcm5lZBgP",
+            "IAEoCBIVCg1BY3RpdmVTa2lsbElkGBAgASgFEg0KBVNjYWxlGBEgASgCEi4K",
             "BUNvbG9yGBIgASgLMh8uTmV0d29ya01lc3NhZ2VQcm90by5Db2xvclByb3Rv",
             "InkKC0J1bGxldFN0YXRlEhAKCFNob290TnVtGAEgASgFEhcKD1Nob290QW5n",
             "bGVSYW5nZRgCIAEoBRIWCg5QZW5ldHJhdGVDb3VudBgDIAEoBRISCgpTcGxp",
@@ -57,8 +57,8 @@ namespace NetworkMessageProto {
             "b3RvLlBsYXllckluZm8iSgoKUGxheWVySW5mbxIQCghDU3RlYW1JRBgBIAEo",
             "CRIMCgROYW1lGAIgASgJEgoKAklkGAMgASgFEhAKCFByZWZhYklkGAQgASgF",
             "IjYKEUxlYXJuU2tpbGxNZXNzYWdlEhAKCHBsYXllcklkGAEgASgFEg8KB3Nr",
-            "aWxsSWQYAiABKA0iVgoKUGlja3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2ls",
-            "bElkGAIgASgNEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQ",
+            "aWxsSWQYAiABKAUiVgoKUGlja3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2ls",
+            "bElkGAIgASgFEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQ",
             "cm90by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUS",
             "EAoIUHJlZmFiSWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFn",
             "ZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIu8HCgxMb2NhbFN0b3JhZ2US",
@@ -1983,12 +1983,12 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "SkillIds" field.</summary>
     public const int SkillIdsFieldNumber = 14;
-    private static readonly pb::FieldCodec<uint> _repeated_skillIds_codec
-        = pb::FieldCodec.ForUInt32(114);
-    private readonly pbc::RepeatedField<uint> skillIds_ = new pbc::RepeatedField<uint>();
+    private static readonly pb::FieldCodec<int> _repeated_skillIds_codec
+        = pb::FieldCodec.ForInt32(114);
+    private readonly pbc::RepeatedField<int> skillIds_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> SkillIds {
+    public pbc::RepeatedField<int> SkillIds {
       get { return skillIds_; }
     }
 
@@ -2006,10 +2006,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "ActiveSkillId" field.</summary>
     public const int ActiveSkillIdFieldNumber = 16;
-    private uint activeSkillId_;
+    private int activeSkillId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ActiveSkillId {
+    public int ActiveSkillId {
       get { return activeSkillId_; }
       set {
         activeSkillId_ = value;
@@ -2175,7 +2175,7 @@ namespace NetworkMessageProto {
       }
       if (ActiveSkillId != 0) {
         output.WriteRawTag(128, 1);
-        output.WriteUInt32(ActiveSkillId);
+        output.WriteInt32(ActiveSkillId);
       }
       if (Scale != 0F) {
         output.WriteRawTag(141, 1);
@@ -2254,7 +2254,7 @@ namespace NetworkMessageProto {
       }
       if (ActiveSkillId != 0) {
         output.WriteRawTag(128, 1);
-        output.WriteUInt32(ActiveSkillId);
+        output.WriteInt32(ActiveSkillId);
       }
       if (Scale != 0F) {
         output.WriteRawTag(141, 1);
@@ -2318,7 +2318,7 @@ namespace NetworkMessageProto {
         size += 1 + 1;
       }
       if (ActiveSkillId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(ActiveSkillId);
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(ActiveSkillId);
       }
       if (Scale != 0F) {
         size += 2 + 4;
@@ -2480,7 +2480,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 128: {
-            ActiveSkillId = input.ReadUInt32();
+            ActiveSkillId = input.ReadInt32();
             break;
           }
           case 141: {
@@ -2578,7 +2578,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 128: {
-            ActiveSkillId = input.ReadUInt32();
+            ActiveSkillId = input.ReadInt32();
             break;
           }
           case 141: {
@@ -3728,10 +3728,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "skillId" field.</summary>
     public const int SkillIdFieldNumber = 2;
-    private uint skillId_;
+    private int skillId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SkillId {
+    public int SkillId {
       get { return skillId_; }
       set {
         skillId_ = value;
@@ -3788,7 +3788,7 @@ namespace NetworkMessageProto {
       }
       if (SkillId != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(SkillId);
+        output.WriteInt32(SkillId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3806,7 +3806,7 @@ namespace NetworkMessageProto {
       }
       if (SkillId != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(SkillId);
+        output.WriteInt32(SkillId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3822,7 +3822,7 @@ namespace NetworkMessageProto {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (SkillId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3866,7 +3866,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 16: {
-            SkillId = input.ReadUInt32();
+            SkillId = input.ReadInt32();
             break;
           }
         }
@@ -3893,7 +3893,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 16: {
-            SkillId = input.ReadUInt32();
+            SkillId = input.ReadInt32();
             break;
           }
         }
@@ -3964,10 +3964,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "SkillId" field.</summary>
     public const int SkillIdFieldNumber = 2;
-    private uint skillId_;
+    private int skillId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SkillId {
+    public int SkillId {
       get { return skillId_; }
       set {
         skillId_ = value;
@@ -4038,7 +4038,7 @@ namespace NetworkMessageProto {
       }
       if (SkillId != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(SkillId);
+        output.WriteInt32(SkillId);
       }
       if (position_ != null) {
         output.WriteRawTag(26);
@@ -4060,7 +4060,7 @@ namespace NetworkMessageProto {
       }
       if (SkillId != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(SkillId);
+        output.WriteInt32(SkillId);
       }
       if (position_ != null) {
         output.WriteRawTag(26);
@@ -4080,7 +4080,7 @@ namespace NetworkMessageProto {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
       if (SkillId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillId);
       }
       if (position_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
@@ -4133,7 +4133,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 16: {
-            SkillId = input.ReadUInt32();
+            SkillId = input.ReadInt32();
             break;
           }
           case 26: {
@@ -4167,7 +4167,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 16: {
-            SkillId = input.ReadUInt32();
+            SkillId = input.ReadInt32();
             break;
           }
           case 26: {

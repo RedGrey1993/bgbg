@@ -42,11 +42,27 @@ public class SkillPanelController : MonoBehaviour
         UIManager.Instance.ShowSkillPanel();
         var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
         List<SkillData> skills = new List<SkillData>();
+        HashSet<int> selectedSkillIds = new HashSet<int>
+        {
+            Constants.HealthRecoverySkillId
+        };
+        SkillData skillData;
         for (int i = 0; i < Constants.SkillChooseNumber; i++)
         {
             var skillId = Random.Range(0, skillNum);
-            var skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+            skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+            while (selectedSkillIds.Contains(skillData.id))
+            {
+                skillId = Random.Range(0, skillNum);
+                skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+            }
+            selectedSkillIds.Add(skillData.id);
             skills.Add(skillData);
+        }
+        if (GameManager.Instance.Storage.CurrentStage != 1)
+        {
+            skillData = SkillDatabase.Instance.GetPassiveSkill(Constants.HealthRecoverySkillId);
+            skills[^1] = skillData;
         }
         AddNewSkillChoice(skills);
     }
@@ -82,9 +98,9 @@ public class SkillPanelController : MonoBehaviour
         UIManager.Instance.DisableSkillPanel();
     }
 
-    public List<uint> GetOwnedSkillIds()
+    public List<int> GetOwnedSkillIds()
     {
-        List<uint> skillIds = new List<uint>();
+        List<int> skillIds = new List<int>();
         foreach (Transform child in ownedSkillsContainer)
         {
             var icon = child.GetComponent<OwnedSkillIcon>();

@@ -965,7 +965,7 @@ public class CharacterManager : MonoBehaviour
         MessageManager.Instance.SendMessage(msg, true);
     }
 
-    public void CalculateSkillEffect_Host(uint skillId, int targetCharacterId)
+    public void CalculateSkillEffect_Host(int skillId, int targetCharacterId)
     {
         var skill = SkillDatabase.Instance.GetSkill(skillId);
         var playerObj = playerObjects[targetCharacterId];

@@ -86,7 +86,8 @@ public static class Constants
     public const string TagEnemy = "Enemy";
     public const string TagWall = "Wall";
     public const string TagShield = "Shield";
-    public const uint SysBugItemId = 3;
+    public const int SysBugItemId = 3;
+    public const int HealthRecoverySkillId = 8;
     public const int NewRulerPlayerId = 123456789;
 
     public static readonly int[] LevelUpExp = {

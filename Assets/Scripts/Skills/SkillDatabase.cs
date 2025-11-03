@@ -6,8 +6,8 @@ public class SkillDatabase : MonoBehaviour
     // 使用字典可以让我们通过技能名称快速查找，非常方便
     public List<SkillData> PassiveSkills { get; private set; }
     public List<SkillData> ActiveSkills { get; private set; }
-    public Dictionary<uint, SkillData> PassiveSkillDictionary { get; private set; }
-    public Dictionary<uint, SkillData> ActiveSkillDictionary { get; private set; }
+    public Dictionary<int, SkillData> PassiveSkillDictionary { get; private set; }
+    public Dictionary<int, SkillData> ActiveSkillDictionary { get; private set; }
 
     // 单例模式，方便从任何地方访问这个技能数据库
     public static SkillDatabase Instance { get; private set; }
@@ -32,8 +32,8 @@ public class SkillDatabase : MonoBehaviour
         // 初始化列表
         PassiveSkills = new List<SkillData>();
         ActiveSkills = new List<SkillData>();
-        PassiveSkillDictionary = new Dictionary<uint, SkillData>();
-        ActiveSkillDictionary = new Dictionary<uint, SkillData>();
+        PassiveSkillDictionary = new Dictionary<int, SkillData>();
+        ActiveSkillDictionary = new Dictionary<int, SkillData>();
 
         // 从 Resources/Configs/Skills/ 文件夹中加载所有 SkillData 类型的资产
         // 如果你直接放在 Resources 根目录，路径就是 ""
@@ -61,7 +61,7 @@ public class SkillDatabase : MonoBehaviour
     }
 
     // 提供一个公共方法来根据ID获取技能
-    public SkillData GetSkill(uint skillId)
+    public SkillData GetSkill(int skillId)
     {
         if (ActiveSkillDictionary.ContainsKey(skillId))
         {
@@ -76,7 +76,7 @@ public class SkillDatabase : MonoBehaviour
             return null;
         }
     }
-    public SkillData GetActiveSkill(uint skillId)
+    public SkillData GetActiveSkill(int skillId)
     {
         if (ActiveSkillDictionary.ContainsKey(skillId))
         {
@@ -84,7 +84,7 @@ public class SkillDatabase : MonoBehaviour
         }
         return null;
     }
-    public SkillData GetPassiveSkill(uint skillId)
+    public SkillData GetPassiveSkill(int skillId)
     {
         if (PassiveSkillDictionary.ContainsKey(skillId))
         {
