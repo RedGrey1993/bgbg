@@ -133,7 +133,7 @@ public class SelectCharacterManager : MonoBehaviour
     {
         for (int i = 0; i < Math.Min(characterPrefabs.Count, 3); i++)
         {
-            var prefabIdx = i % characterPrefabs.Count;
+            var prefabIdx = (i) % characterPrefabs.Count;
             var figure = characterPrefabs[prefabIdx].GetComponent<CharacterStatus>().characterData.figure;
             characterImages[i].sprite = figure;
             SetLockState(i, characterLockStates[prefabIdx]);
@@ -270,7 +270,6 @@ public class SelectCharacterManager : MonoBehaviour
     public void Show()
     {
         enabled = true;
-        SetCharacterImages();
         rootPanel.SetActive(true);
     }
     

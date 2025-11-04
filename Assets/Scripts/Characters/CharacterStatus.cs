@@ -32,6 +32,7 @@ public class CharacterStatus : MonoBehaviour
         State.BulletSpeed = characterData.BulletSpeed;
         State.Damage = characterData.Damage;
         State.AttackFrequency = characterData.AttackFrequency;
+        if (State.AttackFrequency < 0.2f) State.AttackFrequency = 0.2f;
         State.ShootRange = characterData.ShootRange;
         State.CriticalRate = characterData.CriticalRate;
         State.CurrentExp = 0;
