@@ -286,6 +286,7 @@ public class CharacterManager : MonoBehaviour
         var miniStatusCanvas = go.GetComponentInChildren<Canvas>();
         if (miniStatusCanvas == null)
         {
+            Physics2D.SyncTransforms();
             var col2D = go.GetComponentInChildren<Collider2D>();
             var tarPos = go.transform.position;
             tarPos.y += col2D.bounds.extents.y + 0.5f;
