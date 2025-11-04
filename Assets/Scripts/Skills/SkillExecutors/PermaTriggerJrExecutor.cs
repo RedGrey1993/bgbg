@@ -24,7 +24,7 @@ public class PermaTriggerJrExecutor : SkillExecutor
                     }
                 case AttrChangeType.Relative:
                     {
-                        playerState.AttackFrequency = (uint)(playerState.AttackFrequency * (1.0f + changeFireRate / 100.0f));
+                        playerState.AttackFrequency *= 1.0f + changeFireRate / 100.0f;
                         break;
                     }
             }

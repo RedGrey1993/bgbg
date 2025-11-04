@@ -70,7 +70,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         {
             // Master Turtle一次只能使用一种技能
             if (shootCoroutine != null || energyWaveCoroutine != null) { return; }
-            if (AggroTarget == null || characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
+            if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
@@ -80,7 +80,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             {
                 if (rnd == 0)
                 {
-                    shootCoroutine = StartCoroutine(Attack_Shoot(false, AggroTarget));
+                    shootCoroutine = StartCoroutine(Attack_Shoot(false, AggroTarget, characterInput.LookInput));
                 }
                 else
                 {
@@ -91,7 +91,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             {
                 if (rnd == 0)
                 {
-                    shootCoroutine = StartCoroutine(Attack_Shoot(true, AggroTarget));
+                    shootCoroutine = StartCoroutine(Attack_Shoot(true, AggroTarget, characterInput.LookInput));
                 }
                 else
                 {
@@ -103,15 +103,33 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #endregion
 
     #region 技能1/3，发射1/2个龟壳
-    private IEnumerator Attack_Shoot(bool doubleBullet, GameObject aggroTarget)
+    private IEnumerator Attack_Shoot(bool doubleBullet, GameObject aggroTarget, Vector2 lookInput)
     {
         isAttack = true;
+        float startTime = Time.time;
+        float atkInterval = 1f / characterStatus.State.AttackFrequency;
         // TODO: 播放拿着龟壳准备释放的动作
         animator.Play("丢飞盘");
-        yield return new WaitForSeconds(1.1f);
-        var lookInput = characterInput.LookInput = (aggroTarget.transform.position - transform.position).normalized;
-        // // 攻击0.5s之前的位置，给玩家一些缓冲时间
-        yield return new WaitForSeconds(0.5f);
+        if (isAi) // AI攻击0.5s之前的位置，给玩家一些缓冲时间
+        {
+            yield return new WaitForSeconds(0.9f);
+        }
+        else
+        {
+            if (atkInterval > 1.4f)
+                yield return new WaitForSeconds(1.4f);
+            else
+                yield return new WaitForSeconds(atkInterval);
+        }
+
+        if (aggroTarget != null)
+            lookInput = characterInput.LookInput = (aggroTarget.transform.position - transform.position).normalized;
+
+        if (isAi)
+        {
+            // AI攻击0.5s之前的位置，给玩家一些缓冲时间
+            yield return new WaitForSeconds(0.5f);
+        }
         if (CharacterData.shootSound)
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -167,11 +185,14 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             atkDir = rotationPlus * atkDir;
         }
 
-        // 等待投掷动画播放完毕
-        yield return new WaitForSeconds(1f);
+        // 等待下一次攻击频率
+        float elapsedTime = Time.time - startTime;
+        Debug.Log($"fhhtest, elapsedTime: {elapsedTime}, atkFrequency: {characterStatus.State.AttackFrequency}");
+        if (atkInterval - elapsedTime > 0)
+            yield return new WaitForSeconds(atkInterval - elapsedTime);
+        animator.Play("Mutant Walking");
 
         isAttack = false;
-        animator.Play("Mutant Walking");
         if (isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
@@ -199,7 +220,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         }
         yield return new WaitForSeconds(1.6f);
         var lookInput = Vector2.right;
-        if (AggroTarget != null) 
+        if (AggroTarget != null)
             lookInput = characterInput.LookInput = AggroTarget.transform.position - transform.position;
         // 攻击0.5s之前的位置，给玩家一些缓冲时间
         yield return new WaitForSeconds(0.5f);
@@ -253,4 +274,14 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         yield return new WaitForSeconds(Random.Range(1, 3f));
     }
     #endregion
+    
+    protected override void SubclassFixedUpdate()
+    {
+        // 攻击时不要改变朝向且不能移动，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
+        if (isAttack)
+        {
+            characterInput.MoveInput = Vector2.zero;
+            characterInput.LookInput = Vector2.zero;
+        }
+    }
 }
