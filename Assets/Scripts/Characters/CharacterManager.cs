@@ -569,6 +569,7 @@ public class CharacterManager : MonoBehaviour
             {
                 // 跳过自己
                 if (child.gameObject == character) continue;
+                if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
                 var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
                 foreach (var status in minionStatuses)
                 {
@@ -589,6 +590,7 @@ public class CharacterManager : MonoBehaviour
             {
                 // 跳过自己
                 if (child.gameObject == character) continue;
+                if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
                 var bossStatuses = child.GetComponentsInChildren<CharacterStatus>();
                 foreach (var status in bossStatuses)
                 {
@@ -611,6 +613,7 @@ public class CharacterManager : MonoBehaviour
             {
                 // 跳过自己
                 if (child.gameObject == character) continue;
+                if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
                 var playerStatuses = child.GetComponentsInChildren<CharacterStatus>();
                 foreach (var status in playerStatuses)
                 {

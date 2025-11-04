@@ -49,43 +49,43 @@ namespace NetworkMessageProto {
             "IAEoCBIZChFUb0xlYXJuZWRTa2lsbElkcxgTIAMoBRIVCg1BY3RpdmVTa2ls",
             "bElkGBAgASgFEhgKEEFjdGl2ZVNraWxsQ3VyQ2QYFCABKAUSDQoFU2NhbGUY",
             "ESABKAISLgoFQ29sb3IYEiABKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLkNv",
-            "bG9yUHJvdG8ieQoLQnVsbGV0U3RhdGUSEAoIU2hvb3ROdW0YASABKAUSFwoP",
-            "U2hvb3RBbmdsZVJhbmdlGAIgASgFEhYKDlBlbmV0cmF0ZUNvdW50GAMgASgF",
-            "EhIKClNwbGl0Q291bnQYBCABKAUSEwoLSG9taW5nRm9yY2UYBSABKAUiVQoS",
-            "U3RhdGVVcGRhdGVNZXNzYWdlEjEKB1BsYXllcnMYASADKAsyIC5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlBsYXllclN0YXRlEgwKBFRpY2sYAiABKA0iSAoUUGxh",
-            "eWVyc1VwZGF0ZU1lc3NhZ2USMAoHUGxheWVycxgBIAMoCzIfLk5ldHdvcmtN",
-            "ZXNzYWdlUHJvdG8uUGxheWVySW5mbyJKCgpQbGF5ZXJJbmZvEhAKCENTdGVh",
-            "bUlEGAEgASgJEgwKBE5hbWUYAiABKAkSCgoCSWQYAyABKAUSEAoIUHJlZmFi",
-            "SWQYBCABKAUiNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoIcGxheWVySWQYASAB",
-            "KAUSDwoHc2tpbGxJZBgCIAEoBSJWCgpQaWNrdXBJdGVtEgoKAklkGAEgASgF",
-            "Eg8KB1NraWxsSWQYAiABKAUSKwoIUG9zaXRpb24YAyABKAsyGS5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYkluZm8SDwoHU3RhZ2VJ",
-            "ZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSI1ChBNaW5pb25QcmVmYWJJbmZv",
-            "Eg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUi7wcKDExvY2Fs",
-            "U3RvcmFnZRIUCgxDdXJyZW50U3RhZ2UYASABKAUSNgoMUGxheWVyU3RhdGVz",
-            "GAIgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI2CgxC",
-            "dWxsZXRTdGF0ZXMYDyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLkJ1bGxl",
-            "dFN0YXRlEhcKD1BsYXllclByZWZhYklkcxgOIAMoBRI2CgxNaW5pb25TdGF0",
-            "ZXMYAyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEkAK",
-            "EU1pbmlvblByZWZhYkluZm9zGAQgAygLMiUuTmV0d29ya01lc3NhZ2VQcm90",
-            "by5NaW5pb25QcmVmYWJJbmZvEjQKCkJvc3NTdGF0ZXMYBSADKAsyIC5OZXR3",
-            "b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjwKD0Jvc3NQcmVmYWJJbmZv",
-            "cxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdlUHJvdG8uQm9zc1ByZWZhYkluZm8S",
-            "LQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90",
-            "bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdodBgJIAEo",
-            "DRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQb3NpdGlv",
-            "bhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQaWNrdXBJ",
-            "dGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3VwSXRlbRIU",
-            "CgxQYXNzZWRTdGFnZXMYDSADKAUSHAoUQWNoaWV2ZW1lbnQxTmV3Q3ljbGUY",
-            "ECABKAgSGgoSQWNoaWV2ZW1lbnQyTWlycm9yGBEgASgIEiIKGkFjaGlldmVt",
-            "ZW50M0luZmluaXRlTG9uZWx5GBIgASgIEhAKCE5ld0xldmVsGBMgASgIEhoK",
-            "ElNob3dlZFN5c0VyckxvZ1RpcBgUIAEoCBI9ChNOZXdSdWxlclBsYXllclN0",
-            "YXRlGBUgASgLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI9",
-            "ChNOZXdSdWxlckJ1bGxldFN0YXRlGBYgASgLMiAuTmV0d29ya01lc3NhZ2VQ",
-            "cm90by5CdWxsZXRTdGF0ZRIYChBOZXdSdWxlclByZWZhYklkGBcgASgFEhkK",
-            "EU54dERlc3RvcnlSb29tSWR4GBggASgFEh0KFURlc3RvcnlSb29tUmVtYWlu",
-            "VGltZRgZIAEoAmIGcHJvdG8z"));
+            "bG9yUHJvdG8ijgEKC0J1bGxldFN0YXRlEhAKCFNob290TnVtGAEgASgFEhcK",
+            "D1Nob290QW5nbGVSYW5nZRgCIAEoBRIWCg5QZW5ldHJhdGVDb3VudBgDIAEo",
+            "BRISCgpTcGxpdENvdW50GAQgASgFEhMKC0hvbWluZ0ZvcmNlGAUgASgFEhMK",
+            "C0JvdW5jZUNvdW50GAYgASgFIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIxCgdQ",
+            "bGF5ZXJzGAEgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0",
+            "ZRIMCgRUaWNrGAIgASgNIkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAKB1Bs",
+            "YXllcnMYASADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllckluZm8i",
+            "SgoKUGxheWVySW5mbxIQCghDU3RlYW1JRBgBIAEoCRIMCgROYW1lGAIgASgJ",
+            "EgoKAklkGAMgASgFEhAKCFByZWZhYklkGAQgASgFIjYKEUxlYXJuU2tpbGxN",
+            "ZXNzYWdlEhAKCHBsYXllcklkGAEgASgFEg8KB3NraWxsSWQYAiABKAUiVgoK",
+            "UGlja3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2lsbElkGAIgASgFEisKCFBv",
+            "c2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIjMKDkJv",
+            "c3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiAB",
+            "KAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgFEhAKCFBy",
+            "ZWZhYklkGAIgASgFIu8HCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVudFN0YWdl",
+            "GAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3RhdGVzGA8gAygLMiAuTmV0",
+            "d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIXCg9QbGF5ZXJQcmVmYWJJ",
+            "ZHMYDiADKAUSNgoMTWluaW9uU3RhdGVzGAMgAygLMiAuTmV0d29ya01lc3Nh",
+            "Z2VQcm90by5QbGF5ZXJTdGF0ZRJAChFNaW5pb25QcmVmYWJJbmZvcxgEIAMo",
+            "CzIlLk5ldHdvcmtNZXNzYWdlUHJvdG8uTWluaW9uUHJlZmFiSW5mbxI0CgpC",
+            "b3NzU3RhdGVzGAUgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJT",
+            "dGF0ZRI8Cg9Cb3NzUHJlZmFiSW5mb3MYBiADKAsyIy5OZXR3b3JrTWVzc2Fn",
+            "ZVByb3RvLkJvc3NQcmVmYWJJbmZvEi0KBVJvb21zGAcgAygLMh4uTmV0d29y",
+            "a01lc3NhZ2VQcm90by5SZWN0UHJvdG8SFAoMUm9vbU1heFdpZHRoGAggASgN",
+            "EhUKDVJvb21NYXhIZWlnaHQYCSABKA0SFwoPTmV4dENoYXJhY3RlcklkGAog",
+            "ASgNEjMKEFRlbGVwb3J0UG9zaXRpb24YCyABKAsyGS5OZXR3b3JrTWVzc2Fn",
+            "ZVByb3RvLlZlYzISNAoLUGlja3VwSXRlbXMYDCADKAsyHy5OZXR3b3JrTWVz",
+            "c2FnZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFzc2VkU3RhZ2VzGA0gAygFEhwK",
+            "FEFjaGlldmVtZW50MU5ld0N5Y2xlGBAgASgIEhoKEkFjaGlldmVtZW50Mk1p",
+            "cnJvchgRIAEoCBIiChpBY2hpZXZlbWVudDNJbmZpbml0ZUxvbmVseRgSIAEo",
+            "CBIQCghOZXdMZXZlbBgTIAEoCBIaChJTaG93ZWRTeXNFcnJMb2dUaXAYFCAB",
+            "KAgSPQoTTmV3UnVsZXJQbGF5ZXJTdGF0ZRgVIAEoCzIgLk5ldHdvcmtNZXNz",
+            "YWdlUHJvdG8uUGxheWVyU3RhdGUSPQoTTmV3UnVsZXJCdWxsZXRTdGF0ZRgW",
+            "IAEoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUSGAoQTmV3",
+            "UnVsZXJQcmVmYWJJZBgXIAEoBRIZChFOeHREZXN0b3J5Um9vbUlkeBgYIAEo",
+            "BRIdChVEZXN0b3J5Um9vbVJlbWFpblRpbWUYGSABKAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -95,7 +95,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount", "SplitCount", "HomingForce" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount", "SplitCount", "HomingForce", "BounceCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id", "PrefabId" }, null, null, null, null),
@@ -2708,6 +2708,7 @@ namespace NetworkMessageProto {
       penetrateCount_ = other.penetrateCount_;
       splitCount_ = other.splitCount_;
       homingForce_ = other.homingForce_;
+      bounceCount_ = other.bounceCount_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2777,6 +2778,18 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "BounceCount" field.</summary>
+    public const int BounceCountFieldNumber = 6;
+    private int bounceCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BounceCount {
+      get { return bounceCount_; }
+      set {
+        bounceCount_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2797,6 +2810,7 @@ namespace NetworkMessageProto {
       if (PenetrateCount != other.PenetrateCount) return false;
       if (SplitCount != other.SplitCount) return false;
       if (HomingForce != other.HomingForce) return false;
+      if (BounceCount != other.BounceCount) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2809,6 +2823,7 @@ namespace NetworkMessageProto {
       if (PenetrateCount != 0) hash ^= PenetrateCount.GetHashCode();
       if (SplitCount != 0) hash ^= SplitCount.GetHashCode();
       if (HomingForce != 0) hash ^= HomingForce.GetHashCode();
+      if (BounceCount != 0) hash ^= BounceCount.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2847,6 +2862,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(40);
         output.WriteInt32(HomingForce);
       }
+      if (BounceCount != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(BounceCount);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2877,6 +2896,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(40);
         output.WriteInt32(HomingForce);
       }
+      if (BounceCount != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(BounceCount);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2901,6 +2924,9 @@ namespace NetworkMessageProto {
       }
       if (HomingForce != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(HomingForce);
+      }
+      if (BounceCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BounceCount);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2928,6 +2954,9 @@ namespace NetworkMessageProto {
       }
       if (other.HomingForce != 0) {
         HomingForce = other.HomingForce;
+      }
+      if (other.BounceCount != 0) {
+        BounceCount = other.BounceCount;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2968,6 +2997,10 @@ namespace NetworkMessageProto {
             HomingForce = input.ReadInt32();
             break;
           }
+          case 48: {
+            BounceCount = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -3005,6 +3038,10 @@ namespace NetworkMessageProto {
           }
           case 40: {
             HomingForce = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            BounceCount = input.ReadInt32();
             break;
           }
         }

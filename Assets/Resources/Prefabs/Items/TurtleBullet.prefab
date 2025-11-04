@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2058633855798607430}
   - component: {fileID: 4992561073915373673}
   - component: {fileID: 4268008598126313579}
-  - component: {fileID: -6047665504377539115}
+  - component: {fileID: 8663510161319978039}
   m_Layer: 8
   m_Name: TurtleBullet
   m_TagString: Untagged
@@ -150,14 +150,14 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0017309785, y: 0.010385841}
   m_Size: {x: 0.6226466, y: 0.62264663}
   m_Direction: 0
---- !u!114 &-6047665504377539115
+--- !u!114 &8663510161319978039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7906872621619036891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7260abe705564fa41a67b813ae37d229, type: 3}
+  m_Script: {fileID: 11500000, guid: dd3568c4de614af4c92446820075c99e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BounceBullet
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  bounceCount: 10
+  penetrateCount: 0

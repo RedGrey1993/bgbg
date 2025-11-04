@@ -20,7 +20,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected float nextAtkTime = 0f;
     protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
     protected bool isAttack = false; // 攻击时不能移动
-    public Vector2 LookDir { get; private set; } = Vector2.up;
+    public Vector2 LookDir { get; protected set; } = Vector2.up;
     public List<GameObject> TobeDestroyed { get; set; } = new List<GameObject>();
     public Coroutine ActiveSkillCoroutine { get; set; } = null;
 
@@ -154,7 +154,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            AggroTarget = CharacterManager.Instance.FindNearestPlayerInRange(gameObject, CharacterData.AggroRange);
+            AggroTarget = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, LookDir, 180);
             Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
@@ -190,22 +190,18 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     // 在攻击范围内时，将LookInput设为指向仇恨目标的方向，可以斜向攻击
     protected virtual void UpdateAttackInput()
     {
-        if (!isAiming)
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
-            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+            var diff = AggroTarget.transform.position - transform.position;
+            var atkRange = characterStatus.State.ShootRange;
+            // 进入攻击距离，攻击，boss都能够斜向攻击
+            if (diff.sqrMagnitude <= atkRange * atkRange)
             {
-                var diff = AggroTarget.transform.position - transform.position;
-                var atkRange = characterStatus.State.ShootRange;
-                // 进入攻击距离，攻击，boss都能够斜向攻击
-                if (diff.sqrMagnitude <= atkRange * atkRange)
-                {
-                    characterInput.LookInput = diff.normalized;
-                    isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                    return;
-                }
+                characterInput.LookInput = diff.normalized;
+                return;
             }
-            characterInput.LookInput = Vector2.zero;
         }
+        characterInput.LookInput = Vector2.zero;
     }
 
     protected bool XNearWall(float d = 0.1f)

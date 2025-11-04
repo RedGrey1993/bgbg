@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NetworkMessageProto;
 using UnityEngine;
 
@@ -12,10 +13,12 @@ public class Bullet : MonoBehaviour
     public GameObject AggroTarget { get; set; } = null;
     public int SplitCount { get; set; } = 0;
     public int HomingForce { get; set; } = 0;
+    public int bounceCount = 0;
     public int penetrateCount = 0;
     private float bornTime;
     private Collider2D col2D;
     private Rigidbody2D rb;
+    private Vector2 lastVelocity;
 
     void Awake()
     {
@@ -32,19 +35,28 @@ public class Bullet : MonoBehaviour
             if (BulletState.PenetrateCount > penetrateCount) penetrateCount = BulletState.PenetrateCount;
             if (BulletState.SplitCount > SplitCount) SplitCount = BulletState.SplitCount;
             if (BulletState.HomingForce > HomingForce) HomingForce = BulletState.HomingForce;
+            if (BulletState.BounceCount > bounceCount) bounceCount = BulletState.BounceCount;
         }
         if (Damage == 0) Damage = OwnerStatus.State.Damage;
-        col2D.enabled = true;
+        // col2D.enabled = true;
     }
 
     void Update()
     {
-        // 由于子弹不能斜着发射，因此只需单独判断X或Y轴的距离即可
+        if (Time.time - bornTime > 0.1f)
+        {
+            col2D.enabled = true;
+        }
+        // 当前减少计算量，不计算距离（避免平方根运算），只单独计算x/y轴的距离
         if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
             || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
-            || Time.time - bornTime > 5f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则5秒后自动销毁
+            || Time.time - bornTime > 10f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则5秒后自动销毁
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            lastVelocity = rb.linearVelocity;
         }
     }
 
@@ -70,7 +82,14 @@ public class Bullet : MonoBehaviour
             // 碰到护盾，直接销毁
             if (other.CompareTag(Constants.TagShield))
             {
-                Destroy(gameObject);
+                if (bounceCount > 0)
+                {
+                    MirrorBounce(other);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
                 return;
             }
             // 检测是否碰撞到Player
@@ -79,6 +98,10 @@ public class Bullet : MonoBehaviour
                 CharacterStatus targetCharacterStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
                 if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
                 { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
+                    if (bounceCount > 0)
+                    {
+                        MirrorBounce(other);
+                    }
                     return; // 不伤害自己，也不销毁碰到自己的子弹
                 }
 
@@ -108,6 +131,7 @@ public class Bullet : MonoBehaviour
                             var bState = BulletState.Clone();
                             bState.PenetrateCount = penetrateCount;
                             bState.SplitCount = SplitCount;
+                            bState.BounceCount = bounceCount;
                             bs.BulletState = bState;
                             bs.LastCollider = other;
 
@@ -122,9 +146,32 @@ public class Bullet : MonoBehaviour
             }
             else // if (other.gameObject.CompareTag(Constants.TagWall))
             {
-                Destroy(gameObject);
+                if (bounceCount > 0)
+                {
+                    MirrorBounce(other);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
+    }
+
+    private void MirrorBounce(Collider2D other)
+    {
+        // 获取碰撞点的法线 (法线是垂直于碰撞表面的向量)
+        ColliderDistance2D distanceInfo = col2D.Distance(other);
+        Vector2 normal = distanceInfo.normal;
+
+        // 使用 Vector3.Reflect 计算反射向量
+        // 参数1: 入射向量 (即碰撞前的速度)
+        // 参数2: 法线
+        Vector2 reflectionDirection = Vector2.Reflect(lastVelocity.normalized, normal);
+
+        // 将刚体的速度设置为反射方向，并保持碰撞前的速度大小
+        rb.linearVelocity = reflectionDirection * lastVelocity.magnitude;
+        bounceCount--;
     }
 
     // 大多数子弹的IsTrigger为false

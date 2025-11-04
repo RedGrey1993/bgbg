@@ -75,6 +75,7 @@ message BulletState
     int32 PenetrateCount = 3;
     int32 SplitCount = 4;
     int32 HomingForce = 5;
+    int32 BounceCount = 6;
 }
 
 message StateUpdateMessage

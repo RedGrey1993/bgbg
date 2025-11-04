@@ -19,7 +19,6 @@ MonoBehaviour:
   energyWaveShootSound: {fileID: 8300000, guid: 1f1c899b2041c23459d7d781f85cb975, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
-  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
   energyWavePrefab: {fileID: 1977356882097113535, guid: 5429d081cc0ed3e439c5ebe40fc206b3, type: 3}
   explosionEffectPrefab: {fileID: 0}
@@ -30,7 +29,7 @@ MonoBehaviour:
   CharacterType: 7
   MaxHp: 5
   MoveSpeed: 3
-  ShootRange: 8
+  ShootRange: 10000
   BulletSpeed: 6
   Damage: 10
   AttackFrequency: 0.34

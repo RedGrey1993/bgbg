@@ -15,7 +15,7 @@ public class ShotgunProtocolExecutor : SkillExecutor
         if (changeShootRange != 0)
         {
             playerState.ShootRange += changeShootRange;
-            if (playerState.ShootRange < 1) playerState.ShootRange = 1;
+            if (playerState.ShootRange < 2) playerState.ShootRange = 2;
         }
 
         var bulletState = playerStatus.bulletState;

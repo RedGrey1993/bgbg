@@ -205,7 +205,7 @@ public class ContraBillAI : CharacterBaseAI
             // 进入攻击距离，直接射击
             if (diff.sqrMagnitude <= sqrShootRange)
             {
-                characterInput.LookInput = diff;
+                characterInput.LookInput = diff.normalized;
                 return;
             }
         }

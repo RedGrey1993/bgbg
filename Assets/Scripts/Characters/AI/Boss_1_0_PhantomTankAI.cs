@@ -124,6 +124,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         if (isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+            // 这时候 shootCoroutine 还不是null，所以不会再次进入攻击
             var waitTime = Random.Range(1, 3f);
             Debug.Log($"fhhtest, waitTime {waitTime}, isAttack {isAttack}");
             yield return new WaitForSeconds(waitTime);
