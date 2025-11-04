@@ -89,10 +89,10 @@ public class CharacterStatus : MonoBehaviour
             uint attackerCurExp = attacker.State.CurrentExp;
             uint expGained = characterData.ExpGiven;
             attackerCurExp += expGained;
-            // TODO: 发送attacker.ExpChanged消息给所有客户端
+            // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);
         }
-        // TODO: 发送this.HealthChanged消息给所有客户端
+        // TODO: 发送this.HealthChanged后的State结果给所有客户端
         HealthChanged(Mathf.Max(0, curHp));
     }
 
@@ -127,6 +127,12 @@ public class CharacterStatus : MonoBehaviour
     {
         int idx = Mathf.Min(Mathf.Max(0, (int)State.CurrentLevel - 1), Constants.LevelUpExp.Length - 1);
         int maxExp = Constants.LevelUpExp[idx];
+        if (HasPlayerController())
+        {
+            State.CurCd++;
+            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+            spc.UpdateMyStatusUI(State);
+        }
         if (curExp >= maxExp)
         {
             State.CurrentLevel += 1;

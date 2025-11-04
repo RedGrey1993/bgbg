@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 20
+    // next index = 21
     int32 PlayerId = 1;
     string PlayerName = 2;
     int32 MaxHp = 3;
@@ -65,6 +65,7 @@ message PlayerState
     int32 ActiveSkillId = 16;
     float Scale = 17;
     ColorProto Color = 18;
+    int32 CurCd = 20;
 }
 
 message BulletState

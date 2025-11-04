@@ -38,7 +38,7 @@ namespace NetworkMessageProto {
             "bnB1dE1lc3NhZ2USEAoIUGxheWVySWQYASABKAUSDAoEVGljaxgCIAEoDRIM",
             "CgRUeXBlGAMgASgNEiwKCU1vdmVJbnB1dBgEIAEoCzIZLk5ldHdvcmtNZXNz",
             "YWdlUHJvdG8uVmVjMhIsCglMb29rSW5wdXQYBSABKAsyGS5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlZlYzIizAMKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
+            "c2FnZVByb3RvLlZlYzIi2wMKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
             "ASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTWF4SHAYAyABKAUSEQoJQ3Vy",
             "cmVudEhwGAQgASgFEhEKCU1vdmVTcGVlZBgFIAEoDRITCgtCdWxsZXRTcGVl",
             "ZBgGIAEoDRIOCgZEYW1hZ2UYByABKAUSFwoPQXR0YWNrRnJlcXVlbmN5GAgg",
@@ -48,43 +48,44 @@ namespace NetworkMessageProto {
             "CFNraWxsSWRzGA4gAygFEiAKGEN1cnJlbnRTdGFnZVNraWxsTGVhcm5lZBgP",
             "IAEoCBIZChFUb0xlYXJuZWRTa2lsbElkcxgTIAMoBRIVCg1BY3RpdmVTa2ls",
             "bElkGBAgASgFEg0KBVNjYWxlGBEgASgCEi4KBUNvbG9yGBIgASgLMh8uTmV0",
-            "d29ya01lc3NhZ2VQcm90by5Db2xvclByb3RvInkKC0J1bGxldFN0YXRlEhAK",
-            "CFNob290TnVtGAEgASgFEhcKD1Nob290QW5nbGVSYW5nZRgCIAEoBRIWCg5Q",
-            "ZW5ldHJhdGVDb3VudBgDIAEoBRISCgpTcGxpdENvdW50GAQgASgFEhMKC0hv",
-            "bWluZ0ZvcmNlGAUgASgFIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIxCgdQbGF5",
-            "ZXJzGAEgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIM",
-            "CgRUaWNrGAIgASgNIkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAKB1BsYXll",
-            "cnMYASADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllckluZm8iSgoK",
-            "UGxheWVySW5mbxIQCghDU3RlYW1JRBgBIAEoCRIMCgROYW1lGAIgASgJEgoK",
-            "AklkGAMgASgFEhAKCFByZWZhYklkGAQgASgFIjYKEUxlYXJuU2tpbGxNZXNz",
-            "YWdlEhAKCHBsYXllcklkGAEgASgFEg8KB3NraWxsSWQYAiABKAUiVgoKUGlj",
-            "a3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2lsbElkGAIgASgFEisKCFBvc2l0",
-            "aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIjMKDkJvc3NQ",
-            "cmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUi",
-            "NQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgFEhAKCFByZWZh",
-            "YklkGAIgASgFIu8HCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVudFN0YWdlGAEg",
-            "ASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJv",
-            "dG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3RhdGVzGA8gAygLMiAuTmV0d29y",
-            "a01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIXCg9QbGF5ZXJQcmVmYWJJZHMY",
-            "DiADKAUSNgoMTWluaW9uU3RhdGVzGAMgAygLMiAuTmV0d29ya01lc3NhZ2VQ",
-            "cm90by5QbGF5ZXJTdGF0ZRJAChFNaW5pb25QcmVmYWJJbmZvcxgEIAMoCzIl",
-            "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uTWluaW9uUHJlZmFiSW5mbxI0CgpCb3Nz",
-            "U3RhdGVzGAUgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0",
-            "ZRI8Cg9Cb3NzUHJlZmFiSW5mb3MYBiADKAsyIy5OZXR3b3JrTWVzc2FnZVBy",
-            "b3RvLkJvc3NQcmVmYWJJbmZvEi0KBVJvb21zGAcgAygLMh4uTmV0d29ya01l",
-            "c3NhZ2VQcm90by5SZWN0UHJvdG8SFAoMUm9vbU1heFdpZHRoGAggASgNEhUK",
-            "DVJvb21NYXhIZWlnaHQYCSABKA0SFwoPTmV4dENoYXJhY3RlcklkGAogASgN",
-            "EjMKEFRlbGVwb3J0UG9zaXRpb24YCyABKAsyGS5OZXR3b3JrTWVzc2FnZVBy",
-            "b3RvLlZlYzISNAoLUGlja3VwSXRlbXMYDCADKAsyHy5OZXR3b3JrTWVzc2Fn",
-            "ZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFzc2VkU3RhZ2VzGA0gAygFEhwKFEFj",
-            "aGlldmVtZW50MU5ld0N5Y2xlGBAgASgIEhoKEkFjaGlldmVtZW50Mk1pcnJv",
-            "chgRIAEoCBIiChpBY2hpZXZlbWVudDNJbmZpbml0ZUxvbmVseRgSIAEoCBIQ",
-            "CghOZXdMZXZlbBgTIAEoCBIaChJTaG93ZWRTeXNFcnJMb2dUaXAYFCABKAgS",
-            "PQoTTmV3UnVsZXJQbGF5ZXJTdGF0ZRgVIAEoCzIgLk5ldHdvcmtNZXNzYWdl",
-            "UHJvdG8uUGxheWVyU3RhdGUSPQoTTmV3UnVsZXJCdWxsZXRTdGF0ZRgWIAEo",
-            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUSGAoQTmV3UnVs",
-            "ZXJQcmVmYWJJZBgXIAEoBRIZChFOeHREZXN0b3J5Um9vbUlkeBgYIAEoBRId",
-            "ChVEZXN0b3J5Um9vbVJlbWFpblRpbWUYGSABKAJiBnByb3RvMw=="));
+            "d29ya01lc3NhZ2VQcm90by5Db2xvclByb3RvEg0KBUN1ckNkGBQgASgFInkK",
+            "C0J1bGxldFN0YXRlEhAKCFNob290TnVtGAEgASgFEhcKD1Nob290QW5nbGVS",
+            "YW5nZRgCIAEoBRIWCg5QZW5ldHJhdGVDb3VudBgDIAEoBRISCgpTcGxpdENv",
+            "dW50GAQgASgFEhMKC0hvbWluZ0ZvcmNlGAUgASgFIlUKElN0YXRlVXBkYXRl",
+            "TWVzc2FnZRIxCgdQbGF5ZXJzGAEgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90",
+            "by5QbGF5ZXJTdGF0ZRIMCgRUaWNrGAIgASgNIkgKFFBsYXllcnNVcGRhdGVN",
+            "ZXNzYWdlEjAKB1BsYXllcnMYASADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3Rv",
+            "LlBsYXllckluZm8iSgoKUGxheWVySW5mbxIQCghDU3RlYW1JRBgBIAEoCRIM",
+            "CgROYW1lGAIgASgJEgoKAklkGAMgASgFEhAKCFByZWZhYklkGAQgASgFIjYK",
+            "EUxlYXJuU2tpbGxNZXNzYWdlEhAKCHBsYXllcklkGAEgASgFEg8KB3NraWxs",
+            "SWQYAiABKAUiVgoKUGlja3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2lsbElk",
+            "GAIgASgFEisKCFBvc2l0aW9uGAMgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90",
+            "by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoI",
+            "UHJlZmFiSWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFnZUlk",
+            "GAEgASgFEhAKCFByZWZhYklkGAIgASgFIu8HCgxMb2NhbFN0b3JhZ2USFAoM",
+            "Q3VycmVudFN0YWdlGAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5l",
+            "dHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3RhdGVz",
+            "GA8gAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIXCg9Q",
+            "bGF5ZXJQcmVmYWJJZHMYDiADKAUSNgoMTWluaW9uU3RhdGVzGAMgAygLMiAu",
+            "TmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRJAChFNaW5pb25QcmVm",
+            "YWJJbmZvcxgEIAMoCzIlLk5ldHdvcmtNZXNzYWdlUHJvdG8uTWluaW9uUHJl",
+            "ZmFiSW5mbxI0CgpCb3NzU3RhdGVzGAUgAygLMiAuTmV0d29ya01lc3NhZ2VQ",
+            "cm90by5QbGF5ZXJTdGF0ZRI8Cg9Cb3NzUHJlZmFiSW5mb3MYBiADKAsyIy5O",
+            "ZXR3b3JrTWVzc2FnZVByb3RvLkJvc3NQcmVmYWJJbmZvEi0KBVJvb21zGAcg",
+            "AygLMh4uTmV0d29ya01lc3NhZ2VQcm90by5SZWN0UHJvdG8SFAoMUm9vbU1h",
+            "eFdpZHRoGAggASgNEhUKDVJvb21NYXhIZWlnaHQYCSABKA0SFwoPTmV4dENo",
+            "YXJhY3RlcklkGAogASgNEjMKEFRlbGVwb3J0UG9zaXRpb24YCyABKAsyGS5O",
+            "ZXR3b3JrTWVzc2FnZVByb3RvLlZlYzISNAoLUGlja3VwSXRlbXMYDCADKAsy",
+            "Hy5OZXR3b3JrTWVzc2FnZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFzc2VkU3Rh",
+            "Z2VzGA0gAygFEhwKFEFjaGlldmVtZW50MU5ld0N5Y2xlGBAgASgIEhoKEkFj",
+            "aGlldmVtZW50Mk1pcnJvchgRIAEoCBIiChpBY2hpZXZlbWVudDNJbmZpbml0",
+            "ZUxvbmVseRgSIAEoCBIQCghOZXdMZXZlbBgTIAEoCBIaChJTaG93ZWRTeXNF",
+            "cnJMb2dUaXAYFCABKAgSPQoTTmV3UnVsZXJQbGF5ZXJTdGF0ZRgVIAEoCzIg",
+            "Lk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSPQoTTmV3UnVsZXJC",
+            "dWxsZXRTdGF0ZRgWIAEoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0",
+            "U3RhdGUSGAoQTmV3UnVsZXJQcmVmYWJJZBgXIAEoBRIZChFOeHREZXN0b3J5",
+            "Um9vbUlkeBgYIAEoBRIdChVEZXN0b3J5Um9vbVJlbWFpblRpbWUYGSABKAJi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -93,7 +94,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.ColorProto), global::NetworkMessageProto.ColorProto.Parser, new[]{ "R", "G", "B", "A" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "Scale", "Color" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "Scale", "Color", "CurCd" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount", "SplitCount", "HomingForce" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
@@ -1799,6 +1800,7 @@ namespace NetworkMessageProto {
       activeSkillId_ = other.activeSkillId_;
       scale_ = other.scale_;
       color_ = other.color_ != null ? other.color_.Clone() : null;
+      curCd_ = other.curCd_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1812,7 +1814,7 @@ namespace NetworkMessageProto {
     public const int PlayerIdFieldNumber = 1;
     private int playerId_;
     /// <summary>
-    /// next index = 20
+    /// next index = 21
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2055,6 +2057,18 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "CurCd" field.</summary>
+    public const int CurCdFieldNumber = 20;
+    private int curCd_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CurCd {
+      get { return curCd_; }
+      set {
+        curCd_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2089,6 +2103,7 @@ namespace NetworkMessageProto {
       if (ActiveSkillId != other.ActiveSkillId) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Scale, other.Scale)) return false;
       if (!object.Equals(Color, other.Color)) return false;
+      if (CurCd != other.CurCd) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2115,6 +2130,7 @@ namespace NetworkMessageProto {
       if (ActiveSkillId != 0) hash ^= ActiveSkillId.GetHashCode();
       if (Scale != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Scale);
       if (color_ != null) hash ^= Color.GetHashCode();
+      if (CurCd != 0) hash ^= CurCd.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2203,6 +2219,10 @@ namespace NetworkMessageProto {
         output.WriteMessage(Color);
       }
       toLearnedSkillIds_.WriteTo(output, _repeated_toLearnedSkillIds_codec);
+      if (CurCd != 0) {
+        output.WriteRawTag(160, 1);
+        output.WriteInt32(CurCd);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2283,6 +2303,10 @@ namespace NetworkMessageProto {
         output.WriteMessage(Color);
       }
       toLearnedSkillIds_.WriteTo(ref output, _repeated_toLearnedSkillIds_codec);
+      if (CurCd != 0) {
+        output.WriteRawTag(160, 1);
+        output.WriteInt32(CurCd);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2345,6 +2369,9 @@ namespace NetworkMessageProto {
       }
       if (color_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(Color);
+      }
+      if (CurCd != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(CurCd);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2416,6 +2443,9 @@ namespace NetworkMessageProto {
           Color = new global::NetworkMessageProto.ColorProto();
         }
         Color.MergeFrom(other.Color);
+      }
+      if (other.CurCd != 0) {
+        CurCd = other.CurCd;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2520,6 +2550,10 @@ namespace NetworkMessageProto {
             toLearnedSkillIds_.AddEntriesFrom(input, _repeated_toLearnedSkillIds_codec);
             break;
           }
+          case 160: {
+            CurCd = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -2621,6 +2655,10 @@ namespace NetworkMessageProto {
           case 154:
           case 152: {
             toLearnedSkillIds_.AddEntriesFrom(ref input, _repeated_toLearnedSkillIds_codec);
+            break;
+          }
+          case 160: {
+            CurCd = input.ReadInt32();
             break;
           }
         }

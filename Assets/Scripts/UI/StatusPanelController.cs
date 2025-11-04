@@ -13,6 +13,7 @@ public class StatusPanelController : MonoBehaviour
     public TextMeshProUGUI tipsText;
     public HexagonRadarChart abilityRadarChart;
     public OwnedSkillIcon activeSkillIcon;
+    public UnityEngine.UI.Slider activeSkillCdSlider;
 
     public void ShowMyStatusUI()
     {
@@ -40,7 +41,21 @@ public class StatusPanelController : MonoBehaviour
         abilityRadarChart.SetStats(state);
 
         SkillData skillData = SkillDatabase.Instance.GetActiveSkill(state.ActiveSkillId);
-        activeSkillIcon.SetSkillData(skillData);
+        float alpha = 1f;
+        if (skillData != null)
+        {
+            activeSkillCdSlider.gameObject.SetActive(true);
+            if (state.CurCd == -1 || state.CurCd > skillData.cooldown)
+                state.CurCd = skillData.cooldown;
+            activeSkillCdSlider.value = state.CurCd;
+            activeSkillCdSlider.maxValue = skillData.cooldown;
+            if (state.CurCd < skillData.cooldown) alpha = 0.8f;
+        }
+        else
+        {
+            activeSkillCdSlider.gameObject.SetActive(false);
+        }
+        activeSkillIcon.SetSkillData(skillData, alpha);
     }
 
     public void UpdateTipsText(int roomNo)

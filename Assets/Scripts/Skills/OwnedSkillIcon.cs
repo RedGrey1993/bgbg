@@ -21,7 +21,7 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
     }
 
-    public void SetSkillData(SkillData skillData)
+    public void SetSkillData(SkillData skillData, float alpha = 1f)
     {
         SkillData = skillData;
         if (skillData == null)
@@ -32,7 +32,7 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         else
         {
             srcImage.sprite = skillData.icon;
-            srcImage.color = new Color(1f, 1f, 1f, 1f);
+            srcImage.color = new Color(1f, 1f, 1f, alpha);
         }
     }
 
