@@ -10,7 +10,8 @@ public class DialogManager : MonoBehaviour
 
     // --- 在 Inspector 中拖拽 ---
     [Header("UI 引用")]
-    [SerializeField] private GameObject dialogPanel; // 指向 BackgroundMask
+    [SerializeField] private GameObject dialogPanel; // 指向 PopupPanel
+    [SerializeField] private TextMeshProUGUI titleText; // 指向 TitleText
     [SerializeField] private TextMeshProUGUI messageText; // 指向 MessageText
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
@@ -51,8 +52,10 @@ public class DialogManager : MonoBehaviour
     /// <param name="message">要显示的提示信息</param>
     /// <param name="onConfirm">点击“确定”时要执行的方法</param>
     /// <param name="onCancel">点击“取消”时要执行的方法</param>
-    public void ShowDialog(string message, Color color, Action onConfirm, Action onCancel = null)
+    public void ShowDialog(string title, string message, Color color, Action onConfirm, Action onCancel = null)
     {
+        titleText.text = title;
+
         // 1. 设置文本
         messageText.text = message;
         messageText.color = color;

@@ -484,9 +484,12 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance.HasValidStorage(storage))
         {
             DialogManager.Instance.ShowDialog(
+                "Warning!",
+
                 "\"Start Game\" will erase your progress. Are you sure to continue? If you want to continue your progress, please click \"Cancel\" and click \"Continue Game\" in the main menu.",
                 // warning 的亮黄色
-                new Color(1f, 0.7843262f, 0.1603772f, 1f),
+                // new Color(1f, 0.7843262f, 0.1603772f, 1f),
+                Color.white,
 
                 // --- 这是“确定”的回调 ---
                 () =>

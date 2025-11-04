@@ -617,7 +617,7 @@ public class LevelManager : MonoBehaviour
                 yield break; // 退出协程
             }
             float startTime = Time.time;
-            UIManager.Instance.ShowInfoPanel($"Warning: room {nxtDestoryRoomIdx} will be destroyed in", Color.yellow, interval);
+            UIManager.Instance.ShowInfoPanel($"SystemPurge: room {nxtDestoryRoomIdx} will be deleted in", Color.yellow, interval);
             while (Time.time - startTime < interval - redFlashDuration)
             {
                 destoryRoomRemainTime = interval - (Time.time - startTime);
