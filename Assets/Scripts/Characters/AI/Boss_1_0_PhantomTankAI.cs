@@ -135,7 +135,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
     protected override void SubclassFixedUpdate()
     {
-        // 攻击时不要改变朝向，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
+        // 攻击时不要改变朝向且不能移动，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
         if (isAttack)
         {
             characterInput.MoveInput = Vector2.zero;

@@ -232,6 +232,7 @@ public class UIManager : MonoBehaviour
             loadingSprite = new Sprite[] { defaultSprite };
         }
 
+        loadingText.text = loadingStr;
         foreach (var sprite in loadingSprite)
         {
             if (loadingImage != null)
@@ -246,11 +247,7 @@ public class UIManager : MonoBehaviour
             // 触发渐变显示图片动画
             yield return StartCoroutine(FadeRoutine(0f, 1f, slideInTime));
 
-            if (loadingStr != "")
-            {
-                loadingText.text = loadingStr;
-            }
-            else if (needPressSpace)
+            if (needPressSpace)
             {
                 loadingText.text = "Press Space to Continue";
             }
