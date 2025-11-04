@@ -8,6 +8,20 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
     public GameObject chargeEffectPrefab;
 
+    protected override void SubclassStart()
+    {
+        if (characterStatus.State.ActiveSkillId == 0)
+        {
+            characterStatus.State.ActiveSkillId = Constants.PhantomChargeSkillId;
+            characterStatus.State.ActiveSkillCurCd = -1;
+            if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+            {
+                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                spc.UpdateMyStatusUI(characterStatus.State);
+            }
+        }
+    }
+
     #region AI Logic / Update Input
     // 和Base方法不同的地方：随机朝目标移动时考虑自身的bound大小
     // collider2D在子节点上，因为collider要和子节点一起旋转
@@ -68,27 +82,27 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 
     #region Attack Action
     private Coroutine shootCoroutine = null;
-    private Coroutine chargeCoroutine = null;
     protected override void AttackAction()
     {
         if (!isAttack)
         {
             // 所有技能都在释放中，则不能再释放技能
             // 幻影冲锋时还能够射击或者移动
-            if (shootCoroutine != null && chargeCoroutine != null) { return; } // 在协程都未执行完毕的时候可以移动
+            if (shootCoroutine != null && ActiveSkillCoroutine != null) { return; } // 在协程都未执行完毕的时候可以移动
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             var rnd = Random.Range(0, 2);
-            if (rnd == 0 || chargeCoroutine != null)
+            if (!isAi || rnd == 0 || ActiveSkillCoroutine != null)
             {
                 shootCoroutine ??= StartCoroutine(Attack_Shoot(characterInput.LookInput));
             }
             else
             {
                 // 幻影冲锋时还能够射击或者移动
-                chargeCoroutine = StartCoroutine(Attack_Charge());
+                SkillData skillData = SkillDatabase.Instance.GetActiveSkill(Constants.PhantomChargeSkillId);
+                skillData.executor.ExecuteSkill(gameObject, skillData);
             }
         }
     }
@@ -97,10 +111,13 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     private IEnumerator Attack_Shoot(Vector2 lookInput)
     {
         isAttack = true;
-        // 需要AtkFreq时间架设炮台
-        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
+        if (isAi)
+        {
+            // 需要0.5时间架设炮台
+            yield return new WaitForSeconds(0.5f);
+        }
         // 调用父类方法
-        StartCoroutine(AttackShoot(lookInput));
+        yield return StartCoroutine(AttackShoot(lookInput));
 
         // isAttack = false后才能移动
         isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput
@@ -113,82 +130,6 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         }
         // shootCoroutine = null后才能再次使用该技能
         shootCoroutine = null;
-    }
-
-    // 冲锋，十字幻影形式冲锋
-    private IEnumerator Attack_Charge()
-    {
-        // 幻影冲锋时还能够射击或者移动，所以不设置isAttack = true;
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-        var room = LevelManager.Instance.Rooms[roomId];
-        Vector2 targetPos = room.center;
-        if (AggroTarget != null)
-            targetPos = AggroTarget.transform.position;
-        var chargeEffect = LevelManager.Instance.InstantiateTemporaryObject(chargeEffectPrefab, targetPos);
-        chargeEffect.tag = gameObject.tag;
-        if (chargeEffect.layer == LayerMask.NameToLayer("Default")) chargeEffect.layer = gameObject.layer;
-        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
-        var horizontalStartPos = targetPos;
-        int dir = Random.Range(0, 2);
-        Vector2 horizontalVelocity = Vector2.zero;
-        Vector2 hLookTo;
-        if (dir == 0)
-        {
-            horizontalStartPos.x = room.xMin + 1;
-            horizontalVelocity.x = CharacterData.BulletSpeed;
-            hLookTo = Vector2.right;
-        }
-        else
-        {
-            horizontalStartPos.x = room.xMax - 1;
-            horizontalVelocity.x = -CharacterData.BulletSpeed;
-            hLookTo = Vector2.left;
-        }
-
-        var verticalStartPos = targetPos;
-        dir = Random.Range(0, 2);
-        Vector2 verticalVelocity = Vector2.zero;
-        Vector2 vLookTo;
-        if (dir == 0)
-        {
-            verticalStartPos.y = room.yMin + 1;
-            verticalVelocity.y = CharacterData.BulletSpeed;
-            vLookTo = Vector2.up;
-        }
-        else
-        {
-            verticalStartPos.y = room.yMax - 1;
-            verticalVelocity.y = -CharacterData.BulletSpeed;
-            vLookTo = Vector2.down;
-        }
-
-        var horizontalPhantomCharge = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.phantomChargePrefab, horizontalStartPos);
-        var verticalPhantomCharge = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.phantomChargePrefab, verticalStartPos);
-        horizontalPhantomCharge.tag = gameObject.tag;
-        if (horizontalPhantomCharge.layer == LayerMask.NameToLayer("Default")) horizontalPhantomCharge.layer = gameObject.layer;
-        verticalPhantomCharge.tag = gameObject.tag;
-        if (verticalPhantomCharge.layer == LayerMask.NameToLayer("Default")) verticalPhantomCharge.layer = gameObject.layer;
-
-        horizontalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
-        verticalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
-
-        horizontalPhantomCharge.transform.localRotation = Quaternion.LookRotation(Vector3.forward, hLookTo);
-        verticalPhantomCharge.transform.localRotation = Quaternion.LookRotation(Vector3.forward, vLookTo);
-        var hrb = horizontalPhantomCharge.GetComponent<Rigidbody2D>();
-        var vrb = verticalPhantomCharge.GetComponent<Rigidbody2D>();
-        hrb.linearVelocity = horizontalVelocity;
-        vrb.linearVelocity = verticalVelocity;
-
-        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, gameObject) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, gameObject))
-        {
-            yield return null;
-        }
-
-        Destroy(chargeEffect);
-        Destroy(horizontalPhantomCharge);
-        Destroy(verticalPhantomCharge);
-
-        chargeCoroutine = null;
     }
     #endregion
 

@@ -93,9 +93,9 @@ public class PlayerController : MonoBehaviour
     {
         PlayerState state = GetComponent<CharacterStatus>().State;
         SkillData skillData = SkillDatabase.Instance.GetActiveSkill(state.ActiveSkillId);
-        if (skillData != null && (state.CurCd == -1 || state.CurCd >= skillData.cooldown))
+        if (skillData != null && (state.ActiveSkillCurCd == -1 || state.ActiveSkillCurCd >= skillData.cooldown))
         {
-            state.CurCd = 0;
+            state.ActiveSkillCurCd = 0;
             skillData.executor.ExecuteSkill(gameObject, skillData);
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.UpdateMyStatusUI(state);

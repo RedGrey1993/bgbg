@@ -14,8 +14,6 @@ public class CharacterData : ScriptableObject
     public GameObject bulletPrefab;
     // Minion 1 0 Stomper
     public GameObject shadowPrefab;
-    // Boss 1 0 Phantom Tank
-    public GameObject phantomChargePrefab;
     // Minion 2 0 Glitch Slime
     public GameObject deadBodyPrefab;
     // Boss 2 0 Master Dragon Turtle

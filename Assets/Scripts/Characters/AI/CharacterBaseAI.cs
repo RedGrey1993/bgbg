@@ -1,6 +1,7 @@
 
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterInput))]
@@ -17,9 +18,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected AudioSource audioSource;
     protected bool isAi = false;
     protected float nextAtkTime = 0f;
-
     protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
     protected bool isAttack = false; // 攻击时不能移动
+    public Vector2 LookDir { get; private set; } = Vector2.up;
+    public List<GameObject> TobeDestroyed { get; set; } = new List<GameObject>();
+    public Coroutine ActiveSkillCoroutine { get; set; } = null;
 
     public void Awake()
     {
@@ -400,11 +403,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         int stepAngle = bulletState.ShootNum > 1 ? bulletState.ShootAngleRange / (bulletState.ShootNum - 1) : 0;
         Quaternion rotationPlus = Quaternion.Euler(0, 0, stepAngle);
 
-        GameObject tarMinion = null;
-        if (characterStatus.HasPlayerController())
-        {
-            tarMinion = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45, CharacterData.AggroRange);
-        }
+        GameObject tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45);
+        if (!LevelManager.Instance.InSameRoom(gameObject, tarEnemy)) tarEnemy = null;
 
         for (int i = 0; i < bulletState.ShootNum; i++)
         {
@@ -419,8 +419,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             {
                 bulletScript.OwnerStatus = characterStatus;
                 bulletScript.StartPosition = bulletStartPosition;
-                bulletScript.bulletState = bulletState;
-                bulletScript.AggroTarget = tarMinion;
+                bulletScript.BulletState = bulletState;
+                bulletScript.AggroTarget = tarEnemy;
             }
 
             // Get the bullet's Rigidbody2D component
@@ -464,6 +464,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         if (lookInput.sqrMagnitude >= 0.1f && isAttack)
         {
+            LookDir = lookInput;
             // 优先将角色面朝射击方向，优先级高于移动方向
             if (skinnedMeshRenderer != null)
             {
@@ -496,6 +497,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
         {
+            LookDir = lookInput;
             // 将角色面朝移动方向
             if (skinnedMeshRenderer != null)
             {
@@ -583,6 +585,10 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     void OnDestroy()
     {
+        foreach (var item in TobeDestroyed)
+        {
+            Destroy(item);
+        }
         SubclassOnDestroy();
     }
 

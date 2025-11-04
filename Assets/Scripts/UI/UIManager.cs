@@ -182,7 +182,6 @@ public class UIManager : MonoBehaviour
     #region Canvas
     public void PlayLoadingAnimation(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "", float slideInTime = 1f, float slideOutTime = 1f)
     {
-        fadePanel.SetActive(true);
         StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace, loadingStr, slideInTime, slideOutTime));
     }
 
@@ -227,6 +226,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator LoadAnimationRoutine(Action callback, Sprite[] loadingSprite, bool needPressSpace, string loadingStr, float slideInTime, float slideOutTime)
     {
+        fadePanel.SetActive(true);
         if (loadingSprite == null || loadingSprite.Length == 0)
         {
             loadingSprite = new Sprite[] { defaultSprite };
@@ -258,11 +258,13 @@ public class UIManager : MonoBehaviour
             if (needPressSpace)
             {
                 // 等待直到 spacePressed 变为 true
-                yield return new WaitUntil(() => _spacePressedAction.IsPressed());
+                yield return new WaitUntil(() => _spacePressedAction.IsPressed() || !fadePanel.activeSelf);
             }
 
+            if (!fadePanel.activeSelf) break;
+
             // Last sprite
-            if (sprite == loadingSprite[loadingSprite.Length - 1])
+            if (sprite == loadingSprite[^1])
             {
                 // 加载下一关场景
                 callback?.Invoke();
@@ -283,7 +285,7 @@ public class UIManager : MonoBehaviour
         // yield return new WaitForSeconds(transitionTime);
     }
 
-    public void HideFadePanel()
+    public void HideLoadingPanel()
     {
         fadePanel.SetActive(false);
     }
@@ -300,8 +302,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateBossHealthSlider(int curHp, int maxHp)
     {
-        bossHealthSlider.value = curHp;
         bossHealthSlider.maxValue = maxHp;
+        bossHealthSlider.value = curHp;
     }
 
     #endregion
@@ -441,27 +443,28 @@ public class UIManager : MonoBehaviour
             });
 
             ref var states = ref SelectCharacterManager.Instance.characterLockStates;
-            if (storage.Achievement3InfiniteLonely)
+            // TODO: 当前是Debug，调试完毕后使用正式的人物锁定逻辑
+            // if (storage.Achievement3InfiniteLonely)
             {
                 for (int i = 0; i < states.Count; i++)
                 {
                     states[i] = false;
                 }
             }
-            else if (storage.Achievement2Mirror)
-            {
-                for (int i = 0; i < states.Count; i++)
-                {
-                    states[i] = i == 0; // only lock contra bill
-                }
-            }
-            else
-            {
-                for (int i = 0; i < states.Count; i++)
-                {
-                    states[i] = i != 0; // lock others except contra bill
-                }
-            }
+            // else if (storage.Achievement2Mirror)
+            // {
+            //     for (int i = 0; i < states.Count; i++)
+            //     {
+            //         states[i] = i == 0; // only lock contra bill
+            //     }
+            // }
+            // else
+            // {
+            //     for (int i = 0; i < states.Count; i++)
+            //     {
+            //         states[i] = i != 0; // lock others except contra bill
+            //     }
+            // }
             PlayLoadingAnimation(() =>
             {
                 SelectCharacterManager.Instance.Show();
@@ -1116,7 +1119,7 @@ public class UIManager : MonoBehaviour
         spc.HideMyStatusUI();
         HideSettings();
         HideSkillPanel();
-        HideFadePanel();
+        HideLoadingPanel();
         _mainMenuRoot.RemoveFromClassList("hidden");
         ShowPanel(_mainMenuPanel);
 

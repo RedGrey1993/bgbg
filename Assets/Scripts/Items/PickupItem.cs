@@ -40,7 +40,7 @@ public class PickupItem : MonoBehaviour
             if (status != null)
             {
                 status.State.ActiveSkillId = skillData.id;
-                status.State.CurCd = -1;
+                status.State.ActiveSkillCurCd = -1;
                 if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
                 {
                     var spc = UIManager.Instance.GetComponent<StatusPanelController>();

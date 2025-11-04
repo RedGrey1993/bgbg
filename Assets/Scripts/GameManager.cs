@@ -187,6 +187,8 @@ public class GameManager : MonoBehaviour
                     Y = UIManager.Instance.TeleportBeamEffect.transform.position.y,
                 };
             }
+            SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
+            skillPanelController.ForceRandomChoose = false;
             SaveLocalStorage(teleportPosition);
         }
         GameState = GameState.InMenu;

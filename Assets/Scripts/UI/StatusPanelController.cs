@@ -45,11 +45,11 @@ public class StatusPanelController : MonoBehaviour
         if (skillData != null)
         {
             activeSkillCdSlider.gameObject.SetActive(true);
-            if (state.CurCd == -1 || state.CurCd > skillData.cooldown)
-                state.CurCd = skillData.cooldown;
-            activeSkillCdSlider.value = state.CurCd;
+            if (state.ActiveSkillCurCd == -1 || state.ActiveSkillCurCd > skillData.cooldown)
+                state.ActiveSkillCurCd = skillData.cooldown;
             activeSkillCdSlider.maxValue = skillData.cooldown;
-            if (state.CurCd < skillData.cooldown) alpha = 0.8f;
+            activeSkillCdSlider.value = state.ActiveSkillCurCd;
+            if (state.ActiveSkillCurCd < skillData.cooldown) alpha = 0.8f;
         }
         else
         {

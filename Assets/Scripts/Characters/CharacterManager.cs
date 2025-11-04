@@ -363,13 +363,13 @@ public class CharacterManager : MonoBehaviour
 
     public void RemoveObject(int characterId)
     {
-        // if (playerObjects.ContainsKey(characterId))
-        // {
-        //     playerObjects.Remove(characterId);
-        //     PlayerPrefabIds.Remove(characterId);
-        //     PlayerInfoMap.Remove(characterId);
-        //     Players.RemoveAll(p => p.Id == characterId);
-        // }
+        if (playerObjects.ContainsKey(characterId))
+        {
+            playerObjects.Remove(characterId);
+            PlayerPrefabIds.Remove(characterId);
+            PlayerInfoMap.Remove(characterId);
+            Players.RemoveAll(p => p.Id == characterId);
+        }
         if (minionObjects.ContainsKey(characterId))
         {
             minionObjects.Remove(characterId);
@@ -558,45 +558,70 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
-    public GameObject FindNearestEnemyInAngle(GameObject character, Vector2 shootDir, int rangeAngle, int aggroRange)
+    public GameObject FindNearestEnemyInAngle(GameObject character, Vector2 shootDir, int rangeAngle)
     {
         GameObject nearestEnemy = null;
-        float nearestDistanceSqr = aggroRange * aggroRange;
-        foreach (Transform child in minionParant)
+        float nearestDistanceSqr = float.MaxValue;
+        if (character.CompareTag(Constants.TagPlayer))
         {
-            // 跳过自己
-            if (child.gameObject == character) continue;
-            var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
-            foreach (var status in minionStatuses)
+            foreach (Transform child in minionParant)
             {
-                if (status != null && !status.IsDead())
+                // 跳过自己
+                if (child.gameObject == character) continue;
+                var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
+                foreach (var status in minionStatuses)
                 {
-                    Vector2 toMinion = status.transform.position - character.transform.position;
-                    float distSqr = toMinion.sqrMagnitude;
-                    if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toMinion) < rangeAngle)
+                    if (status != null && !status.IsDead())
                     {
-                        nearestDistanceSqr = distSqr;
-                        nearestEnemy = status.gameObject;
+                        Vector2 toMinion = status.transform.position - character.transform.position;
+                        float distSqr = toMinion.sqrMagnitude;
+                        if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toMinion) < rangeAngle)
+                        {
+                            nearestDistanceSqr = distSqr;
+                            nearestEnemy = status.gameObject;
+                        }
+                    }
+                }
+            }
+
+            foreach (Transform child in bossParant)
+            {
+                // 跳过自己
+                if (child.gameObject == character) continue;
+                var bossStatuses = child.GetComponentsInChildren<CharacterStatus>();
+                foreach (var status in bossStatuses)
+                {
+                    if (status != null && !status.IsDead())
+                    {
+                        Vector2 toBoss = status.transform.position - character.transform.position;
+                        float distSqr = toBoss.sqrMagnitude;
+                        if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toBoss) < rangeAngle)
+                        {
+                            nearestDistanceSqr = distSqr;
+                            nearestEnemy = status.gameObject;
+                        }
                     }
                 }
             }
         }
-
-        foreach (Transform child in bossParant)
+        else
         {
-            // 跳过自己
-            if (child.gameObject == character) continue;
-            var bossStatuses = child.GetComponentsInChildren<CharacterStatus>();
-            foreach (var status in bossStatuses)
+            foreach (Transform child in playerParent)
             {
-                if (status != null && !status.IsDead())
+                // 跳过自己
+                if (child.gameObject == character) continue;
+                var playerStatuses = child.GetComponentsInChildren<CharacterStatus>();
+                foreach (var status in playerStatuses)
                 {
-                    Vector2 toBoss = status.transform.position - character.transform.position;
-                    float distSqr = toBoss.sqrMagnitude;
-                    if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toBoss) < rangeAngle)
+                    if (status != null && !status.IsDead())
                     {
-                        nearestDistanceSqr = distSqr;
-                        nearestEnemy = status.gameObject;
+                        Vector2 toPlayer = status.transform.position - character.transform.position;
+                        float distSqr = toPlayer.sqrMagnitude;
+                        if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toPlayer) < rangeAngle)
+                        {
+                            nearestDistanceSqr = distSqr;
+                            nearestEnemy = status.gameObject;
+                        }
                     }
                 }
             }

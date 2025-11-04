@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public Vector2 StartPosition { get; set; } // 子弹发射时，Player会设置这颗子弹的起始位置
     public CharacterStatus OwnerStatus { get; set; } // 这颗子弹的操作者是谁
     public int Damage { get; set; } = 0;
-    public BulletState bulletState { get; set; } // 子弹强化状态
+    public BulletState BulletState { get; set; } // 子弹强化状态
     public Collider2D LastCollider { get; set; } = null;
     public GameObject AggroTarget { get; set; } = null;
     public int SplitCount { get; set; } = 0;
@@ -27,11 +27,11 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        if (bulletState != null)
+        if (BulletState != null)
         {
-            if (bulletState.PenetrateCount > penetrateCount) penetrateCount = bulletState.PenetrateCount;
-            if (bulletState.SplitCount > SplitCount) SplitCount = bulletState.SplitCount;
-            if (bulletState.HomingForce > HomingForce) HomingForce = bulletState.HomingForce;
+            if (BulletState.PenetrateCount > penetrateCount) penetrateCount = BulletState.PenetrateCount;
+            if (BulletState.SplitCount > SplitCount) SplitCount = BulletState.SplitCount;
+            if (BulletState.HomingForce > HomingForce) HomingForce = BulletState.HomingForce;
         }
         if (Damage == 0) Damage = OwnerStatus.State.Damage;
         col2D.enabled = true;
@@ -74,8 +74,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
             // 检测是否碰撞到Player
-            if (other.CompareTag(Constants.TagPlayer) || other.CompareTag(Constants.TagEnemy)
-                || other.transform.parent.CompareTag(Constants.TagPlayer) || other.transform.parent.CompareTag(Constants.TagEnemy))
+            if (other.gameObject.CompareThisAndParentTag(Constants.TagPlayer) || other.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
             {
                 CharacterStatus targetCharacterStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
                 if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
@@ -106,10 +105,10 @@ public class Bullet : MonoBehaviour
                             bs.StartPosition = startPos;
                             bs.OwnerStatus = OwnerStatus;
                             bs.Damage = Damage > 1 ? (Damage / 2) : 1;
-                            var bState = bulletState.Clone();
+                            var bState = BulletState.Clone();
                             bState.PenetrateCount = penetrateCount;
                             bState.SplitCount = SplitCount;
-                            bs.bulletState = bState;
+                            bs.BulletState = bState;
                             bs.LastCollider = other;
 
                             var newRb = newBullet.GetComponent<Rigidbody2D>();

@@ -528,7 +528,7 @@ public class LevelManager : MonoBehaviour
             var my = CharacterManager.Instance.GetMyselfGameObject();
             var status = my.GetComponent<CharacterStatus>();
             status.State.ActiveSkillId = Constants.SysBugItemId;
-            status.State.CurCd = -1;
+            status.State.ActiveSkillCurCd = -1;
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.UpdateMyStatusUI(status.State);
             UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at Grid.Delete()]", Color.red, 5f);

@@ -63,9 +63,9 @@ message PlayerState
     bool CurrentStageSkillLearned = 15;
     repeated int32 ToLearnedSkillIds = 19;
     int32 ActiveSkillId = 16;
+    int32 ActiveSkillCurCd = 20;
     float Scale = 17;
     ColorProto Color = 18;
-    int32 CurCd = 20;
 }
 
 message BulletState

@@ -310,7 +310,10 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         {
             int rndAtk = Random.Range(0, 3);
             if (rndAtk == 0)
-                chargeCoroutine ??= StartCoroutine(Boss1_PhantomTank_Charge());
+            {
+                SkillData skillData = SkillDatabase.Instance.GetActiveSkill(Constants.PhantomChargeSkillId);
+                skillData.executor.ExecuteSkill(gameObject, skillData);
+            }
             else if (rndAtk == 1)
                 energyWaveCoroutine ??= StartCoroutine(Boss2_EnergyWave(9));
             else if (rndAtk == 2)
@@ -379,73 +382,6 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         color1.a = color2.a = to;
         skinnedMeshRenderer.material.color = color1;
         meshRenderer.material.color = color2;
-    }
-
-    private Coroutine chargeCoroutine = null;
-    // 冲锋，十字幻影形式冲锋
-    private IEnumerator Boss1_PhantomTank_Charge()
-    {
-        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-        var room = LevelManager.Instance.Rooms[roomId];
-        Vector2 targetPos = room.center;
-        if (AggroTarget != null)
-            targetPos = AggroTarget.transform.position;
-        var horizontalStartPos = targetPos;
-        int dir = Random.Range(0, 2);
-        Vector2 horizontalVelocity = Vector2.zero;
-        Vector2 hLookTo;
-        if (dir == 0)
-        {
-            horizontalStartPos.x = room.xMin + 1;
-            horizontalVelocity.x = CharacterData.BulletSpeed;
-            hLookTo = Vector2.right;
-        }
-        else
-        {
-            horizontalStartPos.x = room.xMax - 1;
-            horizontalVelocity.x = -CharacterData.BulletSpeed;
-            hLookTo = Vector2.left;
-        }
-
-        var verticalStartPos = targetPos;
-        dir = Random.Range(0, 2);
-        Vector2 verticalVelocity = Vector2.zero;
-        Vector2 vLookTo;
-        if (dir == 0)
-        {
-            verticalStartPos.y = room.yMin + 1;
-            verticalVelocity.y = CharacterData.BulletSpeed;
-            vLookTo = Vector2.up;
-        }
-        else
-        {
-            verticalStartPos.y = room.yMax - 1;
-            verticalVelocity.y = -CharacterData.BulletSpeed;
-            vLookTo = Vector2.down;
-        }
-
-        var horizontalPhantomCharge = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.phantomChargePrefab, horizontalStartPos);
-        var verticalPhantomCharge = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.phantomChargePrefab, verticalStartPos);
-        horizontalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
-        verticalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
-
-        horizontalPhantomCharge.transform.localRotation = Quaternion.LookRotation(Vector3.forward, hLookTo);
-        verticalPhantomCharge.transform.localRotation = Quaternion.LookRotation(Vector3.forward, vLookTo);
-        var hrb = horizontalPhantomCharge.GetComponent<Rigidbody2D>();
-        var vrb = verticalPhantomCharge.GetComponent<Rigidbody2D>();
-        hrb.linearVelocity = horizontalVelocity;
-        vrb.linearVelocity = verticalVelocity;
-
-        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, gameObject) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, gameObject))
-        {
-            yield return null;
-        }
-
-        Destroy(horizontalPhantomCharge);
-        Destroy(verticalPhantomCharge);
-
-        chargeCoroutine = null;
     }
 
     private Coroutine energyWaveCoroutine = null;

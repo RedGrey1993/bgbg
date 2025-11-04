@@ -88,6 +88,7 @@ public static class Constants
     public const string TagShield = "Shield";
     public const int SysBugItemId = 3;
     public const int HealthRecoverySkillId = 8;
+    public const int PhantomChargeSkillId = 9;
     public const int NewRulerPlayerId = 123456789;
 
     public static readonly int[] LevelUpExp = {
@@ -122,6 +123,13 @@ public static class Constants
     public static Color ToColor(this ColorProto c)
     {
         return new Color(c.R, c.G, c.B, c.A);
+    }
+
+    public static bool CompareThisAndParentTag(this GameObject obj, string tag)
+    {
+        if (obj.CompareTag(tag)) return true;
+        if (obj.transform.parent != null) return obj.transform.parent.CompareTag(tag);
+        return false;
     }
 
     public static void PositionToIndex(Vector2 position, out int x, out int y)

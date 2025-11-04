@@ -129,7 +129,7 @@ public class CharacterStatus : MonoBehaviour
         int maxExp = Constants.LevelUpExp[idx];
         if (HasPlayerController())
         {
-            State.CurCd++;
+            State.ActiveSkillCurCd++;
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.UpdateMyStatusUI(State);
         }
@@ -182,9 +182,6 @@ public class CharacterStatus : MonoBehaviour
         {
             pc.enabled = false;
         }
-
-        // 尸体销毁，Player的尸体不销毁，置灰保留在原地
-        characterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
         
         // 如果是精英怪，概率掉落系统日志
         if (State.Scale > 1.1f && GameManager.Instance.IsLocal() &&
@@ -224,6 +221,9 @@ public class CharacterStatus : MonoBehaviour
             }
         }
 
+        // 尸体销毁，Destory
+        characterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
+
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId)
             || CharacterManager.Instance.NewRulerGo == gameObject)
@@ -243,6 +243,7 @@ public class CharacterStatus : MonoBehaviour
         // 如果Player死亡，清除记录（保存一个空记录）
         if (HasPlayerController())
         {
+            UIManager.Instance.HideSkillPanel();
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
                 GameManager.Instance.SaveLocalStorage(null, restart: true);
@@ -250,7 +251,7 @@ public class CharacterStatus : MonoBehaviour
                 skillPanelController.ForceRandomChoose = false;
 
                 UIManager.Instance.QuitToMainMenu();
-            }, slideInTime: 10f);
+            }, slideInTime: 1f);
         }
     }
 
