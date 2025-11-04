@@ -231,14 +231,6 @@ public class UIManager : MonoBehaviour
         {
             loadingSprite = new Sprite[] { defaultSprite };
         }
-        if (loadingStr != "")
-        {
-            loadingText.text = loadingStr;
-        }
-        else if (needPressSpace)
-        {
-            loadingText.text = "Press Space to Continue";
-        }
 
         foreach (var sprite in loadingSprite)
         {
@@ -253,6 +245,15 @@ public class UIManager : MonoBehaviour
             }
             // 触发渐变显示图片动画
             yield return StartCoroutine(FadeRoutine(0f, 1f, slideInTime));
+
+            if (loadingStr != "")
+            {
+                loadingText.text = loadingStr;
+            }
+            else if (needPressSpace)
+            {
+                loadingText.text = "Press Space to Continue";
+            }
 
             if (needPressSpace)
             {
@@ -287,14 +288,9 @@ public class UIManager : MonoBehaviour
         fadePanel.SetActive(false);
     }
 
-    public void ShowBossHealthSlider(int curHp, int maxHp)
+    public void ShowBossHealthSlider()
     {
         bossHealthSlider.gameObject.SetActive(true);
-        if (bossHealthSlider.value == 0)
-        {
-            bossHealthSlider.value = curHp;
-            bossHealthSlider.maxValue = maxHp;
-        }
     }
 
     public void HideBossHealthSlider()

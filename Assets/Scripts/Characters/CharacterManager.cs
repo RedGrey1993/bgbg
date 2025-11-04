@@ -507,27 +507,27 @@ public class CharacterManager : MonoBehaviour
         MessageManager.Instance.SendMessage(genericMessage, true);
     }
 
+    public GameObject BeAttackedBoss { get; set; } = null;
     void FixedUpdate()
     {
         var my = GetMyselfGameObject();
-        bool showBossHpSlider = false;
-        int curHp = 0;
-        int maxHp = 0;
+        bool showBossHealthSlider = false;
         foreach (Transform child in bossParant)
         {
             var bossStatus = child.gameObject.GetComponent<CharacterStatus>();
             if (bossStatus != null && bossStatus.IsAlive() && LevelManager.Instance.InSameRoom(my, child.gameObject))
             {
-                showBossHpSlider = true;
-                curHp = bossStatus.State.CurrentHp;
-                maxHp = bossStatus.State.MaxHp;
+                if (BeAttackedBoss == null) BeAttackedBoss = child.gameObject;
+                showBossHealthSlider = true;
                 break;
             }
         }
 
-        if (showBossHpSlider)
+        if (showBossHealthSlider && BeAttackedBoss != null)
         {
-            UIManager.Instance.ShowBossHealthSlider(curHp, maxHp);
+            UIManager.Instance.ShowBossHealthSlider();
+            var state = BeAttackedBoss.GetComponent<CharacterStatus>().State;
+            UIManager.Instance.UpdateBossHealthSlider(state.CurrentHp, state.MaxHp);
         }
         else
         {

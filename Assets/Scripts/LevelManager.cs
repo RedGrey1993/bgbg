@@ -112,10 +112,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-
-    private int bossRoomNum = 1;
-    private int bossRoomMinWidth = Constants.RoomStep * 2;
-    private int bossRoomMinHeight = Constants.RoomStep * 2;
     // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可
     // TODO: 发送房间数据给Client
     private void GenerateRooms(TileBase wallTile, LocalStorage storage)
@@ -135,9 +131,9 @@ public class LevelManager : MonoBehaviour
             roomMaxWidth = CurrentLevelData.roomMaxWidth;
             roomMaxHeight = CurrentLevelData.roomMaxHeight;
 
-            bossRoomNum = 1;
-            bossRoomMinWidth = Constants.RoomStep * 2;
-            bossRoomMinHeight = Constants.RoomStep * 2;
+            var bossRoomNum = 1;
+            var bossRoomMinWidth = CurrentLevelData.bossRoomMinWidth;
+            var bossRoomMinHeight = CurrentLevelData.bossRoomMinHeight;
             List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
             var totalRooms = CurrentLevelData.totalRooms;
             int cutNum = UnityEngine.Random.Range(totalRooms.min - 1, totalRooms.max);
@@ -168,6 +164,7 @@ public class LevelManager : MonoBehaviour
                         }
                         if (bossRoomNum == 0)
                         {
+                            bossRoomNum = 10000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
                             Rooms.Add(room);
                             continue;
                         }
@@ -198,6 +195,7 @@ public class LevelManager : MonoBehaviour
                         }
                         if (bossRoomNum == 0)
                         {
+                            bossRoomNum = 10000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
                             Rooms.Add(room);
                             continue;
                         }
@@ -712,13 +710,16 @@ public class LevelManager : MonoBehaviour
     {
         List<int> ascRoomIds = remainRoomsIndex.OrderBy(id => Rooms[id].width * Rooms[id].height).ToList();
         List<Rect> rooms = new();
+
+        var bossRoomMinWidth = CurrentLevelData.bossRoomMinWidth;
+        var bossRoomMinHeight = CurrentLevelData.bossRoomMinHeight;
         for (int i = ascRoomIds.Count - 1; i >= 0; i--)
         {
             int id = ascRoomIds[i];
             var room = Rooms[id];
             if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
             {
-                rooms.Add(room);
+                rooms.Add(room); // 符合boss房要求的面积最小的放在最后面，boss房会优先从最后面选择
             }
             else
             {

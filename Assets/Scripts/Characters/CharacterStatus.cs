@@ -322,7 +322,7 @@ public class CharacterStatus : MonoBehaviour
 
         if (IsBoss)
         {
-            UIManager.Instance.UpdateBossHealthSlider(State.CurrentHp, State.MaxHp);
+            CharacterManager.Instance.BeAttackedBoss = gameObject;
         }
     }
 
