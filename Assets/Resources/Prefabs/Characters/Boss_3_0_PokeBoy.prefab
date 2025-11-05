@@ -337,6 +337,7 @@ MonoBehaviour:
   - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
   - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  capturedMinionCanvas: {fileID: 1375721546876360083, guid: d92cbb8f35641114d8fbd9243d9acdd7, type: 3}
   pokeMinionRebornTime: 15
   pokeMinionBuffTime: 5
 --- !u!1 &5727804542918915976

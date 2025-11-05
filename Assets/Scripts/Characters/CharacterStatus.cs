@@ -8,6 +8,7 @@ public class CharacterStatus : MonoBehaviour
 {
     public PlayerState State { get; private set; } = new PlayerState();
     public BulletState bulletState = new BulletState();
+    public CharacterStatus Trainer { get; set; } = null;
     // 在预制体上的Inspector面板中设置
     [Header("Character Settings")]
     public CharacterData characterData;

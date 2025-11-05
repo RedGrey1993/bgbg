@@ -294,7 +294,8 @@ public class CharacterManager : MonoBehaviour
             obj.transform.SetParent(go.transform);
             miniStatusCanvas = obj.GetComponent<Canvas>();
         }
-        var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>();
+        var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>(true);
+        playerNameText.gameObject.SetActive(true);
         if (playerNameText != null)
         {
             playerNameText.text = playerName;
@@ -825,7 +826,7 @@ public class CharacterManager : MonoBehaviour
             
         minion.name = $"{prefab.name}{minionId}";
         minion.tag = Constants.TagEnemy;
-        
+
         if (minion.TryGetComponent<CharacterStatus>(out var minionStatus))
         {
             if (ms != null)
@@ -856,6 +857,18 @@ public class CharacterManager : MonoBehaviour
             {
                 rb.mass *= minionStatus.State.Scale;
             }
+        }
+        
+        // 将血条显示到对象的头上
+        var miniStatusCanvas = minion.GetComponentInChildren<Canvas>();
+        if (miniStatusCanvas == null)
+        {
+            Physics2D.SyncTransforms();
+            var col2D = minion.GetComponentInChildren<Collider2D>();
+            var tarPos = minion.transform.position;
+            tarPos.y += col2D.bounds.extents.y + 0.5f;
+            var obj = Instantiate(miniStatusPrefab, tarPos, Quaternion.identity);
+            obj.transform.SetParent(minion.transform);
         }
 
         minionObjects[minionId] = minion;

@@ -97,7 +97,8 @@ public class Bullet : MonoBehaviour
                 || other.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
             {
                 CharacterStatus tarStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
-                if (tarStatus == null || tarStatus == OwnerStatus)
+                if (tarStatus == null || tarStatus == OwnerStatus || tarStatus.Trainer == OwnerStatus 
+                    || (tarStatus.Trainer != null && tarStatus.Trainer == OwnerStatus.Trainer))
                 { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                     if (bounceCount > 0)
                     {
@@ -116,7 +117,7 @@ public class Bullet : MonoBehaviour
                 else if (tarStatus != null)
                 {
                     tarStatus.TakeDamage_Host(Damage, OwnerStatus);
-                    if (SplitCount >= 0 || OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
+                    if (SplitCount >= 0 && OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
                     {
                         var startPos = transform.position;
                         var startDir = Quaternion.Euler(0, 0, -45) * rb.linearVelocity.normalized;

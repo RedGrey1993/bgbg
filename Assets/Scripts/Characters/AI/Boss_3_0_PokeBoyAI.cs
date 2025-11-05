@@ -15,6 +15,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     public GameObject speedupEffectPrefab;
     public GameObject rageEffectPrefab;
     public List<GameObject> pokeMinionPrefabs;
+    public GameObject capturedMinionCanvas;
     public int pokeMinionRebornTime = 15;
     public int pokeMinionBuffTime = 5;
     private int maxPokeMinionCount = 6;
@@ -191,6 +192,26 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
             GameObject pokeMinion = LevelManager.Instance.InstantiateTemporaryObject(pokePrefab.Item1, summonPosition);
+            pokeMinion.name += "Summon";
+            pokeMinion.tag = gameObject.tag;
+            if (pokeMinion.layer == LayerMask.NameToLayer("Default")) pokeMinion.layer = gameObject.layer;
+            if (pokeMinion.CompareTag(Constants.TagPlayer))
+            {
+                Physics2D.SyncTransforms();
+                var col2D = pokeMinion.GetComponentInChildren<Collider2D>();
+                var tarPos = pokeMinion.transform.position;
+                tarPos.y += col2D.bounds.extents.y + 0.5f;
+                // 将血条显示到对象的头上
+                var miniStatusCanvas = pokeMinion.GetComponentInChildren<Canvas>();
+                if (miniStatusCanvas == null)
+                {
+                    var obj1 = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
+                    obj1.transform.SetParent(pokeMinion.transform);
+                }
+                var obj2 = Instantiate(capturedMinionCanvas, tarPos, Quaternion.identity);
+                obj2.transform.SetParent(pokeMinion.transform);
+            }
+            pokeMinion.GetComponent<CharacterStatus>().Trainer = characterStatus;
             existingPokes.Add((pokeMinion, pokePrefab.Item2));
         }
 
