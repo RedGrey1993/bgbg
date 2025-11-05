@@ -115,7 +115,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             yield return new WaitForSeconds(0.5f);
         }
         // 调用父类方法
-        yield return StartCoroutine(AttackShoot(lookInput));
+        yield return StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency));
 
         // isAttack = false后才能移动
         isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput

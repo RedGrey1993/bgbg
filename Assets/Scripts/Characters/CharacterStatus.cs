@@ -71,10 +71,11 @@ public class CharacterStatus : MonoBehaviour
             uint attackerCurExp = attacker.State.CurrentExp;
             uint expGained = characterData.ExpGiven;
             attackerCurExp += expGained;
-            // TODO: 发送attacker.ExpChanged消息给所有客户端
+            // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);
+            attacker.Killed(this);
         }
-        // TODO: 发送this.HealthChanged消息给所有客户端
+        // TODO: 发送this.HealthChanged后的State结果给所有客户端
         HealthChanged(Mathf.Max(0, curHp));
     }
 
@@ -92,11 +93,16 @@ public class CharacterStatus : MonoBehaviour
             attackerCurExp += expGained;
             // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);
+            attacker.Killed(this);
         }
         // TODO: 发送this.HealthChanged后的State结果给所有客户端
         HealthChanged(Mathf.Max(0, curHp));
     }
 
+    public void Killed(CharacterStatus enemy)
+    {
+        characterAI.Killed(enemy);
+    }
 
     // 供HOST/CLIENT统一调用
     public void HealthChanged(int curHp)

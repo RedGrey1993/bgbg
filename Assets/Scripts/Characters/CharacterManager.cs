@@ -359,6 +359,7 @@ public class CharacterManager : MonoBehaviour
         {
             if (go != null) Destroy(go);
             playerObjects.Remove(playerId);
+            PlayerPrefabIds.Remove(playerId);
         }
     }
 
@@ -374,10 +375,12 @@ public class CharacterManager : MonoBehaviour
         if (minionObjects.ContainsKey(characterId))
         {
             minionObjects.Remove(characterId);
+            minionPrefabInfos.Remove(characterId);
         }
         else if (bossObjects.ContainsKey(characterId))
         {
             bossObjects.Remove(characterId);
+            bossPrefabInfos.Remove(characterId);
         }
     }
 

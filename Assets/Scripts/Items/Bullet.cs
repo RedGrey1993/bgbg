@@ -108,14 +108,15 @@ public class Bullet : MonoBehaviour
 
                 penetrateCount--;
                 SplitCount--;
-                if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
+                if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) 
+                    && OwnerStatus != null && OwnerStatus.gameObject.CompareTag(Constants.TagEnemy))
                 {
                     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
                 }
                 else if (tarStatus != null)
                 {
                     tarStatus.TakeDamage_Host(Damage, OwnerStatus);
-                    if (SplitCount >= 0) // 左右各相距45度分裂为2颗子弹
+                    if (SplitCount >= 0 || OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
                     {
                         var startPos = transform.position;
                         var startDir = Quaternion.Euler(0, 0, -45) * rb.linearVelocity.normalized;

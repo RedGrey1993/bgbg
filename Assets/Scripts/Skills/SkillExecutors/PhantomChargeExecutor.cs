@@ -94,6 +94,9 @@ public class PhantomChargeExecutor : SkillExecutor
         Destroy(chargeEffect);
         Destroy(horizontalPhantomCharge);
         Destroy(verticalPhantomCharge);
+        aiScript.TobeDestroyed.Remove(chargeEffect);
+        aiScript.TobeDestroyed.Remove(horizontalPhantomCharge);
+        aiScript.TobeDestroyed.Remove(verticalPhantomCharge);
 
         aiScript.ActiveSkillCoroutine = null;
     }

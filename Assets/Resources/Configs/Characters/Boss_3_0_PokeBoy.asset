@@ -15,13 +15,9 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
-  energyWaveAccumulateSound: {fileID: 0}
-  energyWaveShootSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: c098a2cbb2389ee429ddf14c0c1f3831, type: 3}
   shadowPrefab: {fileID: 0}
-  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  energyWavePrefab: {fileID: 0}
   explosionEffectPrefab: {fileID: 0}
   summonEffectPrefab: {fileID: 0}
   teleportEffectPrefab: {fileID: 0}
@@ -32,7 +28,7 @@ MonoBehaviour:
   MoveSpeed: 5
   ShootRange: 10
   BulletSpeed: 6
-  Damage: 20
+  Damage: 10
   AttackFrequency: 0.5
   CriticalRate: 0
   ExpGiven: 5

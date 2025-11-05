@@ -48,6 +48,7 @@ public class MasterLongWaveExecutor : SkillExecutor
         else
         {
             vfx = LevelManager.Instance.InstantiateTemporaryObject(vfxPrefab, aiScript.transform.position);
+            aiScript.TobeDestroyed.Add(vfx);
         }
         if (energyWaveAccumulateSound)
         {
@@ -79,6 +80,7 @@ public class MasterLongWaveExecutor : SkillExecutor
         else
         {
             Destroy(vfx);
+            aiScript.TobeDestroyed.Remove(vfx);
         }
 
         // 获取Player碰撞体的边界位置

@@ -22,7 +22,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
     public bool isAttack { set; get; } = false; // 攻击时不能移动
     public Vector2 LookDir { get; protected set; } = Vector2.up;
-    public List<GameObject> TobeDestroyed { get; set; } = new List<GameObject>();
+    public HashSet<GameObject> TobeDestroyed { get; set; } = new HashSet<GameObject>();
     public Coroutine ActiveSkillCoroutine { get; set; } = null;
 
     public void Awake()
@@ -377,7 +377,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Attack Action
-    protected IEnumerator AttackShoot(Vector2 lookInput)
+    protected IEnumerator AttackShoot(Vector2 lookInput, float atkInterval, int fixedDamage = 0)
     {
         isAttack = true;
         if (CharacterData.shootSound)
@@ -418,6 +418,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 bulletScript.StartPosition = bulletStartPosition;
                 bulletScript.BulletState = bulletState;
                 bulletScript.AggroTarget = tarEnemy;
+                bulletScript.Damage = fixedDamage;
             }
 
             // Get the bullet's Rigidbody2D component
@@ -427,7 +428,10 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             startDir = rotationPlus * startDir;
         }
-        yield return new WaitForSeconds(1f / characterStatus.State.AttackFrequency);
+        if (atkInterval > 0f)
+        {
+            yield return new WaitForSeconds(atkInterval);
+        }
         shootCoroutine = null;
         isAttack = false;
     }
@@ -442,7 +446,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             // if (Time.time < nextAtkTime) return;
             // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
-            shootCoroutine = StartCoroutine(AttackShoot(lookInput));
+            shootCoroutine = StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency));
         }
     }
     #endregion
@@ -492,7 +496,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 SetAtkAnimation(Direction.Down);
             }
         }
-        else if (moveInput.sqrMagnitude >= 0.1f)
+        else if (moveInput.sqrMagnitude >= 0.1f && !isAttack)
         {
             LookDir = moveInput;
             // 将角色面朝移动方向
@@ -578,6 +582,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     {
         Destroy(gameObject);
     }
+
+    public virtual void Killed(CharacterStatus enemy) { }
     #endregion
 
     void OnDestroy()
