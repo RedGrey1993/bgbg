@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -98,25 +99,35 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             if (pokeMinionPrefabs.Count > 0)
             {
                 // 召唤pokes 15s后会复活
-                if (hpRatio > 0.6f)
+                if (isAi)
                 {
-                    if (existingPokes.Count < 1)
+                    if (hpRatio > 0.6f)
                     {
-                        summonCoroutine = StartCoroutine(SummonPokes(1, characterInput.LookInput));
+                        if (existingPokes.Count < 1)
+                        {
+                            summonCoroutine = StartCoroutine(SummonPokes(1, characterInput.LookInput));
+                        }
                     }
-                }
-                else if (hpRatio > 0.3f)
-                {
-                    if (existingPokes.Count < 2)
+                    else if (hpRatio > 0.3f)
                     {
-                        summonCoroutine = StartCoroutine(SummonPokes(2, characterInput.LookInput));
+                        if (existingPokes.Count < 2)
+                        {
+                            summonCoroutine = StartCoroutine(SummonPokes(2, characterInput.LookInput));
+                        }
+                    }
+                    else
+                    {
+                        if (existingPokes.Count < 5)
+                        {
+                            summonCoroutine = StartCoroutine(SummonPokes(5, characterInput.LookInput));
+                        }
                     }
                 }
                 else
                 {
-                    if (existingPokes.Count < 3)
+                    if (existingPokes.Count < 6)
                     {
-                        summonCoroutine = StartCoroutine(SummonPokes(3, characterInput.LookInput));
+                        summonCoroutine = StartCoroutine(SummonPokes(6, characterInput.LookInput));
                     }
                 }
             }
@@ -192,7 +203,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
             GameObject pokeMinion = LevelManager.Instance.InstantiateTemporaryObject(pokePrefab.Item1, summonPosition);
-            pokeMinion.name += "Summon";
+            pokeMinion.name += pokePrefab.Item2;
             pokeMinion.tag = gameObject.tag;
             if (pokeMinion.layer == LayerMask.NameToLayer("Default")) pokeMinion.layer = gameObject.layer;
             if (pokeMinion.CompareTag(Constants.TagPlayer))
@@ -207,6 +218,13 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
                 {
                     var obj1 = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
                     obj1.transform.SetParent(pokeMinion.transform);
+                    miniStatusCanvas = obj1.GetComponent<Canvas>();
+                }
+                var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>(true);
+                playerNameText.gameObject.SetActive(true);
+                if (playerNameText != null)
+                {
+                    playerNameText.text = $"Companion #{pokePrefab.Item2}";
                 }
                 var obj2 = Instantiate(capturedMinionCanvas, tarPos, Quaternion.identity);
                 obj2.transform.SetParent(pokeMinion.transform);

@@ -14,18 +14,33 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (collision.gameObject.CompareTag(Constants.TagPlayer))
+            if (collision.gameObject.CompareThisAndParentTag(Constants.TagPlayer)
+                || collision.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
             {
                 if (Time.time > nextDamageTime)
                 {
-                    var status = collision.gameObject.GetComponent<CharacterStatus>();
+                    var tarStatus = collision.gameObject.GetComponent<CharacterStatus>();
+                    // 不伤害自己的trainer/不伤害同一个trainer下的队友
+                    if (tarStatus == null || tarStatus == characterStatus.Trainer
+                    || (tarStatus.Trainer != null && tarStatus.Trainer == characterStatus.Trainer))
+                    {
+                        return;
+                    }
+                    
+                    // enemy 之间不互相伤害
+                    if (tarStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy)
+                        && characterStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
+                    {
+                        return;
+                    }
+
                     if (isJumpingDown)
                     {
-                        status.TakeDamage_Host(characterStatus.State.Damage * 2, null);
+                        tarStatus.TakeDamage_Host(characterStatus.State.Damage * 2, null);
                     }
                     else
                     {
-                        status.TakeDamage_Host(characterStatus.State.Damage, null);
+                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
                     }
                     nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                 }
@@ -82,30 +97,21 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     }
     #endregion
 
-    private float nextJudgeAtkTime = 0;
     // Stomper（踩踏者）不能斜着攻击
     protected override void UpdateAttackInput()
     {
-        if (!isAiming)
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
-            if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+            var diff = AggroTarget.transform.position - transform.position;
+            var atkRange = characterStatus.State.ShootRange;
+            // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
+            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
             {
-                var diff = AggroTarget.transform.position - transform.position;
-                var atkRange = characterStatus.State.ShootRange;
-                // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
-                if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+                // 处于水平一条线时，跳跃踩踏攻击
+                if (Mathf.Abs(diff.y) < 0.5f)
                 {
-                    if (Time.time >= nextJudgeAtkTime)
-                    {
-                        nextJudgeAtkTime = Time.time + 1f;
-                        // 处于水平一条线时，跳跃踩踏攻击
-                        if (Mathf.Abs(diff.y) < 0.5f)
-                        {
-                            characterInput.LookInput = diff.normalized;
-                            isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-                            return;
-                        }
-                    }
+                    characterInput.LookInput = diff.normalized;
+                    return;
                 }
             }
             characterInput.LookInput = Vector2.zero;
@@ -117,16 +123,15 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     private Coroutine jumpCoroutine = null;
     protected override void AttackAction()
     {
-        if (isAiming && !isAttack)
+        if (!isAttack)
         {
-            isAiming = false;
             if (jumpCoroutine != null) return;
             if (characterInput.LookInput.sqrMagnitude < 0.1f) return;
             if (Time.time < nextAtkTime) return;
-
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
-            jumpCoroutine = StartCoroutine(JumpToTarget(AggroTarget.transform.position, 5));
+            if (AggroTarget != null)
+                jumpCoroutine = StartCoroutine(JumpToTarget(AggroTarget.transform.position, 5));
         }
     }
     
@@ -140,6 +145,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         var shadowPos = transform.position;
         shadowPos.y -= characterBound.extents.y;
         var shadowObj = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.shadowPrefab, shadowPos);
+        TobeDestroyed.Add(shadowObj);
 
         animator.SetTrigger("Jump");
         var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -178,12 +184,18 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         }
         yield return new WaitForSeconds(afterJumpDuration);
         // transform.position = targetPos; // 只会水平跳，所以不用设置到targetPos，否则可能会出现不完全水平，最后会突然跳到目标位置的问题
-        characterInput.LookInput = Vector2.zero;
         isJumpingDown = false;
         Destroy(shadowObj);
+        TobeDestroyed.Remove(shadowObj);
 
-        jumpCoroutine = null;
         isAttack = false;
+        if (isAi)
+        {
+            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+            // 这时候 coroutine 还不是null，所以不会再次进入攻击
+            yield return new WaitForSeconds(Random.Range(1, 3f));
+        }
+        jumpCoroutine = null;
     }
     #endregion
 }

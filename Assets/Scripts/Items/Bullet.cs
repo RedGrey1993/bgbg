@@ -109,8 +109,8 @@ public class Bullet : MonoBehaviour
 
                 penetrateCount--;
                 SplitCount--;
-                if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) 
-                    && OwnerStatus != null && OwnerStatus.gameObject.CompareTag(Constants.TagEnemy))
+                if (tarStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy) 
+                    && OwnerStatus != null && OwnerStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
                 {
                     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
                 }
