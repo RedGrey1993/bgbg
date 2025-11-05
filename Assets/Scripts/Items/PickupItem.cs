@@ -39,13 +39,21 @@ public class PickupItem : MonoBehaviour
             var status = player.GetComponentInParent<CharacterStatus>();
             if (status != null)
             {
-                status.State.ActiveSkillId = skillData.id;
-                status.State.ActiveSkillCurCd = -1;
-                if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+                // // TODO: 系统日志拾取机制，弹窗提示
+                // if (skillData.id == Constants.SysLogItemId)
+                // {
+                //     // This is a strange log fragment
+                // }
+                // else
                 {
-                    var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                    spc.UpdateMyStatusUI(status.State);
-                    UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
+                    status.State.ActiveSkillId = skillData.id;
+                    status.State.ActiveSkillCurCd = -1;
+                    if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+                    {
+                        var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                        spc.UpdateMyStatusUI(status.State);
+                        UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
+                    }
                 }
                 LevelManager.Instance.PickupItems.Remove(Id);
                 Destroy(gameObject);

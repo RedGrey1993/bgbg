@@ -9,15 +9,11 @@ public class CharacterData : ScriptableObject
     public AudioClip shootSound;
     public AudioClip jumpSound;
     public AudioClip hurtSound;
-    public AudioClip energyWaveAccumulateSound;
-    public AudioClip energyWaveShootSound;
     public GameObject bulletPrefab;
     // Minion 1 0 Stomper
     public GameObject shadowPrefab;
     // Minion 2 0 Glitch Slime
     public GameObject deadBodyPrefab;
-    // Boss 2 0 Master Dragon Turtle
-    public GameObject energyWavePrefab;
     // Boss 5 0 The Ruler
     public GameObject explosionEffectPrefab;
     public GameObject summonEffectPrefab;

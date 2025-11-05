@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
-  m_Name: 9-Phantom-Charge
+  m_Name: 10-Master-Long-Wave
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
-  id: 9
-  skillName: Phantom Charge
-  description: Summon 2 phantom tanks that charge towards the nearest enemy in the
-    direction you are facing.
+  id: 10
+  skillName: Master Long's Wave
+  description: Release a single, gradually expanding energy wave in a chosen direction.
+    If your health is below 50%, release 8 energy waves instead.
   backgroundStory: 
-  icon: {fileID: -6216176378285699219, guid: 6be891b17eb899340b5f6d650c1a6de7, type: 3}
+  icon: {fileID: 2701090753469027088, guid: cbb367e14ee24a747a86f626486b5c55, type: 3}
   IsActive: 1
-  cooldown: 2
-  executor: {fileID: 11400000, guid: 2c691f50ff9734e45bed3dfea50e236d, type: 2}
+  cooldown: 10
+  executor: {fileID: 11400000, guid: acd2dee7ca6d45b42bb2928cfe300681, type: 2}

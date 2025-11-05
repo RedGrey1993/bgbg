@@ -9,17 +9,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 {
-    protected CharacterInput characterInput;
-    protected CharacterStatus characterStatus;
-    protected CharacterData CharacterData => characterStatus.characterData;
+    public CharacterInput characterInput { get; private set; }
+    public CharacterStatus characterStatus { get; private set; }
+    public CharacterData CharacterData => characterStatus.characterData;
     protected Rigidbody2D rb;
     protected Collider2D col2D;
-    protected Animator animator;
+    public Animator animator { get; private set; }
     protected AudioSource audioSource;
-    protected bool isAi = false;
+    public AudioSource OneShotAudioSource { get; set; } = null;
+    public bool isAi { get; private set; } = false;
     protected float nextAtkTime = 0f;
     protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
-    protected bool isAttack = false; // 攻击时不能移动
+    public bool isAttack { set; get; } = false; // 攻击时不能移动
     public Vector2 LookDir { get; protected set; } = Vector2.up;
     public List<GameObject> TobeDestroyed { get; set; } = new List<GameObject>();
     public Coroutine ActiveSkillCoroutine { get; set; } = null;
@@ -493,7 +494,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
         {
-            LookDir = lookInput;
+            LookDir = moveInput;
             // 将角色面朝移动方向
             if (skinnedMeshRenderer != null)
             {

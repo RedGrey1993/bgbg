@@ -6,8 +6,6 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
-    public GameObject chargeEffectPrefab;
-
     protected override void SubclassStart()
     {
         if (characterStatus.State.ActiveSkillId == 0)

@@ -49,7 +49,8 @@ MonoBehaviour:
   scaleSpeed: 50
   rotateSpeed: 20
   pushForce: 10
-  damageInterval: 1
+  damageInterval: 0.3
+  minDamage: 10
 --- !u!50 &3826689437446375980
 Rigidbody2D:
   serializedVersion: 5

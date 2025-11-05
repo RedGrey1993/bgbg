@@ -2,6 +2,19 @@ using UnityEngine;
 
 public class ContraBillAI : CharacterBaseAI
 {
+    // protected override void SubclassStart()
+    // {
+    //     if (characterStatus.State.ActiveSkillId == 0)
+    //     {
+    //         characterStatus.State.ActiveSkillId = Constants.MasterLongWaveSkillId;
+    //         characterStatus.State.ActiveSkillCurCd = -1;
+    //         if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+    //         {
+    //             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+    //             spc.UpdateMyStatusUI(characterStatus.State);
+    //         }
+    //     }
+    // }
     #region ICharacterAI implementation
     public override void OnDeath()
     {

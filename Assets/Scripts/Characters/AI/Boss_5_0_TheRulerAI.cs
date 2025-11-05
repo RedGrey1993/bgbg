@@ -15,6 +15,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     [SerializeField] private GameObject speedupEffectPrefab;
     [SerializeField] private GameObject rageEffectPrefab;
     [SerializeField] private int pokeMinionBuffTime = 5;
+    [SerializeField] private AudioClip energyWaveAccumulateSound;
+    [SerializeField] private AudioClip energyWaveShootSound;
+    [SerializeField] private GameObject energyWavePrefab;
 
     private List<BossPrefabInfo> prevBossPrefabInfos;
     protected override void SubclassStart()
@@ -315,7 +318,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 skillData.executor.ExecuteSkill(gameObject, skillData);
             }
             else if (rndAtk == 1)
-                energyWaveCoroutine ??= StartCoroutine(Boss2_EnergyWave(9));
+                energyWaveCoroutine ??= StartCoroutine(Boss2_EnergyWave(8));
             else if (rndAtk == 2)
                 summonPokesCoroutine ??= StartCoroutine(Boss3_SummonAndStrengthenPokes(3));
         }
@@ -391,11 +394,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
         var vfx = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.accumulateEffectPrefab, room.center);
-        if (CharacterData.energyWaveAccumulateSound)
+        if (energyWaveAccumulateSound)
         {
-            var audioSrc = gameObject.AddComponent<AudioSource>();
-            audioSrc.PlayOneShot(CharacterData.energyWaveAccumulateSound);
-            Object.Destroy(audioSrc, CharacterData.energyWaveAccumulateSound.length);
+            if (OneShotAudioSource == null)
+                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
+            OneShotAudioSource.PlayOneShot(energyWaveAccumulateSound);
         }
         yield return new WaitForSeconds(1.6f);
         Vector2 lookInput = Vector2.right;
@@ -414,11 +417,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             Vector2 waveStartPosition = room.center;
             waveStartPosition += waveOffset;
 
-            var energeWave = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.energyWavePrefab, waveStartPosition);
+            var energeWave = LevelManager.Instance.InstantiateTemporaryObject(energyWavePrefab, waveStartPosition);
             EnergyWave energyWaveScript = energeWave.GetComponent<EnergyWave>();
-            energyWaveScript.StartPosition = waveStartPosition;
+            energyWaveScript.PosOffset = waveOffset;
             energyWaveScript.Direction = lookInput.normalized;
-            energyWaveScript.OwnerStatus = characterStatus;
+            energyWaveScript.OwnerStatus = null;
             energyWaveScript.Rotate = count > 1 ? rotateDir : 0;
 
             lookInput = rotationPlus * lookInput;
@@ -426,11 +429,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         }
         rotateDir = -rotateDir;
 
-        if (CharacterData.energyWaveShootSound)
+        if (energyWaveShootSound)
         {
-            var audioSrc = gameObject.AddComponent<AudioSource>();
-            audioSrc.PlayOneShot(CharacterData.energyWaveShootSound);
-            Object.Destroy(audioSrc, CharacterData.energyWaveShootSound.length);
+            if (OneShotAudioSource == null)
+                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
+            OneShotAudioSource.PlayOneShot(energyWaveShootSound);
         }
 
         yield return new WaitForSeconds(2.5f);

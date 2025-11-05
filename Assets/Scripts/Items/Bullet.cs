@@ -93,10 +93,11 @@ public class Bullet : MonoBehaviour
                 return;
             }
             // 检测是否碰撞到Player
-            if (other.gameObject.CompareThisAndParentTag(Constants.TagPlayer) || other.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
+            if (other.gameObject.CompareThisAndParentTag(Constants.TagPlayer)
+                || other.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
             {
-                CharacterStatus targetCharacterStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
-                if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
+                CharacterStatus tarStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
+                if (tarStatus == null || tarStatus == OwnerStatus)
                 { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                     if (bounceCount > 0)
                     {
@@ -107,13 +108,13 @@ public class Bullet : MonoBehaviour
 
                 penetrateCount--;
                 SplitCount--;
-                if (targetCharacterStatus?.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
+                if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
                 {
                     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
                 }
-                else if (targetCharacterStatus != null)
+                else if (tarStatus != null)
                 {
-                    targetCharacterStatus.TakeDamage_Host(Damage, OwnerStatus);
+                    tarStatus.TakeDamage_Host(Damage, OwnerStatus);
                     if (SplitCount >= 0) // 左右各相距45度分裂为2颗子弹
                     {
                         var startPos = transform.position;

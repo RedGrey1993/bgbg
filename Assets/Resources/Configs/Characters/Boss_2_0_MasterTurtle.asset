@@ -15,19 +15,16 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
-  energyWaveAccumulateSound: {fileID: 8300000, guid: 4083d969bac2f77428ed9304a9467542, type: 3}
-  energyWaveShootSound: {fileID: 8300000, guid: 1f1c899b2041c23459d7d781f85cb975, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  energyWavePrefab: {fileID: 1977356882097113535, guid: 5429d081cc0ed3e439c5ebe40fc206b3, type: 3}
   explosionEffectPrefab: {fileID: 0}
   summonEffectPrefab: {fileID: 0}
   teleportEffectPrefab: {fileID: 0}
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: -5587028817257834737, guid: 51ff3a0e708e1b6488bbd29487885888, type: 3}
   CharacterType: 7
-  MaxHp: 5
+  MaxHp: 5000
   MoveSpeed: 3
   ShootRange: 10000
   BulletSpeed: 6
