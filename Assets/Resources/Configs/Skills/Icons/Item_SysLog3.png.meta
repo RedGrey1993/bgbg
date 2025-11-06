@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 6be891b17eb899340b5f6d650c1a6de7
+guid: f14de4cc584ee3f45bf965a19a2660a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6216176378285699219
-    second: Item_PhantomCharge3_0
+      213: -7338485984541944109
+    second: Item_SysLog3_0
+  - first:
+      213: 7396159260737587060
+    second: Item_SysLog3_1
+  - first:
+      213: -6283528504272298819
+    second: Item_SysLog3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 800
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +106,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Item_PhantomCharge3_0
+      name: Item_SysLog3_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 43
-        width: 949
-        height: 938
+        x: 122
+        y: 124
+        width: 800
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d6f4b17c484bbb9a0800000000000000
-      internalID: -6216176378285699219
+      spriteID: 3d6d136c0e5782a90800000000000000
+      internalID: -7338485984541944109
       vertices: []
       indices: 
       edges: []
@@ -125,7 +131,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dd5c50d4d7c910d4b88b923ec26bc04a
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +139,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1024.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Item_PhantomCharge3_0: -6216176378285699219
+      Item_SysLog3_0: -7338485984541944109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

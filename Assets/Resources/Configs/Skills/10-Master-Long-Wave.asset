@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Release a single, gradually expanding energy wave in a chosen direction.
     If your health is below 50%, release 8 energy waves instead.
   backgroundStory: 
-  icon: {fileID: 2701090753469027088, guid: cbb367e14ee24a747a86f626486b5c55, type: 3}
+  icon: {fileID: 2194614285991703420, guid: 343119070d3e89a4e9eb8ad055c71868, type: 3}
   IsActive: 1
   cooldown: 10
   executor: {fileID: 11400000, guid: acd2dee7ca6d45b42bb2928cfe300681, type: 2}

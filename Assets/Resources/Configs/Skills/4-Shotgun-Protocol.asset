@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   id: 4
   skillName: Shotgun Protocol
-  description: Your shooting becomes a cone-shaped shotgun that fires 5 pellets,
+  description: Your shooting becomes a cone-shaped shotgun that fires 3 more pellets,
     but the range is reduced.
   backgroundStory: 
   icon: {fileID: 21300000, guid: 727bcedcbc099394698860ceaf776f03, type: 3}
   IsActive: 0
+  cooldown: 10
   executor: {fileID: 11400000, guid: 8701c4837a9b48a488daed9e2535a8ba, type: 2}

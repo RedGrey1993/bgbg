@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HomingShotExecutor", menuName = "Skills/Effects/Homing Shot")]
-// 穿透子弹
+// 追踪子弹
 public class HomingShotExecutor : SkillExecutor
 {
     public override void ExecuteSkill(GameObject playerObj, SkillData skillData)

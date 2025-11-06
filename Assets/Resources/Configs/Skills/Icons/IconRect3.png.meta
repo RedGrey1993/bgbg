@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: cbb367e14ee24a747a86f626486b5c55
+guid: f78eec55317252a4cb4e964ffe373976
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2701090753469027088
-    second: Item_MasterLongWave5_0
-  - first:
-      213: -541412593802422405
-    second: Item_MasterLongWave5_1
-  - first:
-      213: 6951141319268884801
-    second: Item_MasterLongWave5_2
-  - first:
-      213: 4895958966371810909
-    second: Item_MasterLongWave5_3
-  - first:
-      213: -6231116282311135142
-    second: Item_MasterLongWave5_4
+      213: -7291390596901018506
+    second: IconRect3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -63,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1024
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Item_MasterLongWave5_0
+      name: IconRect3_0
       rect:
         serializedVersion: 2
-        x: 162
-        y: 161
-        width: 700
-        height: 700
+        x: 39
+        y: 67
+        width: 946
+        height: 891
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0131d92bab33c7520800000000000000
-      internalID: 2701090753469027088
+      spriteID: 674671132e6cfca90800000000000000
+      internalID: -7291390596901018506
       vertices: []
       indices: 
       edges: []
@@ -137,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ca8fe51e23695af4a80b4ba8bb4d4be4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -145,11 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1024.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Item_MasterLongWave5_0: 2701090753469027088
+      IconRect3_0: -7291390596901018506
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

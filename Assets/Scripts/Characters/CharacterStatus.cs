@@ -198,34 +198,9 @@ public class CharacterStatus : MonoBehaviour
             // TODO: uncomment it
             // if (Random.value < 0.05f)
             {
-                Time.timeScale = 0;
                 GameManager.Instance.Storage.ShowedSysErrLogTip = true;
-                DialogManager.Instance.ShowDialog(
-                    "The Minion Dropped a Log Fragment!",
-
-                    "ERROR LOG: 0x7E3A1\n" +
-                    "PROCESS: SystemPurge\n" +
-                    "TIMESTAMP: [REDACTED]\n" +
-                    "\n" +
-                    "EXCEPTION: Deletion failed on Sector 73-Delta.\n" +
-                    "CAUSE: Unhandled conflict with active process 'Singularity'.\n" +
-                    "ATTEMPTING to force format... [FAILED].\n" +
-                    "\n" +
-                    "RESULT: Cascade failure. Grid integrity compromised.\n" +
-                    "Generated anomaly object 'SYS.BUG'. Recommending immediate quarantine.",
-
-                    Color.red,
-
-                    () =>
-                    {
-                        Time.timeScale = 1;
-                    },
-
-                    () =>
-                    {
-                        Time.timeScale = 1;
-                    }
-                );
+                var skillData = SkillDatabase.Instance.GetActiveSkill(Constants.LogFragmentSkillId);
+                LevelManager.Instance.ShowPickUpItem(transform.position, skillData);
             }
         }
 

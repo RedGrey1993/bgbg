@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HealthRecoveryExecutor", menuName = "Skills/Effects/Health Recovery")]
-public class HealthRecoveryExecutor : SkillExecutor
+[CreateAssetMenu(fileName = "LogFragmentExecutor", menuName = "Skills/Effects/11 Log Fragment")]
+public class LogFragmentExecutor : SkillExecutor
 {
     public override void ExecuteSkill(GameObject playerObj, SkillData skillData)
     {
@@ -9,6 +9,8 @@ public class HealthRecoveryExecutor : SkillExecutor
         
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
         var state = playerStatus.State;
-        state.CurrentHp = Mathf.Min(state.CurrentHp + state.MaxHp / 2, state.MaxHp);
+        state.ActiveSkillCurCd = skillData.cooldown;
+
+        UIManager.Instance.ShowInfoPanel("Nothing Happened", Color.white, 3);
     }
 }
