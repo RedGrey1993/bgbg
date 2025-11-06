@@ -27,9 +27,10 @@ public class SkillTooltip : MonoBehaviour
         }
     }
 
-    private void ShowTooltip(string text)
+    private void ShowTooltip(string text, Color color)
     {
         descriptionText.text = text;
+        descriptionText.color = color;
         tooltipPanel.gameObject.SetActive(true);
     }
 
@@ -39,9 +40,9 @@ public class SkillTooltip : MonoBehaviour
     }
 
     // 静态方法方便从任何地方调用
-    public static void ShowTooltip_Static(string text)
+    public static void ShowTooltip_Static(string text, Color color)
     {
-        instance.ShowTooltip(text);
+        instance.ShowTooltip(text, color);
     }
 
     public static void HideTooltip_Static()

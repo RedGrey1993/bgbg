@@ -26,5 +26,7 @@ MonoBehaviour:
     can never slow down again. Even if you intend to fire single shots, it will enthusiastically
     express itself in an unrelenting \"rat-a-tat-tat.\""
   icon: {fileID: 5790961822528240157, guid: 34a6ad83367812a4abdb0be61c0b7446, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
   IsActive: 0
+  cooldown: 10
   executor: {fileID: 11400000, guid: 70fb85f25d59a4d46a8bb5244cecdff8, type: 2}

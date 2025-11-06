@@ -45,7 +45,10 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             "\n\n" +
             SkillData.description +
             "\n\n" +
-            SkillData.backgroundStory);
+            SkillData.backgroundStory,
+
+            SkillData.tipColor
+        );
     }
 
     public void OnPointerExit(PointerEventData eventData)

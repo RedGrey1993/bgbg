@@ -20,7 +20,7 @@ MonoBehaviour:
 
     TIMESTAMP: [REDACTED]
 
-    
+
 
     EXCEPTION:
     Deletion failed on Sector 73-Delta.
@@ -30,7 +30,7 @@ MonoBehaviour:
 
     ATTEMPTING to force format... [FAILED].
 
-    
+
 
     RESULT:
     Cascade failure. Grid integrity compromised.
@@ -39,6 +39,7 @@ MonoBehaviour:
     Recommending immediate quarantine.'
   backgroundStory: 
   icon: {fileID: -7338485984541944109, guid: f14de4cc584ee3f45bf965a19a2660a5, type: 3}
+  tipColor: {r: 1, g: 0, b: 0, a: 1}
   IsActive: 1
   cooldown: 1
   executor: {fileID: 11400000, guid: ffcf4f4a6d114a642a3d805a6fe458a7, type: 2}
