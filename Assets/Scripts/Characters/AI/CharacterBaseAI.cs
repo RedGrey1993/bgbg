@@ -80,7 +80,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             nextBounceTime = Time.time + 1f;
             // 碰到墙还好，不反弹，碰到角色时很可能会互相卡住，所以需要反弹分开
-            if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
+            if (collision.gameObject.CompareTag(Constants.TagPlayer) 
+                || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
                 Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back");
                 isBouncingBack = true;
@@ -171,17 +172,32 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             if (AggroTarget == null || !LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+                if (characterStatus.Trainer != null)
                 {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
+                    Move_FollowAcrossRooms(characterStatus.Trainer);
+                    nextMoveInputChangeTime = Time.time + 0.05f;
+                    return; // 在靠近门的时候需要高频率修改input，才能够快速穿过门，否则会在门边来回折返
                 }
-                Move_RandomMoveToTarget(targetPos);
+                else
+                {
+                    if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+                    {
+                        var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+                        targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
+                    }
+                    Move_RandomMoveToTarget(targetPos);
+                }
             }
             else
             {
-                if (isBouncingBack) isBouncingBack = false;
-                else Move_ChaseInRoom();
+                if (isBouncingBack) // 反弹时随机等待一段时间，避免2个角色相撞卡住
+                {
+                    isBouncingBack = false;
+                }
+                else
+                {
+                    Move_ChaseInRoom();
+                }
             }
             chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
             nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
@@ -334,6 +350,78 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             // 在攻击距离内左右横跳拉扯
             characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
+        }
+    }
+
+    protected void Move_FollowAcrossRooms(CharacterStatus trainer)
+    {
+        var diff = trainer.transform.position - transform.position;
+        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
+        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
+        Constants.PositionToIndex(transform.position, out int sx, out int sy);
+        Constants.PositionToIndex(trainer.transform.position, out int tx, out int ty);
+
+        // 在同一间房间，直接追击
+        if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
+        {
+            // 优先穿过门，不管是否在攻击范围内，即在墙边时先快速远离墙
+            if (XNearWall())
+            {
+                characterInput.MoveInput = new Vector2(XNearLeftWall() ? 1 : -1, 0);
+            }
+            else if (YNearWall())
+            {
+                characterInput.MoveInput = new Vector2(0, YNearBottomWall() ? 1 : -1);
+            }
+            // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
+            else if (diff.sqrMagnitude > sqrShootRange)
+            {
+                characterInput.MoveInput = (trainer.transform.position - transform.position).normalized;
+            }
+            else // 进入攻击范围
+            {
+                // 不再移动
+                characterInput.MoveInput = Vector2.zero;
+            }
+        }
+        else
+        {
+            // TODO: 如果相邻的房间被炸了，这个逻辑还没有考虑
+            // 在不同房间，走门追击
+            if (tx != sx) // 房间的x坐标不同
+            {
+                // 比最近的竖门位置高，往斜下走
+                if (YHigherThanDoor(1f - col2D.bounds.extents.y))
+                {
+                    characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), -1);
+                }
+                // 比最近的竖门位置低，往斜上走
+                else if (YLowerThanDoor(1f - col2D.bounds.extents.y))
+                {
+                    characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), 1);
+                }
+                else // 穿过门
+                {
+                    characterInput.MoveInput = new Vector2(tx < sx ? -1 : 1, 0);
+                }
+            }
+            else if (ty != sy) // 房间的y坐标不同
+            {
+                // 在最近的横门的右边，往左斜方走
+                if (XRighterThanDoor(1f - col2D.bounds.extents.x))
+                {
+                    characterInput.MoveInput = new Vector2(-1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
+                }
+                // 在最近的横门的左边，往右斜方走
+                else if (XLefterThanDoor(1f - col2D.bounds.extents.x))
+                {
+                    characterInput.MoveInput = new Vector2(1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
+                }
+                else // 穿过门
+                {
+                    characterInput.MoveInput = new Vector2(0, ty < sy ? -1 : 1);
+                }
+            }
         }
     }
     #endregion

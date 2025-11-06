@@ -67,6 +67,7 @@ public class ContraBillAI : CharacterBaseAI
                 {
                     // 在靠近门的时候需要高频率修改input，才能够快速穿过门，否则会在门边来回折返
                     Move_ChaseAcrossRooms();
+                    nextMoveInputChangeTime = Time.time + 0.05f;
                 }
             }
         }

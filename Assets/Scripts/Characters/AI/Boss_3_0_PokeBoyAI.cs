@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -86,17 +87,14 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             }
             existingPokes.RemoveAll(obj => obj.Item1 == null);
 
-            if (existingPokes.Count > 0)
+            if (existingPokes.Count > 0 && strengthenCoroutine == null && Time.time > nextStrengthenTime)
             {
-                if (Time.time > nextStrengthenTime)
-                {
-                    nextStrengthenTime = Time.time + Random.Range(pokeMinionBuffTime * 2, pokeMinionBuffTime * 3);
-                    strengthenCoroutine = StartCoroutine(StrengthenPokes());
-                }
+                nextStrengthenTime = Time.time + Random.Range(pokeMinionBuffTime * 3, pokeMinionBuffTime * 4);
+                strengthenCoroutine = StartCoroutine(StrengthenPokes());
             }
 
             float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
-            if (pokeMinionPrefabs.Count > 0)
+            if (pokeMinionPrefabs.Count > 0 && summonCoroutine == null)
             {
                 // 召唤pokes 15s后会复活
                 if (isAi)
@@ -132,7 +130,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
                 }
             }
 
-            if (!isAi || AggroTarget != null)
+            if (strengthenCoroutine == null && throwPokeballCoroutine == null && (!isAi || AggroTarget != null))
             {
                 bool throwBall = false;
                 if (isAi && AggroTarget != null)
@@ -206,30 +204,36 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             pokeMinion.name += pokePrefab.Item2;
             pokeMinion.tag = gameObject.tag;
             if (pokeMinion.layer == LayerMask.NameToLayer("Default")) pokeMinion.layer = gameObject.layer;
+            Physics2D.SyncTransforms();
+            var col2D = pokeMinion.GetComponentInChildren<Collider2D>();
+            var tarPos = pokeMinion.transform.position;
+            tarPos.y += col2D.bounds.extents.y + 0.5f;
+            // 将血条显示到对象的头上
+            var miniStatusCanvas = pokeMinion.GetComponentInChildren<Canvas>();
+            if (miniStatusCanvas == null)
+            {
+                var obj1 = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
+                obj1.transform.SetParent(pokeMinion.transform);
+                miniStatusCanvas = obj1.GetComponent<Canvas>();
+            }
             if (pokeMinion.CompareTag(Constants.TagPlayer))
             {
-                Physics2D.SyncTransforms();
-                var col2D = pokeMinion.GetComponentInChildren<Collider2D>();
-                var tarPos = pokeMinion.transform.position;
-                tarPos.y += col2D.bounds.extents.y + 0.5f;
-                // 将血条显示到对象的头上
-                var miniStatusCanvas = pokeMinion.GetComponentInChildren<Canvas>();
-                if (miniStatusCanvas == null)
-                {
-                    var obj1 = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
-                    obj1.transform.SetParent(pokeMinion.transform);
-                    miniStatusCanvas = obj1.GetComponent<Canvas>();
-                }
                 var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>(true);
-                playerNameText.gameObject.SetActive(true);
                 if (playerNameText != null)
                 {
-                    playerNameText.text = $"Companion #{pokePrefab.Item2}";
+                    playerNameText.gameObject.SetActive(true);
+                    playerNameText.text = $"Companion #{pokePrefab.Item2 + 1}";
                 }
                 var obj2 = Instantiate(capturedMinionCanvas, tarPos, Quaternion.identity);
                 obj2.transform.SetParent(pokeMinion.transform);
             }
-            pokeMinion.GetComponent<CharacterStatus>().Trainer = characterStatus;
+            var pokeStatus = pokeMinion.GetComponent<CharacterStatus>();
+            pokeStatus.Trainer = characterStatus;
+            var pokeState = characterStatus.State.CatchedMinionStates[pokePrefab.Item2];
+            pokeState.Position = null;
+            pokeState.CurrentHp = pokeState.MaxHp;
+            pokeState.Damage = characterStatus.State.Damage;
+            pokeStatus.SetState(pokeState);
             existingPokes.Add((pokeMinion, pokePrefab.Item2));
         }
 
@@ -296,18 +300,12 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     {
         var status = poke.GetComponent<CharacterStatus>();
         status.State.Damage *= 2;
-        var sr = poke.GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.color = Color.red;
-        }
+        var initialColor = status.State.Color.ToColor();
+        status.SetColor(Color.red);
 
         yield return new WaitForSeconds(pokeMinionBuffTime);
         status.State.Damage /= 2;
-        if (sr != null)
-        {
-            sr.color = Color.white;
-        }
+        status.SetColor(initialColor);
     }
     #endregion
 
@@ -329,7 +327,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         }
         pokeball.SetActive(false);
         float elapsedTime = Time.time - startTime;
-        yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 2));
+        yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 20));
 
         isAttack = false;
         animator.Play("Male Walking");
@@ -348,26 +346,21 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         if (CharacterManager.Instance.minionObjects.ContainsKey(enemy.State.PlayerId))
         {
             var prefabInfo = CharacterManager.Instance.minionPrefabInfos[enemy.State.PlayerId];
-            characterStatus.State.CatchedMinions.Add(prefabInfo);
+            var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
+            var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
+
             if (characterStatus.State.CatchedMinions.Count == maxPokeMinionCount)
             {
                 characterStatus.State.CatchedMinions[circularIdx] = prefabInfo;
-            }
-            else
-            {
-                characterStatus.State.CatchedMinions.Add(prefabInfo);
-            }
-
-            var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
-            var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
-            if (pokeMinionPrefabs.Count == maxPokeMinionCount)
-            {
+                characterStatus.State.CatchedMinionStates[circularIdx] = enemy.State.Clone();
                 pokeMinionPrefabs[circularIdx] = minionPrefab;
                 pokeMinionDeadTime[circularIdx] = -pokeMinionRebornTime;
                 circularIdx = (circularIdx + 1) % maxPokeMinionCount;
             }
             else
             {
+                characterStatus.State.CatchedMinions.Add(prefabInfo);
+                characterStatus.State.CatchedMinionStates.Add(enemy.State.Clone());
                 pokeMinionPrefabs.Add(minionPrefab);
                 pokeMinionDeadTime.Add(-pokeMinionRebornTime);
             }

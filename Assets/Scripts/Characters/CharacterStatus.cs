@@ -287,13 +287,16 @@ public class CharacterStatus : MonoBehaviour
             meshRenderer.material = grayMaterial;
         }
 
-        State.Color = new ColorProto
+        if (IsAlive()) // 只有或者才存储颜色到proto中，死亡后设置的灰色不存储到proto中
         {
-            R = color.r,
-            G = color.g,
-            B = color.b,
-            A = color.a
-        };
+            State.Color = new ColorProto
+            {
+                R = color.r,
+                G = color.g,
+                B = color.b,
+                A = color.a
+            };
+        }
     }
 
     public void SetScale(float scale)

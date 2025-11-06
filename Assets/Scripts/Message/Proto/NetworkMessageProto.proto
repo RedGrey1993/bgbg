@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 22
+    // next index = 23
     int32 PlayerId = 1;
     string PlayerName = 2;
     int32 MaxHp = 3;
@@ -67,6 +67,7 @@ message PlayerState
     float Scale = 17;
     ColorProto Color = 18;
     repeated MinionPrefabInfo CatchedMinions = 21;
+    repeated PlayerState CatchedMinionStates = 22;
 }
 
 message BulletState
