@@ -6645,6 +6645,7 @@ GameObject:
   - component: {fileID: 1764409090}
   - component: {fileID: 1764409086}
   - component: {fileID: 1764409091}
+  - component: {fileID: 1764409092}
   m_Layer: 0
   m_Name: CinemachineVirtualCamera
   m_TagString: Untagged
@@ -6782,6 +6783,22 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &1764409092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764409085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1165d0dbbe80d5419dc2d7443cb55a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrthographicZoom
+  zoomSpeed: 0.5
+  minOrthographicSize: 1
+  maxOrthographicSize: 20
+  cinemachineCamera: {fileID: 1764409088}
 --- !u!1 &1776241688
 GameObject:
   m_ObjectHideFlags: 0

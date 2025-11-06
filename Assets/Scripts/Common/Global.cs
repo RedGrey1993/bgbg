@@ -91,6 +91,7 @@ public static class Constants
     public const int PhantomChargeSkillId = 9;
     public const int MasterLongWaveSkillId = 10;
     public const int NewRulerPlayerId = 123456789;
+    public const float Eps = 0.00001f;
 
     public static readonly int[] LevelUpExp = {
         100,
@@ -139,10 +140,16 @@ public static class Constants
         {
             x = -1;
             y = -1;
-        } else
-        {     
+        }
+        else
+        {
             x = (int)position.x / RoomStep;
             y = (int)position.y / RoomStep;
         }
+    }
+    
+    public static bool IsZero(this float f)
+    {
+        return Mathf.Abs(f) < Eps;
     }
 }

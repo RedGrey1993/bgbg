@@ -77,15 +77,17 @@ public class EnergyWave : MonoBehaviour
                 || collision.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
         {
             CharacterStatus tarStatus = collision.gameObject.GetComponentInParent<CharacterStatus>();
-            if (tarStatus == null || tarStatus == OwnerStatus)
+            if (tarStatus == null || tarStatus == OwnerStatus || tarStatus.Trainer == OwnerStatus)
             { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                 return; // 不伤害自己
             }
-            if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) == true 
+
+            // 敌人之间不互相伤害；
+            if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) == true
                 && (OwnerStatus == null || OwnerStatus.gameObject.CompareTag(Constants.TagEnemy) == true))
-                // 只有TheRuler不设置OwnerStatus，因为统治者调用这个技能时，是固定在房间中间发射
+            // 只有TheRuler不设置OwnerStatus，因为统治者调用这个技能时，是固定在房间中间发射
             {
-                return; // 敌人之间不互相伤害；
+                return;
             }
 
             Vector2 diff = Direction * Time.deltaTime * pushForce;
