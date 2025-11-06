@@ -14,35 +14,26 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (collision.gameObject.CompareThisAndParentTag(Constants.TagPlayer)
-                || collision.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
+            if (collision.gameObject.IsPlayerOrEnemy())
             {
                 if (Time.time > nextDamageTime)
                 {
-                    var tarStatus = collision.gameObject.GetComponent<CharacterStatus>();
-                    // 不伤害自己的trainer/不伤害同一个trainer下的队友
-                    if (tarStatus == null || tarStatus == characterStatus.Trainer
-                    || (tarStatus.Trainer != null && tarStatus.Trainer == characterStatus.Trainer))
+                    var tarStatus = collision.GetCharacterStatus();
+                    if (tarStatus != null)
                     {
-                        return;
-                    }
-                    
-                    // enemy 之间不互相伤害
-                    if (tarStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy)
-                        && characterStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
-                    {
-                        return;
-                    }
+                        if (characterStatus.IsFriendlyUnit(tarStatus))
+                            return;
 
-                    if (isJumpingDown)
-                    {
-                        tarStatus.TakeDamage_Host(characterStatus.State.Damage * 2, null);
+                        if (isJumpingDown)
+                        {
+                            tarStatus.TakeDamage_Host(characterStatus.State.Damage * 2, null);
+                        }
+                        else
+                        {
+                            tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
+                        }
+                        nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                     }
-                    else
-                    {
-                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
-                    }
-                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                 }
             }
         }
@@ -79,7 +70,8 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             }
             characterInput.MoveInput = diffNormalized.normalized;
         }
-        else // 进入攻击范围
+        else // 进入攻击范围，由于有接触伤害，所以仍然朝玩家靠近；
+        // Stomper还有一个踩踏攻击需要用到攻击距离，所以不能像slime那样直接将攻击距离设置为0
         {
             if (XNearWall(1)) // 靠近竖墙，先竖着走，否则很容易撞墙
             {
@@ -105,7 +97,8 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) 
+                || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
             {
                 // 处于水平一条线时，跳跃踩踏攻击
                 if (Mathf.Abs(diff.y) < 0.5f)

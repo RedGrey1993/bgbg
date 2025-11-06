@@ -15,10 +15,11 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
     {
         var diff = AggroTarget.transform.position - transform.position;
         var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
+        var shootRange = characterStatus.State.ShootRange;
 
-        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-        if (diff.sqrMagnitude > sqrShootRange)
+        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围，无法斜着攻击
+        if ((Mathf.Abs(diff.x) > shootRange || Mathf.Abs(diff.y) > 0.5f) 
+            && (Mathf.Abs(diff.y) > shootRange || Mathf.Abs(diff.x) > 0.5f))
         {
             if (Mathf.Abs(diffNormalized.y) > 0.1f)
             {
@@ -27,20 +28,9 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
             }
             characterInput.MoveInput = diffNormalized.normalized;
         }
-        else // 进入攻击范围
+        else // 进入攻击范围，则不再移动
         {
-            if (XNearWall(1)) // 靠近竖墙，先竖着走，否则很容易撞墙
-            {
-                characterInput.MoveInput = new Vector2(0, diffNormalized.y);
-            }
-            else if (YNearWall(1)) // 靠近横墙，先横着走，否则很容易撞墙
-            {
-                characterInput.MoveInput = new Vector2(diffNormalized.x, 0);
-            }
-            else // 走距离大的方向
-            {
-                characterInput.MoveInput = diffNormalized;
-            }
+            characterInput.MoveInput = Vector2.zero;
         }
     }
     #endregion
@@ -52,7 +42,8 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
             var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
             // 进入攻击距离，攻击，爆破小子(BusterBot)只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) 
+                || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
             {
                 characterInput.LookInput = diff.normalized;
                 return;
@@ -69,8 +60,6 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         {
             if (atkCoroutine != null) return;
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
-            if (Time.time < nextAtkTime) { return; }
-            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             atkCoroutine = StartCoroutine(Attack_BusterBot(characterInput.LookInput));
         }

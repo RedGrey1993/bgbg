@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
         var spc = UIManager.Instance.GetComponent<StatusPanelController>();
         spc.ShowMyStatusUI();
 
+        Constants.goToCharacterStatus.Clear();
         LevelManager.Instance.ClearLevel();
         LevelManager.Instance.GenerateLevel(storage);
     }

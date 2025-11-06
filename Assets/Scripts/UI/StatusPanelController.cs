@@ -48,6 +48,10 @@ public class StatusPanelController : MonoBehaviour
             if (state.ActiveSkillCurCd == -1 || state.ActiveSkillCurCd > skillData.cooldown)
                 state.ActiveSkillCurCd = skillData.cooldown;
             activeSkillCdSlider.maxValue = skillData.cooldown;
+            // if (state.ActiveSkillCurCd > activeSkillCdSlider.value)
+            // {
+            //     // TODO: 播放技能cd恢复音效
+            // }
             activeSkillCdSlider.value = state.ActiveSkillCurCd;
             if (state.ActiveSkillCurCd < skillData.cooldown) alpha = 0.8f;
         }

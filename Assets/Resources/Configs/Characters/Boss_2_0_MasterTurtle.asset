@@ -40,5 +40,5 @@ MonoBehaviour:
   canAttackDiagonally: 1
   AggroRange: 10000
   AggroChangeInterval: 2
-  minChaseMoveInputInterval: 0.5
-  maxChaseMoveInputInterval: 1
+  minChaseMoveInputInterval: 0.05
+  maxChaseMoveInputInterval: 0.1

@@ -238,7 +238,7 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    public void SetColor(Color color)
+    public void SetColor(Color color, bool store = true) // 临时设置的颜色store=false，则不会保存到proto中
     {
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
@@ -262,7 +262,7 @@ public class CharacterStatus : MonoBehaviour
             meshRenderer.material = grayMaterial;
         }
 
-        if (IsAlive()) // 只有或者才存储颜色到proto中，死亡后设置的灰色不存储到proto中
+        if (IsAlive() && store) // 只有或者才存储颜色到proto中，死亡后设置的灰色不存储到proto中
         {
             State.Color = new ColorProto
             {
@@ -348,5 +348,10 @@ public class CharacterStatus : MonoBehaviour
             spc.UpdateTipsText(roomNo);
             LevelManager.Instance.AddToVisitedRooms(transform.position);
         }
+    }
+
+    void OnDestroy()
+    {
+        Constants.goToCharacterStatus.Remove(gameObject);
     }
 }

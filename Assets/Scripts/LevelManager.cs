@@ -825,6 +825,13 @@ public class LevelManager : MonoBehaviour
     {
         if (pickupItemPrefab != null && skillData != null)
         {
+            var roomId = GetRoomNoByPosition(position);
+            var room = Rooms[roomId];
+            if (position.x < room.xMin + 2) position.x = room.xMin + 2;
+            else if (position.x > room.xMax - 1) position.x = room.xMax - 1;
+            if (position.y < room.yMin + 2) position.y = room.yMin + 2;
+            else if (position.y > room.yMax - 1) position.y = room.yMax - 1;
+            
             var item = Instantiate(pickupItemPrefab, position, Quaternion.identity);
             var itemComponent = item.GetComponent<PickupItem>();
             itemComponent.SetSkillData(skillData);

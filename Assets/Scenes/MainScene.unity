@@ -1070,6 +1070,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6641391400573639146, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
   m_PrefabInstance: {fileID: 375310427}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &379126342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379126343}
+  m_Layer: 9
+  m_Name: Companions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &379126343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379126342}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405228539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,9 +3878,8 @@ MonoBehaviour:
   - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   - {fileID: 5506378715684145941, guid: 5aff9bf8c80eb1a44aae013f719c3dbf, type: 3}
   - {fileID: 5506378715684145941, guid: 1634a816d8766b64a8953461c4e61da1, type: 3}
-  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
-  characterLockStates: 000101010101
+  characterLockStates: 0001010101
 --- !u!1 &1042778857
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,6 +6171,7 @@ MonoBehaviour:
   playerParent: {fileID: 417062435}
   bossParant: {fileID: 372696294}
   minionParant: {fileID: 122761002}
+  companionParent: {fileID: 379126343}
   cameraFollowObject: {fileID: 479583612}
   miniStatusPrefab: {fileID: 2757722354307910650, guid: e15e686a61a5305479a7fac606683d8e, type: 3}
 --- !u!114 &1509823721
@@ -9365,6 +9396,7 @@ SceneRoots:
   - {fileID: 417062435}
   - {fileID: 372696294}
   - {fileID: 122761002}
+  - {fileID: 379126343}
   - {fileID: 693551394}
   - {fileID: 1509823712}
   - {fileID: 8095709235387725523}

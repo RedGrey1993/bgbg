@@ -85,28 +85,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             {
                 Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back");
                 isBouncingBack = true;
-                if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f && Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
-                {
-                    // 对角线方向，随机翻转水平或垂直方向
-                    if (Random.value < 0.5f)
-                    {
-                        characterInput.MoveInput.x = -characterInput.MoveInput.x;
-                        characterInput.MoveInput.y = 0;
-                    }
-                    else
-                    {
-                        characterInput.MoveInput.x = 0;
-                        characterInput.MoveInput.y = -characterInput.MoveInput.y;
-                    }
-                }
-                else if (Mathf.Abs(characterInput.MoveInput.x) > 0.1f)
-                {
-                    characterInput.MoveInput.x = -characterInput.MoveInput.x;
-                }
-                else if (Mathf.Abs(characterInput.MoveInput.y) > 0.1f)
-                {
-                    characterInput.MoveInput.y = -characterInput.MoveInput.y;
-                }
+
+                var contact = collision.GetContact(0);
+                Vector2 normal = contact.normal;
+
+                characterInput.MoveInput = Vector2.Reflect(characterInput.MoveInput, normal).normalized;
             }
         }
     }
@@ -175,7 +158,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 if (characterStatus.Trainer != null)
                 {
                     Move_FollowAcrossRooms(characterStatus.Trainer);
-                    nextMoveInputChangeTime = Time.time + 0.05f;
+                    nextMoveInputChangeTime = Time.time + Random.Range(0.05f, 0.1f);
                     return; // 在靠近门的时候需要高频率修改input，才能够快速穿过门，否则会在门边来回折返
                 }
                 else

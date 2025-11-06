@@ -24,12 +24,12 @@ MonoBehaviour:
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: -8298095546599860091, guid: 6597f6419bc1e4f4381ad4b94fcfd289, type: 3}
   CharacterType: 10
-  MaxHp: 5
+  MaxHp: 5000
   MoveSpeed: 5
   ShootRange: 10
   BulletSpeed: 6
   Damage: 10
-  AttackFrequency: 0.5
+  AttackFrequency: 3
   CriticalRate: 0
   ExpGiven: 5
   spawnOffsets: {x: -2, y: -2}
@@ -40,5 +40,5 @@ MonoBehaviour:
   canAttackDiagonally: 1
   AggroRange: 10000
   AggroChangeInterval: 2
-  minChaseMoveInputInterval: 0.5
-  maxChaseMoveInputInterval: 1
+  minChaseMoveInputInterval: 0.05
+  maxChaseMoveInputInterval: 0.1

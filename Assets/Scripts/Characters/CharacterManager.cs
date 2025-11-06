@@ -10,6 +10,7 @@ public class CharacterManager : MonoBehaviour
     public Transform playerParent;
     public Transform bossParant;
     public Transform minionParant;
+    public Transform companionParent;
     public GameObject cameraFollowObject;
     public GameObject miniStatusPrefab;
 
@@ -62,6 +63,7 @@ public class CharacterManager : MonoBehaviour
         ClearPlayerObjects();
         ClearBossObjects();
         ClearMinionObjects();
+        ClearCompanionObjects();
     }
 
     private List<int> playerRooms;
@@ -354,6 +356,14 @@ public class CharacterManager : MonoBehaviour
         bossPrefabInfos.Clear();
     }
 
+    private void ClearCompanionObjects()
+    {
+        foreach (Transform child in companionParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     private void RemovePlayerObject(int playerId)
     {
         if (playerObjects.TryGetValue(playerId, out GameObject go))
@@ -567,7 +577,7 @@ public class CharacterManager : MonoBehaviour
     {
         GameObject nearestEnemy = null;
         float nearestDistanceSqr = float.MaxValue;
-        if (character.CompareTag(Constants.TagPlayer))
+        if (character.CompareTag(Constants.TagPlayer)) // player寻找enemy
         {
             foreach (Transform child in minionParant)
             {
@@ -611,7 +621,7 @@ public class CharacterManager : MonoBehaviour
                 }
             }
         }
-        else
+        else // TagEnemy，enemy寻找player
         {
             foreach (Transform child in playerParent)
             {
@@ -630,6 +640,29 @@ public class CharacterManager : MonoBehaviour
                             nearestDistanceSqr = distSqr;
                             nearestEnemy = status.gameObject;
                         }
+                    }
+                }
+            }
+        }
+
+        // boss的companion和player的companion 作为敌人
+        foreach (Transform child in companionParent)
+        {
+            // 跳过自己
+            if (child.gameObject == character) continue;
+            if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+            if (character.CompareTag(child.tag)) continue;
+            var cpStatuses = child.GetComponentsInChildren<CharacterStatus>();
+            foreach (var status in cpStatuses)
+            {
+                if (status != null && !status.IsDead())
+                {
+                    Vector2 toMinion = status.transform.position - character.transform.position;
+                    float distSqr = toMinion.sqrMagnitude;
+                    if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toMinion) < rangeAngle)
+                    {
+                        nearestDistanceSqr = distSqr;
+                        nearestEnemy = status.gameObject;
                     }
                 }
             }
@@ -814,7 +847,7 @@ public class CharacterManager : MonoBehaviour
         };
         return boss;
     }
-    
+
     public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms, float scale = 1f)
     {
         var minion = Instantiate(prefab, minionParant);
@@ -823,7 +856,7 @@ public class CharacterManager : MonoBehaviour
         int minionId;
         if (ms != null) minionId = ms.PlayerId;
         else minionId = IdGenerator.NextCharacterId();
-            
+
         minion.name = $"{prefab.name}{minionId}";
         minion.tag = Constants.TagEnemy;
 
@@ -858,7 +891,7 @@ public class CharacterManager : MonoBehaviour
                 rb.mass *= minionStatus.State.Scale;
             }
         }
-        
+
         // 将血条显示到对象的头上
         var miniStatusCanvas = minion.GetComponentInChildren<Canvas>();
         if (miniStatusCanvas == null)
@@ -878,6 +911,13 @@ public class CharacterManager : MonoBehaviour
             PrefabId = prefabId
         };
         return minion;
+    }
+    
+    public GameObject InstantiateCompanionObject(GameObject prefab, Vector3 position)
+    {
+        var obj = Instantiate(prefab, companionParent.transform);
+        obj.transform.position = position;
+        return obj;
     }
     #endregion
 

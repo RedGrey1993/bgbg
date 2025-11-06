@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NetworkMessageProto;
 using UnityEngine;
 public enum MessageType
@@ -94,6 +95,7 @@ public static class Constants
     public const int NewRulerPlayerId = 123456789;
     public const float Eps = 0.00001f;
 
+    public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new Dictionary<GameObject, CharacterStatus>();
     public static readonly int[] LevelUpExp = {
         100,
         160,
@@ -125,6 +127,7 @@ public static class Constants
 
     public static Color ToColor(this ColorProto c)
     {
+        if (c == null) return Color.white;
         return new Color(c.R, c.G, c.B, c.A);
     }
 
@@ -148,9 +151,52 @@ public static class Constants
             y = (int)position.y / RoomStep;
         }
     }
-    
+
     public static bool IsZero(this float f)
     {
         return Mathf.Abs(f) < Eps;
+    }
+
+    public static bool IsPlayerOrEnemy(this GameObject obj)
+    {
+        return obj.CompareThisAndParentTag(TagPlayer) || obj.CompareThisAndParentTag(TagEnemy);
+    }
+
+    public static bool IsFriendlyUnit(this CharacterStatus myStatus, CharacterStatus tarStatus)
+    {
+        // 对方是我的Trainer 或者 我是对方的Trainer
+        return tarStatus == myStatus.Trainer || tarStatus.Trainer == myStatus
+            // 或者 对方是同一个Trainer下的队友
+            || (tarStatus.Trainer != null && tarStatus.Trainer == myStatus.Trainer)
+            // 或者 都是enemy，enemy之间不互相伤害
+            || (tarStatus.gameObject.CompareThisAndParentTag(TagEnemy) && myStatus.gameObject.CompareThisAndParentTag(TagEnemy));
+    }
+
+    public static CharacterStatus GetCharacterStatus(this GameObject obj)
+    {
+        if (goToCharacterStatus.TryGetValue(obj, out CharacterStatus status))
+        {
+            return status;
+        }
+        if (obj.TryGetComponent<CharacterStatus>(out status))
+        {
+            goToCharacterStatus[obj] = status;
+        }
+        return status;
+    }
+
+    public static CharacterStatus GetCharacterStatus(this Collider2D other)
+    {
+        Rigidbody2D hitRigidbody = other.attachedRigidbody;
+        if (hitRigidbody != null)
+        {
+            return hitRigidbody.gameObject.GetCharacterStatus();
+        }
+        return null;
+    }
+    
+    public static CharacterStatus GetCharacterStatus(this Collision2D collision)
+    {
+        return collision.gameObject.GetCharacterStatus();
     }
 }

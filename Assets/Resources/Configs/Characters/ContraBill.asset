@@ -15,13 +15,9 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: ab0e70273c1e04f4b8ca79c201b74766, type: 3}
-  energyWaveAccumulateSound: {fileID: 0}
-  energyWaveShootSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: 0ef6c9950c7134a47938859630e3c851, type: 3}
   shadowPrefab: {fileID: 0}
-  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  energyWavePrefab: {fileID: 0}
   explosionEffectPrefab: {fileID: 0}
   summonEffectPrefab: {fileID: 0}
   teleportEffectPrefab: {fileID: 0}
@@ -44,5 +40,5 @@ MonoBehaviour:
   canAttackDiagonally: 0
   AggroRange: 20
   AggroChangeInterval: 2
-  minChaseMoveInputInterval: 0.5
-  maxChaseMoveInputInterval: 1
+  minChaseMoveInputInterval: 0.05
+  maxChaseMoveInputInterval: 0.1

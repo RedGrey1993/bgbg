@@ -49,6 +49,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     {
         if (animator)
         {
+            animator.speed = 1;
             animator.SetFloat("Speed", 0);
         }
     }
@@ -57,6 +58,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     {
         if (animator)
         {
+            animator.speed = 1;
             animator.SetFloat("Speed", 1);
         }
     }
@@ -75,8 +77,8 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             // 所有技能都在释放中，则不能再释放技能
             if (summonCoroutine != null && strengthenCoroutine != null && throwPokeballCoroutine != null) { return; }
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
-            if (Time.time < nextAtkTime) { return; }
-            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+            // if (Time.time < nextAtkTime) { return; }
+            // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             foreach ((GameObject, int) poke in existingPokes)
             {
@@ -200,7 +202,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
-            GameObject pokeMinion = LevelManager.Instance.InstantiateTemporaryObject(pokePrefab.Item1, summonPosition);
+            GameObject pokeMinion = CharacterManager.Instance.InstantiateCompanionObject(pokePrefab.Item1, summonPosition);
             pokeMinion.name += pokePrefab.Item2;
             pokeMinion.tag = gameObject.tag;
             if (pokeMinion.layer == LayerMask.NameToLayer("Default")) pokeMinion.layer = gameObject.layer;
@@ -229,16 +231,20 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             }
             var pokeStatus = pokeMinion.GetComponent<CharacterStatus>();
             pokeStatus.Trainer = characterStatus;
-            if (pokePrefab.Item2 >= characterStatus.State.CatchedMinionStates.Count)
+            if (!isAi)
             {
-                Debug.LogError($"fhhtest, pokePrefab.Item2: {pokePrefab.Item2}, {characterStatus.State.CatchedMinionStates.Count}"
-                    +$"{pokeMinionPrefabs.Count}, {pokeMinionDeadTime.Count}");
+                if (pokePrefab.Item2 >= characterStatus.State.CatchedMinionStates.Count)
+                {
+                    Debug.LogError($"fhhtest, pokePrefab.Item2: {pokePrefab.Item2}, "
+                        + $"{characterStatus.State.CatchedMinionStates.Count}, "
+                        + $"{pokeMinionPrefabs.Count}, {pokeMinionDeadTime.Count}");
+                }
+                var pokeState = characterStatus.State.CatchedMinionStates[pokePrefab.Item2];
+                pokeState.Position = null;
+                pokeState.CurrentHp = pokeState.MaxHp;
+                pokeState.Damage = characterStatus.State.Damage;
+                pokeStatus.SetState(pokeState);
             }
-            var pokeState = characterStatus.State.CatchedMinionStates[pokePrefab.Item2];
-            pokeState.Position = null;
-            pokeState.CurrentHp = pokeState.MaxHp;
-            pokeState.Damage = characterStatus.State.Damage;
-            pokeStatus.SetState(pokeState);
             existingPokes.Add((pokeMinion, pokePrefab.Item2));
         }
 
@@ -294,37 +300,49 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
 
     private IEnumerator SpeedUp(GameObject poke)
     {
-        var status = poke.GetComponent<CharacterStatus>();
-        status.State.MoveSpeed *= 2;
+        if (poke.TryGetComponent<CharacterStatus>(out var status))
+        {
+            status.State.MoveSpeed *= 2;
 
-        yield return new WaitForSeconds(pokeMinionBuffTime);
-        status.State.MoveSpeed /= 2;
+            yield return new WaitForSeconds(pokeMinionBuffTime);
+            if (status == null) yield break;
+            status.State.MoveSpeed /= 2;
+        }
     }
 
     private IEnumerator Rage(GameObject poke)
     {
-        var status = poke.GetComponent<CharacterStatus>();
-        status.State.Damage *= 2;
-        var initialColor = status.State.Color.ToColor();
-        status.SetColor(Color.red);
+        if (poke.TryGetComponent<CharacterStatus>(out var status))
+        {
+            status.State.Damage *= 2;
+            var initialColor = status.State.Color.ToColor();
+            status.SetColor(Color.red, false);
 
-        yield return new WaitForSeconds(pokeMinionBuffTime);
-        status.State.Damage /= 2;
-        status.SetColor(initialColor);
+            yield return new WaitForSeconds(pokeMinionBuffTime);
+            if (status == null) yield break;
+            status.State.Damage /= 2;
+            status.SetColor(initialColor, false);
+        }
     }
     #endregion
 
     #region 技能3，扔红白球
     private IEnumerator ThrowPokeball(Vector2 lookInput)
     {
+        Debug.Log($"fhhtest, throwPokeballCoroutine = null, start Time {Time.time}");
         isAttack = true;
         float startTime = Time.time;
         float atkInterval = 1f / characterStatus.State.AttackFrequency;
+        float throwTime = 0.87f;
+        if (atkInterval < throwTime)
+        {
+            animator.speed = throwTime / atkInterval;
+        }
         animator.Play("Throw Object");
         pokeball.SetActive(true);
-        if (atkInterval > 0.87f)
+        if (atkInterval >= throwTime)
         {
-            yield return new WaitForSeconds(0.87f);
+            yield return new WaitForSeconds(throwTime);
         }
         else
         {
@@ -336,6 +354,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 20));
 
         isAttack = false;
+        animator.speed = 1;
         animator.Play("Male Walking");
         if (isAi)
         {
@@ -343,6 +362,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             yield return new WaitForSeconds(Random.Range(1, 3f));
         }
         throwPokeballCoroutine = null;
+        Debug.Log($"fhhtest, throwPokeballCoroutine = null, end Time {Time.time}");
     }
     #endregion
 

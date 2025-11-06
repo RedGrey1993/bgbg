@@ -16,7 +16,7 @@ MonoBehaviour:
   explosionTile: {fileID: 11400000, guid: 57971f3ff262b4d4fbe6d4e01983181b, type: 2}
   wallTile: {fileID: 11400000, guid: 36c0ac87a3f14014197c33090a5f9d06, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
+  - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 1634a816d8766b64a8953461c4e61da1, type: 3}
   level: 1
@@ -29,7 +29,7 @@ MonoBehaviour:
     min: 100
     max: 100
   gamePassedSprite: {fileID: 0}
-  eliteSpawnChance: 0.1
+  eliteSpawnChance: 0.5
   eliteScaleRange:
     min: 1.3
     max: 2
