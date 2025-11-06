@@ -74,7 +74,7 @@ public static class Constants
     public const string AIPlayerPrefix = "BGBGAI_";
     public const int MinPlayableObjects = 1;
     public const int RoomStep = 20;
-    public const int DoorWidth = 2;
+    public const int DoorWidth = 4;
     public const int DoorMin = RoomStep / 2 - DoorWidth / 2;
     public const int DoorMax = RoomStep / 2 + DoorWidth / 2;
     public const float CharacterMaxRadius = 1f;

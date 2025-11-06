@@ -42,7 +42,7 @@ public class LevelData : ScriptableObject
     public Sprite gamePassedSprite; // 通关图片
     [Range(0, 1)]
     public float eliteSpawnChance = 0.1f;
-    public MinMaxFloat eliteScaleRange = new() { min = 1.3f, max = 2.5f };
+    public MinMaxFloat eliteScaleRange = new() { min = 1.3f, max = 2f };
     public int bossRoomMinWidth = 20;
     public int bossRoomMinHeight = 20;
 

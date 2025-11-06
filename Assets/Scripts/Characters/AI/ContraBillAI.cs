@@ -108,15 +108,16 @@ public class ContraBillAI : CharacterBaseAI
         {
             // TODO: 如果相邻的房间被炸了，这个逻辑还没有考虑
             // 在不同房间，走门追击
+            int doorHalfSize = Constants.DoorWidth / 2;
             if (tx != sx) // 房间的x坐标不同
             {
                 // 比最近的竖门位置高，往斜下走
-                if (YHigherThanDoor(1f - col2D.bounds.extents.y))
+                if (YHigherThanDoor(doorHalfSize - col2D.bounds.extents.y))
                 {
                     characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), -1);
                 }
                 // 比最近的竖门位置低，往斜上走
-                else if (YLowerThanDoor(1f - col2D.bounds.extents.y))
+                else if (YLowerThanDoor(doorHalfSize - col2D.bounds.extents.y))
                 {
                     characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), 1);
                 }
@@ -128,12 +129,12 @@ public class ContraBillAI : CharacterBaseAI
             else if (ty != sy) // 房间的y坐标不同
             {
                 // 在最近的横门的右边，往左斜方走
-                if (XRighterThanDoor(1f - col2D.bounds.extents.x))
+                if (XRighterThanDoor(doorHalfSize - col2D.bounds.extents.x))
                 {
                     characterInput.MoveInput = new Vector2(-1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }
                 // 在最近的横门的左边，往右斜方走
-                else if (XLefterThanDoor(1f - col2D.bounds.extents.x))
+                else if (XLefterThanDoor(doorHalfSize - col2D.bounds.extents.x))
                 {
                     characterInput.MoveInput = new Vector2(1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }

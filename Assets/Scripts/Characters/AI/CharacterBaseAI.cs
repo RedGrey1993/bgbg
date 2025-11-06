@@ -221,7 +221,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         characterInput.LookInput = Vector2.zero;
     }
 
-    protected bool XNearWall(float d = 0.1f)
+    protected bool XNearWall(float d = 0.3f)
     {
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
@@ -230,7 +230,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             || (transform.position.x > room.xMax - col2D.bounds.extents.x - d);
     }
 
-    protected bool XNearLeftWall(float d = 0.1f)
+    protected bool XNearLeftWall(float d = 0.3f)
     {
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
@@ -238,7 +238,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         return transform.position.x < room.xMin + 1 + col2D.bounds.extents.x + d;
     }
 
-    protected bool YNearWall(float d = 0.1f)
+    protected bool YNearWall(float d = 0.3f)
     {
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
@@ -247,7 +247,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             || (transform.position.y > room.yMax - col2D.bounds.extents.y - d);
     }
 
-    protected bool YNearBottomWall(float d = 0.1f)
+    protected bool YNearBottomWall(float d = 0.3f)
     {
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
@@ -275,16 +275,18 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         return nearestDoorY;
     }
 
-    protected bool YHigherThanDoor(float d = 0.1f)
+    protected bool YHigherThanDoor(float d = 0.3f)
     {
+        if (d < 0.3f) d = 0.3f;
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
 
         return transform.position.y > NeareastDoorY(room) + d;
     }
 
-    protected bool YLowerThanDoor(float d = 0.1f)
+    protected bool YLowerThanDoor(float d = 0.3f)
     {
+        if (d < 0.3f) d = 0.3f;
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
 
@@ -311,16 +313,18 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         return nearestDoorX;
     }
 
-    protected bool XRighterThanDoor(float d = 0.1f)
+    protected bool XRighterThanDoor(float d = 0.3f)
     {
+        if (d < 0.3f) d = 0.3f;
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
 
         return transform.position.x > NeareastDoorX(room) + d;
     }
 
-    protected bool XLefterThanDoor(float d = 0.1f)
+    protected bool XLefterThanDoor(float d = 0.3f)
     {
+        if (d < 00.3f) d = 0.3f;
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
 
@@ -388,15 +392,16 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             // TODO: 如果相邻的房间被炸了，这个逻辑还没有考虑
             // 在不同房间，走门追击
+            int doorHalfSize = Constants.DoorWidth / 2;
             if (tx != sx) // 房间的x坐标不同
             {
                 // 比最近的竖门位置高，往斜下走
-                if (YHigherThanDoor(1f - col2D.bounds.extents.y))
+                if (YHigherThanDoor(doorHalfSize - col2D.bounds.extents.y))
                 {
                     characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), -1);
                 }
                 // 比最近的竖门位置低，往斜上走
-                else if (YLowerThanDoor(1f - col2D.bounds.extents.y))
+                else if (YLowerThanDoor(doorHalfSize - col2D.bounds.extents.y))
                 {
                     characterInput.MoveInput = new Vector2(XNearWall() ? 0 : (tx < sx ? -1 : 1), 1);
                 }
@@ -408,12 +413,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             else if (ty != sy) // 房间的y坐标不同
             {
                 // 在最近的横门的右边，往左斜方走
-                if (XRighterThanDoor(1f - col2D.bounds.extents.x))
+                if (XRighterThanDoor(doorHalfSize - col2D.bounds.extents.x))
                 {
                     characterInput.MoveInput = new Vector2(-1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }
                 // 在最近的横门的左边，往右斜方走
-                else if (XLefterThanDoor(1f - col2D.bounds.extents.x))
+                else if (XLefterThanDoor(doorHalfSize - col2D.bounds.extents.x))
                 {
                     characterInput.MoveInput = new Vector2(1, YNearWall() ? 0 : (ty < sy ? -1 : 1));
                 }

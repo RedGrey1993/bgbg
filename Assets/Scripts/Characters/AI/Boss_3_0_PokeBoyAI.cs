@@ -229,6 +229,11 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             }
             var pokeStatus = pokeMinion.GetComponent<CharacterStatus>();
             pokeStatus.Trainer = characterStatus;
+            if (pokePrefab.Item2 >= characterStatus.State.CatchedMinionStates.Count)
+            {
+                Debug.LogError($"fhhtest, pokePrefab.Item2: {pokePrefab.Item2}, {characterStatus.State.CatchedMinionStates.Count}"
+                    +$"{pokeMinionPrefabs.Count}, {pokeMinionDeadTime.Count}");
+            }
             var pokeState = characterStatus.State.CatchedMinionStates[pokePrefab.Item2];
             pokeState.Position = null;
             pokeState.CurrentHp = pokeState.MaxHp;
@@ -327,6 +332,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         }
         pokeball.SetActive(false);
         float elapsedTime = Time.time - startTime;
+        // TODO: fixedDamage修改回2
         yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 20));
 
         isAttack = false;
