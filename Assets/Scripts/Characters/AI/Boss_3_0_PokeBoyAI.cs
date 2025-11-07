@@ -345,6 +345,10 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         {
             animator.speed = throwTime / atkInterval;
         }
+        else
+        {
+            animator.speed = 1;
+        }
         animator.Play("Throw Object");
         pokeball.SetActive(true);
         if (atkInterval >= throwTime)

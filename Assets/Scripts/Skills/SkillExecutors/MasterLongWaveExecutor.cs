@@ -40,6 +40,7 @@ public class MasterLongWaveExecutor : SkillExecutor
         GameObject vfx;
         if (IsMasterLong())
         {
+            aiScript.animator.speed = 1;
             aiScript.animator.Play("施法并扔出");
             yield return new WaitForSeconds(0.5f);
             vfx = aiScript.transform.GetChild(0).GetChild(0).gameObject;
@@ -116,14 +117,17 @@ public class MasterLongWaveExecutor : SkillExecutor
 
         yield return new WaitForSeconds(waveDuration);
 
-        if (count > 1 && IsMasterLong())
+        aiScript.isAttack = false;
+        if (IsMasterLong())
         {
-            aiScript.animator.Play("闪到老腰");
-            yield return new WaitForSeconds(3f);
+            if (count > 1)
+            {
+                aiScript.animator.Play("闪到老腰");
+                yield return new WaitForSeconds(3f);
+            }
             aiScript.animator.Play("Mutant Walking");
         }
 
-        aiScript.isAttack = false;
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
         if (aiScript.isAi)
         {

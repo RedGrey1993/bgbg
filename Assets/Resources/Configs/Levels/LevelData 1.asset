@@ -18,7 +18,7 @@ MonoBehaviour:
   normalMinionPrefabs:
   - {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
   bossPrefabs:
-  - {fileID: 696006956200170134, guid: cecee85ce7cd68646872240c56e02996, type: 3}
+  - {fileID: 5506378715684145941, guid: 5aff9bf8c80eb1a44aae013f719c3dbf, type: 3}
   level: 1
   totalRooms:
     min: 3

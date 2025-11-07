@@ -21,69 +21,46 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             }
         }
     }
+
+    protected override bool IsAtkCoroutineIdle()
+    {
+        return atkCoroutine == null && ActiveSkillCoroutine == null;
+    }
+
     #region Animation
-    protected void SetIdleAnimation()
+    protected override void SetIdleAnimation(Direction dir)
     {
         if (animator)
         {
+            animator.speed = 1;
             animator.SetFloat("Speed", 0);
         }
     }
 
-    protected void SetRunAnimation()
+    private float baseMoveSpeed = 5;
+    protected override void SetRunAnimation(Direction dir)
     {
         if (animator)
         {
+            animator.speed = characterStatus.State.MoveSpeed / baseMoveSpeed;
             animator.SetFloat("Speed", 1);
         }
     }
     
     protected override void LookToAction()
     {
-        ref Vector2 moveInput = ref characterInput.MoveInput;
-        ref Vector2 lookInput = ref characterInput.LookInput;
-        var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        if (lookInput.sqrMagnitude >= 0.1f && isAttack)
-        {
-            LookDir = lookInput;
-            // 优先将角色面朝射击方向，优先级高于移动方向
-            if (skinnedMeshRenderer != null)
-            {
-                Transform childTransform = transform.GetChild(0);
-                // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0f, -0.866f, 0.5f), lookInput); // 60度
-                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -1f, 0.01f), lookInput); // 89.5度;
-            }
-        }
-        else if (moveInput.sqrMagnitude >= 0.1f)
-        {
-            LookDir = moveInput;
-            // 将角色面朝移动方向
-            if (skinnedMeshRenderer != null)
-            {
-                Transform childTransform = transform.GetChild(0);
-                // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0f, -0.866f, 0.5f), moveInput); // 60度
-                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0f, -1f, 0.01f), moveInput); // 89.5度
-            }
-            if (moveInput.sqrMagnitude > 0.1f)
-            {
-                SetRunAnimation();
-            }
-        }
-        else
-        {
-            SetIdleAnimation();
-        }
+        LookToAction(new Vector3(0, -1f, 0.01f)); // 90度
     }
     #endregion
 
     #region Attack Action
-    private Coroutine shootCoroutine = null;
+    private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {
         if (!isAttack)
         {
             // Master Turtle一次只能使用一种技能
-            if (shootCoroutine != null || ActiveSkillCoroutine != null) { return; }
+            if (atkCoroutine != null || ActiveSkillCoroutine != null) { return; }
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -91,7 +68,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             var rnd = Random.Range(0, 2);
             if (!isAi || rnd == 0)
             {
-                shootCoroutine = StartCoroutine(Attack_Shoot(AggroTarget, characterInput.LookInput));
+                atkCoroutine = StartCoroutine(Attack_Shoot(AggroTarget, characterInput.LookInput));
             }
             else // 技能2，发射1/9个能量波
             {
@@ -112,17 +89,23 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         float startTime = Time.time;
         float atkInterval = 1f / characterStatus.State.AttackFrequency;
         // TODO: 播放拿着龟壳准备释放的动作
-        animator.Play("丢飞盘");
-        if (isAi) // AI攻击0.5s之前的位置，给玩家一些缓冲时间
+        float throwTime = 1.4f;
+        if (atkInterval < throwTime)
         {
-            yield return new WaitForSeconds(0.9f);
+            animator.speed = throwTime / atkInterval;
         }
         else
         {
-            if (atkInterval > 1.4f)
-                yield return new WaitForSeconds(1.4f);
-            else
-                yield return new WaitForSeconds(atkInterval);
+            animator.speed = 1;
+        }
+        animator.Play("丢飞盘");
+        if (atkInterval >= throwTime)
+        {
+            yield return new WaitForSeconds(throwTime);
+        }
+        else
+        {
+            yield return new WaitForSeconds(atkInterval);
         }
 
         if (aggroTarget != null) // ai 逻辑
@@ -130,11 +113,6 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         else // 玩家逻辑，aggroTarget用于追踪子弹
             aggroTarget = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45);
 
-        if (isAi)
-        {
-            // AI攻击0.5s之前的位置，给玩家一些缓冲时间
-            yield return new WaitForSeconds(0.5f);
-        }
         if (CharacterData.shootSound)
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -192,6 +170,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         Debug.Log($"fhhtest, elapsedTime: {elapsedTime}, atkFrequency: {characterStatus.State.AttackFrequency}");
         if (atkInterval - elapsedTime > 0)
             yield return new WaitForSeconds(atkInterval - elapsedTime);
+        animator.speed = 1;
         animator.Play("Mutant Walking");
 
         isAttack = false;
@@ -201,14 +180,14 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             // 这时候 shootCoroutine 还不是null，所以不会再次进入攻击
             yield return new WaitForSeconds(Random.Range(1, 3f));
         }
-        shootCoroutine = null;
+        atkCoroutine = null;
     }
     #endregion
     
     protected override void SubclassFixedUpdate()
     {
         // 攻击时不要改变朝向且不能移动，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
-        if (isAttack)
+        if (isAttack && !isAi)
         {
             characterInput.MoveInput = Vector2.zero;
             characterInput.LookInput = Vector2.zero;

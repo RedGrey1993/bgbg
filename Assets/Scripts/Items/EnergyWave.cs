@@ -91,8 +91,10 @@ public class EnergyWave : MonoBehaviour
             }
 
             Vector2 diff = Direction * Time.deltaTime * pushForce;
-            var tarInput = collision.GetComponent<CharacterInput>();
-            tarInput.MoveAdditionalInput += diff;
+            if (collision.TryGetComponent<CharacterInput>(out CharacterInput tarInput))
+            {
+                tarInput.MoveAdditionalInput += diff;
+            }
             if (Time.time > nextDamageTime)
             {
                 var damage = minDamage;

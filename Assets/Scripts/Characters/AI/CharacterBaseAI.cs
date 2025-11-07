@@ -634,11 +634,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             startDir = rotationPlus * startDir;
         }
-        isAttack = false;
         if (atkInterval > 0f)
         {
             yield return new WaitForSeconds(atkInterval);
         }
+        isAttack = false;
         shootCoroutine = null;
     }
     private Coroutine shootCoroutine = null;
@@ -663,7 +663,15 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             || CharacterData.CharacterType == CharacterType.Minion_2_1_SpikeTurtle
             || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip;
     }
+
     protected virtual void LookToAction()
+    {
+        // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+        // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
+        // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
+        LookToAction(new Vector3(0, -0.71711f, 0.71711f));
+    }
+    protected void LookToAction(Vector3 forwardDir)
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
@@ -677,9 +685,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             if (skinnedMeshRenderer != null)
             {
                 Transform childTransform = transform.GetChild(0);
-                // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
-                // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), lookInput); // 30度
-                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookInput); // 45度
+                childTransform.localRotation = Quaternion.LookRotation(forwardDir, lookInput); // 45度
             }
             else if (NeedChangeLookDir())
             {
@@ -710,9 +716,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             if (skinnedMeshRenderer != null)
             {
                 Transform childTransform = transform.GetChild(0);
-                // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
-                // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
-                childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
+                childTransform.localRotation = Quaternion.LookRotation(forwardDir, moveInput); // 45度
             }
             else if (NeedChangeLookDir())
             {
