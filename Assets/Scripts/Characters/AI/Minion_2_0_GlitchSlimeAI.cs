@@ -14,13 +14,19 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
-            if (collision.gameObject.CompareTag(Constants.TagPlayer))
+            if (collision.gameObject.IsPlayerOrEnemy())
             {
                 if (Time.time > nextDamageTime)
                 {
-                    var status = collision.gameObject.GetComponent<CharacterStatus>();
-                    status.TakeDamage_Host(characterStatus.State.Damage, null);
-                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                    var tarStatus = collision.GetCharacterStatus();
+                    if (tarStatus != null)
+                    {
+                        if (characterStatus.IsFriendlyUnit(tarStatus))
+                            return;
+                            
+                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
+                        nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                    }
                 }
             }
         }
