@@ -164,13 +164,21 @@ public static class Constants
 
     public static bool IsFriendlyUnit(this CharacterStatus myStatus, CharacterStatus tarStatus)
     {
-        // 对方是我的Trainer 或者 我是对方的Trainer
-        return tarStatus == myStatus.Trainer || tarStatus.Trainer == myStatus
+        return myStatus == tarStatus
+            // 对方是我的Trainer 或者 我是对方的Trainer
+            || tarStatus == myStatus.Trainer || tarStatus.Trainer == myStatus
             // 或者 对方是同一个Trainer下的队友
             || (tarStatus.Trainer != null && tarStatus.Trainer == myStatus.Trainer)
             // 或者 都是enemy，enemy之间不互相伤害
             || (tarStatus.gameObject.CompareThisAndParentTag(TagEnemy) && myStatus.gameObject.CompareThisAndParentTag(TagEnemy));
     }
+
+    // public static bool IsAllEnemy(this CharacterStatus myStatus, CharacterStatus tarStatus)
+    // {
+    //     return tarStatus != null && myStatus != null
+    //         && tarStatus.gameObject.CompareThisAndParentTag(TagEnemy)
+    //         && myStatus.gameObject.CompareThisAndParentTag(TagEnemy);
+    // }
 
     public static CharacterStatus GetCharacterStatus(this GameObject obj)
     {

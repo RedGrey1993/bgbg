@@ -96,28 +96,26 @@ public class Bullet : MonoBehaviour
                 return;
             }
             // 检测是否碰撞到Player
-            if (other.gameObject.CompareThisAndParentTag(Constants.TagPlayer)
-                || other.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
+            if (other.gameObject.IsPlayerOrEnemy())
             {
-                CharacterStatus tarStatus = other.gameObject.GetComponentInParent<CharacterStatus>();
-                if (tarStatus == null || tarStatus == OwnerStatus || tarStatus.Trainer == OwnerStatus 
-                    || (tarStatus.Trainer != null && tarStatus.Trainer == OwnerStatus.Trainer))
+                CharacterStatus tarStatus = other.GetCharacterStatus();
+                if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))
                 { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                     if (bounceCount > 0)
                     {
                         MirrorBounce(other);
                     }
-                    return; // 不伤害自己，也不销毁碰到自己的子弹
+                    return; // 不伤害友方，也不销毁碰到自己的子弹
                 }
 
                 penetrateCount--;
                 SplitCount--;
-                if (tarStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy) 
-                    && OwnerStatus != null && OwnerStatus.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
-                {
-                    if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
-                }
-                else if (tarStatus != null)
+                // if (tarStatus.IsAllEnemy(OwnerStatus))
+                // {
+                //     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
+                //     return;
+                // }
+                if (tarStatus != null)
                 {
                     tarStatus.TakeDamage_Host(Damage, OwnerStatus);
                     if (SplitCount >= 0 && OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
@@ -188,7 +186,7 @@ public class Bullet : MonoBehaviour
             // 检测是否碰撞到Player
             if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
-                CharacterStatus targetCharacterStatus = collision.gameObject.GetComponentInParent<CharacterStatus>();
+                CharacterStatus targetCharacterStatus = collision.GetCharacterStatus();
                 if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
                 {
                     return; // 不伤害自己，也不销毁碰到自己的子弹
