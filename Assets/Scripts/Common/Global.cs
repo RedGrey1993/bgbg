@@ -157,6 +157,21 @@ public static class Constants
         return Mathf.Abs(f) < Eps;
     }
 
+    public static bool MyCompareTag(this Collider2D other, string tag)
+    {
+        Rigidbody2D hitRigidbody = other.attachedRigidbody;
+        if (hitRigidbody != null)
+        {
+            return hitRigidbody.gameObject.CompareTag(tag);
+        }
+        return false;
+    }
+
+    public static bool IsPlayerOrEnemy(this Collider2D other)
+    {
+        return other.MyCompareTag(TagPlayer) || other.MyCompareTag(TagEnemy);
+    }
+
     public static bool IsPlayerOrEnemy(this GameObject obj)
     {
         return obj.CompareThisAndParentTag(TagPlayer) || obj.CompareThisAndParentTag(TagEnemy);

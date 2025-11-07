@@ -383,7 +383,7 @@ public class CharacterManager : MonoBehaviour
             PlayerInfoMap.Remove(characterId);
             Players.RemoveAll(p => p.Id == characterId);
         }
-        if (minionObjects.ContainsKey(characterId))
+        else if (minionObjects.ContainsKey(characterId))
         {
             minionObjects.Remove(characterId);
             minionPrefabInfos.Remove(characterId);
@@ -670,34 +670,7 @@ public class CharacterManager : MonoBehaviour
 
         return nearestEnemy;
     }
-    public GameObject FindSamelinePlayerInRange(GameObject character, int range)
-    {
-        GameObject nearestPlayer = null;
-        float nearestDistanceSqr = range * range;
-        foreach (var kvp in playerObjects)
-        {
-            // 跳过自己
-            if (kvp.Value == character) continue;
-            var playerStatus = kvp.Value.GetComponent<CharacterStatus>();
-            if (playerStatus != null && !playerStatus.IsDead())
-            {
-                float ext = 0.5f;
-                var col2D = kvp.Value.GetComponentInChildren<Collider2D>();
-                if (col2D != null)
-                {
-                    ext = Mathf.Max(col2D.bounds.extents.x, col2D.bounds.extents.y);
-                }
-                Vector2 toPlayer = kvp.Value.transform.position - character.transform.position;
-                float distSqr = toPlayer.sqrMagnitude;
-                if ((Mathf.Abs(toPlayer.x) < ext || Mathf.Abs(toPlayer.y) < ext) && distSqr <= nearestDistanceSqr)
-                {
-                    nearestDistanceSqr = distSqr;
-                    nearestPlayer = kvp.Value;
-                }
-            }
-        }
-        return nearestPlayer;
-    }
+    
     public List<GameObject> FindNearbyFriendlyUnitInRange(GameObject character, int range)
     {
         List<GameObject> nearbyFriendlyUnits = new ();

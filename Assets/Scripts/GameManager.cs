@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameState GameState { get; private set; } = GameState.InMenu;
     public HashSet<int> PassedStages { get; private set; } = new HashSet<int>();
     public LocalStorage Storage { get; private set; } = null;
+    public AudioSource audioSource;
     private string saveFilePath;
 
     void Awake()

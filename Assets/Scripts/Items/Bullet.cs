@@ -96,7 +96,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
             // 检测是否碰撞到Player
-            if (other.gameObject.IsPlayerOrEnemy())
+            if (other.IsPlayerOrEnemy())
             {
                 CharacterStatus tarStatus = other.GetCharacterStatus();
                 if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))
