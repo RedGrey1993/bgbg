@@ -151,23 +151,27 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        BounceBack(collision);
-        if (CharacterData.causeCollisionDamage)
-            ProcessCollisionDamage(collision);
         SubclassCollisionEnter2D(collision);
     }
 
-    protected virtual void SubclassCollisionEnter2D(Collision2D collision) { }
-
-    void OnCollisionStay2D(Collision2D collision)
+    protected virtual void SubclassCollisionEnter2D(Collision2D collision)
     {
         BounceBack(collision);
         if (CharacterData.causeCollisionDamage)
             ProcessCollisionDamage(collision);
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
         SubclassCollisionStay2D(collision);
     }
 
-    protected virtual void SubclassCollisionStay2D(Collision2D collision) { }
+    protected virtual void SubclassCollisionStay2D(Collision2D collision)
+    {
+        BounceBack(collision);
+        if (CharacterData.causeCollisionDamage)
+            ProcessCollisionDamage(collision);
+    }
     #endregion
 
     #region AI Logic / Update Input

@@ -698,26 +698,77 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
-    public List<GameObject> FindNearbyMinionsInRange(GameObject character, int range)
+    public List<GameObject> FindNearbyFriendlyUnitInRange(GameObject character, int range)
     {
-        List<GameObject> nearbyMinions = new ();
+        List<GameObject> nearbyFriendlyUnits = new ();
         float sqrRange = range * range;
-        foreach (var kvp in minionObjects)
+
+        foreach (Transform child in minionParant)
         {
             // 跳过自己
-            if (kvp.Value == character) continue;
-            var status = kvp.Value.GetComponent<CharacterStatus>();
-            if (status != null && !status.IsDead())
+            if (child.gameObject == character) continue;
+            if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+            if (!character.CompareTag(child.tag)) continue;
+
+            var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
+            foreach (var status in minionStatuses)
             {
-                Vector2 toPlayer = kvp.Value.transform.position - character.transform.position;
-                float distSqr = toPlayer.sqrMagnitude;
-                if (distSqr <= sqrRange)
+                if (status != null && !status.IsDead())
                 {
-                    nearbyMinions.Add(kvp.Value);
+                    Vector2 toMinion = status.transform.position - character.transform.position;
+                    float distSqr = toMinion.sqrMagnitude;
+                    if (distSqr <= sqrRange)
+                    {
+                        nearbyFriendlyUnits.Add(status.gameObject);
+                    }
                 }
             }
         }
-        return nearbyMinions;
+
+        foreach (Transform child in playerParent)
+        {
+            // 跳过自己
+            if (child.gameObject == character) continue;
+            if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+            if (!character.CompareTag(child.tag)) continue;
+
+            var playerStatuses = child.GetComponentsInChildren<CharacterStatus>();
+            foreach (var status in playerStatuses)
+            {
+                if (status != null && !status.IsDead())
+                {
+                    Vector2 toPlayer = status.transform.position - character.transform.position;
+                    float distSqr = toPlayer.sqrMagnitude;
+                    if (distSqr <= sqrRange)
+                    {
+                        nearbyFriendlyUnits.Add(status.gameObject);
+                    }
+                }
+            }
+        }
+
+        foreach (Transform child in companionParent)
+        {
+            // 跳过自己
+            if (child.gameObject == character) continue;
+            if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+            if (!character.CompareTag(child.tag)) continue;
+
+            var cpStatuses = child.GetComponentsInChildren<CharacterStatus>();
+            foreach (var status in cpStatuses)
+            {
+                if (status != null && !status.IsDead())
+                {
+                    Vector2 toMinion = status.transform.position - character.transform.position;
+                    float distSqr = toMinion.sqrMagnitude;
+                    if (distSqr <= sqrRange)
+                    {
+                        nearbyFriendlyUnits.Add(status.gameObject);
+                    }
+                }
+            }
+        }
+        return nearbyFriendlyUnits;
     }
     public GameObject GetMyselfGameObject()
     {

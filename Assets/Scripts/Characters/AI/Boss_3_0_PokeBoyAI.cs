@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -85,11 +86,12 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         }
     }
 
+    private float baseMoveSpeed = 5;
     protected override void SetRunAnimation(Direction dir)
     {
         if (animator)
         {
-            animator.speed = 1;
+            animator.speed = characterStatus.State.MoveSpeed / baseMoveSpeed;
             animator.SetFloat("Speed", 1);
         }
     }
@@ -246,7 +248,8 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
                 var pokeState = characterStatus.State.CatchedMinionStates[pokePrefab.Item2];
                 pokeState.Position = null;
                 pokeState.CurrentHp = pokeState.MaxHp;
-                pokeState.Damage = characterStatus.State.Damage;
+                pokeState.Damage = (int)(characterStatus.State.Damage * pokeState.Scale / 2);
+                if (pokeState.Damage < 1) pokeState.Damage = 1;
                 pokeStatus.SetState(pokeState);
             }
             existingPokes.Add((pokeMinion, pokePrefab.Item2));

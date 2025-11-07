@@ -8,23 +8,6 @@ using UnityEngine;
 public class Minion_4_0_HealerSpriteAI : CharacterBaseAI
 {
     #region Collision
-    private float nextDamageTime = 0;
-    private void ProcessCollisionDamage(Collision2D collision)
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (collision.gameObject.CompareTag(Constants.TagPlayer))
-            {
-                if (Time.time > nextDamageTime)
-                {
-                    var status = collision.gameObject.GetComponent<CharacterStatus>();
-                    status.TakeDamage_Host(characterStatus.State.Damage, null);
-                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-                }
-            }
-        }
-    }
-
     // 不会移动，不需要BounceBack
     protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
@@ -44,7 +27,7 @@ public class Minion_4_0_HealerSpriteAI : CharacterBaseAI
         if (Time.time >= nextAggroChangeTime)
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
-            healerTargets = CharacterManager.Instance.FindNearbyMinionsInRange(gameObject, CharacterData.AggroRange);
+            healerTargets = CharacterManager.Instance.FindNearbyFriendlyUnitInRange(gameObject, CharacterData.AggroRange);
         }
     }
 
@@ -71,10 +54,12 @@ public class Minion_4_0_HealerSpriteAI : CharacterBaseAI
             {
                 if (go != null)
                 {
-                    CharacterStatus status = go.GetComponent<CharacterStatus>();
-                    if (status != null && status.IsAlive())
+                    if (go.TryGetComponent<CharacterStatus>(out CharacterStatus status))
                     {
-                        status.HealthChanged(Math.Min(status.State.CurrentHp + characterStatus.State.Damage, status.State.MaxHp));
+                        if (status.IsAlive())
+                        {
+                            status.HealthChanged(Math.Min(status.State.CurrentHp + characterStatus.State.Damage, status.State.MaxHp));
+                        }
                     }
                 }
             }
