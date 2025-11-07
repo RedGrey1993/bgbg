@@ -9,59 +9,15 @@ using UnityEngine;
 public class Minion_1_1_BusterBotAI : CharacterBaseAI
 {
     // 爆破小子(BusterBot)不造成碰撞伤害
-    #region AI Logic / Update Input
-    // 优先竖着走，// 不会贴墙，距离墙1单位距离时会沿着墙走
-    protected override void Move_ChaseInRoom()
-    {
-        var diff = AggroTarget.transform.position - transform.position;
-        var diffNormalized = diff.normalized;
-        var shootRange = characterStatus.State.ShootRange;
-
-        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围，无法斜着攻击
-        if ((Mathf.Abs(diff.x) > shootRange || Mathf.Abs(diff.y) > 0.5f) 
-            && (Mathf.Abs(diff.y) > shootRange || Mathf.Abs(diff.x) > 0.5f))
-        {
-            if (Mathf.Abs(diffNormalized.y) > 0.1f)
-            {
-                if (!YNearWall())
-                    diffNormalized.y *= 10; // 优先竖着走，再横着走，避免横竖快速跳转
-            }
-            characterInput.MoveInput = diffNormalized.normalized;
-        }
-        else // 进入攻击范围，则不再移动
-        {
-            characterInput.MoveInput = Vector2.zero;
-        }
-    }
-    #endregion
-
-    protected override void UpdateAttackInput()
-    {
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
-        {
-            var diff = AggroTarget.transform.position - transform.position;
-            var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，爆破小子(BusterBot)只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) 
-                || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
-            {
-                characterInput.LookInput = diff.normalized;
-                return;
-            }
-        }
-        characterInput.LookInput = Vector2.zero;
-    }
-
     #region Attack Action
-    private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {
         if (!isAttack)
         {
-            if (atkCoroutine != null) return;
+            if (shootCoroutine != null) return;
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
 
-            atkCoroutine = StartCoroutine(Attack_BusterBot(characterInput.LookInput));
+            shootCoroutine = StartCoroutine(Attack_BusterBot(characterInput.LookInput));
         }
     }
     private IEnumerator Attack_BusterBot(Vector2 lookInput)
@@ -73,13 +29,12 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
         yield return StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency));
 
         isAttack = false;
-
         if (isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
             yield return new WaitForSeconds(Random.Range(1, 3f));
         }
-        atkCoroutine = null;
+        shootCoroutine = null;
     }
     #endregion
 }

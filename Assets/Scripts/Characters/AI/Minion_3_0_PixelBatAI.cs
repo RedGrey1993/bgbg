@@ -47,8 +47,7 @@ public class Minion_3_0_PixelBatAI : CharacterBaseAI
             }
             if (isBouncingBack) isBouncingBack = false;
             else Move_RandomFlyToTarget(targetPos);
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
+            nextMoveInputChangeTime = Time.time + Random.Range(CharacterData.chaseMoveInputInterval.min, CharacterData.chaseMoveInputInterval.max);;
         }
     }
 

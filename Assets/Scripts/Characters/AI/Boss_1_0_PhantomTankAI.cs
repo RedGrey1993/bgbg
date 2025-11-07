@@ -41,10 +41,9 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             }
             else
             {
-                Move_ChaseInRoom();
+                Move_ChaseInRoom(AggroTarget);
             }
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
+            nextMoveInputChangeTime = Time.time + Random.Range(CharacterData.chaseMoveInputInterval.min, CharacterData.chaseMoveInputInterval.max);;
         }
     }
 
@@ -79,7 +78,6 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     #endregion
 
     #region Attack Action
-    private Coroutine shootCoroutine = null;
     protected override void AttackAction()
     {
         if (!isAttack)

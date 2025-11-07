@@ -6,56 +6,6 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Minion_3_1_SkeletonMageAI : CharacterBaseAI
 {
-    #region AI Logic / Update Input
-    protected override void UpdateMoveInput()
-    {
-        if (Time.time > nextMoveInputChangeTime)
-        {
-            if (AggroTarget == null || !LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
-            {
-                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
-                {
-                    var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                    targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
-                }
-                Move_RandomFlyToTarget(targetPos);
-            }
-            else
-            {
-                if (isBouncingBack) isBouncingBack = false;
-                else Move_ChaseInRoom();
-            }
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
-        }
-    }
-
-    protected void Move_RandomFlyToTarget(Vector3 targetPos)
-    {
-        characterInput.MoveInput = (targetPos - transform.position).normalized;
-    }
-
-    protected override void Move_ChaseInRoom()
-    {
-        var diff = AggroTarget.transform.position - transform.position;
-        var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
-        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
-
-        // 在同一间房间，直接追击
-        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-        if (diff.sqrMagnitude > sqrShootRange)
-        {
-            characterInput.MoveInput = diffNormalized.normalized;
-        }
-        else // 进入攻击范围
-        {
-            // 在攻击距离内左右横跳拉扯
-            characterInput.MoveInput = Mathf.Abs(diff.x) < Mathf.Abs(diff.y) ? new Vector2(diff.x > 0 ? 1 : -1, 0) : new Vector2(0, diff.y > 0 ? 1 : -1);
-        }
-    }
-    #endregion
-
     private float nextJudgeAtkTime = 0;
     protected override void UpdateAttackInput()
     {

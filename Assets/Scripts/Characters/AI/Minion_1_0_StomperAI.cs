@@ -54,62 +54,93 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
 
     #region AI Logic / Update Input
     // 不会贴墙，距离墙1单位距离时会沿着墙走
-    protected override void Move_ChaseInRoom()
+    protected override void Move_ChaseInRoom(GameObject target, bool followTrainer = false)
     {
-        var diff = AggroTarget.transform.position - transform.position;
+        var diff = target.transform.position - transform.position;
         var diffNormalized = diff.normalized;
-        var sqrShootRange = characterStatus.State.ShootRange * characterStatus.State.ShootRange;
+        var atkRange = characterStatus.State.ShootRange;
+        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
 
-        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
-        if (diff.sqrMagnitude > sqrShootRange)
+        // 优先穿过门，不管是否在攻击范围内，即在墙边时先快速远离墙
+        if (XNearWall(0.01f))
         {
-            if (Mathf.Abs(diffNormalized.x) > 0.1f)
+            characterInput.MoveInput = new Vector2(XNearLeftWall() ? 1 : -1, 0);
+        }
+        else if (YNearWall(0.01f))
+        {
+            characterInput.MoveInput = new Vector2(0, YNearBottomWall() ? 1 : -1);
+        }
+        // 在同一间房间，直接追击
+        // 有仇恨目标时，朝仇恨目标移动，直到进入攻击范围
+        else if (((CharacterData.canAttackDiagonally || followTrainer) 
+                && diff.sqrMagnitude > atkRange * atkRange)
+            || (!CharacterData.canAttackDiagonally
+                && (Mathf.Abs(diff.x) > atkRange || Mathf.Abs(diff.y) > col2D.bounds.extents.y)
+                && (Mathf.Abs(diff.y) > atkRange || Mathf.Abs(diff.x) > col2D.bounds.extents.x)))
+        {
+            // 不能斜向攻击或移动，优先走距离短的那个方向，直到处于同一个水平或竖直方向
+            if ((!CharacterData.canAttackDiagonally || !CharacterData.canMoveDiagonally)
+                && Mathf.Min(Mathf.Abs(diffNormalized.x), Mathf.Abs(diffNormalized.y)) > 0.1f)
             {
-                if (!YNearWall())
-                    diffNormalized.y *= 10; // 优先竖着走，再横着走，避免横竖快速跳转，且更能触发横向的跳跃踩踏
+                if (Mathf.Abs(diffNormalized.x) < Mathf.Abs(diffNormalized.y) && !XNearWall())
+                {
+                    diffNormalized.x *= 10;
+                }
+                else if (Mathf.Abs(diffNormalized.y) < Mathf.Abs(diffNormalized.x) && !YNearWall())
+                {
+                    diffNormalized.y *= 10;
+                }
             }
             characterInput.MoveInput = diffNormalized.normalized;
         }
         else // 进入攻击范围，由于有接触伤害，所以仍然朝玩家靠近；
         // Stomper还有一个踩踏攻击需要用到攻击距离，所以不能像slime那样直接将攻击距离设置为0
         {
-            if (XNearWall(1)) // 靠近竖墙，先竖着走，否则很容易撞墙
+            if (!followTrainer)
             {
-                characterInput.MoveInput = new Vector2(0, diffNormalized.y);
+                if (XNearWall(1)) // 靠近竖墙，先竖着走，否则很容易撞墙
+                {
+                    characterInput.MoveInput = new Vector2(0, diffNormalized.y);
+                }
+                else if (YNearWall(1)) // 靠近横墙，先横着走，否则很容易撞墙
+                {
+                    characterInput.MoveInput = new Vector2(diffNormalized.x, 0);
+                }
+                else // 走距离大的方向
+                {
+                    characterInput.MoveInput = diffNormalized;
+                }
             }
-            else if (YNearWall(1)) // 靠近横墙，先横着走，否则很容易撞墙
+            else
             {
-                characterInput.MoveInput = new Vector2(diffNormalized.x, 0);
-            }
-            else // 走距离大的方向
-            {
-                characterInput.MoveInput = diffNormalized;
+                characterInput.MoveInput = Vector2.zero;
             }
         }
     }
-    #endregion
+    
+    protected override bool IsAtkCoroutineIdle()
+    {
+        // coroutine的时间范围比isAttak更大
+        return jumpCoroutine == null;
+    }
 
     // Stomper（踩踏者）不能斜着攻击
     protected override void UpdateAttackInput()
     {
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
+        if (CanAttack())
         {
             var diff = AggroTarget.transform.position - transform.position;
             var atkRange = characterStatus.State.ShootRange;
-            // 进入攻击距离，攻击，Stomper只会水平/垂直攻击
-            if ((Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < 0.5f) 
-                || (Mathf.Abs(diff.y) <= atkRange && Mathf.Abs(diff.x) < 0.5f))
+            // 进入攻击距离，攻击，Stomper只会水平/垂直攻击，处于水平一条线时，跳跃踩踏攻击
+            if (Mathf.Abs(diff.x) <= atkRange && Mathf.Abs(diff.y) < col2D.bounds.extents.y)
             {
-                // 处于水平一条线时，跳跃踩踏攻击
-                if (Mathf.Abs(diff.y) < 0.5f)
-                {
-                    characterInput.LookInput = diff.normalized;
-                    return;
-                }
+                characterInput.LookInput = diff.normalized;
+                return;
             }
             characterInput.LookInput = Vector2.zero;
         }
     }
+    #endregion
 
     #region Attack Action
     private bool isJumpingDown = false;

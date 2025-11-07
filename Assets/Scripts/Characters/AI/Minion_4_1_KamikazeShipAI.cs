@@ -91,10 +91,11 @@ public class Minion_4_1_KamikazeShipAI : CharacterBaseAI
         {
             if (AggroTarget == null || !LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
             {
-                if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
+                if (targetPos == Vector3.zero || Time.time > nextTargetPosChangeTime)
                 {
                     var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
                     targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
+                    nextTargetPosChangeTime = Time.time + Random.Range(CharacterData.randomMoveToTargetInterval.min, CharacterData.randomMoveToTargetInterval.max);
                 }
                 Move_RandomMoveToTarget(targetPos);
                 curForce = 0;
@@ -102,17 +103,16 @@ public class Minion_4_1_KamikazeShipAI : CharacterBaseAI
             else
             {
                 if (isBouncingBack) isBouncingBack = false;
-                else Move_ChaseInRoom();
+                else Move_ChaseInRoom(AggroTarget);
             }
-            chaseMoveInputInterval = Random.Range(CharacterData.minChaseMoveInputInterval, CharacterData.maxChaseMoveInputInterval);
-            nextMoveInputChangeTime = Time.time + chaseMoveInputInterval;
+            nextMoveInputChangeTime = Time.time + Random.Range(CharacterData.chaseMoveInputInterval.min, CharacterData.chaseMoveInputInterval.max);;
         }
     }
 
     private float curForce = 0;
-    protected override void Move_ChaseInRoom()
+    protected override void Move_ChaseInRoom(GameObject target, bool followTrainer = false)
     {
-        Vector2 diff = (AggroTarget.transform.position - transform.position).normalized;
+        Vector2 diff = (target.transform.position - transform.position).normalized;
         curForce = 1;
 
         characterInput.MoveInput.x = Mathf.Abs(diff.x) > Mathf.Abs(diff.y) ? diff.x : 0;

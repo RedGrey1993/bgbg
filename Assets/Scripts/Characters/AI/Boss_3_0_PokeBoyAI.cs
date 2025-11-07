@@ -68,14 +68,13 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     private List<(GameObject, int)> existingPokes = new();
     private Coroutine summonCoroutine;
     private Coroutine strengthenCoroutine;
-    private Coroutine throwPokeballCoroutine;
     private float nextStrengthenTime = 0;
     protected override void AttackAction()
     {
         if (!isAttack)
         {
             // 所有技能都在释放中，则不能再释放技能
-            if (summonCoroutine != null && strengthenCoroutine != null && throwPokeballCoroutine != null) { return; }
+            if (summonCoroutine != null && strengthenCoroutine != null && shootCoroutine != null) { return; }
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             // if (Time.time < nextAtkTime) { return; }
             // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -132,7 +131,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
                 }
             }
 
-            if (strengthenCoroutine == null && throwPokeballCoroutine == null && (!isAi || AggroTarget != null))
+            if (strengthenCoroutine == null && shootCoroutine == null && (!isAi || AggroTarget != null))
             {
                 bool throwBall = false;
                 if (isAi && AggroTarget != null)
@@ -143,7 +142,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
                 }
                 if (!isAi || throwBall)
                 {
-                    throwPokeballCoroutine = StartCoroutine(ThrowPokeball(characterInput.LookInput));
+                    shootCoroutine = StartCoroutine(ThrowPokeball(characterInput.LookInput));
                 }
             }
         }
@@ -329,7 +328,6 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     #region 技能3，扔红白球
     private IEnumerator ThrowPokeball(Vector2 lookInput)
     {
-        Debug.Log($"fhhtest, throwPokeballCoroutine = null, start Time {Time.time}");
         isAttack = true;
         float startTime = Time.time;
         float atkInterval = 1f / characterStatus.State.AttackFrequency;
@@ -361,8 +359,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
             yield return new WaitForSeconds(Random.Range(1, 3f));
         }
-        throwPokeballCoroutine = null;
-        Debug.Log($"fhhtest, throwPokeballCoroutine = null, end Time {Time.time}");
+        shootCoroutine = null;
     }
     #endregion
 

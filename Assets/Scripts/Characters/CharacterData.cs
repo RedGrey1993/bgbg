@@ -39,6 +39,9 @@ public class CharacterData : ScriptableObject
 
     [Header("Movement Settings")]
     public bool canMoveDiagonally = true;
+    // 在攻击范围内是否还移动，true：移动拉扯攻击目标，false：站定，只攻击，不移动
+    public bool moveInAtkRange = true;
+    public bool moveAcrossRoom = false;
 
     [Header("Attack Settings")]
     public bool canAttackDiagonally = false;
@@ -48,7 +51,8 @@ public class CharacterData : ScriptableObject
     public int AggroRange = 20;
     public float AggroChangeInterval = 2; // 每隔多少秒重新选择仇恨目标
 
-    // 每隔随机0.5-1秒改变一次追击输入
-    public float minChaseMoveInputInterval = 0.5f;
-    public float maxChaseMoveInputInterval = 1f;
+    // 每隔随机0.05-0.1秒改变一次追击输入
+    public MinMaxFloat chaseMoveInputInterval = new () { min = 0.05f, max = 0.1f };
+    // 每隔随机0.5-2s改变一次随机移动的目标位置
+    public MinMaxFloat randomMoveToTargetInterval = new () { min = 0.5f, max = 2 };
 }

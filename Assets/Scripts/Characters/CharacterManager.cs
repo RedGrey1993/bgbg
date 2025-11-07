@@ -573,7 +573,7 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
-    public GameObject FindNearestEnemyInAngle(GameObject character, Vector2 shootDir, int rangeAngle)
+    public GameObject FindNearestEnemyInAngle(GameObject character, Vector2 shootDir, int rangeAngle, bool findSameRoom = true)
     {
         GameObject nearestEnemy = null;
         float nearestDistanceSqr = float.MaxValue;
@@ -583,7 +583,7 @@ public class CharacterManager : MonoBehaviour
             {
                 // 跳过自己
                 if (child.gameObject == character) continue;
-                if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+                if (findSameRoom && !LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
                 var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
                 foreach (var status in minionStatuses)
                 {
@@ -604,7 +604,7 @@ public class CharacterManager : MonoBehaviour
             {
                 // 跳过自己
                 if (child.gameObject == character) continue;
-                if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+                if (findSameRoom && !LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
                 var bossStatuses = child.GetComponentsInChildren<CharacterStatus>();
                 foreach (var status in bossStatuses)
                 {
@@ -627,7 +627,7 @@ public class CharacterManager : MonoBehaviour
             {
                 // 跳过自己
                 if (child.gameObject == character) continue;
-                if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+                if (findSameRoom && !LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
                 var playerStatuses = child.GetComponentsInChildren<CharacterStatus>();
                 foreach (var status in playerStatuses)
                 {
@@ -650,7 +650,7 @@ public class CharacterManager : MonoBehaviour
         {
             // 跳过自己
             if (child.gameObject == character) continue;
-            if (!LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+            if (findSameRoom && !LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
             if (character.CompareTag(child.tag)) continue;
             var cpStatuses = child.GetComponentsInChildren<CharacterStatus>();
             foreach (var status in cpStatuses)
