@@ -127,14 +127,14 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
     }
     
-    private float nextDamageTime = 0;
+    protected float nextCollisionDamageTime = 0;
     protected virtual void ProcessCollisionDamage(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
             if (collision.gameObject.IsPlayerOrEnemy())
             {
-                if (Time.time > nextDamageTime)
+                if (Time.time > nextCollisionDamageTime)
                 {
                     var tarStatus = collision.GetCharacterStatus();
                     if (tarStatus != null)
@@ -143,7 +143,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                             return;
                             
                         tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
-                        nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                        nextCollisionDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                     }
                 }
             }

@@ -9,14 +9,13 @@ using UnityEngine;
 public class Minion_1_0_StomperAI : CharacterBaseAI
 {
     #region Collision
-    private float nextDamageTime = 0;
     protected override void ProcessCollisionDamage(Collision2D collision)
     {
         if (GameManager.Instance.IsLocalOrHost() && IsAlive())
         {
             if (collision.gameObject.IsPlayerOrEnemy())
             {
-                if (Time.time > nextDamageTime)
+                if (Time.time > nextCollisionDamageTime)
                 {
                     var tarStatus = collision.GetCharacterStatus();
                     if (tarStatus != null)
@@ -32,7 +31,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
                         {
                             tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
                         }
-                        nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                        nextCollisionDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                     }
                 }
             }

@@ -1,59 +1,15 @@
 
 using UnityEngine;
 
-// Stomper不会对角线移动
+// 只会在房间中随机飞行
 public class Minion_3_0_PixelBatAI : CharacterBaseAI
 {
-    #region Collision
-    private float nextDamageTime = 0;
-    public void ProcessCollisionDamage(Collision2D collision)
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (collision.gameObject.CompareTag(Constants.TagPlayer))
-            {
-                if (Time.time > nextDamageTime)
-                {
-                    var status = collision.gameObject.GetComponent<CharacterStatus>();
-                    status.TakeDamage_Host(characterStatus.State.Damage, null);
-                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-                }
-            }
-        }
-    }
-
-    protected override void SubclassCollisionEnter2D(Collision2D collision)
-    {
-        BounceBack(collision);
-        ProcessCollisionDamage(collision);
-    }
-
-    protected override void SubclassCollisionStay2D(Collision2D collision)
-    {
-        BounceBack(collision);
-        ProcessCollisionDamage(collision);
-    }
-    #endregion
-
     #region AI Logic / Update Input
-    protected override void UpdateMoveInput()
+    // 永远不会发动主动攻击（意义上相当于一直占用着一个空的atkCoroutine，实际上什么也不做）
+    // CanAttack永远==false，就会一直随机移动，而不会追踪目标
+    protected override bool IsAtkCoroutineIdle()
     {
-        if (Time.time > nextMoveInputChangeTime)
-        {
-            if (targetPos == Vector3.zero || Vector3.Distance(transform.position, targetPos) < 1)
-            {
-                var roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-                targetPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
-            }
-            if (isBouncingBack) isBouncingBack = false;
-            else Move_RandomFlyToTarget(targetPos);
-            nextMoveInputChangeTime = Time.time + Random.Range(CharacterData.chaseMoveInputInterval.min, CharacterData.chaseMoveInputInterval.max);;
-        }
-    }
-
-    protected void Move_RandomFlyToTarget(Vector3 targetPos)
-    {
-        characterInput.MoveInput = (targetPos - transform.position).normalized;
+        return false;
     }
 
     protected override void UpdateAttackInput()
