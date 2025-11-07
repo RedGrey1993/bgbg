@@ -44,6 +44,37 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         }
     }
 
+    private int GetTarPokeNum()
+    {
+        float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
+        if (isAi)
+        {
+            if (hpRatio > 0.6f)
+            {
+                return 1;
+            }
+            else if (hpRatio > 0.3f)
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+        else
+        {
+            return 6;
+        }
+    }
+
+    protected override bool IsAtkCoroutineIdle()
+    {
+        return throwCoroutine == null 
+            || (summonCoroutine == null && pokeMinionPrefabs.Count > 0 && existingPokes.Count < GetTarPokeNum())
+            || (strengthenCoroutine == null && existingPokes.Count > 0 && Time.time > nextStrengthenTime);
+    }
+
     #region Animation
     protected override void SetIdleAnimation(Direction dir)
     {
@@ -71,10 +102,8 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     private float nextStrengthenTime = 0;
     protected override void AttackAction()
     {
-        if (!isAttack)
+        if (IsAtkCoroutineIdle())
         {
-            // 所有技能都在释放中，则不能再释放技能
-            if (summonCoroutine != null && strengthenCoroutine != null && shootCoroutine != null) { return; }
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             // if (Time.time < nextAtkTime) { return; }
             // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -92,57 +121,33 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             {
                 nextStrengthenTime = Time.time + Random.Range(pokeMinionBuffTime * 3, pokeMinionBuffTime * 4);
                 strengthenCoroutine = StartCoroutine(StrengthenPokes());
+                return;
             }
 
             float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
             if (pokeMinionPrefabs.Count > 0 && summonCoroutine == null)
             {
                 // 召唤pokes 15s后会复活
-                if (isAi)
+                int tarNum = GetTarPokeNum();
+                if (existingPokes.Count < tarNum)
                 {
-                    if (hpRatio > 0.6f)
-                    {
-                        if (existingPokes.Count < 1)
-                        {
-                            summonCoroutine = StartCoroutine(SummonPokes(1, characterInput.LookInput));
-                        }
-                    }
-                    else if (hpRatio > 0.3f)
-                    {
-                        if (existingPokes.Count < 2)
-                        {
-                            summonCoroutine = StartCoroutine(SummonPokes(2, characterInput.LookInput));
-                        }
-                    }
-                    else
-                    {
-                        if (existingPokes.Count < 5)
-                        {
-                            summonCoroutine = StartCoroutine(SummonPokes(5, characterInput.LookInput));
-                        }
-                    }
-                }
-                else
-                {
-                    if (existingPokes.Count < 6)
-                    {
-                        summonCoroutine = StartCoroutine(SummonPokes(6, characterInput.LookInput));
-                    }
+                    summonCoroutine = StartCoroutine(SummonPokes(tarNum, characterInput.LookInput));
+                    return;
                 }
             }
 
-            if (strengthenCoroutine == null && shootCoroutine == null && (!isAi || AggroTarget != null))
+            if (throwCoroutine == null) // && (!isAi || AggroTarget != null))
             {
-                bool throwBall = false;
-                if (isAi && AggroTarget != null)
+                // bool throwBall = false;
+                // if (isAi && AggroTarget != null)
+                // {
+                //     var tarStatus = AggroTarget.GetComponent<CharacterStatus>();
+                //     float tarHpRatio = (float)tarStatus.State.CurrentHp / tarStatus.State.MaxHp;
+                //     throwBall = tarHpRatio < 0.25f;
+                // }
+                // if (!isAi || throwBall)
                 {
-                    var tarStatus = AggroTarget.GetComponent<CharacterStatus>();
-                    float tarHpRatio = (float)tarStatus.State.CurrentHp / tarStatus.State.MaxHp;
-                    throwBall = tarHpRatio < 0.25f;
-                }
-                if (!isAi || throwBall)
-                {
-                    shootCoroutine = StartCoroutine(ThrowPokeball(characterInput.LookInput));
+                    throwCoroutine = StartCoroutine(ThrowPokeball(characterInput.LookInput));
                 }
             }
         }
@@ -326,6 +331,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     #endregion
 
     #region 技能3，扔红白球
+    private Coroutine throwCoroutine = null;
     private IEnumerator ThrowPokeball(Vector2 lookInput)
     {
         isAttack = true;
@@ -359,7 +365,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
             yield return new WaitForSeconds(Random.Range(1, 3f));
         }
-        shootCoroutine = null;
+        throwCoroutine = null;
     }
     #endregion
 

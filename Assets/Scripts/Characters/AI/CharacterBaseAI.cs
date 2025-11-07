@@ -93,7 +93,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             nextBounceTime = Time.time + 1f;
             // 碰到墙还好，不反弹，碰到角色时很可能会互相卡住，所以需要反弹分开
-            if (collision.gameObject.CompareTag(Constants.TagPlayer) 
+            if (collision.gameObject.CompareTag(Constants.TagPlayer)
                 || collision.gameObject.CompareTag(Constants.TagEnemy))
             {
                 isBouncingBack = true;
@@ -126,25 +126,48 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             }
         }
     }
+    
+    private float nextDamageTime = 0;
+    protected virtual void ProcessCollisionDamage(Collision2D collision)
+    {
+        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
+        {
+            if (collision.gameObject.IsPlayerOrEnemy())
+            {
+                if (Time.time > nextDamageTime)
+                {
+                    var tarStatus = collision.GetCharacterStatus();
+                    if (tarStatus != null)
+                    {
+                        if (characterStatus.IsFriendlyUnit(tarStatus))
+                            return;
+                            
+                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
+                        nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                    }
+                }
+            }
+        }
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        BounceBack(collision);
+        if (CharacterData.causeCollisionDamage)
+            ProcessCollisionDamage(collision);
         SubclassCollisionEnter2D(collision);
     }
 
-    protected virtual void SubclassCollisionEnter2D(Collision2D collision)
-    {
-        BounceBack(collision);
-    }
+    protected virtual void SubclassCollisionEnter2D(Collision2D collision) { }
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        BounceBack(collision);
+        if (CharacterData.causeCollisionDamage)
+            ProcessCollisionDamage(collision);
         SubclassCollisionStay2D(collision);
     }
 
-    protected virtual void SubclassCollisionStay2D(Collision2D collision)
-    {
-        BounceBack(collision);
-    }
+    protected virtual void SubclassCollisionStay2D(Collision2D collision) { }
     #endregion
 
     #region AI Logic / Update Input
@@ -612,10 +635,10 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
         shootCoroutine = null;
     }
-    protected Coroutine shootCoroutine = null;
+    private Coroutine shootCoroutine = null;
     protected virtual void AttackAction()
     {
-        if (shootCoroutine == null)
+        if (IsAtkCoroutineIdle())
         {
             Vector2 lookInput = characterInput.LookInput;
             if (lookInput.sqrMagnitude < 0.1f) return;
@@ -639,7 +662,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
         var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        if (!IsAtkCoroutineIdle())
+        if (isAttack || lookInput.sqrMagnitude >= 0.1f)
         {
             if (lookInput.sqrMagnitude < 0.1f) // 不修改之前的方向
                 return;

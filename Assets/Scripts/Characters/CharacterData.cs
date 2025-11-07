@@ -45,6 +45,7 @@ public class CharacterData : ScriptableObject
 
     [Header("Attack Settings")]
     public bool canAttackDiagonally = false;
+    public bool causeCollisionDamage = false;
 
     [Header("AI Settings")]
     // NPC相关设置

@@ -1,27 +1,9 @@
 
 using UnityEngine;
 
-// Stomper不会对角线移动
 public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
 {
     #region Collision
-    private float nextDamageTime = 0;
-    public void ProcessCollisionDamage(Collision2D collision)
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (collision.gameObject.CompareTag(Constants.TagPlayer))
-            {
-                if (Time.time > nextDamageTime)
-                {
-                    var status = collision.gameObject.GetComponent<CharacterStatus>();
-                    status.TakeDamage_Host(characterStatus.State.Damage, null);
-                    nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-                }
-            }
-        }
-    }
-
     protected override void BounceBack(Collision2D collision)
     {
         if (Time.time > nextBounceTime && isAi && GameManager.Instance.IsLocalOrHost() && IsAlive())
@@ -40,18 +22,6 @@ public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
                 characterInput.MoveInput = reflectionDirection.normalized;
             }
         }
-    }
-
-    protected override void SubclassCollisionEnter2D(Collision2D collision)
-    {
-        BounceBack(collision);
-        ProcessCollisionDamage(collision);
-    }
-
-    protected override void SubclassCollisionStay2D(Collision2D collision)
-    {
-        BounceBack(collision);
-        ProcessCollisionDamage(collision);
     }
     #endregion
 

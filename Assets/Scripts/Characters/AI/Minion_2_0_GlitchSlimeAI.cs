@@ -7,44 +7,6 @@ using UnityEngine;
 
 public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
 {
-    #region Collision
-    // 史莱姆只造成接触伤害
-    private float nextDamageTime = 0;
-    private void ProcessCollisionDamage(Collision2D collision)
-    {
-        if (GameManager.Instance.IsLocalOrHost() && IsAlive())
-        {
-            if (collision.gameObject.IsPlayerOrEnemy())
-            {
-                if (Time.time > nextDamageTime)
-                {
-                    var tarStatus = collision.GetCharacterStatus();
-                    if (tarStatus != null)
-                    {
-                        if (characterStatus.IsFriendlyUnit(tarStatus))
-                            return;
-                            
-                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
-                        nextDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
-                    }
-                }
-            }
-        }
-    }
-
-    protected override void SubclassCollisionEnter2D(Collision2D collision)
-    {
-        BounceBack(collision);
-        ProcessCollisionDamage(collision);
-    }
-
-    protected override void SubclassCollisionStay2D(Collision2D collision)
-    {
-        BounceBack(collision);
-        ProcessCollisionDamage(collision);
-    }
-    #endregion
-
     #region Attack Action
     // 史莱姆只造成接触伤害
     protected override void UpdateAttackInput()

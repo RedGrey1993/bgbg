@@ -21,6 +21,11 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     }
 
     #region AI Logic / Update Input
+    protected override bool IsAtkCoroutineIdle()
+    {
+        return atkCoroutine == null;
+    }
+
     // 和Base方法不同的地方：随机朝目标移动时考虑自身的bound大小
     // collider2D在子节点上，因为collider要和子节点一起旋转
     protected override void UpdateMoveInput()
@@ -84,7 +89,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         {
             // 所有技能都在释放中，则不能再释放技能
             // 幻影冲锋时还能够射击或者移动
-            if (shootCoroutine != null && ActiveSkillCoroutine != null) { return; } // 在协程都未执行完毕的时候可以移动
+            if (atkCoroutine != null && ActiveSkillCoroutine != null) { return; } // 在协程都未执行完毕的时候可以移动
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -92,7 +97,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             var rnd = Random.Range(0, 2);
             if (!isAi || rnd == 0 || ActiveSkillCoroutine != null)
             {
-                shootCoroutine ??= StartCoroutine(Attack_Shoot(characterInput.LookInput));
+                atkCoroutine ??= StartCoroutine(Attack_Shoot(characterInput.LookInput));
             }
             else
             {
@@ -104,6 +109,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     }
 
     // 射击
+    private Coroutine atkCoroutine = null;
     private IEnumerator Attack_Shoot(Vector2 lookInput)
     {
         isAttack = true;
@@ -126,7 +132,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             yield return new WaitForSeconds(waitTime);
         }
         // shootCoroutine = null后才能再次使用该技能
-        shootCoroutine = null;
+        atkCoroutine = null;
     }
     #endregion
 
