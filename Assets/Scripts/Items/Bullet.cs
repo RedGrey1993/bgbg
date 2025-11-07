@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     public Collider2D LastCollider { get; set; } = null;
     public GameObject AggroTarget { get; set; } = null;
     public int SplitCount { get; set; } = 0;
-    public int HomingForce { get; set; } = 0;
+    public int homingForce = 0;
     public int bounceCount = 0;
     public int penetrateCount = 0;
     private float bornTime;
@@ -34,19 +34,32 @@ public class Bullet : MonoBehaviour
         {
             if (BulletState.PenetrateCount > penetrateCount) penetrateCount = BulletState.PenetrateCount;
             if (BulletState.SplitCount > SplitCount) SplitCount = BulletState.SplitCount;
-            if (BulletState.HomingForce > HomingForce) HomingForce = BulletState.HomingForce;
+            if (BulletState.HomingForce > homingForce) homingForce = BulletState.HomingForce;
             if (BulletState.BounceCount > bounceCount) bounceCount = BulletState.BounceCount;
         }
         if (Damage == 0) Damage = OwnerStatus.State.Damage;
         // col2D.enabled = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Time.time - bornTime > 0.1f)
         {
             col2D.enabled = true;
         }
+
+        if (AggroTarget != null && homingForce > 0)
+        {
+
+            var diff = AggroTarget.transform.position - transform.position;
+            rb.AddForce(diff.normalized * homingForce / 5f, ForceMode2D.Force);
+            if (Time.time - bornTime > 0.1f && lastVelocity.magnitude > 0.1f)
+            {
+                rb.linearVelocity = rb.linearVelocity.normalized * lastVelocity.magnitude;
+            }
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized);
+        }
+
         // 当前减少计算量，不计算距离（避免平方根运算），只单独计算x/y轴的距离
         if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
             || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
@@ -57,16 +70,6 @@ public class Bullet : MonoBehaviour
         else
         {
             lastVelocity = rb.linearVelocity;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (AggroTarget != null && HomingForce > 0)
-        {
-            var diff = AggroTarget.transform.position - transform.position;
-            rb.AddForce(diff.normalized * HomingForce, ForceMode2D.Force);
-            transform.localRotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized);
         }
     }
 

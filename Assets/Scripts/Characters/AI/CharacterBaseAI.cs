@@ -577,7 +577,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Attack Action
-    protected IEnumerator AttackShoot(Vector2 lookInput, float atkInterval, int fixedDamage = 0)
+    protected IEnumerator AttackShoot(Vector2 lookInput, float atkInterval, int fixedDamage = 0,
+        GameObject tarEnemy = null)
     {
         isAttack = true;
         if (CharacterData.shootSound)
@@ -600,7 +601,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         int stepAngle = bulletState.ShootNum > 1 ? bulletState.ShootAngleRange / (bulletState.ShootNum - 1) : 0;
         Quaternion rotationPlus = Quaternion.Euler(0, 0, stepAngle);
 
-        GameObject tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45);
+        if (tarEnemy == null)
+            tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45);
         if (!LevelManager.Instance.InSameRoom(gameObject, tarEnemy)) tarEnemy = null;
 
         for (int i = 0; i < bulletState.ShootNum; i++)
