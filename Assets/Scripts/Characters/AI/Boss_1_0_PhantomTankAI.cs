@@ -44,8 +44,6 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
             }
             else
             {
-                if (Time.time < nextAtkTime) { return; }
-                nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                 // 幻影冲锋时还能够射击或者移动
                 SkillData skillData = SkillDatabase.Instance.GetActiveSkill(Constants.PhantomChargeSkillId);
                 skillData.executor.ExecuteSkill(gameObject, skillData);

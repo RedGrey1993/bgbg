@@ -107,8 +107,6 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         if (IsAtkCoroutineIdle())
         {
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
-            // if (Time.time < nextAtkTime) { return; }
-            // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             foreach ((GameObject, int) poke in existingPokes)
             {

@@ -18,6 +18,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     [SerializeField] private AudioClip energyWaveAccumulateSound;
     [SerializeField] private AudioClip energyWaveShootSound;
     [SerializeField] private GameObject energyWavePrefab;
+    [SerializeField] private GameObject virtualScreen;
+    [SerializeField] private Animator screenAnim;
 
     private List<BossPrefabInfo> prevBossPrefabInfos;
     protected override void SubclassStart()
@@ -55,10 +57,6 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     protected override void UpdateAttackInput()
     {
         characterInput.LookInput = Vector2.zero;
-        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
-        {
-            isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
-        }
     }
     #endregion
 
@@ -68,7 +66,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private int bossIdx = 0;
     protected override void AttackAction()
     {
-        if (isAiming && AggroTarget != null)
+        if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
             if (Time.time < nextAtkTime) return;
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
@@ -80,15 +78,15 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 int rndSkillId = Random.Range(0, 2);
                 if (rndSkillId == 0 && bossIdx < prevBossPrefabInfos.Count && existingBosses.Count < 2)
                 {
-                    if (!isSummoning)
+                    if (summonCoroutine == null && isShowingVirtualScreen == false)
                     {
                         Debug.Log("fhhtest, Summon::::::");
-                        StartCoroutine(SummonBoss());
+                        summonCoroutine = StartCoroutine(SummonBoss());
                     }
                 }
                 else
                 {
-                    if (explosionCoroutine == null)
+                    if (explosionCoroutine == null && isShowingVirtualScreen == false)
                     {
                         Debug.Log("fhhtest, Explosion::::::");
                         explosionCoroutine = StartCoroutine(Explosion());
@@ -111,18 +109,16 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 teleportCoroutine ??= StartCoroutine(TeleportAndPreviousBossAttack(false));
             }
         }
-        isAiming = false;
     }
     #endregion
 
+    private bool isShowingVirtualScreen = false;
     #region 技能1，召唤
-    private bool isSummoning = false;
+    private Coroutine summonCoroutine = null;
     private IEnumerator SummonBoss()
     {
-        isSummoning = true;
-        var virtualScreen = transform.GetChild(2).gameObject;
+        isShowingVirtualScreen = true;
         virtualScreen.SetActive(true);
-        var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
         var animClips = screenAnim.runtimeAnimatorController.animationClips;
         float showTime = 0.5f, dismissTime = 0.5f;
         foreach (var clip in animClips)
@@ -136,8 +132,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 dismissTime = clip.length;
             }
         }
-
-        yield return new WaitForSeconds(showTime);
+        // yield return new WaitForSeconds(showTime);
 
         var rulerClips = animator.runtimeAnimatorController.animationClips;
         float summonTime = 0.5f;
@@ -153,6 +148,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         screenAnim.Play("VirtualScreenDismiss");
         yield return new WaitForSeconds(dismissTime);
         virtualScreen.SetActive(false);
+        isShowingVirtualScreen = false;
 
         while (existingBosses.Count < 2 && bossIdx < prevBossPrefabInfos.Count)
         {
@@ -171,12 +167,17 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
 
-
             GameObject boss = CharacterManager.Instance.InstantiateBossObject(bossPrefab, position, bossPrefabInfo.StageId, bossPrefabInfo.PrefabId, null);
+            // GameObject boss = LevelManager.Instance.InstantiateTemporaryObject(bossPrefab, position);
+            boss.name = Constants.SummonBossName;
+            boss.tag = gameObject.tag;
+            if (boss.layer == LayerMask.NameToLayer("Default")) boss.layer = gameObject.layer;
+            var bossStatus = boss.GetComponent<CharacterStatus>();
+            bossStatus.IsBoss = true;
             existingBosses.Add(boss);
         }
 
-        isSummoning = false;
+        summonCoroutine = null;
     }
     #endregion
 
@@ -184,9 +185,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private Coroutine explosionCoroutine;
     private IEnumerator Explosion(bool explosionSameTime = false)
     {
-        var virtualScreen = transform.GetChild(2).gameObject;
+        isShowingVirtualScreen = true;
         virtualScreen.SetActive(true);
-        var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
         var animClips = screenAnim.runtimeAnimatorController.animationClips;
         float showTime = 0.5f, dismissTime = 0.5f;
         foreach (var clip in animClips)
@@ -200,8 +200,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 dismissTime = clip.length;
             }
         }
-
-        yield return new WaitForSeconds(showTime);
+        // yield return new WaitForSeconds(showTime);
 
         var rulerClips = animator.runtimeAnimatorController.animationClips;
         float summonTime = 0.5f;
@@ -214,6 +213,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         }
         animator.SetTrigger("Pointing");
         yield return new WaitForSeconds(summonTime);
+
+        screenAnim.Play("VirtualScreenDismiss");
+        yield return new WaitForSeconds(dismissTime);
+        virtualScreen.SetActive(false);
+        isShowingVirtualScreen = false;
 
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
@@ -268,10 +272,6 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         }
         yield return new WaitForSeconds(1f);
 
-        screenAnim.Play("VirtualScreenDismiss");
-        yield return new WaitForSeconds(dismissTime);
-        virtualScreen.SetActive(false);
-
         foreach (var tilePos in tilePositions)
         {
             StartCoroutine(PlayExplosionEffect(tilePos));
@@ -282,6 +282,12 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         foreach (var tilePos in tilePositions)
         {
             LevelManager.Instance.ResetFloorTile(new Vector3Int(tilePos.x, tilePos.y, 0));
+        }
+
+        if (isAi)
+        {
+            // 攻击完之后给1-2s的移动，避免过高频率传送和攻击
+            yield return new WaitForSeconds(Random.Range(1, 2f));
         }
 
         explosionCoroutine = null;
@@ -363,8 +369,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         childTransform1.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
         Transform childTransform2 = transform.GetChild(1);
         childTransform2.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
-        Transform childTransform3 = transform.GetChild(2);
-        childTransform3.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
+        // Transform childTransform3 = transform.GetChild(2);
+        virtualScreen.transform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), lookTo); // 45度
 
         var teleportEffect2 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, targetPos);
         var particleSystem2 = teleportEffect2.GetComponentInChildren<ParticleSystem>();
@@ -373,6 +379,12 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         SetTheRulerAlpha(1f);
         yield return new WaitForSeconds(particleSystem2.main.duration / 2);
         Object.Destroy(teleportEffect2);
+
+        if (isAi)
+        {
+            // 攻击完之后给1-2s的移动，避免过高频率传送和攻击
+            yield return new WaitForSeconds(Random.Range(1, 2f));
+        }
         teleportCoroutine = null;
     }
 
@@ -421,7 +433,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             EnergyWave energyWaveScript = energeWave.GetComponent<EnergyWave>();
             energyWaveScript.PosOffset = waveOffset;
             energyWaveScript.Direction = lookInput.normalized;
-            energyWaveScript.OwnerStatus = null;
+            energyWaveScript.OwnerStatus = characterStatus;
+            energyWaveScript.FollowOwner = false;
             energyWaveScript.Rotate = count > 1 ? rotateDir : 0;
 
             lookInput = rotationPlus * lookInput;
@@ -463,6 +476,20 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
             GameObject pokeMinion = LevelManager.Instance.InstantiateTemporaryObject(pokePrefab, summonPosition);
+            pokeMinion.tag = gameObject.tag;
+            if (pokeMinion.layer == LayerMask.NameToLayer("Default")) pokeMinion.layer = gameObject.layer;
+            Physics2D.SyncTransforms();
+            var col2D = pokeMinion.GetComponentInChildren<Collider2D>();
+            var tarPos = pokeMinion.transform.position;
+            tarPos.y += col2D.bounds.extents.y + 0.5f;
+            // 将血条显示到对象的头上
+            var miniStatusCanvas = pokeMinion.GetComponentInChildren<Canvas>();
+            if (miniStatusCanvas == null)
+            {
+                var obj1 = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
+                obj1.transform.SetParent(pokeMinion.transform);
+                miniStatusCanvas = obj1.GetComponent<Canvas>();
+            }
             existingPokes.Add(pokeMinion);
         }
 
@@ -524,9 +551,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private IEnumerator Formatting(float duration, GameObject aggroTarget)
     {
         UIManager.Instance.formatPanel.SetActive(true);
-        var virtualScreen = transform.GetChild(2).gameObject;
+
         virtualScreen.SetActive(true);
-        var screenAnim = virtualScreen.GetComponentInChildren<Animator>();
         var animClips = screenAnim.runtimeAnimatorController.animationClips;
         float showTime = 0.5f;
         foreach (var clip in animClips)
@@ -536,7 +562,6 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
                 showTime = clip.length;
             }
         }
-
         yield return new WaitForSeconds(showTime);
 
         var textObj = UIManager.Instance.formatPanel.GetComponentInChildren<TextMeshProUGUI>();

@@ -9,6 +9,7 @@ public class EnergyWave : MonoBehaviour
     public float rotateSpeed = 20f;
     public float pushForce = 5f; // 推力大小
     public CharacterStatus OwnerStatus { get; set; }
+    public bool FollowOwner { get; set; } = true;
     public float damageInterval = 0.3f;
     public int minDamage = 10;
     private float nextDamageTime = 0;
@@ -21,13 +22,13 @@ public class EnergyWave : MonoBehaviour
         gameObject.transform.localRotation = Quaternion.LookRotation(Vector3.forward, Direction);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (OwnerStatus != null)
+        if (OwnerStatus != null && FollowOwner)
         {
             Vector2 tarPos = OwnerStatus.gameObject.transform.position;
-            tarPos += PosOffset;
+            Vector2 offset = transform.up * PosOffset.magnitude;
+            tarPos += offset;
             gameObject.transform.position = tarPos;
         }
 
@@ -73,21 +74,12 @@ public class EnergyWave : MonoBehaviour
             scaleUp = false;
             scaleDown = true;
         }
-        else if (collision.gameObject.CompareThisAndParentTag(Constants.TagPlayer)
-                || collision.gameObject.CompareThisAndParentTag(Constants.TagEnemy))
+        else if (collision.IsPlayerOrEnemy())
         {
-            CharacterStatus tarStatus = collision.gameObject.GetComponentInParent<CharacterStatus>();
-            if (tarStatus == null || tarStatus == OwnerStatus || tarStatus.Trainer == OwnerStatus)
+            CharacterStatus tarStatus = collision.GetCharacterStatus();
+            if (tarStatus == null || (OwnerStatus!= null && OwnerStatus.IsFriendlyUnit(tarStatus)))
             { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                 return; // 不伤害自己
-            }
-
-            // 敌人之间不互相伤害；
-            if (tarStatus.gameObject.CompareTag(Constants.TagEnemy) == true
-                && (OwnerStatus == null || OwnerStatus.gameObject.CompareTag(Constants.TagEnemy) == true))
-            // 只有TheRuler不设置OwnerStatus，因为统治者调用这个技能时，是固定在房间中间发射
-            {
-                return;
             }
 
             Vector2 diff = Direction * Time.deltaTime * pushForce;

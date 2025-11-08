@@ -46,6 +46,7 @@ public class CharacterStatus : MonoBehaviour
 
     void Start()
     {
+        healthSlider = GetComponentInChildren<Slider>();
         UpdateHealthSliderUI();
     }
 
@@ -303,15 +304,6 @@ public class CharacterStatus : MonoBehaviour
         {
             healthSlider.maxValue = State.MaxHp;
             healthSlider.value = State.CurrentHp;
-        }
-        else
-        {
-            healthSlider = GetComponentInChildren<Slider>();
-            if (healthSlider != null)
-            {
-                healthSlider.maxValue = State.MaxHp;
-                healthSlider.value = State.CurrentHp;
-            }
         }
 
         if (IsBoss)

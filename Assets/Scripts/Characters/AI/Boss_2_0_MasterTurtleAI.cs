@@ -62,8 +62,6 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             // Master Turtle一次只能使用一种技能
             if (atkCoroutine != null || ActiveSkillCoroutine != null) { return; }
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
-            if (Time.time < nextAtkTime) { return; }
-            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             var rnd = Random.Range(0, 2);
             if (!isAi || rnd == 0)

@@ -820,6 +820,7 @@ public class CharacterManager : MonoBehaviour
         foreach (var bossId in bossObjects.Keys)
         {
             var boss = bossObjects[bossId];
+            if (boss.name.Equals(Constants.SummonBossName)) continue;
             var prefabInfo = bossPrefabInfos[bossId];
             var bossStatus = boss.GetComponent<CharacterStatus>();
             if (bossStatus != null)

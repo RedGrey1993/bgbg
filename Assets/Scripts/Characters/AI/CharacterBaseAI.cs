@@ -648,8 +648,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             Vector2 lookInput = characterInput.LookInput;
             if (lookInput.sqrMagnitude < 0.1f) return;
-            // if (Time.time < nextAtkTime) return;
-            // nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             shootCoroutine = StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency));
         }

@@ -24,7 +24,7 @@ public class MasterLongWaveExecutor : SkillExecutor
         var tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(playerObj, aiScript.LookDir, 180);
         int count = 1;
         float hpRatio = (float)aiScript.characterStatus.State.CurrentHp / aiScript.characterStatus.State.MaxHp;
-        if (hpRatio < 0.5f) count = 9;
+        if (hpRatio < 0.5f) count = 8;
         aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(Attack_EnergyWave(playerObj, tarEnemy, count));
     }
 

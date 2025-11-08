@@ -138,8 +138,6 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         {
             if (jumpCoroutine != null) return;
             if (characterInput.LookInput.sqrMagnitude < 0.1f) return;
-            if (Time.time < nextAtkTime) return;
-            nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
             if (AggroTarget != null)
                 jumpCoroutine = StartCoroutine(JumpToTarget(AggroTarget.transform.position, 5));

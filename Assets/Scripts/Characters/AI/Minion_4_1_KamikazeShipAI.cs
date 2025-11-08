@@ -54,6 +54,7 @@ public class Minion_4_1_KamikazeShipAI : CharacterBaseAI
             {
                 characterInput.MoveInput = diff.normalized;
                 addMoveSpeed++;
+                if (addMoveSpeed > characterStatus.State.MoveSpeed) addMoveSpeed = characterStatus.State.MoveSpeed;
             }
             else
             {

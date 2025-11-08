@@ -33,6 +33,7 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
     }
 
     private bool floatingTurretsHasAlive = true;
+    private bool mainBodyAttack = false;
     // 系统守护者不需要设置LookInput，他在协程中直接攻击最新的目标位置
     protected override void UpdateAttackInput()
     {
@@ -40,7 +41,7 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
         if (AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget)
             && !floatingTurretsHasAlive) // 炮台都死了，主体开始攻击玩家
         {
-            isAiming = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
+            mainBodyAttack = true; // 在这里设置是为了避免在还未执行FixedUpdate执行动作的时候，在下一帧Update就把LookInput设置为0的问题
         }
     }
     #endregion
@@ -195,9 +196,9 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
     private Coroutine coreShootLaser2Coroutine = null;
     protected override void AttackAction()
     {
-        if (isAiming)
+        if (mainBodyAttack)
         {
-            isAiming = false;
+            mainBodyAttack = false;
             if (coreShootLaser1Coroutine != null && coreShootLaser2Coroutine != null) return;
             if (Time.time < nextAtkTime) { return; }
             nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;

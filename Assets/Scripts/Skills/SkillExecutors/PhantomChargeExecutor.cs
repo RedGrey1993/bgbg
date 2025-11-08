@@ -14,7 +14,7 @@ public class PhantomChargeExecutor : SkillExecutor
 
         aiScript = playerObj.GetComponent<CharacterBaseAI>();
         if (aiScript.ActiveSkillCoroutine != null) return;
-        var tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(playerObj, aiScript.LookDir, 90);
+        var tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(playerObj, aiScript.LookDir, 180);
 
         aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(Attack_Charge(playerObj, tarEnemy));
     }
