@@ -573,6 +573,40 @@ public class CharacterManager : MonoBehaviour
         }
         return nearestPlayer;
     }
+
+    public GameObject FindNearestMinionInAngleWithHpRatio(GameObject character, Vector2 shootDir, int rangeAngle, bool findSameRoom = true, float highHpRatio = 1f)
+    {
+        GameObject nearestMinion = null;
+        float nearestDistanceSqr = float.MaxValue;
+        if (character.CompareTag(Constants.TagPlayer)) // player寻找enemy
+        {
+            foreach (Transform child in minionParant)
+            {
+                // 跳过自己
+                if (child.gameObject == character) continue;
+                if (findSameRoom && !LevelManager.Instance.InSameRoom(child.gameObject, character)) continue;
+                var minionStatuses = child.GetComponentsInChildren<CharacterStatus>();
+                foreach (var status in minionStatuses)
+                {
+                    if (status != null && !status.IsDead())
+                    {
+                        if (highHpRatio < 1f && ((float)status.State.CurrentHp / status.State.MaxHp) > highHpRatio) continue;
+
+                        Vector2 toMinion = status.transform.position - character.transform.position;
+                        float distSqr = toMinion.sqrMagnitude;
+                        if (distSqr <= nearestDistanceSqr && Vector2.Angle(shootDir, toMinion) < rangeAngle)
+                        {
+                            nearestDistanceSqr = distSqr;
+                            nearestMinion = status.gameObject;
+                        }
+                    }
+                }
+            }
+        }
+
+        return nearestMinion;
+    }
+
     public GameObject FindNearestEnemyInAngle(GameObject character, Vector2 shootDir, int rangeAngle, bool findSameRoom = true)
     {
         GameObject nearestEnemy = null;

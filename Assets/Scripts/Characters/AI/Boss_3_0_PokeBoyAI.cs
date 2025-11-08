@@ -3,9 +3,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -19,61 +16,38 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     public GameObject rageEffectPrefab;
     public List<GameObject> pokeMinionPrefabs;
     public GameObject capturedMinionCanvas;
-    public int pokeMinionRebornTime = 15;
     public int pokeMinionBuffTime = 5;
-    private int maxPokeMinionCount = 6;
-
-    private List<float> pokeMinionDeadTime;
 
     protected override void SubclassStart()
     {
-        if (!isAi)
+        if (characterStatus.State.ActiveSkillId == 0)
         {
-            pokeMinionPrefabs.Clear();
-            foreach (var prefabInfo in characterStatus.State.CatchedMinions)
+            characterStatus.State.ActiveSkillId = Constants.CompanionMasterSkillId;
+            characterStatus.State.ActiveSkillCurCd = -1;
+            if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
             {
-                var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
-                var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
-                pokeMinionPrefabs.Add(minionPrefab);
+                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                spc.UpdateMyStatusUI(characterStatus.State);
             }
         }
 
-        pokeMinionDeadTime = new List<float>();
-        foreach (var prefab in pokeMinionPrefabs)
-        {
-            pokeMinionDeadTime.Add(-pokeMinionRebornTime);
-        }
-    }
-
-    private int GetTarPokeNum()
-    {
-        float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
         if (isAi)
         {
-            if (hpRatio > 0.6f)
+            PokeMinionPrefabs.Clear();
+            PokeMinionReviveTime.Clear();
+            foreach (var prefab in pokeMinionPrefabs)
             {
-                return 1;
+                PokeMinionPrefabs.Add(prefab);
+                PokeMinionReviveTime.Add(0);
             }
-            else if (hpRatio > 0.3f)
-            {
-                return 2;
-            }
-            else
-            {
-                return 3;
-            }
-        }
-        else
-        {
-            return 6;
         }
     }
 
     protected override bool IsAtkCoroutineIdle()
     {
         return throwCoroutine == null 
-            || (summonCoroutine == null && pokeMinionPrefabs.Count > 0 && existingPokes.Count < GetTarPokeNum())
-            || (strengthenCoroutine == null && existingPokes.Count > 0 && Time.time > nextStrengthenTime);
+            || (ActiveSkillCoroutine == null && PokeMinionPrefabs.Count > 0 && HasAliveNotSummonedPokePrefabs())
+            || (strengthenCoroutine == null && ExistingPokes.Count > 0 && Time.time > nextStrengthenTime);
     }
 
     #region Animation
@@ -98,8 +72,6 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     #endregion
 
     #region Attack Action
-    private List<(GameObject, int)> existingPokes = new();
-    private Coroutine summonCoroutine;
     private Coroutine strengthenCoroutine;
     private float nextStrengthenTime = 0;
     protected override void AttackAction()
@@ -108,32 +80,19 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         {
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
 
-            foreach ((GameObject, int) poke in existingPokes)
-            {
-                if (poke.Item1 == null)
-                {
-                    pokeMinionDeadTime[poke.Item2] = Time.time;
-                }
-            }
-            existingPokes.RemoveAll(obj => obj.Item1 == null);
-
-            if (existingPokes.Count > 0 && strengthenCoroutine == null && Time.time > nextStrengthenTime)
+            if (ExistingPokes.Count > 0 && strengthenCoroutine == null && Time.time > nextStrengthenTime)
             {
                 nextStrengthenTime = Time.time + Random.Range(pokeMinionBuffTime * 3, pokeMinionBuffTime * 4);
                 strengthenCoroutine = StartCoroutine(StrengthenPokes());
                 return;
             }
 
-            float hpRatio = (float)characterStatus.State.CurrentHp / characterStatus.State.MaxHp;
-            if (pokeMinionPrefabs.Count > 0 && summonCoroutine == null)
+            if (isAi && HasAliveNotSummonedPokePrefabs() && ActiveSkillCoroutine == null)
             {
                 // 召唤pokes 15s后会复活
-                int tarNum = GetTarPokeNum();
-                if (existingPokes.Count < tarNum)
-                {
-                    summonCoroutine = StartCoroutine(SummonPokes(tarNum, characterInput.LookInput));
-                    return;
-                }
+                var skillData = SkillDatabase.Instance.GetActiveSkill(Constants.CompanionMasterSkillId);
+                skillData.executor.ExecuteSkill(gameObject, skillData);
+                return;
             }
 
             if (throwCoroutine == null) // && (!isAi || AggroTarget != null))
@@ -155,126 +114,26 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     #endregion
 
     #region 技能1，召唤小怪
-    private int pokeIdx = 0;
-    private IEnumerator SummonPokes(int count, Vector2 lookInput)
-    {
-        isAttack = true;
-
-        int needCount = count - existingPokes.Count;
-        // 存活，且没有被召唤到场上的小怪
-        List<(GameObject, int)> aliveNotSummonedPokePrefabs = new();
-        int initPokeIdx = pokeIdx;
-        while (true)
-        {
-            if (Time.time > pokeMinionDeadTime[pokeIdx] + pokeMinionRebornTime)
-            {
-                aliveNotSummonedPokePrefabs.Add((pokeMinionPrefabs[pokeIdx], pokeIdx));
-                pokeMinionDeadTime[pokeIdx] = Time.time + 10000f;
-            }
-            pokeIdx = (pokeIdx + 1) % pokeMinionPrefabs.Count;
-            if (aliveNotSummonedPokePrefabs.Count >= needCount) break;
-            if (pokeIdx == initPokeIdx) break;
-        }
-        if (aliveNotSummonedPokePrefabs.Count <= 0)
-        {
-            isAttack = false;
-
-            animator.Play("Male Walking");
-            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
-            yield return new WaitForSeconds(Random.Range(1, 3f));
-            summonCoroutine = null;
-            yield break;
-        }
-
-        animator.Play("Throw Object");
-        yield return new WaitForSeconds(0.87f);
-
-        int idx = 0;
-        while (existingPokes.Count < count && idx < aliveNotSummonedPokePrefabs.Count)
-        {
-            // 召唤小弟
-            int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-            var room = LevelManager.Instance.Rooms[roomId];
-            var pokePrefab = aliveNotSummonedPokePrefabs[idx++];
-            Vector2 summonPosition = transform.position;
-            summonPosition += lookInput * CharacterData.ShootRange;
-            if (summonPosition.x < room.xMin + 2) summonPosition.x = room.xMin + 2;
-            else if (summonPosition.x > room.xMax - 1) summonPosition.x = room.xMax - 1;
-            if (summonPosition.y < room.yMin + 2) summonPosition.y = room.yMin + 2;
-            else if (summonPosition.y > room.yMax - 1) summonPosition.y = room.yMax - 1;
-
-            GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
-            yield return new WaitForSeconds(1.5f);
-            Destroy(summonEffect);
-            GameObject pokeMinion = CharacterManager.Instance.InstantiateCompanionObject(pokePrefab.Item1, summonPosition);
-            pokeMinion.name += pokePrefab.Item2;
-            pokeMinion.tag = gameObject.tag;
-            if (pokeMinion.layer == LayerMask.NameToLayer("Default")) pokeMinion.layer = gameObject.layer;
-            Physics2D.SyncTransforms();
-            var col2D = pokeMinion.GetComponentInChildren<Collider2D>();
-            var tarPos = pokeMinion.transform.position;
-            tarPos.y += col2D.bounds.extents.y + 0.5f;
-            // 将血条显示到对象的头上
-            var miniStatusCanvas = pokeMinion.GetComponentInChildren<Canvas>();
-            if (miniStatusCanvas == null)
-            {
-                var obj1 = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
-                obj1.transform.SetParent(pokeMinion.transform);
-                miniStatusCanvas = obj1.GetComponent<Canvas>();
-            }
-            if (pokeMinion.CompareTag(Constants.TagPlayer))
-            {
-                var playerNameText = miniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>(true);
-                if (playerNameText != null)
-                {
-                    playerNameText.gameObject.SetActive(true);
-                    playerNameText.text = $"Companion #{pokePrefab.Item2 + 1}";
-                }
-                var obj2 = Instantiate(capturedMinionCanvas, tarPos, Quaternion.identity);
-                obj2.transform.SetParent(pokeMinion.transform);
-            }
-            var pokeStatus = pokeMinion.GetComponent<CharacterStatus>();
-            pokeStatus.Trainer = characterStatus;
-            if (!isAi)
-            {
-                if (pokePrefab.Item2 >= characterStatus.State.CatchedMinionStates.Count)
-                {
-                    Debug.LogError($"fhhtest, pokePrefab.Item2: {pokePrefab.Item2}, "
-                        + $"{characterStatus.State.CatchedMinionStates.Count}, "
-                        + $"{pokeMinionPrefabs.Count}, {pokeMinionDeadTime.Count}");
-                }
-                var pokeState = characterStatus.State.CatchedMinionStates[pokePrefab.Item2];
-                pokeState.Position = null;
-                pokeState.CurrentHp = pokeState.MaxHp;
-                pokeState.Damage = (int)(characterStatus.State.Damage * pokeState.Scale / 2);
-                if (pokeState.Damage < 1) pokeState.Damage = 1;
-                pokeStatus.SetState(pokeState);
-            }
-            existingPokes.Add((pokeMinion, pokePrefab.Item2));
-        }
-
-        isAttack = false;
-        animator.Play("Male Walking");
-        if (isAi)
-        {
-            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
-            yield return new WaitForSeconds(Random.Range(1, 3f));
-        }
-        summonCoroutine = null;
-    }
+    // 实现在主动技能中
     #endregion
 
     #region 技能2，强化小弟
     private IEnumerator StrengthenPokes()
     {
         isAttack = true;
-        if (existingPokes.Count > 0)
+        if (ExistingPokes.Count > 0)
         {
-            characterInput.LookInput = existingPokes[0].Item1.transform.position - transform.position;
+            if (ExistingPokes[0].Item1 == null)
+            {
+                isAttack = false;
+                strengthenCoroutine = null;
+                yield break;
+            }
+            characterInput.LookInput = ExistingPokes[0].Item1.transform.position - transform.position;
             animator.Play("挥手冲锋");
             yield return new WaitForSeconds(0.67f);
 
-            foreach (var (poke, idx) in existingPokes)
+            foreach (var (poke, idx) in ExistingPokes)
             {
                 if (poke == null) continue;
                 var rnd = Random.Range(0, 2);
@@ -360,7 +219,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         pokeball.SetActive(false);
         float elapsedTime = Time.time - startTime;
         // TODO: fixedDamage修改回2
-        yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 20));
+        yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 2));
 
         isAttack = false;
         animator.speed = 1;
@@ -373,31 +232,4 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         throwCoroutine = null;
     }
     #endregion
-
-    private int circularIdx = 0;
-    public override void Killed(CharacterStatus enemy)
-    {
-        if (CharacterManager.Instance.minionObjects.ContainsKey(enemy.State.PlayerId))
-        {
-            var prefabInfo = CharacterManager.Instance.minionPrefabInfos[enemy.State.PlayerId];
-            var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
-            var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
-
-            if (characterStatus.State.CatchedMinions.Count == maxPokeMinionCount)
-            {
-                characterStatus.State.CatchedMinions[circularIdx] = prefabInfo;
-                characterStatus.State.CatchedMinionStates[circularIdx] = enemy.State.Clone();
-                pokeMinionPrefabs[circularIdx] = minionPrefab;
-                pokeMinionDeadTime[circularIdx] = -pokeMinionRebornTime;
-                circularIdx = (circularIdx + 1) % maxPokeMinionCount;
-            }
-            else
-            {
-                characterStatus.State.CatchedMinions.Add(prefabInfo);
-                characterStatus.State.CatchedMinionStates.Add(enemy.State.Clone());
-                pokeMinionPrefabs.Add(minionPrefab);
-                pokeMinionDeadTime.Add(-pokeMinionRebornTime);
-            }
-        }
-    }
 }

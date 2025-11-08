@@ -33,7 +33,6 @@ public class MasterLongWaveExecutor : SkillExecutor
         return aiScript.CharacterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle;
     }
     
-
     private IEnumerator Attack_EnergyWave(GameObject owner, GameObject target, int count)
     {
         aiScript.isAttack = true;

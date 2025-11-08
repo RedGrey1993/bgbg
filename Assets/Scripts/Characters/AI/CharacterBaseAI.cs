@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 {
+    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
+
     public CharacterInput characterInput { get; private set; }
     public CharacterStatus characterStatus { get; private set; }
     public CharacterData CharacterData => characterStatus.characterData;
@@ -24,6 +26,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public Vector2 LookDir { get; protected set; } = Vector2.up;
     public HashSet<GameObject> TobeDestroyed { get; set; } = new HashSet<GameObject>();
     public Coroutine ActiveSkillCoroutine { get; set; } = null;
+    // poke related
+    public List<GameObject> PokeMinionPrefabs { get; set; } = new List<GameObject>();
+    public List<float> PokeMinionReviveTime { get; set; } = new List<float>();
+    public List<(GameObject, int)> ExistingPokes = new();
+    public int CircularIdx { get; set; } = 0;
 
     public void Awake()
     {
@@ -50,8 +57,83 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             isAi = characterStatus.IsAI;
         }
-        SubclassStart();
         Debug.Log($"fhhtest, CharacterAI created for character: {name}, is AI: {isAi}");
+
+        // 玩家有伙伴大师技能
+        if (!isAi && characterStatus.State.ActiveSkillId == Constants.CompanionMasterSkillId)
+        {
+            PokeMinionPrefabs.Clear();
+            PokeMinionReviveTime.Clear();
+            foreach (var prefabInfo in characterStatus.State.CatchedMinions)
+            {
+                var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
+                var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
+                PokeMinionPrefabs.Add(minionPrefab);
+                PokeMinionReviveTime.Add(0);
+            }
+        }
+
+        SubclassStart();
+    }
+
+    protected bool HasAliveNotSummonedPokePrefabs()
+    {
+        for (int idx = 0; idx < PokeMinionPrefabs.Count; idx++)
+        {
+            if (Time.time > PokeMinionReviveTime[idx])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public (List<(GameObject, int)>, float, int) GetAliveNotSummonedPokePrefabs()
+    {
+        float minReviveTime = float.MaxValue;
+        int minReviveIdx = -1;
+        // 存活，且没有被召唤到场上的小怪
+        List<(GameObject, int)> aliveNotSummonedPokePrefabs = new();
+        for (int idx = 0; idx < PokeMinionPrefabs.Count; idx++)
+        {
+            if (Time.time > PokeMinionReviveTime[idx])
+            {
+                aliveNotSummonedPokePrefabs.Add((PokeMinionPrefabs[idx], idx));
+                PokeMinionReviveTime[idx] = float.MaxValue;
+            }
+            else
+            {
+                minReviveTime = Mathf.Min(minReviveTime, PokeMinionReviveTime[idx] - Time.time);
+                minReviveIdx = idx;
+            }
+        }
+
+        return (aliveNotSummonedPokePrefabs, minReviveTime, minReviveIdx);
+    }
+
+    public Coroutine UpdateExistingPokesCoroutine { get; set; } = null;
+    public IEnumerator UpdateExistingPokes(float reviveTime)
+    {
+        while (true)
+        {
+            if (characterStatus.State.ActiveSkillId == Constants.CompanionMasterSkillId)
+            {
+                foreach ((GameObject, int) poke in ExistingPokes)
+                {
+                    if (poke.Item1 == null)
+                    {
+                        PokeMinionReviveTime[poke.Item2] = Time.time + reviveTime;
+                    }
+                }
+                ExistingPokes.RemoveAll(obj => obj.Item1 == null);
+            }
+            else
+            {
+                UpdateExistingPokesCoroutine = null;
+                yield break;
+            }
+            yield return _waitForSeconds1;
+        }
     }
 
     protected virtual void SubclassStart() { }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 12-Companion-Master
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 12
+  skillName: Companion Master
+  description: When an enemy's health is below 20%, using this item allows you to
+    capture them as your companion. Captured companions revive 15 seconds after death.
+    Use this item will also summon alive captured companions. You can have a maximum
+    of 6 companions; if this limit is exceeded, the earliest captured companion will
+    be released.
+  backgroundStory: 
+  icon: {fileID: 2700753077384345236, guid: f6e20ace7ebaa8847918b7749bb4130c, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
+  IsActive: 1
+  cooldown: 1
+  executor: {fileID: 11400000, guid: 587564bf75f9fef459b9bd31f8916f93, type: 2}

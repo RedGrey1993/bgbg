@@ -93,6 +93,7 @@ public static class Constants
     public const int PhantomChargeSkillId = 9;
     public const int MasterLongWaveSkillId = 10;
     public const int LogFragmentSkillId = 11;
+    public const int CompanionMasterSkillId = 12;
     public const int NewRulerPlayerId = 123456789;
     public const float Eps = 0.00001f;
 
