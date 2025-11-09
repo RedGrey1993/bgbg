@@ -32,7 +32,7 @@ MonoBehaviour:
   AttackFrequency: 3
   CriticalRate: 0
   ExpGiven: 200
-  InitialActiveSkillId: 10
+  InitialActiveSkillId: 12
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}

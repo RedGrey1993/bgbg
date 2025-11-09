@@ -11,6 +11,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
     public int pokeMinionRebornTime = 15;
     public GameObject summonPokeEffectPrefab;
     public GameObject capturedMinionCanvas;
+    public GameObject pokeballPrefab;
     private CharacterBaseAI aiScript = null;
     private Vector2 lookInput = Vector2.zero;
 
@@ -40,35 +41,34 @@ public class PokeboyCaptureExecutor : SkillExecutor
             // TakeDamage
             var tarStatus = tarEnemy.GetComponent<CharacterStatus>();
             // Capture
-            CaptureCompanion(tarStatus);
-            tarStatus.TakeDamage_Host(10000, aiScript.characterStatus);
+            aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(CaptureCompanion(tarStatus));
         }
         else
         {
-            info += "No enemy's health is below 20%.\n";
-        }
-
-        if (aiScript.PokeMinionPrefabs.Count == 0)
-        {
-            info += "You have no companion now.\n";
-            aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
-        }
-        else
-        {
-            var (aliveNotSummonedPokePrefabs, minReviveTime, minReviveIdx) = aiScript.GetAliveNotSummonedPokePrefabs();
-            if (aliveNotSummonedPokePrefabs.Count > 0)
+            info += $"No enemy's health is below {captureHpRatio * 100:F0}%.\n";
+            if (aiScript.PokeMinionPrefabs.Count == 0)
             {
-                aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(SummonPokes(aliveNotSummonedPokePrefabs, lookInput));
-                if (minReviveTime < pokeMinionRebornTime)
-                    info += $"Companion # {minReviveIdx} will revive in {minReviveTime} seconds";
+                info += "You have no companion now.\n";
+                aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
             }
             else
             {
-                if (minReviveTime < pokeMinionRebornTime)
-                    info += $"Companion # {minReviveIdx} will revive in {minReviveTime} seconds";
+                var (aliveNotSummonedPokePrefabs, minReviveTime, minReviveIdx) = aiScript.GetAliveNotSummonedPokePrefabs();
+                if (aliveNotSummonedPokePrefabs.Count > 0)
+                {
+                    aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(SummonPokes(aliveNotSummonedPokePrefabs, lookInput));
+                    info = "";
+                    if (minReviveTime < pokeMinionRebornTime)
+                        info += $"Companion # {minReviveIdx} will revive in {minReviveTime:F1} seconds";
+                }
                 else
-                    info += "All companions are by your side.";
-                aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
+                {
+                    if (minReviveTime < pokeMinionRebornTime)
+                        info += $"Companion # {minReviveIdx} will revive in {minReviveTime:F1} seconds";
+                    else
+                        info += "All companions are by your side.";
+                    aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
+                }
             }
         }
 
@@ -76,8 +76,46 @@ public class PokeboyCaptureExecutor : SkillExecutor
             UIManager.Instance.ShowInfoPanel(info, Color.white, 3);
     }
 
-    private void CaptureCompanion(CharacterStatus enemy)
+    private IEnumerator CaptureCompanion(CharacterStatus enemy)
     {
+        aiScript.isAttack = true;
+
+        GameObject pokeball;
+        float holdBallTime = 0.87f;
+
+        aiScript.characterInput.LookInput = enemy.transform.position - aiScript.transform.position;
+        if (aiScript.CharacterData.Is3DModel())
+        {
+            aiScript.PlayAnimationAllLayers("Throw Object");
+            var rightHandTransform = aiScript.animator.GetBoneTransform(HumanBodyBones.RightHand);
+            pokeball = Instantiate(pokeballPrefab, rightHandTransform);
+            pokeball.transform.localScale = Vector3.one * 0.3f
+                * aiScript.transform.lossyScale.x / pokeball.transform.lossyScale.x;
+            yield return new WaitForSeconds(holdBallTime);
+        }
+        else
+        {
+            pokeball = Instantiate(pokeballPrefab, aiScript.transform);
+            Vector2 pos = pokeball.transform.position;
+            pokeball.transform.position = pos + aiScript.characterInput.LookInput.normalized
+                * (aiScript.col2D.bounds.extents.magnitude + 0.1f);
+            pokeball.transform.localScale = Vector3.one * 0.3f;
+        }
+        aiScript.TobeDestroyed.Add(pokeball);
+
+        float throwBallTime = 1.13f;
+        var startPos = pokeball.transform.position;
+        float elapsedTime = 0;
+        while (elapsedTime < throwBallTime)
+        {
+            elapsedTime += Time.deltaTime;
+            pokeball.transform.position = Vector3.Lerp(startPos, enemy.transform.position, elapsedTime / throwBallTime);
+            yield return null;
+        }
+        pokeball.transform.position = enemy.transform.position;
+        Destroy(pokeball);
+        aiScript.TobeDestroyed.Remove(pokeball);
+
         var prefabInfo = CharacterManager.Instance.minionPrefabInfos[enemy.State.PlayerId];
         var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
         var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
@@ -97,41 +135,72 @@ public class PokeboyCaptureExecutor : SkillExecutor
             aiScript.PokeMinionPrefabs.Add(minionPrefab);
             aiScript.PokeMinionReviveTime.Add(0);
         }
-    }
 
-    private bool IsPokeBoy()
-    {
-        return aiScript.CharacterData.CharacterType == CharacterType.Boss_3_0_PokeBoy;
+        enemy.TakeDamage_Host(10000, aiScript.characterStatus);
+        aiScript.isAttack = false;
+        aiScript.ActiveSkillCoroutine = null;
     }
 
     private IEnumerator SummonPokes(List<(GameObject, int)> aliveNotSummonedPokePrefabs, Vector2 lookInput)
     {
         aiScript.isAttack = true;
 
-        if (IsPokeBoy())
+        GameObject pokeball = null;
+        if (aiScript.CharacterData.Is3DModel())
         {
-            aiScript.animator.speed = 1;
-            aiScript.animator.Play("Throw Object");
-            yield return new WaitForSeconds(0.87f);
+            float holdBallTime = 0.87f;
+            aiScript.PlayAnimationAllLayers("Throw Object");
+            var rightHandTransform = aiScript.animator.GetBoneTransform(HumanBodyBones.RightHand);
+            pokeball = Instantiate(pokeballPrefab, rightHandTransform);
+            pokeball.transform.localScale = Vector3.one * 0.3f
+                * aiScript.transform.lossyScale.x / pokeball.transform.lossyScale.x;
+            aiScript.TobeDestroyed.Add(pokeball);
+            yield return new WaitForSeconds(holdBallTime);
         }
 
-        int idx = 0;
-        while (idx < aliveNotSummonedPokePrefabs.Count)
+        for (int idx = 0; idx < aliveNotSummonedPokePrefabs.Count; idx++)
         {
             // 召唤小弟
             int roomId = LevelManager.Instance.GetRoomNoByPosition(aiScript.transform.position);
             var room = LevelManager.Instance.Rooms[roomId];
-            var pokePrefab = aliveNotSummonedPokePrefabs[idx++];
+            var pokePrefab = aliveNotSummonedPokePrefabs[idx];
             Vector2 summonPosition = aiScript.transform.position;
-            summonPosition += lookInput * aiScript.CharacterData.ShootRange;
+            summonPosition += lookInput * 5;
             if (summonPosition.x < room.xMin + 2) summonPosition.x = room.xMin + 2;
             else if (summonPosition.x > room.xMax - 1) summonPosition.x = room.xMax - 1;
             if (summonPosition.y < room.yMin + 2) summonPosition.y = room.yMin + 2;
             else if (summonPosition.y > room.yMax - 1) summonPosition.y = room.yMax - 1;
 
             GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
-            yield return new WaitForSeconds(1.5f);
-            Destroy(summonEffect);
+            float summonTime = 1.5f;
+            if (idx == 0)
+            {
+                if (aiScript.CharacterData.Is3DModel())
+                {
+                    var startPos = pokeball.transform.position;
+                    float elapsedTime = 0;
+                    while (elapsedTime < summonTime)
+                    {
+                        elapsedTime += Time.deltaTime;
+                        pokeball.transform.position = Vector3.Lerp(startPos, summonPosition, elapsedTime / summonTime);
+                        yield return null;
+                    }
+                    pokeball.transform.position = summonPosition;
+
+                    Destroy(pokeball);
+                    aiScript.TobeDestroyed.Remove(pokeball);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(summonTime);
+                }
+                Destroy(summonEffect);
+            }
+            else
+            {
+                Destroy(summonEffect, summonTime);
+            }
+
             GameObject pokeMinion = CharacterManager.Instance.InstantiateCompanionObject(pokePrefab.Item1, summonPosition);
             pokeMinion.name += pokePrefab.Item2;
             pokeMinion.tag = aiScript.gameObject.tag;
@@ -175,10 +244,6 @@ public class PokeboyCaptureExecutor : SkillExecutor
 
         aiScript.isAttack = false;
 
-        if (IsPokeBoy())
-        {
-            aiScript.animator.Play("Male Walking");
-        }
         if (aiScript.isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击

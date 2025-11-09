@@ -10,7 +10,7 @@ public class Minion_1_1_BusterBotAI : CharacterBaseAI
 {
     protected override bool IsAtkCoroutineIdle()
     {
-        return atkCoroutine == null;
+        return atkCoroutine == null && ActiveSkillCoroutine == null;
     }
     // 爆破小子(BusterBot)不造成碰撞伤害
     #region Attack Action

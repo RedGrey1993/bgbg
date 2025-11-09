@@ -13,12 +13,6 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     {
         animator.SetFloat("Speed", speed / 3);
     }
-
-    protected override void SetShootAnimation(bool shoot, float attackSpeed = 1)
-    {
-        animator.SetBool("Shoot", shoot);
-        animator.SetFloat("AttackSpeed", attackSpeed);
-    }
     
     protected override void LookToAction()
     {
@@ -67,7 +61,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             speed = throwTime / atkInterval;
         }
         // animator.Play("丢飞盘");
-        SetShootAnimation(true, speed);
+        SetShootAnimation(speed);
         if (atkInterval >= throwTime)
         {
             yield return new WaitForSeconds(throwTime);
@@ -145,7 +139,6 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             yield return new WaitForSeconds(atkInterval - elapsedTime);
         // animator.speed = 1;
         // animator.Play("Mutant Walking");
-        SetShootAnimation(false);
         if (isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
@@ -158,7 +151,8 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     
     protected override void SubclassFixedUpdate()
     {
-        // 攻击时不要改变朝向且不能移动，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
+        // 主要是针对玩家操作的情况，将玩家的输入置空
+        // 攻击时不要改变朝向，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
         if (isAttack && !isAi)
         {
             // characterInput.MoveInput = Vector2.zero;

@@ -115,37 +115,45 @@ public class Bullet : MonoBehaviour
                 //     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
                 //     return;
                 // }
-                if (tarStatus != null)
+
+                tarStatus.TakeDamage_Host(Damage, OwnerStatus);
+                if (SplitCount >= 0 && OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
                 {
-                    tarStatus.TakeDamage_Host(Damage, OwnerStatus);
-                    if (SplitCount >= 0 && OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
+                    var startPos = transform.position;
+                    var startDir = Quaternion.Euler(0, 0, -45) * rb.linearVelocity.normalized;
+                    Quaternion rotationPlus = Quaternion.Euler(0, 0, 90);
+                    for (int i = 0; i < 2; i++)
                     {
-                        var startPos = transform.position;
-                        var startDir = Quaternion.Euler(0, 0, -45) * rb.linearVelocity.normalized;
-                        Quaternion rotationPlus = Quaternion.Euler(0, 0, 90);
-                        for (int i = 0; i < 2; i++)
-                        {
-                            var newBullet = LevelManager.Instance.InstantiateTemporaryObject(OwnerStatus.characterData.bulletPrefab, startPos);
-                            newBullet.transform.localScale = transform.localScale / 2;
-                            newBullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
-                            var bs = newBullet.GetComponent<Bullet>();
-                            bs.StartPosition = startPos;
-                            bs.OwnerStatus = OwnerStatus;
-                            bs.Damage = Damage > 1 ? (Damage / 2) : 1;
-                            var bState = BulletState.Clone();
-                            bState.PenetrateCount = penetrateCount;
-                            bState.SplitCount = SplitCount;
-                            bState.BounceCount = bounceCount;
-                            bs.BulletState = bState;
-                            bs.LastCollider = other;
+                        var newBullet = LevelManager.Instance.InstantiateTemporaryObject(OwnerStatus.characterData.bulletPrefab, startPos);
+                        newBullet.transform.localScale = transform.localScale / 2;
+                        newBullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
+                        var bs = newBullet.GetComponent<Bullet>();
+                        bs.StartPosition = startPos;
+                        bs.OwnerStatus = OwnerStatus;
+                        bs.Damage = Damage > 1 ? (Damage / 2) : 1;
+                        var bState = BulletState.Clone();
+                        bState.PenetrateCount = penetrateCount;
+                        bState.SplitCount = SplitCount;
+                        bState.BounceCount = bounceCount;
+                        bs.BulletState = bState;
+                        bs.LastCollider = other;
 
-                            var newRb = newBullet.GetComponent<Rigidbody2D>();
-                            newRb.linearVelocity = startDir * rb.linearVelocity.magnitude;
+                        var newRb = newBullet.GetComponent<Rigidbody2D>();
+                        newRb.linearVelocity = startDir * rb.linearVelocity.magnitude;
 
-                            startDir = rotationPlus * startDir;
-                        }
+                        startDir = rotationPlus * startDir;
                     }
-                    if (penetrateCount < 0) Destroy(gameObject);
+                }
+                if (penetrateCount < 0)
+                {
+                    if (bounceCount > 0)
+                    {
+                        MirrorBounce(other);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
             else // if (other.gameObject.CompareTag(Constants.TagWall))

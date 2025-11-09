@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da33779fdd5a98d42958aaabf88ca53c, type: 3}
   m_Name: 12-PokeboyCaptureExecutor
   m_EditorClassIdentifier: Assembly-CSharp::PokeboyCaptureExecutor
-  captureHpRatio: 0.2
+  captureHpRatio: 1
   maxPokeMinionCount: 6
   pokeMinionRebornTime: 15
   summonPokeEffectPrefab: {fileID: 5824670795371433373, guid: 3fe64f898fed61140963ab0c4dd5b2c2, type: 3}
   capturedMinionCanvas: {fileID: 1375721546876360083, guid: d92cbb8f35641114d8fbd9243d9acdd7, type: 3}
+  pokeballPrefab: {fileID: 919132149155446097, guid: 6167cb79166061249aa50df93c4c4982, type: 3}

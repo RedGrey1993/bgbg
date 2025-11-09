@@ -26,7 +26,7 @@ MonoBehaviour:
   CharacterType: 7
   MaxHp: 5
   MoveSpeed: 3
-  ShootRange: 10000
+  ShootRange: 40
   BulletSpeed: 6
   Damage: 10
   AttackFrequency: 0.34

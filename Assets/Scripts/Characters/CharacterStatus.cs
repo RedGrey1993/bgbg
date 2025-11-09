@@ -25,21 +25,7 @@ public class CharacterStatus : MonoBehaviour
     {
         characterAI = GetComponent<ICharacterAI>();
 
-        State.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
-        State.PlayerName = "DefaultName";
-        State.MaxHp = characterData.MaxHp;
-        State.CurrentHp = characterData.MaxHp;
-        State.MoveSpeed = characterData.MoveSpeed;
-        State.BulletSpeed = characterData.BulletSpeed;
-        State.Damage = characterData.Damage;
-        State.AttackFrequency = characterData.AttackFrequency;
-        if (State.AttackFrequency < 0.2f) State.AttackFrequency = 0.2f;
-        State.ShootRange = characterData.ShootRange;
-        State.CriticalRate = characterData.CriticalRate;
-        State.CurrentExp = 0;
-        State.CurrentLevel = 1;
-        State.Position = new Vec2();
-        State.Scale = 1;
+        State = characterData.ToState();
 
         bulletState.ShootNum = 1;
     }

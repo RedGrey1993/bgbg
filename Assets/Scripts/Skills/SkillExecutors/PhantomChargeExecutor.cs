@@ -21,6 +21,8 @@ public class PhantomChargeExecutor : SkillExecutor
     
     private IEnumerator Attack_Charge(GameObject owner, GameObject target)
     {
+        aiScript.isAttack = true;
+
         var characterStatus = owner.GetComponent<CharacterStatus>();
         // 幻影冲锋时还能够射击或者移动，所以不设置isAttack = true;
         int roomId = LevelManager.Instance.GetRoomNoByPosition(owner.transform.position);
@@ -73,8 +75,6 @@ public class PhantomChargeExecutor : SkillExecutor
         if (horizontalPhantomCharge.layer == LayerMask.NameToLayer("Default")) horizontalPhantomCharge.layer = owner.layer;
         verticalPhantomCharge.tag = owner.tag;
         if (verticalPhantomCharge.layer == LayerMask.NameToLayer("Default")) verticalPhantomCharge.layer = owner.layer;
-        aiScript.TobeDestroyed.Add(horizontalPhantomCharge);
-        aiScript.TobeDestroyed.Add(verticalPhantomCharge);
 
         horizontalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
         verticalPhantomCharge.GetComponent<PhantomChargeDamage>().OwnerStatus = characterStatus;
@@ -86,18 +86,10 @@ public class PhantomChargeExecutor : SkillExecutor
         hrb.linearVelocity = horizontalVelocity;
         vrb.linearVelocity = verticalVelocity;
 
-        while (LevelManager.Instance.InSameRoom(horizontalPhantomCharge, owner) || LevelManager.Instance.InSameRoom(verticalPhantomCharge, owner))
-        {
-            yield return null;
-        }
-
         Destroy(chargeEffect);
-        Destroy(horizontalPhantomCharge);
-        Destroy(verticalPhantomCharge);
         aiScript.TobeDestroyed.Remove(chargeEffect);
-        aiScript.TobeDestroyed.Remove(horizontalPhantomCharge);
-        aiScript.TobeDestroyed.Remove(verticalPhantomCharge);
 
+        aiScript.isAttack = false;
         aiScript.ActiveSkillCoroutine = null;
     }
 }

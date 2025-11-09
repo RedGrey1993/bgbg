@@ -333,12 +333,14 @@ MonoBehaviour:
   summonPokeEffectPrefab: {fileID: 5824670795371433373, guid: 3fe64f898fed61140963ab0c4dd5b2c2, type: 3}
   speedupEffectPrefab: {fileID: 904662820145583817, guid: 44268a9c408d370468cd8b065223e5e9, type: 3}
   rageEffectPrefab: {fileID: 119183615461286708, guid: 9f49bba8ffd508b4e8f1e2f3f4bbbdfe, type: 3}
-  pokeMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
-  - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
-  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  pokeMinionPrefabInfos:
+  - StageId: 1
+    PrefabId: 0
+  - StageId: 2
+    PrefabId: 0
+  - StageId: 3
+    PrefabId: 0
   capturedMinionCanvas: {fileID: 1375721546876360083, guid: d92cbb8f35641114d8fbd9243d9acdd7, type: 3}
-  pokeMinionRebornTime: 15
   pokeMinionBuffTime: 5
 --- !u!1 &5727804542918915976
 GameObject:
@@ -574,7 +576,7 @@ Animator:
   m_GameObject: {fileID: 6566019517108392442}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 31f9d60e0aace1f4dabbc433e625deaa, type: 3}
-  m_Controller: {fileID: 9100000, guid: ee768d7ab856bd8448a0b06267147bc5, type: 2}
+  m_Controller: {fileID: 22100000, guid: 81e6ebed7a9e6c84a9649b8db5c206d9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1524,15 +1526,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0014999999
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0015000004
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.0014999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6167cb79166061249aa50df93c4c4982, type: 3}
       propertyPath: m_LocalPosition.x

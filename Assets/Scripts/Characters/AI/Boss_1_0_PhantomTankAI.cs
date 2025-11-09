@@ -6,27 +6,6 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
-    protected override void SubclassStart()
-    {
-        if (characterStatus.State.ActiveSkillId == 0)
-        {
-            characterStatus.State.ActiveSkillId = Constants.PhantomChargeSkillId;
-            characterStatus.State.ActiveSkillCurCd = -1;
-            if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-            {
-                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                spc.UpdateMyStatusUI(characterStatus.State);
-            }
-        }
-    }
-
-    #region AI Logic / Update Input
-    protected override bool IsAtkCoroutineIdle()
-    {
-        return atkCoroutine == null;
-    }
-    #endregion
-
     #region Attack Action
     protected override void AttackAction()
     {
@@ -82,7 +61,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
     protected override void SubclassFixedUpdate()
     {
         // 主要是针对玩家操作的情况，将玩家的输入置空
-        // 攻击时不要改变朝向且不能移动，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
+        // 攻击时不要改变朝向，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
         if (isAttack && !isAi)
         {
             characterInput.MoveInput = Vector2.zero;

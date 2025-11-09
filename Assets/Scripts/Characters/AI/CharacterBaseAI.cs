@@ -23,7 +23,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected float nextAtkTime = 0f;
     protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
     public bool isAttack { set; get; } = false; // 攻击时不能移动
-    public Vector2 LookDir { get; protected set; } = Vector2.up;
+    public Vector2 LookDir { get; protected set; } = Vector2.down;
     public HashSet<GameObject> TobeDestroyed { get; set; } = new HashSet<GameObject>();
     public Coroutine ActiveSkillCoroutine { get; set; } = null;
     // poke related
@@ -31,6 +31,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public List<float> PokeMinionReviveTime { get; set; } = new List<float>();
     public List<(GameObject, int)> ExistingPokes = new();
     public int CircularIdx { get; set; } = 0;
+
+    protected int spdHash = Animator.StringToHash("Speed");
+    protected int shootHash = Animator.StringToHash("Shoot");
+    protected int atkSpdHash = Animator.StringToHash("AttackSpeed");
+    public int BaseLayerIndex { get; protected set; }
+    public int UpperBodyLayerIndex { get; protected set; }
 
     public void Awake()
     {
@@ -44,6 +50,9 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         col2D = GetComponentInChildren<Collider2D>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
+
+        BaseLayerIndex = animator.GetLayerIndex("Base Layer");
+        UpperBodyLayerIndex = animator.GetLayerIndex("Upper Body Layer");
     }
 
     public void Start()
@@ -117,7 +126,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             else
             {
                 minReviveTime = Mathf.Min(minReviveTime, PokeMinionReviveTime[idx] - Time.time);
-                minReviveIdx = idx;
+                minReviveIdx = idx + 1;
             }
         }
 
@@ -644,8 +653,28 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Animation
-    protected virtual void SetSpdAnimation(float speed) { }
-    protected virtual void SetShootAnimation(bool shoot, float attackSpeed = 1) { }
+    protected virtual void SetSpdAnimation(float speed)
+    {
+        if (CharacterData.Is3DModel())
+            animator.SetFloat(spdHash, speed / 5);
+    }
+    protected virtual void SetShootAnimation(float attackSpeed = 1)
+    {
+        if (CharacterData.Is3DModel())
+        {
+            animator.SetTrigger(shootHash);
+            animator.SetFloat(atkSpdHash, attackSpeed);
+        }
+    }
+    public void PlayAnimationAllLayers(string animName, float attackSpeed = 1)
+    {
+        if (CharacterData.Is3DModel())
+        {
+            animator.SetFloat(atkSpdHash, attackSpeed);
+            animator.Play(animName, BaseLayerIndex);
+            animator.Play(animName, UpperBodyLayerIndex);
+        }
+    }
     #endregion
 
     #region Move Action
@@ -673,13 +702,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Attack Action
-    private float lastShootTime = 0;
     protected IEnumerator AttackShoot(Vector2 lookInput, float atkInterval, int fixedDamage = 0,
-        GameObject tarEnemy = null)
+        GameObject tarEnemy = null, bool playAnim = false)
     {
         isAttack = true;
-        SetShootAnimation(true);
-        lastShootTime = Time.time;
+        if (playAnim)
+            SetShootAnimation();
         if (CharacterData.shootSound)
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -742,14 +770,9 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         if (IsAtkCoroutineIdle())
         {
             Vector2 lookInput = characterInput.LookInput;
-            if (lookInput.sqrMagnitude < 0.1f)
-            {
-                if (Time.time - lastShootTime > 0.2f)
-                    SetShootAnimation(false);
-                return;
-            }
+            if (lookInput.sqrMagnitude < 0.1f) return;
 
-            shootCoroutine = StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency));
+            shootCoroutine = StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency, playAnim: true));
         }
     }
     #endregion
@@ -785,7 +808,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         LookToAction(new Vector3(0, -0.71711f, 0.71711f));
     }
 
-    private void RotateTo(Transform trans, Vector3 forwardDir, Vector2 lookInput)
+    public void RotateTo(Transform trans, Vector3 forwardDir, Vector2 lookInput)
     {
         if (rotateCoroutine != null) StopCoroutine(rotateCoroutine);
         rotateCoroutine = StartCoroutine(RotateTo(trans, Quaternion.LookRotation(forwardDir, lookInput)));
@@ -873,7 +896,15 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region ICharacterAI implementation
     public virtual void OnDeath()
     {
-        Destroy(gameObject);
+        if (CharacterData.Is3DModel())
+        {
+            animator.Play("HumanDyingBase");
+            Destroy(gameObject, 3.5f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void Killed(CharacterStatus enemy) { }

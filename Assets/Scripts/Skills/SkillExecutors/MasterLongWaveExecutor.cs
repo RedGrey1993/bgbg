@@ -29,29 +29,14 @@ public class MasterLongWaveExecutor : SkillExecutor
         if (hpRatio < 0.5f) count = 8;
         aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(Attack_EnergyWave(playerObj, tarEnemy, count));
     }
-
-    private bool IsMasterLong()
-    {
-        return aiScript.CharacterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle;
-    }
-
-    private bool Is3DModel()
-    {
-        return aiScript.CharacterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle
-            || aiScript.CharacterData.CharacterType == CharacterType.Boss_3_0_PokeBoy
-            || aiScript.CharacterData.CharacterType == CharacterType.Contra_Bill;
-    }
     
     private IEnumerator Attack_EnergyWave(GameObject owner, GameObject target, int count)
     {
         aiScript.isAttack = true;
         GameObject vfx;
-        if (Is3DModel())
+        if (aiScript.CharacterData.Is3DModel())
         {
-            // aiScript.animator.speed = 1;
-            // aiScript.animator.Play("施法并扔出");
-            aiScript.animator.SetFloat("AttackSpeed", 1);
-            aiScript.animator.SetBool("EnergyWave", true);
+            aiScript.PlayAnimationAllLayers("施法并扔出");
             yield return new WaitForSeconds(0.5f);
             // vfx = aiScript.transform.GetChild(0).GetChild(0).gameObject;
             // vfx.SetActive(true);
@@ -120,19 +105,13 @@ public class MasterLongWaveExecutor : SkillExecutor
         yield return new WaitForSeconds(waveDuration);
 
         aiScript.isAttack = false;
-        if (IsMasterLong())
+        if (aiScript.CharacterData.IsMasterLong())
         {
             if (count > 1)
             {
-                aiScript.animator.Play("闪到老腰", 1);
+                aiScript.PlayAnimationAllLayers("闪到老腰", 1);
                 yield return new WaitForSeconds(3f);
             }
-        }
-
-        if (Is3DModel())
-        {
-            // aiScript.animator.Play("Mutant Walking");
-            aiScript.animator.SetBool("EnergyWave", false);
         }
 
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击

@@ -26,19 +26,27 @@ MonoBehaviour:
   CharacterType: 4
   MaxHp: 5
   MoveSpeed: 3
-  ShootRange: 10
+  ShootRange: 20
   BulletSpeed: 6
   Damage: 10
   AttackFrequency: 0.75
   CriticalRate: 0
   ExpGiven: 5
+  InitialActiveSkillId: 9
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 3, y: 3, z: 3}
   canMoveDiagonally: 0
+  moveInAtkRange: 1
+  moveAcrossRoom: 0
   canAttackDiagonally: 1
+  causeCollisionDamage: 0
   AggroRange: 10000
   AggroChangeInterval: 2
-  minChaseMoveInputInterval: 0.05
-  maxChaseMoveInputInterval: 0.1
+  chaseMoveInputInterval:
+    min: 0.05
+    max: 0.1
+  randomMoveToTargetInterval:
+    min: 0.5
+    max: 2

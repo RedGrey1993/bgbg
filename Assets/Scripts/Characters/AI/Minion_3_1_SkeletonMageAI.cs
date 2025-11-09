@@ -8,7 +8,7 @@ public class Minion_3_1_SkeletonMageAI : CharacterBaseAI
 {
     protected override bool IsAtkCoroutineIdle()
     {
-        return atkCoroutine == null;
+        return atkCoroutine == null && ActiveSkillCoroutine == null;
     }
 
     #region Attack Action

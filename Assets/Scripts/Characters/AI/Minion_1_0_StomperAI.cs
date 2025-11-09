@@ -108,7 +108,7 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
     protected override bool IsAtkCoroutineIdle()
     {
         // coroutine的时间范围比isAttak更大
-        return jumpCoroutine == null;
+        return jumpCoroutine == null && ActiveSkillCoroutine == null;
     }
 
     // Stomper（踩踏者）不能斜着攻击

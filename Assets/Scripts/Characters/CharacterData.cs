@@ -1,4 +1,12 @@
+using NetworkMessageProto;
 using UnityEngine;
+
+[System.Serializable]
+public struct PrefabInfo
+{
+    public int StageId;
+    public int PrefabId;
+}
 
 // 定义角色的基础数据，游戏中同一种类角色的所有GameObject都共用这一份CharacterData数据
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Characters/Character Data")]
@@ -57,5 +65,40 @@ public class CharacterData : ScriptableObject
     // 每隔随机0.05-0.1秒改变一次追击输入
     public MinMaxFloat chaseMoveInputInterval = new () { min = 0.05f, max = 0.1f };
     // 每隔随机0.5-2s改变一次随机移动的目标位置
-    public MinMaxFloat randomMoveToTargetInterval = new () { min = 0.5f, max = 2 };
+    public MinMaxFloat randomMoveToTargetInterval = new() { min = 0.5f, max = 2 };
+
+    public PlayerState ToState()
+    {
+        var state = new PlayerState();
+
+        state.PlayerId = 99999999; // 默认值，实际运行时会被覆盖
+        state.PlayerName = "DefaultName";
+        state.MaxHp = MaxHp;
+        state.CurrentHp = MaxHp;
+        state.MoveSpeed = MoveSpeed;
+        state.BulletSpeed = BulletSpeed;
+        state.Damage = Damage;
+        state.AttackFrequency = AttackFrequency;
+        if (state.AttackFrequency < 0.2f) state.AttackFrequency = 0.2f;
+        state.ShootRange = ShootRange;
+        state.CriticalRate = CriticalRate;
+        state.CurrentExp = 0;
+        state.CurrentLevel = 1;
+        state.Position = new Vec2();
+        state.Scale = 1;
+
+        return state;
+    }
+
+    public bool Is3DModel()
+    {
+        return CharacterType == CharacterType.Boss_2_0_MasterTurtle
+            || CharacterType == CharacterType.Boss_3_0_PokeBoy
+            || CharacterType == CharacterType.Contra_Bill;
+    }
+    
+    public bool IsMasterLong()
+    {
+        return CharacterType == CharacterType.Boss_2_0_MasterTurtle;
+    }
 }
