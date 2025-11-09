@@ -94,9 +94,9 @@ public class MessageManager : MonoBehaviour
     public void OnPlayerInput(InputMessage inputMsg)
     {
         // Debug.Log($"fhhtest, Received InputMessage from PlayerId {inputMsg.PlayerId}, MyInfo.Id {CharacterManager.Instance.MyInfo.Id}, MoveInput: ({inputMsg.MoveInput.X}, {inputMsg.MoveInput.Y}), LookInput: ({inputMsg.LookInput.X}, {inputMsg.LookInput.Y})");
-        if (CharacterManager.Instance.playerObjects.TryGetValue(inputMsg.PlayerId, out GameObject playerObject))
+        if (CharacterManager.Instance.PlayerObjects.TryGetValue(inputMsg.PlayerId, out GameObject playerObject))
         {
-            var playerInput = playerObject.GetComponent<CharacterInput>();
+            var playerInput = playerObject.GetCharacterInput();
             if (playerInput != null)
             {
                 // if (IsLocalOrHost()) // 移动指令都由Host处理后再同步给Client，射击指令（LookInput）后Client自己处理

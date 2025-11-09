@@ -51,22 +51,11 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     }
 
     #region Animation
-    protected override void SetIdleAnimation(Direction dir)
+    protected override void SetSpdAnimation(float speed)
     {
         if (animator)
         {
-            animator.speed = 1;
-            animator.SetFloat("Speed", 0);
-        }
-    }
-
-    private float baseMoveSpeed = 5;
-    protected override void SetRunAnimation(Direction dir)
-    {
-        if (animator)
-        {
-            animator.speed = characterStatus.State.MoveSpeed / baseMoveSpeed;
-            animator.SetFloat("Speed", 1);
+            animator.SetFloat("Speed", speed / 5);
         }
     }
     #endregion

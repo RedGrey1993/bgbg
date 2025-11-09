@@ -8,48 +8,21 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
 {
-    protected override void SubclassStart()
-    {
-        if (characterStatus.State.ActiveSkillId == 0)
-        {
-            characterStatus.State.ActiveSkillId = Constants.MasterLongWaveSkillId;
-            characterStatus.State.ActiveSkillCurCd = -1;
-            if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-            {
-                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                spc.UpdateMyStatusUI(characterStatus.State);
-            }
-        }
-    }
-
-    protected override bool IsAtkCoroutineIdle()
-    {
-        return atkCoroutine == null && ActiveSkillCoroutine == null;
-    }
-
     #region Animation
-    protected override void SetIdleAnimation(Direction dir)
+    protected override void SetSpdAnimation(float speed)
     {
-        if (animator)
-        {
-            animator.speed = 1;
-            animator.SetFloat("Speed", 0);
-        }
+        animator.SetFloat("Speed", speed / 3);
     }
 
-    private float baseMoveSpeed = 5;
-    protected override void SetRunAnimation(Direction dir)
+    protected override void SetShootAnimation(bool shoot, float attackSpeed = 1)
     {
-        if (animator)
-        {
-            animator.speed = characterStatus.State.MoveSpeed / baseMoveSpeed;
-            animator.SetFloat("Speed", 1);
-        }
+        animator.SetBool("Shoot", shoot);
+        animator.SetFloat("AttackSpeed", attackSpeed);
     }
     
     protected override void LookToAction()
     {
-        LookToAction(new Vector3(0, -1f, 0.01f)); // 90度
+        LookToAction(new Vector3(0, -0.9997f, 0.0015f)); // 85度
     }
     #endregion
 
@@ -88,15 +61,13 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         float atkInterval = 1f / characterStatus.State.AttackFrequency;
         // TODO: 播放拿着龟壳准备释放的动作
         float throwTime = 1.4f;
+        float speed = 1;
         if (atkInterval < throwTime)
         {
-            animator.speed = throwTime / atkInterval;
+            speed = throwTime / atkInterval;
         }
-        else
-        {
-            animator.speed = 1;
-        }
-        animator.Play("丢飞盘");
+        // animator.Play("丢飞盘");
+        SetShootAnimation(true, speed);
         if (atkInterval >= throwTime)
         {
             yield return new WaitForSeconds(throwTime);
@@ -163,15 +134,18 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
             startDir = rotationPlus * startDir;
         }
 
+        // 动画前半部分射击动作播放完了就可以设置为false了
+        // 这时候如果移动则脚部可以转为移动动作，上半身继续播放完后续动作
+        isAttack = false;
+
         // 等待下一次攻击频率
         float elapsedTime = Time.time - startTime;
         Debug.Log($"fhhtest, elapsedTime: {elapsedTime}, atkFrequency: {characterStatus.State.AttackFrequency}");
         if (atkInterval - elapsedTime > 0)
             yield return new WaitForSeconds(atkInterval - elapsedTime);
-        animator.speed = 1;
-        animator.Play("Mutant Walking");
-
-        isAttack = false;
+        // animator.speed = 1;
+        // animator.Play("Mutant Walking");
+        SetShootAnimation(false);
         if (isAi)
         {
             // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
@@ -187,7 +161,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         // 攻击时不要改变朝向且不能移动，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
         if (isAttack && !isAi)
         {
-            characterInput.MoveInput = Vector2.zero;
+            // characterInput.MoveInput = Vector2.zero;
             characterInput.LookInput = Vector2.zero;
         }
     }

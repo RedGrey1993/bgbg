@@ -55,4 +55,9 @@ public class CharacterInput : MonoBehaviour
             }
         }
     }
+
+    void OnDestroy()
+    {
+        Constants.goToCharacterInput.Remove(gameObject);
+    }
 }

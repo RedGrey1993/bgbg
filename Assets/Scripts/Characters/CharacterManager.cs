@@ -16,7 +16,7 @@ public class CharacterManager : MonoBehaviour
 
     public static CharacterManager Instance { get; private set; }
 
-    public Dictionary<int, GameObject> playerObjects { get; private set; } = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> PlayerObjects { get; private set; } = new ();
     public Dictionary<int, int> PlayerPrefabIds { get; set; } = new Dictionary<int, int>();
     public Dictionary<int, GameObject> minionObjects { get; private set; } = new Dictionary<int, GameObject>();
     public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
@@ -227,7 +227,7 @@ public class CharacterManager : MonoBehaviour
     private void CreatePlayerObject(int playerId, int prefabId,
         bool needController = false, PlayerState initState = null, BulletState initBulletState = null)
     {
-        if (playerObjects.ContainsKey(playerId)) return;
+        if (PlayerObjects.ContainsKey(playerId)) return;
 
         var playerPrefab = SelectCharacterManager.Instance.characterPrefabs[prefabId];
         GameObject go = Instantiate(playerPrefab, playerParent);
@@ -274,7 +274,7 @@ public class CharacterManager : MonoBehaviour
         LevelManager.Instance.AddToVisitedRooms(go.transform.position);
         playerRooms.Add(LevelManager.Instance.GetRoomNoByPosition(go.transform.position));
 
-        playerObjects[playerId] = go;
+        PlayerObjects[playerId] = go;
         PlayerPrefabIds[playerId] = prefabId;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
         // 上面的注释是老逻辑，新逻辑Client都处理（相当于状态同步的移动预测），但是Host会定期同步统一的状态
@@ -331,8 +331,8 @@ public class CharacterManager : MonoBehaviour
 
     private void ClearPlayerObjects()
     {
-        foreach (var go in playerObjects.Values) { if (go != null) Destroy(go); }
-        playerObjects.Clear();
+        foreach (var go in PlayerObjects.Values) { if (go != null) Destroy(go); }
+        PlayerObjects.Clear();
         PlayerPrefabIds.Clear();
     }
 
@@ -366,19 +366,19 @@ public class CharacterManager : MonoBehaviour
 
     private void RemovePlayerObject(int playerId)
     {
-        if (playerObjects.TryGetValue(playerId, out GameObject go))
+        if (PlayerObjects.TryGetValue(playerId, out GameObject go))
         {
             if (go != null) Destroy(go);
-            playerObjects.Remove(playerId);
+            PlayerObjects.Remove(playerId);
             PlayerPrefabIds.Remove(playerId);
         }
     }
 
     public void RemoveObject(int characterId)
     {
-        if (playerObjects.ContainsKey(characterId))
+        if (PlayerObjects.ContainsKey(characterId))
         {
-            playerObjects.Remove(characterId);
+            PlayerObjects.Remove(characterId);
             PlayerPrefabIds.Remove(characterId);
             PlayerInfoMap.Remove(characterId);
             Players.RemoveAll(p => p.Id == characterId);
@@ -555,7 +555,7 @@ public class CharacterManager : MonoBehaviour
     {
         GameObject nearestPlayer = null;
         float nearestDistanceSqr = range * range;
-        foreach (var kvp in playerObjects)
+        foreach (var kvp in PlayerObjects)
         {
             // 跳过自己
             if (kvp.Value == null || kvp.Value == character) continue;
@@ -779,7 +779,7 @@ public class CharacterManager : MonoBehaviour
     }
     public GameObject GetMyselfGameObject()
     {
-        if (playerObjects.TryGetValue(MyInfo.Id, out GameObject go))
+        if (PlayerObjects.TryGetValue(MyInfo.Id, out GameObject go))
         {
             return go;
         }
@@ -820,9 +820,9 @@ public class CharacterManager : MonoBehaviour
         storage.PlayerStates.Clear();
         storage.PlayerPrefabIds.Clear();
         storage.BulletStates.Clear();
-        foreach (var playerId in playerObjects.Keys)
+        foreach (var playerId in PlayerObjects.Keys)
         {
-            var playerStatus = playerObjects[playerId].GetComponent<CharacterStatus>();
+            var playerStatus = PlayerObjects[playerId].GetCharacterStatus();
             var playerPrefabId = PlayerPrefabIds[playerId];
             if (playerStatus != null)
             {
@@ -836,7 +836,7 @@ public class CharacterManager : MonoBehaviour
         storage.BossStates.Clear();
         storage.BossPrefabInfos.Clear();
 
-        if (playerObjects.Count == 0) return; // Player死了，或者通关后清空上一把的状态，游戏结束，下次加载时从第1关重新开始
+        if (PlayerObjects.Count == 0) return; // Player死了，或者通关后清空上一把的状态，游戏结束，下次加载时从第1关重新开始
         storage.NextCharacterId = (uint)IdGenerator.NextCharacterId();
 
         foreach (var minionId in minionObjects.Keys)
@@ -1009,10 +1009,10 @@ public class CharacterManager : MonoBehaviour
     {
         var su = new StateUpdateMessage();
         su.Tick = (uint)(Time.realtimeSinceStartup * 1000);
-        foreach (var kvp in playerObjects)
+        foreach (var kvp in PlayerObjects)
         {
             Vector2 pos = kvp.Value.transform.position;
-            var playerState = kvp.Value.GetComponent<CharacterStatus>().State;
+            var playerState = kvp.Value.GetCharacterStatus().State;
             playerState.Position = new Vec2 { X = pos.x, Y = pos.y };
             su.Players.Add(new PlayerState
             {
@@ -1042,7 +1042,7 @@ public class CharacterManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
+            if (PlayerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
                 var rb = go.GetComponent<Rigidbody2D>();
@@ -1051,7 +1051,7 @@ public class CharacterManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     rb.angularVelocity = 0f;
                 }
-                var playerStatus = go.GetComponent<CharacterStatus>();
+                var playerStatus = go.GetCharacterStatus();
                 if (playerStatus)
                 {
                     playerStatus.State.Position = ps.Position;
@@ -1067,8 +1067,8 @@ public class CharacterManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            if (!playerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, PlayerInfoMap[ps.PlayerId].PrefabId, ps.PlayerId == MyInfo.Id);
-            if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
+            if (!PlayerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, PlayerInfoMap[ps.PlayerId].PrefabId, ps.PlayerId == MyInfo.Id);
+            if (PlayerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.
                 var rb = go.GetComponent<Rigidbody2D>();
@@ -1077,7 +1077,7 @@ public class CharacterManager : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     rb.angularVelocity = 0f;
                 }
-                var playerStatus = go.GetComponent<CharacterStatus>();
+                var playerStatus = go.GetCharacterStatus();
                 if (playerStatus)
                 {
                     playerStatus.State.Position = ps.Position;
@@ -1086,7 +1086,7 @@ public class CharacterManager : MonoBehaviour
                 go.transform.position = new Vector2(ps.Position.X, ps.Position.Y);
             }
         }
-        foreach (var kvp in playerObjects)
+        foreach (var kvp in PlayerObjects)
         {
             if (!su.Players.Any(p => p.PlayerId == kvp.Key))
             {
@@ -1116,8 +1116,8 @@ public class CharacterManager : MonoBehaviour
     public void CalculateSkillEffect_Host(int skillId, int targetCharacterId)
     {
         var skill = SkillDatabase.Instance.GetSkill(skillId);
-        var playerObj = playerObjects[targetCharacterId];
-        var playerStatus = playerObj.GetComponent<CharacterStatus>();
+        var playerObj = PlayerObjects[targetCharacterId];
+        var playerStatus = playerObj.GetCharacterStatus();
         var playerState = playerStatus.State;
         playerState.CurrentStageSkillLearned = true;
         playerState.ToLearnedSkillIds.Clear();
@@ -1150,7 +1150,7 @@ public class CharacterManager : MonoBehaviour
         if (msg == null || msg.StateMsg == null) return;
         foreach (var ps in msg.StateMsg.Players)
         {
-            if (playerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
+            if (PlayerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 var playerStatus = go.GetComponent<CharacterStatus>();
                 if (playerStatus)

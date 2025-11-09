@@ -15,7 +15,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public CharacterStatus characterStatus { get; private set; }
     public CharacterData CharacterData => characterStatus.characterData;
     protected Rigidbody2D rb;
-    protected Collider2D col2D;
+    public Collider2D col2D { get; private set; }
     public Animator animator { get; private set; }
     protected AudioSource audioSource;
     public AudioSource OneShotAudioSource { get; set; } = null;
@@ -73,8 +73,21 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             }
         }
 
+        if (characterStatus.State.ActiveSkillId <= 0 && CharacterData.InitialActiveSkillId > 0)
+        {
+            characterStatus.State.ActiveSkillId = CharacterData.InitialActiveSkillId;
+            characterStatus.State.ActiveSkillCurCd = -1;
+            if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+            {
+                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
+                spc.UpdateMyStatusUI(characterStatus.State);
+            }
+        }
+
         SubclassStart();
     }
+
+    protected virtual void SubclassStart() { }
 
     protected bool HasAliveNotSummonedPokePrefabs()
     {
@@ -136,8 +149,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
     }
 
-    protected virtual void SubclassStart() { }
-
     protected void Move_RandomMoveToTarget(Vector3 targetPos)
     {
         if (Vector3.Distance(targetPos, transform.position) < 2f)
@@ -145,20 +156,22 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             characterInput.MoveInput = Vector2.zero;
             return;
         }
-        var diffNormalized = (targetPos - transform.position).normalized;
+        var diff = targetPos - transform.position;
         if (!CharacterData.canMoveDiagonally 
-            && Mathf.Min(Mathf.Abs(diffNormalized.x), Mathf.Abs(diffNormalized.y)) > 0.1f)
+            && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Min(col2D.bounds.extents.x, col2D.bounds.extents.y))
         {
-            if (Mathf.Abs(diffNormalized.x) < Mathf.Abs(diffNormalized.y) && !XNearWall())
+            if (Mathf.Abs(diff.x) < Mathf.Abs(diff.y) && !XNearWall())
             {
-                diffNormalized.x *= 10;
+                // diff.x *= 10;
+                diff.y = 0;
             }
-            else if (Mathf.Abs(diffNormalized.y) < Mathf.Abs(diffNormalized.x) && !YNearWall())
+            else if (Mathf.Abs(diff.y) < Mathf.Abs(diff.x) && !YNearWall())
             {
-                diffNormalized.y *= 10;
+                diff.x = 0;
+                // diff.y *= 10;
             }
         }
-        characterInput.MoveInput = diffNormalized.normalized;
+        characterInput.MoveInput = diff.normalized;
     }
 
     protected bool IsAlive()
@@ -297,9 +310,14 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         return (!isAi || AiHasValidAggroTarget()) && IsAtkCoroutineIdle();
     }
 
+    public bool CanUseActiveItem()
+    {
+        return IsAtkCoroutineIdle();
+    }
+    
     protected virtual bool IsAtkCoroutineIdle()
     {
-        return shootCoroutine == null;
+        return shootCoroutine == null && ActiveSkillCoroutine == null;
     }
 
     protected float nextMoveInputChangeTime = 0;
@@ -508,7 +526,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected virtual void Move_ChaseInRoom(GameObject target, bool followTrainer = false)
     {
         var diff = target.transform.position - transform.position;
-        var diffNormalized = diff.normalized;
         var atkRange = characterStatus.State.ShootRange;
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
 
@@ -543,18 +560,20 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             // 不能斜向攻击或移动，优先走距离短的那个方向，直到处于同一个水平或竖直方向
             if ((!CharacterData.canAttackDiagonally || !CharacterData.canMoveDiagonally)
-                && Mathf.Min(Mathf.Abs(diffNormalized.x), Mathf.Abs(diffNormalized.y)) > 0.1f)
+                && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Min(col2D.bounds.extents.x, col2D.bounds.extents.y))
             {
-                if (Mathf.Abs(diffNormalized.x) < Mathf.Abs(diffNormalized.y) && !XNearWall())
+                if (Mathf.Abs(diff.x) < Mathf.Abs(diff.y) && !XNearWall())
                 {
-                    diffNormalized.x *= 10;
+                    // diff.x *= 10;
+                    diff.y = 0;
                 }
-                else if (Mathf.Abs(diffNormalized.y) < Mathf.Abs(diffNormalized.x) && !YNearWall())
+                else if (Mathf.Abs(diff.y) < Mathf.Abs(diff.x) && !YNearWall())
                 {
-                    diffNormalized.y *= 10;
+                    diff.x = 0;
+                    // diff.y *= 10;
                 }
             }
-            characterInput.MoveInput = diffNormalized.normalized;
+            characterInput.MoveInput = diff.normalized;
         }
         else // 进入攻击范围
         {
@@ -625,18 +644,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #endregion
 
     #region Animation
-    protected virtual void SetIdleAnimation(Direction dir)
-    {
-
-    }
-    protected virtual void SetRunAnimation(Direction dir)
-    {
-        
-    }
-    protected virtual void SetAtkAnimation(Direction dir)
-    {
-
-    }
+    protected virtual void SetSpdAnimation(float speed) { }
+    protected virtual void SetShootAnimation(bool shoot, float attackSpeed = 1) { }
     #endregion
 
     #region Move Action
@@ -658,15 +667,19 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             rb.linearVelocity = (moveInput + characterInput.MoveAdditionalInput) * characterStatus.State.MoveSpeed;
             characterInput.MoveAdditionalInput = Vector2.zero;
+            SetSpdAnimation(rb.linearVelocity.magnitude);
         }
     }
     #endregion
 
     #region Attack Action
+    private float lastShootTime = 0;
     protected IEnumerator AttackShoot(Vector2 lookInput, float atkInterval, int fixedDamage = 0,
         GameObject tarEnemy = null)
     {
         isAttack = true;
+        SetShootAnimation(true);
+        lastShootTime = Time.time;
         if (CharacterData.shootSound)
         {
             var audioSrc = gameObject.AddComponent<AudioSource>();
@@ -729,7 +742,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         if (IsAtkCoroutineIdle())
         {
             Vector2 lookInput = characterInput.LookInput;
-            if (lookInput.sqrMagnitude < 0.1f) return;
+            if (lookInput.sqrMagnitude < 0.1f)
+            {
+                if (Time.time - lastShootTime > 0.2f)
+                    SetShootAnimation(false);
+                return;
+            }
 
             shootCoroutine = StartCoroutine(AttackShoot(lookInput, 1f / characterStatus.State.AttackFrequency));
         }
@@ -744,12 +762,33 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip;
     }
 
+    private Coroutine rotateCoroutine = null;
+    private IEnumerator RotateTo(Transform trans, Quaternion targetRotation, float duration = 0.3f)
+    {
+        Quaternion startRotation = trans.localRotation;
+        float t = 0;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            trans.localRotation = Quaternion.Lerp(startRotation, targetRotation, t / duration);
+            yield return null;
+        }
+        trans.localRotation = targetRotation;
+        rotateCoroutine = null;
+    }
+
     protected virtual void LookToAction()
     {
         // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
         // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
         // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
         LookToAction(new Vector3(0, -0.71711f, 0.71711f));
+    }
+
+    private void RotateTo(Transform trans, Vector3 forwardDir, Vector2 lookInput)
+    {
+        if (rotateCoroutine != null) StopCoroutine(rotateCoroutine);
+        rotateCoroutine = StartCoroutine(RotateTo(trans, Quaternion.LookRotation(forwardDir, lookInput)));
     }
     protected void LookToAction(Vector3 forwardDir)
     {
@@ -765,28 +804,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             if (skinnedMeshRenderer != null)
             {
                 Transform childTransform = transform.GetChild(0);
-                childTransform.localRotation = Quaternion.LookRotation(forwardDir, lookInput); // 45度
+                RotateTo(childTransform, forwardDir, lookInput);
             }
             else if (NeedChangeLookDir())
             {
                 Transform childTransform = transform.GetChild(0);
-                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
-            }
-            if (lookInput.x > 0.1f)
-            {
-                SetAtkAnimation(Direction.Right);
-            }
-            else if (lookInput.x < -0.1f)
-            {
-                SetAtkAnimation(Direction.Left);
-            }
-            else if (lookInput.y > 0.1f)
-            {
-                SetAtkAnimation(Direction.Up);
-            }
-            else if (lookInput.y < -0.1f)
-            {
-                SetAtkAnimation(Direction.Down);
+                RotateTo(childTransform, Vector3.forward, lookInput);
             }
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
@@ -796,34 +819,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             if (skinnedMeshRenderer != null)
             {
                 Transform childTransform = transform.GetChild(0);
-                childTransform.localRotation = Quaternion.LookRotation(forwardDir, moveInput); // 45度
+                RotateTo(childTransform, forwardDir, moveInput);
             }
             else if (NeedChangeLookDir())
             {
                 Transform childTransform = transform.GetChild(0);
-                // Debug.Log($"fhhtest, {name} moveInput: {moveInput}");
-                childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
+                RotateTo(childTransform, Vector3.forward, moveInput);
             }
-            if (moveInput.x > 0.1f)
-            {
-                SetRunAnimation(Direction.Right);
-            }
-            else if (moveInput.x < -0.1f)
-            {
-                SetRunAnimation(Direction.Left);
-            }
-            else if (moveInput.y > 0.1f)
-            {
-                SetRunAnimation(Direction.Up);
-            }
-            else if (moveInput.y < -0.1f)
-            {
-                SetRunAnimation(Direction.Down);
-            }
-        }
-        else
-        {
-            SetIdleAnimation(Direction.Down);
         }
     }
     #endregion

@@ -2,19 +2,6 @@ using UnityEngine;
 
 public class ContraBillAI : CharacterBaseAI
 {
-    // protected override void SubclassStart()
-    // {
-    //     if (characterStatus.State.ActiveSkillId == 0)
-    //     {
-    //         characterStatus.State.ActiveSkillId = Constants.MasterLongWaveSkillId;
-    //         characterStatus.State.ActiveSkillCurCd = -1;
-    //         if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-    //         {
-    //             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-    //             spc.UpdateMyStatusUI(characterStatus.State);
-    //         }
-    //     }
-    // }
     #region ICharacterAI implementation
     public override void OnDeath()
     {
@@ -56,65 +43,14 @@ public class ContraBillAI : CharacterBaseAI
     #endregion
 
     #region Animation
-    protected override void SetIdleAnimation(Direction dir)
+    protected override void SetSpdAnimation(float speed)
     {
-        if (animator) {
-            animator.SetFloat("Speed", 0);
-            animator.SetInteger("Attack", 0);
-        }
+        animator.SetFloat("Speed", speed / 5);
     }
-    protected override void SetRunAnimation(Direction dir)
+    protected override void SetShootAnimation(bool shoot, float attackSpeed = 1)
     {
-        // if (dir == Direction.Left)
-        // {
-        //     character.GetComponentInChildren<SpriteRenderer>().flipX = true;
-        // }
-        // else
-        // {
-        //     character.GetComponentInChildren<SpriteRenderer>().flipX = false;
-        // }
-        if (animator)
-        {
-            animator.SetFloat("Speed", 1);
-            animator.SetInteger("Attack", 0);
-            // if (dir == Direction.Left || dir == Direction.Right)
-            // {
-            //     animator.Play("Player_ContraBill_Run_Right");
-            // }
-            // else if (dir == Direction.Up)
-            // {
-            //     animator.Play("Player_ContraBill_Run_Back");
-            // }
-            // else
-            // {
-            //     animator.Play("Player_ContraBill_Run_Front");
-            // }
-        }
-    }
-
-    protected override void SetAtkAnimation(Direction dir)
-    {
-        // if (dir == Direction.Left)
-        // {
-        //     character.GetComponentInChildren<SpriteRenderer>().flipX = true;
-        // } else
-        // {
-        //     character.GetComponentInChildren<SpriteRenderer>().flipX = false;
-        // }
-        if (animator)
-        {
-            if (characterInput.MoveInput.sqrMagnitude > 0.1f) animator.SetFloat("Speed", 1);
-            else animator.SetFloat("Speed", 0);
-            animator.SetInteger("Attack", 1);
-            // if (characterInput.MoveInput.sqrMagnitude < 0.1f)
-            // {
-            //     animator.Play("Player_ContraBill_Atk_Right");
-            // }
-            // else
-            // {
-            //     animator.Play("Player_ContraBill_Atk_Run_Right");
-            // }
-        }
+        animator.SetBool("Shoot", shoot);
+        animator.SetFloat("AttackSpeed", attackSpeed);
     }
     #endregion
 }

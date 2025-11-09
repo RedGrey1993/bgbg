@@ -97,7 +97,8 @@ public static class Constants
     public const int NewRulerPlayerId = 123456789;
     public const float Eps = 0.00001f;
 
-    public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new Dictionary<GameObject, CharacterStatus>();
+    public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new();
+    public static Dictionary<GameObject, CharacterInput> goToCharacterInput = new();
     public static readonly int[] LevelUpExp = {
         100,
         160,
@@ -208,6 +209,19 @@ public static class Constants
             goToCharacterStatus[obj] = status;
         }
         return status;
+    }
+
+    public static CharacterInput GetCharacterInput(this GameObject obj)
+    {
+        if (goToCharacterInput.TryGetValue(obj, out CharacterInput input))
+        {
+            return input;
+        }
+        if (obj.TryGetComponent<CharacterInput>(out input))
+        {
+            goToCharacterInput[obj] = input;
+        }
+        return input;
     }
 
     public static CharacterStatus GetCharacterStatus(this Collider2D other)

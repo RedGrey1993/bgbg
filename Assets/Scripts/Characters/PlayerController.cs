@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using NetworkMessageProto;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -8,7 +9,7 @@ public class PlayerController : MonoBehaviour
     // Private variables
     private Vector2 moveInput;
     private Vector2 lookInput;
-    private CharacterInput playerInput;
+    private CharacterBaseAI baseAi;
     private InputAction m_MoveAction;
     private InputAction m_LookAction;
     private InputAction m_JumpAction;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
         m_LookAction = s_InputActions.Player.Look;
         m_JumpAction = s_InputActions.Player.Jump;
 
-        playerInput = GetComponent<CharacterInput>();
+        baseAi = GetComponent<CharacterBaseAI>();
     }
 
     private void OnEnable()
@@ -91,14 +92,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        PlayerState state = GetComponent<CharacterStatus>().State;
+        StartCoroutine(UseActiveSkill());
+    }
+
+    private IEnumerator UseActiveSkill()
+    {
+        PlayerState state = baseAi.characterStatus.State;
         SkillData skillData = SkillDatabase.Instance.GetActiveSkill(state.ActiveSkillId);
         if (skillData != null && (state.ActiveSkillCurCd == -1 || state.ActiveSkillCurCd >= skillData.cooldown))
         {
-            state.ActiveSkillCurCd = 0;
-            skillData.executor.ExecuteSkill(gameObject, skillData);
+            // TODO: cd设置为实际的0，当前暂时是无cd
+            // state.ActiveSkillCurCd = 0;
+            state.ActiveSkillCurCd = -1;
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
             spc.UpdateMyStatusUI(state);
+            yield return new WaitUntil(() => baseAi.CanUseActiveItem());
+            skillData.executor.ExecuteSkill(gameObject, skillData);
         }
     }
 }

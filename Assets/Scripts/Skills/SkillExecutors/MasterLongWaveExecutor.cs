@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MasterLongWaveExecutor", menuName = "Skills/Effects/Master Long Wave")]
@@ -22,7 +23,8 @@ public class MasterLongWaveExecutor : SkillExecutor
         lookInput = aiScript.characterInput.LookInput;
         if (lookInput.sqrMagnitude < 0.1f) lookInput = aiScript.LookDir;
         var tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(playerObj, aiScript.LookDir, 180);
-        int count = 1;
+        // TODO: count默认改回1
+        int count = 8;
         float hpRatio = (float)aiScript.characterStatus.State.CurrentHp / aiScript.characterStatus.State.MaxHp;
         if (hpRatio < 0.5f) count = 8;
         aiScript.ActiveSkillCoroutine = aiScript.StartCoroutine(Attack_EnergyWave(playerObj, tarEnemy, count));
@@ -32,24 +34,37 @@ public class MasterLongWaveExecutor : SkillExecutor
     {
         return aiScript.CharacterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle;
     }
+
+    private bool Is3DModel()
+    {
+        return aiScript.CharacterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle
+            || aiScript.CharacterData.CharacterType == CharacterType.Boss_3_0_PokeBoy
+            || aiScript.CharacterData.CharacterType == CharacterType.Contra_Bill;
+    }
     
     private IEnumerator Attack_EnergyWave(GameObject owner, GameObject target, int count)
     {
         aiScript.isAttack = true;
         GameObject vfx;
-        if (IsMasterLong())
+        if (Is3DModel())
         {
-            aiScript.animator.speed = 1;
-            aiScript.animator.Play("施法并扔出");
+            // aiScript.animator.speed = 1;
+            // aiScript.animator.Play("施法并扔出");
+            aiScript.animator.SetFloat("AttackSpeed", 1);
+            aiScript.animator.SetBool("EnergyWave", true);
             yield return new WaitForSeconds(0.5f);
-            vfx = aiScript.transform.GetChild(0).GetChild(0).gameObject;
-            vfx.SetActive(true);
+            // vfx = aiScript.transform.GetChild(0).GetChild(0).gameObject;
+            // vfx.SetActive(true);
+            var rightHandTransform = aiScript.animator.GetBoneTransform(HumanBodyBones.RightHand);
+            vfx = Instantiate(vfxPrefab, rightHandTransform);
+            vfx.transform.localScale = Vector3.one * 0.3f 
+                * aiScript.transform.lossyScale.x / vfx.transform.lossyScale.x;
         }
         else
         {
-            vfx = LevelManager.Instance.InstantiateTemporaryObject(vfxPrefab, aiScript.transform.position);
-            aiScript.TobeDestroyed.Add(vfx);
+            vfx = Instantiate(vfxPrefab, aiScript.transform);
         }
+        aiScript.TobeDestroyed.Add(vfx);
         if (energyWaveAccumulateSound)
         {
             if (aiScript.OneShotAudioSource == null)
@@ -57,15 +72,9 @@ public class MasterLongWaveExecutor : SkillExecutor
             aiScript.OneShotAudioSource.PlayOneShot(energyWaveAccumulateSound);
         }
         float waitTime = 1.6f;
-        float tarTime = Time.time + waitTime;
-        while (Time.time < tarTime)
-        {
-            if (!IsMasterLong())
-            {
-                vfx.transform.position = aiScript.transform.position;
-            }
-            yield return null;
-        }
+        if (!aiScript.isAi) waitTime += 0.5f;
+        yield return new WaitForSeconds(waitTime);
+        
         if (aiScript.isAi && target != null && LevelManager.Instance.InSameRoom(owner, target))
             lookInput = aiScript.characterInput.LookInput = target.transform.position - aiScript.transform.position;
         if (aiScript.isAi)
@@ -73,18 +82,12 @@ public class MasterLongWaveExecutor : SkillExecutor
             // 攻击0.5s之前的位置，给玩家一些缓冲时间
             yield return new WaitForSeconds(0.5f);
         }
-        if (IsMasterLong())
-        {
-            vfx.SetActive(false);
-        }
-        else
-        {
-            Destroy(vfx);
-            aiScript.TobeDestroyed.Remove(vfx);
-        }
+
+        Destroy(vfx);
+        aiScript.TobeDestroyed.Remove(vfx);
 
         // 获取Player碰撞体的边界位置
-        Bounds playerBounds = aiScript.GetComponentInChildren<Collider2D>().bounds;
+        Bounds playerBounds = aiScript.col2D.bounds;
 
         float angle = 360f / count;
         Quaternion rotationPlus = Quaternion.Euler(0, 0, angle);
@@ -121,10 +124,15 @@ public class MasterLongWaveExecutor : SkillExecutor
         {
             if (count > 1)
             {
-                aiScript.animator.Play("闪到老腰");
+                aiScript.animator.Play("闪到老腰", 1);
                 yield return new WaitForSeconds(3f);
             }
-            aiScript.animator.Play("Mutant Walking");
+        }
+
+        if (Is3DModel())
+        {
+            // aiScript.animator.Play("Mutant Walking");
+            aiScript.animator.SetBool("EnergyWave", false);
         }
 
         // 攻击完之后给1-3s的移动，避免呆在原地一直攻击

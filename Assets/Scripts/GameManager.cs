@@ -173,6 +173,7 @@ public class GameManager : MonoBehaviour
         spc.ShowMyStatusUI();
 
         Constants.goToCharacterStatus.Clear();
+        Constants.goToCharacterInput.Clear();
         LevelManager.Instance.ClearLevel();
         LevelManager.Instance.GenerateLevel(storage);
     }
