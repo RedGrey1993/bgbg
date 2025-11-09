@@ -83,9 +83,10 @@ public class PokeboyCaptureExecutor : SkillExecutor
         GameObject pokeball;
         float holdBallTime = 0.87f;
 
-        aiScript.characterInput.LookInput = enemy.transform.position - aiScript.transform.position;
+        var lookInput = enemy.transform.position - aiScript.transform.position;
         if (aiScript.CharacterData.Is3DModel())
         {
+            aiScript.RotateTo(aiScript.LookToForwardDir, lookInput);
             aiScript.PlayAnimationAllLayers("Throw Object");
             var rightHandTransform = aiScript.animator.GetBoneTransform(HumanBodyBones.RightHand);
             pokeball = Instantiate(pokeballPrefab, rightHandTransform);
@@ -95,6 +96,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
         }
         else
         {
+            aiScript.RotateTo(Vector3.forward, lookInput);
             pokeball = Instantiate(pokeballPrefab, aiScript.transform);
             Vector2 pos = pokeball.transform.position;
             pokeball.transform.position = pos + aiScript.characterInput.LookInput.normalized
@@ -171,10 +173,10 @@ public class PokeboyCaptureExecutor : SkillExecutor
             if (summonPosition.y < room.yMin + 2) summonPosition.y = room.yMin + 2;
             else if (summonPosition.y > room.yMax - 1) summonPosition.y = room.yMax - 1;
 
-            GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
             float summonTime = 1.5f;
             if (idx == 0)
             {
+                GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonPokeEffectPrefab, summonPosition);
                 if (aiScript.CharacterData.Is3DModel())
                 {
                     var startPos = pokeball.transform.position;
@@ -195,10 +197,6 @@ public class PokeboyCaptureExecutor : SkillExecutor
                     yield return new WaitForSeconds(summonTime);
                 }
                 Destroy(summonEffect);
-            }
-            else
-            {
-                Destroy(summonEffect, summonTime);
             }
 
             GameObject pokeMinion = CharacterManager.Instance.InstantiateCompanionObject(pokePrefab.Item1, summonPosition);

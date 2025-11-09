@@ -37,6 +37,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected int atkSpdHash = Animator.StringToHash("AttackSpeed");
     public int BaseLayerIndex { get; protected set; }
     public int UpperBodyLayerIndex { get; protected set; }
+    public Vector3 LookToForwardDir { get; protected set; } = Vector3.forward;
 
     public void Awake()
     {
@@ -92,6 +93,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 spc.UpdateMyStatusUI(characterStatus.State);
             }
         }
+
+        LookToForwardDir = new Vector3(0, -0.71711f, 0.71711f); // 45度
 
         SubclassStart();
     }
@@ -805,12 +808,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         // childTransform.localRotation = Quaternion.LookRotation(Vector3.forward, moveInput);
         // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.5f, 0.866f), moveInput); // 30度
         // childTransform.localRotation = Quaternion.LookRotation(new Vector3(0, -0.71711f, 0.71711f), moveInput); // 45度
-        LookToAction(new Vector3(0, -0.71711f, 0.71711f));
+        LookToAction(LookToForwardDir);
     }
 
-    public void RotateTo(Transform trans, Vector3 forwardDir, Vector2 lookInput)
+    public void RotateTo(Vector3 forwardDir, Vector2 lookInput)
     {
         if (rotateCoroutine != null) StopCoroutine(rotateCoroutine);
+        Transform trans = transform.GetChild(0);
         rotateCoroutine = StartCoroutine(RotateTo(trans, Quaternion.LookRotation(forwardDir, lookInput)));
     }
     protected void LookToAction(Vector3 forwardDir)
@@ -826,13 +830,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             // 优先将角色面朝射击方向，优先级高于移动方向
             if (skinnedMeshRenderer != null)
             {
-                Transform childTransform = transform.GetChild(0);
-                RotateTo(childTransform, forwardDir, lookInput);
+                RotateTo(forwardDir, lookInput);
             }
             else if (NeedChangeLookDir())
             {
-                Transform childTransform = transform.GetChild(0);
-                RotateTo(childTransform, Vector3.forward, lookInput);
+                RotateTo(Vector3.forward, lookInput);
             }
         }
         else if (moveInput.sqrMagnitude >= 0.1f)
@@ -841,13 +843,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             // 将角色面朝移动方向
             if (skinnedMeshRenderer != null)
             {
-                Transform childTransform = transform.GetChild(0);
-                RotateTo(childTransform, forwardDir, moveInput);
+                RotateTo(forwardDir, moveInput);
             }
             else if (NeedChangeLookDir())
             {
-                Transform childTransform = transform.GetChild(0);
-                RotateTo(childTransform, Vector3.forward, moveInput);
+                RotateTo(Vector3.forward, moveInput);
             }
         }
     }

@@ -8,15 +8,15 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
 {
+    protected override void SubclassStart()
+    {
+        LookToForwardDir = new Vector3(0, -0.9997f, 0.0015f); // 85度
+    }
+
     #region Animation
     protected override void SetSpdAnimation(float speed)
     {
         animator.SetFloat("Speed", speed / 3);
-    }
-    
-    protected override void LookToAction()
-    {
-        LookToAction(new Vector3(0, -0.9997f, 0.0015f)); // 85度
     }
     #endregion
 
