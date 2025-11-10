@@ -9,8 +9,14 @@ public class BlackHole : MonoBehaviour
     public float DamageInterval { get; set; } = 1.0f;
     public float TotalInterval { get; set; } = 10.0f;
     public GameObject Owner { get; set; } = null; // 施放者
+    private CharacterStatus ownerStatus = null;
 
     private HashSet<CharacterStatus> statusInZone = new HashSet<CharacterStatus>();
+
+    void Start()
+    {
+        ownerStatus = Owner.GetCharacterStatus();
+    }
 
     public void StartDamageCoroutine()
     {
@@ -21,20 +27,19 @@ public class BlackHole : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == Owner) return; // 不伤害自己
-        var status = other.GetComponentInParent<CharacterStatus>();
-        if (status == null)
-        {
-            status = other.GetComponentInChildren<CharacterStatus>();
-        }
+        var tarStatus = other.GetCharacterStatus();
+        // if (status == null)
+        // {
+        //     status = other.GetComponentInChildren<CharacterStatus>();
+        // }
         // 尝试从进入的物体上获取HealthController组件
-        if (status != null)
+        if (tarStatus == null || (ownerStatus != null && ownerStatus.IsFriendlyUnit(tarStatus)))
+            return;
+
+        // 如果目标不在列表中，则添加它
+        if (!statusInZone.Contains(tarStatus))
         {
-            if (status.gameObject == Owner) return; // 不伤害自己
-            // 如果目标不在列表中，则添加它
-            if (!statusInZone.Contains(status))
-            {
-                statusInZone.Add(status);
-            }
+            statusInZone.Add(tarStatus);
         }
     }
 
@@ -42,19 +47,18 @@ public class BlackHole : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject == Owner) return; // 不伤害自己
-        var status = other.GetComponentInParent<CharacterStatus>();
-        if (status == null)
+        var tarStatus = other.GetCharacterStatus();
+        // if (status == null)
+        // {
+        //     status = other.GetComponentInChildren<CharacterStatus>();
+        // }
+        if (tarStatus == null || (ownerStatus != null && ownerStatus.IsFriendlyUnit(tarStatus)))
+            return;
+
+        // 如果目标在列表中，则移除它
+        if (statusInZone.Contains(tarStatus))
         {
-            status = other.GetComponentInChildren<CharacterStatus>();
-        }
-        if (status != null)
-        {
-            if (status.gameObject == Owner) return; // 不伤害自己
-            // 如果目标在列表中，则移除它
-            if (statusInZone.Contains(status))
-            {
-                statusInZone.Remove(status);
-            }
+            statusInZone.Remove(tarStatus);
         }
     }
 

@@ -88,6 +88,7 @@ public static class Constants
     public const string TagWall = "Wall";
     public const string TagShield = "Shield";
     public const string SummonBossName = "SummonBoss";
+    public const int SingularityItemId = 2;
     public const int SysBugItemId = 3;
     public const int HealthRecoverySkillId = 8;
     public const int PhantomChargeSkillId = 9;

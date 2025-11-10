@@ -237,7 +237,7 @@ public class SkillPanelController : MonoBehaviour
         // 按下 "2" 键，掉落一个主动道具到当前位置
         if (Keyboard.current != null && Keyboard.current.digit2Key.wasPressedThisFrame)
         {
-            var levelData = SkillDatabase.Instance.GetActiveSkill(Constants.MasterLongWaveSkillId);
+            var levelData = SkillDatabase.Instance.GetActiveSkill(Constants.SingularityItemId);
             var roomId = LevelManager.Instance.GetRoomNoByPosition(CharacterManager.Instance.GetMyselfGameObject().transform.position);
             var room =  LevelManager.Instance.Rooms[roomId];
             LevelManager.Instance.ShowPickUpItem(room.center, levelData);
