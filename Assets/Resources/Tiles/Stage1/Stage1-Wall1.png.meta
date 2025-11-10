@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ed4e755587e13e74ea04852861bd127a
+guid: 3018a561b10406043bebbb8fb9e4d124
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -949117173056123877
-    second: PureRed_0
+      213: 8667299931227276426
+    second: Stage1-Wall1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 22
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PureRed_0
+      name: Stage1-Wall1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 22
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b1c44c1b5fe04d2f0800000000000000
-      internalID: -949117173056123877
+      spriteID: a84c19abd5f684870800000000000000
+      internalID: 8667299931227276426
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PureRed_0: -949117173056123877
+      Stage1-Wall1_0: 8667299931227276426
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

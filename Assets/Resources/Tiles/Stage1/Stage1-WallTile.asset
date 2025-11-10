@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2340359ff3232488715456ba054158, type: 3}
+  m_Name: Stage1-WallTile
+  m_EditorClassIdentifier: Assembly-CSharp::UnityEngine.Tilemaps.WeightedRandomTile
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 2
+  Sprites:
+  - Sprite: {fileID: 8667299931227276426, guid: 3018a561b10406043bebbb8fb9e4d124, type: 3}
+    Weight: 500
+  - Sprite: {fileID: -6975081092447276048, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: 1521000979, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: 897878409, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: 451607579, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: -1193771925, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: -1218483708, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: 532153180, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
+    Weight: 1
+  - Sprite: {fileID: -5530102744545035526, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: -2142816799, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: -1277962328, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: 1923892702, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: 716660283, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: -1287325986, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: 2059088782, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: -467046953, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500
+  - Sprite: {fileID: 1879994316, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
+    Weight: 500

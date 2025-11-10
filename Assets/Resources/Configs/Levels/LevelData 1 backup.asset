@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb31ec79121f1c14389be0250bc8a493, type: 3}
-  m_Name: LevelData 2
+  m_Name: LevelData 1 backup
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  floorTile: {fileID: 11400000, guid: e9bd326ac32ffe841b9f731695e50c0c, type: 2}
+  floorTile: {fileID: 11400000, guid: f4e403dfde79d664499d5161cb39ee8f, type: 2}
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
   wallTile: {fileID: 11400000, guid: 800df2dc79163ef48ae1c47ff424aecb, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 1634a816d8766b64a8953461c4e61da1, type: 3}
-  level: 2
+  level: 1
   totalRooms:
     min: 3
     max: 3

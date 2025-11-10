@@ -13,7 +13,6 @@ public class LevelManager : MonoBehaviour
     public Tilemap wallTilemap;
     public Tilemap floorTilemap;
     public Tilemap highlightTilemap;
-    public TileBase level1WallTile;
     public GameObject explosionEffectPrefab; // 你的粒子特效Prefab
     public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
     public AudioClip explosionSound;
@@ -57,16 +56,8 @@ public class LevelManager : MonoBehaviour
         Debug.Log($"################# 生成第 {level} 关 #################");
         CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
         TileBase floorTile = CurrentLevelData.floorTile;
-        ref TileBase wallTile = ref level1WallTile;
-        switch (level)
-        {
-            case 1:
-                wallTile = ref level1WallTile;
-                break;
-            default:
-                wallTile = ref level1WallTile;
-                break;
-        }
+        TileBase wallTile = CurrentLevelData.wallTile;
+
         GenerateFloors(floorTile);
         GenerateRooms(wallTile, storage);
 
@@ -453,12 +444,18 @@ public class LevelManager : MonoBehaviour
     {
         if (remainRooms <= 1) return -1;
         int toDestroy;
-        if (VisitedRooms.Count > 1) // 如果 Count == 1，则说明只有当前正在探索的房间，其余的房间要么没探索过，要么已经Destroy
+        // if (VisitedRooms.Count > 1) // 如果 Count == 1，则说明只有当前正在探索的房间，其余的房间要么没探索过，要么已经Destroy
+        // {
+        //     // 当前所在的房间暂时先不Destroy，优先Destroy已经探索完毕的房间
+        //     int idx = UnityEngine.Random.Range(0, VisitedRooms.Count - 1);
+        //     toDestroy = VisitedRooms[idx];
+        // }
+        if (VisitedRooms.Count > 0) // 如果 Count == 1，则说明只有当前正在探索的房间，其余的房间要么没探索过，要么已经Destroy
         {
-            // 当前所在的房间暂时先不Destroy，优先Destroy已经探索完毕的房间
-            int idx = UnityEngine.Random.Range(0, VisitedRooms.Count - 1);
+            int idx = UnityEngine.Random.Range(0, VisitedRooms.Count);
             toDestroy = VisitedRooms[idx];
-        } else
+        }
+        else
         {
             int idx = UnityEngine.Random.Range(0, remainRoomsIndex.Count);
             toDestroy = remainRoomsIndex[idx];
@@ -561,6 +558,7 @@ public class LevelManager : MonoBehaviour
                 {
                     floorTilemap.SetTile(tilePos, null);
                     wallTilemap.SetTile(tilePos, null);
+                    highlightTilemap.SetTile(tilePos, null);
                     tileToRooms.Remove(tilePos);
                 }
             }
@@ -579,8 +577,19 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    wallTilemap.SetTile(tilePos, level1WallTile);
+                    wallTilemap.SetTile(tilePos, CurrentLevelData.wallTile);
                 }
+            }
+        }
+    }
+
+    private void SetExplosionTileMap(Rect room)
+    {
+        for (int x = (int)room.xMin + 1; x < (int)room.xMax; ++x)
+        {
+            for (int y = (int)room.yMin + 1; y < (int)room.yMax; ++y)
+            {
+                highlightTilemap.SetTile(new Vector3Int(x, y), CurrentLevelData.explosionTile);
             }
         }
     }
@@ -627,6 +636,7 @@ public class LevelManager : MonoBehaviour
                 destoryRoomRemainTime = interval - (Time.time - startTime);
                 yield return new WaitForSeconds(1f);
             }
+            SetExplosionTileMap(Rooms[nxtDestoryRoomIdx]);
             ShowRedFlashRect(new Vector3(Rooms[nxtDestoryRoomIdx].center.x, Rooms[nxtDestoryRoomIdx].center.y, 0),
                             Rooms[nxtDestoryRoomIdx].width, Rooms[nxtDestoryRoomIdx].height, redFlashDuration);
             while (Time.time - startTime < interval)
@@ -799,6 +809,7 @@ public class LevelManager : MonoBehaviour
     public void SetFloorTileExplosionWarning(Vector3Int pos)
     {
         highlightTilemap.SetTile(pos, CurrentLevelData.explosionTile);
+        // highlightTilemap.SetColor(pos, )
     }
 
     public void ResetFloorTile(Vector3Int pos)
