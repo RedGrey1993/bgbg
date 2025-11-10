@@ -61,34 +61,35 @@ namespace NetworkMessageProto {
             "KAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllckluZm8iSgoKUGxheWVy",
             "SW5mbxIQCghDU3RlYW1JRBgBIAEoCRIMCgROYW1lGAIgASgJEgoKAklkGAMg",
             "ASgFEhAKCFByZWZhYklkGAQgASgFIjYKEUxlYXJuU2tpbGxNZXNzYWdlEhAK",
-            "CHBsYXllcklkGAEgASgFEg8KB3NraWxsSWQYAiABKAUiVgoKUGlja3VwSXRl",
-            "bRIKCgJJZBgBIAEoBRIPCgdTa2lsbElkGAIgASgFEisKCFBvc2l0aW9uGAMg",
-            "ASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIjMKDkJvc3NQcmVmYWJJ",
-            "bmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUiNQoQTWlu",
-            "aW9uUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgFEhAKCFByZWZhYklkGAIg",
-            "ASgFIu8HCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVudFN0YWdlGAEgASgFEjYK",
-            "DFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxh",
-            "eWVyU3RhdGUSNgoMQnVsbGV0U3RhdGVzGA8gAygLMiAuTmV0d29ya01lc3Nh",
-            "Z2VQcm90by5CdWxsZXRTdGF0ZRIXCg9QbGF5ZXJQcmVmYWJJZHMYDiADKAUS",
-            "NgoMTWluaW9uU3RhdGVzGAMgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5Q",
-            "bGF5ZXJTdGF0ZRJAChFNaW5pb25QcmVmYWJJbmZvcxgEIAMoCzIlLk5ldHdv",
-            "cmtNZXNzYWdlUHJvdG8uTWluaW9uUHJlZmFiSW5mbxI0CgpCb3NzU3RhdGVz",
-            "GAUgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI8Cg9C",
-            "b3NzUHJlZmFiSW5mb3MYBiADKAsyIy5OZXR3b3JrTWVzc2FnZVByb3RvLkJv",
-            "c3NQcmVmYWJJbmZvEi0KBVJvb21zGAcgAygLMh4uTmV0d29ya01lc3NhZ2VQ",
-            "cm90by5SZWN0UHJvdG8SFAoMUm9vbU1heFdpZHRoGAggASgNEhUKDVJvb21N",
-            "YXhIZWlnaHQYCSABKA0SFwoPTmV4dENoYXJhY3RlcklkGAogASgNEjMKEFRl",
-            "bGVwb3J0UG9zaXRpb24YCyABKAsyGS5OZXR3b3JrTWVzc2FnZVByb3RvLlZl",
-            "YzISNAoLUGlja3VwSXRlbXMYDCADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3Rv",
-            "LlBpY2t1cEl0ZW0SFAoMUGFzc2VkU3RhZ2VzGA0gAygFEhwKFEFjaGlldmVt",
-            "ZW50MU5ld0N5Y2xlGBAgASgIEhoKEkFjaGlldmVtZW50Mk1pcnJvchgRIAEo",
-            "CBIiChpBY2hpZXZlbWVudDNJbmZpbml0ZUxvbmVseRgSIAEoCBIQCghOZXdM",
-            "ZXZlbBgTIAEoCBIaChJTaG93ZWRTeXNFcnJMb2dUaXAYFCABKAgSPQoTTmV3",
-            "UnVsZXJQbGF5ZXJTdGF0ZRgVIAEoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
-            "UGxheWVyU3RhdGUSPQoTTmV3UnVsZXJCdWxsZXRTdGF0ZRgWIAEoCzIgLk5l",
-            "dHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUSGAoQTmV3UnVsZXJQcmVm",
-            "YWJJZBgXIAEoBRIZChFOeHREZXN0b3J5Um9vbUlkeBgYIAEoBRIdChVEZXN0",
-            "b3J5Um9vbVJlbWFpblRpbWUYGSABKAJiBnByb3RvMw=="));
+            "CHBsYXllcklkGAEgASgFEg8KB3NraWxsSWQYAiABKAUibwoKUGlja3VwSXRl",
+            "bRIKCgJJZBgBIAEoBRIPCgdTa2lsbElkGAIgASgFEhcKD0N1cnJlbnRDb29s",
+            "ZG93bhgDIAEoBRIrCghQb3NpdGlvbhgEIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uVmVjMiIzCg5Cb3NzUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgF",
+            "EhAKCFByZWZhYklkGAIgASgFIjUKEE1pbmlvblByZWZhYkluZm8SDwoHU3Rh",
+            "Z2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSLvBwoMTG9jYWxTdG9yYWdl",
+            "EhQKDEN1cnJlbnRTdGFnZRgBIAEoBRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsy",
+            "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjYKDEJ1bGxldFN0",
+            "YXRlcxgPIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUS",
+            "FwoPUGxheWVyUHJlZmFiSWRzGA4gAygFEjYKDE1pbmlvblN0YXRlcxgDIAMo",
+            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSQAoRTWluaW9u",
+            "UHJlZmFiSW5mb3MYBCADKAsyJS5OZXR3b3JrTWVzc2FnZVByb3RvLk1pbmlv",
+            "blByZWZhYkluZm8SNAoKQm9zc1N0YXRlcxgFIAMoCzIgLk5ldHdvcmtNZXNz",
+            "YWdlUHJvdG8uUGxheWVyU3RhdGUSPAoPQm9zc1ByZWZhYkluZm9zGAYgAygL",
+            "MiMuTmV0d29ya01lc3NhZ2VQcm90by5Cb3NzUHJlZmFiSW5mbxItCgVSb29t",
+            "cxgHIAMoCzIeLk5ldHdvcmtNZXNzYWdlUHJvdG8uUmVjdFByb3RvEhQKDFJv",
+            "b21NYXhXaWR0aBgIIAEoDRIVCg1Sb29tTWF4SGVpZ2h0GAkgASgNEhcKD05l",
+            "eHRDaGFyYWN0ZXJJZBgKIAEoDRIzChBUZWxlcG9ydFBvc2l0aW9uGAsgASgL",
+            "MhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyEjQKC1BpY2t1cEl0ZW1zGAwg",
+            "AygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QaWNrdXBJdGVtEhQKDFBhc3Nl",
+            "ZFN0YWdlcxgNIAMoBRIcChRBY2hpZXZlbWVudDFOZXdDeWNsZRgQIAEoCBIa",
+            "ChJBY2hpZXZlbWVudDJNaXJyb3IYESABKAgSIgoaQWNoaWV2ZW1lbnQzSW5m",
+            "aW5pdGVMb25lbHkYEiABKAgSEAoITmV3TGV2ZWwYEyABKAgSGgoSU2hvd2Vk",
+            "U3lzRXJyTG9nVGlwGBQgASgIEj0KE05ld1J1bGVyUGxheWVyU3RhdGUYFSAB",
+            "KAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEj0KE05ld1J1",
+            "bGVyQnVsbGV0U3RhdGUYFiABKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLkJ1",
+            "bGxldFN0YXRlEhgKEE5ld1J1bGVyUHJlZmFiSWQYFyABKAUSGQoRTnh0RGVz",
+            "dG9yeVJvb21JZHgYGCABKAUSHQoVRGVzdG9yeVJvb21SZW1haW5UaW1lGBkg",
+            "ASgCYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -103,7 +104,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LearnSkillMessage), global::NetworkMessageProto.LearnSkillMessage.Parser, new[]{ "PlayerId", "SkillId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "Position" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "CurrentCooldown", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime" }, null, null, null, null)
@@ -4101,6 +4102,7 @@ namespace NetworkMessageProto {
     public PickupItem(PickupItem other) : this() {
       id_ = other.id_;
       skillId_ = other.skillId_;
+      currentCooldown_ = other.currentCooldown_;
       position_ = other.position_ != null ? other.position_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -4135,8 +4137,20 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "CurrentCooldown" field.</summary>
+    public const int CurrentCooldownFieldNumber = 3;
+    private int currentCooldown_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CurrentCooldown {
+      get { return currentCooldown_; }
+      set {
+        currentCooldown_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Position" field.</summary>
-    public const int PositionFieldNumber = 3;
+    public const int PositionFieldNumber = 4;
     private global::NetworkMessageProto.Vec2 position_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4164,6 +4178,7 @@ namespace NetworkMessageProto {
       }
       if (Id != other.Id) return false;
       if (SkillId != other.SkillId) return false;
+      if (CurrentCooldown != other.CurrentCooldown) return false;
       if (!object.Equals(Position, other.Position)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -4174,6 +4189,7 @@ namespace NetworkMessageProto {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
+      if (CurrentCooldown != 0) hash ^= CurrentCooldown.GetHashCode();
       if (position_ != null) hash ^= Position.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -4201,8 +4217,12 @@ namespace NetworkMessageProto {
         output.WriteRawTag(16);
         output.WriteInt32(SkillId);
       }
+      if (CurrentCooldown != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(CurrentCooldown);
+      }
       if (position_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(Position);
       }
       if (_unknownFields != null) {
@@ -4223,8 +4243,12 @@ namespace NetworkMessageProto {
         output.WriteRawTag(16);
         output.WriteInt32(SkillId);
       }
+      if (CurrentCooldown != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(CurrentCooldown);
+      }
       if (position_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(Position);
       }
       if (_unknownFields != null) {
@@ -4242,6 +4266,9 @@ namespace NetworkMessageProto {
       }
       if (SkillId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SkillId);
+      }
+      if (CurrentCooldown != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentCooldown);
       }
       if (position_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
@@ -4263,6 +4290,9 @@ namespace NetworkMessageProto {
       }
       if (other.SkillId != 0) {
         SkillId = other.SkillId;
+      }
+      if (other.CurrentCooldown != 0) {
+        CurrentCooldown = other.CurrentCooldown;
       }
       if (other.position_ != null) {
         if (position_ == null) {
@@ -4297,7 +4327,11 @@ namespace NetworkMessageProto {
             SkillId = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 24: {
+            CurrentCooldown = input.ReadInt32();
+            break;
+          }
+          case 34: {
             if (position_ == null) {
               Position = new global::NetworkMessageProto.Vec2();
             }
@@ -4331,7 +4365,11 @@ namespace NetworkMessageProto {
             SkillId = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 24: {
+            CurrentCooldown = input.ReadInt32();
+            break;
+          }
+          case 34: {
             if (position_ == null) {
               Position = new global::NetworkMessageProto.Vec2();
             }

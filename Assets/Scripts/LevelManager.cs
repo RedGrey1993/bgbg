@@ -85,7 +85,8 @@ public class LevelManager : MonoBehaviour
         PickupItems.Clear();
         foreach (var pickupItem in storage.PickupItems)
         {
-            ShowPickUpItem(new Vector3(pickupItem.Position.X, pickupItem.Position.Y, 0), SkillDatabase.Instance.GetSkill(pickupItem.SkillId));
+            ShowPickUpItem(new Vector3(pickupItem.Position.X, pickupItem.Position.Y, 0),
+                SkillDatabase.Instance.GetSkill(pickupItem.SkillId), pickupItem.CurrentCooldown);
         }
 
         if (storage.NxtDestoryRoomIdx != -1 && storage.DestoryRoomRemainTime > 0)
@@ -526,12 +527,14 @@ public class LevelManager : MonoBehaviour
         if (BlackHole != null && Rooms[roomIdx].Contains(new Vector2(BlackHole.transform.position.x, BlackHole.transform.position.y)))
         {
             var my = CharacterManager.Instance.GetMyselfGameObject();
-            var status = my.GetComponent<CharacterStatus>();
+            var status = my.GetCharacterStatus();
             status.State.ActiveSkillId = Constants.SysBugItemId;
             status.State.ActiveSkillCurCd = -1;
-            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-            spc.UpdateMyStatusUI(status.State);
-            UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at Grid.Delete()]", Color.red, 5f);
+            if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+            {
+                UIManager.Instance.UpdateMyStatusUI(status);
+                UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at Grid.Delete()]", Color.red, 5f);
+            }
         }
 
         remainRooms--;
@@ -821,7 +824,7 @@ public class LevelManager : MonoBehaviour
         ShowPickUpItem(position, skillData);
     }
 
-    public void ShowPickUpItem(Vector3 position, SkillData skillData)
+    public void ShowPickUpItem(Vector3 position, SkillData skillData, int cooldown = -1)
     {
         if (pickupItemPrefab != null && skillData != null)
         {
@@ -840,6 +843,7 @@ public class LevelManager : MonoBehaviour
             {
                 Id = itemComponent.Id,
                 SkillId = skillData.id,
+                CurrentCooldown = cooldown,
                 Position = new Vec2 { X = position.x, Y = position.y }
             };
             PickupItems.Add(itemComponent.Id, (protoItem, item));

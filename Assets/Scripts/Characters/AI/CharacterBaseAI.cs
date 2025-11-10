@@ -87,11 +87,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             characterStatus.State.ActiveSkillId = CharacterData.InitialActiveSkillId;
             characterStatus.State.ActiveSkillCurCd = -1;
-            if (characterStatus.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-            {
-                var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                spc.UpdateMyStatusUI(characterStatus.State);
-            }
+            UIManager.Instance.UpdateMyStatusUI(characterStatus);
         }
 
         LookToForwardDir = new Vector3(0, -0.71711f, 0.71711f); // 45度

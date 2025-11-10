@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     public GameObject TeleportBeamEffect { get; set; }
     private Coroutine flashCoroutine;
 
+    private StatusPanelController statusPanelCtrl;
     private List<Coroutine> infoPanelCoroutines = new List<Coroutine>();
 
     private InputAction _toggleSettingsAction;
@@ -135,6 +136,8 @@ public class UIManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        statusPanelCtrl = GetComponent<StatusPanelController>();
+
         _uiDocument = GetComponent<UIDocument>();
         _root = _uiDocument.rootVisualElement;
 
@@ -174,9 +177,16 @@ public class UIManager : MonoBehaviour
 
     public void RegisterLocalPlayer(CharacterStatus localPlayerStatus)
     {
-        var spc = GetComponent<StatusPanelController>();
-        localPlayerStatus.OnHealthChanged += spc.UpdateMyStatusUI;
+        localPlayerStatus.OnHealthChanged += statusPanelCtrl.UpdateMyStatusUI;
         localPlayerStatus.OnDied += ShowGameOverScreen;
+    }
+
+    public void UpdateMyStatusUI(CharacterStatus status)
+    {
+        if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+        {
+            statusPanelCtrl.UpdateMyStatusUI(status.State);
+        }
     }
 
     #region Canvas
@@ -1112,8 +1122,7 @@ public class UIManager : MonoBehaviour
         }
 
         Destroy(TeleportBeamEffect);
-        var spc = GetComponent<StatusPanelController>();
-        spc.HideMyStatusUI();
+        statusPanelCtrl.HideMyStatusUI();
         HideSettings();
         HideSkillPanel();
         HideLoadingPanel();

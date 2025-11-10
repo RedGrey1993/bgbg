@@ -10,7 +10,8 @@ public class LogFragmentExecutor : SkillExecutor
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
         var state = playerStatus.State;
         state.ActiveSkillCurCd = skillData.cooldown;
-
-        UIManager.Instance.ShowInfoPanel("Nothing Happened", Color.white, 3);
+        
+        UIManager.Instance.UpdateMyStatusUI(playerStatus);
+        UIManager.Instance.ShowInfoPanel("It's a strange log fragment.\nNothing Happened", Color.white, 3);
     }
 }

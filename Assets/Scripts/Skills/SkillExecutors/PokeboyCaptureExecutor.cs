@@ -50,6 +50,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
             {
                 info += "You have no companion now.\n";
                 aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
+                UIManager.Instance.UpdateMyStatusUI(aiScript.characterStatus);
             }
             else
             {
@@ -68,6 +69,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
                     else
                         info += "All companions are by your side.";
                     aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
+                    UIManager.Instance.UpdateMyStatusUI(aiScript.characterStatus);
                 }
             }
         }

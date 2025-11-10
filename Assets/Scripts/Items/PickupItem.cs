@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,10 +7,14 @@ public class PickupItem : MonoBehaviour
     public SkillData skillData;
     private SpriteRenderer sprite;
     public int Id { get; set; }
+    private Collider2D col2D;
+    private float bornTime;
 
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        col2D = GetComponent<Collider2D>();
+        bornTime = Time.time;
     }
 
     void Start()
@@ -18,6 +23,15 @@ public class PickupItem : MonoBehaviour
         {
             sprite.sprite = skillData.icon;
             sprite.color = new Color(1f, 1f, 1f, 1f);
+        }
+        col2D.enabled = false;
+    }
+
+    void FixedUpdate()
+    {
+        if (Time.time - bornTime > 3f) // 超过拾取的动画时间
+        {
+            col2D.enabled = true;
         }
     }
 
@@ -31,33 +45,53 @@ public class PickupItem : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag(Constants.TagPlayerFeet)) // bullet的tag也可能是Player，layer是bullets
+        if (other.CompareTag(Constants.TagPlayerFeet)) // bullet的tag也可能是Player，layer是bullets
         {
-            GameObject player = collision.gameObject;
-            var status = player.GetComponentInParent<CharacterStatus>();
+            var status = other.GetCharacterStatus();
             if (status != null)
             {
-                // // TODO: 系统日志拾取机制，弹窗提示
-                // if (skillData.id == Constants.SysLogItemId)
-                // {
-                //     // This is a strange log fragment
-                // }
-                // else
-                {
-                    status.State.ActiveSkillId = skillData.id;
-                    status.State.ActiveSkillCurCd = -1;
-                    if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-                    {
-                        var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                        spc.UpdateMyStatusUI(status.State);
-                        UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
-                    }
-                }
-                LevelManager.Instance.PickupItems.Remove(Id);
-                Destroy(gameObject);
+                status.StartCoroutine(PickupItemAnim(status));
             }
         }
+    }
+
+    private IEnumerator PickupItemAnim(CharacterStatus status)
+    {
+        Vector3 initialPos = gameObject.transform.position;
+        if (status.characterData.Is3DModel())
+        {
+            status.CharacterAI.PlayAnimationAllLayers("Pick up item");
+            float squatDownTime = 0.59f; // 下蹲时间
+            yield return new WaitForSeconds(squatDownTime);
+
+            var rightHandTransform = status.CharacterAI.animator.GetBoneTransform(HumanBodyBones.LeftHand);
+            gameObject.transform.SetParent(rightHandTransform);
+            gameObject.transform.localPosition = Vector3.zero;
+            gameObject.transform.localScale *= status.transform.transform.lossyScale.x / gameObject.transform.lossyScale.x;
+        }
+
+        if (status.State.ActiveSkillId > 0)
+        {
+            var skillData = SkillDatabase.Instance.GetActiveSkill(status.State.ActiveSkillId);
+            LevelManager.Instance.ShowPickUpItem(initialPos, skillData, status.State.ActiveSkillCurCd);
+        }
+
+        status.State.ActiveSkillId = skillData.id;
+        status.State.ActiveSkillCurCd = LevelManager.Instance.PickupItems[Id].Item1.CurrentCooldown;
+        if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+        {
+            UIManager.Instance.UpdateMyStatusUI(status);
+            UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
+        }
+        LevelManager.Instance.PickupItems.Remove(Id);
+
+        if (status.characterData.Is3DModel())
+        {
+            float standUpTime = 2.25f;
+            yield return new WaitForSeconds(standUpTime);
+        }
+        Destroy(gameObject);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 using NetworkMessageProto;
 
-[RequireComponent(typeof(ICharacterAI))]
+[RequireComponent(typeof(CharacterBaseAI))]
 public class CharacterStatus : MonoBehaviour
 {
     public PlayerState State { get; private set; } = new PlayerState();
@@ -16,14 +16,14 @@ public class CharacterStatus : MonoBehaviour
     public event System.Action<PlayerState> OnHealthChanged;
     public event System.Action OnDied;
 
-    private ICharacterAI characterAI;
+    public CharacterBaseAI CharacterAI { get; private set; }
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
     public bool IsBoss { get; set; } = false;
 
     void Awake()
     {
-        characterAI = GetComponent<ICharacterAI>();
+        CharacterAI = GetComponent<CharacterBaseAI>();
 
         State = characterData.ToState();
 
@@ -89,7 +89,7 @@ public class CharacterStatus : MonoBehaviour
 
     public void Killed(CharacterStatus enemy)
     {
-        characterAI.Killed(enemy);
+        CharacterAI.Killed(enemy);
     }
 
     // 供HOST/CLIENT统一调用
@@ -125,8 +125,7 @@ public class CharacterStatus : MonoBehaviour
         if (HasPlayerController())
         {
             State.ActiveSkillCurCd++;
-            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-            spc.UpdateMyStatusUI(State);
+            UIManager.Instance.UpdateMyStatusUI(this);
         }
         if (curExp >= maxExp)
         {
@@ -192,7 +191,7 @@ public class CharacterStatus : MonoBehaviour
         }
 
         // 尸体销毁，Destory
-        characterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
+        CharacterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
 
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId)

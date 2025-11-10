@@ -309,8 +309,7 @@ public class CharacterManager : MonoBehaviour
             if (!go.TryGetComponent<PlayerController>(out var pc)) pc = go.AddComponent<PlayerController>();
             pc.enabled = true;
 
-            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-            spc.UpdateMyStatusUI(playerStatus.State);
+            UIManager.Instance.UpdateMyStatusUI(playerStatus);
             UIManager.Instance.RegisterLocalPlayer(playerStatus);
 
             // Debug.Log("fhhtest, Created local player object with controller: " + go.name);
@@ -1138,8 +1137,7 @@ public class CharacterManager : MonoBehaviour
 
         if (targetCharacterId == MyInfo.Id)
         {
-            var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-            spc.UpdateMyStatusUI(playerState);
+            UIManager.Instance.UpdateMyStatusUI(playerStatus);
         }
         MessageManager.Instance.SendMessage(msg, true);
     }
@@ -1158,8 +1156,7 @@ public class CharacterManager : MonoBehaviour
                     playerStatus.SetState(ps);
                     if (ps.PlayerId == MyInfo.Id)
                     {
-                        var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-                        spc.UpdateMyStatusUI(playerStatus.State);
+                        UIManager.Instance.UpdateMyStatusUI(playerStatus);
                     }
                 }
             }

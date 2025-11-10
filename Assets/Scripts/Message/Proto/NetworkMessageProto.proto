@@ -109,7 +109,8 @@ message PickupItem
 {
     int32 Id = 1;
     int32 SkillId = 2;
-    Vec2 Position = 3;
+    int32 CurrentCooldown = 3;
+    Vec2 Position = 4;
 }
 
 message BossPrefabInfo
