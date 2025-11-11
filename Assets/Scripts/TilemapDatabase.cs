@@ -45,6 +45,9 @@ public class TilemapDatabase : MonoBehaviour
 
     public (TileTemplate, int) GetRandomTileTemplate(int stage, TileType tileType)
     {
+        // TODO: DEBUG
+        stage = 2;
+
         List<TileTemplate> templates;
         if (!StageTileTemplates.ContainsKey(stage) || !StageTileTemplates[stage].ContainsKey(tileType))
         {
@@ -75,6 +78,9 @@ public class TilemapDatabase : MonoBehaviour
     
     public TileTemplate GetTileTemplate(int stage, TileType tileType, int tileTemplateId)
     {
+        // TODO: DEBUG
+        stage = 2;
+        
         return StageTileTemplates[stage][tileType][tileTemplateId];
     }
 }

@@ -598,7 +598,7 @@ public class LevelManager : MonoBehaviour
                     {
                         X = x + td.position.x,
                         Y = y + td.position.y,
-                        TileType = (int)TileType.Floor,
+                        TileType = (int)tileType,
                         TileTemplateId = ttId,
                         TileId = i,
                     });
@@ -843,6 +843,7 @@ public class LevelManager : MonoBehaviour
                 if (tileToRooms[tilePos].Count == 0)
                 {
                     floorTilemap.SetTile(tilePos, null);
+                    holeTilemap.SetTile(tilePos, null);
                     wallTilemap.SetTile(tilePos, null);
                     highlightTilemap.SetTile(tilePos, null);
                     tileToRooms.Remove(tilePos);
@@ -953,6 +954,7 @@ public class LevelManager : MonoBehaviour
 
         wallTilemap.ClearAllTiles();
         floorTilemap.ClearAllTiles();
+        holeTilemap.ClearAllTiles();
         highlightTilemap.ClearAllTiles();
 
         CharacterManager.Instance.ClearCharacterObjects();

@@ -15,7 +15,7 @@ public class TilemapBaker : EditorWindow
     private TileType tileType = TileType.Floor;
     private int stage = 1;
     private string assetName = "MyNewRoom"; // 保存的文件名
-    private string savePath = "Assets/Resources/TileTemplates"; // 保存的路径
+    private string savePath = "Assets/Resources/Configs/TileTemplates"; // 保存的路径
 
     // === 创建窗口 ===
     [MenuItem("Tools/Tilemap Baker")] // 在 Unity 顶部菜单栏添加 "Tools > Tilemap Baker"
