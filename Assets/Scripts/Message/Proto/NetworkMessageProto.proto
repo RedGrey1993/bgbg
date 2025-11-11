@@ -127,7 +127,7 @@ message MinionPrefabInfo
 
 message LocalStorage
 {
-    // next index = 26
+    // next index = 29
     int32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
     repeated BulletState BulletStates = 15;
@@ -153,4 +153,16 @@ message LocalStorage
     int32 NewRulerPrefabId = 23;
     int32 NxtDestoryRoomIdx = 24;
     float DestoryRoomRemainTime = 25;
+    repeated TileInfo WallTiles = 26;
+    repeated TileInfo FloorTiles = 27;
+    repeated TileInfo HoleTiles = 28;
+}
+
+message TileInfo
+{
+    int32 X = 1;
+    int32 Y = 2;
+    int32 TileType = 3;
+    int32 TileTemplateId = 4;
+    int32 TileId = 5;
 }

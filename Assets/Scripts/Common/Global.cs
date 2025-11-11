@@ -35,6 +35,7 @@ public enum TileType
 {
     // 不碰撞
     Floor = 0,
+    Floor_Boss = 5,
     // 碰撞，不可摧毁
     Wall_Horizontal = 1,
     Wall_Vertical = 2,
@@ -42,7 +43,8 @@ public enum TileType
     Hole = 3,
     // 碰撞，可摧毁
     BreakableObstacle = 4,
-    Floor_Boss = 5,
+    // 碰撞，不可摧毁
+    UnbreakableObstacle = 6,
     // 仅用于半透明覆盖在Floor上，不碰撞
     Highlight = 10,
 }

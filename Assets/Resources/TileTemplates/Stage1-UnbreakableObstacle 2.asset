@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ae8bfb73c5cad41af487b5aa85b6db, type: 3}
+  m_Name: Stage1-UnbreakableObstacle 2
+  m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
+  floorTiles: []
+  unbreakableCollisionTiles:
+  - position: {x: 0, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: b151f2d606d4df044b65dedf9dcda1fd, type: 2}
+  - position: {x: 0, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: 365a9555ff03caa41a4921a46a089f20, type: 2}
+  - position: {x: 0, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: a67f79276ffe5d340a3ad80d086f0f0f, type: 2}
+  - position: {x: 0, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: 3dc55e27ffe20664ca6967472d95c543, type: 2}
+  - position: {x: 0, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: 0c5ade1f60925e9408edabeedf78c9b8, type: 2}
+  breakableCollisionTiles: []
+  size: {x: 1, y: 5}
+  weight: 1
+  tileType: 6
+  stage: 1

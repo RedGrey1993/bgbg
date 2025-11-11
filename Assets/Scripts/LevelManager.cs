@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     #region Inspector Fields
     public Tilemap wallTilemap;
     public Tilemap floorTilemap;
+    public Tilemap holeTilemap;
     public Tilemap highlightTilemap;
     public GameObject explosionEffectPrefab; // 你的粒子特效Prefab
     public GameObject explosionImpulsePrefab;  // 你的Cinemachine Impulse Prefab
@@ -223,15 +224,19 @@ public class LevelManager : MonoBehaviour
             for (int y = Constants.RoomStep / 2; y < roomMaxHeight; y += Constants.RoomStep)
             {
                 Constants.PositionToIndex(new Vector2(x, y), out int i, out int j);
+                bool roomExists = false;
                 for (int k = 0; k < Rooms.Count; k++)
                 {
                     if (Rooms[k].Contains(new Vector2(x, y)))
                     {
                         // Debug.Log($"fhhtest, i, j: ({i}, {j}) => {k}");
                         RoomGrid[i, j] = k;
+                        roomExists = true;
                         break;
                     }
                 }
+                if (!roomExists)
+                    RoomGrid[i, j] = -1;
             }
         }
 
@@ -249,12 +254,14 @@ public class LevelManager : MonoBehaviour
         {
             for (int j = 0; j < vNum; j++)
             {
+                if (RoomGrid[i, j] == -1) continue;
                 for (int d = 0; d < 4; d++)
                 {
                     int ni = i + dir[d, 0];
                     int nj = j + dir[d, 1];
                     if (ni >= 0 && ni < hNum && nj >= 0 && nj < vNum)
                     {
+                        if (RoomGrid[ni, nj] == -1) continue;
                         if (RoomGrid[i, j] != RoomGrid[ni, nj])
                         {
                             roomConnections[RoomGrid[i, j]].Add(RoomGrid[ni, nj]);
@@ -272,7 +279,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (storage.BossStates.Count > 0)
         {
-            foreach(var bs in storage.BossStates)
+            foreach (var bs in storage.BossStates)
             {
                 BossRoomIds.Add(GetRoomNoByPosition(new Vector2(bs.Position.X, bs.Position.Y)));
             }
@@ -285,15 +292,53 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < Rooms.Count; ++i)
         {
-            GenerateRoom(Rooms[i], storage.CurrentStage);
+            CalcRoomRelatedDict(Rooms[i], storage);
         }
-        GenerateOuterWall(storage.CurrentStage);
+
+        if (storage.WallTiles.Count > 0)
+        {
+            SetRoomTiles(storage);
+        }
+        else
+        {
+            for (int i = 0; i < Rooms.Count; ++i)
+            {
+                GenerateRoom(Rooms[i], storage);
+            }
+            GenerateOuterWall(storage);
+        }
 
         Debug.Log($"Generated {Rooms.Count} rooms");
     }
 
-    private void GenerateRoom(Rect room, int stage)
+    private void SetRoomTiles(LocalStorage storage)
     {
+        int stage = storage.CurrentStage;
+        foreach (var wallTile in storage.WallTiles)
+        {
+            if (!tileToRooms.ContainsKey(new Vector3Int(wallTile.X, wallTile.Y, 0))) continue;
+            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
+            wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), tt.unbreakableCollisionTiles[wallTile.TileId].tile);
+        }
+
+        foreach (var floorTile in storage.FloorTiles)
+        {
+            if (!tileToRooms.ContainsKey(new Vector3Int(floorTile.X, floorTile.Y, 0))) continue;
+            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)floorTile.TileType, floorTile.TileTemplateId);
+            floorTilemap.SetTile(new Vector3Int(floorTile.X, floorTile.Y, 0), tt.floorTiles[floorTile.TileId].tile);
+        }
+
+        foreach (var holeTile in storage.HoleTiles)
+        {
+            if (!tileToRooms.ContainsKey(new Vector3Int(holeTile.X, holeTile.Y, 0))) continue;
+            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)holeTile.TileType, holeTile.TileTemplateId);
+            holeTilemap.SetTile(new Vector3Int(holeTile.X, holeTile.Y, 0), tt.unbreakableCollisionTiles[holeTile.TileId].tile);
+        }
+    }
+    
+    private void CalcRoomRelatedDict(Rect room, LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
         int roomMaxWidth = CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
 
@@ -307,54 +352,6 @@ public class LevelManager : MonoBehaviour
 
         int doorMin = Constants.DoorMin;
         int doorMax = Constants.DoorMax;
-        if (Mathf.Abs(topLeft.y) < roomMaxHeight - 1)
-        {
-            // Top wall
-            ref var start = ref topLeft;
-            ref var end = ref topRight;
-            for (int x = (int)start.x; x < (int)end.x; x++)
-            {
-                var pos = new Vector3Int(x, (int)start.y, 0);
-                // Doorway
-                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
-                {
-                    wallTilemap.SetTile(pos, null);
-                    continue;
-                }
-
-                if (wallTilemap.HasTile(pos)) continue;
-                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
-                foreach (TileData td in wt.unbreakableCollisionTiles)
-                {
-                    if (pos.x + td.position.x >= (int)end.x) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                }
-            }
-        }
-        if (Mathf.Abs(bottomLeft.x) > 1)
-        {
-            // Left wall
-            ref var start = ref bottomLeft;
-            ref var end = ref topLeft;
-            for (int y = (int)start.y; y < (int)end.y; y++)
-            {
-                var pos = new Vector3Int((int)start.x, y, 0);
-                // Doorway
-                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
-                {
-                    wallTilemap.SetTile(pos, null);
-                    continue;
-                }
-                
-                if (wallTilemap.HasTile(pos)) continue;
-                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
-                foreach (TileData td in wt.unbreakableCollisionTiles)
-                {
-                    if (pos.y + td.position.y >= (int)end.y) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                }
-            }
-        }
 
         {
             ref var start = ref topLeft;
@@ -413,20 +410,200 @@ public class LevelManager : MonoBehaviour
                 tileToRooms[pos].Add(roomIdx);
                 roomToTiles[roomIdx] ??= new List<Vector3Int>();
                 roomToTiles[roomIdx].Add(pos);
+            }
+        }
+    }
 
-                if (floorTilemap.HasTile(pos)) continue;
-                TileTemplate ft = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Floor);
-                foreach (TileData td in ft.floorTiles)
+    private void GenerateRoom(Rect room, LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
+        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
+
+        // Create walls
+        Vector2 topLeft = new Vector2(room.xMin, room.yMax);
+        Vector2 topRight = new Vector2(room.xMax, room.yMax);
+        Vector2 bottomLeft = new Vector2(room.xMin, room.yMin);
+
+        int doorMin = Constants.DoorMin;
+        int doorMax = Constants.DoorMax;
+        if (Mathf.Abs(topLeft.y) < roomMaxHeight - 1)
+        {
+            // Top wall
+            ref var start = ref topLeft;
+            ref var end = ref topRight;
+            for (int x = (int)start.x; x < (int)end.x; x++)
+            {
+                var pos = new Vector3Int(x, (int)start.y, 0);
+                // Doorway
+                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
                 {
-                    if (x + td.position.x > topRight.x || y + td.position.y > topLeft.y) continue;
-                    floorTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
+                    wallTilemap.SetTile(pos, null);
+                    continue;
+                }
+
+                if (wallTilemap.HasTile(pos)) continue;
+                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
+                {
+                    TileData td = wt.unbreakableCollisionTiles[i];
+                    if (pos.x + td.position.x >= (int)end.x) continue;
+                    if ((pos.x + td.position.x).PositiveMod(Constants.RoomStep) >= doorMin 
+                        && (pos.x + td.position.x).PositiveMod(Constants.RoomStep) < doorMax) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = pos.x + td.position.x,
+                        Y = pos.y + td.position.y,
+                        TileType = (int)TileType.Wall_Horizontal,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
+                }
+            }
+        }
+        if (Mathf.Abs(bottomLeft.x) > 1)
+        {
+            // Left wall
+            ref var start = ref bottomLeft;
+            ref var end = ref topLeft;
+            for (int y = (int)start.y; y < (int)end.y; y++)
+            {
+                var pos = new Vector3Int((int)start.x, y, 0);
+                // Doorway
+                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
+                {
+                    wallTilemap.SetTile(pos, null);
+                    continue;
+                }
+
+                if (wallTilemap.HasTile(pos)) continue;
+                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
+                {
+                    TileData td = wt.unbreakableCollisionTiles[i];
+                    if (pos.y + td.position.y >= (int)end.y) continue;
+                    if ((pos.y + td.position.y).PositiveMod(Constants.RoomStep) >= doorMin
+                        && (pos.y + td.position.y).PositiveMod(Constants.RoomStep) < doorMax) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = pos.x + td.position.x,
+                        Y = pos.y + td.position.y,
+                        TileType = (int)TileType.Wall_Vertical,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
+                }
+            }
+        }
+
+        GenerateHole(room, storage);
+        GenerateUnbreakableObstacle(room, storage);
+        GenerateFloor(room, storage);
+    }
+
+    private void GenerateUnbreakableObstacle(Rect room, LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
+        var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
+        if (uott == null) return;
+
+        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        {
+            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            {
+                
+                Vector3Int pos = new Vector3Int(x, y, 0);
+                if (wallTilemap.HasTile(pos)) continue;
+                if (Random.value > 0.001f) continue;
+
+                (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
+                if (x + uott.size.x > (int)room.xMax || y + uott.size.y > (int)room.yMax)
+                    continue;
+                
+                for(int i = 0; i < uott.unbreakableCollisionTiles.Count(); i++)
+                {
+                    TileData td = uott.unbreakableCollisionTiles[i];
+                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = x + td.position.x,
+                        Y = y + td.position.y,
+                        TileType = (int)TileType.UnbreakableObstacle,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
                 }
             }
         }
     }
 
-    private void GenerateOuterWall(int stage)
+    private void GenerateHole(Rect room, LocalStorage storage)
     {
+        int stage = storage.CurrentStage;
+        var (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
+        if (htt == null) return;
+
+        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        {
+            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            {
+                Vector3Int pos = new Vector3Int(x, y, 0);
+                if (holeTilemap.HasTile(pos)) continue;
+                if (Random.value > 0.001f) continue;
+
+                (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
+                if (x + htt.size.x > (int)room.xMax || y + htt.size.y > (int)room.yMax)
+                    continue;
+                
+                for(int i = 0; i < htt.unbreakableCollisionTiles.Count(); i++)
+                {
+                    TileData td = htt.unbreakableCollisionTiles[i];
+                    holeTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
+                    storage.HoleTiles.Add(new TileInfo
+                    {
+                        X = x + td.position.x,
+                        Y = y + td.position.y,
+                        TileType = (int)TileType.Hole,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
+                }
+            }
+        }
+    }
+    
+    private void GenerateFloor(Rect room, LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
+        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        {
+            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            {
+                Vector3Int pos = new Vector3Int(x, y, 0);
+                if (floorTilemap.HasTile(pos)) continue;
+                var (ft, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Floor);
+                for(int i = 0; i < ft.floorTiles.Count(); i++)
+                {
+                    TileData td = ft.floorTiles[i];
+                    if (x + td.position.x > (int)room.xMax || y + td.position.y > (int)room.yMax) continue;
+                    floorTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
+                    storage.FloorTiles.Add(new TileInfo
+                    {
+                        X = x + td.position.x,
+                        Y = y + td.position.y,
+                        TileType = (int)TileType.Floor,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
+                }
+            }
+        }
+    }
+
+    private void GenerateOuterWall(LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
         int roomMaxWidth = CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
         for (int x = 0; x <= roomMaxWidth; x++)
@@ -435,11 +612,20 @@ public class LevelManager : MonoBehaviour
             var pos = new Vector3Int(x, 0, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
-                foreach (TileData td in wt.unbreakableCollisionTiles)
+                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                for(int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
+                    TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.x + td.position.x > roomMaxWidth) continue;
                     wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = pos.x + td.position.x,
+                        Y = pos.y + td.position.y,
+                        TileType = (int)TileType.Wall_Horizontal,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
                 }
             }
 
@@ -447,11 +633,20 @@ public class LevelManager : MonoBehaviour
             pos = new Vector3Int(x, roomMaxHeight, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
-                foreach (TileData td in wt.unbreakableCollisionTiles)
+                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                for(int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
+                    TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.x + td.position.x > roomMaxWidth) continue;
                     wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = pos.x + td.position.x,
+                        Y = pos.y + td.position.y,
+                        TileType = (int)TileType.Wall_Horizontal,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
                 }
             }
         }
@@ -461,11 +656,20 @@ public class LevelManager : MonoBehaviour
             var pos = new Vector3Int(0, y, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
-                foreach (TileData td in wt.unbreakableCollisionTiles)
+                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                for(int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
+                    TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.y + td.position.y > roomMaxHeight) continue;
                     wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = pos.x + td.position.x,
+                        Y = pos.y + td.position.y,
+                        TileType = (int)TileType.Wall_Vertical,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
                 }
             }
                 
@@ -473,11 +677,20 @@ public class LevelManager : MonoBehaviour
             pos = new Vector3Int(roomMaxWidth, y, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
-                foreach (TileData td in wt.unbreakableCollisionTiles)
+                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                for(int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
+                    TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.y + td.position.y > roomMaxHeight) continue;
                     wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = pos.x + td.position.x,
+                        Y = pos.y + td.position.y,
+                        TileType = (int)TileType.Wall_Vertical,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
                 }
             }
         }
@@ -631,7 +844,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(
+        var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(
             GameManager.Instance.Storage.CurrentStage, TileType.Wall_Vertical);
         // 炸毁房间后，原来连通未炸毁房间的门需要变成墙
         // 遍历房间对应的门的Tiles
@@ -648,6 +861,14 @@ public class LevelManager : MonoBehaviour
                 {
                     // wallTilemap.SetTile(tilePos, CurrentLevelData.wallTile);
                     wallTilemap.SetTile(tilePos, wt.unbreakableCollisionTiles[0].tile);
+                    GameManager.Instance.Storage.WallTiles.Add(new TileInfo
+                    {
+                        X = tilePos.x,
+                        Y = tilePos.y,
+                        TileType = (int)TileType.Wall_Vertical,
+                        TileTemplateId = ttId,
+                        TileId = 0,
+                    });
                 }
             }
         }

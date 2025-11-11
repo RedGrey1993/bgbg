@@ -66,7 +66,7 @@ namespace NetworkMessageProto {
             "ZG93bhgDIAEoBRIrCghQb3NpdGlvbhgEIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
             "UHJvdG8uVmVjMiIzCg5Cb3NzUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgF",
             "EhAKCFByZWZhYklkGAIgASgFIjUKEE1pbmlvblByZWZhYkluZm8SDwoHU3Rh",
-            "Z2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSLvBwoMTG9jYWxTdG9yYWdl",
+            "Z2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSKGCQoMTG9jYWxTdG9yYWdl",
             "EhQKDEN1cnJlbnRTdGFnZRgBIAEoBRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsy",
             "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjYKDEJ1bGxldFN0",
             "YXRlcxgPIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUS",
@@ -89,7 +89,12 @@ namespace NetworkMessageProto {
             "bGVyQnVsbGV0U3RhdGUYFiABKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLkJ1",
             "bGxldFN0YXRlEhgKEE5ld1J1bGVyUHJlZmFiSWQYFyABKAUSGQoRTnh0RGVz",
             "dG9yeVJvb21JZHgYGCABKAUSHQoVRGVzdG9yeVJvb21SZW1haW5UaW1lGBkg",
-            "ASgCYgZwcm90bzM="));
+            "ASgCEjAKCVdhbGxUaWxlcxgaIAMoCzIdLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
+            "VGlsZUluZm8SMQoKRmxvb3JUaWxlcxgbIAMoCzIdLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uVGlsZUluZm8SMAoJSG9sZVRpbGVzGBwgAygLMh0uTmV0d29ya01l",
+            "c3NhZ2VQcm90by5UaWxlSW5mbyJaCghUaWxlSW5mbxIJCgFYGAEgASgFEgkK",
+            "AVkYAiABKAUSEAoIVGlsZVR5cGUYAyABKAUSFgoOVGlsZVRlbXBsYXRlSWQY",
+            "BCABKAUSDgoGVGlsZUlkGAUgASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -107,7 +112,8 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "CurrentCooldown", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.TileInfo), global::NetworkMessageProto.TileInfo.Parser, new[]{ "X", "Y", "TileType", "TileTemplateId", "TileId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -4913,6 +4919,9 @@ namespace NetworkMessageProto {
       newRulerPrefabId_ = other.newRulerPrefabId_;
       nxtDestoryRoomIdx_ = other.nxtDestoryRoomIdx_;
       destoryRoomRemainTime_ = other.destoryRoomRemainTime_;
+      wallTiles_ = other.wallTiles_.Clone();
+      floorTiles_ = other.floorTiles_.Clone();
+      holeTiles_ = other.holeTiles_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4926,7 +4935,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 26
+    /// next index = 29
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5215,6 +5224,39 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "WallTiles" field.</summary>
+    public const int WallTilesFieldNumber = 26;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.TileInfo> _repeated_wallTiles_codec
+        = pb::FieldCodec.ForMessage(210, global::NetworkMessageProto.TileInfo.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.TileInfo> wallTiles_ = new pbc::RepeatedField<global::NetworkMessageProto.TileInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::NetworkMessageProto.TileInfo> WallTiles {
+      get { return wallTiles_; }
+    }
+
+    /// <summary>Field number for the "FloorTiles" field.</summary>
+    public const int FloorTilesFieldNumber = 27;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.TileInfo> _repeated_floorTiles_codec
+        = pb::FieldCodec.ForMessage(218, global::NetworkMessageProto.TileInfo.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.TileInfo> floorTiles_ = new pbc::RepeatedField<global::NetworkMessageProto.TileInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::NetworkMessageProto.TileInfo> FloorTiles {
+      get { return floorTiles_; }
+    }
+
+    /// <summary>Field number for the "HoleTiles" field.</summary>
+    public const int HoleTilesFieldNumber = 28;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.TileInfo> _repeated_holeTiles_codec
+        = pb::FieldCodec.ForMessage(226, global::NetworkMessageProto.TileInfo.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.TileInfo> holeTiles_ = new pbc::RepeatedField<global::NetworkMessageProto.TileInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::NetworkMessageProto.TileInfo> HoleTiles {
+      get { return holeTiles_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -5255,6 +5297,9 @@ namespace NetworkMessageProto {
       if (NewRulerPrefabId != other.NewRulerPrefabId) return false;
       if (NxtDestoryRoomIdx != other.NxtDestoryRoomIdx) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DestoryRoomRemainTime, other.DestoryRoomRemainTime)) return false;
+      if(!wallTiles_.Equals(other.wallTiles_)) return false;
+      if(!floorTiles_.Equals(other.floorTiles_)) return false;
+      if(!holeTiles_.Equals(other.holeTiles_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5287,6 +5332,9 @@ namespace NetworkMessageProto {
       if (NewRulerPrefabId != 0) hash ^= NewRulerPrefabId.GetHashCode();
       if (NxtDestoryRoomIdx != 0) hash ^= NxtDestoryRoomIdx.GetHashCode();
       if (DestoryRoomRemainTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DestoryRoomRemainTime);
+      hash ^= wallTiles_.GetHashCode();
+      hash ^= floorTiles_.GetHashCode();
+      hash ^= holeTiles_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5375,6 +5423,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(205, 1);
         output.WriteFloat(DestoryRoomRemainTime);
       }
+      wallTiles_.WriteTo(output, _repeated_wallTiles_codec);
+      floorTiles_.WriteTo(output, _repeated_floorTiles_codec);
+      holeTiles_.WriteTo(output, _repeated_holeTiles_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5455,6 +5506,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(205, 1);
         output.WriteFloat(DestoryRoomRemainTime);
       }
+      wallTiles_.WriteTo(ref output, _repeated_wallTiles_codec);
+      floorTiles_.WriteTo(ref output, _repeated_floorTiles_codec);
+      holeTiles_.WriteTo(ref output, _repeated_holeTiles_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5520,6 +5574,9 @@ namespace NetworkMessageProto {
       if (DestoryRoomRemainTime != 0F) {
         size += 2 + 4;
       }
+      size += wallTiles_.CalculateSize(_repeated_wallTiles_codec);
+      size += floorTiles_.CalculateSize(_repeated_floorTiles_codec);
+      size += holeTiles_.CalculateSize(_repeated_holeTiles_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5596,6 +5653,9 @@ namespace NetworkMessageProto {
       if (other.DestoryRoomRemainTime != 0F) {
         DestoryRoomRemainTime = other.DestoryRoomRemainTime;
       }
+      wallTiles_.Add(other.wallTiles_);
+      floorTiles_.Add(other.floorTiles_);
+      holeTiles_.Add(other.holeTiles_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5726,6 +5786,18 @@ namespace NetworkMessageProto {
             DestoryRoomRemainTime = input.ReadFloat();
             break;
           }
+          case 210: {
+            wallTiles_.AddEntriesFrom(input, _repeated_wallTiles_codec);
+            break;
+          }
+          case 218: {
+            floorTiles_.AddEntriesFrom(input, _repeated_floorTiles_codec);
+            break;
+          }
+          case 226: {
+            holeTiles_.AddEntriesFrom(input, _repeated_holeTiles_codec);
+            break;
+          }
         }
       }
     #endif
@@ -5854,6 +5926,364 @@ namespace NetworkMessageProto {
           }
           case 205: {
             DestoryRoomRemainTime = input.ReadFloat();
+            break;
+          }
+          case 210: {
+            wallTiles_.AddEntriesFrom(ref input, _repeated_wallTiles_codec);
+            break;
+          }
+          case 218: {
+            floorTiles_.AddEntriesFrom(ref input, _repeated_floorTiles_codec);
+            break;
+          }
+          case 226: {
+            holeTiles_.AddEntriesFrom(ref input, _repeated_holeTiles_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class TileInfo : pb::IMessage<TileInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<TileInfo> _parser = new pb::MessageParser<TileInfo>(() => new TileInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TileInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::NetworkMessageProto.NetworkMessageProtoReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TileInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TileInfo(TileInfo other) : this() {
+      x_ = other.x_;
+      y_ = other.y_;
+      tileType_ = other.tileType_;
+      tileTemplateId_ = other.tileTemplateId_;
+      tileId_ = other.tileId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TileInfo Clone() {
+      return new TileInfo(this);
+    }
+
+    /// <summary>Field number for the "X" field.</summary>
+    public const int XFieldNumber = 1;
+    private int x_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Y" field.</summary>
+    public const int YFieldNumber = 2;
+    private int y_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TileType" field.</summary>
+    public const int TileTypeFieldNumber = 3;
+    private int tileType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TileType {
+      get { return tileType_; }
+      set {
+        tileType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TileTemplateId" field.</summary>
+    public const int TileTemplateIdFieldNumber = 4;
+    private int tileTemplateId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TileTemplateId {
+      get { return tileTemplateId_; }
+      set {
+        tileTemplateId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TileId" field.</summary>
+    public const int TileIdFieldNumber = 5;
+    private int tileId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TileId {
+      get { return tileId_; }
+      set {
+        tileId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as TileInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TileInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (X != other.X) return false;
+      if (Y != other.Y) return false;
+      if (TileType != other.TileType) return false;
+      if (TileTemplateId != other.TileTemplateId) return false;
+      if (TileId != other.TileId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (X != 0) hash ^= X.GetHashCode();
+      if (Y != 0) hash ^= Y.GetHashCode();
+      if (TileType != 0) hash ^= TileType.GetHashCode();
+      if (TileTemplateId != 0) hash ^= TileTemplateId.GetHashCode();
+      if (TileId != 0) hash ^= TileId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (X != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(X);
+      }
+      if (Y != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Y);
+      }
+      if (TileType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TileType);
+      }
+      if (TileTemplateId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TileTemplateId);
+      }
+      if (TileId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(TileId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (X != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(X);
+      }
+      if (Y != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Y);
+      }
+      if (TileType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TileType);
+      }
+      if (TileTemplateId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TileTemplateId);
+      }
+      if (TileId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(TileId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (X != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(X);
+      }
+      if (Y != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Y);
+      }
+      if (TileType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TileType);
+      }
+      if (TileTemplateId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TileTemplateId);
+      }
+      if (TileId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TileId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TileInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.X != 0) {
+        X = other.X;
+      }
+      if (other.Y != 0) {
+        Y = other.Y;
+      }
+      if (other.TileType != 0) {
+        TileType = other.TileType;
+      }
+      if (other.TileTemplateId != 0) {
+        TileTemplateId = other.TileTemplateId;
+      }
+      if (other.TileId != 0) {
+        TileId = other.TileId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            X = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Y = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            TileType = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            TileTemplateId = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            TileId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            X = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Y = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            TileType = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            TileTemplateId = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            TileId = input.ReadInt32();
             break;
           }
         }

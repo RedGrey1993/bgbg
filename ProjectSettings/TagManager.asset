@@ -19,10 +19,10 @@ TagManager:
   - 
   - Bullets
   - Enemy
-  - 
+  - Hole
   - Player
   - Point Effector Ignore
-  - 
+  - FlyObject
   - 
   - 
   - 

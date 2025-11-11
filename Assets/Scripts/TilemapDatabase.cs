@@ -42,20 +42,13 @@ public class TilemapDatabase : MonoBehaviour
             StageTileTemplates[tileTemplate.stage][tileTemplate.tileType].Add(tileTemplate);
         }
     }
-    
-    public TileTemplate GetRandomTileTemplate(int stage, TileType tileType)
+
+    public (TileTemplate, int) GetRandomTileTemplate(int stage, TileType tileType)
     {
         List<TileTemplate> templates;
         if (!StageTileTemplates.ContainsKey(stage) || !StageTileTemplates[stage].ContainsKey(tileType))
         {
-            if (!StageTileTemplates.ContainsKey(1) || !StageTileTemplates[1].ContainsKey(tileType))
-            {
-                return null;
-            }
-            else
-            {
-                templates = StageTileTemplates[1][tileType];
-            }
+            return (null, -1);
         }
         else
         {
@@ -66,15 +59,22 @@ public class TilemapDatabase : MonoBehaviour
         foreach (var template in templates) cumulativeWeight += template.weight;
 
         var randomWeight = Random.Range(0, cumulativeWeight);
-        foreach (var template in templates)
+        for (int i = 0; i < templates.Count; ++i)
         {
+            var template = templates[i];
             randomWeight -= template.weight;
             if (randomWeight < 0)
             {
-                return template;
+                return (template, i);
             }
         }
 
-        return templates[Random.Range(0, templates.Count)];
+        int rnd = Random.Range(0, templates.Count);
+        return (templates[rnd], rnd);
+    }
+    
+    public TileTemplate GetTileTemplate(int stage, TileType tileType, int tileTemplateId)
+    {
+        return StageTileTemplates[stage][tileType][tileTemplateId];
     }
 }
