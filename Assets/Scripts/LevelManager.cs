@@ -303,7 +303,8 @@ public class LevelManager : MonoBehaviour
         {
             for (int i = 0; i < Rooms.Count; ++i)
             {
-                GenerateRoom(Rooms[i], storage);
+                bool isBossRoom = BossRoomIds.Contains(i);
+                GenerateRoom(Rooms[i], storage, isBossRoom);
             }
             GenerateOuterWall(storage);
         }
@@ -414,7 +415,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void GenerateRoom(Rect room, LocalStorage storage)
+    private void GenerateRoom(Rect room, LocalStorage storage, bool isBossRoom)
     {
         int stage = storage.CurrentStage;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
@@ -499,7 +500,7 @@ public class LevelManager : MonoBehaviour
 
         GenerateHole(room, storage);
         GenerateUnbreakableObstacle(room, storage);
-        GenerateFloor(room, storage);
+        GenerateFloor(room, storage, isBossRoom);
     }
 
     private void GenerateUnbreakableObstacle(Rect room, LocalStorage storage)
@@ -573,16 +574,21 @@ public class LevelManager : MonoBehaviour
         }
     }
     
-    private void GenerateFloor(Rect room, LocalStorage storage)
+    private void GenerateFloor(Rect room, LocalStorage storage, bool isBossRoom)
     {
         int stage = storage.CurrentStage;
+        TileType tileType = TileType.Floor;
+        if (isBossRoom)
+        {
+            tileType = TileType.Floor_Boss;
+        }
         for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
         {
             for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
                 if (floorTilemap.HasTile(pos)) continue;
-                var (ft, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Floor);
+                var (ft, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, tileType);
                 for(int i = 0; i < ft.floorTiles.Count(); i++)
                 {
                     TileData td = ft.floorTiles[i];

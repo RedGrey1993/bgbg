@@ -25,7 +25,7 @@ public class TilemapDatabase : MonoBehaviour
 
     private void LoadTilemaps()
     {
-        TileTemplate[] tileTemplates = Resources.LoadAll<TileTemplate>("TileTemplates");
+        TileTemplate[] tileTemplates = Resources.LoadAll<TileTemplate>("Configs/TileTemplates");
 
         foreach (var tileTemplate in tileTemplates)
         {
