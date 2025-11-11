@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ae8bfb73c5cad41af487b5aa85b6db, type: 3}
+  m_Name: Stage1-Floor3
+  m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
+  floorTiles:
+  - position: {x: 0, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: dad155d6a1400914b99aee4b0c67de49, type: 2}
+  - position: {x: 1, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: dcd2ae8dd3194e54fabbfa41e566ad05, type: 2}
+  - position: {x: 2, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: c83f8eb411bf3164faa78a77afb4de09, type: 2}
+  - position: {x: 3, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: d29c8be45ba0ac342a9a53907674917d, type: 2}
+  - position: {x: 4, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 33e5714b4d055284595a1e7582b70b0a, type: 2}
+  - position: {x: 5, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 4cf024aa8eaf7b7458faf275a3b58b73, type: 2}
+  - position: {x: 6, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 2953fc61587156c40871c3e2e74d1dbe, type: 2}
+  - position: {x: 7, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: dec91a11263ddd6489b9988de36cd5d8, type: 2}
+  unbreakableCollisionTiles: []
+  breakableCollisionTiles: []
+  size: {x: 8, y: 1}
+  weight: 1
+  tileType: 0
+  stage: 1

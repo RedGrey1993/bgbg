@@ -55,9 +55,8 @@ public class LevelManager : MonoBehaviour
         int level = storage.CurrentStage;
         Debug.Log($"################# 生成第 {level} 关 #################");
         CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
-        TileBase wallTile = CurrentLevelData.wallTile;
 
-        GenerateRooms(wallTile, storage);
+        GenerateRooms(storage);
 
         if (level == 1)
             UIManager.Instance.ShowInfoPanel("Happy Game!", Color.pink, 5);
@@ -91,7 +90,7 @@ public class LevelManager : MonoBehaviour
 
     // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可
     // TODO: 发送房间数据给Client
-    private void GenerateRooms(TileBase wallTile, LocalStorage storage)
+    private void GenerateRooms(LocalStorage storage)
     {
         int roomMaxWidth;
         int roomMaxHeight;
@@ -286,14 +285,14 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < Rooms.Count; ++i)
         {
-            GenerateRoom(Rooms[i], wallTile, storage.CurrentStage);
+            GenerateRoom(Rooms[i], storage.CurrentStage);
         }
-        GenerateOuterWall(wallTile);
+        GenerateOuterWall(storage.CurrentStage);
 
         Debug.Log($"Generated {Rooms.Count} rooms");
     }
 
-    private void GenerateRoom(Rect room, TileBase wallTile, int stage)
+    private void GenerateRoom(Rect room, int stage)
     {
         int roomMaxWidth = CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
@@ -308,36 +307,52 @@ public class LevelManager : MonoBehaviour
 
         int doorMin = Constants.DoorMin;
         int doorMax = Constants.DoorMax;
-        if (Mathf.Abs(topLeft.y) > 0.1f)
+        if (Mathf.Abs(topLeft.y) < roomMaxHeight - 1)
         {
             // Top wall
             ref var start = ref topLeft;
             ref var end = ref topRight;
             for (int x = (int)start.x; x < (int)end.x; x++)
             {
+                var pos = new Vector3Int(x, (int)start.y, 0);
                 // Doorway
                 if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
                 {
-                    wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), null);
+                    wallTilemap.SetTile(pos, null);
                     continue;
                 }
-                wallTilemap.SetTile(new Vector3Int(x, (int)start.y, 0), wallTile);
+
+                if (wallTilemap.HasTile(pos)) continue;
+                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                foreach (TileData td in wt.unbreakableCollisionTiles)
+                {
+                    if (pos.x + td.position.x >= (int)end.x) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                }
             }
         }
-        if (Mathf.Abs(bottomLeft.x) > 0.1f)
+        if (Mathf.Abs(bottomLeft.x) > 1)
         {
             // Left wall
             ref var start = ref bottomLeft;
             ref var end = ref topLeft;
             for (int y = (int)start.y; y < (int)end.y; y++)
             {
+                var pos = new Vector3Int((int)start.x, y, 0);
                 // Doorway
                 if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
                 {
-                    wallTilemap.SetTile(new Vector3Int((int)start.x, y, 0), null);
+                    wallTilemap.SetTile(pos, null);
                     continue;
                 }
-                wallTilemap.SetTile(new Vector3Int((int)start.x, y, 0), wallTile);
+                
+                if (wallTilemap.HasTile(pos)) continue;
+                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                foreach (TileData td in wt.unbreakableCollisionTiles)
+                {
+                    if (pos.y + td.position.y >= (int)end.y) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                }
             }
         }
 
@@ -400,7 +415,6 @@ public class LevelManager : MonoBehaviour
                 roomToTiles[roomIdx].Add(pos);
 
                 if (floorTilemap.HasTile(pos)) continue;
-
                 TileTemplate ft = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Floor);
                 foreach (TileData td in ft.floorTiles)
                 {
@@ -411,19 +425,61 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void GenerateOuterWall(TileBase wallTile)
+    private void GenerateOuterWall(int stage)
     {
         int roomMaxWidth = CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
         for (int x = 0; x <= roomMaxWidth; x++)
         {
-            wallTilemap.SetTile(new Vector3Int(x, 0, 0), wallTile);
-            wallTilemap.SetTile(new Vector3Int(x, roomMaxHeight, 0), wallTile);
+            // wallTilemap.SetTile(new Vector3Int(x, 0, 0), wallTile);
+            var pos = new Vector3Int(x, 0, 0);
+            if (!wallTilemap.HasTile(pos))
+            {
+                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                foreach (TileData td in wt.unbreakableCollisionTiles)
+                {
+                    if (pos.x + td.position.x > roomMaxWidth) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                }
+            }
+
+            // wallTilemap.SetTile(new Vector3Int(x, roomMaxHeight, 0), wallTile);
+            pos = new Vector3Int(x, roomMaxHeight, 0);
+            if (!wallTilemap.HasTile(pos))
+            {
+                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                foreach (TileData td in wt.unbreakableCollisionTiles)
+                {
+                    if (pos.x + td.position.x > roomMaxWidth) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                }
+            }
         }
         for (int y = 0; y <= roomMaxHeight; y++)
         {
-            wallTilemap.SetTile(new Vector3Int(0, y, 0), wallTile);
-            wallTilemap.SetTile(new Vector3Int(roomMaxWidth, y, 0), wallTile);
+            // wallTilemap.SetTile(new Vector3Int(0, y, 0), wallTile);
+            var pos = new Vector3Int(0, y, 0);
+            if (!wallTilemap.HasTile(pos))
+            {
+                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                foreach (TileData td in wt.unbreakableCollisionTiles)
+                {
+                    if (pos.y + td.position.y > roomMaxHeight) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                }
+            }
+                
+            // wallTilemap.SetTile(new Vector3Int(roomMaxWidth, y, 0), wallTile);
+            pos = new Vector3Int(roomMaxWidth, y, 0);
+            if (!wallTilemap.HasTile(pos))
+            {
+                TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                foreach (TileData td in wt.unbreakableCollisionTiles)
+                {
+                    if (pos.y + td.position.y > roomMaxHeight) continue;
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
+                }
+            }
         }
     }
 
@@ -575,6 +631,8 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        TileTemplate wt = TilemapDatabase.Instance.GetRandomTileTemplate(
+            GameManager.Instance.Storage.CurrentStage, TileType.Wall_Vertical);
         // 炸毁房间后，原来连通未炸毁房间的门需要变成墙
         // 遍历房间对应的门的Tiles
         foreach (var tilePos in roomToDoorTiles[roomIdx])
@@ -588,7 +646,8 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    wallTilemap.SetTile(tilePos, CurrentLevelData.wallTile);
+                    // wallTilemap.SetTile(tilePos, CurrentLevelData.wallTile);
+                    wallTilemap.SetTile(tilePos, wt.unbreakableCollisionTiles[0].tile);
                 }
             }
         }

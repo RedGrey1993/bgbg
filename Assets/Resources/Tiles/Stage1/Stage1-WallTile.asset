@@ -36,7 +36,7 @@ MonoBehaviour:
   m_ColliderType: 2
   Sprites:
   - Sprite: {fileID: 8667299931227276426, guid: 3018a561b10406043bebbb8fb9e4d124, type: 3}
-    Weight: 500
+    Weight: 20
   - Sprite: {fileID: -6975081092447276048, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
     Weight: 1
   - Sprite: {fileID: 1521000979, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
@@ -52,20 +52,20 @@ MonoBehaviour:
   - Sprite: {fileID: 532153180, guid: a186b238b7be67549a9a09be2f6b18fa, type: 3}
     Weight: 1
   - Sprite: {fileID: -5530102744545035526, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: -2142816799, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: -1277962328, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: 1923892702, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: 716660283, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: -1287325986, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: 2059088782, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: -467046953, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
   - Sprite: {fileID: 1879994316, guid: c10ec0c4ac8417f49b202058192dea5a, type: 3}
-    Weight: 500
+    Weight: 10
