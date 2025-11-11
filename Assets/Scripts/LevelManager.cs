@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
     public List<int> remainRoomsIndex { get; private set; }
     public List<int> VisitedRooms { get; set; }
     public bool[] IsVisitedRooms { get; set; }
-    public List<int> BossRooms { get; set; }
+    public List<int> BossRoomIds { get; set; }
     public LevelData CurrentLevelData { get; private set; }
 
     void Awake()
@@ -55,10 +55,8 @@ public class LevelManager : MonoBehaviour
         int level = storage.CurrentStage;
         Debug.Log($"################# 生成第 {level} 关 #################");
         CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
-        TileBase floorTile = CurrentLevelData.floorTile;
         TileBase wallTile = CurrentLevelData.wallTile;
 
-        GenerateFloors(floorTile);
         GenerateRooms(wallTile, storage);
 
         if (level == 1)
@@ -88,19 +86,6 @@ public class LevelManager : MonoBehaviour
         {
             float firstRoomBlastInterval = GameManager.Instance.gameConfig.FirstRoomBlastInterval;
             StartCoroutine(StartDestroyingRooms(firstRoomBlastInterval)); // 每180秒摧毁一个房间
-        }
-    }
-
-    private void GenerateFloors(TileBase floorTile)
-    {
-        int roomMaxWidth = CurrentLevelData.roomMaxWidth;
-        int roomMaxHeight = CurrentLevelData.roomMaxHeight;
-        for (int x = 0; x <= roomMaxWidth; x++)
-        {
-            for (int y = 0; y <= roomMaxHeight; y++)
-            {
-                floorTilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
-            }
         }
     }
 
@@ -227,14 +212,12 @@ public class LevelManager : MonoBehaviour
         doorTileToRooms = new Dictionary<Vector3Int, List<int>>();
         remainRoomsIndex = new List<int>();
         VisitedRooms = new List<int>();
-        BossRooms = new List<int>();
+        BossRoomIds = new List<int>();
         IsVisitedRooms = new bool[Rooms.Count];
         for (int i = 0; i < Rooms.Count; ++i)
         {
             remainRoomsIndex.Add(i);
-            GenerateRoom(Rooms[i], wallTile);
         }
-        GenerateOuterWall(wallTile);
 
         for (int x = Constants.RoomStep / 2; x < roomMaxWidth; x += Constants.RoomStep)
         {
@@ -283,15 +266,34 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // for (int i = 0; i < Rooms.Count; i++)
-        // {
-        //     Debug.Log($"fhhtest, roomConnections[{i}]: {string.Join(",", roomConnections[i])}");
-        // }
+        if (storage.NewRulerPlayerState != null && storage.NewRulerPlayerState.Position != null)
+        {
+            var pos = storage.NewRulerPlayerState.Position;
+            BossRoomIds.Add(GetRoomNoByPosition(new Vector2(pos.X, pos.Y)));
+        }
+        else if (storage.BossStates.Count > 0)
+        {
+            foreach(var bs in storage.BossStates)
+            {
+                BossRoomIds.Add(GetRoomNoByPosition(new Vector2(bs.Position.X, bs.Position.Y)));
+            }
+        }
+        else
+        {
+            var ascRooms = GetAreaAscRooms();
+            BossRoomIds.Add(GetRoomNoByPosition(ascRooms[^1].center));
+        }
+
+        for (int i = 0; i < Rooms.Count; ++i)
+        {
+            GenerateRoom(Rooms[i], wallTile, storage.CurrentStage);
+        }
+        GenerateOuterWall(wallTile);
 
         Debug.Log($"Generated {Rooms.Count} rooms");
     }
 
-    private void GenerateRoom(Rect room, TileBase wallTile)
+    private void GenerateRoom(Rect room, TileBase wallTile, int stage)
     {
         int roomMaxWidth = CurrentLevelData.roomMaxWidth;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
@@ -396,6 +398,15 @@ public class LevelManager : MonoBehaviour
                 tileToRooms[pos].Add(roomIdx);
                 roomToTiles[roomIdx] ??= new List<Vector3Int>();
                 roomToTiles[roomIdx].Add(pos);
+
+                if (floorTilemap.HasTile(pos)) continue;
+
+                TileTemplate ft = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Floor);
+                foreach (TileData td in ft.floorTiles)
+                {
+                    if (x + td.position.x > topRight.x || y + td.position.y > topLeft.y) continue;
+                    floorTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
+                }
             }
         }
     }
@@ -462,7 +473,7 @@ public class LevelManager : MonoBehaviour
         }
         foreach (var neighbor in roomConnections[toDestroy])
         {
-            if (roomConnections[neighbor].Count <= 1 && !BossRooms.Contains(neighbor))
+            if (roomConnections[neighbor].Count <= 1 && !BossRoomIds.Contains(neighbor))
             {
                 toDestroy = neighbor;
                 Debug.Log($"fhhtest, toDestroy(neighbor): {toDestroy}, {string.Join(",", roomConnections[toDestroy])}");
@@ -490,7 +501,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-        if (connectCnt < remainRooms - 1 || BossRooms.Contains(toDestroy))
+        if (connectCnt < remainRooms - 1 || BossRoomIds.Contains(toDestroy))
         {
             // Debug.Log($"fhhtest, room {toDestroy} is a cut node, connected {connectCnt}, remain {remainRooms}");
             // room {toDestroy} is a cut node, select the bfs last leaf node as the destroy room.
@@ -756,7 +767,7 @@ public class LevelManager : MonoBehaviour
     public void AddToBossRooms(Vector3 position)
     {
         int roomId = GetRoomNoByPosition(position);
-        BossRooms.Add(roomId);
+        BossRoomIds.Add(roomId);
     }
 
     public Vector2 GetRandomPositionInRoom(int roomId, float extentsX, float extentsY)

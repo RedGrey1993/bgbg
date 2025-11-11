@@ -238,6 +238,7 @@ public class GameManager : MonoBehaviour
                     Storage.Achievement2Mirror = true;
                     var status = CharacterManager.Instance.GetMyselfGameObject().GetComponent<CharacterStatus>();
                     Storage.NewRulerPlayerState = status.State;
+                    Storage.NewRulerPlayerState.Position = null;
                     Storage.NewRulerPlayerState.PlayerId = Constants.NewRulerPlayerId;
                     Storage.NewRulerBulletState = status.bulletState;
                     Storage.NewRulerPrefabId = CharacterManager.Instance.PlayerPrefabIds[CharacterManager.Instance.MyInfo.Id];

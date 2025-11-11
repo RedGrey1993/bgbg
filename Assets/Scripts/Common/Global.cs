@@ -31,6 +31,20 @@ public enum AttrChangeType
     Relative = 1,
 }
 
+public enum TileType
+{
+    // 不碰撞
+    Floor = 0,
+    // 碰撞，不可摧毁
+    Wall = 1,
+    // 只和人物碰撞，不和子弹/飞行物体碰撞
+    Hole = 3,
+    // 碰撞，可摧毁
+    BreakableObstacle = 4,
+    // 仅用于半透明覆盖在Floor上，不碰撞
+    Highlight = 10,
+}
+
 public enum CharacterType
 {
     Unset = 0,

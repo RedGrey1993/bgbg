@@ -17,8 +17,8 @@ public class TileData
 }
 
 // 2. 我们的 ScriptableObject 数据容器
-[CreateAssetMenu(fileName = "NewRoomTemplate", menuName = "Procedural/Room Template")]
-public class RoomTemplate : ScriptableObject
+[CreateAssetMenu(fileName = "NewTileTemplate", menuName = "Procedural/Tile Template")]
+public class TileTemplate : ScriptableObject
 {
     [Header("瓦片数据")]
     public TileData[] floorTiles;
@@ -29,6 +29,10 @@ public class RoomTemplate : ScriptableObject
 
     [Header("房间属性")]
     public Vector2Int size;
+    public int weight = 1;
+    public TileType tileType;
     // (可选) 存储门的位置等元数据
     // public Vector3Int[] doorPositions;
+
+    public int stage = 1;
 }

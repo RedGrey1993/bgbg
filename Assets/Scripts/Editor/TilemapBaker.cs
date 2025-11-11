@@ -11,8 +11,11 @@ public class TilemapBaker : EditorWindow
     private Tilemap floorTilemap;      // 场景中用于烘焙的地面图层
     private Tilemap unbreakableCollisionTilemap;  // 场景中用于烘焙的碰撞图层
     private Tilemap breakableCollisionTilemap;  // 场景中用于烘焙的碰撞图层
+    private int weight = 1;
+    private TileType tileType = TileType.Floor;
+    private int stage = 1;
     private string assetName = "MyNewRoom"; // 保存的文件名
-    private string savePath = "Assets/Resources/RoomTemplates"; // 保存的路径
+    private string savePath = "Assets/Resources/TileTemplates"; // 保存的路径
 
     // === 创建窗口 ===
     [MenuItem("Tools/Tilemap Baker")] // 在 Unity 顶部菜单栏添加 "Tools > Tilemap Baker"
@@ -34,6 +37,9 @@ public class TilemapBaker : EditorWindow
         floorTilemap = (Tilemap)EditorGUILayout.ObjectField("地面图层 (Floor)", floorTilemap, typeof(Tilemap), true);
         breakableCollisionTilemap = (Tilemap)EditorGUILayout.ObjectField("可破坏碰撞图层 (Collision)", breakableCollisionTilemap, typeof(Tilemap), true);
         unbreakableCollisionTilemap = (Tilemap)EditorGUILayout.ObjectField("不可破坏碰撞图层 (Collision)", unbreakableCollisionTilemap, typeof(Tilemap), true);
+        weight = EditorGUILayout.IntField("权重", weight);
+        tileType = (TileType)EditorGUILayout.EnumPopup("Tile类型", tileType);
+        stage = EditorGUILayout.IntField("关卡", stage);
 
         EditorGUILayout.Space(10);
 
@@ -91,7 +97,7 @@ public class TilemapBaker : EditorWindow
         Debug.Log("开始烘焙...");
 
         // 1. 创建 ScriptableObject 实例
-        RoomTemplate newTemplate = ScriptableObject.CreateInstance<RoomTemplate>();
+        TileTemplate newTemplate = ScriptableObject.CreateInstance<TileTemplate>();
 
         // 2. 烘焙指定的图层
         // 我们使用一个辅助函数来提取数据
@@ -137,6 +143,9 @@ public class TilemapBaker : EditorWindow
 
         // 注意：cellBounds 返回的大小可能比实际绘制的大1，我们使用 size 属性
         newTemplate.size = (Vector2Int)totalBounds.size;
+        newTemplate.weight = weight;
+        newTemplate.stage = stage;
+        newTemplate.tileType = tileType;
 
         // 4. 将实例保存为 .asset 文件
         string fullPath = Path.Combine(savePath, assetName + ".asset");

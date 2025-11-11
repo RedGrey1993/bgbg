@@ -129,7 +129,7 @@ public class CharacterManager : MonoBehaviour
             }
             foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
             {
-                if (LevelManager.Instance.BossRooms.Contains(roomIdx) || playerRooms.Contains(roomIdx))
+                if (LevelManager.Instance.BossRoomIds.Contains(roomIdx) || playerRooms.Contains(roomIdx))
                     continue;
 
                 var room = LevelManager.Instance.Rooms[roomIdx];
@@ -173,14 +173,20 @@ public class CharacterManager : MonoBehaviour
         {
             var prefab = SelectCharacterManager.Instance.characterPrefabs[storage.NewRulerPrefabId];
             NewRulerGo = Instantiate(prefab, bossParant);
-            var ascRooms = LevelManager.Instance.GetAreaAscRooms();
-            var roomId = ascRooms.Count - 1;
-            int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
-            var bossPrefab = levelData.bossPrefabs[randomBossIdx];
-            var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
-            var spawnOffset = characterData.spawnOffsets;
-            var spawnBound = characterData.bound;
-            GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center), spawnOffset, spawnBound, out var spawnPosition);
+            Vector2 spawnPosition;
+            if (storage.NewRulerPlayerState.Position != null)
+            {
+                var pos = storage.NewRulerPlayerState.Position;
+                spawnPosition = new Vector2(pos.X, pos.Y);
+            }
+            else
+            {
+                Rect bossRoom = LevelManager.Instance.Rooms[LevelManager.Instance.BossRoomIds[0]];
+                var characterData = prefab.GetComponent<CharacterStatus>().characterData;
+                var spawnOffset = characterData.spawnOffsets;
+                var spawnBound = characterData.bound;
+                GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(bossRoom.center), spawnOffset, spawnBound, out spawnPosition);
+            }
             NewRulerGo.transform.position = spawnPosition;
 
             NewRulerGo.name = $"{prefab.name}NewRuler";
@@ -191,7 +197,6 @@ public class CharacterManager : MonoBehaviour
             if (storage.NewRulerPlayerState.CurrentHp <= 0) storage.NewRulerPlayerState.CurrentHp = 1;
             bossStatus.SetState(storage.NewRulerPlayerState);
             bossStatus.bulletState = storage.NewRulerBulletState;
-            LevelManager.Instance.AddToBossRooms(NewRulerGo.transform.position);
         }
         else
         {
@@ -203,23 +208,23 @@ public class CharacterManager : MonoBehaviour
                     var prefabInfo = storage.BossPrefabInfos[i];
                     var bossPrefab = levelData.bossPrefabs[prefabInfo.PrefabId];
 
-                    var boss = InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), stage, prefabInfo.PrefabId, bs);
-                    LevelManager.Instance.AddToBossRooms(boss.transform.position);
+                    InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), stage, prefabInfo.PrefabId, bs);
                 }
             }
             else
             {
-                var ascRooms = LevelManager.Instance.GetAreaAscRooms();
-                var roomId = ascRooms.Count - 1;
-                int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
-                var bossPrefab = levelData.bossPrefabs[randomBossIdx];
-                var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
-                var spawnOffset = characterData.spawnOffsets;
-                var spawnBound = characterData.bound;
-                GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(ascRooms[roomId].center), spawnOffset, spawnBound, out var spawnPosition);
+                foreach (int bossRoomId in LevelManager.Instance.BossRoomIds)
+                {
+                    int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
+                    var bossPrefab = levelData.bossPrefabs[randomBossIdx];
+                    var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
+                    var spawnOffset = characterData.spawnOffsets;
+                    var spawnBound = characterData.bound;
+                    Rect bossRoom = LevelManager.Instance.Rooms[bossRoomId];
+                    GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(bossRoom.center), spawnOffset, spawnBound, out var spawnPosition);
 
-                var boss = InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
-                LevelManager.Instance.AddToBossRooms(boss.transform.position);
+                    InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
+                }
             }
         }
     }
