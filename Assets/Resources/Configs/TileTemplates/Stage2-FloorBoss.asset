@@ -34,6 +34,6 @@ MonoBehaviour:
   unbreakableCollisionTiles: []
   breakableCollisionTiles: []
   size: {x: 3, y: 3}
-  weight: 500
+  weight: 100
   tileType: 5
   stage: 2

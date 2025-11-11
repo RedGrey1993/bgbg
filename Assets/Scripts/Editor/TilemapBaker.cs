@@ -17,6 +17,9 @@ public class TilemapBaker : EditorWindow
     private string assetName = "MyNewRoom"; // 保存的文件名
     private string savePath = "Assets/Resources/Configs/TileTemplates"; // 保存的路径
 
+    private Vector3Int boundsMin;
+    private Vector3Int boundsMax;
+
     // === 创建窗口 ===
     [MenuItem("Tools/Tilemap Baker")] // 在 Unity 顶部菜单栏添加 "Tools > Tilemap Baker"
     public static void ShowWindow()
@@ -99,6 +102,9 @@ public class TilemapBaker : EditorWindow
         // 1. 创建 ScriptableObject 实例
         TileTemplate newTemplate = ScriptableObject.CreateInstance<TileTemplate>();
 
+        boundsMin = new Vector3Int(int.MaxValue, int.MaxValue, 0);
+        boundsMax = new Vector3Int(int.MinValue, int.MinValue, 0);
+
         // 2. 烘焙指定的图层
         // 我们使用一个辅助函数来提取数据
         if (floorTilemap != null)
@@ -131,15 +137,20 @@ public class TilemapBaker : EditorWindow
         // 3. (可选) 计算房间大小
         // 我们需要找到所有瓦片所占的总边界
         BoundsInt totalBounds = new BoundsInt();
-        if (floorTilemap != null) totalBounds.SetMinMax(floorTilemap.cellBounds.min, floorTilemap.cellBounds.max);
-        if (unbreakableCollisionTilemap != null) totalBounds.SetMinMax(
-            Vector3Int.Min(totalBounds.min, unbreakableCollisionTilemap.cellBounds.min),
-            Vector3Int.Max(totalBounds.max, unbreakableCollisionTilemap.cellBounds.max)
+        // if (floorTilemap != null) totalBounds.SetMinMax(floorTilemap.cellBounds.min, floorTilemap.cellBounds.max);
+        // if (unbreakableCollisionTilemap != null) totalBounds.SetMinMax(
+        //     Vector3Int.Min(totalBounds.min, unbreakableCollisionTilemap.cellBounds.min),
+        //     Vector3Int.Max(totalBounds.max, unbreakableCollisionTilemap.cellBounds.max)
+        // );
+        // if (breakableCollisionTilemap != null) totalBounds.SetMinMax(
+        //     Vector3Int.Min(totalBounds.min, breakableCollisionTilemap.cellBounds.min),
+        //     Vector3Int.Max(totalBounds.max, breakableCollisionTilemap.cellBounds.max)
+        // );
+        totalBounds.SetMinMax(
+            boundsMin,
+            boundsMax
         );
-        if (breakableCollisionTilemap != null) totalBounds.SetMinMax(
-            Vector3Int.Min(totalBounds.min, breakableCollisionTilemap.cellBounds.min),
-            Vector3Int.Max(totalBounds.max, breakableCollisionTilemap.cellBounds.max)
-        );
+        Debug.Log($"boundsMin: {boundsMin}， boundsMax: {boundsMax}");
 
         // 注意：cellBounds 返回的大小可能比实际绘制的大1，我们使用 size 属性
         newTemplate.size = (Vector2Int)totalBounds.size;
@@ -181,6 +192,11 @@ public class TilemapBaker : EditorWindow
 
                 if (tile != null)
                 {
+                    boundsMin.x = Mathf.Min(boundsMin.x, x);
+                    boundsMin.y = Mathf.Min(boundsMin.y, y);
+                    boundsMax.x = Mathf.Max(boundsMax.x, x + 1);
+                    boundsMax.y = Mathf.Max(boundsMax.y, y + 1);
+
                     // 重要：我们存储的是相对坐标。
                     // 假设 (bounds.xMin, bounds.yMin) 是我们房间的 (0, 0) 锚点
                     Vector3Int relativePos = new Vector3Int(x - bounds.xMin, y - bounds.yMin, 0);
