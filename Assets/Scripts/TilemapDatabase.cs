@@ -43,11 +43,22 @@ public class TilemapDatabase : MonoBehaviour
         }
     }
 
+    public bool Ready(TileType tileType)
+    {
+        return tileType == TileType.Floor
+            || tileType == TileType.Floor_Boss
+            || tileType == TileType.Wall_Horizontal
+            || tileType == TileType.Wall_Vertical
+            || tileType == TileType.UnbreakableObstacle
+            || tileType == TileType.Hole
+            ;
+    }
+
     public (TileTemplate, int) GetRandomTileTemplate(int stage, TileType tileType)
     {
         // TODO: DEBUG
         stage = 4;
-        if (tileType != TileType.Floor) 
+        if (!Ready(tileType))
             stage = 3;
 
         List<TileTemplate> templates;
@@ -82,7 +93,7 @@ public class TilemapDatabase : MonoBehaviour
     {
         // TODO: DEBUG
         stage = 4;
-        if (tileType != TileType.Floor) 
+        if (!Ready(tileType)) 
             stage = 3;
 
         return StageTileTemplates[stage][tileType][tileTemplateId];

@@ -506,6 +506,7 @@ public class LevelManager : MonoBehaviour
     private void GenerateUnbreakableObstacle(Rect room, LocalStorage storage)
     {
         int stage = storage.CurrentStage;
+        var levelData = LevelDatabase.Instance.GetLevelData(stage);
         var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
         if (uott == null) return;
 
@@ -516,7 +517,7 @@ public class LevelManager : MonoBehaviour
                 
                 if (x < Constants.CharacterMaxWidth || y < Constants.CharacterMaxHeight) continue;
                 if (wallTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
-                if (Random.value > 0.001f) continue;
+                if (Random.value > levelData.unbreakableObstacleRatio) continue;
 
                 (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
                 if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
@@ -542,6 +543,7 @@ public class LevelManager : MonoBehaviour
     private void GenerateHole(Rect room, LocalStorage storage)
     {
         int stage = storage.CurrentStage;
+        var levelData = LevelDatabase.Instance.GetLevelData(stage);
         var (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
         if (htt == null) return;
 
@@ -551,7 +553,7 @@ public class LevelManager : MonoBehaviour
             {
                 if (x < Constants.CharacterMaxWidth || y < Constants.CharacterMaxHeight) continue;
                 if (holeTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
-                if (Random.value > 0.001f) continue;
+                if (Random.value > levelData.holeRatio) continue;
 
                 (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
                 if (x + htt.size.x > (int)room.xMax - Constants.CharacterMaxWidth 

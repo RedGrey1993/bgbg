@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb31ec79121f1c14389be0250bc8a493, type: 3}
   m_Name: LevelData 1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  floorTile: {fileID: 11400000, guid: e9bd326ac32ffe841b9f731695e50c0c, type: 2}
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
-  wallTile: {fileID: 11400000, guid: 800df2dc79163ef48ae1c47ff424aecb, type: 2}
   normalMinionPrefabs:
   - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   bossPrefabs:
@@ -35,3 +33,5 @@ MonoBehaviour:
     max: 2
   bossRoomMinWidth: 20
   bossRoomMinHeight: 20
+  holeRatio: 0.001
+  unbreakableObstacleRatio: 0.002

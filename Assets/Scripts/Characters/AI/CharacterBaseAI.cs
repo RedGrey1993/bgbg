@@ -52,8 +52,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
 
-        BaseLayerIndex = animator.GetLayerIndex("Base Layer");
-        UpperBodyLayerIndex = animator.GetLayerIndex("Upper Body Layer");
+        if (animator != null)
+        {
+            BaseLayerIndex = animator.GetLayerIndex("Base Layer");
+            UpperBodyLayerIndex = animator.GetLayerIndex("Upper Body Layer");
+        }
     }
 
     public void Start()
@@ -654,12 +657,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region Animation
     protected virtual void SetSpdAnimation(float speed)
     {
-        if (CharacterData.Is3DModel())
+        if (animator && CharacterData.Is3DModel())
             animator.SetFloat(spdHash, speed / 5);
     }
     protected virtual void SetShootAnimation(float attackSpeed = 1)
     {
-        if (CharacterData.Is3DModel())
+        if (animator && CharacterData.Is3DModel())
         {
             animator.SetTrigger(shootHash);
             animator.SetFloat(atkSpdHash, attackSpeed);
@@ -667,7 +670,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     }
     public void PlayAnimationAllLayers(string animName, float attackSpeed = 1)
     {
-        if (CharacterData.Is3DModel())
+        if (animator && CharacterData.Is3DModel())
         {
             animator.SetFloat(atkSpdHash, attackSpeed);
             animator.Play(animName, BaseLayerIndex);
@@ -892,7 +895,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region ICharacterAI implementation
     public virtual void OnDeath()
     {
-        if (CharacterData.Is3DModel())
+        if (animator && CharacterData.Is3DModel())
         {
             animator.Play("HumanDyingBase");
             Destroy(gameObject, 3.5f);

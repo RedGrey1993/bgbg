@@ -43,6 +43,8 @@ public class LevelData : ScriptableObject
     public MinMaxFloat eliteScaleRange = new() { min = 1.3f, max = 2f };
     public int bossRoomMinWidth = 20;
     public int bossRoomMinHeight = 20;
+    public float holeRatio = 0.001f;
+    public float unbreakableObstacleRatio = 0.001f;
 
 
     // public float monsterSpawnChance = 0.8f; // 80%的房间会刷怪

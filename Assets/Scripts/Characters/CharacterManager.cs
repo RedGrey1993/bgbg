@@ -250,7 +250,8 @@ public class CharacterManager : MonoBehaviour
         int roomMaxHeight = LevelManager.Instance.CurrentLevelData.roomMaxHeight;
         var ascRooms = LevelManager.Instance.GetAreaAscRooms();
         var roomId = Random.Range(0, Mathf.Max(ascRooms.Count / 2, 1));
-        go.transform.position = ascRooms[roomId].center;
+        Rect playerRoom = ascRooms[roomId];
+        go.transform.position = new Vector2(playerRoom.xMin + Constants.CharacterMaxRadius, playerRoom.yMin + Constants.CharacterMaxRadius);
         // Set player name
         string playerName = PlayerInfoMap[playerId].Name;
         var playerStatus = go.GetComponent<CharacterStatus>();
