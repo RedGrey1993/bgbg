@@ -50,16 +50,16 @@ public class TilemapDatabase : MonoBehaviour
             || tileType == TileType.Wall_Horizontal
             || tileType == TileType.Wall_Vertical
             || tileType == TileType.UnbreakableObstacle
-            || tileType == TileType.Hole
+            // || tileType == TileType.Hole
             ;
     }
 
     public (TileTemplate, int) GetRandomTileTemplate(int stage, TileType tileType)
     {
         // TODO: DEBUG
-        stage = 4;
+        stage = 5;
         if (!Ready(tileType))
-            stage = 3;
+            stage = 4;
 
         List<TileTemplate> templates;
         if (!StageTileTemplates.ContainsKey(stage) || !StageTileTemplates[stage].ContainsKey(tileType))
@@ -92,9 +92,9 @@ public class TilemapDatabase : MonoBehaviour
     public TileTemplate GetTileTemplate(int stage, TileType tileType, int tileTemplateId)
     {
         // TODO: DEBUG
-        stage = 4;
+        stage = 5;
         if (!Ready(tileType)) 
-            stage = 3;
+            stage = 4;
 
         return StageTileTemplates[stage][tileType][tileTemplateId];
     }

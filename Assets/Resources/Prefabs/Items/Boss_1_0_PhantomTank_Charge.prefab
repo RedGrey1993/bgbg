@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 381451807057705331, guid: 81d6f29bf4db7e24ba52205a60cdaa3e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.1254902}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508494729d8f7fc4bb36dcbb9ec157d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhantomChargeDamage
+  minDamage: 10
 --- !u!1 &6566019517108392442
 GameObject:
   m_ObjectHideFlags: 0
