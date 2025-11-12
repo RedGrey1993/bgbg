@@ -514,13 +514,13 @@ public class LevelManager : MonoBehaviour
             for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
             {
                 
-                Vector3Int pos = new Vector3Int(x, y, 0);
-                if (wallTilemap.HasTile(pos)) continue;
+                if (x < Constants.CharacterMaxWidth || y < Constants.CharacterMaxHeight) continue;
+                if (wallTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > 0.001f) continue;
 
                 (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
-                if (x + uott.size.x > (int)room.xMax || y + uott.size.y > (int)room.yMax)
-                    continue;
+                if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
+                    || y + uott.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
                 for(int i = 0; i < uott.unbreakableCollisionTiles.Count(); i++)
                 {
@@ -549,13 +549,13 @@ public class LevelManager : MonoBehaviour
         {
             for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
             {
-                Vector3Int pos = new Vector3Int(x, y, 0);
-                if (holeTilemap.HasTile(pos)) continue;
+                if (x < Constants.CharacterMaxWidth || y < Constants.CharacterMaxHeight) continue;
+                if (holeTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > 0.001f) continue;
 
                 (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
-                if (x + htt.size.x > (int)room.xMax || y + htt.size.y > (int)room.yMax)
-                    continue;
+                if (x + htt.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
+                    || y + htt.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
                 for(int i = 0; i < htt.unbreakableCollisionTiles.Count(); i++)
                 {
