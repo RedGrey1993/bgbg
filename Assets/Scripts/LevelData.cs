@@ -21,7 +21,7 @@ public struct MinMaxFloat
 public struct CgInfo
 {
     public Sprite cg;
-    public string content;
+    [TextArea] public string content;
     public Color contentColor;
     public string subtitle;
 }
@@ -48,6 +48,7 @@ public class LevelData : ScriptableObject
     public MinMaxInt areaPerMinion = new() { min = 50, max = 100}; // 每多少面积刷1个怪物
     public CgInfo[] stageStartCgSprite; // 关卡开始前的图片
     public CgInfo[] stagePassedCgSprite; // 通关图片
+    public CgInfo[] stagePassedHiddenCgSprite; // 通关隐藏结局图片
     [Range(0, 1)]
     public float eliteSpawnChance = 0.1f;
     public MinMaxFloat eliteScaleRange = new() { min = 1.3f, max = 2f };

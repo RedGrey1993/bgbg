@@ -244,7 +244,7 @@ public class UIManager : MonoBehaviour
         fadePanel.SetActive(true);
         if (loadingCgs == null || loadingCgs.Length == 0 || !GameManager.Instance.gameConfig.PlayCG)
         {
-            loadingCgs = new CgInfo[] { new CgInfo() { cg = null, subtitle = "" } };
+            loadingCgs = new CgInfo[] { new CgInfo() { cg = null } };
             middleLoadingText.text = "Loading...";
             needPressSpace = false;
         }
@@ -269,6 +269,11 @@ public class UIManager : MonoBehaviour
                 }
                 loadingImage.sprite = cgInfo.cg;
                 bottomLoadingText.text = cgInfo.subtitle;
+                if (!string.IsNullOrEmpty(cgInfo.content))
+                {
+                    middleLoadingText.text = cgInfo.content;
+                    middleLoadingText.color = cgInfo.contentColor;
+                }
                 if (cgInfo.cg != null)
                 {
                     RectTransform rt = loadingImage.GetComponent<RectTransform>();

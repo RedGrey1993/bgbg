@@ -26,7 +26,20 @@ MonoBehaviour:
   areaPerMinion:
     min: 500000
     max: 1000000
-  gamePassedSprite: {fileID: 21300000, guid: a291b30f37d985340a45ca798ed9ec79, type: 3}
+  stageStartCgSprite: []
+  stagePassedCgSprite:
+  - cg: {fileID: -7658452471283826806, guid: fe0e05331b4aa0d4bbdb6aaccba96bd8, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: -485989582934065355, guid: 83402aafe0389d848b13ed3b2d46f6c9, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: 7637455557978334843, guid: c7d645101f191584ea2cc0d89fae9319, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
   eliteSpawnChance: 0.1
   eliteScaleRange:
     min: 1.3

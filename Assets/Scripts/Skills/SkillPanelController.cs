@@ -84,7 +84,7 @@ public class SkillPanelController : MonoBehaviour
     }
 
     // 触发技能选择
-    private void AddNewSkillChoice(List<SkillData> skills)
+    public void AddNewSkillChoice(List<SkillData> skills)
     {
         skillChoiceQueue.Enqueue(new SkillChoiceRequest(skills));
         // 如果当前没有在选择，则开始处理队列
@@ -210,38 +210,5 @@ public class SkillPanelController : MonoBehaviour
         // 更新“持有技能”UI
         GameObject iconObj = Instantiate(ownedSkillIconPrefab, ownedSkillsContainer);
         iconObj.GetComponent<OwnedSkillIcon>().SetSkillData(newSkill);
-    }
-
-    // --- 用于测试的函数 ---
-    private int curSkillId = 0;
-    void Update()
-    {
-#if DEBUG
-        // 按下 "1" 键，添加第一组技能到队列
-        if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            Debug.Log("添加第一组技能到队列...");
-            UIManager.Instance.ShowSkillPanel();
-            var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
-            List<SkillData> testSkills = new List<SkillData>();
-            for (int i = 0; i < 3; i++)
-            {
-                // var skillData = SkillDatabase.Instance.PassiveSkills[curSkillId];
-                var skillData = SkillDatabase.Instance.GetPassiveSkill(1);
-                testSkills.Add(skillData);
-            }
-            curSkillId = (curSkillId + 1) % skillNum;
-            AddNewSkillChoice(testSkills);
-        }
-
-        // 按下 "2" 键，掉落一个主动道具到当前位置
-        if (Keyboard.current != null && Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            var levelData = SkillDatabase.Instance.GetActiveSkill(Constants.SingularityItemId);
-            var roomId = LevelManager.Instance.GetRoomNoByPosition(CharacterManager.Instance.GetMyselfGameObject().transform.position);
-            var room =  LevelManager.Instance.Rooms[roomId];
-            LevelManager.Instance.ShowPickUpItem(room.center, levelData);
-        }
-#endif
     }
 }

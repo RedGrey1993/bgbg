@@ -26,7 +26,81 @@ MonoBehaviour:
   areaPerMinion:
     min: 500000
     max: 1000000
-  gamePassedSprite: {fileID: 21300000, guid: 8c85e2497f023c54386b210d1a4ea872, type: 3}
+  stageStartCgSprite: []
+  stagePassedCgSprite:
+  - cg: {fileID: -3774631119672852491, guid: ff00e937022b2674ebed618c2768f615, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: -6128473675539226984, guid: 9a5d28df46a9cad45929647cc4c71c79, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: -111105896397605553, guid: 8322dbcca072bb84e858c97fb2faa99f, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: 0}
+    content: '[BLAST GRID BATTLE GROUNDS]
+
+      ...
+
+      [SYSTEM_GUARDIAN...
+      TERMINATED BY GLASSES_MAN (PLAYER_0008)]
+
+      [GLASSES_MAN (PLAYER_0008)
+      RENAME TO THE_RULER (PLAYER_0008)]
+
+      [REBOOTING...]
+
+      ...
+
+      [STOMPER
+      (PLAYER_9723)... TERMINATED BY PHANTOM_TANK(PLAYER_1193)]
+
+      [SPIKE_TURTLE
+      (PLAYER_8391)... TERMINATED BY MASTER_LONG(PLAYER_4396)]
+
+      ...
+
+      [SYSTEM_GUARDIAN...
+      TERMINATED BY BILL (PLAYER_4256)]
+
+      ...
+
+      [THE_RULER (PLAYER_0008)...
+      TERMINATED BY BILL (PLAYER_4256)] _'
+    contentColor: {r: 0, g: 1, b: 0, a: 1}
+    subtitle: 
+  - cg: {fileID: -8032089623730220460, guid: 99c6c450e81464a479b51efaa78f1fd3, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: -8748676863768407345, guid: efd6cb6b4d736134ca36af9378dbd096, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  - cg: {fileID: 0}
+    content: '[WARNING! PLAYERS CANNOT KILL THEMSELVES!]
+
+      ...
+
+      [BILL
+      (PLAYER_4256) RENAME TO THE_DOMINATOR (PLAYER_4256)]
+
+      [REBOOTING...]
+      _'
+    contentColor: {r: 0, g: 1, b: 0, a: 1}
+    subtitle: 
+  - cg: {fileID: -4453044402748924392, guid: 382f1c62bc5261d4aa5ccfee0c83d10d, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
+  stagePassedHiddenCgSprite:
+  - cg: {fileID: 4188185563967472017, guid: d36baebebe6d01f49874248b52d6ddcb, type: 3}
+    content: 
+    contentColor: {r: 0, g: 0, b: 0, a: 0}
+    subtitle: 
   eliteSpawnChance: 0.1
   eliteScaleRange:
     min: 1.3

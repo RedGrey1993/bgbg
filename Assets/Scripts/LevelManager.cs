@@ -917,6 +917,9 @@ public class LevelManager : MonoBehaviour
     // 协程函数，每隔一段时间摧毁一个房间
     private int nxtDestoryRoomIdx = -1;
     private float destoryRoomRemainTime = -1;
+#if DEBUG
+    public int DebugDestroyRoomRamainTime { get; set; } = 0;
+#endif
     public IEnumerator StartDestroyingRooms(float interval, int firstDestoryRoomIdx = -1)
     {
         if (interval <= 0)
@@ -946,12 +949,21 @@ public class LevelManager : MonoBehaviour
             UIManager.Instance.ShowInfoPanel($"SystemPurge: room {nxtDestoryRoomIdx} will be deleted in", Color.yellow, interval);
             while (Time.time - startTime < interval - redFlashDuration)
             {
+#if DEBUG
+                if (DebugDestroyRoomRamainTime > 0)
+                {
+                    interval = DebugDestroyRoomRamainTime + (Time.time - startTime);
+                    UIManager.Instance.ClearInfoPanel();
+                    UIManager.Instance.ShowInfoPanel($"SystemPurge: room {nxtDestoryRoomIdx} will be deleted in", Color.yellow, DebugDestroyRoomRamainTime);
+                    DebugDestroyRoomRamainTime = 0;
+                }
+#endif
                 destoryRoomRemainTime = interval - (Time.time - startTime);
                 yield return new WaitForSeconds(1f);
             }
             SetExplosionTileMap(Rooms[nxtDestoryRoomIdx]);
             ShowRedFlashRect(new Vector3(Rooms[nxtDestoryRoomIdx].center.x, Rooms[nxtDestoryRoomIdx].center.y, 0),
-                            Rooms[nxtDestoryRoomIdx].width, Rooms[nxtDestoryRoomIdx].height, redFlashDuration);
+                            Rooms[nxtDestoryRoomIdx].width, Rooms[nxtDestoryRoomIdx].height, interval - (Time.time - startTime));
             while (Time.time - startTime < interval)
             {
                 destoryRoomRemainTime = interval - (Time.time - startTime);

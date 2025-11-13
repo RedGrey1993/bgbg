@@ -5,6 +5,7 @@ using System.Linq;
 using NetworkMessageProto;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -206,8 +207,7 @@ public class GameManager : MonoBehaviour
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
         skillPanelController.ForceRandomChoose = true;
         PassedStages.Add(Storage.CurrentStage);
-        // TODO: Debug hasBugItem
-        bool hasBugItem = true; // = CharacterManager.Instance.MySelfHasSysBug();
+        bool hasBugItem = CharacterManager.Instance.MySelfHasSysBug();
         bool isBugStage = LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage + 1);
         LevelData curStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
         LevelData nextStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage + 1);
@@ -222,10 +222,11 @@ public class GameManager : MonoBehaviour
                 // 销毁传送光柱
                 callback?.Invoke();
                 StartLocalGame(Storage);
-            }, curStage.stagePassedCgSprite.Concat(nextStage.stageStartCgSprite).ToArray());
+            }, nextStage.stageStartCgSprite);
         }
         else
         {
+            bool isHidden = false;
             // 没有关卡数据了，显示通关界面
             if (LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage))
             {
@@ -234,6 +235,7 @@ public class GameManager : MonoBehaviour
                     Storage.Achievement3InfiniteLonely = true;
                     Storage.NewRulerPlayerState = null;
                     Storage.NewRulerBulletState = null;
+                    isHidden = true;
                 }
                 else
                 {
@@ -256,7 +258,7 @@ public class GameManager : MonoBehaviour
                 skillPanelController.ForceRandomChoose = false;
 
                 UIManager.Instance.QuitToMainMenu();
-            }, curStage.stagePassedCgSprite);
+            }, isHidden ? curStage.stagePassedHiddenCgSprite : curStage.stagePassedCgSprite);
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
     }
@@ -297,4 +299,88 @@ public class GameManager : MonoBehaviour
         //     }
         // }
     }
+
+#if DEBUG
+    private bool showConsole = false;
+    void Update()
+    {
+        // ~ 键 (美式键盘左上角) 用来切换控制台
+        if (Keyboard.current != null && Keyboard.current.backquoteKey.wasPressedThisFrame)
+        {
+            showConsole = !showConsole;
+        }
+    }
+
+    private string command = "";
+    void OnGUI()
+    {
+        if (!showConsole)
+        {
+            return; // 不显示时，直接退出
+        }
+
+        // 画一个黑色的半透明背景
+        GUI.Box(new Rect(10, 10, 300, 200), "Developer Console");
+
+        // // 绘制一个标签显示当前值
+        // GUI.Label(new Rect(20, 40, 280, 20), $"Current Speed: {playerSpeed}");
+
+        // // 绘制一个按钮来执行操作
+        // if (GUI.Button(new Rect(20, 70, 130, 30), "Speed x2"))
+        // {
+        //     playerSpeed *= 2;
+        // }
+        // if (GUI.Button(new Rect(160, 70, 130, 30), "Speed /2"))
+        // {
+        //     playerSpeed /= 2;
+        // }
+
+        // 绘制一个输入框 (虽然这个例子没用上)
+        command = GUI.TextField(new Rect(20, 120, 280, 30), command);
+
+        // 绘制一个“应用”按钮
+        if (GUI.Button(new Rect(20, 160, 280, 30), "Execute Command"))
+        {
+            // 在这里解析 command 字符串，执行作弊码
+            Debug.Log($"Executing: {command}");
+
+            // Add Passive Skill / APS:1/2/3
+            if (command.StartsWith("APS"))
+            {
+                int[] ids = command.Split(":")[^1].Split("/").Select(int.Parse).ToArray();
+
+                Debug.Log("添加一组技能到队列...");
+                UIManager.Instance.ShowSkillPanel();
+                var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
+                List<SkillData> testSkills = new List<SkillData>();
+                foreach (var id in ids)
+                {
+                    var skillData = SkillDatabase.Instance.GetPassiveSkill(id);
+                    testSkills.Add(skillData);
+                    Debug.Log($"添加技能 {id}:{skillData.skillName}...");
+                }
+                var spc = UIManager.Instance.GetComponent<SkillPanelController>();
+                spc.AddNewSkillChoice(testSkills);
+            }
+            // Add Active Item / AAI:2
+            else if (command.StartsWith("AAI"))
+            {
+                int id = int.Parse(command.Split(":")[^1]);
+                var skillData = SkillDatabase.Instance.GetActiveSkill(id);
+                Debug.Log($"添加主动道具 {id}:{skillData.skillName}...");
+
+                var roomId = LevelManager.Instance.GetRoomNoByPosition(CharacterManager.Instance.GetMyselfGameObject().transform.position);
+                var room = LevelManager.Instance.Rooms[roomId];
+                LevelManager.Instance.ShowPickUpItem(room.center, skillData);
+            }
+            // Set Room Destory Time / RDT:10
+            else if (command.StartsWith("RDT"))
+            {
+                int time = int.Parse(command.Split(":")[^1]);
+                Debug.Log($"设置房间销毁时间 {time}...");
+                LevelManager.Instance.DebugDestroyRoomRamainTime = time;
+            }
+        }
+    }
+#endif
 }

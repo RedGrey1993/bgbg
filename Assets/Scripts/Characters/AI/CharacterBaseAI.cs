@@ -228,7 +228,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                     characterInput.MoveInput.x = -prevDir.y;
                     characterInput.MoveInput.y = prevDir.x;
                 }
-                Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back, new MoveInput: {characterInput.MoveInput}");
+                // Debug.Log($"fhhtest, {name} collided with {collision.gameObject.name}, bounce back, new MoveInput: {characterInput.MoveInput}");
             }
         }
     }
@@ -306,7 +306,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
             AggroTarget = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, LookDir, 180);
-            Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
+            // Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
 
