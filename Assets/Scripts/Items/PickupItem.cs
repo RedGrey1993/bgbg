@@ -9,11 +9,13 @@ public class PickupItem : MonoBehaviour
     public int Id { get; set; }
     private Collider2D col2D;
     private float bornTime;
+    private bool isPicked = false;
 
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         col2D = GetComponent<Collider2D>();
+        col2D.enabled = false;
         bornTime = Time.time;
     }
 
@@ -24,12 +26,11 @@ public class PickupItem : MonoBehaviour
             sprite.sprite = skillData.icon;
             sprite.color = new Color(1f, 1f, 1f, 1f);
         }
-        col2D.enabled = false;
     }
 
     void FixedUpdate()
     {
-        if (Time.time - bornTime > 3f) // 超过拾取的动画时间
+        if (Time.time - bornTime > 3f && !isPicked) // 超过拾取的动画时间
         {
             col2D.enabled = true;
         }
@@ -52,6 +53,8 @@ public class PickupItem : MonoBehaviour
             var status = other.GetCharacterStatus();
             if (status != null)
             {
+                isPicked = true;
+                col2D.enabled = false;
                 status.StartCoroutine(PickupItemAnim(status));
             }
         }

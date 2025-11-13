@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [Tooltip("将包含ToggleSettings Action的Input Action Asset文件拖到此处")]
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject fadePanel;
+    public GameObject blackPanel;
     public UnityEngine.UI.Image loadingImage;
     public TextMeshProUGUI bottomRightLoadingText;
     public TextMeshProUGUI middleLoadingText;
@@ -239,6 +240,8 @@ public class UIManager : MonoBehaviour
     private IEnumerator LoadAnimationRoutine(Action callback, CgInfo[] loadingCgs,
         string brLoadingStr, float slideInTime, float slideOutTime)
     {
+        blackPanel.SetActive(true);
+
         bool needPressSpace = true;
 
         fadePanel.SetActive(true);
@@ -254,7 +257,7 @@ public class UIManager : MonoBehaviour
         }
 
         bottomRightLoadingText.text = brLoadingStr;
-        for(int i = 0; i < loadingCgs.Length; i++)
+        for (int i = 0; i < loadingCgs.Length; i++)
         {
             var cgInfo = loadingCgs[i];
             if (loadingImage != null)
@@ -304,6 +307,7 @@ public class UIManager : MonoBehaviour
             {
                 // 加载下一关场景
                 callback?.Invoke();
+                blackPanel.SetActive(false);
             }
             // 触发渐变隐藏图片动画
             yield return StartCoroutine(FadeRoutine(1f, 0f, slideOutTime));

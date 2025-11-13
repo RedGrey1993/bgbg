@@ -59,37 +59,21 @@ public class GameManager : MonoBehaviour
         CharacterManager.Instance.SaveInfoToLocalStorage(Storage);
         if (Storage.PlayerStates.Count == 0)
         {
-            // Player死亡或通关一次，从第1关重新开始
+            // Player死亡或通关一次，从第1关重新开始；不能new一个存档，因为成就需要保留
             Storage.CurrentStage = 1;
             Storage.NextCharacterId = 1;
-            Storage.Rooms.Clear();
             Storage.TeleportPosition = null;
-            Storage.PickupItems.Clear();
             Storage.PassedStages.Clear();
             Storage.NewLevel = true;
             Storage.ShowedSysErrLogTip = false;
-            Storage.NxtDestoryRoomIdx = -1;
-            Storage.DestoryRoomRemainTime = 0;
+            ClearCurrentStageInfos();
         }
         else
         {
             if (newLevel) // 如果是开始新的关卡时保存记录，这时候player新的位置还没生成
             {
-                foreach (var state in Storage.PlayerStates)
-                {
-                    state.Position = null;
-                    state.CurrentStageSkillLearned = false;
-                    state.ToLearnedSkillIds.Clear();
-                }
                 Storage.CurrentStage++;
-                Storage.MinionStates.Clear();
-                Storage.MinionPrefabInfos.Clear();
-                Storage.BossStates.Clear();
-                Storage.BossPrefabInfos.Clear();
-                Storage.Rooms.Clear();
-                Storage.PickupItems.Clear();
-                Storage.NxtDestoryRoomIdx = -1;
-                Storage.DestoryRoomRemainTime = 0;
+                ClearCurrentStageInfos();
             }
             else
             {
@@ -145,12 +129,34 @@ public class GameManager : MonoBehaviour
             CurrentStage = 1,
             NextCharacterId = 1,
             NewLevel = true,
+            NxtDestoryRoomIdx = -1,
         };
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
         PassedStages = new HashSet<int> { 2, 3, 5 };
         return Storage;
+    }
+
+    private void ClearCurrentStageInfos()
+    {
+        foreach (var state in Storage.PlayerStates)
+        {
+            state.Position = null;
+            state.CurrentStageSkillLearned = false;
+            state.ToLearnedSkillIds.Clear();
+        }
+        Storage.MinionStates.Clear();
+        Storage.MinionPrefabInfos.Clear();
+        Storage.BossStates.Clear();
+        Storage.BossPrefabInfos.Clear();
+        Storage.Rooms.Clear();
+        Storage.PickupItems.Clear();
+        Storage.NxtDestoryRoomIdx = -1;
+        Storage.DestoryRoomRemainTime = 0;
+        Storage.FloorTiles.Clear();
+        Storage.WallTiles.Clear();
+        Storage.HoleTiles.Clear();
     }
 
     public bool HasValidStorage(LocalStorage storage)
@@ -213,7 +219,6 @@ public class GameManager : MonoBehaviour
         LevelData nextStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage + 1);
         if ((hasBugItem && isBugStage) || (!isBugStage && nextStage != null))
         {
-            // TODO：更多判断逻辑，例如是否达到进入隐藏关卡的条件
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
                 SaveLocalStorage(null, newLevel: true);
@@ -379,6 +384,22 @@ public class GameManager : MonoBehaviour
                 int time = int.Parse(command.Split(":")[^1]);
                 Debug.Log($"设置房间销毁时间 {time}...");
                 LevelManager.Instance.DebugDestroyRoomRamainTime = time;
+            }
+            // Load Stage / LS:1
+            else if (command.StartsWith("LS"))
+            {
+                int stage = int.Parse(command.Split(":")[^1]);
+                Storage.CurrentStage = stage - 1; // to next stage, newLevel = true
+                LevelData nextStage = LevelDatabase.Instance.GetLevelData(stage);
+
+                UIManager.Instance.PlayLoadingAnimation(() =>
+                {
+                    SaveLocalStorage(null, newLevel: true);
+                    var spc = UIManager.Instance.GetComponent<SkillPanelController>();
+                    spc.ForceRandomChoose = false;
+
+                    StartLocalGame(Storage);
+                }, nextStage.stageStartCgSprite);
             }
         }
     }

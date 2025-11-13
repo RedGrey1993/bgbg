@@ -124,8 +124,8 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
                 characterInput.LookInput = diff.normalized;
                 return;
             }
-            characterInput.LookInput = Vector2.zero;
         }
+        characterInput.LookInput = Vector2.zero;
     }
     #endregion
 

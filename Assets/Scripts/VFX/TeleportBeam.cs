@@ -11,6 +11,7 @@ public class TeleportBeam : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isTeleporting = false;
     private bool canTeleport = false;
+    private float tarAlpha = 1f;
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class TeleportBeam : MonoBehaviour
 
         if (spriteRenderer != null)
         {
+            tarAlpha = spriteRenderer.color.a;
             Color startColor = spriteRenderer.color;
             startColor.a = 0f;
             spriteRenderer.color = startColor;
@@ -48,7 +50,7 @@ public class TeleportBeam : MonoBehaviour
             float timeProgress = timer / fadeInDuration;
             float curveValue = fadeInCurve.Evaluate(timeProgress);
 
-            float alpha = Mathf.Lerp(0f, 1f, curveValue);
+            float alpha = Mathf.Lerp(0f, tarAlpha, curveValue);
             if (spriteRenderer != null)
             {
                 Color currentColor = spriteRenderer.color;
@@ -63,7 +65,7 @@ public class TeleportBeam : MonoBehaviour
         if (spriteRenderer != null)
         {
             Color finalColor = spriteRenderer.color;
-            finalColor.a = 1f;
+            finalColor.a = tarAlpha;
             spriteRenderer.color = finalColor;
         }
         canTeleport = true;
