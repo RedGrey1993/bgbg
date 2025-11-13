@@ -247,13 +247,8 @@ public class UIManager : MonoBehaviour
         fadePanel.SetActive(true);
         if (loadingCgs == null || loadingCgs.Length == 0 || !GameManager.Instance.gameConfig.PlayCG)
         {
-            loadingCgs = new CgInfo[] { new CgInfo() { cg = null } };
-            middleLoadingText.text = "Loading...";
+            loadingCgs = new CgInfo[] { new CgInfo() { cg = null, content = "Loading...", contentColor = Color.white } };
             needPressSpace = false;
-        }
-        else
-        {
-            middleLoadingText.text = "";
         }
 
         bottomRightLoadingText.text = brLoadingStr;
@@ -274,8 +269,13 @@ public class UIManager : MonoBehaviour
                 bottomLoadingText.text = cgInfo.subtitle;
                 if (!string.IsNullOrEmpty(cgInfo.content))
                 {
-                    middleLoadingText.text = cgInfo.content;
+                    middleLoadingText.text =
+                        cgInfo.content.Replace("PLAYER_4256", CharacterManager.Instance.MyInfo.Name.ToUpper());
                     middleLoadingText.color = cgInfo.contentColor;
+                }
+                else
+                {
+                    middleLoadingText.text = "";
                 }
                 if (cgInfo.cg != null)
                 {
@@ -475,12 +475,13 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance.StartFromChooseCharacter(storage))
         {
             LevelData curStageData = LevelDatabase.Instance.GetLevelData(storage.CurrentStage);
+            bool hasValidStorage = GameManager.Instance.HasValidStorage(storage);
             SelectCharacterManager.Instance.RegisterEnterButtonPressed(() =>
             {
                 PlayLoadingAnimation(() =>
                 {
                     GameManager.Instance.StartLocalGame(storage);
-                }, curStageData.stageStartCgSprite);
+                }, hasValidStorage ? null : curStageData.stageStartCgSprite);
             });
 
             ref var states = ref SelectCharacterManager.Instance.characterLockStates;

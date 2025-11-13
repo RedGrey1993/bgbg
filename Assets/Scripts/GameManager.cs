@@ -231,39 +231,62 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            bool isHidden = false;
             // 没有关卡数据了，显示通关界面
             if (LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage))
             {
-                if (Storage.Achievement2Mirror == true)
+                bool isHidden = false;
+                bool isAllAchieved = false;
+
+                if (Storage.Achievement3InfiniteLonely == true)
                 {
-                    Storage.Achievement3InfiniteLonely = true;
-                    Storage.NewRulerPlayerState = null;
-                    Storage.NewRulerBulletState = null;
+                    isAllAchieved = true;
+                }
+                else if (Storage.Achievement2Mirror == true)
+                {
                     isHidden = true;
                 }
-                else
+
+                UIManager.Instance.PlayLoadingAnimation(() =>
                 {
-                    Storage.Achievement2Mirror = true;
-                    var status = CharacterManager.Instance.GetMyselfGameObject().GetComponent<CharacterStatus>();
-                    Storage.NewRulerPlayerState = status.State;
-                    Storage.NewRulerPlayerState.Position = null;
-                    Storage.NewRulerPlayerState.PlayerId = Constants.NewRulerPlayerId;
-                    Storage.NewRulerBulletState = status.bulletState;
-                    Storage.NewRulerPrefabId = CharacterManager.Instance.PlayerPrefabIds[CharacterManager.Instance.MyInfo.Id];
-                }
+                    if (Storage.Achievement2Mirror == true)
+                    {
+                        Storage.Achievement3InfiniteLonely = true;
+                        Storage.NewRulerPlayerState = null;
+                        Storage.NewRulerBulletState = null;
+                    }
+                    else
+                    {
+                        Storage.Achievement2Mirror = true;
+                        var status = CharacterManager.Instance.GetMyselfGameObject().GetComponent<CharacterStatus>();
+                        Storage.NewRulerPlayerState = status.State;
+                        Storage.NewRulerPlayerState.CurrentHp = status.State.MaxHp;
+                        Storage.NewRulerPlayerState.Position = null;
+                        Storage.NewRulerPlayerState.PlayerId = Constants.NewRulerPlayerId;
+                        Storage.NewRulerBulletState = status.bulletState;
+                        Storage.NewRulerPrefabId = CharacterManager.Instance.PlayerPrefabIds[CharacterManager.Instance.MyInfo.Id];
+                    }
+
+                    SaveLocalStorage(null, restart: true);
+                    skillPanelController.ForceRandomChoose = false;
+
+                    UIManager.Instance.QuitToMainMenu();
+                }, isAllAchieved ? null : (isHidden ? curStage.stagePassedHiddenCgSprite : curStage.stagePassedCgSprite));
             }
             else
             {
                 Storage.Achievement1NewCycle = true;
-            }
-            UIManager.Instance.PlayLoadingAnimation(() =>
-            {
-                SaveLocalStorage(null, restart: true);
-                skillPanelController.ForceRandomChoose = false;
 
-                UIManager.Instance.QuitToMainMenu();
-            }, isHidden ? curStage.stagePassedHiddenCgSprite : curStage.stagePassedCgSprite);
+                // 新的循环，直接从第一关重新开始
+                UIManager.Instance.PlayLoadingAnimation(() =>
+                {
+                    SaveLocalStorage(null, restart: true);
+                    skillPanelController.ForceRandomChoose = false;
+
+                    // 销毁传送光柱
+                    callback?.Invoke();
+                    StartLocalGame(Storage);
+                }, curStage.stagePassedCgSprite);
+            }
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
     }
@@ -400,6 +423,28 @@ public class GameManager : MonoBehaviour
 
                     StartLocalGame(Storage);
                 }, nextStage.stageStartCgSprite);
+            }
+            // Change Character HP / CCHP:1/50
+            else if (command.StartsWith("CCHP"))
+            {
+                var parameters = command.Split(':')[^1];
+                int characterId = int.Parse(parameters.Split('/')[0]);
+                int hp = int.Parse(parameters.Split('/')[1]);
+
+                var go = CharacterManager.Instance.GetObject(characterId);
+                if (go == null)
+                {
+                    Debug.Log($"Cannot find character {characterId}");
+                }
+                else
+                {
+                    if (go.TryGetComponent(out CharacterStatus status))
+                    {
+                        if (hp > status.State.MaxHp)
+                            status.State.MaxHp = hp;
+                        status.HealthChanged(hp);
+                    }
+                }
             }
         }
     }

@@ -259,6 +259,8 @@ public class CharacterManager : MonoBehaviour
         {
             if (initState != null)
             {
+                playerName = initState.PlayerName;
+                PlayerInfoMap[playerId].Name = initState.PlayerName;
                 playerStatus.SetState(initState);
             }
             else
@@ -398,6 +400,27 @@ public class CharacterManager : MonoBehaviour
             bossObjects.Remove(characterId);
             bossPrefabInfos.Remove(characterId);
         }
+    }
+
+    public GameObject GetObject(int characterId)
+    {
+        if (PlayerObjects.ContainsKey(characterId))
+        {
+            return PlayerObjects[characterId];
+        }
+        else if (minionObjects.ContainsKey(characterId))
+        {
+            return minionObjects[characterId];
+        }
+        else if (bossObjects.ContainsKey(characterId))
+        {
+            return bossObjects[characterId];
+        }
+        else if (characterId == Constants.NewRulerPlayerId && NewRulerGo != null)
+        {
+            return NewRulerGo;
+        }
+        return null;
     }
 
     // private Color ColorFromID(int playerId)
