@@ -7,4 +7,6 @@ public class GameConfig : ScriptableObject
     public float FirstRoomBlastInterval = 180;
     public float OtherRoomBlastInterval = 120;
     public float RedFlashRectDuration = 10;
+
+    public bool PlayCG = true;
 }

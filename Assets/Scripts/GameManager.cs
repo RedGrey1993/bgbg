@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NetworkMessageProto;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -208,6 +209,7 @@ public class GameManager : MonoBehaviour
         // TODO: Debug hasBugItem
         bool hasBugItem = true; // = CharacterManager.Instance.MySelfHasSysBug();
         bool isBugStage = LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage + 1);
+        LevelData curStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
         LevelData nextStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage + 1);
         if ((hasBugItem && isBugStage) || (!isBugStage && nextStage != null))
         {
@@ -220,7 +222,7 @@ public class GameManager : MonoBehaviour
                 // 销毁传送光柱
                 callback?.Invoke();
                 StartLocalGame(Storage);
-            });
+            }, curStage.stagePassedCgSprite.Concat(nextStage.stageStartCgSprite).ToArray());
         }
         else
         {
@@ -248,14 +250,13 @@ public class GameManager : MonoBehaviour
             {
                 Storage.Achievement1NewCycle = true;
             }
-            LevelData curLevelData = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
             UIManager.Instance.PlayLoadingAnimation(() =>
             {
                 SaveLocalStorage(null, restart: true);
                 skillPanelController.ForceRandomChoose = false;
 
                 UIManager.Instance.QuitToMainMenu();
-            }, new Sprite[] { curLevelData.gamePassedSprite });
+            }, curStage.stagePassedCgSprite);
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
     }

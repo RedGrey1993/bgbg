@@ -24,9 +24,10 @@ public class UIManager : MonoBehaviour
     public InputActionAsset inputActions; // 在Inspector中分配
     public GameObject fadePanel;
     public UnityEngine.UI.Image loadingImage;
-    public TextMeshProUGUI loadingText;
-    public Sprite defaultSprite; // 默认加载图片
-    public Sprite[] startCgSprites;
+    public TextMeshProUGUI bottomRightLoadingText;
+    public TextMeshProUGUI middleLoadingText;
+    public TextMeshProUGUI bottomLoadingText;
+    // public Sprite defaultSprite; // 默认加载图片
     // 新增：定义一个动画曲线
     [Tooltip("控制渐变速度的缓动曲线")]
     public AnimationCurve fadeOutCurve;
@@ -190,9 +191,10 @@ public class UIManager : MonoBehaviour
     }
 
     #region Canvas
-    public void PlayLoadingAnimation(Action callback, Sprite[] loadingSprite = null, bool needPressSpace = true, string loadingStr = "", float slideInTime = 1f, float slideOutTime = 1f)
+    public void PlayLoadingAnimation(Action callback, CgInfo[] loadingCgs = null,
+        string brLoadingStr = "", float slideInTime = 1f, float slideOutTime = 1f)
     {
-        StartCoroutine(LoadAnimationRoutine(callback, loadingSprite, needPressSpace, loadingStr, slideInTime, slideOutTime));
+        StartCoroutine(LoadAnimationRoutine(callback, loadingCgs, brLoadingStr, slideInTime, slideOutTime));
     }
 
     private IEnumerator FadeRoutine(float startAlpha, float targetAlpha, float transitionTime)
@@ -234,32 +236,54 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
     }
 
-    private IEnumerator LoadAnimationRoutine(Action callback, Sprite[] loadingSprite, bool needPressSpace, string loadingStr, float slideInTime, float slideOutTime)
+    private IEnumerator LoadAnimationRoutine(Action callback, CgInfo[] loadingCgs,
+        string brLoadingStr, float slideInTime, float slideOutTime)
     {
+        bool needPressSpace = true;
+
         fadePanel.SetActive(true);
-        if (loadingSprite == null || loadingSprite.Length == 0)
+        if (loadingCgs == null || loadingCgs.Length == 0 || !GameManager.Instance.gameConfig.PlayCG)
         {
-            loadingSprite = new Sprite[] { defaultSprite };
+            loadingCgs = new CgInfo[] { new CgInfo() { cg = null, subtitle = "" } };
+            middleLoadingText.text = "Loading...";
+            needPressSpace = false;
+        }
+        else
+        {
+            middleLoadingText.text = "";
         }
 
-        loadingText.text = loadingStr;
-        foreach (var sprite in loadingSprite)
+        bottomRightLoadingText.text = brLoadingStr;
+        for(int i = 0; i < loadingCgs.Length; i++)
         {
+            var cgInfo = loadingCgs[i];
             if (loadingImage != null)
             {
-                loadingImage.sprite = sprite;
-                RectTransform rt = loadingImage.GetComponent<RectTransform>();
-                var spriteWidth = loadingImage.sprite.rect.width;
-                var spriteHeight = loadingImage.sprite.rect.height;
-                var tarWidth = rt.rect.height * (spriteWidth / spriteHeight);
-                rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
+                if (cgInfo.cg == null)
+                {
+                    loadingImage.gameObject.SetActive(false);
+                }
+                else
+                {
+                    loadingImage.gameObject.SetActive(true);
+                }
+                loadingImage.sprite = cgInfo.cg;
+                bottomLoadingText.text = cgInfo.subtitle;
+                if (cgInfo.cg != null)
+                {
+                    RectTransform rt = loadingImage.GetComponent<RectTransform>();
+                    var spriteWidth = loadingImage.sprite.rect.width;
+                    var spriteHeight = loadingImage.sprite.rect.height;
+                    var tarWidth = rt.rect.height * (spriteWidth / spriteHeight);
+                    rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
+                }
             }
             // 触发渐变显示图片动画
             yield return StartCoroutine(FadeRoutine(0f, 1f, slideInTime));
 
             if (needPressSpace)
             {
-                loadingText.text = "Press Space to Continue";
+                bottomRightLoadingText.text = "Press Space to Continue";
             }
 
             if (needPressSpace)
@@ -271,7 +295,7 @@ public class UIManager : MonoBehaviour
             if (!fadePanel.activeSelf) break;
 
             // Last sprite
-            if (sprite == loadingSprite[^1])
+            if (i == loadingCgs.Length - 1)
             {
                 // 加载下一关场景
                 callback?.Invoke();
@@ -441,12 +465,13 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.Instance.StartFromChooseCharacter(storage))
         {
+            LevelData curStageData = LevelDatabase.Instance.GetLevelData(storage.CurrentStage);
             SelectCharacterManager.Instance.RegisterEnterButtonPressed(() =>
             {
                 PlayLoadingAnimation(() =>
                 {
                     GameManager.Instance.StartLocalGame(storage);
-                }, needPressSpace: false);
+                }, curStageData.stageStartCgSprite);
             });
 
             ref var states = ref SelectCharacterManager.Instance.characterLockStates;
@@ -475,14 +500,14 @@ public class UIManager : MonoBehaviour
             PlayLoadingAnimation(() =>
             {
                 SelectCharacterManager.Instance.Show();
-            }, needPressSpace: false);
+            });
         }
         else
         {
             PlayLoadingAnimation(() =>
             {
                 GameManager.Instance.StartLocalGame(storage);
-            }, needPressSpace: false);
+            });
             // }, loadingSprite: startCgSprites, needPressSpace: true);
         }
     }

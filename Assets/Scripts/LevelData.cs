@@ -17,6 +17,15 @@ public struct MinMaxFloat
     public float max;
 }
 
+[System.Serializable]
+public struct CgInfo
+{
+    public Sprite cg;
+    public string content;
+    public Color contentColor;
+    public string subtitle;
+}
+
 [CreateAssetMenu(fileName = "LevelData", menuName = "Level Data")]
 public class LevelData : ScriptableObject
 {
@@ -37,7 +46,8 @@ public class LevelData : ScriptableObject
     public int roomMaxWidth = 80;
     public int roomMaxHeight = 80;
     public MinMaxInt areaPerMinion = new() { min = 50, max = 100}; // 每多少面积刷1个怪物
-    public Sprite gamePassedSprite; // 通关图片
+    public CgInfo[] stageStartCgSprite; // 关卡开始前的图片
+    public CgInfo[] stagePassedCgSprite; // 通关图片
     [Range(0, 1)]
     public float eliteSpawnChance = 0.1f;
     public MinMaxFloat eliteScaleRange = new() { min = 1.3f, max = 2f };

@@ -26,7 +26,23 @@ MonoBehaviour:
   areaPerMinion:
     min: 100
     max: 100
-  gamePassedSprite: {fileID: 0}
+  stageStartCgSprite:
+  - cg: {fileID: 2475271012110078146, guid: 885f12a2fc254b34781855d1103acff3, type: 3}
+    contents: 
+    subtitle: 
+  - cg: {fileID: -9090500521025848876, guid: 2a72f348cab89944e96081c683f69730, type: 3}
+    contents: 
+    subtitle: EARTHQUAKE
+  - cg: {fileID: -7605338018228008389, guid: 3639db722c3def845a7ab331c1af8dd4, type: 3}
+    contents: 
+    subtitle: 
+  - cg: {fileID: -5444052000792541234, guid: 9df06a3c4be4280479dac6f179304765, type: 3}
+    contents: 
+    subtitle: CONSCIOUSNESS FALL
+  - cg: {fileID: 6841694067471867400, guid: c06c84eb35c9dbc48bdfac9b506ade9e, type: 3}
+    contents: 
+    subtitle: 
+  stagePassedCgSprite: []
   eliteSpawnChance: 0.5
   eliteScaleRange:
     min: 1.3
