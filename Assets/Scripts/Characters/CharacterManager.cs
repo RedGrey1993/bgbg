@@ -78,6 +78,7 @@ public class CharacterManager : MonoBehaviour
             {
                 var ps = storage.PlayerStates[i];
                 int prefabId = storage.PlayerPrefabIds[i];
+                PlayerInfoMap[ps.PlayerId].PrefabId = prefabId;
                 var bs = storage.BulletStates[i];
                 CreatePlayerObject(ps.PlayerId, prefabId, ps.PlayerId == MyInfo.Id, ps, bs);
             }
@@ -251,7 +252,11 @@ public class CharacterManager : MonoBehaviour
         var ascRooms = LevelManager.Instance.GetAreaAscRooms();
         var roomId = Random.Range(0, Mathf.Max(ascRooms.Count / 2, 1));
         Rect playerRoom = ascRooms[roomId];
-        go.transform.position = new Vector2(playerRoom.xMin + Constants.CharacterMaxRadius, playerRoom.yMin + Constants.CharacterMaxRadius);
+        // 墙壁最厚可能是2
+        go.transform.position = new Vector2(
+            playerRoom.xMin + 2 + Constants.CharacterMaxRadius,
+            playerRoom.yMin + 2 + Constants.CharacterMaxRadius
+        );
         // Set player name
         string playerName = PlayerInfoMap[playerId].Name;
         var playerStatus = go.GetComponent<CharacterStatus>();

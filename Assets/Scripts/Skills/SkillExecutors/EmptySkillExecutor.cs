@@ -11,6 +11,7 @@ public class EmptySkillExecutor : SkillExecutor
         {
             status.State.ActiveSkillCurCd = -1;
             UIManager.Instance.UpdateMyStatusUI(status);
+            UIManager.Instance.ShowInfoPanel("Nothing Happened", Color.white, 3);
         }
     }
 }

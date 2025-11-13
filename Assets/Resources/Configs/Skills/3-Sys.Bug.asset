@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   id: 3
   skillName: SYS.BUG
-  description: ??????
+  description: '??????
+
+    Maybe I can find the truth of the world.'
   backgroundStory: 
   icon: {fileID: 21300000, guid: de2c343bdfac3554a9e64014d2848f30, type: 3}
   tipColor: {r: 1, g: 1, b: 1, a: 1}

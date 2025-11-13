@@ -282,10 +282,17 @@ public class GameManager : MonoBehaviour
                     SaveLocalStorage(null, restart: true);
                     skillPanelController.ForceRandomChoose = false;
 
-                    // 销毁传送光柱
-                    callback?.Invoke();
-                    StartLocalGame(Storage);
-                }, curStage.stagePassedCgSprite);
+                    if (Storage.Achievement2Mirror)
+                    {
+                        UIManager.Instance.QuitToMainMenu();
+                    }
+                    else
+                    {
+                        // 销毁传送光柱
+                        callback?.Invoke();
+                        StartLocalGame(Storage);
+                    }
+                }, Storage.Achievement2Mirror ? null : curStage.stagePassedCgSprite);
             }
             Debug.Log("没有更多关卡数据了，游戏结束！");
         }
