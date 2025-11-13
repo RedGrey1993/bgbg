@@ -270,6 +270,16 @@ public class SelectCharacterManager : MonoBehaviour
     public void Show()
     {
         enabled = true;
+
+        int leftestIdx = (curSelectedIdx - 2 + 5) % 5;
+        int leftPrevPrefabIdx = leftPrevIdx;
+        for (int i = 0; i < 5; ++i)
+        {
+            SetLockState(leftestIdx, characterLockStates[leftPrevPrefabIdx]);
+            leftestIdx = (leftestIdx + 1) % 5;
+            leftPrevPrefabIdx = (leftPrevPrefabIdx + 1) % characterPrefabs.Count;
+        }
+
         rootPanel.SetActive(true);
     }
     
