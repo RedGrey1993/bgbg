@@ -240,10 +240,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator LoadAnimationRoutine(Action callback, CgInfo[] loadingCgs,
         string brLoadingStr, float slideInTime, float slideOutTime)
     {
-        blackPanel.SetActive(true);
-
         bool needPressSpace = true;
-
         fadePanel.SetActive(true);
         if (loadingCgs == null || loadingCgs.Length == 0 || !GameManager.Instance.gameConfig.PlayCG)
         {
@@ -288,6 +285,9 @@ public class UIManager : MonoBehaviour
             }
             // 触发渐变显示图片动画
             yield return StartCoroutine(FadeRoutine(0f, 1f, slideInTime));
+            if (i == 0) {
+                blackPanel.SetActive(true);
+            }
 
             if (needPressSpace)
             {
@@ -300,7 +300,10 @@ public class UIManager : MonoBehaviour
                 yield return new WaitUntil(() => _spacePressedAction.IsPressed() || !fadePanel.activeSelf);
             }
 
-            if (!fadePanel.activeSelf) break;
+            if (!fadePanel.activeSelf) {
+                blackPanel.SetActive(false);
+                break;
+            }
 
             // Last sprite
             if (i == loadingCgs.Length - 1)
