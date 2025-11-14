@@ -117,6 +117,7 @@ public static class Constants
     public const int CompanionMasterSkillId = 12;
     public const int NewRulerPlayerId = 123456789;
     public const float Eps = 0.00001f;
+    public const float PlayerHurtMultiplier = 30;
 
     public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new();
     public static Dictionary<GameObject, CharacterInput> goToCharacterInput = new();
@@ -134,6 +135,78 @@ public static class Constants
         5000,
         10000,
     };
+
+    public static readonly float[] DamageLevel =
+    {
+        1.69f,
+        2.83f,
+        4.21f,
+        5.84f,
+        7.69f,
+        9.77f,
+        12.06f,
+        float.MaxValue,
+    };
+
+    public static readonly float[] AtkFreqLevel =
+    {
+        1.58f,
+        2.32f,
+        3.13f,
+        3.99f,
+        4.91f,
+        5.86f,
+        6.86f,
+        float.MaxValue,
+    };
+
+    public static readonly float[] AtkRangeLevel =
+    {
+        4.24f,
+        5.74f,
+        7.24f,
+        8.74f,
+        10.24f,
+        11.74f,
+        13.24f,
+        float.MaxValue,
+    };
+
+    public static readonly float[] BulletSpeedLevel =
+    {
+        6.9f,//0.69f,
+        8.9f,//0.89f,
+        10.9f,//1.09f,
+        12.9f,//1.29f,
+        14.9f,//1.49f,
+        16.9f,//1.69f,
+        18.9f,//1.89f,
+        float.MaxValue,
+    };
+
+    public static readonly float[] MoveSpeedLevel =
+    {
+        6.6f,//0.66f,
+        8.8f,//0.88f,
+        11.1f,//1.11f,
+        13.3f,//1.33f,
+        15.5f,//1.55f,
+        17.7f,//1.77f,
+        19.9f,//1.99f,
+        float.MaxValue,
+    };
+
+    public static int GetStatLevel(float stat, float[] levelArray)
+    {
+        for (int i = 0; i < levelArray.Length; i++)
+        {
+            if (stat < levelArray[i])
+            {
+                return i;
+            }
+        }
+        return levelArray.Length;
+    }
 
     public static int PositiveMod(this int a, int n)
     {

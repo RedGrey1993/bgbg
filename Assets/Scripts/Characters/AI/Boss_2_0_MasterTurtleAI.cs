@@ -16,7 +16,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #region Animation
     protected override void SetSpdAnimation(float speed)
     {
-        animator.SetFloat("Speed", speed / 3);
+        animator.SetFloat(spdHash, speed / 3);
     }
     #endregion
 

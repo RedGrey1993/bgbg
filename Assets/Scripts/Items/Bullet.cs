@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public Vector2 StartPosition { get; set; } // 子弹发射时，Player会设置这颗子弹的起始位置
     public CharacterStatus OwnerStatus { get; set; } // 这颗子弹的操作者是谁
-    public int Damage { get; set; } = 0;
+    public float Damage { get; set; } = 0;
     public BulletState BulletState { get; set; } // 子弹强化状态
     public Collider2D LastCollider { get; set; } = null;
     public GameObject AggroTarget { get; set; } = null;

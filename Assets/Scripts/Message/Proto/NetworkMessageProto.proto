@@ -45,16 +45,17 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 23
+    // next index = 24
     int32 PlayerId = 1;
     string PlayerName = 2;
-    int32 MaxHp = 3;
-    int32 CurrentHp = 4;
-    uint32 MoveSpeed = 5; // 人物移动速度
-    uint32 BulletSpeed = 6; // 子弹飞行速度
-    int32 Damage = 7; //  伤害
+    float MaxHp = 3;
+    float CurrentHp = 4;
+    float MoveSpeed = 5; // 人物移动速度
+    float BulletSpeed = 6; // 子弹飞行速度
+    float Damage = 7; //  伤害
+    float DamageUp = 23; // 累积伤害加成，道具增加的伤害加成最终玩家实际造成的伤害为，Damage*sqrt(1+1.2*DamageUp)
     float AttackFrequency = 8; // 攻击频率/每秒发射子弹数
-    int32 ShootRange = 9; // 攻击范围，不一定是射击
+    float ShootRange = 9; // 攻击范围，不一定是射击
     uint32 CriticalRate = 10; // 暴击率
     uint32 CurrentLevel = 12;
     uint32 CurrentExp = 13;

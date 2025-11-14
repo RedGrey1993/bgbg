@@ -554,7 +554,8 @@ public class LevelManager : MonoBehaviour
             for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
             {
                 
-                if (x < Constants.CharacterMaxWidth || y < Constants.CharacterMaxHeight) continue;
+                if (x < room.xMin + 1 + Constants.CharacterMaxWidth 
+                    || y < room.yMin + 1 + Constants.CharacterMaxHeight) continue;
                 if (wallTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > levelData.unbreakableObstacleRatio) continue;
 
@@ -590,7 +591,8 @@ public class LevelManager : MonoBehaviour
         {
             for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
             {
-                if (x < Constants.CharacterMaxWidth || y < Constants.CharacterMaxHeight) continue;
+                if (x < room.xMin + 1 + Constants.CharacterMaxWidth 
+                    || y < room.yMin + 1 + Constants.CharacterMaxHeight) continue;
                 if (holeTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > levelData.holeRatio) continue;
 

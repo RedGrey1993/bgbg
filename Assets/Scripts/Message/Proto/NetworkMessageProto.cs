@@ -38,64 +38,64 @@ namespace NetworkMessageProto {
             "bnB1dE1lc3NhZ2USEAoIUGxheWVySWQYASABKAUSDAoEVGljaxgCIAEoDRIM",
             "CgRUeXBlGAMgASgNEiwKCU1vdmVJbnB1dBgEIAEoCzIZLk5ldHdvcmtNZXNz",
             "YWdlUHJvdG8uVmVjMhIsCglMb29rSW5wdXQYBSABKAsyGS5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlZlYzIi5AQKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
-            "ASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTWF4SHAYAyABKAUSEQoJQ3Vy",
-            "cmVudEhwGAQgASgFEhEKCU1vdmVTcGVlZBgFIAEoDRITCgtCdWxsZXRTcGVl",
-            "ZBgGIAEoDRIOCgZEYW1hZ2UYByABKAUSFwoPQXR0YWNrRnJlcXVlbmN5GAgg",
-            "ASgCEhIKClNob290UmFuZ2UYCSABKAUSFAoMQ3JpdGljYWxSYXRlGAogASgN",
-            "EhQKDEN1cnJlbnRMZXZlbBgMIAEoDRISCgpDdXJyZW50RXhwGA0gASgNEisK",
-            "CFBvc2l0aW9uGAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyEhAK",
-            "CFNraWxsSWRzGA4gAygFEiAKGEN1cnJlbnRTdGFnZVNraWxsTGVhcm5lZBgP",
-            "IAEoCBIZChFUb0xlYXJuZWRTa2lsbElkcxgTIAMoBRIVCg1BY3RpdmVTa2ls",
-            "bElkGBAgASgFEhgKEEFjdGl2ZVNraWxsQ3VyQ2QYFCABKAUSDQoFU2NhbGUY",
-            "ESABKAISLgoFQ29sb3IYEiABKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLkNv",
-            "bG9yUHJvdG8SPQoOQ2F0Y2hlZE1pbmlvbnMYFSADKAsyJS5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLk1pbmlvblByZWZhYkluZm8SPQoTQ2F0Y2hlZE1pbmlvblN0",
-            "YXRlcxgWIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUi",
-            "jgEKC0J1bGxldFN0YXRlEhAKCFNob290TnVtGAEgASgFEhcKD1Nob290QW5n",
-            "bGVSYW5nZRgCIAEoBRIWCg5QZW5ldHJhdGVDb3VudBgDIAEoBRISCgpTcGxp",
-            "dENvdW50GAQgASgFEhMKC0hvbWluZ0ZvcmNlGAUgASgFEhMKC0JvdW5jZUNv",
-            "dW50GAYgASgFIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIxCgdQbGF5ZXJzGAEg",
-            "AygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIMCgRUaWNr",
-            "GAIgASgNIkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAKB1BsYXllcnMYASAD",
-            "KAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllckluZm8iSgoKUGxheWVy",
-            "SW5mbxIQCghDU3RlYW1JRBgBIAEoCRIMCgROYW1lGAIgASgJEgoKAklkGAMg",
-            "ASgFEhAKCFByZWZhYklkGAQgASgFIjYKEUxlYXJuU2tpbGxNZXNzYWdlEhAK",
-            "CHBsYXllcklkGAEgASgFEg8KB3NraWxsSWQYAiABKAUibwoKUGlja3VwSXRl",
-            "bRIKCgJJZBgBIAEoBRIPCgdTa2lsbElkGAIgASgFEhcKD0N1cnJlbnRDb29s",
-            "ZG93bhgDIAEoBRIrCghQb3NpdGlvbhgEIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
-            "UHJvdG8uVmVjMiIzCg5Cb3NzUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgF",
-            "EhAKCFByZWZhYklkGAIgASgFIjUKEE1pbmlvblByZWZhYkluZm8SDwoHU3Rh",
-            "Z2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSKZCQoMTG9jYWxTdG9yYWdl",
-            "EhQKDEN1cnJlbnRTdGFnZRgBIAEoBRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsy",
-            "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjYKDEJ1bGxldFN0",
-            "YXRlcxgPIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUS",
-            "FwoPUGxheWVyUHJlZmFiSWRzGA4gAygFEjYKDE1pbmlvblN0YXRlcxgDIAMo",
-            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSQAoRTWluaW9u",
-            "UHJlZmFiSW5mb3MYBCADKAsyJS5OZXR3b3JrTWVzc2FnZVByb3RvLk1pbmlv",
-            "blByZWZhYkluZm8SNAoKQm9zc1N0YXRlcxgFIAMoCzIgLk5ldHdvcmtNZXNz",
-            "YWdlUHJvdG8uUGxheWVyU3RhdGUSPAoPQm9zc1ByZWZhYkluZm9zGAYgAygL",
-            "MiMuTmV0d29ya01lc3NhZ2VQcm90by5Cb3NzUHJlZmFiSW5mbxItCgVSb29t",
-            "cxgHIAMoCzIeLk5ldHdvcmtNZXNzYWdlUHJvdG8uUmVjdFByb3RvEhQKDFJv",
-            "b21NYXhXaWR0aBgIIAEoDRIVCg1Sb29tTWF4SGVpZ2h0GAkgASgNEhcKD05l",
-            "eHRDaGFyYWN0ZXJJZBgKIAEoDRIzChBUZWxlcG9ydFBvc2l0aW9uGAsgASgL",
-            "MhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyEjQKC1BpY2t1cEl0ZW1zGAwg",
-            "AygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QaWNrdXBJdGVtEhQKDFBhc3Nl",
-            "ZFN0YWdlcxgNIAMoBRIcChRBY2hpZXZlbWVudDFOZXdDeWNsZRgQIAEoCBIa",
-            "ChJBY2hpZXZlbWVudDJNaXJyb3IYESABKAgSIgoaQWNoaWV2ZW1lbnQzSW5m",
-            "aW5pdGVMb25lbHkYEiABKAgSEAoITmV3TGV2ZWwYEyABKAgSGgoSU2hvd2Vk",
-            "U3lzRXJyTG9nVGlwGBQgASgIEj0KE05ld1J1bGVyUGxheWVyU3RhdGUYFSAB",
-            "KAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEj0KE05ld1J1",
-            "bGVyQnVsbGV0U3RhdGUYFiABKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLkJ1",
-            "bGxldFN0YXRlEhgKEE5ld1J1bGVyUHJlZmFiSWQYFyABKAUSGQoRTnh0RGVz",
-            "dG9yeVJvb21JZHgYGCABKAUSHQoVRGVzdG9yeVJvb21SZW1haW5UaW1lGBkg",
-            "ASgCEjAKCVdhbGxUaWxlcxgaIAMoCzIdLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
-            "VGlsZUluZm8SMQoKRmxvb3JUaWxlcxgbIAMoCzIdLk5ldHdvcmtNZXNzYWdl",
-            "UHJvdG8uVGlsZUluZm8SMAoJSG9sZVRpbGVzGBwgAygLMh0uTmV0d29ya01l",
-            "c3NhZ2VQcm90by5UaWxlSW5mbxIRCglQbGF5Q291bnQYHSABKAUiWgoIVGls",
-            "ZUluZm8SCQoBWBgBIAEoBRIJCgFZGAIgASgFEhAKCFRpbGVUeXBlGAMgASgF",
-            "EhYKDlRpbGVUZW1wbGF0ZUlkGAQgASgFEg4KBlRpbGVJZBgFIAEoBWIGcHJv",
-            "dG8z"));
+            "c2FnZVByb3RvLlZlYzIi9gQKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
+            "ASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTWF4SHAYAyABKAISEQoJQ3Vy",
+            "cmVudEhwGAQgASgCEhEKCU1vdmVTcGVlZBgFIAEoAhITCgtCdWxsZXRTcGVl",
+            "ZBgGIAEoAhIOCgZEYW1hZ2UYByABKAISEAoIRGFtYWdlVXAYFyABKAISFwoP",
+            "QXR0YWNrRnJlcXVlbmN5GAggASgCEhIKClNob290UmFuZ2UYCSABKAISFAoM",
+            "Q3JpdGljYWxSYXRlGAogASgNEhQKDEN1cnJlbnRMZXZlbBgMIAEoDRISCgpD",
+            "dXJyZW50RXhwGA0gASgNEisKCFBvc2l0aW9uGAsgASgLMhkuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5WZWMyEhAKCFNraWxsSWRzGA4gAygFEiAKGEN1cnJlbnRT",
+            "dGFnZVNraWxsTGVhcm5lZBgPIAEoCBIZChFUb0xlYXJuZWRTa2lsbElkcxgT",
+            "IAMoBRIVCg1BY3RpdmVTa2lsbElkGBAgASgFEhgKEEFjdGl2ZVNraWxsQ3Vy",
+            "Q2QYFCABKAUSDQoFU2NhbGUYESABKAISLgoFQ29sb3IYEiABKAsyHy5OZXR3",
+            "b3JrTWVzc2FnZVByb3RvLkNvbG9yUHJvdG8SPQoOQ2F0Y2hlZE1pbmlvbnMY",
+            "FSADKAsyJS5OZXR3b3JrTWVzc2FnZVByb3RvLk1pbmlvblByZWZhYkluZm8S",
+            "PQoTQ2F0Y2hlZE1pbmlvblN0YXRlcxgWIAMoCzIgLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uUGxheWVyU3RhdGUijgEKC0J1bGxldFN0YXRlEhAKCFNob290TnVt",
+            "GAEgASgFEhcKD1Nob290QW5nbGVSYW5nZRgCIAEoBRIWCg5QZW5ldHJhdGVD",
+            "b3VudBgDIAEoBRISCgpTcGxpdENvdW50GAQgASgFEhMKC0hvbWluZ0ZvcmNl",
+            "GAUgASgFEhMKC0JvdW5jZUNvdW50GAYgASgFIlUKElN0YXRlVXBkYXRlTWVz",
+            "c2FnZRIxCgdQbGF5ZXJzGAEgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5Q",
+            "bGF5ZXJTdGF0ZRIMCgRUaWNrGAIgASgNIkgKFFBsYXllcnNVcGRhdGVNZXNz",
+            "YWdlEjAKB1BsYXllcnMYASADKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLlBs",
+            "YXllckluZm8iSgoKUGxheWVySW5mbxIQCghDU3RlYW1JRBgBIAEoCRIMCgRO",
+            "YW1lGAIgASgJEgoKAklkGAMgASgFEhAKCFByZWZhYklkGAQgASgFIjYKEUxl",
+            "YXJuU2tpbGxNZXNzYWdlEhAKCHBsYXllcklkGAEgASgFEg8KB3NraWxsSWQY",
+            "AiABKAUibwoKUGlja3VwSXRlbRIKCgJJZBgBIAEoBRIPCgdTa2lsbElkGAIg",
+            "ASgFEhcKD0N1cnJlbnRDb29sZG93bhgDIAEoBRIrCghQb3NpdGlvbhgEIAEo",
+            "CzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMiIzCg5Cb3NzUHJlZmFiSW5m",
+            "bxIPCgdTdGFnZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIjUKEE1pbmlv",
+            "blByZWZhYkluZm8SDwoHU3RhZ2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEo",
+            "BSKZCQoMTG9jYWxTdG9yYWdlEhQKDEN1cnJlbnRTdGFnZRgBIAEoBRI2CgxQ",
+            "bGF5ZXJTdGF0ZXMYAiADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXll",
+            "clN0YXRlEjYKDEJ1bGxldFN0YXRlcxgPIAMoCzIgLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uQnVsbGV0U3RhdGUSFwoPUGxheWVyUHJlZmFiSWRzGA4gAygFEjYK",
+            "DE1pbmlvblN0YXRlcxgDIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxh",
+            "eWVyU3RhdGUSQAoRTWluaW9uUHJlZmFiSW5mb3MYBCADKAsyJS5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLk1pbmlvblByZWZhYkluZm8SNAoKQm9zc1N0YXRlcxgF",
+            "IAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSPAoPQm9z",
+            "c1ByZWZhYkluZm9zGAYgAygLMiMuTmV0d29ya01lc3NhZ2VQcm90by5Cb3Nz",
+            "UHJlZmFiSW5mbxItCgVSb29tcxgHIAMoCzIeLk5ldHdvcmtNZXNzYWdlUHJv",
+            "dG8uUmVjdFByb3RvEhQKDFJvb21NYXhXaWR0aBgIIAEoDRIVCg1Sb29tTWF4",
+            "SGVpZ2h0GAkgASgNEhcKD05leHRDaGFyYWN0ZXJJZBgKIAEoDRIzChBUZWxl",
+            "cG9ydFBvc2l0aW9uGAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMy",
+            "EjQKC1BpY2t1cEl0ZW1zGAwgAygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5Q",
+            "aWNrdXBJdGVtEhQKDFBhc3NlZFN0YWdlcxgNIAMoBRIcChRBY2hpZXZlbWVu",
+            "dDFOZXdDeWNsZRgQIAEoCBIaChJBY2hpZXZlbWVudDJNaXJyb3IYESABKAgS",
+            "IgoaQWNoaWV2ZW1lbnQzSW5maW5pdGVMb25lbHkYEiABKAgSEAoITmV3TGV2",
+            "ZWwYEyABKAgSGgoSU2hvd2VkU3lzRXJyTG9nVGlwGBQgASgIEj0KE05ld1J1",
+            "bGVyUGxheWVyU3RhdGUYFSABKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBs",
+            "YXllclN0YXRlEj0KE05ld1J1bGVyQnVsbGV0U3RhdGUYFiABKAsyIC5OZXR3",
+            "b3JrTWVzc2FnZVByb3RvLkJ1bGxldFN0YXRlEhgKEE5ld1J1bGVyUHJlZmFi",
+            "SWQYFyABKAUSGQoRTnh0RGVzdG9yeVJvb21JZHgYGCABKAUSHQoVRGVzdG9y",
+            "eVJvb21SZW1haW5UaW1lGBkgASgCEjAKCVdhbGxUaWxlcxgaIAMoCzIdLk5l",
+            "dHdvcmtNZXNzYWdlUHJvdG8uVGlsZUluZm8SMQoKRmxvb3JUaWxlcxgbIAMo",
+            "CzIdLk5ldHdvcmtNZXNzYWdlUHJvdG8uVGlsZUluZm8SMAoJSG9sZVRpbGVz",
+            "GBwgAygLMh0uTmV0d29ya01lc3NhZ2VQcm90by5UaWxlSW5mbxIRCglQbGF5",
+            "Q291bnQYHSABKAUiWgoIVGlsZUluZm8SCQoBWBgBIAEoBRIJCgFZGAIgASgF",
+            "EhAKCFRpbGVUeXBlGAMgASgFEhYKDlRpbGVUZW1wbGF0ZUlkGAQgASgFEg4K",
+            "BlRpbGVJZBgFIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -104,7 +104,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.ColorProto), global::NetworkMessageProto.ColorProto.Parser, new[]{ "R", "G", "B", "A" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color", "CatchedMinions", "CatchedMinionStates" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "DamageUp", "AttackFrequency", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color", "CatchedMinions", "CatchedMinionStates" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount", "SplitCount", "HomingForce", "BounceCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
@@ -1799,6 +1799,7 @@ namespace NetworkMessageProto {
       moveSpeed_ = other.moveSpeed_;
       bulletSpeed_ = other.bulletSpeed_;
       damage_ = other.damage_;
+      damageUp_ = other.damageUp_;
       attackFrequency_ = other.attackFrequency_;
       shootRange_ = other.shootRange_;
       criticalRate_ = other.criticalRate_;
@@ -1827,7 +1828,7 @@ namespace NetworkMessageProto {
     public const int PlayerIdFieldNumber = 1;
     private int playerId_;
     /// <summary>
-    /// next index = 23
+    /// next index = 24
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1852,10 +1853,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "MaxHp" field.</summary>
     public const int MaxHpFieldNumber = 3;
-    private int maxHp_;
+    private float maxHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int MaxHp {
+    public float MaxHp {
       get { return maxHp_; }
       set {
         maxHp_ = value;
@@ -1864,10 +1865,10 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "CurrentHp" field.</summary>
     public const int CurrentHpFieldNumber = 4;
-    private int currentHp_;
+    private float currentHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CurrentHp {
+    public float CurrentHp {
       get { return currentHp_; }
       set {
         currentHp_ = value;
@@ -1876,13 +1877,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "MoveSpeed" field.</summary>
     public const int MoveSpeedFieldNumber = 5;
-    private uint moveSpeed_;
+    private float moveSpeed_;
     /// <summary>
     /// 人物移动速度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MoveSpeed {
+    public float MoveSpeed {
       get { return moveSpeed_; }
       set {
         moveSpeed_ = value;
@@ -1891,13 +1892,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "BulletSpeed" field.</summary>
     public const int BulletSpeedFieldNumber = 6;
-    private uint bulletSpeed_;
+    private float bulletSpeed_;
     /// <summary>
     /// 子弹飞行速度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BulletSpeed {
+    public float BulletSpeed {
       get { return bulletSpeed_; }
       set {
         bulletSpeed_ = value;
@@ -1906,16 +1907,31 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "Damage" field.</summary>
     public const int DamageFieldNumber = 7;
-    private int damage_;
+    private float damage_;
     /// <summary>
     ///  伤害
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Damage {
+    public float Damage {
       get { return damage_; }
       set {
         damage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DamageUp" field.</summary>
+    public const int DamageUpFieldNumber = 23;
+    private float damageUp_;
+    /// <summary>
+    /// 累积伤害加成，道具增加的伤害加成最终玩家实际造成的伤害为，Damage*sqrt(1+1.2*DamageUp)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DamageUp {
+      get { return damageUp_; }
+      set {
+        damageUp_ = value;
       }
     }
 
@@ -1936,13 +1952,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "ShootRange" field.</summary>
     public const int ShootRangeFieldNumber = 9;
-    private int shootRange_;
+    private float shootRange_;
     /// <summary>
     /// 攻击范围，不一定是射击
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int ShootRange {
+    public float ShootRange {
       get { return shootRange_; }
       set {
         shootRange_ = value;
@@ -2121,13 +2137,14 @@ namespace NetworkMessageProto {
       }
       if (PlayerId != other.PlayerId) return false;
       if (PlayerName != other.PlayerName) return false;
-      if (MaxHp != other.MaxHp) return false;
-      if (CurrentHp != other.CurrentHp) return false;
-      if (MoveSpeed != other.MoveSpeed) return false;
-      if (BulletSpeed != other.BulletSpeed) return false;
-      if (Damage != other.Damage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxHp, other.MaxHp)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CurrentHp, other.CurrentHp)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MoveSpeed, other.MoveSpeed)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BulletSpeed, other.BulletSpeed)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Damage, other.Damage)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DamageUp, other.DamageUp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AttackFrequency, other.AttackFrequency)) return false;
-      if (ShootRange != other.ShootRange) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShootRange, other.ShootRange)) return false;
       if (CriticalRate != other.CriticalRate) return false;
       if (CurrentLevel != other.CurrentLevel) return false;
       if (CurrentExp != other.CurrentExp) return false;
@@ -2150,13 +2167,14 @@ namespace NetworkMessageProto {
       int hash = 1;
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (PlayerName.Length != 0) hash ^= PlayerName.GetHashCode();
-      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
-      if (CurrentHp != 0) hash ^= CurrentHp.GetHashCode();
-      if (MoveSpeed != 0) hash ^= MoveSpeed.GetHashCode();
-      if (BulletSpeed != 0) hash ^= BulletSpeed.GetHashCode();
-      if (Damage != 0) hash ^= Damage.GetHashCode();
+      if (MaxHp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxHp);
+      if (CurrentHp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CurrentHp);
+      if (MoveSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MoveSpeed);
+      if (BulletSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BulletSpeed);
+      if (Damage != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Damage);
+      if (DamageUp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DamageUp);
       if (AttackFrequency != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AttackFrequency);
-      if (ShootRange != 0) hash ^= ShootRange.GetHashCode();
+      if (ShootRange != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShootRange);
       if (CriticalRate != 0) hash ^= CriticalRate.GetHashCode();
       if (CurrentLevel != 0) hash ^= CurrentLevel.GetHashCode();
       if (CurrentExp != 0) hash ^= CurrentExp.GetHashCode();
@@ -2196,33 +2214,33 @@ namespace NetworkMessageProto {
         output.WriteRawTag(18);
         output.WriteString(PlayerName);
       }
-      if (MaxHp != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(MaxHp);
+      if (MaxHp != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(MaxHp);
       }
-      if (CurrentHp != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(CurrentHp);
+      if (CurrentHp != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(CurrentHp);
       }
-      if (MoveSpeed != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(MoveSpeed);
+      if (MoveSpeed != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MoveSpeed);
       }
-      if (BulletSpeed != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(BulletSpeed);
+      if (BulletSpeed != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(BulletSpeed);
       }
-      if (Damage != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(Damage);
+      if (Damage != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(Damage);
       }
       if (AttackFrequency != 0F) {
         output.WriteRawTag(69);
         output.WriteFloat(AttackFrequency);
       }
-      if (ShootRange != 0) {
-        output.WriteRawTag(72);
-        output.WriteInt32(ShootRange);
+      if (ShootRange != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(ShootRange);
       }
       if (CriticalRate != 0) {
         output.WriteRawTag(80);
@@ -2264,6 +2282,10 @@ namespace NetworkMessageProto {
       }
       catchedMinions_.WriteTo(output, _repeated_catchedMinions_codec);
       catchedMinionStates_.WriteTo(output, _repeated_catchedMinionStates_codec);
+      if (DamageUp != 0F) {
+        output.WriteRawTag(189, 1);
+        output.WriteFloat(DamageUp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2282,33 +2304,33 @@ namespace NetworkMessageProto {
         output.WriteRawTag(18);
         output.WriteString(PlayerName);
       }
-      if (MaxHp != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(MaxHp);
+      if (MaxHp != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(MaxHp);
       }
-      if (CurrentHp != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(CurrentHp);
+      if (CurrentHp != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(CurrentHp);
       }
-      if (MoveSpeed != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(MoveSpeed);
+      if (MoveSpeed != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MoveSpeed);
       }
-      if (BulletSpeed != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(BulletSpeed);
+      if (BulletSpeed != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(BulletSpeed);
       }
-      if (Damage != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(Damage);
+      if (Damage != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(Damage);
       }
       if (AttackFrequency != 0F) {
         output.WriteRawTag(69);
         output.WriteFloat(AttackFrequency);
       }
-      if (ShootRange != 0) {
-        output.WriteRawTag(72);
-        output.WriteInt32(ShootRange);
+      if (ShootRange != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(ShootRange);
       }
       if (CriticalRate != 0) {
         output.WriteRawTag(80);
@@ -2350,6 +2372,10 @@ namespace NetworkMessageProto {
       }
       catchedMinions_.WriteTo(ref output, _repeated_catchedMinions_codec);
       catchedMinionStates_.WriteTo(ref output, _repeated_catchedMinionStates_codec);
+      if (DamageUp != 0F) {
+        output.WriteRawTag(189, 1);
+        output.WriteFloat(DamageUp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2366,26 +2392,29 @@ namespace NetworkMessageProto {
       if (PlayerName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerName);
       }
-      if (MaxHp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
+      if (MaxHp != 0F) {
+        size += 1 + 4;
       }
-      if (CurrentHp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentHp);
+      if (CurrentHp != 0F) {
+        size += 1 + 4;
       }
-      if (MoveSpeed != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MoveSpeed);
+      if (MoveSpeed != 0F) {
+        size += 1 + 4;
       }
-      if (BulletSpeed != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BulletSpeed);
+      if (BulletSpeed != 0F) {
+        size += 1 + 4;
       }
-      if (Damage != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Damage);
+      if (Damage != 0F) {
+        size += 1 + 4;
+      }
+      if (DamageUp != 0F) {
+        size += 2 + 4;
       }
       if (AttackFrequency != 0F) {
         size += 1 + 4;
       }
-      if (ShootRange != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ShootRange);
+      if (ShootRange != 0F) {
+        size += 1 + 4;
       }
       if (CriticalRate != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CriticalRate);
@@ -2436,25 +2465,28 @@ namespace NetworkMessageProto {
       if (other.PlayerName.Length != 0) {
         PlayerName = other.PlayerName;
       }
-      if (other.MaxHp != 0) {
+      if (other.MaxHp != 0F) {
         MaxHp = other.MaxHp;
       }
-      if (other.CurrentHp != 0) {
+      if (other.CurrentHp != 0F) {
         CurrentHp = other.CurrentHp;
       }
-      if (other.MoveSpeed != 0) {
+      if (other.MoveSpeed != 0F) {
         MoveSpeed = other.MoveSpeed;
       }
-      if (other.BulletSpeed != 0) {
+      if (other.BulletSpeed != 0F) {
         BulletSpeed = other.BulletSpeed;
       }
-      if (other.Damage != 0) {
+      if (other.Damage != 0F) {
         Damage = other.Damage;
+      }
+      if (other.DamageUp != 0F) {
+        DamageUp = other.DamageUp;
       }
       if (other.AttackFrequency != 0F) {
         AttackFrequency = other.AttackFrequency;
       }
-      if (other.ShootRange != 0) {
+      if (other.ShootRange != 0F) {
         ShootRange = other.ShootRange;
       }
       if (other.CriticalRate != 0) {
@@ -2521,32 +2553,32 @@ namespace NetworkMessageProto {
             PlayerName = input.ReadString();
             break;
           }
-          case 24: {
-            MaxHp = input.ReadInt32();
+          case 29: {
+            MaxHp = input.ReadFloat();
             break;
           }
-          case 32: {
-            CurrentHp = input.ReadInt32();
+          case 37: {
+            CurrentHp = input.ReadFloat();
             break;
           }
-          case 40: {
-            MoveSpeed = input.ReadUInt32();
+          case 45: {
+            MoveSpeed = input.ReadFloat();
             break;
           }
-          case 48: {
-            BulletSpeed = input.ReadUInt32();
+          case 53: {
+            BulletSpeed = input.ReadFloat();
             break;
           }
-          case 56: {
-            Damage = input.ReadInt32();
+          case 61: {
+            Damage = input.ReadFloat();
             break;
           }
           case 69: {
             AttackFrequency = input.ReadFloat();
             break;
           }
-          case 72: {
-            ShootRange = input.ReadInt32();
+          case 77: {
+            ShootRange = input.ReadFloat();
             break;
           }
           case 80: {
@@ -2609,6 +2641,10 @@ namespace NetworkMessageProto {
             catchedMinionStates_.AddEntriesFrom(input, _repeated_catchedMinionStates_codec);
             break;
           }
+          case 189: {
+            DamageUp = input.ReadFloat();
+            break;
+          }
         }
       }
     #endif
@@ -2636,32 +2672,32 @@ namespace NetworkMessageProto {
             PlayerName = input.ReadString();
             break;
           }
-          case 24: {
-            MaxHp = input.ReadInt32();
+          case 29: {
+            MaxHp = input.ReadFloat();
             break;
           }
-          case 32: {
-            CurrentHp = input.ReadInt32();
+          case 37: {
+            CurrentHp = input.ReadFloat();
             break;
           }
-          case 40: {
-            MoveSpeed = input.ReadUInt32();
+          case 45: {
+            MoveSpeed = input.ReadFloat();
             break;
           }
-          case 48: {
-            BulletSpeed = input.ReadUInt32();
+          case 53: {
+            BulletSpeed = input.ReadFloat();
             break;
           }
-          case 56: {
-            Damage = input.ReadInt32();
+          case 61: {
+            Damage = input.ReadFloat();
             break;
           }
           case 69: {
             AttackFrequency = input.ReadFloat();
             break;
           }
-          case 72: {
-            ShootRange = input.ReadInt32();
+          case 77: {
+            ShootRange = input.ReadFloat();
             break;
           }
           case 80: {
@@ -2722,6 +2758,10 @@ namespace NetworkMessageProto {
           }
           case 178: {
             catchedMinionStates_.AddEntriesFrom(ref input, _repeated_catchedMinionStates_codec);
+            break;
+          }
+          case 189: {
+            DamageUp = input.ReadFloat();
             break;
           }
         }

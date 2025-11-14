@@ -33,11 +33,11 @@ public class CharacterData : ScriptableObject
     #region Basic Attributes
     [Header("Basic Attributes")]
     public CharacterType CharacterType = CharacterType.Unset;
-    public int MaxHp;
-    public uint MoveSpeed;
-    public int ShootRange;
-    public uint BulletSpeed = 6;
-    public int Damage = 1;
+    public float MaxHp;
+    public float MoveSpeed;
+    public float ShootRange;
+    public float BulletSpeed = 6;
+    public float Damage = 1;
     public float AttackFrequency = 3;
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值

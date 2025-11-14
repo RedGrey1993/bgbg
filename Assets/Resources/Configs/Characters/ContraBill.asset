@@ -24,15 +24,15 @@ MonoBehaviour:
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 3203593824033472796, guid: 50d22abba63619c4bbc3a73a0e3cc298, type: 3}
   CharacterType: 1
-  MaxHp: 5
-  MoveSpeed: 20
-  ShootRange: 5
-  BulletSpeed: 6
-  Damage: 1
-  AttackFrequency: 3
+  MaxHp: 300
+  MoveSpeed: 10
+  ShootRange: 6.5
+  BulletSpeed: 10
+  Damage: 3.5
+  AttackFrequency: 2.73
   CriticalRate: 0
   ExpGiven: 200
-  InitialActiveSkillId: 12
+  InitialActiveSkillId: 0
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}

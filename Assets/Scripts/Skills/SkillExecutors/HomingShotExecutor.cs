@@ -10,6 +10,6 @@ public class HomingShotExecutor : SkillExecutor
         
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
         var bulletState = playerStatus.bulletState;
-        bulletState.HomingForce += 1;
+        bulletState.HomingForce += 2;
     }
 }

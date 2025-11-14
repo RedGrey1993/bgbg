@@ -51,8 +51,13 @@ public class CharacterStatus : MonoBehaviour
     public void TakeDamage_Host(CharacterStatus attacker)
     {
         if (IsDead() || attacker == null) return;
-        int damage = attacker.State.Damage;
-        int curHp = State.CurrentHp - damage;
+        float damage = attacker.State.Damage * Mathf.Sqrt(1f + 1.2f * attacker.State.DamageUp);
+        if (CharacterManager.Instance.PlayerObjects.ContainsKey(State.PlayerId))
+        {
+            damage *= Constants.PlayerHurtMultiplier;
+        }
+
+        float curHp = State.CurrentHp - damage;
         if (curHp <= 0)
         {
             // this死亡，提供给attacker经验值
@@ -69,10 +74,19 @@ public class CharacterStatus : MonoBehaviour
 
     // 造成伤害时，attacker可能已经死了，有时候仍然需要正常造成伤害
     // 也有时候是一些道具造成的伤害，这时attacker为null
-    public void TakeDamage_Host(int damage, CharacterStatus attacker)
+    public void TakeDamage_Host(float damage, CharacterStatus attacker)
     {
         if (IsDead()) return;
-        int curHp = State.CurrentHp - damage;
+        if (attacker != null) 
+        {
+            damage *= Mathf.Sqrt(1f + 1.2f * attacker.State.DamageUp);
+        }
+        if (CharacterManager.Instance.PlayerObjects.ContainsKey(State.PlayerId))
+        {
+            damage *= Constants.PlayerHurtMultiplier;
+        }
+            
+        float curHp = State.CurrentHp - damage;
         if (curHp <= 0 && attacker != null)
         {
             // this死亡，提供给attacker经验值
@@ -93,7 +107,7 @@ public class CharacterStatus : MonoBehaviour
     }
 
     // 供HOST/CLIENT统一调用
-    public void HealthChanged(int curHp)
+    public void HealthChanged(float curHp)
     {
         if (characterData.hurtSound != null && curHp < State.CurrentHp)
         {

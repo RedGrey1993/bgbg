@@ -15,4 +15,4 @@ MonoBehaviour:
   FirstRoomBlastInterval: 1000
   OtherRoomBlastInterval: 1000
   RedFlashRectDuration: 10
-  PlayCG: 1
+  PlayCG: 0

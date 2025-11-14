@@ -19,7 +19,7 @@ public class HexagonRadarChart : Graphic
     // DM, FR, CR, MS, BS, RG
     // 初始值：1，3，0，5，6，5
     private float[] stats = new float[6] { 0.1f, 0.8f, 0.6f, 0.7f, 0.9f, 0.5f };
-    static readonly int[] MaxStats = new int[6] { 30, 30, 100, 30, 50, 100 };
+    static readonly int[] MaxStats = new int[6] { 7, 7, 100, 7, 7, 7 };
 
     [Header("前景样式 (能力多边形)")]
     [Tooltip("能力多边形填充区域的颜色")]
@@ -172,12 +172,13 @@ public class HexagonRadarChart : Graphic
     public void SetStats(PlayerState state)
     {
         float[] newStats = new float[6];
-        newStats[0] = (float)state.Damage / MaxStats[0];          // Damage
-        newStats[1] = (float)state.AttackFrequency / MaxStats[1];  // Shoot Frequency
+        float damage = state.Damage * Mathf.Sqrt(1 + 1.2f * state.DamageUp);
+        newStats[0] = (float)Constants.GetStatLevel(damage, Constants.DamageLevel) / MaxStats[0];          // Damage
+        newStats[1] = (float)Constants.GetStatLevel(state.AttackFrequency, Constants.AtkFreqLevel) / MaxStats[1];  // Shoot Frequency
         newStats[2] = (float)state.CriticalRate / MaxStats[2];      // Critical Rate
-        newStats[3] = (float)state.MoveSpeed / MaxStats[3];        // Move Speed
-        newStats[4] = (float)state.BulletSpeed / MaxStats[4];      // Bullet Speed
-        newStats[5] = (float)state.ShootRange / MaxStats[5];        // Shoot Range
+        newStats[3] = (float)Constants.GetStatLevel(state.MoveSpeed, Constants.MoveSpeedLevel) / MaxStats[3];        // Move Speed
+        newStats[4] = (float)Constants.GetStatLevel(state.BulletSpeed, Constants.BulletSpeedLevel) / MaxStats[4];      // Bullet Speed
+        newStats[5] = (float)Constants.GetStatLevel(state.ShootRange, Constants.AtkRangeLevel) / MaxStats[5];        // Shoot Range
         SetStats(newStats);
     }
     /// <summary>
