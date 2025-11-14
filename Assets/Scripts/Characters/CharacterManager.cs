@@ -1011,6 +1011,45 @@ public class CharacterManager : MonoBehaviour
         obj.transform.position = position;
         return obj;
     }
+
+    public void KillCharactersInRoom(Rect room)
+    {
+        foreach (Transform child in minionParant)
+        {
+            if (room.Contains(child.position))
+            {
+                var status = child.gameObject.GetCharacterStatus();
+                if (status)
+                {
+                    status.TakeDamage_Host(100000000, null);
+                }
+            }
+        }
+
+        foreach (Transform child in bossParant)
+        {
+            if (room.Contains(child.position))
+            {
+                var status = child.gameObject.GetCharacterStatus();
+                if (status)
+                {
+                    status.TakeDamage_Host(100000000, null);
+                }
+            }
+        }
+
+        foreach (Transform child in playerParent)
+        {
+            if (room.Contains(child.position))
+            {
+                var status = child.gameObject.GetCharacterStatus();
+                if (status)
+                {
+                    status.TakeDamage_Host(100000000, null);
+                }
+            }
+        }
+    }
     #endregion
 
     #region State Msg Handler

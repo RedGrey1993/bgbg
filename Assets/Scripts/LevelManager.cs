@@ -141,7 +141,7 @@ public class LevelManager : MonoBehaviour
                         }
                         if (bossRoomNum == 0)
                         {
-                            bossRoomNum = 10000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
+                            bossRoomNum = 100000000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
                             Rooms.Add(room);
                             continue;
                         }
@@ -172,7 +172,7 @@ public class LevelManager : MonoBehaviour
                         }
                         if (bossRoomNum == 0)
                         {
-                            bossRoomNum = 10000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
+                            bossRoomNum = 100000000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
                             Rooms.Add(room);
                             continue;
                         }
@@ -822,18 +822,18 @@ public class LevelManager : MonoBehaviour
 
     private void DestroyRoom(int roomIdx)
     {
-        if (BlackHole != null && Rooms[roomIdx].Contains(new Vector2(BlackHole.transform.position.x, BlackHole.transform.position.y)))
+        if (GameManager.Instance.IsLocal() &&
+            BlackHole != null && Rooms[roomIdx].Contains(new Vector2(BlackHole.transform.position.x, BlackHole.transform.position.y)))
         {
             var my = CharacterManager.Instance.GetMyselfGameObject();
             var status = my.GetCharacterStatus();
             status.State.ActiveSkillId = Constants.SysBugItemId;
             status.State.ActiveSkillCurCd = -1;
-            if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-            {
-                UIManager.Instance.UpdateMyStatusUI(status);
-                UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at Grid.Delete()]", Color.red, 5f);
-            }
+            UIManager.Instance.UpdateMyStatusUI(status);
+            UIManager.Instance.ShowInfoPanel("[FATAL ERROR: NullReferenceException at Grid.Delete()]", Color.red, 5f);
         }
+
+        CharacterManager.Instance.KillCharactersInRoom(Rooms[roomIdx]);
 
         remainRooms--;
         remainRoomsIndex.Remove(roomIdx);
@@ -1166,6 +1166,7 @@ public class LevelManager : MonoBehaviour
         if (pickupItemPrefab != null && skillData != null)
         {
             var roomId = GetRoomNoByPosition(position);
+            if (roomId < 0) return;
             var room = Rooms[roomId];
             if (position.x < room.xMin + 2) position.x = room.xMin + 2;
             else if (position.x > room.xMax - 1) position.x = room.xMax - 1;

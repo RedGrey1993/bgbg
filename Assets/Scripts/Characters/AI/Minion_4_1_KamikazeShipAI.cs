@@ -18,7 +18,7 @@ public class Minion_4_1_KamikazeShipAI : CharacterBaseAI
                     return;
 
                 tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
-                characterStatus.TakeDamage_Host(10000, tarStatus);
+                characterStatus.TakeDamage_Host(100000000, tarStatus);
             }
         }
     }
