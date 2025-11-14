@@ -89,12 +89,11 @@ public class EnergyWave : MonoBehaviour
             }
             if (Time.time > nextDamageTime)
             {
-                var damage = minDamage;
-                if (OwnerStatus != null)
+                if (OwnerStatus != null) // // 如果物体的主人已经死亡，则不再造成伤害
                 {
-                    damage = Mathf.Max(minDamage, OwnerStatus.State.Damage);
+                    var damage = Mathf.Max(minDamage, OwnerStatus.State.Damage);
+                    tarStatus.TakeDamage_Host(damage, OwnerStatus);
                 }
-                tarStatus.TakeDamage_Host(damage, OwnerStatus);
                 nextDamageTime = Time.time + damageInterval;
             }
         }

@@ -19,7 +19,9 @@ public class PhantomChargeDamage : MonoBehaviour
             if (collision.IsPlayerOrEnemy())
             {
                 var tarStatus = collision.GetCharacterStatus();
-                if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))
+                // 如果物体的主人已经死亡，则不再造成伤害
+                if (tarStatus == null || OwnerStatus == null
+                    || OwnerStatus.IsFriendlyUnit(tarStatus))
                     return;
 
                 tarStatus.TakeDamage_Host(Mathf.Max(minDamage, OwnerStatus.State.Damage * 2), OwnerStatus);

@@ -557,6 +557,7 @@ public class CharacterManager : MonoBehaviour
 
     public GameObject BeAttackedBoss { get; set; } = null;
     private bool prevShow = false;
+    private int lockedRoomIdx = -1;
     void FixedUpdate()
     {
         if (GameManager.Instance.GameState != GameState.InGame)
@@ -564,34 +565,54 @@ public class CharacterManager : MonoBehaviour
 
         var my = GetMyselfGameObject();
         bool showBossHealthSlider = false;
+        int bossRoomIdx = -1;
         foreach (Transform child in bossParant)
         {
             var bossStatus = child.gameObject.GetComponent<CharacterStatus>();
+            int roomId = LevelManager.Instance.GetRoomNoByPosition(child.position);
             if (bossStatus != null && bossStatus.IsAlive() && LevelManager.Instance.InSameRoom(my, child.gameObject))
             {
                 if (BeAttackedBoss == null) BeAttackedBoss = child.gameObject;
                 showBossHealthSlider = true;
+                bossRoomIdx = roomId;
                 break;
             }
         }
 
         if (showBossHealthSlider && BeAttackedBoss != null)
         {
-            UIManager.Instance.ShowBossHealthSlider();
             var state = BeAttackedBoss.GetComponent<CharacterStatus>().State;
             UIManager.Instance.UpdateBossHealthSlider(state.CurrentHp, state.MaxHp);
 
             if (!prevShow) {
                 GameManager.Instance.PlayBgm(true);
+                UIManager.Instance.ShowBossHealthSlider();
                 prevShow = true;
             }
         }
         else
         {
-            UIManager.Instance.HideBossHealthSlider();
             if (prevShow) {
                 GameManager.Instance.PlayBgm(false);
+                UIManager.Instance.HideBossHealthSlider();
                 prevShow = false;
+            }
+        }
+
+        if (bossRoomIdx >= 0)
+        {
+            if (lockedRoomIdx == -1 && LevelManager.Instance.FullInRoom(my, bossRoomIdx))
+            {
+                lockedRoomIdx = bossRoomIdx;
+                LevelManager.Instance.GenerateDoorTiles(lockedRoomIdx, GameManager.Instance.Storage);
+            }
+        }
+        else
+        {
+            if (lockedRoomIdx != -1)
+            {
+                LevelManager.Instance.ClearDoorTiles(lockedRoomIdx);
+                lockedRoomIdx = -1;
             }
         }
     }

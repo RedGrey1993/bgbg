@@ -320,8 +320,8 @@ public class GameManager : MonoBehaviour
         }
         audioSource.loop = true;
         audioSource.volume = stageData.bgmVolume;
-        if (!audioSource.isPlaying)
-            audioSource.Play();
+        audioSource.Play();
+        // if (!audioSource.isPlaying)
     }
 
     #endregion

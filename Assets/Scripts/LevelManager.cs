@@ -370,15 +370,20 @@ public class LevelManager : MonoBehaviour
                     roomToDoorTiles[roomIdx] ??= new List<Vector3Int>();
                     var upDoor = new Vector3Int(x, (int)topLeft.y, 0);
                     var downDoor = new Vector3Int(x, (int)bottomLeft.y, 0);
-                    if (!doorTileToRooms.ContainsKey(upDoor))
-                        doorTileToRooms[upDoor] = new List<int>();
-                    doorTileToRooms[upDoor].Add(roomIdx);
-                    if (!doorTileToRooms.ContainsKey(downDoor))
-                        doorTileToRooms[downDoor] = new List<int>();
-                    doorTileToRooms[downDoor].Add(roomIdx);
 
-                    roomToDoorTiles[roomIdx].Add(upDoor);
-                    roomToDoorTiles[roomIdx].Add(downDoor);
+                    if (upDoor.y != roomMaxHeight) {
+                        if (!doorTileToRooms.ContainsKey(upDoor))
+                            doorTileToRooms[upDoor] = new List<int>();
+                        doorTileToRooms[upDoor].Add(roomIdx);
+                        roomToDoorTiles[roomIdx].Add(upDoor);
+                    }
+
+                    if (downDoor.y != 0) {
+                        if (!doorTileToRooms.ContainsKey(downDoor))
+                            doorTileToRooms[downDoor] = new List<int>();
+                        doorTileToRooms[downDoor].Add(roomIdx);
+                        roomToDoorTiles[roomIdx].Add(downDoor);
+                    }
                 }
             }
 
@@ -393,15 +398,20 @@ public class LevelManager : MonoBehaviour
                     roomToDoorTiles[roomIdx] ??= new List<Vector3Int>();
                     var leftDoor = new Vector3Int((int)bottomLeft.x, y, 0);
                     var rightDoor = new Vector3Int((int)topRight.x, y, 0);
-                    if (!doorTileToRooms.ContainsKey(leftDoor))
-                        doorTileToRooms[leftDoor] = new List<int>();
-                    doorTileToRooms[leftDoor].Add(roomIdx);
-                    if (!doorTileToRooms.ContainsKey(rightDoor))
-                        doorTileToRooms[rightDoor] = new List<int>();
-                    doorTileToRooms[rightDoor].Add(roomIdx);
 
-                    roomToDoorTiles[roomIdx].Add(leftDoor);
-                    roomToDoorTiles[roomIdx].Add(rightDoor);
+                    if (leftDoor.x != 0) {
+                        if (!doorTileToRooms.ContainsKey(leftDoor))
+                            doorTileToRooms[leftDoor] = new List<int>();
+                        doorTileToRooms[leftDoor].Add(roomIdx);
+                        roomToDoorTiles[roomIdx].Add(leftDoor);
+                    }
+
+                    if (rightDoor.x != roomMaxWidth) {
+                        if (!doorTileToRooms.ContainsKey(rightDoor))
+                            doorTileToRooms[rightDoor] = new List<int>();
+                        doorTileToRooms[rightDoor].Add(roomIdx);
+                        roomToDoorTiles[roomIdx].Add(rightDoor);
+                    }
                 }
             }
         }
@@ -417,6 +427,28 @@ public class LevelManager : MonoBehaviour
                 roomToTiles[roomIdx] ??= new List<Vector3Int>();
                 roomToTiles[roomIdx].Add(pos);
             }
+        }
+    }
+
+    public void GenerateDoorTiles(int roomIdx, LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
+        var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
+        if (uott == null)
+            (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+
+        int ttCnt = uott.unbreakableCollisionTiles.Length;
+        for (int i = 0; i < roomToDoorTiles[roomIdx].Count; ++i)
+        {
+            wallTilemap.SetTile(roomToDoorTiles[roomIdx][i], uott.unbreakableCollisionTiles[i % ttCnt].tile);
+        }
+    }
+
+    public void ClearDoorTiles(int roomIdx)
+    {
+        for (int i = 0; i < roomToDoorTiles[roomIdx].Count; ++i)
+        {
+            wallTilemap.SetTile(roomToDoorTiles[roomIdx][i], null);
         }
     }
 
@@ -879,12 +911,8 @@ public class LevelManager : MonoBehaviour
         {
             if (doorTileToRooms.ContainsKey(tilePos))
             {
-                doorTileToRooms[tilePos].Remove(roomIdx);
-                if (doorTileToRooms[tilePos].Count == 0)
-                {
-                    doorTileToRooms.Remove(tilePos);
-                }
-                else
+                doorTileToRooms.Remove(tilePos);
+
                 {
                     // wallTilemap.SetTile(tilePos, CurrentLevelData.wallTile);
                     wallTilemap.SetTile(tilePos, wt.unbreakableCollisionTiles[0].tile);
@@ -899,6 +927,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        roomToDoorTiles[roomIdx].Clear();
     }
 
     private void SetExplosionTileMap(Rect room)
@@ -1006,6 +1035,17 @@ public class LevelManager : MonoBehaviour
     }
 
     #region Utils
+    // 完全走进了房间，不算墙的部分
+    public bool FullInRoom(GameObject obj, int roomId)
+    {
+        if (roomId < 0) return false;
+        var r = Rooms[roomId];
+        return r.xMin + 1 + Constants.CharacterMaxRadius < obj.transform.position.x 
+            && obj.transform.position.x < r.xMax - Constants.CharacterMaxRadius
+            && r.yMin + 1 + Constants.CharacterMaxRadius < obj.transform.position.y
+            && obj.transform.position.y < r.yMax - Constants.CharacterMaxRadius;
+    }
+
     public bool InSameRoom(GameObject obj1, GameObject obj2)
     {
         if (obj1 == null || obj2 == null) return false;
