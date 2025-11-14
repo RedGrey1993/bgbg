@@ -282,6 +282,18 @@ public class UIManager : MonoBehaviour
                     var tarWidth = rt.rect.height * (spriteWidth / spriteHeight);
                     rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
                 }
+
+                
+                if (cgInfo.audioClip != null)
+                {
+                    GameManager.Instance.audioSource.loop = cgInfo.loopAudio;
+                    GameManager.Instance.audioSource.clip = cgInfo.audioClip;
+                    GameManager.Instance.audioSource.Play();
+                }
+                else if (cgInfo.stopLoopAudio)
+                {
+                    GameManager.Instance.audioSource.loop = false;
+                }
             }
             // 触发渐变显示图片动画
             yield return StartCoroutine(FadeRoutine(0f, 1f, slideInTime));

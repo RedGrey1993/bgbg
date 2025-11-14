@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
         GenerateRooms(storage);
 
         if (level == 1)
-            UIManager.Instance.ShowInfoPanel("Happy Game!", Color.pink, 5);
+            UIManager.Instance.ShowInfoPanel("MOVE:WASD\nATTACK:↑↓←→\nITEMS:TAB\nESC:MENU\nHAPPY GAME!", Color.white, 30);
 
         // character objects 会随每次的HostTick将状态同步到Client
         CharacterManager.Instance.CreateCharacterObjects(storage);

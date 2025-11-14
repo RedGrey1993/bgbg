@@ -24,6 +24,9 @@ public struct CgInfo
     [TextArea] public string content;
     public Color contentColor;
     public string subtitle;
+    public bool stopLoopAudio;
+    public AudioClip audioClip;
+    public bool loopAudio;
 }
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "Level Data")]
