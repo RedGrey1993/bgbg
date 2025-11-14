@@ -66,7 +66,7 @@ namespace NetworkMessageProto {
             "ZG93bhgDIAEoBRIrCghQb3NpdGlvbhgEIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
             "UHJvdG8uVmVjMiIzCg5Cb3NzUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgF",
             "EhAKCFByZWZhYklkGAIgASgFIjUKEE1pbmlvblByZWZhYkluZm8SDwoHU3Rh",
-            "Z2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSKGCQoMTG9jYWxTdG9yYWdl",
+            "Z2VJZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSKZCQoMTG9jYWxTdG9yYWdl",
             "EhQKDEN1cnJlbnRTdGFnZRgBIAEoBRI2CgxQbGF5ZXJTdGF0ZXMYAiADKAsy",
             "IC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjYKDEJ1bGxldFN0",
             "YXRlcxgPIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUS",
@@ -92,9 +92,10 @@ namespace NetworkMessageProto {
             "ASgCEjAKCVdhbGxUaWxlcxgaIAMoCzIdLk5ldHdvcmtNZXNzYWdlUHJvdG8u",
             "VGlsZUluZm8SMQoKRmxvb3JUaWxlcxgbIAMoCzIdLk5ldHdvcmtNZXNzYWdl",
             "UHJvdG8uVGlsZUluZm8SMAoJSG9sZVRpbGVzGBwgAygLMh0uTmV0d29ya01l",
-            "c3NhZ2VQcm90by5UaWxlSW5mbyJaCghUaWxlSW5mbxIJCgFYGAEgASgFEgkK",
-            "AVkYAiABKAUSEAoIVGlsZVR5cGUYAyABKAUSFgoOVGlsZVRlbXBsYXRlSWQY",
-            "BCABKAUSDgoGVGlsZUlkGAUgASgFYgZwcm90bzM="));
+            "c3NhZ2VQcm90by5UaWxlSW5mbxIRCglQbGF5Q291bnQYHSABKAUiWgoIVGls",
+            "ZUluZm8SCQoBWBgBIAEoBRIJCgFZGAIgASgFEhAKCFRpbGVUeXBlGAMgASgF",
+            "EhYKDlRpbGVUZW1wbGF0ZUlkGAQgASgFEg4KBlRpbGVJZBgFIAEoBWIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -112,7 +113,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "CurrentCooldown", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles", "PlayCount" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.TileInfo), global::NetworkMessageProto.TileInfo.Parser, new[]{ "X", "Y", "TileType", "TileTemplateId", "TileId" }, null, null, null, null)
           }));
     }
@@ -4922,6 +4923,7 @@ namespace NetworkMessageProto {
       wallTiles_ = other.wallTiles_.Clone();
       floorTiles_ = other.floorTiles_.Clone();
       holeTiles_ = other.holeTiles_.Clone();
+      playCount_ = other.playCount_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4935,7 +4937,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 29
+    /// next index = 30
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5257,6 +5259,18 @@ namespace NetworkMessageProto {
       get { return holeTiles_; }
     }
 
+    /// <summary>Field number for the "PlayCount" field.</summary>
+    public const int PlayCountFieldNumber = 29;
+    private int playCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayCount {
+      get { return playCount_; }
+      set {
+        playCount_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -5300,6 +5314,7 @@ namespace NetworkMessageProto {
       if(!wallTiles_.Equals(other.wallTiles_)) return false;
       if(!floorTiles_.Equals(other.floorTiles_)) return false;
       if(!holeTiles_.Equals(other.holeTiles_)) return false;
+      if (PlayCount != other.PlayCount) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5335,6 +5350,7 @@ namespace NetworkMessageProto {
       hash ^= wallTiles_.GetHashCode();
       hash ^= floorTiles_.GetHashCode();
       hash ^= holeTiles_.GetHashCode();
+      if (PlayCount != 0) hash ^= PlayCount.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5426,6 +5442,10 @@ namespace NetworkMessageProto {
       wallTiles_.WriteTo(output, _repeated_wallTiles_codec);
       floorTiles_.WriteTo(output, _repeated_floorTiles_codec);
       holeTiles_.WriteTo(output, _repeated_holeTiles_codec);
+      if (PlayCount != 0) {
+        output.WriteRawTag(232, 1);
+        output.WriteInt32(PlayCount);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5509,6 +5529,10 @@ namespace NetworkMessageProto {
       wallTiles_.WriteTo(ref output, _repeated_wallTiles_codec);
       floorTiles_.WriteTo(ref output, _repeated_floorTiles_codec);
       holeTiles_.WriteTo(ref output, _repeated_holeTiles_codec);
+      if (PlayCount != 0) {
+        output.WriteRawTag(232, 1);
+        output.WriteInt32(PlayCount);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5577,6 +5601,9 @@ namespace NetworkMessageProto {
       size += wallTiles_.CalculateSize(_repeated_wallTiles_codec);
       size += floorTiles_.CalculateSize(_repeated_floorTiles_codec);
       size += holeTiles_.CalculateSize(_repeated_holeTiles_codec);
+      if (PlayCount != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(PlayCount);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5656,6 +5683,9 @@ namespace NetworkMessageProto {
       wallTiles_.Add(other.wallTiles_);
       floorTiles_.Add(other.floorTiles_);
       holeTiles_.Add(other.holeTiles_);
+      if (other.PlayCount != 0) {
+        PlayCount = other.PlayCount;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5798,6 +5828,10 @@ namespace NetworkMessageProto {
             holeTiles_.AddEntriesFrom(input, _repeated_holeTiles_codec);
             break;
           }
+          case 232: {
+            PlayCount = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -5938,6 +5972,10 @@ namespace NetworkMessageProto {
           }
           case 226: {
             holeTiles_.AddEntriesFrom(ref input, _repeated_holeTiles_codec);
+            break;
+          }
+          case 232: {
+            PlayCount = input.ReadInt32();
             break;
           }
         }

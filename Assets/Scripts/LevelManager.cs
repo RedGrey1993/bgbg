@@ -59,8 +59,11 @@ public class LevelManager : MonoBehaviour
 
         GenerateRooms(storage);
 
-        if (level == 1)
-            UIManager.Instance.ShowInfoPanel("MOVE:WASD\nATTACK:↑↓←→\nITEMS:TAB\nESC:MENU\nHAPPY GAME!", Color.white, 30);
+        if (level == 1) {
+            UIManager.Instance.ShowInfoPanel("MOVE:WASD\nATTACK:↑↓←→", Color.white, 30);
+            UIManager.Instance.ShowInfoPanel("ITEMS:TAB\nESC:MENU\nZOOM:MOUSE WHEEL", Color.white, 30);
+            UIManager.Instance.ShowInfoPanel("HAPPY GAME!", Color.pink, 5);
+        }
 
         // character objects 会随每次的HostTick将状态同步到Client
         CharacterManager.Instance.CreateCharacterObjects(storage);
@@ -87,6 +90,8 @@ public class LevelManager : MonoBehaviour
             float firstRoomBlastInterval = GameManager.Instance.gameConfig.FirstRoomBlastInterval;
             StartCoroutine(StartDestroyingRooms(firstRoomBlastInterval)); // 每180秒摧毁一个房间
         }
+
+        GameManager.Instance.PlayBgm();
     }
 
     // 房间初始化，因为是静态数据，所以联机模式只需要Host初始化完成后，发送广播给Client一次即可

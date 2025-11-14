@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
             Storage.PassedStages.Clear();
             Storage.PassedStages.AddRange(PassedStages);
         }
+
+        Storage.PlayCount++;
         using var file = File.Create(saveFilePath);
         SerializeUtil.Serialize(Storage, out byte[] data);
         file.Write(data, 0, data.Length);
@@ -116,7 +118,7 @@ public class GameManager : MonoBehaviour
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
-        PassedStages = new HashSet<int> { 2, 3, 5 };
+        PassedStages = new HashSet<int> { 1, 2, 3 };
 
         Debug.Log($"fhhtest, LoadLocalStorage: {Storage}, {Storage.Achievement1NewCycle}");
         return Storage;
@@ -134,7 +136,7 @@ public class GameManager : MonoBehaviour
         // TODO: Debug，调试用，固定前4关，后续修改
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
-        PassedStages = new HashSet<int> { 2, 3, 5 };
+        PassedStages = new HashSet<int> { 1, 2, 3 };
         return Storage;
     }
 
@@ -161,7 +163,7 @@ public class GameManager : MonoBehaviour
 
     public bool HasValidStorage(LocalStorage storage)
     {
-        return storage.PlayerStates.Count > 0 || storage.Achievement1NewCycle
+        return storage.PlayCount > 0 ||storage.PlayerStates.Count > 0 || storage.Achievement1NewCycle
             || storage.Achievement2Mirror || storage.Achievement3InfiniteLonely;
     }
 
@@ -206,6 +208,8 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         LevelManager.Instance.ClearLevel();
         CharacterManager.Instance.InitializeMySelf();
+
+        audioSource.Stop();
     }
 
     public void ToNextStage(Action callback)
@@ -298,11 +302,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool IsSysGuardianLevel()
+    public bool IsSysGuardianStage()
     {
         // TODO: 临时，测试用
         return true;
-        // return LevelDatabase.Instance.IsSysGuardianLevel(Storage.CurrentStage);
+        // return LevelDatabase.Instance.IsSysGuardianStage(Storage.CurrentStage);
+    }
+
+    public void PlayBgm(bool inBossRoom = false)
+    {
+        var stageData = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
+        if (inBossRoom) {
+            audioSource.clip = stageData.bgmBoss;
+        }
+        else {
+            audioSource.clip = stageData.bgmNormal;
+        }
+        audioSource.loop = true;
+        audioSource.volume = stageData.bgmVolume;
+        if (!audioSource.isPlaying)
+            audioSource.Play();
     }
 
     #endregion

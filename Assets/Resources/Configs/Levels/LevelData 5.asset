@@ -16,7 +16,7 @@ MonoBehaviour:
   normalMinionPrefabs:
   - {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
   bossPrefabs:
-  - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
+  - {fileID: 696006956200170134, guid: d3e0d0ee05b365f47ac4c3c9aadb875f, type: 3}
   level: 5
   totalRooms:
     min: 3
@@ -32,34 +32,43 @@ MonoBehaviour:
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: -6128473675539226984, guid: 9a5d28df46a9cad45929647cc4c71c79, type: 3}
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: -111105896397605553, guid: 8322dbcca072bb84e858c97fb2faa99f, type: 3}
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: 0}
     content: '[BLAST GRID BATTLE GROUNDS]
 
       ...
 
-      [SYSTEM_GUARDIAN...
-      TERMINATED BY GLASSES_MAN (PLAYER_0008)]
+      [SYSTEM_GUARDIAN... TERMINATED
+      BY GLASSES_MAN (PLAYER_0008)]
 
-      [GLASSES_MAN (PLAYER_0008)
-      RENAME TO THE_RULER (PLAYER_0008)]
+      [GLASSES_MAN (PLAYER_0008) RENAME TO THE_RULER
+      (PLAYER_0008)]
 
       [REBOOTING...]
 
       ...
 
-      [STOMPER
-      (PLAYER_9723)... TERMINATED BY PHANTOM_TANK(PLAYER_1193)]
+      [STOMPER (PLAYER_9723)...
+      TERMINATED BY PHANTOM_TANK(PLAYER_1193)]
 
-      [SPIKE_TURTLE
-      (PLAYER_8391)... TERMINATED BY MASTER_LONG(PLAYER_4396)]
+      [SPIKE_TURTLE (PLAYER_8391)...
+      TERMINATED BY MASTER_LONG(PLAYER_4396)]
 
       ...
 
@@ -72,14 +81,23 @@ MonoBehaviour:
       TERMINATED BY BILL (PLAYER_4256)] _'
     contentColor: {r: 0, g: 1, b: 0, a: 1}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: -8032089623730220460, guid: 99c6c450e81464a479b51efaa78f1fd3, type: 3}
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: -8748676863768407345, guid: efd6cb6b4d736134ca36af9378dbd096, type: 3}
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: 0}
     content: '[WARNING! PLAYERS CANNOT KILL THEMSELVES!]
 
@@ -92,15 +110,24 @@ MonoBehaviour:
       _'
     contentColor: {r: 0, g: 1, b: 0, a: 1}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   - cg: {fileID: -4453044402748924392, guid: 382f1c62bc5261d4aa5ccfee0c83d10d, type: 3}
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   stagePassedHiddenCgSprite:
   - cg: {fileID: 4188185563967472017, guid: d36baebebe6d01f49874248b52d6ddcb, type: 3}
     content: 
     contentColor: {r: 0, g: 0, b: 0, a: 0}
     subtitle: 
+    stopLoopAudio: 0
+    audioClip: {fileID: 0}
+    loopAudio: 0
   eliteSpawnChance: 0.1
   eliteScaleRange:
     min: 1.3
@@ -109,3 +136,6 @@ MonoBehaviour:
   bossRoomMinHeight: 40
   holeRatio: 0.001
   unbreakableObstacleRatio: 0.001
+  bgmNormal: {fileID: 8300000, guid: 7741e036a08bf9a42bdc68bff1dea918, type: 3}
+  bgmBoss: {fileID: 8300000, guid: 20d7812b6c55fba458853e94c89e01bc, type: 3}
+  bgmVolume: 0.2

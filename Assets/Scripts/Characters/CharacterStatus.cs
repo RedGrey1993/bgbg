@@ -179,7 +179,7 @@ public class CharacterStatus : MonoBehaviour
         
         // 如果是精英怪，概率掉落系统日志
         if (State.Scale > 1.1f && GameManager.Instance.IsLocal() &&
-            GameManager.Instance.IsSysGuardianLevel() && !GameManager.Instance.Storage.ShowedSysErrLogTip)
+            GameManager.Instance.IsSysGuardianStage() && !GameManager.Instance.Storage.ShowedSysErrLogTip)
         {
             // TODO: uncomment it
             // if (Random.value < 0.05f)

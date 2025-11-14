@@ -90,6 +90,14 @@ public class PhantomChargeExecutor : SkillExecutor
         aiScript.TobeDestroyed.Remove(chargeEffect);
 
         aiScript.isAttack = false;
+
+        // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+        if (aiScript.isAi)
+        {
+            // 这时候 Coroutine 还不是null，所以不会再次进入攻击
+            yield return new WaitForSeconds(Random.Range(1, 3f));
+        }
+
         aiScript.ActiveSkillCoroutine = null;
     }
 }

@@ -6,8 +6,6 @@ public class TeleportBeam : MonoBehaviour
     [Tooltip("传送时播放的音效")]
     public AudioClip teleportSound;
     public AnimationCurve fadeInCurve;
-
-    private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private bool isTeleporting = false;
     private bool canTeleport = false;
@@ -20,13 +18,6 @@ public class TeleportBeam : MonoBehaviour
 
     void Start()
     {
-        // 确保有一个AudioSource组件来播放声音
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-
         if (spriteRenderer != null)
         {
             tarAlpha = spriteRenderer.color.a;
@@ -94,7 +85,7 @@ public class TeleportBeam : MonoBehaviour
         // 播放传送音效
         if (teleportSound != null)
         {
-            audioSource.PlayOneShot(teleportSound);
+            GameManager.Instance.audioSource.PlayOneShot(teleportSound);
         }
 
         GameManager.Instance.ToNextStage(() =>

@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb31ec79121f1c14389be0250bc8a493, type: 3}
   m_Name: LevelData 2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  floorTile: {fileID: 11400000, guid: e9bd326ac32ffe841b9f731695e50c0c, type: 2}
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
-  wallTile: {fileID: 11400000, guid: 800df2dc79163ef48ae1c47ff424aecb, type: 2}
   normalMinionPrefabs:
   - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
   bossPrefabs:
-  - {fileID: 5506378715684145941, guid: 1634a816d8766b64a8953461c4e61da1, type: 3}
+  - {fileID: 5506378715684145941, guid: 5aff9bf8c80eb1a44aae013f719c3dbf, type: 3}
   level: 2
   totalRooms:
     min: 3
@@ -28,10 +26,17 @@ MonoBehaviour:
   areaPerMinion:
     min: 100
     max: 100
-  gamePassedSprite: {fileID: 0}
+  stageStartCgSprite: []
+  stagePassedCgSprite: []
+  stagePassedHiddenCgSprite: []
   eliteSpawnChance: 0.5
   eliteScaleRange:
     min: 1.3
     max: 2
   bossRoomMinWidth: 20
   bossRoomMinHeight: 20
+  holeRatio: 0.001
+  unbreakableObstacleRatio: 0.001
+  bgmNormal: {fileID: 8300000, guid: 66d04315261801c4a8cb1f38ab308393, type: 3}
+  bgmBoss: {fileID: 8300000, guid: 5b71fe8a18289af4c82732019dac8f1b, type: 3}
+  bgmVolume: 0.2

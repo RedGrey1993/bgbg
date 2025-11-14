@@ -556,8 +556,12 @@ public class CharacterManager : MonoBehaviour
     }
 
     public GameObject BeAttackedBoss { get; set; } = null;
+    private bool prevShow = false;
     void FixedUpdate()
     {
+        if (GameManager.Instance.GameState != GameState.InGame)
+            return;
+
         var my = GetMyselfGameObject();
         bool showBossHealthSlider = false;
         foreach (Transform child in bossParant)
@@ -576,10 +580,19 @@ public class CharacterManager : MonoBehaviour
             UIManager.Instance.ShowBossHealthSlider();
             var state = BeAttackedBoss.GetComponent<CharacterStatus>().State;
             UIManager.Instance.UpdateBossHealthSlider(state.CurrentHp, state.MaxHp);
+
+            if (!prevShow) {
+                GameManager.Instance.PlayBgm(true);
+                prevShow = true;
+            }
         }
         else
         {
             UIManager.Instance.HideBossHealthSlider();
+            if (prevShow) {
+                GameManager.Instance.PlayBgm(false);
+                prevShow = false;
+            }
         }
     }
 

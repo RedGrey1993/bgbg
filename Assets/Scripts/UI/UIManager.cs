@@ -283,10 +283,10 @@ public class UIManager : MonoBehaviour
                     rt.sizeDelta = new Vector2(tarWidth, rt.sizeDelta.y);
                 }
 
-                
                 if (cgInfo.audioClip != null)
                 {
                     GameManager.Instance.audioSource.loop = cgInfo.loopAudio;
+                    GameManager.Instance.audioSource.volume = 1f;
                     GameManager.Instance.audioSource.clip = cgInfo.audioClip;
                     GameManager.Instance.audioSource.Play();
                 }

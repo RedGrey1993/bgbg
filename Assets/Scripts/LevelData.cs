@@ -60,6 +60,10 @@ public class LevelData : ScriptableObject
     public float holeRatio = 0.001f;
     public float unbreakableObstacleRatio = 0.001f;
 
+    public AudioClip bgmNormal;
+    public AudioClip bgmBoss;
+    [Range(0, 1)]
+    public float bgmVolume = 0.5f;
 
     // public float monsterSpawnChance = 0.8f; // 80%的房间会刷怪
 }
