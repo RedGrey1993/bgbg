@@ -13,4 +13,19 @@ public class SkillData : ScriptableObject
     public bool IsActive = false; // 是否为主动技能
     public int cooldown = 10;  // 杀掉10个敌人后主动技能恢复
     public SkillExecutor executor; // 技能执行器接口
+    public List<ItemTag> tags;
+
+    public bool MatchTags(List<ItemTag> chTags)
+    {
+        if (tags.Count == 0)
+            return true;
+
+        foreach(var chTag in chTags)
+        {
+            if (tags.Contains(chTag))
+                return true;
+        }
+
+        return false;
+    }
 }

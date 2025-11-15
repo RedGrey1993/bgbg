@@ -202,7 +202,7 @@ public class CharacterStatus : MonoBehaviour
         {
             UIManager.Instance.ShowTeleportBeamEffect(transform.position);
             if (!CharacterManager.Instance.MySelfHasSysBug())
-                LevelManager.Instance.RandomizePickupItem(transform.position);
+                LevelManager.Instance.RandomizePickupItem(characterData, transform.position);
 
             if (CharacterManager.Instance.NewRulerGo == gameObject)
             {

@@ -74,6 +74,16 @@ public enum CharacterType
     Boss_4_0_SysGuardianFloatingTurret,
 }
 
+public enum ItemTag
+{
+    Default = 0,
+    PhantomTank,
+    MasterLong,
+    Pokeboy,
+    Elite,
+    NotDrop, // 少部分特殊道具，只会在特殊条件达到后生成，而不会随机掉落
+}
+
 public enum Direction
 {
     Down = 0,

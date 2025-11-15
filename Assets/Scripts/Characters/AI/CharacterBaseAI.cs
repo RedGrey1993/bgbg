@@ -907,18 +907,23 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
     }
 
+    private float lastPlayHurtEffectTime = 0f;
     public virtual void OnHurt()
     {
-        if (animator && CharacterData.Is3DModel())
-        {
-            animator.Play("Hurt");
-        }
+        if (Time.time - lastPlayHurtEffectTime > 3f) { // 避免频繁播放受伤动画和音效影响体验
+            if (animator && CharacterData.Is3DModel())
+            {
+                animator.Play("Hurt");
+            }
 
-        if (CharacterData.hurtSound != null)
-        {
-            if (OneShotAudioSource == null)
-                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
-            OneShotAudioSource.PlayOneShot(CharacterData.hurtSound);
+            if (CharacterData.hurtSound != null)
+            {
+                if (OneShotAudioSource == null)
+                    OneShotAudioSource = gameObject.AddComponent<AudioSource>();
+                OneShotAudioSource.PlayOneShot(CharacterData.hurtSound);
+            }
+
+            lastPlayHurtEffectTime = Time.time;
         }
     }
 

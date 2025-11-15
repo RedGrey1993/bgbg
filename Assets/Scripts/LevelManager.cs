@@ -1200,11 +1200,16 @@ public class LevelManager : MonoBehaviour
     #endregion
 
     #region Pickup Items
-    public void RandomizePickupItem(Vector3 position)
+    public void RandomizePickupItem(CharacterData chData, Vector3 position)
     {
-        var skillNum = SkillDatabase.Instance.ActiveSkills.Count;
-        var skillId = UnityEngine.Random.Range(0, skillNum);
-        var skillData = SkillDatabase.Instance.ActiveSkills[skillId];
+        List<SkillData> activeSkills = new List<SkillData>();
+        foreach (var activeItem in SkillDatabase.Instance.ActiveSkills)
+        {
+            if (activeItem.MatchTags(chData.itemTags)) activeSkills.Add(activeItem);
+        }
+
+        var skillId = Random.Range(0, activeSkills.Count);
+        var skillData = activeSkills[skillId];
         ShowPickUpItem(position, skillData);
     }
 

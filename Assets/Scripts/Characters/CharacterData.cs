@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NetworkMessageProto;
 using UnityEngine;
 
@@ -66,6 +67,7 @@ public class CharacterData : ScriptableObject
     public MinMaxFloat chaseMoveInputInterval = new () { min = 0.05f, max = 0.1f };
     // 每隔随机0.5-2s改变一次随机移动的目标位置
     public MinMaxFloat randomMoveToTargetInterval = new() { min = 0.5f, max = 2 };
+    public List<ItemTag> itemTags;
 
     public PlayerState ToState()
     {

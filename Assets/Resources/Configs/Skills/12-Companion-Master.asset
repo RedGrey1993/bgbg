@@ -25,3 +25,4 @@ MonoBehaviour:
   IsActive: 1
   cooldown: 1
   executor: {fileID: 11400000, guid: 587564bf75f9fef459b9bd31f8916f93, type: 2}
+  tags: 03000000

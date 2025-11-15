@@ -18,6 +18,8 @@ MonoBehaviour:
     direction you are facing.
   backgroundStory: 
   icon: {fileID: -6216176378285699219, guid: 6be891b17eb899340b5f6d650c1a6de7, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
   IsActive: 1
   cooldown: 2
   executor: {fileID: 11400000, guid: 2c691f50ff9734e45bed3dfea50e236d, type: 2}
+  tags: 01000000
