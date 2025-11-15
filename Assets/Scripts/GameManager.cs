@@ -472,7 +472,86 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            // Spawn Minion / SM:1/5/1
+            else if (command.StartsWith("SM"))
+            {
+                var parameters = command.Split(':')[^1];
+                int prefabId = int.Parse(parameters.Split('/')[0]);
+                int count = int.Parse(parameters.Split('/')[1]);
+                int elite = int.Parse(parameters.Split('/')[2]);
+                int roomId = LevelManager.Instance.GetRoomNoByPosition(CharacterManager.Instance.GetMyselfGameObject().transform.position);
+                Rect room = LevelManager.Instance.Rooms[roomId];
+
+                for (int i = 0; i < count; i++)
+                {
+                    float scale = 1f;
+                    if (elite > 0)
+                    {
+                        scale = UnityEngine.Random.Range(1.3f, 2f);
+                    }
+                    InstantiateMinionObject(gameConfig.MinionPrefabs[prefabId], room.center, null, scale);
+                }
+            }
         }
+    }
+
+    private GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, PlayerState ms, float scale = 1f)
+    {
+        var minion = Instantiate(prefab, CharacterManager.Instance.minionParant);
+        minion.transform.position = position;
+
+        int minionId;
+        if (ms != null) minionId = ms.PlayerId;
+        else minionId = IdGenerator.NextCharacterId();
+
+        minion.name = $"{prefab.name}{minionId}";
+        minion.tag = Constants.TagEnemy;
+
+        if (minion.TryGetComponent<CharacterStatus>(out var minionStatus))
+        {
+            if (ms != null)
+            {
+                minionStatus.SetState(ms);
+            }
+            else
+            {
+                minionStatus.State.PlayerId = minionId;
+                minionStatus.State.PlayerName = minion.name;
+                if (scale > 1.1f)
+                {
+                    minionStatus.State.Damage = (int)(minionStatus.State.Damage * scale);
+                    // minionStatus.State.MoveSpeed = (uint)(minionStatus.State.MoveSpeed * scale);
+                    minionStatus.State.BulletSpeed = (uint)(minionStatus.State.BulletSpeed * scale);
+                    minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
+                    minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
+                    minionStatus.State.ShootRange = (int)(minionStatus.State.ShootRange * scale);
+                    minionStatus.SetColor(Constants.RandomColor());
+                }
+                else
+                {
+                    minionStatus.SetColor(Color.white);
+                }
+                minionStatus.SetScale(scale);
+            }
+            if (minion.TryGetComponent<Rigidbody2D>(out var rb))
+            {
+                rb.mass *= minionStatus.State.Scale;
+            }
+        }
+
+        // 将血条显示到对象的头上
+        var miniStatusCanvas = minion.GetComponentInChildren<Canvas>();
+        if (miniStatusCanvas == null)
+        {
+            Physics2D.SyncTransforms();
+            var col2D = minion.GetComponentInChildren<Collider2D>();
+            var tarPos = minion.transform.position;
+            tarPos.y += col2D.bounds.extents.y + 0.5f;
+            var obj = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
+            obj.transform.SetParent(minion.transform);
+        }
+
+        return minion;
     }
 #endif
 }

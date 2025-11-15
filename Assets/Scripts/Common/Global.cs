@@ -222,6 +222,57 @@ public static class Constants
         return r >= 0 ? r : r + n;
     }
 
+    public static Color RandomColor()
+    {
+        // 更偏向于右上角比较明显的颜色
+        Color color = new Color();
+        color.a = 1;
+        int rnd = UnityEngine.Random.Range(0, 3);
+        if (rnd == 0)
+        {
+            if (UnityEngine.Random.value > 0.5f)
+            {
+                color.r = 1;
+                color.g = 0;
+            }
+            else
+            {
+                color.r = 0;
+                color.g = 1;
+            }
+            color.b = UnityEngine.Random.Range(0, 1f);
+        }
+        else if (rnd == 1)
+        {
+            if (UnityEngine.Random.value > 0.5f)
+            {
+                color.g = 1;
+                color.b = 0;
+            }
+            else
+            {
+                color.g = 0;
+                color.b = 1;
+            }
+            color.r = UnityEngine.Random.Range(0, 1f);
+        }
+        else // if (rnd == 2)
+        {
+            if (UnityEngine.Random.value > 0.5f)
+            {
+                color.b = 1;
+                color.r = 0;
+            }
+            else
+            {
+                color.b = 0;
+                color.r = 1;
+            }
+            color.g = UnityEngine.Random.Range(0, 1f);
+        }
+        return color;
+    }
+
     public static Color ToColor(this ColorProto c)
     {
         if (c == null) return Color.white;

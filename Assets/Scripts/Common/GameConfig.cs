@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameConfig", menuName = "Game Config")]
@@ -9,4 +10,7 @@ public class GameConfig : ScriptableObject
     public float RedFlashRectDuration = 10;
 
     public bool PlayCG = true;
+
+    [Header("Character Prefabs")]
+    public List<GameObject> MinionPrefabs;
 }

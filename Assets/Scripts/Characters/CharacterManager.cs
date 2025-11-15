@@ -272,7 +272,7 @@ public class CharacterManager : MonoBehaviour
             {
                 playerStatus.State.PlayerId = playerId;
                 playerStatus.State.PlayerName = playerName;
-                playerStatus.SetColor(playerId <= 1 ? Color.white : RandomColor());
+                playerStatus.SetColor(playerId <= 1 ? Color.white : Constants.RandomColor());
             }
             playerStatus.SetScale(1);
 
@@ -461,57 +461,6 @@ public class CharacterManager : MonoBehaviour
     //     x = x ^ (x >> 16);
     //     return x;
     // }
-
-    private Color RandomColor()
-    {
-        // 更偏向于右上角比较明显的颜色
-        Color color = new Color();
-        color.a = 1;
-        int rnd = Random.Range(0, 3);
-        if (rnd == 0)
-        {
-            if (Random.value > 0.5f)
-            {
-                color.r = 1;
-                color.g = 0;
-            }
-            else
-            {
-                color.r = 0;
-                color.g = 1;
-            }
-            color.b = Random.Range(0, 1f);
-        }
-        else if (rnd == 1)
-        {
-            if (Random.value > 0.5f)
-            {
-                color.g = 1;
-                color.b = 0;
-            }
-            else
-            {
-                color.g = 0;
-                color.b = 1;
-            }
-            color.r = Random.Range(0, 1f);
-        }
-        else // if (rnd == 2)
-        {
-            if (Random.value > 0.5f)
-            {
-                color.b = 1;
-                color.r = 0;
-            }
-            else
-            {
-                color.b = 0;
-                color.r = 1;
-            }
-            color.g = Random.Range(0, 1f);
-        }
-        return color;
-    }
 
     public void InitializeMySelf()
     {
@@ -1010,7 +959,7 @@ public class CharacterManager : MonoBehaviour
                     minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
                     minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
                     minionStatus.State.ShootRange = (int)(minionStatus.State.ShootRange * scale);
-                    minionStatus.SetColor(RandomColor());
+                    minionStatus.SetColor(Constants.RandomColor());
                 }
                 else
                 {

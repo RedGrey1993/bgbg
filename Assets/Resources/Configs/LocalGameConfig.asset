@@ -16,3 +16,12 @@ MonoBehaviour:
   OtherRoomBlastInterval: 1000
   RedFlashRectDuration: 10
   PlayCG: 0
+  MinionPrefabs:
+  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
+  - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}
+  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
+  - {fileID: 5506378715684145941, guid: e6e280379e6a7c14298acaf26b8c3a9f, type: 3}
+  - {fileID: 5506378715684145941, guid: dac954735d06acd408c779235360e537, type: 3}
+  - {fileID: 5506378715684145941, guid: 6a9a83d0a7e42f54d9bb98c82a8188ce, type: 3}
+  - {fileID: 5506378715684145941, guid: ca4136794166b3b439b8b630c5b4f3d1, type: 3}
+  - {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
