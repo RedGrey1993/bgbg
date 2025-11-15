@@ -45,7 +45,7 @@ public class ChasingBullet : MonoBehaviour
                 }
                 else if (targetCharacterStatus != null)
                 {
-                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
+                    targetCharacterStatus.TakeDamage_Host(OwnerStatus, DamageType.Bullet);
                 }
             } else if (other.gameObject.CompareTag(Constants.TagWall))
             {
@@ -73,7 +73,7 @@ public class ChasingBullet : MonoBehaviour
                 }
                 else if (targetCharacterStatus != null)
                 {
-                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
+                    targetCharacterStatus.TakeDamage_Host(OwnerStatus, DamageType.Bullet);
                 }
             }
         }

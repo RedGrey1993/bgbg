@@ -248,7 +248,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                         if (characterStatus.IsFriendlyUnit(tarStatus))
                             return;
                             
-                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
+                        tarStatus.TakeDamage_Host(characterStatus.State.Damage, null, DamageType.Collision);
                         nextCollisionDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                     }
                 }

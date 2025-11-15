@@ -10,7 +10,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (Time.time > nextDamageTime)
             {
                 var status = collision.gameObject.GetComponentInParent<CharacterStatus>();
-                status.TakeDamage_Host(1, null);
+                status.TakeDamage_Host(1, null, DamageType.Collision);
                 nextDamageTime = Time.time + 1f;
             }
         }

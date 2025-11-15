@@ -25,11 +25,11 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
 
                         if (isJumpingDown)
                         {
-                            tarStatus.TakeDamage_Host(characterStatus.State.Damage * 2, null);
+                            tarStatus.TakeDamage_Host(characterStatus.State.Damage * 2, null, DamageType.Bullet);
                         }
                         else
                         {
-                            tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
+                            tarStatus.TakeDamage_Host(characterStatus.State.Damage, null, DamageType.Collision);
                         }
                         nextCollisionDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
                     }

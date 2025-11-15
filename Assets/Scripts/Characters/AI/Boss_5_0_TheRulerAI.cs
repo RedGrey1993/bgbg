@@ -581,7 +581,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         if (aggroTarget != null)
         {
             var playerStatus = aggroTarget.GetComponent<CharacterStatus>();
-            playerStatus.TakeDamage_Host(100000000, null);
+            playerStatus.TakeDamage_Host(100000000, null, DamageType.Bullet);
         }
 
         UIManager.Instance.formatPanel.SetActive(false);

@@ -17,8 +17,8 @@ public class Minion_4_1_KamikazeShipAI : CharacterBaseAI
                 if (characterStatus.IsFriendlyUnit(tarStatus))
                     return;
 
-                tarStatus.TakeDamage_Host(characterStatus.State.Damage, null);
-                characterStatus.TakeDamage_Host(100000000, tarStatus);
+                tarStatus.TakeDamage_Host(characterStatus.State.Damage, null, DamageType.Bullet);
+                characterStatus.TakeDamage_Host(100000000, tarStatus, DamageType.Bullet);
             }
         }
     }

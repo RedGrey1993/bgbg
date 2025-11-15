@@ -51,3 +51,4 @@ MonoBehaviour:
     min: 0.5
     max: 2
   itemTags: 01000000
+  takeCollisionDamage: 0

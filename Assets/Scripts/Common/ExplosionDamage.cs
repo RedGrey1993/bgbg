@@ -40,7 +40,7 @@ public class ExplosionDamage : MonoBehaviour
                 // 5. 如果找到了生命值脚本，就调用受伤方法
                 if (status != null)
                 {
-                    status.TakeDamage_Host(damageAmount, null);
+                    status.TakeDamage_Host(damageAmount, null, DamageType.Bullet);
                 }
             }
         }

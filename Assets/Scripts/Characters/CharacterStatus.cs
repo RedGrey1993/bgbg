@@ -48,8 +48,9 @@ public class CharacterStatus : MonoBehaviour
 
     // 当前HOST上的所有Player都会触发TakeDamage
     // TODO: 联机模式的逻辑待考虑，想法：将计算完之后的状态发送给客户端，HOST本身忽略，客户端根据事件更新UI
-    public void TakeDamage_Host(CharacterStatus attacker)
+    public void TakeDamage_Host(CharacterStatus attacker, DamageType damageType)
     {
+        if (damageType == DamageType.Collision && !characterData.takeCollisionDamage) return;
         if (IsDead() || attacker == null) return;
         float damage = attacker.State.Damage;
         float curHp = State.CurrentHp - damage;
@@ -69,8 +70,9 @@ public class CharacterStatus : MonoBehaviour
 
     // 造成伤害时，attacker可能已经死了，有时候仍然需要正常造成伤害
     // 也有时候是一些道具造成的伤害，这时attacker为null
-    public void TakeDamage_Host(float damage, CharacterStatus attacker)
+    public void TakeDamage_Host(float damage, CharacterStatus attacker, DamageType damageType)
     {
+        if (damageType == DamageType.Collision && !characterData.takeCollisionDamage) return;
         if (IsDead()) return;
         if (attacker != null) 
         {

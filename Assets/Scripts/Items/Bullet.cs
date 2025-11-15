@@ -118,7 +118,7 @@ public class Bullet : MonoBehaviour
 
                 // 如果子弹的主人已经死亡，则不再造成伤害
                 if (OwnerStatus != null)
-                    tarStatus.TakeDamage_Host(Damage, OwnerStatus);
+                    tarStatus.TakeDamage_Host(Damage, OwnerStatus, DamageType.Bullet);
 
                 if (SplitCount >= 0 && OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
                 {
@@ -208,7 +208,7 @@ public class Bullet : MonoBehaviour
                 }
                 else if (targetCharacterStatus != null)
                 {
-                    targetCharacterStatus.TakeDamage_Host(OwnerStatus);
+                    targetCharacterStatus.TakeDamage_Host(OwnerStatus, DamageType.Bullet);
                 }
             }
         }

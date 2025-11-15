@@ -20,6 +20,6 @@ MonoBehaviour:
   icon: {fileID: 2194614285991703420, guid: 343119070d3e89a4e9eb8ad055c71868, type: 3}
   tipColor: {r: 1, g: 1, b: 1, a: 1}
   IsActive: 1
-  cooldown: 10
+  cooldown: 6
   executor: {fileID: 11400000, guid: acd2dee7ca6d45b42bb2928cfe300681, type: 2}
   tags: 02000000

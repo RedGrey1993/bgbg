@@ -140,7 +140,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
             aiScript.PokeMinionReviveTime.Add(0);
         }
 
-        enemy.TakeDamage_Host(100000000, aiScript.characterStatus);
+        enemy.TakeDamage_Host(100000000, aiScript.characterStatus, DamageType.Bullet);
         aiScript.isAttack = false;
         aiScript.ActiveSkillCoroutine = null;
     }

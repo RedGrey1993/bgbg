@@ -84,6 +84,12 @@ public enum ItemTag
     NotDrop, // 少部分特殊道具，只会在特殊条件达到后生成，而不会随机掉落
 }
 
+public enum DamageType
+{
+    Bullet = 0,
+    Collision,
+}
+
 public enum Direction
 {
     Down = 0,

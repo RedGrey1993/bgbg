@@ -24,7 +24,7 @@ public class PhantomChargeDamage : MonoBehaviour
                     || OwnerStatus.IsFriendlyUnit(tarStatus))
                     return;
 
-                tarStatus.TakeDamage_Host(Mathf.Max(minDamage, OwnerStatus.State.Damage * 2), OwnerStatus);
+                tarStatus.TakeDamage_Host(Mathf.Max(minDamage, OwnerStatus.State.Damage * 2), OwnerStatus, DamageType.Bullet);
             }
             else if (collision.MyCompareTag(Constants.TagWall))
             {

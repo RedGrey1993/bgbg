@@ -1010,7 +1010,7 @@ public class CharacterManager : MonoBehaviour
                 var status = child.gameObject.GetCharacterStatus();
                 if (status)
                 {
-                    status.TakeDamage_Host(100000000, null);
+                    status.TakeDamage_Host(100000000, null, DamageType.Bullet);
                 }
             }
         }
@@ -1022,7 +1022,7 @@ public class CharacterManager : MonoBehaviour
                 var status = child.gameObject.GetCharacterStatus();
                 if (status)
                 {
-                    status.TakeDamage_Host(100000000, null);
+                    status.TakeDamage_Host(100000000, null, DamageType.Bullet);
                 }
             }
         }
@@ -1034,7 +1034,7 @@ public class CharacterManager : MonoBehaviour
                 var status = child.gameObject.GetCharacterStatus();
                 if (status)
                 {
-                    status.TakeDamage_Host(100000000, null);
+                    status.TakeDamage_Host(100000000, null, DamageType.Bullet);
                 }
             }
         }
