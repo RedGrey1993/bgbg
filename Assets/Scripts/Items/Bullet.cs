@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NetworkMessageProto;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
@@ -73,11 +74,54 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void TryActivateDestructible(Vector3Int cellPosition)
+    {
+        // 1. 获取这个位置的 Tile
+        TileBase tile = LevelManager.Instance.wallTilemap.GetTile(cellPosition);
+
+        // 2. 检查它是否是我们自定义的 DestructibleTile
+        if (tile is DestructibleTile)
+        {
+            DestructibleTile destructibleTile = (DestructibleTile)tile;
+
+            // --- 这就是魔法发生的地方 ---
+
+            // 3. **移除 Tile**: 把它从 Tilemap 上擦除
+            LevelManager.Instance.wallTilemap.SetTile(cellPosition, null);
+            GameManager.Instance.Storage.WallTiles.Add(new TileInfo
+            {
+                X = cellPosition.x,
+                Y = cellPosition.y,
+                TileType = (int)TileType.BreakableObstacle,
+                TileTemplateId = -1,
+                TileId = -1,
+            });
+
+            // // 4. **实例化 Prefab**: 在格子的中心位置创建“活”的 Prefab
+            // Vector3 worldPos = LevelManager.Instance.wallTilemap.GetCellCenterWorld(cellPosition);
+            // Instantiate(destructibleTile.destructiblePrefab, worldPos, Quaternion.identity);
+        }
+    }
+
     // 激光子弹的IsTrigger是true
     void OnTriggerEnter2D(Collider2D other)
     {
         if (GameManager.Instance.IsLocalOrHost())
         {
+            // 检查我们是否撞到了 Tilemap
+            if (other.CompareTag(Constants.TagWall))
+            {
+                Vector2 curPos = col2D.bounds.center;
+                
+                Vector2 colPos1 = curPos + rb.linearVelocity.normalized * col2D.bounds.extents.magnitude;
+                Vector2 colPos2 = colPos1 - rb.linearVelocity.normalized;
+                Vector3Int cellPosition = LevelManager.Instance.wallTilemap.WorldToCell(colPos1);
+                // 尝试“激活”这个障碍物
+                TryActivateDestructible(cellPosition);
+                cellPosition = LevelManager.Instance.wallTilemap.WorldToCell(colPos2);
+                TryActivateDestructible(cellPosition);
+            }
+
             if (other.isTrigger) return;
             if (!other.gameObject.activeSelf) return;
             // 避免分裂出的子弹在同一个碰撞体销毁并触发伤害

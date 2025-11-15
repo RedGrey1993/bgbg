@@ -322,9 +322,19 @@ public class LevelManager : MonoBehaviour
         int stage = storage.CurrentStage;
         foreach (var wallTile in storage.WallTiles)
         {
+            // 被销毁的房间的tile，直接跳过
             if (!tileToRooms.ContainsKey(new Vector3Int(wallTile.X, wallTile.Y, 0))) continue;
-            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
-            wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), tt.unbreakableCollisionTiles[wallTile.TileId].tile);
+            if (wallTile.TileId == -1) // 已经被破坏的可破坏墙体
+            {
+                wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), null);
+            }
+            else {
+                TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
+                if ((TileType)wallTile.TileType == TileType.BreakableObstacle)
+                    wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), tt.breakableCollisionTiles[wallTile.TileId].tile);
+                else
+                    wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), tt.unbreakableCollisionTiles[wallTile.TileId].tile);
+            }
         }
 
         foreach (var floorTile in storage.FloorTiles)
@@ -539,6 +549,7 @@ public class LevelManager : MonoBehaviour
 
         GenerateHole(room, storage);
         GenerateUnbreakableObstacle(room, storage);
+        GenerateBreakableObstacle(room, storage);
         GenerateFloor(room, storage, isBossRoom);
     }
 
@@ -572,6 +583,44 @@ public class LevelManager : MonoBehaviour
                         X = x + td.position.x,
                         Y = y + td.position.y,
                         TileType = (int)TileType.UnbreakableObstacle,
+                        TileTemplateId = ttId,
+                        TileId = i,
+                    });
+                }
+            }
+        }
+    }
+
+    private void GenerateBreakableObstacle(Rect room, LocalStorage storage)
+    {
+        int stage = storage.CurrentStage;
+        var levelData = LevelDatabase.Instance.GetLevelData(stage);
+        var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
+        if (uott == null) return;
+
+        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        {
+            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            {
+                
+                if (x < room.xMin + 1 + Constants.CharacterMaxWidth 
+                    || y < room.yMin + 1 + Constants.CharacterMaxHeight) continue;
+                if (wallTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
+                if (Random.value > levelData.breakableObstacleRatio) continue;
+
+                (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
+                if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
+                    || y + uott.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
+                
+                for(int i = 0; i < uott.breakableCollisionTiles.Count(); i++)
+                {
+                    TileData td = uott.breakableCollisionTiles[i];
+                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
+                    storage.WallTiles.Add(new TileInfo
+                    {
+                        X = x + td.position.x,
+                        Y = y + td.position.y,
+                        TileType = (int)TileType.BreakableObstacle,
                         TileTemplateId = ttId,
                         TileId = i,
                     });

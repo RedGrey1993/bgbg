@@ -71,7 +71,8 @@ MonoBehaviour:
   bossRoomMinWidth: 20
   bossRoomMinHeight: 20
   holeRatio: 0.001
-  unbreakableObstacleRatio: 0.005
+  unbreakableObstacleRatio: 0
+  breakableObstacleRatio: 0.005
   bgmNormal: {fileID: 8300000, guid: 886fc467bbbd49147a9f940de3044fbe, type: 3}
   bgmBoss: {fileID: 8300000, guid: e17a6c43a91cfb043af815ac86ec825c, type: 3}
   bgmVolume: 0.3

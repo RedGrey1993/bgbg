@@ -59,6 +59,7 @@ public class LevelData : ScriptableObject
     public int bossRoomMinHeight = 20;
     public float holeRatio = 0.001f;
     public float unbreakableObstacleRatio = 0.001f;
+    public float breakableObstacleRatio = 0.001f;
 
     public AudioClip bgmNormal;
     public AudioClip bgmBoss;
