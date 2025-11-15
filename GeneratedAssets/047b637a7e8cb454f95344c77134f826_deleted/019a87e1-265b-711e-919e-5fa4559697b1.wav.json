@@ -1,0 +1,13 @@
+{
+    "asset": "c38567af210c43e488c8dc2d8346e59d",
+    "fileName": "019a87e1-265b-711e-919e-5fa4559697b1.wav",
+    "prompt": "old man, injured, pain",
+    "negativePrompt": "",
+    "model": "ee31b223-3fe1-4ae6-bf54-d8a80bb4b0e1",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "9d9d119de228c61495b124c28f283036",
+    "duration": 1.0,
+    "autoTrim": true,
+    "hasReference": false
+}

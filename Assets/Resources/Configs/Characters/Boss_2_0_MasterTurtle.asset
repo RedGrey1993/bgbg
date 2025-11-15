@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
   jumpSound: {fileID: 0}
-  hurtSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: c38567af210c43e488c8dc2d8346e59d, type: 3}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
   shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
