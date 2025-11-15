@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    public int DamagePerSecond { get; set; } = 5;
+    public float DamagePerSecond { get; set; } = 3.5f;
     public float DamageInterval { get; set; } = 1.0f;
     public float TotalInterval { get; set; } = 10.0f;
     public GameObject Owner { get; set; } = null; // 施放者

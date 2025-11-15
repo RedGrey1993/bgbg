@@ -104,7 +104,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             else
             {
                 // TODO: 终极格式化，时间设置为合理的时间，15s或30s；
-                formattingCoroutine ??= StartCoroutine(Formatting(10f, AggroTarget));
+                formattingCoroutine ??= StartCoroutine(Formatting(60f, AggroTarget));
                 explosionCoroutine ??= StartCoroutine(Explosion(true));
                 teleportCoroutine ??= StartCoroutine(TeleportAndPreviousBossAttack(false));
             }
@@ -144,7 +144,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             }
         }
         animator.SetTrigger("Pointing");
-        yield return new WaitForSeconds(summonTime);
+        yield return new WaitForSeconds(Mathf.Max(showTime, summonTime));
         screenAnim.Play("VirtualScreenDismiss");
         yield return new WaitForSeconds(dismissTime);
         virtualScreen.SetActive(false);
@@ -212,7 +212,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             }
         }
         animator.SetTrigger("Pointing");
-        yield return new WaitForSeconds(summonTime);
+        yield return new WaitForSeconds(Mathf.Max(showTime, summonTime));
 
         screenAnim.Play("VirtualScreenDismiss");
         yield return new WaitForSeconds(dismissTime);

@@ -33,12 +33,12 @@ public class CharacterData : ScriptableObject
     #region Basic Attributes
     [Header("Basic Attributes")]
     public CharacterType CharacterType = CharacterType.Unset;
-    public float MaxHp;
-    public float MoveSpeed;
-    public float ShootRange;
-    public float BulletSpeed = 6;
-    public float Damage = 1;
-    public float AttackFrequency = 3;
+    public float MaxHp = 10;
+    public float MoveSpeed = 10;
+    public float ShootRange = 6.5f;
+    public float BulletSpeed = 10;
+    public float Damage = 3.5f;
+    public float AttackFreqUp = 0;
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
     public int InitialActiveSkillId = -1;
@@ -77,8 +77,10 @@ public class CharacterData : ScriptableObject
         state.CurrentHp = MaxHp;
         state.MoveSpeed = MoveSpeed;
         state.BulletSpeed = BulletSpeed;
-        state.Damage = Damage;
-        state.AttackFrequency = AttackFrequency;
+        state.DamageUp = 0;
+        state.Damage = state.GetFinalDamage(Damage);
+        state.AttackFreqUp = AttackFreqUp;
+        state.AttackFrequency = state.GetFinalAtkFreq();
         if (state.AttackFrequency < 0.2f) state.AttackFrequency = 0.2f;
         state.ShootRange = ShootRange;
         state.CriticalRate = CriticalRate;

@@ -117,7 +117,7 @@ public static class Constants
     public const int CompanionMasterSkillId = 12;
     public const int NewRulerPlayerId = 123456789;
     public const float Eps = 0.00001f;
-    public const float PlayerHurtMultiplier = 30;
+    public const float BossHpMultipiler = 20f;
 
     public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new();
     public static Dictionary<GameObject, CharacterInput> goToCharacterInput = new();
@@ -138,13 +138,13 @@ public static class Constants
 
     public static readonly float[] DamageLevel =
     {
-        1.69f,
-        2.83f,
-        4.21f,
-        5.84f,
-        7.69f,
-        9.77f,
-        12.06f,
+        1.69f / 3.5f, // 0.48285714
+        2.83f / 3.5f, // 0.8085714
+        4.21f / 3.5f, // 1.202857
+        5.84f / 3.5f, // 1.6685714
+        7.69f / 3.5f, // 2.197142857
+        9.77f / 3.5f, // 2.79142857
+        12.06f / 3.5f, // 3.445714
         float.MaxValue,
     };
 
@@ -266,6 +266,7 @@ public static class Constants
 
     public static bool IsPlayerOrEnemy(this Collider2D other)
     {
+        if (other.CompareTag(TagPlayerFeet)) return false;
         return other.MyCompareTag(TagPlayer) || other.MyCompareTag(TagEnemy);
     }
 
@@ -331,5 +332,33 @@ public static class Constants
     public static CharacterStatus GetCharacterStatus(this Collision2D collision)
     {
         return collision.gameObject.GetCharacterStatus();
+    }
+
+    public static float GetFinalDamage(this PlayerState state, float damage)
+    {
+        return damage * Mathf.Sqrt(1f + 1.2f * state.DamageUp);
+    }
+
+    public static float GetFinalAtkFreq(this PlayerState state)
+    {
+        float delay = 10;
+        if (state.AttackFreqUp >= 425f / 234f)
+        {
+            delay = 5;
+        } 
+        else if (state.AttackFreqUp >= 0)
+        {
+            delay = 16f - 6f * Mathf.Sqrt(1.3f * state.AttackFreqUp + 1);
+        }
+        else if (state.AttackFreqUp >= -10f / 13f)
+        {
+            delay = 16f - 6f * Mathf.Sqrt(1.3f * state.AttackFreqUp + 1) - 6 * state.AttackFreqUp;
+        }
+        else
+        {
+            delay = 16 - 6 * state.AttackFreqUp;
+        }
+
+        return 30 / (delay + 1);
     }
 }

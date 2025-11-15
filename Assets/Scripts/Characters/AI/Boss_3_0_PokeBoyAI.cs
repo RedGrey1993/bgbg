@@ -206,8 +206,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         }
         pokeball.SetActive(false);
         float elapsedTime = Time.time - startTime;
-        // TODO: fixedDamage修改回2
-        yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 2));
+        yield return StartCoroutine(AttackShoot(lookInput, atkInterval - elapsedTime, 1));
 
         isAttack = false;
         // animator.speed = 1;

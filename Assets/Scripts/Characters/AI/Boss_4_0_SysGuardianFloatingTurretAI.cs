@@ -29,7 +29,7 @@ public class Boss_4_0_SysGuardianFloatingTurretAI : CharacterBaseAI
     public void TurretShoot(Vector2 shootDir)
     {
         if (Time.time < nextAtkTime) return;
-        nextAtkTime = Time.time + 1f / CharacterData.AttackFrequency;
+        nextAtkTime = Time.time + 1f / characterStatus.State.AttackFrequency;
 
         StartCoroutine(TurretShootCoroutine(shootDir));
     }

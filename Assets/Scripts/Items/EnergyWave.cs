@@ -11,7 +11,7 @@ public class EnergyWave : MonoBehaviour
     public CharacterStatus OwnerStatus { get; set; }
     public bool FollowOwner { get; set; } = true;
     public float damageInterval = 0.3f;
-    public int minDamage = 10;
+    public int minDamage = 2;
     private float nextDamageTime = 0;
     private float curScale = 1;
     private bool scaleUp = true;

@@ -172,8 +172,7 @@ public class HexagonRadarChart : Graphic
     public void SetStats(PlayerState state)
     {
         float[] newStats = new float[6];
-        float damage = state.Damage * Mathf.Sqrt(1 + 1.2f * state.DamageUp);
-        newStats[0] = (float)Constants.GetStatLevel(damage, Constants.DamageLevel) / MaxStats[0];          // Damage
+        newStats[0] = (float)Constants.GetStatLevel(state.Damage, Constants.DamageLevel) / MaxStats[0];          // Damage
         newStats[1] = (float)Constants.GetStatLevel(state.AttackFrequency, Constants.AtkFreqLevel) / MaxStats[1];  // Shoot Frequency
         newStats[2] = (float)state.CriticalRate / MaxStats[2];      // Critical Rate
         newStats[3] = (float)Constants.GetStatLevel(state.MoveSpeed, Constants.MoveSpeedLevel) / MaxStats[3];        // Move Speed

@@ -24,14 +24,14 @@ MonoBehaviour:
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: -5587028817257834737, guid: 51ff3a0e708e1b6488bbd29487885888, type: 3}
   CharacterType: 7
-  MaxHp: 5
-  MoveSpeed: 3
-  ShootRange: 40
-  BulletSpeed: 6
-  Damage: 10
-  AttackFrequency: 0.34
+  MaxHp: 8
+  MoveSpeed: 5
+  ShootRange: 20
+  BulletSpeed: 7
+  Damage: 2
+  AttackFreqUp: -3
   CriticalRate: 0
-  ExpGiven: 5
+  ExpGiven: 0
   InitialActiveSkillId: 10
   spawnOffsets: {x: -2, y: -2}
   bound:

@@ -560,8 +560,12 @@ public class CharacterManager : MonoBehaviour
     private int lockedRoomIdx = -1;
     void FixedUpdate()
     {
-        if (GameManager.Instance.GameState != GameState.InGame)
+        if (GameManager.Instance.GameState != GameState.InGame) {
+            BeAttackedBoss = null;
+            prevShow = false;
+            lockedRoomIdx = -1;
             return;
+        }
 
         var my = GetMyselfGameObject();
         bool showBossHealthSlider = false;
@@ -962,6 +966,8 @@ public class CharacterManager : MonoBehaviour
             {
                 bossStatus.State.PlayerId = bossId;
                 bossStatus.State.PlayerName = boss.name;
+                bossStatus.State.MaxHp *= Constants.BossHpMultipiler;
+                bossStatus.State.CurrentHp *= Constants.BossHpMultipiler;
             }
         }
 
@@ -999,7 +1005,7 @@ public class CharacterManager : MonoBehaviour
                 if (scale > 1.1f)
                 {
                     minionStatus.State.Damage = (int)(minionStatus.State.Damage * scale);
-                    minionStatus.State.MoveSpeed = (uint)(minionStatus.State.MoveSpeed * scale);
+                    // minionStatus.State.MoveSpeed = (uint)(minionStatus.State.MoveSpeed * scale);
                     minionStatus.State.BulletSpeed = (uint)(minionStatus.State.BulletSpeed * scale);
                     minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
                     minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);

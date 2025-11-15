@@ -15,33 +15,38 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 728535d78b3076a42a837516f79f8b13, type: 3}
   jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
-  energyWaveAccumulateSound: {fileID: 0}
-  energyWaveShootSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: 1d2062690ca69b046ae306be10f20335, type: 3}
   shadowPrefab: {fileID: 0}
-  phantomChargePrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  energyWavePrefab: {fileID: 0}
   explosionEffectPrefab: {fileID: 0}
   summonEffectPrefab: {fileID: 0}
   teleportEffectPrefab: {fileID: 0}
   accumulateEffectPrefab: {fileID: 0}
+  figure: {fileID: 0}
   CharacterType: 9
-  MaxHp: 5
-  MoveSpeed: 2
-  ShootRange: 6
-  BulletSpeed: 3
-  Damage: 3
-  AttackFrequency: 1
+  MaxHp: 10
+  MoveSpeed: 3
+  ShootRange: 8
+  BulletSpeed: 4
+  Damage: 2
+  AttackFreqUp: 0
   CriticalRate: 0
-  ExpGiven: 5
+  ExpGiven: 20
+  InitialActiveSkillId: -1
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 1
+  moveInAtkRange: 1
+  moveAcrossRoom: 0
   canAttackDiagonally: 1
+  causeCollisionDamage: 0
   AggroRange: 15
   AggroChangeInterval: 2
-  minChaseMoveInputInterval: 0.5
-  maxChaseMoveInputInterval: 1
+  chaseMoveInputInterval:
+    min: 0.05
+    max: 0.1
+  randomMoveToTargetInterval:
+    min: 0.5
+    max: 2

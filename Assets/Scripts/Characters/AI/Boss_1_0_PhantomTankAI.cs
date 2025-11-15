@@ -6,6 +6,11 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Boss_1_0_PhantomTankAI : CharacterBaseAI
 {
+    protected override bool IsAtkCoroutineIdle()
+    {
+        return atkCoroutine == null;
+    }
+    
     #region Attack Action
     protected override void AttackAction()
     {

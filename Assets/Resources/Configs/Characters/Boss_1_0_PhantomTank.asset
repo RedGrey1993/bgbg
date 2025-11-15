@@ -25,13 +25,13 @@ MonoBehaviour:
   figure: {fileID: 5631680148070118295, guid: a0164557e52213c40990b842ffbada81, type: 3}
   CharacterType: 4
   MaxHp: 5
-  MoveSpeed: 3
-  ShootRange: 20
-  BulletSpeed: 6
-  Damage: 10
-  AttackFrequency: 0.75
+  MoveSpeed: 7
+  ShootRange: 15
+  BulletSpeed: 8
+  Damage: 2
+  AttackFreqUp: -2
   CriticalRate: 0
-  ExpGiven: 5
+  ExpGiven: 0
   InitialActiveSkillId: 9
   spawnOffsets: {x: -2, y: -2}
   bound:

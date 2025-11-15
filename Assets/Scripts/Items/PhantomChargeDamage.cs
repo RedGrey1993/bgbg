@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PhantomChargeDamage : MonoBehaviour
 {
-    public int minDamage = 10;
+    public int minDamage = 2;
     public CharacterStatus OwnerStatus { get; set; } // 攻击者
     private float bornTime;
 

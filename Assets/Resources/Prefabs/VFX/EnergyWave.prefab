@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f3079ef9cba00469304d3e86b33d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnergyWave
-  scaleSpeed: 50
-  rotateSpeed: 20
+  scaleSpeed: 40
+  rotateSpeed: 15
   pushForce: 10
-  damageInterval: 0.3
-  minDamage: 10
+  damageInterval: 0.33
+  minDamage: 1
 --- !u!50 &3826689437446375980
 Rigidbody2D:
   serializedVersion: 5

@@ -8,7 +8,7 @@ public class ExplosionDamage : MonoBehaviour
     public float explosionRadius = 1f;
 
     [Tooltip("造成的伤害值")]
-    public int damageAmount = 5;
+    public int damageAmount = 2;
 
     [Header("目标设置")]
     [Tooltip("指定要伤害的目标层级，优化性能")]

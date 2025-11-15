@@ -95,7 +95,7 @@ public class PhantomChargeExecutor : SkillExecutor
         if (aiScript.isAi)
         {
             // 这时候 Coroutine 还不是null，所以不会再次进入攻击
-            yield return new WaitForSeconds(Random.Range(1, 3f));
+            yield return new WaitForSeconds(Random.Range(3, 8f));
         }
 
         aiScript.ActiveSkillCoroutine = null;

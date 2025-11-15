@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffcc53322d2f3d4aa8abbb74b3d417c, type: 3}
   m_Name: 2-SingularityExecutor
   m_EditorClassIdentifier: Assembly-CSharp::SingularityExecutor
-  damagePerSecond: 5
+  damagePerSecond: 3.5
   damageInterval: 1
   totalInterval: 10
   blackHolePrefab: {fileID: 3410765289809985633, guid: 552427c952bdaf94798e0dc9379fcc01, type: 3}

@@ -51,12 +51,7 @@ public class CharacterStatus : MonoBehaviour
     public void TakeDamage_Host(CharacterStatus attacker)
     {
         if (IsDead() || attacker == null) return;
-        float damage = attacker.State.Damage * Mathf.Sqrt(1f + 1.2f * attacker.State.DamageUp);
-        if (CharacterManager.Instance.PlayerObjects.ContainsKey(State.PlayerId))
-        {
-            damage *= Constants.PlayerHurtMultiplier;
-        }
-
+        float damage = attacker.State.Damage;
         float curHp = State.CurrentHp - damage;
         if (curHp <= 0)
         {
@@ -79,11 +74,7 @@ public class CharacterStatus : MonoBehaviour
         if (IsDead()) return;
         if (attacker != null) 
         {
-            damage *= Mathf.Sqrt(1f + 1.2f * attacker.State.DamageUp);
-        }
-        if (CharacterManager.Instance.PlayerObjects.ContainsKey(State.PlayerId))
-        {
-            damage *= Constants.PlayerHurtMultiplier;
+            damage = attacker.State.GetFinalDamage(damage);
         }
             
         float curHp = State.CurrentHp - damage;

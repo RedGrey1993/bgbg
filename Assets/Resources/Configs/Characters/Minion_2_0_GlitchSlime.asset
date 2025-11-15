@@ -24,14 +24,15 @@ MonoBehaviour:
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 0}
   CharacterType: 5
-  MaxHp: 5
+  MaxHp: 7
   MoveSpeed: 3
   ShootRange: 0
-  BulletSpeed: 6
-  Damage: 3
-  AttackFrequency: 1
+  BulletSpeed: 5
+  Damage: 1
+  AttackFreqUp: 0
   CriticalRate: 0
-  ExpGiven: 5
+  ExpGiven: 12
+  InitialActiveSkillId: -1
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}

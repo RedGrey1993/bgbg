@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508494729d8f7fc4bb36dcbb9ec157d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhantomChargeDamage
-  minDamage: 10
+  minDamage: 2
 --- !u!1 &6566019517108392442
 GameObject:
   m_ObjectHideFlags: 0

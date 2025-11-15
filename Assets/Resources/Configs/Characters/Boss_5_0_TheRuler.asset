@@ -24,21 +24,29 @@ MonoBehaviour:
   accumulateEffectPrefab: {fileID: 9027514048236820045, guid: 37f7760cdb8ca2e49bf311ba1faa70a9, type: 3}
   figure: {fileID: 0}
   CharacterType: 14
-  MaxHp: 20
+  MaxHp: 35
   MoveSpeed: 2
   ShootRange: 100
-  BulletSpeed: 6
-  Damage: 10
-  AttackFrequency: 1
+  BulletSpeed: 8
+  Damage: 2
+  AttackFreqUp: -5
   CriticalRate: 0
-  ExpGiven: 5
+  ExpGiven: 0
+  InitialActiveSkillId: -1
   spawnOffsets: {x: 0, y: 1}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 4, y: 3, z: 0}
   canMoveDiagonally: 0
+  moveInAtkRange: 1
+  moveAcrossRoom: 0
   canAttackDiagonally: 1
+  causeCollisionDamage: 0
   AggroRange: 10000
   AggroChangeInterval: 2
-  minChaseMoveInputInterval: 0.05
-  maxChaseMoveInputInterval: 0.1
+  chaseMoveInputInterval:
+    min: 0.05
+    max: 0.1
+  randomMoveToTargetInterval:
+    min: 0.5
+    max: 2

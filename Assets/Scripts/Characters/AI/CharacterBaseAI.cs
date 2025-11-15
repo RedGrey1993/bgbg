@@ -323,7 +323,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     public bool CanUseActiveItem()
     {
-        return IsAtkCoroutineIdle();
+        // return IsAtkCoroutineIdle();
+        return ActiveSkillCoroutine == null;
     }
     
     protected virtual bool IsAtkCoroutineIdle()
