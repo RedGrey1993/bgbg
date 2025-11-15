@@ -907,6 +907,21 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
     }
 
+    public virtual void OnHurt()
+    {
+        if (animator && CharacterData.Is3DModel())
+        {
+            animator.Play("Hurt");
+        }
+
+        if (CharacterData.hurtSound != null)
+        {
+            if (OneShotAudioSource == null)
+                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
+            OneShotAudioSource.PlayOneShot(CharacterData.hurtSound);
+        }
+    }
+
     public virtual void Killed(CharacterStatus enemy) { }
     #endregion
 

@@ -100,11 +100,9 @@ public class CharacterStatus : MonoBehaviour
     // 供HOST/CLIENT统一调用
     public void HealthChanged(float curHp)
     {
-        if (characterData.hurtSound != null && curHp < State.CurrentHp)
+        if (curHp < State.CurrentHp)
         {
-            var audioSrc = gameObject.AddComponent<AudioSource>();
-            audioSrc.PlayOneShot(characterData.hurtSound);
-            Destroy(audioSrc, characterData.hurtSound.length);
+            CharacterAI.OnHurt();
         }
         State.CurrentHp = curHp;
         // 只有本地键盘操作的那个Player注册了OnHealthChanged事件，用于更新状态栏UI

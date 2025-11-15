@@ -25,7 +25,7 @@ MonoBehaviour:
   figure: {fileID: 3203593824033472796, guid: 50d22abba63619c4bbc3a73a0e3cc298, type: 3}
   CharacterType: 1
   MaxHp: 5
-  MoveSpeed: 10
+  MoveSpeed: 8
   ShootRange: 6.5
   BulletSpeed: 10
   Damage: 1
