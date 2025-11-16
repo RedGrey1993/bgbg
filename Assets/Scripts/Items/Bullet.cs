@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     public int homingForce = 0;
     public int bounceCount = 0;
     public int penetrateCount = 0;
+    public bool canDestroyObstacle = false;
     private float bornTime;
     private Collider2D col2D;
     private Rigidbody2D rb;
@@ -74,7 +75,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void TryActivateDestructible(Vector3Int cellPosition)
+    private bool TryActivateDestructible(Vector3Int cellPosition)
     {
         // 1. 获取这个位置的 Tile
         TileBase tile = LevelManager.Instance.wallTilemap.GetTile(cellPosition);
@@ -84,23 +85,16 @@ public class Bullet : MonoBehaviour
         {
             DestructibleTile destructibleTile = (DestructibleTile)tile;
 
-            // --- 这就是魔法发生的地方 ---
-
             // 3. **移除 Tile**: 把它从 Tilemap 上擦除
             LevelManager.Instance.wallTilemap.SetTile(cellPosition, null);
-            GameManager.Instance.Storage.WallTiles.Add(new TileInfo
-            {
-                X = cellPosition.x,
-                Y = cellPosition.y,
-                TileType = (int)TileType.BreakableObstacle,
-                TileTemplateId = -1,
-                TileId = -1,
-            });
+            LevelManager.Instance.breakableObstacleTiles.Remove(cellPosition);
 
             // // 4. **实例化 Prefab**: 在格子的中心位置创建“活”的 Prefab
             // Vector3 worldPos = LevelManager.Instance.wallTilemap.GetCellCenterWorld(cellPosition);
             // Instantiate(destructibleTile.destructiblePrefab, worldPos, Quaternion.identity);
+            return true;
         }
+        return false;
     }
 
     // 激光子弹的IsTrigger是true
@@ -109,17 +103,17 @@ public class Bullet : MonoBehaviour
         if (GameManager.Instance.IsLocalOrHost())
         {
             // 检查我们是否撞到了 Tilemap
-            if (other.CompareTag(Constants.TagWall))
+            if (other.CompareTag(Constants.TagWall) && canDestroyObstacle)
             {
-                Vector2 curPos = col2D.bounds.center;
+                ColliderDistance2D distanceInfo = col2D.Distance(other);
                 
-                Vector2 colPos1 = curPos + rb.linearVelocity.normalized * col2D.bounds.extents.magnitude;
-                Vector2 colPos2 = colPos1 - rb.linearVelocity.normalized;
-                Vector3Int cellPosition = LevelManager.Instance.wallTilemap.WorldToCell(colPos1);
+                Vector3Int cellPosition = LevelManager.Instance.wallTilemap.WorldToCell(distanceInfo.pointA - rb.linearVelocity.normalized);
                 // 尝试“激活”这个障碍物
-                TryActivateDestructible(cellPosition);
-                cellPosition = LevelManager.Instance.wallTilemap.WorldToCell(colPos2);
-                TryActivateDestructible(cellPosition);
+                if (!TryActivateDestructible(cellPosition))
+                {
+                    cellPosition = LevelManager.Instance.wallTilemap.WorldToCell(distanceInfo.pointA);
+                    TryActivateDestructible(cellPosition);
+                }
             }
 
             if (other.isTrigger) return;

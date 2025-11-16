@@ -39,6 +39,20 @@ public class LevelManager : MonoBehaviour
     public bool[] IsVisitedRooms { get; set; }
     public List<int> BossRoomIds { get; set; }
     public LevelData CurrentLevelData { get; private set; }
+    public struct ImmutableTileInfo
+    {
+        public int tileTemplateId;
+        public int tileId;
+    }
+    public Dictionary<(Vector3Int, TileType), ImmutableTileInfo> pos2TilesDict = new ();
+    // (TilePosition, (TileTemplateId, TileId, BreakableHealth))
+    public struct BreakableTileInfo
+    {
+        public int tileTemplateId;
+        public int tileId;
+        public float tileHealth;
+    }
+    public Dictionary<Vector3Int, BreakableTileInfo> breakableObstacleTiles = new();
 
     void Awake()
     {
@@ -300,6 +314,8 @@ public class LevelManager : MonoBehaviour
             CalcRoomRelatedDict(Rooms[i], storage);
         }
 
+        pos2TilesDict = new ();
+        breakableObstacleTiles = new();
         if (storage.WallTiles.Count > 0)
         {
             SetRoomTiles(storage);
@@ -323,33 +339,38 @@ public class LevelManager : MonoBehaviour
         foreach (var wallTile in storage.WallTiles)
         {
             // 被销毁的房间的tile，直接跳过
-            if (!tileToRooms.ContainsKey(new Vector3Int(wallTile.X, wallTile.Y, 0))) continue;
-            if (wallTile.TileId == -1) // 已经被破坏的可破坏墙体
+            if (!tileToRooms.ContainsKey(new Vector3Int(wallTile.X, wallTile.Y))) continue;
+            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
+            if ((TileType)wallTile.TileType == TileType.BreakableObstacle) 
             {
-                wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), null);
+                wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y), tt.breakableCollisionTiles[wallTile.TileId].tile);
+                breakableObstacleTiles.Add(new Vector3Int(wallTile.X, wallTile.Y), new BreakableTileInfo{ tileTemplateId = wallTile.TileTemplateId, tileId = wallTile.TileId, tileHealth = 0 });
             }
-            else {
-                TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
-                if ((TileType)wallTile.TileType == TileType.BreakableObstacle)
-                    wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), tt.breakableCollisionTiles[wallTile.TileId].tile);
-                else
-                    wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y, 0), tt.unbreakableCollisionTiles[wallTile.TileId].tile);
+            else
+            {
+                wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y), tt.unbreakableCollisionTiles[wallTile.TileId].tile);
+                pos2TilesDict.Add((new Vector3Int(wallTile.X, wallTile.Y), (TileType)wallTile.TileType), new ImmutableTileInfo { tileTemplateId = wallTile.TileTemplateId, tileId = wallTile.TileId });
             }
         }
+        storage.WallTiles.Clear();
 
         foreach (var floorTile in storage.FloorTiles)
         {
-            if (!tileToRooms.ContainsKey(new Vector3Int(floorTile.X, floorTile.Y, 0))) continue;
+            if (!tileToRooms.ContainsKey(new Vector3Int(floorTile.X, floorTile.Y))) continue;
             TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)floorTile.TileType, floorTile.TileTemplateId);
-            floorTilemap.SetTile(new Vector3Int(floorTile.X, floorTile.Y, 0), tt.floorTiles[floorTile.TileId].tile);
+            floorTilemap.SetTile(new Vector3Int(floorTile.X, floorTile.Y), tt.floorTiles[floorTile.TileId].tile);
+            pos2TilesDict.Add((new Vector3Int(floorTile.X, floorTile.Y), (TileType)floorTile.TileType), new ImmutableTileInfo { tileTemplateId = floorTile.TileTemplateId, tileId = floorTile.TileId });
         }
+        storage.FloorTiles.Clear();
 
         foreach (var holeTile in storage.HoleTiles)
         {
-            if (!tileToRooms.ContainsKey(new Vector3Int(holeTile.X, holeTile.Y, 0))) continue;
+            if (!tileToRooms.ContainsKey(new Vector3Int(holeTile.X, holeTile.Y))) continue;
             TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)holeTile.TileType, holeTile.TileTemplateId);
-            holeTilemap.SetTile(new Vector3Int(holeTile.X, holeTile.Y, 0), tt.unbreakableCollisionTiles[holeTile.TileId].tile);
+            holeTilemap.SetTile(new Vector3Int(holeTile.X, holeTile.Y), tt.unbreakableCollisionTiles[holeTile.TileId].tile);
+            pos2TilesDict.Add((new Vector3Int(holeTile.X, holeTile.Y), (TileType)holeTile.TileType), new ImmutableTileInfo { tileTemplateId = holeTile.TileTemplateId, tileId = holeTile.TileId });
         }
+        storage.HoleTiles.Clear();
     }
     
     private void CalcRoomRelatedDict(Rect room, LocalStorage storage)
@@ -497,15 +518,8 @@ public class LevelManager : MonoBehaviour
                     if (pos.x + td.position.x >= (int)end.x) continue;
                     if ((pos.x + td.position.x).PositiveMod(Constants.RoomStep) >= doorMin
                         && (pos.x + td.position.x).PositiveMod(Constants.RoomStep) < doorMax) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = pos.x + td.position.x,
-                        Y = pos.y + td.position.y,
-                        TileType = (int)TileType.Wall_Horizontal,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Horizontal), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
                 x += wt.size.x - 1;
             }
@@ -533,15 +547,8 @@ public class LevelManager : MonoBehaviour
                     if (pos.y + td.position.y >= (int)end.y) continue;
                     if ((pos.y + td.position.y).PositiveMod(Constants.RoomStep) >= doorMin
                         && (pos.y + td.position.y).PositiveMod(Constants.RoomStep) < doorMax) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = pos.x + td.position.x,
-                        Y = pos.y + td.position.y,
-                        TileType = (int)TileType.Wall_Vertical,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Vertical), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
                 y += wt.size.y - 1;
             }
@@ -577,15 +584,8 @@ public class LevelManager : MonoBehaviour
                 for(int i = 0; i < uott.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = uott.unbreakableCollisionTiles[i];
-                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = x + td.position.x,
-                        Y = y + td.position.y,
-                        TileType = (int)TileType.UnbreakableObstacle,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), TileType.UnbreakableObstacle), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
             }
         }
@@ -615,15 +615,8 @@ public class LevelManager : MonoBehaviour
                 for(int i = 0; i < uott.breakableCollisionTiles.Count(); i++)
                 {
                     TileData td = uott.breakableCollisionTiles[i];
-                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = x + td.position.x,
-                        Y = y + td.position.y,
-                        TileType = (int)TileType.BreakableObstacle,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                    breakableObstacleTiles.Add(new Vector3Int(x + td.position.x, y + td.position.y), new BreakableTileInfo { tileTemplateId = ttId, tileId = i , tileHealth = 0 });
                 }
             }
         }
@@ -652,15 +645,8 @@ public class LevelManager : MonoBehaviour
                 for(int i = 0; i < htt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = htt.unbreakableCollisionTiles[i];
-                    holeTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
-                    storage.HoleTiles.Add(new TileInfo
-                    {
-                        X = x + td.position.x,
-                        Y = y + td.position.y,
-                        TileType = (int)TileType.Hole,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    holeTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), TileType.Hole), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
             }
         }
@@ -685,15 +671,9 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = ft.floorTiles[i];
                     if (x + td.position.x > (int)room.xMax || y + td.position.y > (int)room.yMax) continue;
-                    floorTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y, 0), td.tile);
-                    storage.FloorTiles.Add(new TileInfo
-                    {
-                        X = x + td.position.x,
-                        Y = y + td.position.y,
-                        TileType = (int)tileType,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    if (floorTilemap.HasTile(new Vector3Int(x + td.position.x, y + td.position.y))) continue;
+                    floorTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), tileType), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
             }
         }
@@ -715,15 +695,8 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.x + td.position.x > roomMaxWidth) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = pos.x + td.position.x,
-                        Y = pos.y + td.position.y,
-                        TileType = (int)TileType.Wall_Horizontal,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Horizontal), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
                 x += wt.size.x - 1;
             }
@@ -740,15 +713,8 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.x + td.position.x > roomMaxWidth) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = pos.x + td.position.x,
-                        Y = pos.y + td.position.y,
-                        TileType = (int)TileType.Wall_Horizontal,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Horizontal), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
                 x += wt.size.x - 1;
             }
@@ -765,15 +731,8 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.y + td.position.y > roomMaxHeight) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = pos.x + td.position.x,
-                        Y = pos.y + td.position.y,
-                        TileType = (int)TileType.Wall_Vertical,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Vertical), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
                 y += wt.size.y - 1;
             }
@@ -790,15 +749,8 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.y + td.position.y > roomMaxHeight) continue;
-                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y, 0), td.tile);
-                    storage.WallTiles.Add(new TileInfo
-                    {
-                        X = pos.x + td.position.x,
-                        Y = pos.y + td.position.y,
-                        TileType = (int)TileType.Wall_Vertical,
-                        TileTemplateId = ttId,
-                        TileId = i,
-                    });
+                    wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Vertical), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
                 y += wt.size.y - 1;
             }
@@ -967,14 +919,7 @@ public class LevelManager : MonoBehaviour
                 {
                     // wallTilemap.SetTile(tilePos, CurrentLevelData.wallTile);
                     wallTilemap.SetTile(tilePos, wt.unbreakableCollisionTiles[0].tile);
-                    GameManager.Instance.Storage.WallTiles.Add(new TileInfo
-                    {
-                        X = tilePos.x,
-                        Y = tilePos.y,
-                        TileType = (int)TileType.Wall_Vertical,
-                        TileTemplateId = ttId,
-                        TileId = 0,
-                    });
+                    pos2TilesDict.Add((tilePos, TileType.Wall_Vertical), new ImmutableTileInfo { tileTemplateId = ttId , tileId = 0});
                 }
             }
         }
@@ -1130,6 +1075,56 @@ public class LevelManager : MonoBehaviour
         storage.PickupItems.AddRange(PickupItems.Values.Select(v => v.Item1));
         storage.NxtDestoryRoomIdx = nxtDestoryRoomIdx;
         storage.DestoryRoomRemainTime = destoryRoomRemainTime;
+
+        foreach (var breakable in breakableObstacleTiles)
+        {
+            storage.WallTiles.Add(new TileInfo
+            {
+                X = breakable.Key.x,
+                Y = breakable.Key.y,
+                TileType = (int)TileType.BreakableObstacle,
+                TileTemplateId = breakable.Value.tileTemplateId,
+                TileId = breakable.Value.tileId,
+            });
+        }
+
+        foreach (var tileInfo in pos2TilesDict)
+        {
+            TileType tileType = tileInfo.Key.Item2;
+            if (tileType == TileType.Floor || tileType == TileType.Floor_Boss)
+            {
+                storage.FloorTiles.Add(new TileInfo
+                {
+                    X = tileInfo.Key.Item1.x,
+                    Y = tileInfo.Key.Item1.y,
+                    TileType = (int)tileType,
+                    TileTemplateId = tileInfo.Value.tileTemplateId,
+                    TileId = tileInfo.Value.tileId,
+                });
+            }
+            else if (tileType == TileType.Wall_Horizontal || tileType == TileType.Wall_Vertical || tileType == TileType.UnbreakableObstacle)
+            {
+                storage.WallTiles.Add(new TileInfo
+                {
+                    X = tileInfo.Key.Item1.x,
+                    Y = tileInfo.Key.Item1.y,
+                    TileType = (int)tileType,
+                    TileTemplateId = tileInfo.Value.tileTemplateId,
+                    TileId = tileInfo.Value.tileId,
+                });
+            }
+            else if (tileType == TileType.Hole)
+            {
+                storage.HoleTiles.Add(new TileInfo
+                {
+                    X = tileInfo.Key.Item1.x,
+                    Y = tileInfo.Key.Item1.y,
+                    TileType = (int)tileType,
+                    TileTemplateId = tileInfo.Value.tileTemplateId,
+                    TileId = tileInfo.Value.tileId,
+                });
+            }
+        }
     }
 
     public int GetRoomNoByPosition(Vector3 position)

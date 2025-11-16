@@ -132,7 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3568c4de614af4c92446820075c99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  homingForce: 0
+  bounceCount: 0
   penetrateCount: 0
+  canDestroyObstacle: 1
 --- !u!70 &3290699277078385714
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
