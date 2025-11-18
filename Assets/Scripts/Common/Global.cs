@@ -72,6 +72,7 @@ public enum CharacterType
     Boss_4_0_SysGuardian,
     Boss_5_0_TheRuler,
     Boss_4_0_SysGuardianFloatingTurret,
+    Minion_9_Wanderer
 }
 
 public enum ItemTag
@@ -88,6 +89,7 @@ public enum DamageType
 {
     Bullet = 0,
     Collision,
+    Capture,
 }
 
 public enum Direction

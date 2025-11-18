@@ -18,6 +18,7 @@ public class CharacterData : ScriptableObject
     public AudioClip shootSound;
     public AudioClip jumpSound;
     public AudioClip hurtSound;
+    public AudioClip deathSound;
     public GameObject bulletPrefab;
     // Minion 1 0 Stomper
     public GameObject shadowPrefab;

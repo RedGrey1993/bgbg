@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
+  m_Name: Minion_9_Wanderer
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  shootSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: 65f1f5f565e052b428dc3357c2a5d255, type: 3}
+  deathSound: {fileID: 8300000, guid: b7dc0a79ba6c67544b97c042590a4a53, type: 3}
+  bulletPrefab: {fileID: 0}
+  shadowPrefab: {fileID: 0}
+  deadBodyPrefab: {fileID: 0}
+  explosionEffectPrefab: {fileID: 0}
+  summonEffectPrefab: {fileID: 0}
+  teleportEffectPrefab: {fileID: 0}
+  accumulateEffectPrefab: {fileID: 0}
+  figure: {fileID: 0}
+  CharacterType: 16
+  MaxHp: 2
+  MoveSpeed: 2
+  ShootRange: 0
+  BulletSpeed: 0
+  Damage: 1
+  AttackFreqUp: 0
+  CriticalRate: 0
+  ExpGiven: 5
+  InitialActiveSkillId: -1
+  spawnOffsets: {x: -2, y: -2}
+  bound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 2, y: 2, z: 2}
+  canMoveDiagonally: 1
+  moveInAtkRange: 1
+  moveAcrossRoom: 0
+  canAttackDiagonally: 0
+  causeCollisionDamage: 1
+  AggroRange: 7
+  AggroChangeInterval: 2
+  chaseMoveInputInterval:
+    min: 0.05
+    max: 0.1
+  randomMoveToTargetInterval:
+    min: 0.5
+    max: 2
+  itemTags: 
+  takeCollisionDamage: 1

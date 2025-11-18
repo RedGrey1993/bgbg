@@ -20,6 +20,7 @@ public class CharacterStatus : MonoBehaviour
     private Slider healthSlider;
     public bool IsAI { get; set; } = true;
     public bool IsBoss { get; set; } = false;
+    private DamageType lastDamageType = DamageType.Bullet;
 
     void Awake()
     {
@@ -54,6 +55,7 @@ public class CharacterStatus : MonoBehaviour
         if (IsDead() || attacker == null) return;
         float damage = attacker.State.Damage;
         float curHp = State.CurrentHp - damage;
+        lastDamageType = damageType;
         if (curHp <= 0)
         {
             // this死亡，提供给attacker经验值
@@ -78,8 +80,8 @@ public class CharacterStatus : MonoBehaviour
         {
             damage = attacker.State.GetFinalDamage(damage);
         }
-            
         float curHp = State.CurrentHp - damage;
+        lastDamageType = damageType;
         if (curHp <= 0 && attacker != null)
         {
             // this死亡，提供给attacker经验值
@@ -167,9 +169,6 @@ public class CharacterStatus : MonoBehaviour
             // 渲染层级对SkinnedMeshRenderer不管用
         }
 
-        // 死亡后设置颜色为灰色
-        SetColor(Color.gray);
-
         Canvas canvas = GetComponentInChildren<Canvas>();
         if (canvas != null)
         {
@@ -195,8 +194,15 @@ public class CharacterStatus : MonoBehaviour
             }
         }
 
-        // 尸体销毁，Destory
-        CharacterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
+        if (lastDamageType == DamageType.Capture)
+        {
+            CharacterAI.OnCapture();
+        }
+        else 
+        {
+            // 尸体销毁，Destory
+            CharacterAI.OnDeath(); // 每个角色不同的死亡行为逻辑
+        }
 
         // 如果是最后一只boss
         if (CharacterManager.Instance.bossObjects.Count == 1 && CharacterManager.Instance.bossObjects.ContainsKey(State.PlayerId)

@@ -249,7 +249,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                             return;
                             
                         tarStatus.TakeDamage_Host(characterStatus.State.Damage, null, DamageType.Collision);
-                        nextCollisionDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                        // nextCollisionDamageTime = Time.time + 1f / characterStatus.State.AttackFrequency;
+                        nextCollisionDamageTime = Time.time + 1f;
                     }
                 }
             }
@@ -306,6 +307,9 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             nextAggroChangeTime = Time.time + CharacterData.AggroChangeInterval;
             AggroTarget = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, LookDir, 180);
+            if (AggroTarget != null 
+                && Vector3.Distance(gameObject.transform.position, AggroTarget.transform.position) > CharacterData.AggroRange)
+                AggroTarget = null;
             // Debug.Log($"fhhtest, {name} aggro target: {AggroTarget?.name}");
         }
     }
@@ -896,6 +900,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region ICharacterAI implementation
     public virtual void OnDeath()
     {
+        // 死亡后设置颜色为灰色
+        characterStatus.SetColor(Color.gray);
         if (animator && CharacterData.Is3DModel())
         {
             animator.Play("HumanDyingBase");
@@ -905,6 +911,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         {
             Destroy(gameObject);
         }
+    }
+
+    public virtual void OnCapture()
+    {
+        Destroy(gameObject);
     }
 
     private float lastPlayHurtEffectTime = 0f;
