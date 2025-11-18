@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
+  - {fileID: 5506378715684145941, guid: cd310fdd79faecd498644ddc346d07d4, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 1
   totalRooms:
-    min: 3
-    max: 3
-  roomMaxWidth: 80
+    min: 4
+    max: 4
+  roomMaxWidth: 40
   roomMaxHeight: 40
   areaPerMinion:
     min: 100

@@ -68,6 +68,8 @@ public class CharacterData : ScriptableObject
     public MinMaxFloat chaseMoveInputInterval = new () { min = 0.05f, max = 0.1f };
     // 每隔随机0.5-2s改变一次随机移动的目标位置
     public MinMaxFloat randomMoveToTargetInterval = new() { min = 0.5f, max = 2 };
+    public float idleRate = 0.2f;
+    public MinMaxFloat idleTime = new() { min = 1f, max = 3f };
     public List<ItemTag> itemTags;
     // 是否会收到接触伤害
     public bool takeCollisionDamage = true;

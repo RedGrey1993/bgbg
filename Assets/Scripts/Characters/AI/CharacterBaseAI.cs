@@ -51,6 +51,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         col2D = GetComponentInChildren<Collider2D>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
+        OneShotAudioSource = gameObject.AddComponent<AudioSource>();
+        OneShotAudioSource.spatialBlend = 1;
 
         if (animator != null)
         {
@@ -338,12 +340,31 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     protected float nextMoveInputChangeTime = 0;
     protected float nextTargetPosChangeTime = 0;
+    protected float accumulateTime = 0;
+    protected float nextInterval = 5;
+    protected bool isIdle = false;
     protected Vector3 targetPos = Vector3.zero;
     // 没有仇恨目标：随机一个目标位置，然后移动到目标位置
     // 有仇恨目标：追逐仇恨目标，直到进入攻击范围；优先横向移动；进入攻击范围后则左右拉扯
     protected virtual void UpdateMoveInput()
     {
-        if (Time.time > nextMoveInputChangeTime)
+        accumulateTime += Time.deltaTime;
+        if (accumulateTime > nextInterval)
+        {
+            if (isIdle)
+            {
+                nextInterval = Random.Range(CharacterData.idleTime.min, CharacterData.idleTime.max);
+                isIdle = false;
+            }
+            else if (Random.value < CharacterData.idleRate)
+            {
+                nextInterval = Random.Range(CharacterData.idleTime.min, CharacterData.idleTime.max);
+                isIdle = true;
+            }
+            accumulateTime = 0;
+        }
+
+        if (Time.time > nextMoveInputChangeTime && !isIdle)
         {
             if (isBouncingBack) // 反弹时随机等待一段时间，避免2个角色相撞卡住
             {
@@ -380,6 +401,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
                 }
             }
             nextMoveInputChangeTime = Time.time + Random.Range(CharacterData.chaseMoveInputInterval.min, CharacterData.chaseMoveInputInterval.max);
+        }
+        
+        if (isIdle)
+        {
+            characterInput.MoveInput = Vector2.zero;
         }
     }
 
@@ -690,11 +716,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         Vector2 moveInput = characterInput.MoveInput;
         if (moveInput.sqrMagnitude >= 0.1f)
         {
-            if (audioSource && !audioSource.isPlaying) audioSource.Play();
+            if (audioSource && !audioSource.isPlaying)
+                audioSource.Play();
         }
         else
         {
-            if (audioSource && audioSource.isPlaying) audioSource.Stop();
+            if (audioSource && audioSource.isPlaying)
+                audioSource.Stop();
         }
 
         // Apply movement directly
@@ -929,8 +957,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             if (CharacterData.hurtSound != null)
             {
-                if (OneShotAudioSource == null)
-                    OneShotAudioSource = gameObject.AddComponent<AudioSource>();
                 OneShotAudioSource.PlayOneShot(CharacterData.hurtSound);
             }
 

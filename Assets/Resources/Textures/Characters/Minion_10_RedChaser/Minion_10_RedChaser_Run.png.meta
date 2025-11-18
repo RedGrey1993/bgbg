@@ -1,0 +1,2173 @@
+fileFormatVersion: 2
+guid: 9cfe842aa3afab1469fbd17d08246549
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5489427964359746668
+    second: Minion_10_RedChaser_Run_0
+  - first:
+      213: 9162484104361870853
+    second: Minion_10_RedChaser_Run_1
+  - first:
+      213: -5245328778393046860
+    second: Minion_10_RedChaser_Run_2
+  - first:
+      213: -1343991121207562003
+    second: Minion_10_RedChaser_Run_3
+  - first:
+      213: -4390111338373521822
+    second: Minion_10_RedChaser_Run_4
+  - first:
+      213: -7694722310317599525
+    second: Minion_10_RedChaser_Run_5
+  - first:
+      213: 5273949412134281718
+    second: Minion_10_RedChaser_Run_6
+  - first:
+      213: 348920511795059211
+    second: Minion_10_RedChaser_Run_7
+  - first:
+      213: 4282908305783278257
+    second: Minion_10_RedChaser_Run_8
+  - first:
+      213: 4311245602664043210
+    second: Minion_10_RedChaser_Run_9
+  - first:
+      213: -1371654967486891277
+    second: Minion_10_RedChaser_Run_10
+  - first:
+      213: 2553936346945534488
+    second: Minion_10_RedChaser_Run_11
+  - first:
+      213: 176948622802718942
+    second: Minion_10_RedChaser_Run_12
+  - first:
+      213: 4558788209581467551
+    second: Minion_10_RedChaser_Run_13
+  - first:
+      213: 6385608273726034493
+    second: Minion_10_RedChaser_Run_14
+  - first:
+      213: -2577211063893334705
+    second: Minion_10_RedChaser_Run_15
+  - first:
+      213: -633775135925323317
+    second: Minion_10_RedChaser_Run_16
+  - first:
+      213: 2570014026337590893
+    second: Minion_10_RedChaser_Run_17
+  - first:
+      213: 3850044398869979504
+    second: Minion_10_RedChaser_Run_18
+  - first:
+      213: -8855065669966197405
+    second: Minion_10_RedChaser_Run_19
+  - first:
+      213: 8412307851220134871
+    second: Minion_10_RedChaser_Run_20
+  - first:
+      213: 1569804680537211224
+    second: Minion_10_RedChaser_Run_21
+  - first:
+      213: -5466965449610594078
+    second: Minion_10_RedChaser_Run_22
+  - first:
+      213: -4896937859417445450
+    second: Minion_10_RedChaser_Run_23
+  - first:
+      213: 6383422501872316003
+    second: Minion_10_RedChaser_Run_24
+  - first:
+      213: -3446897369043508389
+    second: Minion_10_RedChaser_Run_25
+  - first:
+      213: -2182466464314453858
+    second: Minion_10_RedChaser_Run_26
+  - first:
+      213: -4128824160806849619
+    second: Minion_10_RedChaser_Run_27
+  - first:
+      213: 422238206424325295
+    second: Minion_10_RedChaser_Run_28
+  - first:
+      213: -6668873224782098955
+    second: Minion_10_RedChaser_Run_29
+  - first:
+      213: 298127809677724403
+    second: Minion_10_RedChaser_Run_30
+  - first:
+      213: -5781672889789992503
+    second: Minion_10_RedChaser_Run_31
+  - first:
+      213: 8880282227663431474
+    second: Minion_10_RedChaser_Run_32
+  - first:
+      213: -3311367972836511757
+    second: Minion_10_RedChaser_Run_33
+  - first:
+      213: 1100698808208378087
+    second: Minion_10_RedChaser_Run_34
+  - first:
+      213: -7017775124985552166
+    second: Minion_10_RedChaser_Run_35
+  - first:
+      213: -7229105162997739863
+    second: Minion_10_RedChaser_Run_36
+  - first:
+      213: -1429461852844590808
+    second: Minion_10_RedChaser_Run_37
+  - first:
+      213: -5297159434563454830
+    second: Minion_10_RedChaser_Run_38
+  - first:
+      213: 7326259369428364523
+    second: Minion_10_RedChaser_Run_39
+  - first:
+      213: -5681856487624130285
+    second: Minion_10_RedChaser_Run_40
+  - first:
+      213: -8691496759039365582
+    second: Minion_10_RedChaser_Run_41
+  - first:
+      213: -6883903816307578722
+    second: Minion_10_RedChaser_Run_42
+  - first:
+      213: 634525052778968462
+    second: Minion_10_RedChaser_Run_43
+  - first:
+      213: -7967556920863678338
+    second: Minion_10_RedChaser_Run_44
+  - first:
+      213: 8878183057029684805
+    second: Minion_10_RedChaser_Run_45
+  - first:
+      213: 2682525060368892053
+    second: Minion_10_RedChaser_Run_46
+  - first:
+      213: 4775373044658352790
+    second: Minion_10_RedChaser_Run_47
+  - first:
+      213: 2332098717450891703
+    second: Minion_10_RedChaser_Run_48
+  - first:
+      213: -6641367221488744117
+    second: Minion_10_RedChaser_Run_49
+  - first:
+      213: 3552036843579095147
+    second: Minion_10_RedChaser_Run_50
+  - first:
+      213: -4876603729032163488
+    second: Minion_10_RedChaser_Run_51
+  - first:
+      213: 5940786522201298951
+    second: Minion_10_RedChaser_Run_52
+  - first:
+      213: 2764252446661442092
+    second: Minion_10_RedChaser_Run_53
+  - first:
+      213: 2224640276781839342
+    second: Minion_10_RedChaser_Run_54
+  - first:
+      213: -7227928654431534697
+    second: Minion_10_RedChaser_Run_55
+  - first:
+      213: -4237895936451211911
+    second: Minion_10_RedChaser_Run_56
+  - first:
+      213: -237028834806878086
+    second: Minion_10_RedChaser_Run_57
+  - first:
+      213: -4732555096507726004
+    second: Minion_10_RedChaser_Run_58
+  - first:
+      213: 5310039768462114544
+    second: Minion_10_RedChaser_Run_59
+  - first:
+      213: -7900023580688543129
+    second: Minion_10_RedChaser_Run_60
+  - first:
+      213: 6781395489684132277
+    second: Minion_10_RedChaser_Run_61
+  - first:
+      213: 3297744964503586543
+    second: Minion_10_RedChaser_Run_62
+  - first:
+      213: -7896363783318324487
+    second: Minion_10_RedChaser_Run_63
+  - first:
+      213: 4562396410845826261
+    second: Minion_10_RedChaser_Run_64
+  - first:
+      213: 976327921858335306
+    second: Minion_10_RedChaser_Run_65
+  - first:
+      213: 6828277769846138020
+    second: Minion_10_RedChaser_Run_66
+  - first:
+      213: -3219348634356880053
+    second: Minion_10_RedChaser_Run_67
+  - first:
+      213: -6090694766894053775
+    second: Minion_10_RedChaser_Run_68
+  - first:
+      213: 5712485429562660463
+    second: Minion_10_RedChaser_Run_69
+  - first:
+      213: -5789095431034255279
+    second: Minion_10_RedChaser_Run_70
+  - first:
+      213: -7753755712575435177
+    second: Minion_10_RedChaser_Run_71
+  - first:
+      213: -6934801867560402996
+    second: Minion_10_RedChaser_Run_72
+  - first:
+      213: 6023922685933269638
+    second: Minion_10_RedChaser_Run_73
+  - first:
+      213: -5378915970182570996
+    second: Minion_10_RedChaser_Run_74
+  - first:
+      213: -7361364298422242722
+    second: Minion_10_RedChaser_Run_75
+  - first:
+      213: -2989801010089014125
+    second: Minion_10_RedChaser_Run_76
+  - first:
+      213: -8955581062437065456
+    second: Minion_10_RedChaser_Run_77
+  - first:
+      213: 810544305177908374
+    second: Minion_10_RedChaser_Run_78
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 125
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bdd34c952a1d3b0800000000000000
+      internalID: -5489427964359746668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50607ac7fbea72f70800000000000000
+      internalID: 9162484104361870853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0bfb95449d437b0800000000000000
+      internalID: -5245328778393046860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de0f42f223f295de0800000000000000
+      internalID: -1343991121207562003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26ed4df5ff03313c0800000000000000
+      internalID: -4390111338373521822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd41f30c3dad63590800000000000000
+      internalID: -7694722310317599525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f1e4a93c05d03940800000000000000
+      internalID: 5273949412134281718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a54685b5d97d400800000000000000
+      internalID: 348920511795059211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba48cb8962ff6b30800000000000000
+      internalID: 4282908305783278257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac2514e980f94db30800000000000000
+      internalID: 4311245602664043210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa3b8c0317e6fce0800000000000000
+      internalID: -1371654967486891277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ab5a28397617320800000000000000
+      internalID: 2553936346945534488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed096adb5d5a47200800000000000000
+      internalID: 176948622802718942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f97a75e19b1144f30800000000000000
+      internalID: 4558788209581467551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d325c3e74ec3e9850800000000000000
+      internalID: 6385608273726034493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f456e692138eb3cd0800000000000000
+      internalID: -2577211063893334705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc932bb2fd06437f0800000000000000
+      internalID: -633775135925323317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6e9f93f3268aa320800000000000000
+      internalID: 2570014026337590893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 071a02c7bfa1e6530800000000000000
+      internalID: 3850044398869979504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d88e670bc7c1580800000000000000
+      internalID: -8855065669966197405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dba43d9b658eb470800000000000000
+      internalID: 8412307851220134871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8518a2e2a0119c510800000000000000
+      internalID: 1569804680537211224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e870a883ef6124b0800000000000000
+      internalID: -5466965449610594078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bbe24246f49a0cb0800000000000000
+      internalID: -4896937859417445450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ea553d1f8769850800000000000000
+      internalID: 6383422501872316003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53eee4fa192a20d0800000000000000
+      internalID: -3446897369043508389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90955c505256b1e0800000000000000
+      internalID: -2182466464314453858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3be0b1d4873b6c0800000000000000
+      internalID: -4128824160806849619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fac158069671cd500800000000000000
+      internalID: 422238206424325295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fdcfb0a2276373a0800000000000000
+      internalID: -6668873224782098955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa8181d9a9232400800000000000000
+      internalID: 298127809677724403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1bf8ca32f53cfa0800000000000000
+      internalID: -5781672889789992503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 237e715e2a91d3b70800000000000000
+      internalID: 8880282227663431474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff69728f58ab02d0800000000000000
+      internalID: -3311367972836511757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e8c4fbfbb7764f00800000000000000
+      internalID: 1100698808208378087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad2e9a1a4badb9e90800000000000000
+      internalID: -7017775124985552166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aec39bd72f0dab90800000000000000
+      internalID: -7229105162997739863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 829f939b408892ce0800000000000000
+      internalID: -1429461852844590808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2987c305f85bc76b0800000000000000
+      internalID: -5297159434563454830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beca72f841a1ca560800000000000000
+      internalID: 7326259369428364523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3114a66d0adf521b0800000000000000
+      internalID: -5681856487624130285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23eeff64fb9916780800000000000000
+      internalID: -8691496759039365582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e98e70993f57770a0800000000000000
+      internalID: -6883903816307578722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85f9f37c294ec800800000000000000
+      internalID: 634525052778968462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e702734c13d8d6190800000000000000
+      internalID: -7967556920863678338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54e5525a374a53b70800000000000000
+      internalID: 8878183057029684805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5900f5c645e3a3520800000000000000
+      internalID: 2682525060368892053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69236dcab78854240800000000000000
+      internalID: 4775373044658352790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b1fdc27d674d5020800000000000000
+      internalID: 2332098717450891703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b498d3413bf15d3a0800000000000000
+      internalID: -6641367221488744117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_50
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b68b1a290be5b4130800000000000000
+      internalID: 3552036843579095147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f41bceeb2d25cb0800000000000000
+      internalID: -4876603729032163488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_52
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7089c36cdd9e17250800000000000000
+      internalID: 5940786522201298951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_53
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2a72c064f89c5620800000000000000
+      internalID: 2764252446661442092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_54
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3bb9a8b828fde10800000000000000
+      internalID: 2224640276781839342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_55
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 791cdba1f2d31bb90800000000000000
+      internalID: -7227928654431534697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97d01c06918ff25c0800000000000000
+      internalID: -4237895936451211911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70bfc3d787e5bcf0800000000000000
+      internalID: -237028834806878086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_58
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4741b0c636925eb0800000000000000
+      internalID: -4732555096507726004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_59
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0feb16e190d01b940800000000000000
+      internalID: 5310039768462114544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76299d3d86a7d5290800000000000000
+      internalID: -7900023580688543129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_61
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b11f0cb44b5c1e50800000000000000
+      internalID: 6781395489684132277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6c111b291f3cd20800000000000000
+      internalID: 3297744964503586543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa3d0ec9fa7a6290800000000000000
+      internalID: -7896363783318324487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_64
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc8bf0fc53e05f30800000000000000
+      internalID: 4562396410845826261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_65
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4259a6721d9c8d00800000000000000
+      internalID: 976327921858335306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_66
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a42063347ae2ce50800000000000000
+      internalID: 6828277769846138020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_67
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4de40159739253d0800000000000000
+      internalID: -3219348634356880053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_68
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17603ff1161897ba0800000000000000
+      internalID: -6090694766894053775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_69
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f665dad6b33d64f40800000000000000
+      internalID: 5712485429562660463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158cd5e906009afa0800000000000000
+      internalID: -5789095431034255279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75e09c4b240256490800000000000000
+      internalID: -7753755712575435177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_72
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccfb8509172a2cf90800000000000000
+      internalID: -6934801867560402996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_73
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 682387944c5499350800000000000000
+      internalID: 6023922685933269638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_74
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c97908c604a55b0800000000000000
+      internalID: -5378915970182570996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_75
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52bc4a3c2e27d990800000000000000
+      internalID: -7361364298422242722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_76
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c4a8c62d71286d0800000000000000
+      internalID: -2989801010089014125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d2930f87267b380800000000000000
+      internalID: -8955581062437065456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_10_RedChaser_Run_78
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69458d840c1af3b00800000000000000
+      internalID: 810544305177908374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7a855f34bb9c96f4cb487448e5f58ce4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":12.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_10_RedChaser_Run_0: -5489427964359746668
+      Minion_10_RedChaser_Run_1: 9162484104361870853
+      Minion_10_RedChaser_Run_10: -1371654967486891277
+      Minion_10_RedChaser_Run_11: 2553936346945534488
+      Minion_10_RedChaser_Run_12: 176948622802718942
+      Minion_10_RedChaser_Run_13: 4558788209581467551
+      Minion_10_RedChaser_Run_14: 6385608273726034493
+      Minion_10_RedChaser_Run_15: -2577211063893334705
+      Minion_10_RedChaser_Run_16: -633775135925323317
+      Minion_10_RedChaser_Run_17: 2570014026337590893
+      Minion_10_RedChaser_Run_18: 3850044398869979504
+      Minion_10_RedChaser_Run_19: -8855065669966197405
+      Minion_10_RedChaser_Run_2: -5245328778393046860
+      Minion_10_RedChaser_Run_20: 8412307851220134871
+      Minion_10_RedChaser_Run_21: 1569804680537211224
+      Minion_10_RedChaser_Run_22: -5466965449610594078
+      Minion_10_RedChaser_Run_23: -4896937859417445450
+      Minion_10_RedChaser_Run_24: 6383422501872316003
+      Minion_10_RedChaser_Run_25: -3446897369043508389
+      Minion_10_RedChaser_Run_26: -2182466464314453858
+      Minion_10_RedChaser_Run_27: -4128824160806849619
+      Minion_10_RedChaser_Run_28: 422238206424325295
+      Minion_10_RedChaser_Run_29: -6668873224782098955
+      Minion_10_RedChaser_Run_3: -1343991121207562003
+      Minion_10_RedChaser_Run_30: 298127809677724403
+      Minion_10_RedChaser_Run_31: -5781672889789992503
+      Minion_10_RedChaser_Run_32: 8880282227663431474
+      Minion_10_RedChaser_Run_33: -3311367972836511757
+      Minion_10_RedChaser_Run_34: 1100698808208378087
+      Minion_10_RedChaser_Run_35: -7017775124985552166
+      Minion_10_RedChaser_Run_36: -7229105162997739863
+      Minion_10_RedChaser_Run_37: -1429461852844590808
+      Minion_10_RedChaser_Run_38: -5297159434563454830
+      Minion_10_RedChaser_Run_39: 7326259369428364523
+      Minion_10_RedChaser_Run_4: -4390111338373521822
+      Minion_10_RedChaser_Run_40: -5681856487624130285
+      Minion_10_RedChaser_Run_41: -8691496759039365582
+      Minion_10_RedChaser_Run_42: -6883903816307578722
+      Minion_10_RedChaser_Run_43: 634525052778968462
+      Minion_10_RedChaser_Run_44: -7967556920863678338
+      Minion_10_RedChaser_Run_45: 8878183057029684805
+      Minion_10_RedChaser_Run_46: 2682525060368892053
+      Minion_10_RedChaser_Run_47: 4775373044658352790
+      Minion_10_RedChaser_Run_48: 2332098717450891703
+      Minion_10_RedChaser_Run_49: -6641367221488744117
+      Minion_10_RedChaser_Run_5: -7694722310317599525
+      Minion_10_RedChaser_Run_50: 3552036843579095147
+      Minion_10_RedChaser_Run_51: -4876603729032163488
+      Minion_10_RedChaser_Run_52: 5940786522201298951
+      Minion_10_RedChaser_Run_53: 2764252446661442092
+      Minion_10_RedChaser_Run_54: 2224640276781839342
+      Minion_10_RedChaser_Run_55: -7227928654431534697
+      Minion_10_RedChaser_Run_56: -4237895936451211911
+      Minion_10_RedChaser_Run_57: -237028834806878086
+      Minion_10_RedChaser_Run_58: -4732555096507726004
+      Minion_10_RedChaser_Run_59: 5310039768462114544
+      Minion_10_RedChaser_Run_6: 5273949412134281718
+      Minion_10_RedChaser_Run_60: -7900023580688543129
+      Minion_10_RedChaser_Run_61: 6781395489684132277
+      Minion_10_RedChaser_Run_62: 3297744964503586543
+      Minion_10_RedChaser_Run_63: -7896363783318324487
+      Minion_10_RedChaser_Run_64: 4562396410845826261
+      Minion_10_RedChaser_Run_65: 976327921858335306
+      Minion_10_RedChaser_Run_66: 6828277769846138020
+      Minion_10_RedChaser_Run_67: -3219348634356880053
+      Minion_10_RedChaser_Run_68: -6090694766894053775
+      Minion_10_RedChaser_Run_69: 5712485429562660463
+      Minion_10_RedChaser_Run_7: 348920511795059211
+      Minion_10_RedChaser_Run_70: -5789095431034255279
+      Minion_10_RedChaser_Run_71: -7753755712575435177
+      Minion_10_RedChaser_Run_72: -6934801867560402996
+      Minion_10_RedChaser_Run_73: 6023922685933269638
+      Minion_10_RedChaser_Run_74: -5378915970182570996
+      Minion_10_RedChaser_Run_75: -7361364298422242722
+      Minion_10_RedChaser_Run_76: -2989801010089014125
+      Minion_10_RedChaser_Run_77: -8955581062437065456
+      Minion_10_RedChaser_Run_78: 810544305177908374
+      Minion_10_RedChaser_Run_8: 4282908305783278257
+      Minion_10_RedChaser_Run_9: 4311245602664043210
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

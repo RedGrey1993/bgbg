@@ -408,8 +408,6 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         var vfx = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.accumulateEffectPrefab, room.center);
         if (energyWaveAccumulateSound)
         {
-            if (OneShotAudioSource == null)
-                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
             OneShotAudioSource.PlayOneShot(energyWaveAccumulateSound);
         }
         yield return new WaitForSeconds(1.6f);
@@ -444,8 +442,6 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
 
         if (energyWaveShootSound)
         {
-            if (OneShotAudioSource == null)
-                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
             OneShotAudioSource.PlayOneShot(energyWaveShootSound);
         }
 

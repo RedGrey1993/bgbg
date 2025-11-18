@@ -67,8 +67,6 @@ public class Minion_9_WandererAI : CharacterBaseAI
         animator.SetTrigger("Death");
         if (CharacterData.deathSound != null)
         {
-            if (OneShotAudioSource == null)
-                OneShotAudioSource = gameObject.AddComponent<AudioSource>();
             OneShotAudioSource.PlayOneShot(CharacterData.deathSound);
         }
 
