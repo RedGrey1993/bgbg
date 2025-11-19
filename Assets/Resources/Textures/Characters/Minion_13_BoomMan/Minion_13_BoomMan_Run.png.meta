@@ -1,0 +1,1373 @@
+fileFormatVersion: 2
+guid: 8126e22d5d598d643bc2092359f4b9b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4267659322162924336
+    second: Minion_13_BoomMan_Run_0
+  - first:
+      213: -8790433033208568556
+    second: Minion_13_BoomMan_Run_1
+  - first:
+      213: 4104873041279585394
+    second: Minion_13_BoomMan_Run_2
+  - first:
+      213: -1762697655062067158
+    second: Minion_13_BoomMan_Run_3
+  - first:
+      213: -8174391724709713262
+    second: Minion_13_BoomMan_Run_4
+  - first:
+      213: -5287101090649651174
+    second: Minion_13_BoomMan_Run_5
+  - first:
+      213: 182990591294413128
+    second: Minion_13_BoomMan_Run_6
+  - first:
+      213: 5057834497595873880
+    second: Minion_13_BoomMan_Run_7
+  - first:
+      213: -864278043841766749
+    second: Minion_13_BoomMan_Run_8
+  - first:
+      213: -470324637141134316
+    second: Minion_13_BoomMan_Run_9
+  - first:
+      213: 1380503418711498879
+    second: Minion_13_BoomMan_Run_10
+  - first:
+      213: 2727251373477810623
+    second: Minion_13_BoomMan_Run_11
+  - first:
+      213: -4145120659979628260
+    second: Minion_13_BoomMan_Run_12
+  - first:
+      213: 1282739333746100151
+    second: Minion_13_BoomMan_Run_13
+  - first:
+      213: -895414906393838121
+    second: Minion_13_BoomMan_Run_14
+  - first:
+      213: -2394980289938567014
+    second: Minion_13_BoomMan_Run_15
+  - first:
+      213: 2261992112073429079
+    second: Minion_13_BoomMan_Run_16
+  - first:
+      213: 3188929807899424367
+    second: Minion_13_BoomMan_Run_17
+  - first:
+      213: 6833635373000265504
+    second: Minion_13_BoomMan_Run_18
+  - first:
+      213: 2668271818640536580
+    second: Minion_13_BoomMan_Run_19
+  - first:
+      213: 8885554106446504943
+    second: Minion_13_BoomMan_Run_20
+  - first:
+      213: 1108273563801385098
+    second: Minion_13_BoomMan_Run_21
+  - first:
+      213: 801014331165609599
+    second: Minion_13_BoomMan_Run_22
+  - first:
+      213: 2597203465967257563
+    second: Minion_13_BoomMan_Run_23
+  - first:
+      213: 7230480640035404180
+    second: Minion_13_BoomMan_Run_24
+  - first:
+      213: -3729999037297481931
+    second: Minion_13_BoomMan_Run_25
+  - first:
+      213: -8235643961588834607
+    second: Minion_13_BoomMan_Run_26
+  - first:
+      213: -6856369036445647086
+    second: Minion_13_BoomMan_Run_27
+  - first:
+      213: 3677879291456912720
+    second: Minion_13_BoomMan_Run_28
+  - first:
+      213: -7908771557704062602
+    second: Minion_13_BoomMan_Run_29
+  - first:
+      213: 6461906852854288993
+    second: Minion_13_BoomMan_Run_30
+  - first:
+      213: 7140201375814415746
+    second: Minion_13_BoomMan_Run_31
+  - first:
+      213: 1685204497156999864
+    second: Minion_13_BoomMan_Run_32
+  - first:
+      213: 7115978722975329443
+    second: Minion_13_BoomMan_Run_33
+  - first:
+      213: -268772468308519723
+    second: Minion_13_BoomMan_Run_34
+  - first:
+      213: -5270230893776035615
+    second: Minion_13_BoomMan_Run_35
+  - first:
+      213: -8280435194565706841
+    second: Minion_13_BoomMan_Run_36
+  - first:
+      213: -5850750207251786428
+    second: Minion_13_BoomMan_Run_37
+  - first:
+      213: -6545237376191784648
+    second: Minion_13_BoomMan_Run_38
+  - first:
+      213: -8857545797878393451
+    second: Minion_13_BoomMan_Run_39
+  - first:
+      213: 6096143872545115328
+    second: Minion_13_BoomMan_Run_40
+  - first:
+      213: 3665230591939349699
+    second: Minion_13_BoomMan_Run_41
+  - first:
+      213: -2281130557080117354
+    second: Minion_13_BoomMan_Run_42
+  - first:
+      213: -2063357773071001853
+    second: Minion_13_BoomMan_Run_43
+  - first:
+      213: 459776963229364242
+    second: Minion_13_BoomMan_Run_44
+  - first:
+      213: -3666807014753333670
+    second: Minion_13_BoomMan_Run_45
+  - first:
+      213: -2086466753421073331
+    second: Minion_13_BoomMan_Run_46
+  - first:
+      213: 4155652089328622712
+    second: Minion_13_BoomMan_Run_47
+  - first:
+      213: -8868262084754938785
+    second: Minion_13_BoomMan_Run_48
+  - first:
+      213: -2711383934371982909
+    second: Minion_13_BoomMan_Run_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03bc7efda85c93b30800000000000000
+      internalID: 4267659322162924336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4156eb1eabb120680800000000000000
+      internalID: -8790433033208568556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c0c81584077f830800000000000000
+      internalID: 4104873041279585394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a288c9762d3a987e0800000000000000
+      internalID: -1762697655062067158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29ae8c1490abe8e80800000000000000
+      internalID: -8174391724709713262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a184f30029170a6b0800000000000000
+      internalID: -5287101090649651174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 849975729fc1a8200800000000000000
+      internalID: 182990591294413128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a1be19da9013640800000000000000
+      internalID: 5057834497595873880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aa54a1c2b77104f0800000000000000
+      internalID: -864278043841766749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41496120c321979f0800000000000000
+      internalID: -470324637141134316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f70e28b8b88882310800000000000000
+      internalID: 1380503418711498879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb15751bca429d520800000000000000
+      internalID: 2727251373477810623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1118c6b8b29976c0800000000000000
+      internalID: -4145120659979628260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b78b57b0a43dc110800000000000000
+      internalID: 1282739333746100151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd3ec103e8d293f0800000000000000
+      internalID: -895414906393838121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a90562e8d1253ced0800000000000000
+      internalID: -2394980289938567014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7505fd467d5346f10800000000000000
+      internalID: 2261992112073429079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f66ff7db3ca514c20800000000000000
+      internalID: 3188929807899424367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f89346a23f5de50800000000000000
+      internalID: 6833635373000265504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 404314af41b970520800000000000000
+      internalID: 2668271818640536580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe3e143d164df4b70800000000000000
+      internalID: 8885554106446504943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8876543fe0616f00800000000000000
+      internalID: 1108273563801385098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e8f1d4a46cd1b00800000000000000
+      internalID: 801014331165609599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd7446eaace1b0420800000000000000
+      internalID: 2597203465967257563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49936a855d3d75460800000000000000
+      internalID: 7230480640035404180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 537a55153a16c3cc0800000000000000
+      internalID: -3729999037297481931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de18e4837d15bd80800000000000000
+      internalID: -8235643961588834607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21f7bad10b849d0a0800000000000000
+      internalID: -6856369036445647086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05dfd06bab37a0330800000000000000
+      internalID: 3677879291456912720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6792655bb266e3290800000000000000
+      internalID: -7908771557704062602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162da08cb0e4da950800000000000000
+      internalID: 6461906852854288993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2857c262257171360800000000000000
+      internalID: 7140201375814415746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba0fe2cf8c036710800000000000000
+      internalID: 1685204497156999864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3acae2c42f801c260800000000000000
+      internalID: 7115978722975329443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d4d0153dd0254cf0800000000000000
+      internalID: -268772468308519723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0a03ccce06cd6b0800000000000000
+      internalID: -5270230893776035615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7abb44aef0cf51d80800000000000000
+      internalID: -8280435194565706841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445d6336fa5fdcea0800000000000000
+      internalID: -5850750207251786428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8399a75d845aa25a0800000000000000
+      internalID: -6545237376191784648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59554bfa60da31580800000000000000
+      internalID: -8857545797878393451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ccc9b6ad8ad99450800000000000000
+      internalID: 6096143872545115328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cc807cddc38dd230800000000000000
+      internalID: 3665230591939349699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69f53f228dbc750e0800000000000000
+      internalID: -2281130557080117354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 307df8b990b7d53e0800000000000000
+      internalID: -2063357773071001853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 210b13946b4716600800000000000000
+      internalID: 459776963229364242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5e87b99272ec1dc0800000000000000
+      internalID: -3666807014753333670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d44aca6da816b03e0800000000000000
+      internalID: -2086466753421073331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_13_BoomMan_Run_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87cda82ce87dba930800000000000000
+      internalID: 4155652089328622712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c2d16a754dcb0594abc2364a0b3ad884
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":7.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_13_BoomMan_Run_0: 4267659322162924336
+      Minion_13_BoomMan_Run_1: -8790433033208568556
+      Minion_13_BoomMan_Run_10: 1380503418711498879
+      Minion_13_BoomMan_Run_11: 2727251373477810623
+      Minion_13_BoomMan_Run_12: -4145120659979628260
+      Minion_13_BoomMan_Run_13: 1282739333746100151
+      Minion_13_BoomMan_Run_14: -895414906393838121
+      Minion_13_BoomMan_Run_15: -2394980289938567014
+      Minion_13_BoomMan_Run_16: 2261992112073429079
+      Minion_13_BoomMan_Run_17: 3188929807899424367
+      Minion_13_BoomMan_Run_18: 6833635373000265504
+      Minion_13_BoomMan_Run_19: 2668271818640536580
+      Minion_13_BoomMan_Run_2: 4104873041279585394
+      Minion_13_BoomMan_Run_20: 8885554106446504943
+      Minion_13_BoomMan_Run_21: 1108273563801385098
+      Minion_13_BoomMan_Run_22: 801014331165609599
+      Minion_13_BoomMan_Run_23: 2597203465967257563
+      Minion_13_BoomMan_Run_24: 7230480640035404180
+      Minion_13_BoomMan_Run_25: -3729999037297481931
+      Minion_13_BoomMan_Run_26: -8235643961588834607
+      Minion_13_BoomMan_Run_27: -6856369036445647086
+      Minion_13_BoomMan_Run_28: 3677879291456912720
+      Minion_13_BoomMan_Run_29: -7908771557704062602
+      Minion_13_BoomMan_Run_3: -1762697655062067158
+      Minion_13_BoomMan_Run_30: 6461906852854288993
+      Minion_13_BoomMan_Run_31: 7140201375814415746
+      Minion_13_BoomMan_Run_32: 1685204497156999864
+      Minion_13_BoomMan_Run_33: 7115978722975329443
+      Minion_13_BoomMan_Run_34: -268772468308519723
+      Minion_13_BoomMan_Run_35: -5270230893776035615
+      Minion_13_BoomMan_Run_36: -8280435194565706841
+      Minion_13_BoomMan_Run_37: -5850750207251786428
+      Minion_13_BoomMan_Run_38: -6545237376191784648
+      Minion_13_BoomMan_Run_39: -8857545797878393451
+      Minion_13_BoomMan_Run_4: -8174391724709713262
+      Minion_13_BoomMan_Run_40: 6096143872545115328
+      Minion_13_BoomMan_Run_41: 3665230591939349699
+      Minion_13_BoomMan_Run_42: -2281130557080117354
+      Minion_13_BoomMan_Run_43: -2063357773071001853
+      Minion_13_BoomMan_Run_44: 459776963229364242
+      Minion_13_BoomMan_Run_45: -3666807014753333670
+      Minion_13_BoomMan_Run_46: -2086466753421073331
+      Minion_13_BoomMan_Run_47: 4155652089328622712
+      Minion_13_BoomMan_Run_5: -5287101090649651174
+      Minion_13_BoomMan_Run_6: 182990591294413128
+      Minion_13_BoomMan_Run_7: 5057834497595873880
+      Minion_13_BoomMan_Run_8: -864278043841766749
+      Minion_13_BoomMan_Run_9: -470324637141134316
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

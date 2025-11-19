@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     public AudioClip explosionSound;
     public GameObject pickupItemPrefab; // 拾取物品预制体
     public GameObject flashRectPrefab;
-    public GameObject temporaryObjectParent;
+    public Transform temporaryObjectTransform;
     #endregion
 
     public static LevelManager Instance { get; private set; }
@@ -776,9 +776,7 @@ public class LevelManager : MonoBehaviour
         // ExplodeRoom(worldPosition, 5); // 5是爆炸半径
 
         // 5. 播放音效 (需要一个AudioManager)
-        var audioSrc = gameObject.AddComponent<AudioSource>();
-        audioSrc.PlayOneShot(explosionSound);
-        Destroy(audioSrc, explosionSound.length);
+        GameManager.Instance.audioSource.PlayOneShot(explosionSound);
     }
 
     private int GetNextDestroyRoomIndex()
@@ -1014,6 +1012,7 @@ public class LevelManager : MonoBehaviour
         holeTilemap.ClearAllTiles();
         highlightTilemap.ClearAllTiles();
 
+        GameManager.Instance.ClearPool();
         CharacterManager.Instance.ClearCharacterObjects();
         UIManager.Instance.HideBossHealthSlider();
         UIManager.Instance.ClearInfoPanel();
@@ -1024,7 +1023,7 @@ public class LevelManager : MonoBehaviour
         }
         PickupItems.Clear();
 
-        foreach (Transform child in temporaryObjectParent.transform)
+        foreach (Transform child in temporaryObjectTransform)
         {
             Destroy(child.gameObject);
         }
@@ -1236,7 +1235,7 @@ public class LevelManager : MonoBehaviour
 
     public GameObject InstantiateTemporaryObject(GameObject prefab, Vector3 position)
     {
-        var obj = Instantiate(prefab, temporaryObjectParent.transform);
+        var obj = Instantiate(prefab, temporaryObjectTransform);
         obj.transform.position = position;
         return obj;
     }

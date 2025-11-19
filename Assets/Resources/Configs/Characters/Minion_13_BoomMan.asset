@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Boss_2_0_MasterTurtle
+  m_Name: Minion_13_BoomMan
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
+  shootSound: {fileID: 0}
   jumpSound: {fileID: 0}
-  hurtSound: {fileID: 8300000, guid: e1ab70724ff693d4db98b6306e86c1ea, type: 3}
+  hurtSound: {fileID: 0}
   deathSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
+  bulletPrefab: {fileID: 0}
   shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  figure: {fileID: -5587028817257834737, guid: 51ff3a0e708e1b6488bbd29487885888, type: 3}
-  CharacterType: 7
+  figure: {fileID: 0}
+  CharacterType: 20
   MaxHp: 8
   MoveSpeed: 4
-  ShootRange: 20
-  BulletSpeed: 7
-  Damage: 2
-  AttackFreqUp: -3
+  ShootRange: 0
+  BulletSpeed: 0
+  Damage: 1
+  AttackFreqUp: 0
   CriticalRate: 0
-  ExpGiven: 0
-  InitialActiveSkillId: 10
+  ExpGiven: 15
+  InitialActiveSkillId: -1
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
@@ -37,9 +37,9 @@ MonoBehaviour:
   canMoveDiagonally: 0
   moveInAtkRange: 1
   moveAcrossRoom: 0
-  canAttackDiagonally: 1
-  causeCollisionDamage: 0
-  AggroRange: 10000
+  canAttackDiagonally: 0
+  causeCollisionDamage: 1
+  AggroRange: 10
   AggroChangeInterval: 2
   chaseMoveInputInterval:
     min: 0.05
@@ -51,5 +51,5 @@ MonoBehaviour:
   idleTime:
     min: 1
     max: 3
-  itemTags: 02000000
+  itemTags: 
   takeCollisionDamage: 1

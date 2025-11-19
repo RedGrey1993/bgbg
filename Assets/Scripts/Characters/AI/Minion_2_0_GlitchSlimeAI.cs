@@ -18,6 +18,7 @@ public class Minion_2_0_GlitchSlimeAI : CharacterBaseAI
     #region OnDeath
     public override void OnDeath()
     {
+        col2D.isTrigger = true;
         animator.SetTrigger("Death");
         float deathDuration = 2f;
         // 由于需要死后留下尸体，gameObject被Destroy后协程仍然存活，因此使用GameManager启动协程

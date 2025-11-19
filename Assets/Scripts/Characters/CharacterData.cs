@@ -24,11 +24,6 @@ public class CharacterData : ScriptableObject
     public GameObject shadowPrefab;
     // Minion 2 0 Glitch Slime
     public GameObject deadBodyPrefab;
-    // Boss 5 0 The Ruler
-    public GameObject explosionEffectPrefab;
-    public GameObject summonEffectPrefab;
-    public GameObject teleportEffectPrefab;
-    public GameObject accumulateEffectPrefab;
     public Sprite figure;
     #endregion
 

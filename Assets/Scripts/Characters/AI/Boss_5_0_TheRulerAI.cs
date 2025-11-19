@@ -20,6 +20,11 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     [SerializeField] private GameObject energyWavePrefab;
     [SerializeField] private GameObject virtualScreen;
     [SerializeField] private Animator screenAnim;
+    [SerializeField] private GameObject explosionEffectPrefab;
+    [SerializeField] private GameObject summonEffectPrefab;
+    [SerializeField] private GameObject teleportEffectPrefab;
+    [SerializeField] private GameObject accumulateEffectPrefab;
+    [SerializeField] private AudioClip explosionSound;
 
     private List<BossPrefabInfo> prevBossPrefabInfos;
     protected override void SubclassStart()
@@ -163,7 +168,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             var rndX = Random.Range(room.xMin + 1 + extentsX + 0.1f, room.xMin + room.width - extentsX - 0.1f);
             var rndY = Random.Range(room.yMin + 1 + extentsY + 0.1f, room.yMin + room.height - theRulerHeight - extentsY - 0.1f);
             Vector2 position = new Vector2(rndX, rndY);
-            GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.summonEffectPrefab, position);
+            GameObject summonEffect = LevelManager.Instance.InstantiateTemporaryObject(summonEffectPrefab, position);
             yield return new WaitForSeconds(1.5f);
             Destroy(summonEffect);
 
@@ -272,9 +277,10 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         }
         yield return new WaitForSeconds(1f);
 
+        GameManager.Instance.audioSource.PlayOneShot(explosionSound);
         foreach (var tilePos in tilePositions)
         {
-            StartCoroutine(PlayExplosionEffect(tilePos));
+            PlayExplosionEffect(tilePos);
             if (!explosionSameTime) yield return new WaitForSeconds(0.02f);
         }
 
@@ -293,13 +299,13 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         explosionCoroutine = null;
     }
 
-    private IEnumerator PlayExplosionEffect(Vector2Int position)
+    private void PlayExplosionEffect(Vector2Int position)
     {
-        var explosionEffect = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.explosionEffectPrefab, new Vector2(position.x, position.y));
-        var particleSystem = explosionEffect.GetComponentInChildren<ParticleSystem>();
-        // LevelManager.Instance.SetFloorTileDestroyedAndCantPass(new Vector3Int(position.x, position.y, 0));
-        yield return new WaitForSeconds(particleSystem.main.duration);
-        Object.Destroy(explosionEffect);
+        var explosionEffect = GameManager.Instance.GetObject(explosionEffectPrefab, 
+                        new Vector2(position.x, position.y), LevelManager.Instance.temporaryObjectTransform);
+        var explosionDmg = explosionEffect.GetComponent<ExplosionDamage>();
+        explosionDmg.ApplyAreaDamage();
+        GameManager.Instance.RecycleObject(explosionEffect, 3);
     }
     #endregion
 
@@ -307,7 +313,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     private Coroutine teleportCoroutine = null;
     private IEnumerator TeleportAndPreviousBossAttack(bool attack = true)
     {
-        var teleportPrefab = CharacterData.teleportEffectPrefab;
+        var teleportPrefab = teleportEffectPrefab;
         var teleportEffect1 = LevelManager.Instance.InstantiateTemporaryObject(teleportPrefab, transform.position);
         var particleSystem1 = teleportEffect1.GetComponentInChildren<ParticleSystem>();
         yield return new WaitForSeconds(particleSystem1.main.duration / 2);
@@ -405,7 +411,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
     {
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         Rect room = LevelManager.Instance.Rooms[roomId];
-        var vfx = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.accumulateEffectPrefab, room.center);
+        var vfx = LevelManager.Instance.InstantiateTemporaryObject(accumulateEffectPrefab, room.center);
         if (energyWaveAccumulateSound)
         {
             OneShotAudioSource.PlayOneShot(energyWaveAccumulateSound);

@@ -928,6 +928,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region ICharacterAI implementation
     public virtual void OnDeath()
     {
+        col2D.isTrigger = true;
         // 死亡后设置颜色为灰色
         characterStatus.SetColor(Color.gray);
         if (animator && CharacterData.Is3DModel())

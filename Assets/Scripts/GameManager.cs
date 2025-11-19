@@ -1,11 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using NetworkMessageProto;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Pool;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,60 @@ public class GameManager : MonoBehaviour
     public LocalStorage Storage { get; private set; } = null;
     public AudioSource audioSource;
     private string saveFilePath;
+
+    public Dictionary<string, ObjectPool<GameObject>> poolDictionary = new();
+
+    public GameObject GetObject(GameObject prefab, Vector3 position, Transform parent)
+    {
+        string key = prefab.name;
+        
+        // 如果池不存在，就创建一个新的
+        if (!poolDictionary.ContainsKey(key))
+        {
+            poolDictionary[key] = new ObjectPool<GameObject>(
+                createFunc: () => Instantiate(prefab),
+                actionOnGet: (obj) => obj.SetActive(true),
+                actionOnRelease: (obj) => obj.SetActive(false),
+                actionOnDestroy: (obj) => Destroy(obj)
+            );
+        }
+
+        GameObject obj = poolDictionary[key].Get();
+        obj.transform.position = position;
+        obj.name = key;
+        obj.transform.SetParent(parent);
+        return obj;
+    }
+
+    public void ReleaseObject(GameObject obj)
+    {
+        string key = obj.name;
+        // 如果池不存在，就创建一个新的
+        if (poolDictionary.ContainsKey(key))
+        {
+            poolDictionary[key].Release(obj);
+        }
+    }
+
+    public void RecycleObject(GameObject obj, float delay)
+    {
+        StartCoroutine(RecycleObjectCoroutine(obj, delay));
+    }
+
+    private IEnumerator RecycleObjectCoroutine(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ReleaseObject(obj);
+    }
+
+    public void ClearPool()
+    {
+        foreach (var pool in poolDictionary.Values)
+        {
+            pool.Clear();
+        }
+        poolDictionary.Clear();
+    }
 
     void Awake()
     {
