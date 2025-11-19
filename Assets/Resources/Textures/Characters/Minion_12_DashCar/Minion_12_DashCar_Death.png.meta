@@ -1,0 +1,1552 @@
+fileFormatVersion: 2
+guid: cea63e02a96b98f4096c72870c91abc2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2794335581456015007
+    second: Minion_12_DashCar_Death_0
+  - first:
+      213: 6223203355496030436
+    second: Minion_12_DashCar_Death_1
+  - first:
+      213: 5417426112422610559
+    second: Minion_12_DashCar_Death_2
+  - first:
+      213: 5404171398167596747
+    second: Minion_12_DashCar_Death_3
+  - first:
+      213: 7840045380593940334
+    second: Minion_12_DashCar_Death_4
+  - first:
+      213: -3437075915380660767
+    second: Minion_12_DashCar_Death_5
+  - first:
+      213: -6133268614685133099
+    second: Minion_12_DashCar_Death_6
+  - first:
+      213: -1542683769136062417
+    second: Minion_12_DashCar_Death_7
+  - first:
+      213: 8691197502790562144
+    second: Minion_12_DashCar_Death_8
+  - first:
+      213: -6922024942391305752
+    second: Minion_12_DashCar_Death_9
+  - first:
+      213: -1651225591043085219
+    second: Minion_12_DashCar_Death_10
+  - first:
+      213: 6681578241964750278
+    second: Minion_12_DashCar_Death_11
+  - first:
+      213: -1671672769042658768
+    second: Minion_12_DashCar_Death_12
+  - first:
+      213: 8058621368048450041
+    second: Minion_12_DashCar_Death_13
+  - first:
+      213: -2277431869520984947
+    second: Minion_12_DashCar_Death_14
+  - first:
+      213: -347001132089339206
+    second: Minion_12_DashCar_Death_15
+  - first:
+      213: -5646118474957368351
+    second: Minion_12_DashCar_Death_16
+  - first:
+      213: 5996236289077764507
+    second: Minion_12_DashCar_Death_17
+  - first:
+      213: -8383175615884527753
+    second: Minion_12_DashCar_Death_18
+  - first:
+      213: 4675954199797197221
+    second: Minion_12_DashCar_Death_19
+  - first:
+      213: 3941770574048932941
+    second: Minion_12_DashCar_Death_20
+  - first:
+      213: -6451581962189294897
+    second: Minion_12_DashCar_Death_21
+  - first:
+      213: -8530699329885448881
+    second: Minion_12_DashCar_Death_22
+  - first:
+      213: -3296692215317541083
+    second: Minion_12_DashCar_Death_23
+  - first:
+      213: 7955030428970362460
+    second: Minion_12_DashCar_Death_24
+  - first:
+      213: -3240262293780600049
+    second: Minion_12_DashCar_Death_25
+  - first:
+      213: 4313992858497402940
+    second: Minion_12_DashCar_Death_26
+  - first:
+      213: 7721561180250615784
+    second: Minion_12_DashCar_Death_27
+  - first:
+      213: -3670396317439647056
+    second: Minion_12_DashCar_Death_28
+  - first:
+      213: 1776235717661377788
+    second: Minion_12_DashCar_Death_29
+  - first:
+      213: 1739231444609403356
+    second: Minion_12_DashCar_Death_30
+  - first:
+      213: -8134930773407909640
+    second: Minion_12_DashCar_Death_31
+  - first:
+      213: 7621769750072545196
+    second: Minion_12_DashCar_Death_32
+  - first:
+      213: -6983970836939077075
+    second: Minion_12_DashCar_Death_33
+  - first:
+      213: 6268028544337315518
+    second: Minion_12_DashCar_Death_34
+  - first:
+      213: 2365838835002120899
+    second: Minion_12_DashCar_Death_35
+  - first:
+      213: -3472263933759808864
+    second: Minion_12_DashCar_Death_36
+  - first:
+      213: -5835972174760462591
+    second: Minion_12_DashCar_Death_37
+  - first:
+      213: 4416953513293059675
+    second: Minion_12_DashCar_Death_38
+  - first:
+      213: 2530386028313126015
+    second: Minion_12_DashCar_Death_39
+  - first:
+      213: 5260396768669550882
+    second: Minion_12_DashCar_Death_40
+  - first:
+      213: -6707163719996492547
+    second: Minion_12_DashCar_Death_41
+  - first:
+      213: 4230300306273485277
+    second: Minion_12_DashCar_Death_42
+  - first:
+      213: 403187207395920354
+    second: Minion_12_DashCar_Death_43
+  - first:
+      213: -2508843409473474934
+    second: Minion_12_DashCar_Death_44
+  - first:
+      213: -2765789755731594676
+    second: Minion_12_DashCar_Death_45
+  - first:
+      213: 824149347325309964
+    second: Minion_12_DashCar_Death_46
+  - first:
+      213: -974221233134096661
+    second: Minion_12_DashCar_Death_47
+  - first:
+      213: 2219928646947718813
+    second: Minion_12_DashCar_Death_48
+  - first:
+      213: -4994320547629811869
+    second: Minion_12_DashCar_Death_49
+  - first:
+      213: -2498608262244889063
+    second: Minion_12_DashCar_Death_50
+  - first:
+      213: -7617447133175739306
+    second: Minion_12_DashCar_Death_51
+  - first:
+      213: 6779917529628573558
+    second: Minion_12_DashCar_Death_52
+  - first:
+      213: -7364871316394367584
+    second: Minion_12_DashCar_Death_53
+  - first:
+      213: 2117233363668008132
+    second: Minion_12_DashCar_Death_54
+  - first:
+      213: 7851230584820655139
+    second: Minion_12_DashCar_Death_55
+  - first:
+      213: -927022264765719604
+    second: Minion_12_DashCar_Death_56
+  - first:
+      213: -790299353759162879
+    second: Minion_12_DashCar_Death_57
+  - first:
+      213: -8099768230706324114
+    second: Minion_12_DashCar_Death_58
+  - first:
+      213: 1157025778353041206
+    second: Minion_12_DashCar_Death_59
+  - first:
+      213: 6054962593269736788
+    second: Minion_12_DashCar_Death_60
+  - first:
+      213: -929275008630632684
+    second: Minion_12_DashCar_Death_61
+  - first:
+      213: -4336516080419462429
+    second: Minion_12_DashCar_Death_62
+  - first:
+      213: 7448111232301954645
+    second: Minion_12_DashCar_Death_63
+  - first:
+      213: 8977526711714912316
+    second: Minion_12_DashCar_Death_64
+  - first:
+      213: -6752961257681412196
+    second: Minion_12_DashCar_Death_65
+  - first:
+      213: -3429548308344306444
+    second: Minion_12_DashCar_Death_66
+  - first:
+      213: -66002292613830122
+    second: Minion_12_DashCar_Death_67
+  - first:
+      213: 7971539922564886607
+    second: Minion_12_DashCar_Death_68
+  - first:
+      213: 3807382154081486695
+    second: Minion_12_DashCar_Death_69
+  - first:
+      213: -4755100236072952805
+    second: Minion_12_DashCar_Death_70
+  - first:
+      213: 6011768935539978744
+    second: Minion_12_DashCar_Death_71
+  - first:
+      213: 6745108833495436599
+    second: Minion_12_DashCar_Death_72
+  - first:
+      213: 8445688290346915866
+    second: Minion_12_DashCar_Death_73
+  - first:
+      213: -8592297860531125150
+    second: Minion_12_DashCar_Death_74
+  - first:
+      213: -4490099961512619321
+    second: Minion_12_DashCar_Death_75
+  - first:
+      213: -7864284368560507642
+    second: Minion_12_DashCar_Death_76
+  - first:
+      213: -8096003956899648001
+    second: Minion_12_DashCar_Death_77
+  - first:
+      213: 3304549297135123331
+    second: Minion_12_DashCar_Death_78
+  - first:
+      213: 6187129596658284056
+    second: Minion_12_DashCar_Death_79
+  - first:
+      213: -3451519851409791862
+    second: Minion_12_DashCar_Death_80
+  - first:
+      213: -6468190037908449876
+    second: Minion_12_DashCar_Death_81
+  - first:
+      213: -115104886210059954
+    second: Minion_12_DashCar_Death_82
+  - first:
+      213: 9080847666204203958
+    second: Minion_12_DashCar_Death_83
+  - first:
+      213: 4691235869921520773
+    second: Minion_12_DashCar_Death_84
+  - first:
+      213: -6420343598041280696
+    second: Minion_12_DashCar_Death_85
+  - first:
+      213: -4437520499055126813
+    second: Minion_12_DashCar_Death_86
+  - first:
+      213: -4973526323908076587
+    second: Minion_12_DashCar_Death_87
+  - first:
+      213: -1660944437318599334
+    second: Minion_12_DashCar_Death_88
+  - first:
+      213: -5125351080817934208
+    second: Minion_12_DashCar_Death_89
+  - first:
+      213: 6714589238321396025
+    second: Minion_12_DashCar_Death_90
+  - first:
+      213: 8695446339513092740
+    second: Minion_12_DashCar_Death_91
+  - first:
+      213: 5723924036705900542
+    second: Minion_12_DashCar_Death_92
+  - first:
+      213: 5259420951545198342
+    second: Minion_12_DashCar_Death_93
+  - first:
+      213: -1818951366854641110
+    second: Minion_12_DashCar_Death_94
+  - first:
+      213: -8100626762718600712
+    second: Minion_12_DashCar_Death_95
+  - first:
+      213: 7224890408247540252
+    second: Minion_12_DashCar_Death_96
+  - first:
+      213: 1240760666017424155
+    second: Minion_12_DashCar_Death_97
+  - first:
+      213: 3864168822254101514
+    second: Minion_12_DashCar_Death_98
+  - first:
+      213: -4275307510106946901
+    second: Minion_12_DashCar_Death_99
+  - first:
+      213: 4670122211516689185
+    second: Minion_12_DashCar_Death_100
+  - first:
+      213: -68596380061486028
+    second: Minion_12_DashCar_Death_101
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e9be3086977c620800000000000000
+      internalID: 2794335581456015007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e02c59da724d5650800000000000000
+      internalID: 6223203355496030436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7600e3b8509e2b40800000000000000
+      internalID: 5417426112422610559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bce0b1d01497ffa40800000000000000
+      internalID: 5404171398167596747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e677e3d3cbf6dcc60800000000000000
+      internalID: 7840045380593940334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e56fa55aad0d40d0800000000000000
+      internalID: -3437075915380660767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d6f3adb0b042eaa0800000000000000
+      internalID: -6133268614685133099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2062e31949479ae0800000000000000
+      internalID: -1542683769136062417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 061f792b4165d9870800000000000000
+      internalID: 8691197502790562144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e95f564df600ff90800000000000000
+      internalID: -6922024942391305752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ca7d1d21ba519e0800000000000000
+      internalID: -1651225591043085219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c5b943b20cb9bc50800000000000000
+      internalID: 6681578241964750278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ac48439760dc8e0800000000000000
+      internalID: -1671672769042658768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f976e51079f5df60800000000000000
+      internalID: 8058621368048450041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d844c01f7cfe460e0800000000000000
+      internalID: -2277431869520984947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab218211f443f2bf0800000000000000
+      internalID: -347001132089339206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e355645925f4a1b0800000000000000
+      internalID: -5646118474957368351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9169cfa229e63350800000000000000
+      internalID: 5996236289077764507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7777c7d713af8ab80800000000000000
+      internalID: -8383175615884527753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a968e8029354e040800000000000000
+      internalID: 4675954199797197221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d443644e37bf3b630800000000000000
+      internalID: 3941770574048932941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc2b36823606776a0800000000000000
+      internalID: -6451581962189294897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45d384382edc9980800000000000000
+      internalID: -8530699329885448881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52fc33495ebcf32d0800000000000000
+      internalID: -3296692215317541083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c56a3301702f56e60800000000000000
+      internalID: 7955030428970362460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0b6d188c964803d0800000000000000
+      internalID: -3240262293780600049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c384f46f5a16edb30800000000000000
+      internalID: 4313992858497402940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8efa84c9bfe782b60800000000000000
+      internalID: 7721561180250615784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b2ab12fef1201dc0800000000000000
+      internalID: -3670396317439647056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf4419c69f476a810800000000000000
+      internalID: 1776235717661377788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd90226b8cdf22810800000000000000
+      internalID: 1739231444609403356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f8b0a2ff8bea1f80800000000000000
+      internalID: -8134930773407909640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caf44e0b437f5c960800000000000000
+      internalID: 7621769750072545196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a0f86c683f31f90800000000000000
+      internalID: -6983970836939077075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb60c3b60c28cf650800000000000000
+      internalID: 6268028544337315518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca102cb2e525d020800000000000000
+      internalID: 2365838835002120899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aa98dd595a00dfc0800000000000000
+      internalID: -3472263933759808864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107b6543a36720fa0800000000000000
+      internalID: -5835972174760462591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b561f3d71db2c4d30800000000000000
+      internalID: 4416953513293059675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74273aafacbd1320800000000000000
+      internalID: 2530386028313126015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22949268dfea00940800000000000000
+      internalID: 5260396768669550882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df4b83bf12e5be2a0800000000000000
+      internalID: -6707163719996492547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd148a827bb05ba30800000000000000
+      internalID: 4230300306273485277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e9c0d201a8689500800000000000000
+      internalID: 403187207395920354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ee045263cce2dd0800000000000000
+      internalID: -2508843409473474934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c423436fed0fd99d0800000000000000
+      internalID: -2765789755731594676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04f1310777ff6b00800000000000000
+      internalID: 824149347325309964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bee266a33feda72f0800000000000000
+      internalID: -974221233134096661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_12_DashCar_Death_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d96480cb755cece10800000000000000
+      internalID: 2219928646947718813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fbda36d48f590624a90d27bcc23673e5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":7.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_12_DashCar_Death_0: 2794335581456015007
+      Minion_12_DashCar_Death_1: 6223203355496030436
+      Minion_12_DashCar_Death_10: -1651225591043085219
+      Minion_12_DashCar_Death_11: 6681578241964750278
+      Minion_12_DashCar_Death_12: -1671672769042658768
+      Minion_12_DashCar_Death_13: 8058621368048450041
+      Minion_12_DashCar_Death_14: -2277431869520984947
+      Minion_12_DashCar_Death_15: -347001132089339206
+      Minion_12_DashCar_Death_16: -5646118474957368351
+      Minion_12_DashCar_Death_17: 5996236289077764507
+      Minion_12_DashCar_Death_18: -8383175615884527753
+      Minion_12_DashCar_Death_19: 4675954199797197221
+      Minion_12_DashCar_Death_2: 5417426112422610559
+      Minion_12_DashCar_Death_20: 3941770574048932941
+      Minion_12_DashCar_Death_21: -6451581962189294897
+      Minion_12_DashCar_Death_22: -8530699329885448881
+      Minion_12_DashCar_Death_23: -3296692215317541083
+      Minion_12_DashCar_Death_24: 7955030428970362460
+      Minion_12_DashCar_Death_25: -3240262293780600049
+      Minion_12_DashCar_Death_26: 4313992858497402940
+      Minion_12_DashCar_Death_27: 7721561180250615784
+      Minion_12_DashCar_Death_28: -3670396317439647056
+      Minion_12_DashCar_Death_29: 1776235717661377788
+      Minion_12_DashCar_Death_3: 5404171398167596747
+      Minion_12_DashCar_Death_30: 1739231444609403356
+      Minion_12_DashCar_Death_31: -8134930773407909640
+      Minion_12_DashCar_Death_32: 7621769750072545196
+      Minion_12_DashCar_Death_33: -6983970836939077075
+      Minion_12_DashCar_Death_34: 6268028544337315518
+      Minion_12_DashCar_Death_35: 2365838835002120899
+      Minion_12_DashCar_Death_36: -3472263933759808864
+      Minion_12_DashCar_Death_37: -5835972174760462591
+      Minion_12_DashCar_Death_38: 4416953513293059675
+      Minion_12_DashCar_Death_39: 2530386028313126015
+      Minion_12_DashCar_Death_4: 7840045380593940334
+      Minion_12_DashCar_Death_40: 5260396768669550882
+      Minion_12_DashCar_Death_41: -6707163719996492547
+      Minion_12_DashCar_Death_42: 4230300306273485277
+      Minion_12_DashCar_Death_43: 403187207395920354
+      Minion_12_DashCar_Death_44: -2508843409473474934
+      Minion_12_DashCar_Death_45: -2765789755731594676
+      Minion_12_DashCar_Death_46: 824149347325309964
+      Minion_12_DashCar_Death_47: -974221233134096661
+      Minion_12_DashCar_Death_48: 2219928646947718813
+      Minion_12_DashCar_Death_5: -3437075915380660767
+      Minion_12_DashCar_Death_6: -6133268614685133099
+      Minion_12_DashCar_Death_7: -1542683769136062417
+      Minion_12_DashCar_Death_8: 8691197502790562144
+      Minion_12_DashCar_Death_9: -6922024942391305752
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Minion_4_1_KamikazeShip
+  m_Name: Minion_12_DashCar
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -24,25 +24,25 @@ MonoBehaviour:
   teleportEffectPrefab: {fileID: 0}
   accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 0}
-  CharacterType: 12
+  CharacterType: 19
   MaxHp: 3
-  MoveSpeed: 5
+  MoveSpeed: 4
   ShootRange: 0
-  BulletSpeed: 7
-  Damage: 2
+  BulletSpeed: 0
+  Damage: 1
   AttackFreqUp: 0
   CriticalRate: 0
-  ExpGiven: 18
+  ExpGiven: 5
   InitialActiveSkillId: -1
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 0
-  moveInAtkRange: 1
+  moveInAtkRange: 0
   moveAcrossRoom: 0
   canAttackDiagonally: 0
-  causeCollisionDamage: 0
+  causeCollisionDamage: 1
   AggroRange: 20
   AggroChangeInterval: 2
   chaseMoveInputInterval:

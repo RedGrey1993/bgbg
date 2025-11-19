@@ -815,7 +815,9 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     {
         return CharacterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
             || CharacterData.CharacterType == CharacterType.Minion_2_1_SpikeTurtle
-            || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip;
+            || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip
+            || CharacterData.CharacterType == CharacterType.Minion_12_DashCar
+            ;
     }
 
     private Coroutine rotateCoroutine = null;

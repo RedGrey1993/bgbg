@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Minion_10_TurretFlower_Shoot
+  m_Name: Minion_11_TurretFlower_Shoot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -35,7 +35,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Minion_10_TurretFlower_Idle
+  m_Name: Minion_11_TurretFlower_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -122,7 +122,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Minion_10_TurretFlower_Death
+  m_Name: Minion_11_TurretFlower_Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
