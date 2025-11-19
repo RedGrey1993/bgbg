@@ -1,0 +1,2228 @@
+fileFormatVersion: 2
+guid: 66e5cce160bdcd242aa0a6a28a5d2354
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9124283792688797707
+    second: Minion_15_HealBulb_Run_0
+  - first:
+      213: 2461936062204768050
+    second: Minion_15_HealBulb_Run_1
+  - first:
+      213: -6169963929328390455
+    second: Minion_15_HealBulb_Run_2
+  - first:
+      213: -2741723717187134383
+    second: Minion_15_HealBulb_Run_3
+  - first:
+      213: -4538460467548627777
+    second: Minion_15_HealBulb_Run_4
+  - first:
+      213: -1812503100507320486
+    second: Minion_15_HealBulb_Run_5
+  - first:
+      213: -1024164140160194798
+    second: Minion_15_HealBulb_Run_6
+  - first:
+      213: -1993437864956677756
+    second: Minion_15_HealBulb_Run_7
+  - first:
+      213: -3020748580671636220
+    second: Minion_15_HealBulb_Run_8
+  - first:
+      213: 8768415660880504372
+    second: Minion_15_HealBulb_Run_9
+  - first:
+      213: -7937361709493498253
+    second: Minion_15_HealBulb_Run_10
+  - first:
+      213: -2598583042554191113
+    second: Minion_15_HealBulb_Run_11
+  - first:
+      213: -2086680982578954769
+    second: Minion_15_HealBulb_Run_12
+  - first:
+      213: 4040475482222023805
+    second: Minion_15_HealBulb_Run_13
+  - first:
+      213: -1341065486042668115
+    second: Minion_15_HealBulb_Run_14
+  - first:
+      213: -1479574678135915137
+    second: Minion_15_HealBulb_Run_15
+  - first:
+      213: -5762699902520808700
+    second: Minion_15_HealBulb_Run_16
+  - first:
+      213: 8540815181496312905
+    second: Minion_15_HealBulb_Run_17
+  - first:
+      213: -2505160620969701726
+    second: Minion_15_HealBulb_Run_18
+  - first:
+      213: 6585891496778634624
+    second: Minion_15_HealBulb_Run_19
+  - first:
+      213: -4779725611308814963
+    second: Minion_15_HealBulb_Run_20
+  - first:
+      213: 405423910474416156
+    second: Minion_15_HealBulb_Run_21
+  - first:
+      213: 2189691970487075005
+    second: Minion_15_HealBulb_Run_22
+  - first:
+      213: -1851880628107780224
+    second: Minion_15_HealBulb_Run_23
+  - first:
+      213: 8360150778224277299
+    second: Minion_15_HealBulb_Run_24
+  - first:
+      213: -7339935468342029327
+    second: Minion_15_HealBulb_Run_25
+  - first:
+      213: 7813679946493485114
+    second: Minion_15_HealBulb_Run_26
+  - first:
+      213: -6637443683607834471
+    second: Minion_15_HealBulb_Run_27
+  - first:
+      213: 6962327306970476332
+    second: Minion_15_HealBulb_Run_28
+  - first:
+      213: -5534283650108341116
+    second: Minion_15_HealBulb_Run_29
+  - first:
+      213: -9026614372102663673
+    second: Minion_15_HealBulb_Run_30
+  - first:
+      213: -5495701577613920790
+    second: Minion_15_HealBulb_Run_31
+  - first:
+      213: 2583695967457739578
+    second: Minion_15_HealBulb_Run_32
+  - first:
+      213: -6074903319014759384
+    second: Minion_15_HealBulb_Run_33
+  - first:
+      213: 8953464038804797131
+    second: Minion_15_HealBulb_Run_34
+  - first:
+      213: -5951998870077397531
+    second: Minion_15_HealBulb_Run_35
+  - first:
+      213: -6952189891102615631
+    second: Minion_15_HealBulb_Run_36
+  - first:
+      213: -7023020521730110015
+    second: Minion_15_HealBulb_Run_37
+  - first:
+      213: 257150246228144792
+    second: Minion_15_HealBulb_Run_38
+  - first:
+      213: -494748509570702106
+    second: Minion_15_HealBulb_Run_39
+  - first:
+      213: 4636457744351662832
+    second: Minion_15_HealBulb_Run_40
+  - first:
+      213: -7090550445358157409
+    second: Minion_15_HealBulb_Run_41
+  - first:
+      213: 2198710873991217472
+    second: Minion_15_HealBulb_Run_42
+  - first:
+      213: 3016571161356877614
+    second: Minion_15_HealBulb_Run_43
+  - first:
+      213: -4368300514460060192
+    second: Minion_15_HealBulb_Run_44
+  - first:
+      213: 7156916819222559024
+    second: Minion_15_HealBulb_Run_45
+  - first:
+      213: 2320304987539557233
+    second: Minion_15_HealBulb_Run_46
+  - first:
+      213: -7979900406194454528
+    second: Minion_15_HealBulb_Run_47
+  - first:
+      213: -7902477844759608046
+    second: Minion_15_HealBulb_Run_48
+  - first:
+      213: -3099425450847171135
+    second: Minion_15_HealBulb_Run_49
+  - first:
+      213: 1890323632421132927
+    second: Minion_15_HealBulb_Run_50
+  - first:
+      213: -1856526829789533624
+    second: Minion_15_HealBulb_Run_51
+  - first:
+      213: -8708316341247975334
+    second: Minion_15_HealBulb_Run_52
+  - first:
+      213: -8698870279237276887
+    second: Minion_15_HealBulb_Run_53
+  - first:
+      213: -1620487161917341937
+    second: Minion_15_HealBulb_Run_54
+  - first:
+      213: 5682082267808906816
+    second: Minion_15_HealBulb_Run_55
+  - first:
+      213: 5840367294999964262
+    second: Minion_15_HealBulb_Run_56
+  - first:
+      213: 6247827213708018765
+    second: Minion_15_HealBulb_Run_57
+  - first:
+      213: -6762905772734654839
+    second: Minion_15_HealBulb_Run_58
+  - first:
+      213: 1913518879671431785
+    second: Minion_15_HealBulb_Run_59
+  - first:
+      213: -6464671291548260150
+    second: Minion_15_HealBulb_Run_60
+  - first:
+      213: -7388003494802356905
+    second: Minion_15_HealBulb_Run_61
+  - first:
+      213: 1679334117871781288
+    second: Minion_15_HealBulb_Run_62
+  - first:
+      213: -2288313849077108423
+    second: Minion_15_HealBulb_Run_63
+  - first:
+      213: -5955254689369541262
+    second: Minion_15_HealBulb_Run_64
+  - first:
+      213: -8494740863759929313
+    second: Minion_15_HealBulb_Run_65
+  - first:
+      213: -2622868900199799586
+    second: Minion_15_HealBulb_Run_66
+  - first:
+      213: -5026586952631075782
+    second: Minion_15_HealBulb_Run_67
+  - first:
+      213: -4751997962003987854
+    second: Minion_15_HealBulb_Run_68
+  - first:
+      213: 3680924197857850110
+    second: Minion_15_HealBulb_Run_69
+  - first:
+      213: 7862727963964424931
+    second: Minion_15_HealBulb_Run_70
+  - first:
+      213: 2378662746427727506
+    second: Minion_15_HealBulb_Run_71
+  - first:
+      213: 3032929845144443620
+    second: Minion_15_HealBulb_Run_72
+  - first:
+      213: 383581117526150737
+    second: Minion_15_HealBulb_Run_73
+  - first:
+      213: 5110479957598631278
+    second: Minion_15_HealBulb_Run_74
+  - first:
+      213: -243180309639125658
+    second: Minion_15_HealBulb_Run_75
+  - first:
+      213: -7485651033618729366
+    second: Minion_15_HealBulb_Run_76
+  - first:
+      213: -8150676873266724341
+    second: Minion_15_HealBulb_Run_77
+  - first:
+      213: -6738004128110807041
+    second: Minion_15_HealBulb_Run_78
+  - first:
+      213: 4273360091335253140
+    second: Minion_15_HealBulb_Run_79
+  - first:
+      213: 4093455073951775126
+    second: Minion_15_HealBulb_Run_80
+  - first:
+      213: 8035322659035842781
+    second: Minion_15_HealBulb_Run_81
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f72eeaab38006180800000000000000
+      internalID: -9124283792688797707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23f607ffdcd8a2220800000000000000
+      internalID: 2461936062204768050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ce68630f72ef5aa0800000000000000
+      internalID: -6169963929328390455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c1cc43ec073f9d0800000000000000
+      internalID: -2741723717187134383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbc5c9420462401c0800000000000000
+      internalID: -4538460467548627777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f87fb7802b8d6e0800000000000000
+      internalID: -1812503100507320486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2816
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 217ee0a042079c1f0800000000000000
+      internalID: -1024164140160194798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 481b171d2d2e554e0800000000000000
+      internalID: -1993437864956677756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40d3d45ab252416d0800000000000000
+      internalID: -3020748580671636220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43621c5269bafa970800000000000000
+      internalID: 8768415660880504372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37e4ad34493d8d190800000000000000
+      internalID: -7937361709493498253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2243d9d7affebd0800000000000000
+      internalID: -2598583042554191113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed71d9b3be9a03e0800000000000000
+      internalID: -2086680982578954769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2560
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74d4813b07a21830800000000000000
+      internalID: 4040475482222023805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3e3e3bb04936de0800000000000000
+      internalID: -1341065486042668115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7dbb0b5bae777be0800000000000000
+      internalID: -1479574678135915137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40ba11388f6c600b0800000000000000
+      internalID: -5762699902520808700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 944e9590822178670800000000000000
+      internalID: 8540815181496312905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aecdc920b1eb3dd0800000000000000
+      internalID: -2505160620969701726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08591ca3c69c56b50800000000000000
+      internalID: 6585891496778634624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8de91e61e00badb0800000000000000
+      internalID: -4779725611308814963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c10074706ea50a500800000000000000
+      internalID: 405423910474416156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db04864ee39536e10800000000000000
+      internalID: 2189691970487075005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08f5533616ccc46e0800000000000000
+      internalID: -1851880628107780224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33773ccb6d8350470800000000000000
+      internalID: 8360150778224277299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f3de27849f432a90800000000000000
+      internalID: -7339935468342029327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a30665f3384cf6c60800000000000000
+      internalID: 7813679946493485114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99015ede22013e3a0800000000000000
+      internalID: -6637443683607834471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2f2af53cc72f9060800000000000000
+      internalID: 6962327306970476332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4844a0597564233b0800000000000000
+      internalID: -5534283650108341116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702926abd060bb280800000000000000
+      internalID: -9026614372102663673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae5b4ca58885bb3b0800000000000000
+      internalID: -5495701577613920790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a338deb1bc12bd320800000000000000
+      internalID: 2583695967457739578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824a8491e9b91bba0800000000000000
+      internalID: -6074903319014759384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc6b1361b18114c70800000000000000
+      internalID: 8953464038804797131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e5a28d0090466da0800000000000000
+      internalID: -5951998870077397531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b754c9d02cd48f90800000000000000
+      internalID: -6952189891102615631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cd8ff78b08398e90800000000000000
+      internalID: -7023020521730110015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 892355859c4919300800000000000000
+      internalID: 257150246228144792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e462e11adc4229f0800000000000000
+      internalID: -494748509570702106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f29034e0c1085040800000000000000
+      internalID: 4636457744351662832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f917072ffed499d90800000000000000
+      internalID: -7090550445358157409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 041090004e3638e10800000000000000
+      internalID: 2198710873991217472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2f3d502d730dd920800000000000000
+      internalID: 3016571161356877614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5b37b83dda063c0800000000000000
+      internalID: -4368300514460060192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03977c89de9725360800000000000000
+      internalID: 7156916819222559024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17bccd8b711633020800000000000000
+      internalID: 2320304987539557233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 000c8c12cd2b14190800000000000000
+      internalID: -7979900406194454528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21585b1f442c45290800000000000000
+      internalID: -7902477844759608046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cd037259f0acf4d0800000000000000
+      internalID: -3099425450847171135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_50
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7adcfc0457cb3a10800000000000000
+      internalID: 1890323632421132927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84aa9624faa4c36e0800000000000000
+      internalID: -1856526829789533624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_52
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a506f202d68d52780800000000000000
+      internalID: -8708316341247975334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_53
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92bebd2d197674780800000000000000
+      internalID: -8698870279237276887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_54
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0ff5de038fd289e0800000000000000
+      internalID: -1620487161917341937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_55
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04ebb45b7bfcade40800000000000000
+      internalID: 5682082267808906816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a28487c172d0150800000000000000
+      internalID: 5840367294999964262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d44c51b9fbdb4b650800000000000000
+      internalID: 6247827213708018765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_58
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98656b6f7055522a0800000000000000
+      internalID: -6762905772734654839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_59
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 962b1d5684f2e8a10800000000000000
+      internalID: 1913518879671431785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8a99d26bfd846a0800000000000000
+      internalID: -6464671291548260150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_61
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75506fcf6f9887990800000000000000
+      internalID: -7388003494802356905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a501f29b713e4710800000000000000
+      internalID: 1679334117871781288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931f623ada64e30e0800000000000000
+      internalID: -2288313849077108423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_64
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275362d896faa5da0800000000000000
+      internalID: -5955254689369541262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_65
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f103894013e9c1a80800000000000000
+      internalID: -8494740863759929313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_66
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed4eb2fb1a2b99bd0800000000000000
+      internalID: -2622868900199799586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_67
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3cbfcf6cc9fd3ab0800000000000000
+      internalID: -5026586952631075782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_68
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2724f5dd7038d0eb0800000000000000
+      internalID: -4751997962003987854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_69
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2f47a3e05451330800000000000000
+      internalID: 3680924197857850110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e241a9bc650e1d60800000000000000
+      internalID: 7862727963964424931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_71
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29e97494a25b20120800000000000000
+      internalID: 2378662746427727506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_72
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ead38000a1271a20800000000000000
+      internalID: 3032929845144443620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_73
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15e81bc7ef0c25500800000000000000
+      internalID: 383581117526150737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_74
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e657b68e1721ce640800000000000000
+      internalID: 5110479957598631278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_75
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 665279bfbcc00acf0800000000000000
+      internalID: -243180309639125658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_76
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66be9cab00ad1890800000000000000
+      internalID: -7485651033618729366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0202f1619af2ee80800000000000000
+      internalID: -8150676873266724341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_78
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff7f6d8e1fccd72a0800000000000000
+      internalID: -6738004128110807041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_79
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49c5e51ac560e4b30800000000000000
+      internalID: 4273360091335253140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_15_HealBulb_Run_80
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6997ae2a3bfdec830800000000000000
+      internalID: 4093455073951775126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6670d97e5947905458a630b347bc7b2c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":12.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_15_HealBulb_Run_0: -9124283792688797707
+      Minion_15_HealBulb_Run_1: 2461936062204768050
+      Minion_15_HealBulb_Run_10: -7937361709493498253
+      Minion_15_HealBulb_Run_11: -2598583042554191113
+      Minion_15_HealBulb_Run_12: -2086680982578954769
+      Minion_15_HealBulb_Run_13: 4040475482222023805
+      Minion_15_HealBulb_Run_14: -1341065486042668115
+      Minion_15_HealBulb_Run_15: -1479574678135915137
+      Minion_15_HealBulb_Run_16: -5762699902520808700
+      Minion_15_HealBulb_Run_17: 8540815181496312905
+      Minion_15_HealBulb_Run_18: -2505160620969701726
+      Minion_15_HealBulb_Run_19: 6585891496778634624
+      Minion_15_HealBulb_Run_2: -6169963929328390455
+      Minion_15_HealBulb_Run_20: -4779725611308814963
+      Minion_15_HealBulb_Run_21: 405423910474416156
+      Minion_15_HealBulb_Run_22: 2189691970487075005
+      Minion_15_HealBulb_Run_23: -1851880628107780224
+      Minion_15_HealBulb_Run_24: 8360150778224277299
+      Minion_15_HealBulb_Run_25: -7339935468342029327
+      Minion_15_HealBulb_Run_26: 7813679946493485114
+      Minion_15_HealBulb_Run_27: -6637443683607834471
+      Minion_15_HealBulb_Run_28: 6962327306970476332
+      Minion_15_HealBulb_Run_29: -5534283650108341116
+      Minion_15_HealBulb_Run_3: -2741723717187134383
+      Minion_15_HealBulb_Run_30: -9026614372102663673
+      Minion_15_HealBulb_Run_31: -5495701577613920790
+      Minion_15_HealBulb_Run_32: 2583695967457739578
+      Minion_15_HealBulb_Run_33: -6074903319014759384
+      Minion_15_HealBulb_Run_34: 8953464038804797131
+      Minion_15_HealBulb_Run_35: -5951998870077397531
+      Minion_15_HealBulb_Run_36: -6952189891102615631
+      Minion_15_HealBulb_Run_37: -7023020521730110015
+      Minion_15_HealBulb_Run_38: 257150246228144792
+      Minion_15_HealBulb_Run_39: -494748509570702106
+      Minion_15_HealBulb_Run_4: -4538460467548627777
+      Minion_15_HealBulb_Run_40: 4636457744351662832
+      Minion_15_HealBulb_Run_41: -7090550445358157409
+      Minion_15_HealBulb_Run_42: 2198710873991217472
+      Minion_15_HealBulb_Run_43: 3016571161356877614
+      Minion_15_HealBulb_Run_44: -4368300514460060192
+      Minion_15_HealBulb_Run_45: 7156916819222559024
+      Minion_15_HealBulb_Run_46: 2320304987539557233
+      Minion_15_HealBulb_Run_47: -7979900406194454528
+      Minion_15_HealBulb_Run_48: -7902477844759608046
+      Minion_15_HealBulb_Run_49: -3099425450847171135
+      Minion_15_HealBulb_Run_5: -1812503100507320486
+      Minion_15_HealBulb_Run_50: 1890323632421132927
+      Minion_15_HealBulb_Run_51: -1856526829789533624
+      Minion_15_HealBulb_Run_52: -8708316341247975334
+      Minion_15_HealBulb_Run_53: -8698870279237276887
+      Minion_15_HealBulb_Run_54: -1620487161917341937
+      Minion_15_HealBulb_Run_55: 5682082267808906816
+      Minion_15_HealBulb_Run_56: 5840367294999964262
+      Minion_15_HealBulb_Run_57: 6247827213708018765
+      Minion_15_HealBulb_Run_58: -6762905772734654839
+      Minion_15_HealBulb_Run_59: 1913518879671431785
+      Minion_15_HealBulb_Run_6: -1024164140160194798
+      Minion_15_HealBulb_Run_60: -6464671291548260150
+      Minion_15_HealBulb_Run_61: -7388003494802356905
+      Minion_15_HealBulb_Run_62: 1679334117871781288
+      Minion_15_HealBulb_Run_63: -2288313849077108423
+      Minion_15_HealBulb_Run_64: -5955254689369541262
+      Minion_15_HealBulb_Run_65: -8494740863759929313
+      Minion_15_HealBulb_Run_66: -2622868900199799586
+      Minion_15_HealBulb_Run_67: -5026586952631075782
+      Minion_15_HealBulb_Run_68: -4751997962003987854
+      Minion_15_HealBulb_Run_69: 3680924197857850110
+      Minion_15_HealBulb_Run_7: -1993437864956677756
+      Minion_15_HealBulb_Run_70: 7862727963964424931
+      Minion_15_HealBulb_Run_71: 2378662746427727506
+      Minion_15_HealBulb_Run_72: 3032929845144443620
+      Minion_15_HealBulb_Run_73: 383581117526150737
+      Minion_15_HealBulb_Run_74: 5110479957598631278
+      Minion_15_HealBulb_Run_75: -243180309639125658
+      Minion_15_HealBulb_Run_76: -7485651033618729366
+      Minion_15_HealBulb_Run_77: -8150676873266724341
+      Minion_15_HealBulb_Run_78: -6738004128110807041
+      Minion_15_HealBulb_Run_79: 4273360091335253140
+      Minion_15_HealBulb_Run_8: -3020748580671636220
+      Minion_15_HealBulb_Run_80: 4093455073951775126
+      Minion_15_HealBulb_Run_9: 8768415660880504372
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

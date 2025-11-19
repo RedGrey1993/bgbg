@@ -78,6 +78,7 @@ public enum CharacterType
     Minion_12_DashCar,
     Minion_13_BoomMan,
     Minion_14_HypnoMoth,
+    Minion_15_HealBulb,
 }
 
 public enum ItemTag

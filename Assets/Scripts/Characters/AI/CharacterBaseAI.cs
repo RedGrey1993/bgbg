@@ -955,7 +955,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     private float lastPlayHurtEffectTime = 0f;
     public virtual void OnHurt()
     {
-        if (Time.time - lastPlayHurtEffectTime > 3f) { // 避免频繁播放受伤动画和音效影响体验
+        if (Time.time - lastPlayHurtEffectTime > 1.5f) { // 避免频繁播放受伤动画和音效影响体验
             if (animator && CharacterData.Is3DModel())
             {
                 animator.Play("Hurt");
