@@ -231,7 +231,7 @@ public class CharacterStatus : MonoBehaviour
                 skillPanelController.ForceRandomChoose = false;
 
                 UIManager.Instance.QuitToMainMenu();
-            }, slideInTime: 5f);
+            }, slideInTime: 2f);
         }
     }
 

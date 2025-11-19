@@ -26,7 +26,7 @@ public class Minion_10_RedChaserAI : CharacterBaseAI
                 transform.localScale = scale;
             }
         }
-     }
+    }
 
     protected override void UpdateAttackInput() { }
 
@@ -57,6 +57,6 @@ public class Minion_10_RedChaserAI : CharacterBaseAI
             OneShotAudioSource.PlayOneShot(laughSound);
             nextLaughTime = Time.time + Random.Range(5, 10);
         }
-}
+    }
     #endregion
 }

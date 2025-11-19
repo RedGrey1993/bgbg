@@ -1,0 +1,1445 @@
+fileFormatVersion: 2
+guid: a750f59d83cfaea468d0a2b02cba5b7a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5810629881759225141
+    second: Minion_11_TurretFlower_Idle_0
+  - first:
+      213: 6514964193651249940
+    second: Minion_11_TurretFlower_Idle_1
+  - first:
+      213: -1138478255140746017
+    second: Minion_11_TurretFlower_Idle_2
+  - first:
+      213: 912395122604725977
+    second: Minion_11_TurretFlower_Idle_3
+  - first:
+      213: -6329124148120230491
+    second: Minion_11_TurretFlower_Idle_4
+  - first:
+      213: -3893933141695305463
+    second: Minion_11_TurretFlower_Idle_5
+  - first:
+      213: -4209662280498363118
+    second: Minion_11_TurretFlower_Idle_6
+  - first:
+      213: -3348637214252930624
+    second: Minion_11_TurretFlower_Idle_7
+  - first:
+      213: 9218577770528404417
+    second: Minion_11_TurretFlower_Idle_8
+  - first:
+      213: 3382484225787461732
+    second: Minion_11_TurretFlower_Idle_9
+  - first:
+      213: 201968565824023155
+    second: Minion_11_TurretFlower_Idle_10
+  - first:
+      213: -6047472782531614781
+    second: Minion_11_TurretFlower_Idle_11
+  - first:
+      213: -6497929848917790678
+    second: Minion_11_TurretFlower_Idle_12
+  - first:
+      213: -3867016418593619917
+    second: Minion_11_TurretFlower_Idle_13
+  - first:
+      213: -4101600182038684836
+    second: Minion_11_TurretFlower_Idle_14
+  - first:
+      213: 5984039338350702544
+    second: Minion_11_TurretFlower_Idle_15
+  - first:
+      213: -7977441260485834756
+    second: Minion_11_TurretFlower_Idle_16
+  - first:
+      213: 7761812054554919390
+    second: Minion_11_TurretFlower_Idle_17
+  - first:
+      213: 5919707151753635147
+    second: Minion_11_TurretFlower_Idle_18
+  - first:
+      213: -5300153798405378963
+    second: Minion_11_TurretFlower_Idle_19
+  - first:
+      213: 5975603522849620059
+    second: Minion_11_TurretFlower_Idle_20
+  - first:
+      213: -4261669483571100682
+    second: Minion_11_TurretFlower_Idle_21
+  - first:
+      213: -4775998486753127476
+    second: Minion_11_TurretFlower_Idle_22
+  - first:
+      213: 7651219075500653788
+    second: Minion_11_TurretFlower_Idle_23
+  - first:
+      213: -81313820218103099
+    second: Minion_11_TurretFlower_Idle_24
+  - first:
+      213: 8832572359574375549
+    second: Minion_11_TurretFlower_Idle_25
+  - first:
+      213: 1227613182320837069
+    second: Minion_11_TurretFlower_Idle_26
+  - first:
+      213: -4418525822966230692
+    second: Minion_11_TurretFlower_Idle_27
+  - first:
+      213: 2087985035970606482
+    second: Minion_11_TurretFlower_Idle_28
+  - first:
+      213: -6731710830039941488
+    second: Minion_11_TurretFlower_Idle_29
+  - first:
+      213: 2496524276928077180
+    second: Minion_11_TurretFlower_Idle_30
+  - first:
+      213: 6498181933074256221
+    second: Minion_11_TurretFlower_Idle_31
+  - first:
+      213: -8856342104804138685
+    second: Minion_11_TurretFlower_Idle_32
+  - first:
+      213: 4610075359671555555
+    second: Minion_11_TurretFlower_Idle_33
+  - first:
+      213: 8102314643787595089
+    second: Minion_11_TurretFlower_Idle_34
+  - first:
+      213: -1942243623130186434
+    second: Minion_11_TurretFlower_Idle_35
+  - first:
+      213: 3917758895460294790
+    second: Minion_11_TurretFlower_Idle_36
+  - first:
+      213: -3649537475534499722
+    second: Minion_11_TurretFlower_Idle_37
+  - first:
+      213: 3869684276594223039
+    second: Minion_11_TurretFlower_Idle_38
+  - first:
+      213: 7800270365287083296
+    second: Minion_11_TurretFlower_Idle_39
+  - first:
+      213: 296045909070713283
+    second: Minion_11_TurretFlower_Idle_40
+  - first:
+      213: -635592674399586248
+    second: Minion_11_TurretFlower_Idle_41
+  - first:
+      213: -3988639461845641240
+    second: Minion_11_TurretFlower_Idle_42
+  - first:
+      213: -3375457714910541499
+    second: Minion_11_TurretFlower_Idle_43
+  - first:
+      213: 7821534514621394219
+    second: Minion_11_TurretFlower_Idle_44
+  - first:
+      213: -9041062983566786344
+    second: Minion_11_TurretFlower_Idle_45
+  - first:
+      213: -5876933566164901207
+    second: Minion_11_TurretFlower_Idle_46
+  - first:
+      213: 1467095943481203671
+    second: Minion_11_TurretFlower_Idle_47
+  - first:
+      213: 8270572020584883108
+    second: Minion_11_TurretFlower_Idle_48
+  - first:
+      213: 3808058364376169126
+    second: Minion_11_TurretFlower_Idle_49
+  - first:
+      213: -2185454250913540965
+    second: Minion_11_TurretFlower_Idle_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcaa87898ee7c5fa0800000000000000
+      internalID: -5810629881759225141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413d8f69a6dc96a50800000000000000
+      internalID: 6514964193651249940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdc44d11f005330f0800000000000000
+      internalID: -1138478255140746017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d657a9a78a79ac00800000000000000
+      internalID: 912395122604725977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a562f3de1f6a28a0800000000000000
+      internalID: -6329124148120230491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90961264078f5f9c0800000000000000
+      internalID: -3893933141695305463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215c88aa5764495c0800000000000000
+      internalID: -4209662280498363118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c9ecca02304781d0800000000000000
+      internalID: -3348637214252930624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c378a2e3a7feef70800000000000000
+      internalID: 9218577770528404417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4608c607b7ff0fe20800000000000000
+      internalID: 3382484225787461732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37a6cbd27598dc200800000000000000
+      internalID: 201968565824023155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c72c509b8f031ca0800000000000000
+      internalID: -6047472782531614781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a20f8dbda37b2d5a0800000000000000
+      internalID: -6497929848917790678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 330cf1d3e09955ac0800000000000000
+      internalID: -3867016418593619917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b18ea9d503417c0800000000000000
+      internalID: -4101600182038684836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df6b5cc2149b0350800000000000000
+      internalID: 5984039338350702544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf7823c907f6a4190800000000000000
+      internalID: -7977441260485834756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1471590fe77bb60800000000000000
+      internalID: 7761812054554919390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b456d926a46072250800000000000000
+      internalID: 5919707151753635147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c2c17a3321276b0800000000000000
+      internalID: -5300153798405378963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5046027ebb9de250800000000000000
+      internalID: 5975603522849620059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f34f991f228bd4c0800000000000000
+      internalID: -4261669483571100682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc3d64d3eae38bdb0800000000000000
+      internalID: -4775998486753127476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdcb8e516379e2a60800000000000000
+      internalID: 7651219075500653788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cae196e28d1fdef0800000000000000
+      internalID: -81313820218103099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c4d5993c9939a70800000000000000
+      internalID: 8832572359574375549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc102d56fab590110800000000000000
+      internalID: 1227613182320837069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c511533ac2e3ea2c0800000000000000
+      internalID: -4418525822966230692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295fb5dd3530afc10800000000000000
+      internalID: 2087985035970606482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09eb1dc8aa82492a0800000000000000
+      internalID: -6731710830039941488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ddf6b4a9f65a220800000000000000
+      internalID: 2496524276928077180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5190ce0a0e2e2a50800000000000000
+      internalID: 6498181933074256221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34160d157c3f71580800000000000000
+      internalID: -8856342104804138685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e511094d174aff30800000000000000
+      internalID: 4610075359671555555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15db7699d34317070800000000000000
+      internalID: 8102314643787595089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3dbe0817b3cb05e0800000000000000
+      internalID: -1942243623130186434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680a98f45fcae5630800000000000000
+      internalID: 3917758895460294790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6705a48800d3a5dc0800000000000000
+      internalID: -3649537475534499722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb7205bd851e3b530800000000000000
+      internalID: 3869684276594223039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02d61f2d190204c60800000000000000
+      internalID: 7800270365287083296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c11e5f8f24cb1400800000000000000
+      internalID: 296045909070713283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 838729484dbed27f0800000000000000
+      internalID: -635592674399586248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7d59bca8185a8c0800000000000000
+      internalID: -3988639461845641240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 549c76c9717f721d0800000000000000
+      internalID: -3375457714910541499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d2776633cab8c60800000000000000
+      internalID: 7821534514621394219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d081983e11b78280800000000000000
+      internalID: -9041062983566786344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a2eb241f00f07ea0800000000000000
+      internalID: -5876933566164901207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db1d92dcfb2c5410800000000000000
+      internalID: 1467095943481203671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a32f30fe69f6c270800000000000000
+      internalID: 8270572020584883108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aab89c08e0f8d430800000000000000
+      internalID: 3808058364376169126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_11_TurretFlower_Idle_50
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b945e6510f4bba1e0800000000000000
+      internalID: -2185454250913540965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 62468b212c3b36c4fba8aaa7a845e467
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_11_TurretFlower_Idle_0: -5810629881759225141
+      Minion_11_TurretFlower_Idle_1: 6514964193651249940
+      Minion_11_TurretFlower_Idle_10: 201968565824023155
+      Minion_11_TurretFlower_Idle_11: -6047472782531614781
+      Minion_11_TurretFlower_Idle_12: -6497929848917790678
+      Minion_11_TurretFlower_Idle_13: -3867016418593619917
+      Minion_11_TurretFlower_Idle_14: -4101600182038684836
+      Minion_11_TurretFlower_Idle_15: 5984039338350702544
+      Minion_11_TurretFlower_Idle_16: -7977441260485834756
+      Minion_11_TurretFlower_Idle_17: 7761812054554919390
+      Minion_11_TurretFlower_Idle_18: 5919707151753635147
+      Minion_11_TurretFlower_Idle_19: -5300153798405378963
+      Minion_11_TurretFlower_Idle_2: -1138478255140746017
+      Minion_11_TurretFlower_Idle_20: 5975603522849620059
+      Minion_11_TurretFlower_Idle_21: -4261669483571100682
+      Minion_11_TurretFlower_Idle_22: -4775998486753127476
+      Minion_11_TurretFlower_Idle_23: 7651219075500653788
+      Minion_11_TurretFlower_Idle_24: -81313820218103099
+      Minion_11_TurretFlower_Idle_25: 8832572359574375549
+      Minion_11_TurretFlower_Idle_26: 1227613182320837069
+      Minion_11_TurretFlower_Idle_27: -4418525822966230692
+      Minion_11_TurretFlower_Idle_28: 2087985035970606482
+      Minion_11_TurretFlower_Idle_29: -6731710830039941488
+      Minion_11_TurretFlower_Idle_3: 912395122604725977
+      Minion_11_TurretFlower_Idle_30: 2496524276928077180
+      Minion_11_TurretFlower_Idle_31: 6498181933074256221
+      Minion_11_TurretFlower_Idle_32: -8856342104804138685
+      Minion_11_TurretFlower_Idle_33: 4610075359671555555
+      Minion_11_TurretFlower_Idle_34: 8102314643787595089
+      Minion_11_TurretFlower_Idle_35: -1942243623130186434
+      Minion_11_TurretFlower_Idle_36: 3917758895460294790
+      Minion_11_TurretFlower_Idle_37: -3649537475534499722
+      Minion_11_TurretFlower_Idle_38: 3869684276594223039
+      Minion_11_TurretFlower_Idle_39: 7800270365287083296
+      Minion_11_TurretFlower_Idle_4: -6329124148120230491
+      Minion_11_TurretFlower_Idle_40: 296045909070713283
+      Minion_11_TurretFlower_Idle_41: -635592674399586248
+      Minion_11_TurretFlower_Idle_42: -3988639461845641240
+      Minion_11_TurretFlower_Idle_43: -3375457714910541499
+      Minion_11_TurretFlower_Idle_44: 7821534514621394219
+      Minion_11_TurretFlower_Idle_45: -9041062983566786344
+      Minion_11_TurretFlower_Idle_46: -5876933566164901207
+      Minion_11_TurretFlower_Idle_47: 1467095943481203671
+      Minion_11_TurretFlower_Idle_48: 8270572020584883108
+      Minion_11_TurretFlower_Idle_49: 3808058364376169126
+      Minion_11_TurretFlower_Idle_5: -3893933141695305463
+      Minion_11_TurretFlower_Idle_50: -2185454250913540965
+      Minion_11_TurretFlower_Idle_6: -4209662280498363118
+      Minion_11_TurretFlower_Idle_7: -3348637214252930624
+      Minion_11_TurretFlower_Idle_8: 9218577770528404417
+      Minion_11_TurretFlower_Idle_9: 3382484225787461732
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

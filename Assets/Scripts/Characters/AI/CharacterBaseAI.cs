@@ -745,14 +745,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             SetShootAnimation();
         if (CharacterData.shootSound)
         {
-            var audioSrc = gameObject.AddComponent<AudioSource>();
-            audioSrc.PlayOneShot(CharacterData.shootSound);
-            Destroy(audioSrc, CharacterData.shootSound.length);
+            OneShotAudioSource.PlayOneShot(CharacterData.shootSound);
         }
 
         // 获取Player的位置
         // 获取Player碰撞体的边界位置
-        Bounds playerBounds = GetComponentInChildren<Collider2D>().bounds;
+        Bounds playerBounds = col2D.bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
         Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
         Vector2 bulletStartPosition = transform.position;

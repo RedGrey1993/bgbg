@@ -74,6 +74,7 @@ public enum CharacterType
     Boss_4_0_SysGuardianFloatingTurret,
     Minion_9_Wanderer,
     Minion_10_RedChaser,
+    Minion_11_TurretFlower,
 }
 
 public enum ItemTag
