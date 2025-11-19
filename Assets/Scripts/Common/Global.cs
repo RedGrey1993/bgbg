@@ -77,6 +77,7 @@ public enum CharacterType
     Minion_11_TurretFlower,
     Minion_12_DashCar,
     Minion_13_BoomMan,
+    Minion_14_HypnoMoth,
 }
 
 public enum ItemTag

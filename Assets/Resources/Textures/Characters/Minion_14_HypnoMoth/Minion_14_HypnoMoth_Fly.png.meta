@@ -1,0 +1,925 @@
+fileFormatVersion: 2
+guid: e3f2dfee5b39e2f478260367bba1353e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4476634417139951870
+    second: Minion_14_HypnoMoth_Fly_0
+  - first:
+      213: -4331277927314781657
+    second: Minion_14_HypnoMoth_Fly_1
+  - first:
+      213: -685561855089510697
+    second: Minion_14_HypnoMoth_Fly_2
+  - first:
+      213: 2256931798596952934
+    second: Minion_14_HypnoMoth_Fly_3
+  - first:
+      213: 8824421170350305859
+    second: Minion_14_HypnoMoth_Fly_4
+  - first:
+      213: 8467741244927770179
+    second: Minion_14_HypnoMoth_Fly_5
+  - first:
+      213: -5322089244824562171
+    second: Minion_14_HypnoMoth_Fly_6
+  - first:
+      213: -5057799509385766150
+    second: Minion_14_HypnoMoth_Fly_7
+  - first:
+      213: -4828805845001335108
+    second: Minion_14_HypnoMoth_Fly_8
+  - first:
+      213: 8592183666160919047
+    second: Minion_14_HypnoMoth_Fly_9
+  - first:
+      213: 1642822216410224411
+    second: Minion_14_HypnoMoth_Fly_10
+  - first:
+      213: 691876874586649956
+    second: Minion_14_HypnoMoth_Fly_11
+  - first:
+      213: -5865019090530507062
+    second: Minion_14_HypnoMoth_Fly_12
+  - first:
+      213: 6259306353532682497
+    second: Minion_14_HypnoMoth_Fly_13
+  - first:
+      213: -9040009078236844600
+    second: Minion_14_HypnoMoth_Fly_14
+  - first:
+      213: 3664849786391121760
+    second: Minion_14_HypnoMoth_Fly_15
+  - first:
+      213: -8537781725497270644
+    second: Minion_14_HypnoMoth_Fly_16
+  - first:
+      213: 1204217682910275368
+    second: Minion_14_HypnoMoth_Fly_17
+  - first:
+      213: -2435537663168291475
+    second: Minion_14_HypnoMoth_Fly_18
+  - first:
+      213: 5902089745597960232
+    second: Minion_14_HypnoMoth_Fly_19
+  - first:
+      213: 7294386085769625970
+    second: Minion_14_HypnoMoth_Fly_20
+  - first:
+      213: -1980328181088038688
+    second: Minion_14_HypnoMoth_Fly_21
+  - first:
+      213: 1546365813036711864
+    second: Minion_14_HypnoMoth_Fly_22
+  - first:
+      213: -2990373145221268757
+    second: Minion_14_HypnoMoth_Fly_23
+  - first:
+      213: -1323072651887613329
+    second: Minion_14_HypnoMoth_Fly_24
+  - first:
+      213: 5294298852090812085
+    second: Minion_14_HypnoMoth_Fly_25
+  - first:
+      213: 7840049700769551496
+    second: Minion_14_HypnoMoth_Fly_26
+  - first:
+      213: 4138022012044498252
+    second: Minion_14_HypnoMoth_Fly_27
+  - first:
+      213: 6046333866542036049
+    second: Minion_14_HypnoMoth_Fly_28
+  - first:
+      213: 5731346888370910222
+    second: Minion_14_HypnoMoth_Fly_29
+  - first:
+      213: -4417464286811259065
+    second: Minion_14_HypnoMoth_Fly_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 207d51147bccfd1c0800000000000000
+      internalID: -4476634417139951870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72a89e65ca534e3c0800000000000000
+      internalID: -4331277927314781657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d6f4d300256c76f0800000000000000
+      internalID: -685561855089510697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663a7a9538b325f10800000000000000
+      internalID: 2256931798596952934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 342ba27fc44a67a70800000000000000
+      internalID: 8824421170350305859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ef7d95cc5738570800000000000000
+      internalID: 8467741244927770179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5061e4b87042426b0800000000000000
+      internalID: -5322089244824562171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa9ae1c4261fc9b0800000000000000
+      internalID: -5057799509385766150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbe8d570ba2acfcb0800000000000000
+      internalID: -4828805845001335108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7026f6265819d3770800000000000000
+      internalID: 8592183666160919047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17504e0a1a7cc610800000000000000
+      internalID: 1642822216410224411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4657b0a0a5a0a9900800000000000000
+      internalID: 691876874586649956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac66b0c16344b9ea0800000000000000
+      internalID: -5865019090530507062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10149ae17f58dd650800000000000000
+      internalID: 6259306353532682497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cde26da3af6b8280800000000000000
+      internalID: -9040009078236844600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f4209a6792cd230800000000000000
+      internalID: 3664849786391121760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8ed9e971c4b38980800000000000000
+      internalID: -8537781725497270644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8276c163a9d36b010800000000000000
+      internalID: 1204217682910275368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6dd4cd366b333ed0800000000000000
+      internalID: -2435537663168291475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82097de5a5f68e150800000000000000
+      internalID: 5902089745597960232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 271c9d86f7dda3560800000000000000
+      internalID: 7294386085769625970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e05d83f2067484e0800000000000000
+      internalID: -1980328181088038688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf7cd2938bc57510800000000000000
+      internalID: 1546365813036711864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beaf735d77f0086d0800000000000000
+      internalID: -2990373145221268757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a643cde6083ade0800000000000000
+      internalID: -1323072651887613329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b691ad61c0297940800000000000000
+      internalID: 5294298852090812085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 884d6cb1aa37dcc60800000000000000
+      internalID: 7840049700769551496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45d8a488153d6930800000000000000
+      internalID: 4138022012044498252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 154f6a4ed94e8e350800000000000000
+      internalID: 6046333866542036049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0473e501a5d98f40800000000000000
+      internalID: 5731346888370910222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_14_HypnoMoth_Fly_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74ff3a8c2a302b2c0800000000000000
+      internalID: -4417464286811259065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: dfb4be2b05869994795472a39ece41f4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":5.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_14_HypnoMoth_Fly_0: -4476634417139951870
+      Minion_14_HypnoMoth_Fly_1: -4331277927314781657
+      Minion_14_HypnoMoth_Fly_10: 1642822216410224411
+      Minion_14_HypnoMoth_Fly_11: 691876874586649956
+      Minion_14_HypnoMoth_Fly_12: -5865019090530507062
+      Minion_14_HypnoMoth_Fly_13: 6259306353532682497
+      Minion_14_HypnoMoth_Fly_14: -9040009078236844600
+      Minion_14_HypnoMoth_Fly_15: 3664849786391121760
+      Minion_14_HypnoMoth_Fly_16: -8537781725497270644
+      Minion_14_HypnoMoth_Fly_17: 1204217682910275368
+      Minion_14_HypnoMoth_Fly_18: -2435537663168291475
+      Minion_14_HypnoMoth_Fly_19: 5902089745597960232
+      Minion_14_HypnoMoth_Fly_2: -685561855089510697
+      Minion_14_HypnoMoth_Fly_20: 7294386085769625970
+      Minion_14_HypnoMoth_Fly_21: -1980328181088038688
+      Minion_14_HypnoMoth_Fly_22: 1546365813036711864
+      Minion_14_HypnoMoth_Fly_23: -2990373145221268757
+      Minion_14_HypnoMoth_Fly_24: -1323072651887613329
+      Minion_14_HypnoMoth_Fly_25: 5294298852090812085
+      Minion_14_HypnoMoth_Fly_26: 7840049700769551496
+      Minion_14_HypnoMoth_Fly_27: 4138022012044498252
+      Minion_14_HypnoMoth_Fly_28: 6046333866542036049
+      Minion_14_HypnoMoth_Fly_29: 5731346888370910222
+      Minion_14_HypnoMoth_Fly_3: 2256931798596952934
+      Minion_14_HypnoMoth_Fly_30: -4417464286811259065
+      Minion_14_HypnoMoth_Fly_4: 8824421170350305859
+      Minion_14_HypnoMoth_Fly_5: 8467741244927770179
+      Minion_14_HypnoMoth_Fly_6: -5322089244824562171
+      Minion_14_HypnoMoth_Fly_7: -5057799509385766150
+      Minion_14_HypnoMoth_Fly_8: -4828805845001335108
+      Minion_14_HypnoMoth_Fly_9: 8592183666160919047
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

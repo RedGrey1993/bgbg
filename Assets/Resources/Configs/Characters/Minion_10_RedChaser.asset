@@ -19,10 +19,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  explosionEffectPrefab: {fileID: 0}
-  summonEffectPrefab: {fileID: 0}
-  teleportEffectPrefab: {fileID: 0}
-  accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 0}
   CharacterType: 17
   MaxHp: 6
@@ -39,7 +35,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 1
-  moveInAtkRange: 1
+  moveInAtkRange: 0
   moveAcrossRoom: 0
   canAttackDiagonally: 1
   causeCollisionDamage: 1

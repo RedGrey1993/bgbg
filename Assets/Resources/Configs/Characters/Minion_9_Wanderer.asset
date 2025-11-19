@@ -19,10 +19,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  explosionEffectPrefab: {fileID: 0}
-  summonEffectPrefab: {fileID: 0}
-  teleportEffectPrefab: {fileID: 0}
-  accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 0}
   CharacterType: 16
   MaxHp: 2
@@ -39,7 +35,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 1
-  moveInAtkRange: 1
+  moveInAtkRange: 0
   moveAcrossRoom: 0
   canAttackDiagonally: 0
   causeCollisionDamage: 1
@@ -51,5 +47,9 @@ MonoBehaviour:
   randomMoveToTargetInterval:
     min: 0.5
     max: 2
+  idleRate: 0.2
+  idleTime:
+    min: 1
+    max: 3
   itemTags: 
   takeCollisionDamage: 1

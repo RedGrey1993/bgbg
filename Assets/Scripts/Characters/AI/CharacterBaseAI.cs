@@ -917,6 +917,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         // 所有客户端都能调用，包括Host自己
         // 包括不需要严格同步的操作，如物理引擎模拟等相关操作
         // Do Client Action;
+        if (Time.time < characterStatus.ConfuseTime)
+        {
+            characterInput.MoveInput *= -1;
+            characterInput.LookInput *= -1;
+        }
         MoveAction(); // Client 的 Move类似于移动预测，最终还是会同步到Host的权威位置
         AttackAction();
         LookToAction();

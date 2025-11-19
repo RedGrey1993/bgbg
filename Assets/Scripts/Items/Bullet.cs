@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     public int bounceCount = 0;
     public int penetrateCount = 0;
     public bool canDestroyObstacle = false;
+    public int confuseTargetTime = 0;
     private float bornTime;
     private Collider2D col2D;
     private Rigidbody2D rb;
@@ -40,6 +41,7 @@ public class Bullet : MonoBehaviour
             if (BulletState.BounceCount > bounceCount) bounceCount = BulletState.BounceCount;
         }
         if (Damage == 0) Damage = OwnerStatus.State.Damage;
+        if (confuseTargetTime > 0) Damage = 0;
         // col2D.enabled = true;
     }
 
@@ -83,7 +85,7 @@ public class Bullet : MonoBehaviour
         // 2. 检查它是否是我们自定义的 DestructibleTile
         if (tile is DestructibleTile)
         {
-            DestructibleTile destructibleTile = (DestructibleTile)tile;
+            // DestructibleTile destructibleTile = (DestructibleTile)tile;
 
             // 3. **移除 Tile**: 把它从 Tilemap 上擦除
             LevelManager.Instance.wallTilemap.SetTile(cellPosition, null);
@@ -144,6 +146,16 @@ public class Bullet : MonoBehaviour
                         MirrorBounce(other);
                     }
                     return; // 不伤害友方，也不销毁碰到自己的子弹
+                }
+
+                if (confuseTargetTime > 0)
+                {
+                    tarStatus.ConfuseTime = Time.time + confuseTargetTime;
+                    if (tarStatus.confuseCoroutine != null)
+                        tarStatus.StopCoroutine(tarStatus.confuseCoroutine);
+                    tarStatus.confuseCoroutine = tarStatus.StartCoroutine(tarStatus.ConfuseCoroutine());
+                    Destroy(gameObject);
+                    return;
                 }
 
                 penetrateCount--;
@@ -225,32 +237,5 @@ public class Bullet : MonoBehaviour
         // 将刚体的速度设置为反射方向，并保持碰撞前的速度大小
         rb.linearVelocity = reflectionDirection * lastVelocity.magnitude;
         bounceCount--;
-    }
-
-    // 大多数子弹的IsTrigger为false
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (GameManager.Instance.IsLocalOrHost())
-        {
-            // 检测是否碰撞到Player
-            if (collision.gameObject.CompareTag(Constants.TagPlayer) || collision.gameObject.CompareTag(Constants.TagEnemy))
-            {
-                CharacterStatus targetCharacterStatus = collision.GetCharacterStatus();
-                if (targetCharacterStatus == null || targetCharacterStatus == OwnerStatus)
-                {
-                    return; // 不伤害自己，也不销毁碰到自己的子弹
-                }
-                if (targetCharacterStatus?.gameObject.CompareTag(Constants.TagEnemy) == true && OwnerStatus?.gameObject.CompareTag(Constants.TagEnemy) == true)
-                {
-                    ; // 敌人之间不互相伤害；但还是会销毁子弹
-                }
-                else if (targetCharacterStatus != null)
-                {
-                    targetCharacterStatus.TakeDamage_Host(OwnerStatus, DamageType.Bullet);
-                }
-            }
-        }
-        // 当子弹与其他物体发生物理碰撞时销毁子弹
-        Destroy(gameObject);
     }
 }

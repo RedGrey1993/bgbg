@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using NetworkMessageProto;
+using System.Collections;
 
 [RequireComponent(typeof(CharacterBaseAI))]
 public class CharacterStatus : MonoBehaviour
@@ -21,6 +22,8 @@ public class CharacterStatus : MonoBehaviour
     public bool IsAI { get; set; } = true;
     public bool IsBoss { get; set; } = false;
     private DamageType lastDamageType = DamageType.Bullet;
+    public float ConfuseTime { get; set; } = float.MinValue;
+    public Coroutine confuseCoroutine = null;
 
     void Awake()
     {
@@ -308,18 +311,16 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    // public bool IsBossFunc()
-    // {
-    //     if (characterData.CharacterType == CharacterType.Boss_1_0_PhantomTank
-    //         || characterData.CharacterType == CharacterType.Boss_2_0_MasterTurtle
-    //         || characterData.CharacterType == CharacterType.Boss_3_0_PokeBoy
-    //         || characterData.CharacterType == CharacterType.Boss_4_0_SysGuardian
-    //         || characterData.CharacterType == CharacterType.Boss_5_0_TheRuler)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    public IEnumerator ConfuseCoroutine()
+    {
+        Color initColor = State.Color.ToColor();
+        SetColor(Color.purple, false);
+        float time = ConfuseTime - Time.time;
+        if (time > 0)
+            yield return new WaitForSeconds(time);
+        SetColor(initColor, false);
+        confuseCoroutine = null;
+    }
 
     void FixedUpdate()
     {
