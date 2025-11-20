@@ -8,6 +8,9 @@ using UnityEngine;
 // Stomper不会对角线移动
 public class Minion_1_0_StomperAI : CharacterBaseAI
 {
+    public AudioClip jumpSound;
+    public GameObject shadowPrefab;
+
     #region Collision
     protected override void ProcessCollisionDamage(Collision2D collision)
     {
@@ -149,21 +152,20 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
         isAttack = true;
 
         float elapsedTime = 0;
-        var collider2D = GetComponent<Collider2D>();
-        var characterBound = collider2D.bounds;
-        var shadowPos = transform.position;
-        shadowPos.y -= characterBound.extents.y;
-        var shadowObj = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.shadowPrefab, shadowPos);
-        TobeDestroyed.Add(shadowObj);
+        var characterBound = col2D.bounds;
 
         animator.SetTrigger("Jump");
-        var audioSrc = gameObject.AddComponent<AudioSource>();
-        audioSrc.PlayOneShot(CharacterData.jumpSound);
-        Destroy(audioSrc, CharacterData.jumpSound.length);
+        OneShotAudioSource.PlayOneShot(jumpSound);
 
         float prepareJumpDuration = 2.3f;
         float afterJumpDuration = jumpDuration - 3.1f;
         yield return new WaitForSeconds(prepareJumpDuration);
+
+        var shadowPos = transform.position;
+        shadowPos.y -= characterBound.extents.y;
+        var shadowObj = LevelManager.Instance.InstantiateTemporaryObject(shadowPrefab, shadowPos);
+        TobeDestroyed.Add(shadowObj);
+
         Vector3 startPos = transform.position;
         jumpDuration -= prepareJumpDuration;
         jumpDuration -= afterJumpDuration;
@@ -177,11 +179,11 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             float z = 0;
             if (characterBound.size.y < Mathf.Abs(y - startPos.y))
             {
-                collider2D.isTrigger = true;
+                col2D.isTrigger = true;
             }
             else
             {
-                collider2D.isTrigger = false;
+                col2D.isTrigger = false;
             }
             transform.position = new Vector3(x, y, z);
             shadowObj.transform.position = new Vector3(x, startPos.y - characterBound.extents.y, 0);
@@ -191,11 +193,11 @@ public class Minion_1_0_StomperAI : CharacterBaseAI
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(afterJumpDuration);
         // transform.position = targetPos; // 只会水平跳，所以不用设置到targetPos，否则可能会出现不完全水平，最后会突然跳到目标位置的问题
         isJumpingDown = false;
         Destroy(shadowObj);
         TobeDestroyed.Remove(shadowObj);
+        yield return new WaitForSeconds(afterJumpDuration);
 
         isAttack = false;
         if (isAi)

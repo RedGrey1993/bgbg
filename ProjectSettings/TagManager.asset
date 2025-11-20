@@ -23,8 +23,8 @@ TagManager:
   - Player
   - Point Effector Ignore
   - FlyObject
-  - 
-  - 
+  - Obstacle
+  - OnlyProcessObstacle
   - 
   - 
   - 

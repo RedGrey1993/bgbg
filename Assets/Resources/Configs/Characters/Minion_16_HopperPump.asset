@@ -10,23 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Minion_14_HypnoMoth
+  m_Name: Minion_16_HopperPump
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  shootSound: {fileID: 8300000, guid: 5d2fa534349e5b14a967eceb67c63ab9, type: 3}
-  jumpSound: {fileID: 0}
+  shootSound: {fileID: 0}
   hurtSound: {fileID: 0}
   deathSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: 7c11b9456eee0fd4983f1fee080c43aa, type: 3}
-  shadowPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
-  CharacterType: 21
-  MaxHp: 7
-  MoveSpeed: 4
-  ShootRange: 5
-  BulletSpeed: 1
+  CharacterType: 23
+  MaxHp: 9
+  MoveSpeed: 2
+  ShootRange: 0
+  BulletSpeed: 0
   Damage: 1
-  AttackFreqUp: -10
+  AttackFreqUp: -8
   CriticalRate: 0
   ExpGiven: 15
   InitialActiveSkillId: -1
@@ -47,7 +45,7 @@ MonoBehaviour:
   randomMoveToTargetInterval:
     min: 0.5
     max: 2
-  idleRate: 0.2
+  idleRate: 0
   idleTime:
     min: 1
     max: 3

@@ -217,6 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e192fdf29bd3764d9dfb6a8710975e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minion_1_0_StomperAI
+  jumpSound: {fileID: 8300000, guid: c396e19d793f93443a2108e0d7d5d3b9, type: 3}
+  shadowPrefab: {fileID: 3848438239513427971, guid: 421c51bcdc6025b4e805719300d94620, type: 3}
 --- !u!70 &2187313132032507972
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

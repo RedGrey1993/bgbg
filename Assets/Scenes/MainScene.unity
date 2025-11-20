@@ -1715,7 +1715,7 @@ GameObject:
   - component: {fileID: 414631227}
   - component: {fileID: 414631229}
   - component: {fileID: 414631228}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WallTilemap
   m_TagString: Wall
   m_Icon: {fileID: 0}

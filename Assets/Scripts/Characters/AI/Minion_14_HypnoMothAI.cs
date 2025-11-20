@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Minion_14_HypnoMothAI : CharacterBaseAI
 {
+    protected override bool IsAtkCoroutineIdle()
+    {
+        // coroutine的时间范围比isAttak更大
+        return atkCoroutine == null && ActiveSkillCoroutine == null;
+    }
+
     private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {
@@ -50,8 +56,14 @@ public class Minion_14_HypnoMothAI : CharacterBaseAI
         // Set the bullet's velocity
         if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         isAttack = false;
+        if (isAi)
+        {
+            // 攻击完之后给1-3s的移动，避免呆在原地一直攻击
+            // 这时候 coroutine 还不是null，所以不会再次进入攻击
+            yield return new WaitForSeconds(Random.Range(1, 3f));
+        }
         atkCoroutine = null;
     }
 

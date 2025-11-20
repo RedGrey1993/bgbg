@@ -16,12 +16,9 @@ public class CharacterData : ScriptableObject
     #region Prefabs
     [Header("Prefabs")]
     public AudioClip shootSound;
-    public AudioClip jumpSound;
     public AudioClip hurtSound;
     public AudioClip deathSound;
     public GameObject bulletPrefab;
-    // Minion 1 0 Stomper
-    public GameObject shadowPrefab;
     // Minion 2 0 Glitch Slime
     public GameObject deadBodyPrefab;
     public Sprite figure;

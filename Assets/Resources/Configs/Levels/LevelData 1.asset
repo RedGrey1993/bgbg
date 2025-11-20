@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: 5e622ae414cd4714a9856739de4451e4, type: 3}
+  - {fileID: 5506378715684145941, guid: 09c2d83abfcced44c813e284acbd334b, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 1
@@ -75,4 +75,4 @@ MonoBehaviour:
   breakableObstacleRatio: 0.005
   bgmNormal: {fileID: 8300000, guid: 886fc467bbbd49147a9f940de3044fbe, type: 3}
   bgmBoss: {fileID: 8300000, guid: e17a6c43a91cfb043af815ac86ec825c, type: 3}
-  bgmVolume: 0.3
+  bgmVolume: 0.2

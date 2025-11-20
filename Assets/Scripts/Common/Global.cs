@@ -79,6 +79,7 @@ public enum CharacterType
     Minion_13_BoomMan,
     Minion_14_HypnoMoth,
     Minion_15_HealBulb,
+    Minion_16_HopperPump,
 }
 
 public enum ItemTag
@@ -131,6 +132,7 @@ public static class Constants
     public const string TagEnemy = "Enemy";
     public const string TagWall = "Wall";
     public const string TagShield = "Shield";
+    public const string LayerOnlyProcessObstacle = "OnlyProcessObstacle";
     public const string SummonBossName = "SummonBoss";
     public const int SingularityItemId = 2;
     public const int SysBugItemId = 3;

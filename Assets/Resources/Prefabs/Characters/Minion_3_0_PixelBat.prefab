@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5035837120527684100}
   - component: {fileID: 7528162992489926195}
   - component: {fileID: 2761528381193209298}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Minion_3_0_PixelBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1594084724632985206}
   - component: {fileID: 355725702456237306}
   - component: {fileID: 1957077613128719990}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Minion_3_0_PixelBat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193152610034553094}
   - component: {fileID: 5423481078738478291}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}

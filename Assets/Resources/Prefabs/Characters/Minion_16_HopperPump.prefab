@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3662283532957928570}
   - component: {fileID: 7062490449866445211}
   - component: {fileID: 1676066478205685914}
-  m_Layer: 13
-  m_Name: Minion_14_HypnoMoth
+  m_Layer: 0
+  m_Name: Minion_16_HopperPump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4331277927314781657, guid: e3f2dfee5b39e2f478260367bba1353e, type: 3}
+  m_Sprite: {fileID: -440625042395025511, guid: 960232ab89559704da1ec1539416b78b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 3170028238222688398}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b9640bf7275f9a04496aa6587adbf299, type: 2}
+  m_Controller: {fileID: 9100000, guid: 20441545c50ccbc4faa25ecdb93957fc, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: 1594084724632985206}
   - component: {fileID: 355725702456237306}
   - component: {fileID: 3019685196065665941}
-  - component: {fileID: 2592758163950391764}
-  m_Layer: 13
-  m_Name: Minion_14_HypnoMoth
+  - component: {fileID: 2770741835762644984}
+  m_Layer: 9
+  m_Name: Minion_16_HopperPump
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23589fd8244bcc0489d061ef7658f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  characterData: {fileID: 11400000, guid: f35e7e8e17b32314b91e4670c79562ae, type: 2}
+  characterData: {fileID: 11400000, guid: 9198c6a19813a3f4b8f99eb6fa262d29, type: 2}
 --- !u!70 &3019685196065665941
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6f184813a4d12d4408c82e97c6734ff6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -239,10 +239,10 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.028168308, y: -0.14140369}
-  m_Size: {x: 1.6486883, y: 1.1724082}
+  m_Offset: {x: -0.044465963, y: -0.49158466}
+  m_Size: {x: 2.0711124, y: 1.6054541}
   m_Direction: 1
---- !u!114 &2592758163950391764
+--- !u!114 &2770741835762644984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,9 +251,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5506378715684145941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0354384c6882abd43b3be063a468bb0f, type: 3}
+  m_Script: {fileID: 11500000, guid: c80b0f3b686eae34bafee80f43ef26f2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Minion_14_HypnoMothAI
+  m_EditorClassIdentifier: Assembly-CSharp::Minion_16_HopperPumpAI
+  jumpSound: {fileID: 8300000, guid: c396e19d793f93443a2108e0d7d5d3b9, type: 3}
+  smallJumpSound: {fileID: 8300000, guid: 802e1f61c0ad5c04fbb59f8e56dfa8d3, type: 3}
+  shadowPrefab: {fileID: 3848438239513427971, guid: 421c51bcdc6025b4e805719300d94620, type: 3}
 --- !u!1 &6566019517108392442
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193152610034553094}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
