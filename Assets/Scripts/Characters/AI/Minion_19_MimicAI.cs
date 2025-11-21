@@ -64,6 +64,7 @@ public class Minion_19_MimicAI : CharacterBaseAI
         isAttack = true;
 
         animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.7f);
         // isAttack = false后才能移动
         isAttack = false; // isAttack=false后就不再设置朝向为LookInput，而是朝向MoveInput
 

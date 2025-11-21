@@ -83,6 +83,7 @@ public enum CharacterType
     Minion_17_WarpMage,
     Minion_18_EggDragon,
     Minion_19_Mimic,
+    Minion_20_OrbitalDrone,
 }
 
 public enum ItemTag
