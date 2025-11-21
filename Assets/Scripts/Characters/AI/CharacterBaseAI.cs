@@ -281,6 +281,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         if (CharacterData.causeCollisionDamage)
             ProcessCollisionDamage(collision);
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        SubclassTriggerEnter2D(other);
+    }
+
+    protected virtual void SubclassTriggerEnter2D(Collider2D other) { }
     #endregion
 
     #region AI Logic / Update Input
