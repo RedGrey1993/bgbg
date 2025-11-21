@@ -1,0 +1,1016 @@
+fileFormatVersion: 2
+guid: e8ef9192f4f1840459deb642227bfbf4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6784116797077380146
+    second: Minion_20_OrbitalDrone_Attack_0
+  - first:
+      213: -2292797564007109692
+    second: Minion_20_OrbitalDrone_Attack_1
+  - first:
+      213: -5767983163063102495
+    second: Minion_20_OrbitalDrone_Attack_2
+  - first:
+      213: 5671659100617919626
+    second: Minion_20_OrbitalDrone_Attack_3
+  - first:
+      213: -8901450400157049
+    second: Minion_20_OrbitalDrone_Attack_4
+  - first:
+      213: -4978500179558895410
+    second: Minion_20_OrbitalDrone_Attack_5
+  - first:
+      213: -8953303756176657402
+    second: Minion_20_OrbitalDrone_Attack_6
+  - first:
+      213: 7391531365472735042
+    second: Minion_20_OrbitalDrone_Attack_7
+  - first:
+      213: -4572049570162202072
+    second: Minion_20_OrbitalDrone_Attack_8
+  - first:
+      213: 404370257181804914
+    second: Minion_20_OrbitalDrone_Attack_9
+  - first:
+      213: 8349565673390328762
+    second: Minion_20_OrbitalDrone_Attack_10
+  - first:
+      213: 2940679321887150333
+    second: Minion_20_OrbitalDrone_Attack_11
+  - first:
+      213: -1799999079261736821
+    second: Minion_20_OrbitalDrone_Attack_12
+  - first:
+      213: 717839406258441113
+    second: Minion_20_OrbitalDrone_Attack_13
+  - first:
+      213: 8810746691827447552
+    second: Minion_20_OrbitalDrone_Attack_14
+  - first:
+      213: -7359888074190103552
+    second: Minion_20_OrbitalDrone_Attack_15
+  - first:
+      213: -3675545607946524425
+    second: Minion_20_OrbitalDrone_Attack_16
+  - first:
+      213: 3648709424043772449
+    second: Minion_20_OrbitalDrone_Attack_17
+  - first:
+      213: -6081894105681362718
+    second: Minion_20_OrbitalDrone_Attack_18
+  - first:
+      213: -6604074981851338203
+    second: Minion_20_OrbitalDrone_Attack_19
+  - first:
+      213: 5093664276856249077
+    second: Minion_20_OrbitalDrone_Attack_20
+  - first:
+      213: 7503507761459344875
+    second: Minion_20_OrbitalDrone_Attack_21
+  - first:
+      213: -3909657688322881976
+    second: Minion_20_OrbitalDrone_Attack_22
+  - first:
+      213: -911279809589621029
+    second: Minion_20_OrbitalDrone_Attack_23
+  - first:
+      213: 8398958235761781383
+    second: Minion_20_OrbitalDrone_Attack_24
+  - first:
+      213: -3071762988060360206
+    second: Minion_20_OrbitalDrone_Attack_25
+  - first:
+      213: 1204981862824904767
+    second: Minion_20_OrbitalDrone_Attack_26
+  - first:
+      213: -961313116545892244
+    second: Minion_20_OrbitalDrone_Attack_27
+  - first:
+      213: -1630610023938960670
+    second: Minion_20_OrbitalDrone_Attack_28
+  - first:
+      213: 592676082233817689
+    second: Minion_20_OrbitalDrone_Attack_29
+  - first:
+      213: 8240213378726017412
+    second: Minion_20_OrbitalDrone_Attack_30
+  - first:
+      213: 6408060869012846033
+    second: Minion_20_OrbitalDrone_Attack_31
+  - first:
+      213: 7371807351305755178
+    second: Minion_20_OrbitalDrone_Attack_32
+  - first:
+      213: 8180135086002655461
+    second: Minion_20_OrbitalDrone_Attack_33
+  - first:
+      213: -3951173881190993404
+    second: Minion_20_OrbitalDrone_Attack_34
+  - first:
+      213: -6925717863594557896
+    second: Minion_20_OrbitalDrone_Attack_35
+  - first:
+      213: 8880094372678502657
+    second: Minion_20_OrbitalDrone_Attack_36
+  - first:
+      213: -818147689744644275
+    second: Minion_20_OrbitalDrone_Attack_37
+  - first:
+      213: -2278072086106264974
+    second: Minion_20_OrbitalDrone_Attack_38
+  - first:
+      213: -1749217816719361111
+    second: Minion_20_OrbitalDrone_Attack_39
+  - first:
+      213: -3167945029574915560
+    second: Minion_20_OrbitalDrone_Attack_40
+  - first:
+      213: 1253749596097751206
+    second: Minion_20_OrbitalDrone_Attack_41
+  - first:
+      213: -5743555929575848073
+    second: Minion_20_OrbitalDrone_Attack_42
+  - first:
+      213: -6320455387646466469
+    second: Minion_20_OrbitalDrone_Attack_43
+  - first:
+      213: 5751678538784322586
+    second: Minion_20_OrbitalDrone_Attack_44
+  - first:
+      213: -5565848401475243612
+    second: Minion_20_OrbitalDrone_Attack_45
+  - first:
+      213: 1368311656376778169
+    second: Minion_20_OrbitalDrone_Attack_46
+  - first:
+      213: -4525825484748151886
+    second: Minion_20_OrbitalDrone_Attack_47
+  - first:
+      213: -3920796657895075068
+    second: Minion_20_OrbitalDrone_Attack_48
+  - first:
+      213: -2086538522981468981
+    second: Minion_20_OrbitalDrone_Attack_49
+  - first:
+      213: -2113066359637538257
+    second: Minion_20_OrbitalDrone_Attack_50
+  - first:
+      213: -5101253732977623285
+    second: Minion_20_OrbitalDrone_Attack_51
+  - first:
+      213: -1381935514203763782
+    second: Minion_20_OrbitalDrone_Attack_52
+  - first:
+      213: -940735770058060692
+    second: Minion_20_OrbitalDrone_Attack_53
+  - first:
+      213: -4139037472062782632
+    second: Minion_20_OrbitalDrone_Attack_54
+  - first:
+      213: 2262092756268858904
+    second: Minion_20_OrbitalDrone_Attack_55
+  - first:
+      213: 6929993161567844582
+    second: Minion_20_OrbitalDrone_Attack_56
+  - first:
+      213: -3125342275484217151
+    second: Minion_20_OrbitalDrone_Attack_57
+  - first:
+      213: 1238248312084880151
+    second: Minion_20_OrbitalDrone_Attack_58
+  - first:
+      213: -4616518213767836144
+    second: Minion_20_OrbitalDrone_Attack_59
+  - first:
+      213: -3194116795954564425
+    second: Minion_20_OrbitalDrone_Attack_60
+  - first:
+      213: -1107581526967306064
+    second: Minion_20_OrbitalDrone_Attack_61
+  - first:
+      213: -173294055172056552
+    second: Minion_20_OrbitalDrone_Attack_62
+  - first:
+      213: 7754110814915723467
+    second: Minion_20_OrbitalDrone_Attack_63
+  - first:
+      213: 8721596087679032145
+    second: Minion_20_OrbitalDrone_Attack_64
+  - first:
+      213: -4069037585273015867
+    second: Minion_20_OrbitalDrone_Attack_65
+  - first:
+      213: 3328175184109895629
+    second: Minion_20_OrbitalDrone_Attack_66
+  - first:
+      213: 1233609903495720012
+    second: Minion_20_OrbitalDrone_Attack_67
+  - first:
+      213: 8954843847285559916
+    second: Minion_20_OrbitalDrone_Attack_68
+  - first:
+      213: -2402784176757660018
+    second: Minion_20_OrbitalDrone_Attack_69
+  - first:
+      213: 5998756566036118085
+    second: Minion_20_OrbitalDrone_Attack_70
+  - first:
+      213: 4488819525846238683
+    second: Minion_20_OrbitalDrone_Attack_71
+  - first:
+      213: -3508679548277528281
+    second: Minion_20_OrbitalDrone_Attack_72
+  - first:
+      213: -4743052049680046131
+    second: Minion_20_OrbitalDrone_Attack_73
+  - first:
+      213: 7284142650473208577
+    second: Minion_20_OrbitalDrone_Attack_74
+  - first:
+      213: -169210315771521596
+    second: Minion_20_OrbitalDrone_Attack_75
+  - first:
+      213: 5868891030221577365
+    second: Minion_20_OrbitalDrone_Attack_76
+  - first:
+      213: 8800009391279871341
+    second: Minion_20_OrbitalDrone_Attack_77
+  - first:
+      213: -7772554627353612837
+    second: Minion_20_OrbitalDrone_Attack_78
+  - first:
+      213: -8415899150094738730
+    second: Minion_20_OrbitalDrone_Attack_79
+  - first:
+      213: 591307063569977466
+    second: Minion_20_OrbitalDrone_Attack_80
+  - first:
+      213: 8668765641580634242
+    second: Minion_20_OrbitalDrone_Attack_81
+  - first:
+      213: 3776123575855265800
+    second: Minion_20_OrbitalDrone_Attack_82
+  - first:
+      213: -722740950667646716
+    second: Minion_20_OrbitalDrone_Attack_83
+  - first:
+      213: 4659723158809247827
+    second: Minion_20_OrbitalDrone_Attack_84
+  - first:
+      213: -7714058970314366047
+    second: Minion_20_OrbitalDrone_Attack_85
+  - first:
+      213: 2789072353002099086
+    second: Minion_20_OrbitalDrone_Attack_86
+  - first:
+      213: -3592043698247182936
+    second: Minion_20_OrbitalDrone_Attack_87
+  - first:
+      213: -2099503794441384521
+    second: Minion_20_OrbitalDrone_Attack_88
+  - first:
+      213: -1492296191644121003
+    second: Minion_20_OrbitalDrone_Attack_89
+  - first:
+      213: -5412189213145859
+    second: Minion_20_OrbitalDrone_Attack_90
+  - first:
+      213: -6655683104217448761
+    second: Minion_20_OrbitalDrone_Attack_91
+  - first:
+      213: -1052666690512446611
+    second: Minion_20_OrbitalDrone_Attack_92
+  - first:
+      213: -7279800489626007618
+    second: Minion_20_OrbitalDrone_Attack_93
+  - first:
+      213: -6762357901226266067
+    second: Minion_20_OrbitalDrone_Attack_94
+  - first:
+      213: -1204135387666038569
+    second: Minion_20_OrbitalDrone_Attack_95
+  - first:
+      213: 2039594099666621808
+    second: Minion_20_OrbitalDrone_Attack_96
+  - first:
+      213: -3942132968206977587
+    second: Minion_20_OrbitalDrone_Attack_97
+  - first:
+      213: -2266494735266957098
+    second: Minion_20_OrbitalDrone_Attack_98
+  - first:
+      213: -506193147314580164
+    second: Minion_20_OrbitalDrone_Attack_99
+  - first:
+      213: 3301949550614277705
+    second: Minion_20_OrbitalDrone_Attack_100
+  - first:
+      213: 2679961159793118750
+    second: Minion_20_OrbitalDrone_Attack_101
+  - first:
+      213: 6951672663223012719
+    second: Minion_20_OrbitalDrone_Attack_102
+  - first:
+      213: 4717695193780169867
+    second: Minion_20_OrbitalDrone_Attack_103
+  - first:
+      213: -3888667692711269775
+    second: Minion_20_OrbitalDrone_Attack_104
+  - first:
+      213: -4124244864612970545
+    second: Minion_20_OrbitalDrone_Attack_105
+  - first:
+      213: 2041044822453134987
+    second: Minion_20_OrbitalDrone_Attack_106
+  - first:
+      213: -7717621026112744196
+    second: Minion_20_OrbitalDrone_Attack_107
+  - first:
+      213: 1766742329738615024
+    second: Minion_20_OrbitalDrone_Attack_108
+  - first:
+      213: -1748282438774350659
+    second: Minion_20_OrbitalDrone_Attack_109
+  - first:
+      213: 460538725585916866
+    second: Minion_20_OrbitalDrone_Attack_110
+  - first:
+      213: 6738484043032683242
+    second: Minion_20_OrbitalDrone_Attack_111
+  - first:
+      213: -4405610492173777848
+    second: Minion_20_OrbitalDrone_Attack_112
+  - first:
+      213: -5058132103435279854
+    second: Minion_20_OrbitalDrone_Attack_113
+  - first:
+      213: 2507370949367293924
+    second: Minion_20_OrbitalDrone_Attack_114
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23cde8c7846062e50800000000000000
+      internalID: 6784116797077380146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cba97763c85e20e0800000000000000
+      internalID: -2292797564007109692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e3903f8fd104ffa0800000000000000
+      internalID: -5767983163063102495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c417bf6e7c5be40800000000000000
+      internalID: 5671659100617919626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 782b9e29d2060eff0800000000000000
+      internalID: -8901450400157049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec07c23c670d8eab0800000000000000
+      internalID: -4978500179558895410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6047bee9ba97fb380800000000000000
+      internalID: -8953303756176657402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24f09296d9ef39660800000000000000
+      internalID: 7391531365472735042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a2103c321dc80c0800000000000000
+      internalID: -4572049570162202072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2790e014b9c9c9500800000000000000
+      internalID: 404370257181804914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abbc937fdbd9fd370800000000000000
+      internalID: 8349565673390328762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df09b6b43446fc820800000000000000
+      internalID: 2940679321887150333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b80f29ccf5e1507e0800000000000000
+      internalID: -1799999079261736821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99bcfcff22746f900800000000000000
+      internalID: 717839406258441113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007b2545f6f064a70800000000000000
+      internalID: 8810746691827447552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00cd3477acc6cd990800000000000000
+      internalID: -7359888074190103552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8a9925eb6ddfcc0800000000000000
+      internalID: -3675545607946524425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12acfb4b3e1d2a230800000000000000
+      internalID: 3648709424043772449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e0025db885c89ba0800000000000000
+      internalID: -6081894105681362718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ae4bc3bcc9954a0800000000000000
+      internalID: -6604074981851338203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fa1d132ca450b640800000000000000
+      internalID: 5093664276856249077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be5bb23cd80d12860800000000000000
+      internalID: 7503507761459344875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 846c326fb0b1eb9c0800000000000000
+      internalID: -3909657688322881976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Attack_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdecc6267db7a53f0800000000000000
+      internalID: -911279809589621029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4ceb3da5608dd4148a0519ccf0b9817d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":4.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.4699999988079071,"y":0.5099999904632568},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_20_OrbitalDrone_Attack_0: 6784116797077380146
+      Minion_20_OrbitalDrone_Attack_1: -2292797564007109692
+      Minion_20_OrbitalDrone_Attack_10: 8349565673390328762
+      Minion_20_OrbitalDrone_Attack_11: 2940679321887150333
+      Minion_20_OrbitalDrone_Attack_12: -1799999079261736821
+      Minion_20_OrbitalDrone_Attack_13: 717839406258441113
+      Minion_20_OrbitalDrone_Attack_14: 8810746691827447552
+      Minion_20_OrbitalDrone_Attack_15: -7359888074190103552
+      Minion_20_OrbitalDrone_Attack_16: -3675545607946524425
+      Minion_20_OrbitalDrone_Attack_17: 3648709424043772449
+      Minion_20_OrbitalDrone_Attack_18: -6081894105681362718
+      Minion_20_OrbitalDrone_Attack_19: -6604074981851338203
+      Minion_20_OrbitalDrone_Attack_2: -5767983163063102495
+      Minion_20_OrbitalDrone_Attack_20: 5093664276856249077
+      Minion_20_OrbitalDrone_Attack_21: 7503507761459344875
+      Minion_20_OrbitalDrone_Attack_22: -3909657688322881976
+      Minion_20_OrbitalDrone_Attack_23: -911279809589621029
+      Minion_20_OrbitalDrone_Attack_3: 5671659100617919626
+      Minion_20_OrbitalDrone_Attack_4: -8901450400157049
+      Minion_20_OrbitalDrone_Attack_5: -4978500179558895410
+      Minion_20_OrbitalDrone_Attack_6: -8953303756176657402
+      Minion_20_OrbitalDrone_Attack_7: 7391531365472735042
+      Minion_20_OrbitalDrone_Attack_8: -4572049570162202072
+      Minion_20_OrbitalDrone_Attack_9: 404370257181804914
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

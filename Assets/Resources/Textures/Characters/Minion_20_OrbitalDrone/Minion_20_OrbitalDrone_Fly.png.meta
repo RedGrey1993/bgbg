@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: ab569155576ca8247b393583c20078b3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2162270830491401866
+    second: Minion_20_OrbitalDrone_Fly_0
+  - first:
+      213: -4896643713559637301
+    second: Minion_20_OrbitalDrone_Fly_1
+  - first:
+      213: 2398745340647237421
+    second: Minion_20_OrbitalDrone_Fly_2
+  - first:
+      213: -8606103901460669854
+    second: Minion_20_OrbitalDrone_Fly_3
+  - first:
+      213: -4074789714546426758
+    second: Minion_20_OrbitalDrone_Fly_4
+  - first:
+      213: -6095717365140681260
+    second: Minion_20_OrbitalDrone_Fly_5
+  - first:
+      213: 2876930423275510609
+    second: Minion_20_OrbitalDrone_Fly_6
+  - first:
+      213: 6827475002977248244
+    second: Minion_20_OrbitalDrone_Fly_7
+  - first:
+      213: 5050459454327282271
+    second: Minion_20_OrbitalDrone_Fly_8
+  - first:
+      213: 425861066194137640
+    second: Minion_20_OrbitalDrone_Fly_9
+  - first:
+      213: -496770643435836911
+    second: Minion_20_OrbitalDrone_Fly_10
+  - first:
+      213: -8958308484777271409
+    second: Minion_20_OrbitalDrone_Fly_11
+  - first:
+      213: -1495535229868730587
+    second: Minion_20_OrbitalDrone_Fly_12
+  - first:
+      213: 5452670024337291259
+    second: Minion_20_OrbitalDrone_Fly_13
+  - first:
+      213: 545548721021592780
+    second: Minion_20_OrbitalDrone_Fly_14
+  - first:
+      213: -491838037187978039
+    second: Minion_20_OrbitalDrone_Fly_15
+  - first:
+      213: -2929931700182200768
+    second: Minion_20_OrbitalDrone_Fly_16
+  - first:
+      213: 4069594967145853954
+    second: Minion_20_OrbitalDrone_Fly_17
+  - first:
+      213: -3568759265052215707
+    second: Minion_20_OrbitalDrone_Fly_18
+  - first:
+      213: -8261745838452631958
+    second: Minion_20_OrbitalDrone_Fly_19
+  - first:
+      213: 7145125092288674139
+    second: Minion_20_OrbitalDrone_Fly_20
+  - first:
+      213: 6129207243491159787
+    second: Minion_20_OrbitalDrone_Fly_21
+  - first:
+      213: 6482399120943852165
+    second: Minion_20_OrbitalDrone_Fly_22
+  - first:
+      213: -1745710528294770020
+    second: Minion_20_OrbitalDrone_Fly_23
+  - first:
+      213: 8633129502400911689
+    second: Minion_20_OrbitalDrone_Fly_24
+  - first:
+      213: -2595467104156966381
+    second: Minion_20_OrbitalDrone_Fly_25
+  - first:
+      213: 6391696340390409780
+    second: Minion_20_OrbitalDrone_Fly_26
+  - first:
+      213: 5418816695385830217
+    second: Minion_20_OrbitalDrone_Fly_27
+  - first:
+      213: 9146319610693351305
+    second: Minion_20_OrbitalDrone_Fly_28
+  - first:
+      213: 5238996529854587096
+    second: Minion_20_OrbitalDrone_Fly_29
+  - first:
+      213: -9214319954091848483
+    second: Minion_20_OrbitalDrone_Fly_30
+  - first:
+      213: 8456117813798951128
+    second: Minion_20_OrbitalDrone_Fly_31
+  - first:
+      213: -3418673582596732121
+    second: Minion_20_OrbitalDrone_Fly_32
+  - first:
+      213: 5642407137766285777
+    second: Minion_20_OrbitalDrone_Fly_33
+  - first:
+      213: 7977588856378477069
+    second: Minion_20_OrbitalDrone_Fly_34
+  - first:
+      213: -1747931488147164959
+    second: Minion_20_OrbitalDrone_Fly_35
+  - first:
+      213: 9048039794574291163
+    second: Minion_20_OrbitalDrone_Fly_36
+  - first:
+      213: 7754849920476304112
+    second: Minion_20_OrbitalDrone_Fly_37
+  - first:
+      213: 3378253494068286283
+    second: Minion_20_OrbitalDrone_Fly_38
+  - first:
+      213: -6647652747391015912
+    second: Minion_20_OrbitalDrone_Fly_39
+  - first:
+      213: -3878439203271850891
+    second: Minion_20_OrbitalDrone_Fly_40
+  - first:
+      213: -8020881980779466137
+    second: Minion_20_OrbitalDrone_Fly_41
+  - first:
+      213: 7599023425312441848
+    second: Minion_20_OrbitalDrone_Fly_42
+  - first:
+      213: 5565839123655691869
+    second: Minion_20_OrbitalDrone_Fly_43
+  - first:
+      213: -7149992578362171056
+    second: Minion_20_OrbitalDrone_Fly_44
+  - first:
+      213: -4949009578326652310
+    second: Minion_20_OrbitalDrone_Fly_45
+  - first:
+      213: 2427408941421095538
+    second: Minion_20_OrbitalDrone_Fly_46
+  - first:
+      213: -16855593217720127
+    second: Minion_20_OrbitalDrone_Fly_47
+  - first:
+      213: -5709705288039400522
+    second: Minion_20_OrbitalDrone_Fly_48
+  - first:
+      213: -124781794593413034
+    second: Minion_20_OrbitalDrone_Fly_49
+  - first:
+      213: 4093476209271543020
+    second: Minion_20_OrbitalDrone_Fly_50
+  - first:
+      213: 960054660420501515
+    second: Minion_20_OrbitalDrone_Fly_51
+  - first:
+      213: -4282829015198167737
+    second: Minion_20_OrbitalDrone_Fly_52
+  - first:
+      213: 8003933096581042922
+    second: Minion_20_OrbitalDrone_Fly_53
+  - first:
+      213: -8991802485377946580
+    second: Minion_20_OrbitalDrone_Fly_54
+  - first:
+      213: -7485773024145484233
+    second: Minion_20_OrbitalDrone_Fly_55
+  - first:
+      213: 1046566552397153773
+    second: Minion_20_OrbitalDrone_Fly_56
+  - first:
+      213: -7955053477144083774
+    second: Minion_20_OrbitalDrone_Fly_57
+  - first:
+      213: 2706934381428997335
+    second: Minion_20_OrbitalDrone_Fly_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ef0a73ddde10e10800000000000000
+      internalID: 2162270830491401866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc2d0ad6c70ab0cb0800000000000000
+      internalID: -4896643713559637301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d27e6ef9d2e0a4120800000000000000
+      internalID: 2398745340647237421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a5555491af09880800000000000000
+      internalID: -8606103901460669854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c7b0208507377c0800000000000000
+      internalID: -4074789714546426758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd0c975a59a76ba0800000000000000
+      internalID: -6095717365140681260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15bd9d23af8ece720800000000000000
+      internalID: 2876930423275510609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f36159775010ce50800000000000000
+      internalID: 6827475002977248244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ad0bf7d16d61640800000000000000
+      internalID: 5050459454327282271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 822bb262266f8e500800000000000000
+      internalID: 425861066194137640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11a2a275bbd1b19f0800000000000000
+      internalID: -496770643435836911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_20_OrbitalDrone_Fly_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.47, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8f9b7075e1bda380800000000000000
+      internalID: -8958308484777271409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bcf84ae947183bb41a6e27a47afcd7c2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":2.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.4699999988079071,"y":0.5099999904632568},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_20_OrbitalDrone_Fly_0: 2162270830491401866
+      Minion_20_OrbitalDrone_Fly_1: -4896643713559637301
+      Minion_20_OrbitalDrone_Fly_10: -496770643435836911
+      Minion_20_OrbitalDrone_Fly_11: -8958308484777271409
+      Minion_20_OrbitalDrone_Fly_2: 2398745340647237421
+      Minion_20_OrbitalDrone_Fly_3: -8606103901460669854
+      Minion_20_OrbitalDrone_Fly_4: -4074789714546426758
+      Minion_20_OrbitalDrone_Fly_5: -6095717365140681260
+      Minion_20_OrbitalDrone_Fly_6: 2876930423275510609
+      Minion_20_OrbitalDrone_Fly_7: 6827475002977248244
+      Minion_20_OrbitalDrone_Fly_8: 5050459454327282271
+      Minion_20_OrbitalDrone_Fly_9: 425861066194137640
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

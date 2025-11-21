@@ -15,6 +15,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public CharacterStatus characterStatus { get; private set; }
     public CharacterData CharacterData => characterStatus.characterData;
     protected Rigidbody2D rb;
+    protected SkinnedMeshRenderer skinnedMeshRenderer;
     public Collider2D col2D { get; private set; }
     public Animator animator { get; private set; }
     protected AudioSource audioSource;
@@ -52,6 +53,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
         OneShotAudioSource = gameObject.AddComponent<AudioSource>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         OneShotAudioSource.spatialBlend = 1;
 
         if (animator != null)
@@ -745,7 +747,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     #region Attack Action
     protected IEnumerator AttackShoot(Vector2 lookInput, float atkInterval, int fixedDamage = 0,
-        GameObject tarEnemy = null, bool playAnim = false)
+        GameObject tarEnemy = null, bool playAnim = false, float boundExt = 0.1f)
     {
         isAttack = true;
         if (playAnim)
@@ -759,7 +761,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         // 获取Player碰撞体的边界位置
         Bounds playerBounds = col2D.bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
-        Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
+        Vector2 bulletOffset = lookInput.normalized * (playerBounds.extents.magnitude + boundExt);
         Vector2 bulletStartPosition = transform.position;
         bulletStartPosition += bulletOffset;
 
@@ -857,7 +859,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     {
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
-        var skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         if (isAttack || lookInput.sqrMagnitude >= 0.1f)
         {
             if (lookInput.sqrMagnitude < 0.1f) // 不修改之前的方向
