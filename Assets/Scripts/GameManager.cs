@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, ObjectPool<GameObject>> poolDictionary = new();
 
-    public GameObject GetObject(GameObject prefab, Vector3 position, Transform parent)
+    public GameObject GetObject(GameObject prefab, Vector3 position, Transform parent = null)
     {
+        if (parent == null)
+            parent = LevelManager.Instance.temporaryObjectTransform;
+
         string key = prefab.name;
-        
         // 如果池不存在，就创建一个新的
         if (!poolDictionary.ContainsKey(key))
         {
@@ -45,7 +47,6 @@ public class GameManager : MonoBehaviour
     public void ReleaseObject(GameObject obj)
     {
         string key = obj.name;
-        // 如果池不存在，就创建一个新的
         if (poolDictionary.ContainsKey(key))
         {
             poolDictionary[key].Release(obj);

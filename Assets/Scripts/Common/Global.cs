@@ -80,6 +80,7 @@ public enum CharacterType
     Minion_14_HypnoMoth,
     Minion_15_HealBulb,
     Minion_16_HopperPump,
+    Minion_17_WarpMage,
 }
 
 public enum ItemTag
@@ -145,8 +146,10 @@ public static class Constants
     public const float Eps = 0.00001f;
     public const float BossHpMultipiler = 20f;
 
+    public static int defaultLayer = LayerMask.NameToLayer("Default");
     public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new();
     public static Dictionary<GameObject, CharacterInput> goToCharacterInput = new();
+    public static Dictionary<GameObject, Bullet> goToBullet = new();
     public static readonly int[] LevelUpExp = {
         100,
         160,
@@ -394,6 +397,19 @@ public static class Constants
             goToCharacterInput[obj] = input;
         }
         return input;
+    }
+
+    public static Bullet GetBullet(this GameObject obj)
+    {
+        if (goToBullet.TryGetValue(obj, out Bullet bullet))
+        {
+            return bullet;
+        }
+        if (obj.TryGetComponent<Bullet>(out bullet))
+        {
+            goToBullet[obj] = bullet;
+        }
+        return bullet;
     }
 
     public static CharacterStatus GetCharacterStatus(this Collider2D other)

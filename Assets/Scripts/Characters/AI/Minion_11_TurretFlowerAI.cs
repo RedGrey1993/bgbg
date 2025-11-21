@@ -39,12 +39,12 @@ public class Minion_11_TurretFlowerAI : CharacterBaseAI
         foreach (Vector2 startDir in lookDirs)
         {
             // Instantiate the bullet
-            GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+            GameObject bullet = GameManager.Instance.GetObject(CharacterData.bulletPrefab, bulletStartPosition);
             bullet.tag = gameObject.tag;
-            if (bullet.layer == LayerMask.NameToLayer("Default")) bullet.layer = gameObject.layer;
+            if (bullet.layer == Constants.defaultLayer) bullet.layer = gameObject.layer;
             bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
             bullet.transform.localScale = transform.localScale;
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            var bulletScript = bullet.GetBullet();
             if (bulletScript)
             {
                 Vector2 bulletOffset = startDir.normalized * (playerBounds.extents.magnitude + 0.1f);
@@ -52,12 +52,8 @@ public class Minion_11_TurretFlowerAI : CharacterBaseAI
                 bulletScript.OwnerStatus = characterStatus;
                 bulletScript.StartPosition = bulletStartPosition + bulletOffset;
                 bulletScript.BulletState = bulletState;
+                bulletScript.rb.linearVelocity = startDir * characterStatus.State.BulletSpeed;
             }
-
-            // Get the bullet's Rigidbody2D component
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            // Set the bullet's velocity
-            if (bulletRb) bulletRb.linearVelocity = startDir * characterStatus.State.BulletSpeed;
         }
 
         yield return new WaitForSeconds(2f);

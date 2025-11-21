@@ -80,6 +80,8 @@ message BulletState
     int32 SplitCount = 4;
     int32 HomingForce = 5;
     int32 BounceCount = 6;
+    bool CanDestroyObstacle = 7;
+    int32 ConfuseTargetTime = 8;
 }
 
 message StateUpdateMessage

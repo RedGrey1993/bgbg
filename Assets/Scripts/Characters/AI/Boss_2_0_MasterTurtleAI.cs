@@ -103,26 +103,19 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         for (int i = 0; i < shootNum; i++)
         {
             // Instantiate the bullet
-            GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+            GameObject bullet = GameManager.Instance.GetObject(CharacterData.bulletPrefab, bulletStartPosition);
             bullet.tag = gameObject.tag;
-            if (bullet.layer == LayerMask.NameToLayer("Default")) bullet.layer = gameObject.layer;
+            if (bullet.layer == Constants.defaultLayer) bullet.layer = gameObject.layer;
             bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
             bullet.transform.localScale = transform.localScale;
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            var bulletScript = bullet.GetBullet();
             if (bulletScript)
             {
                 bulletScript.OwnerStatus = characterStatus;
                 bulletScript.StartPosition = bulletStartPosition;
                 bulletScript.BulletState = bulletState;
                 bulletScript.AggroTarget = aggroTarget;
-            }
-
-            // Get the bullet's Rigidbody2D component
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            // Set the bullet's velocity
-            if (bulletRb)
-            {
-                bulletRb.linearVelocity = startDir.normalized * characterStatus.State.BulletSpeed;
+                bulletScript.rb.linearVelocity = startDir.normalized * characterStatus.State.BulletSpeed;
             }
 
             startDir = rotationPlus * startDir;

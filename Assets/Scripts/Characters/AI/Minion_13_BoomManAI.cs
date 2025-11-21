@@ -42,8 +42,7 @@ public class Minion_13_BoomManAI : CharacterBaseAI
         yield return _waitForSeconds0_41;
 
         GameManager.Instance.audioSource.PlayOneShot(LevelManager.Instance.explosionSound);
-        var explosionEffect = GameManager.Instance.GetObject(explosionEffectPrefab, 
-                        transform.position, LevelManager.Instance.temporaryObjectTransform);
+        var explosionEffect = GameManager.Instance.GetObject(explosionEffectPrefab, transform.position);
         var explosionDmg = explosionEffect.GetComponent<ExplosionDamage>();
         explosionDmg.OwnerStatus = characterStatus;
         explosionDmg.explosionRadius = 3;

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using NetworkMessageProto;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -12,52 +11,79 @@ public class Bullet : MonoBehaviour
     public BulletState BulletState { get; set; } // 子弹强化状态
     public Collider2D LastCollider { get; set; } = null;
     public GameObject AggroTarget { get; set; } = null;
+
+    private float bornTime;
+    private Collider2D col2D;
+    public Rigidbody2D rb { get; private set; }
+    private Vector2 lastVelocity;
+
     public int SplitCount { get; set; } = 0;
+    public int HomingForce { get; set; } = 0;
+    public int BounceCount { get; set; } = 0;
+    public int PenetrateCount { get; set; } = 0;
+    public bool CanDestroyObstacle { get; set; } = false;
+    public int ConfuseTargetTime { get; private set; } = 0;
+
+    // Inspector
     public int homingForce = 0;
     public int bounceCount = 0;
     public int penetrateCount = 0;
     public bool canDestroyObstacle = false;
     public int confuseTargetTime = 0;
-    private float bornTime;
-    private Collider2D col2D;
-    private Rigidbody2D rb;
-    private Vector2 lastVelocity;
 
     void Awake()
     {
-        bornTime = Time.time;
         col2D = GetComponentInChildren<Collider2D>();
-        col2D.enabled = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    void OnEnable()
     {
-        if (BulletState != null)
-        {
-            if (BulletState.PenetrateCount > penetrateCount) penetrateCount = BulletState.PenetrateCount;
-            if (BulletState.SplitCount > SplitCount) SplitCount = BulletState.SplitCount;
-            if (BulletState.HomingForce > homingForce) homingForce = BulletState.HomingForce;
-            if (BulletState.BounceCount > bounceCount) bounceCount = BulletState.BounceCount;
-        }
-        if (Damage == 0) Damage = OwnerStatus.State.Damage;
-        if (confuseTargetTime > 0) Damage = 0;
-        // col2D.enabled = true;
+        bornTime = Time.time;
+        col2D.enabled = false;
+        firstEnable = true;
+
+        OwnerStatus = null;
+        BulletState = null;
+        LastCollider = null;
+        AggroTarget = null;
+        SplitCount = 0;
+        HomingForce = homingForce;
+        BounceCount = bounceCount;
+        PenetrateCount = penetrateCount;
+        CanDestroyObstacle = canDestroyObstacle;
+        ConfuseTargetTime = confuseTargetTime;
+
+        lastVelocity = Vector2.zero;
     }
 
+    private bool firstEnable = true;
     void FixedUpdate()
     {
-        if (Time.time - bornTime > 0.05f)
+        if (firstEnable && Time.time - bornTime > 0.05f)
         {
+            if (BulletState != null)
+            {
+                if (BulletState.PenetrateCount > PenetrateCount) PenetrateCount = BulletState.PenetrateCount;
+                if (BulletState.SplitCount > SplitCount) SplitCount = BulletState.SplitCount;
+                if (BulletState.HomingForce > HomingForce) HomingForce = BulletState.HomingForce;
+                if (BulletState.BounceCount > BounceCount) BounceCount = BulletState.BounceCount;
+                if (BulletState.CanDestroyObstacle) CanDestroyObstacle = true;
+                if (BulletState.ConfuseTargetTime > ConfuseTargetTime) ConfuseTargetTime = BulletState.ConfuseTargetTime;
+            }
+            if (Damage == 0) Damage = OwnerStatus.State.Damage;
+            if (ConfuseTargetTime > 0) Damage = 0;
+
             col2D.enabled = true;
+            firstEnable = false;
         }
 
-        if (AggroTarget != null && homingForce > 0)
+        if (AggroTarget != null && HomingForce > 0)
         {
 
             var diff = AggroTarget.transform.position - transform.position;
-            rb.AddForce(diff.normalized * homingForce / 5f, ForceMode2D.Force);
-            if (Time.time - bornTime > 0.1f && lastVelocity.magnitude > 0.1f)
+            rb.AddForce(diff.normalized * HomingForce / 5f, ForceMode2D.Force);
+            if (lastVelocity.magnitude > 0.1f)
             {
                 rb.linearVelocity = rb.linearVelocity.normalized * lastVelocity.magnitude;
             }
@@ -69,7 +95,7 @@ public class Bullet : MonoBehaviour
             || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
             || rb.linearVelocity.magnitude < 0.1f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
         {
-            Destroy(gameObject);
+            GameManager.Instance.ReleaseObject(gameObject);
         }
         else
         {
@@ -105,7 +131,7 @@ public class Bullet : MonoBehaviour
         if (GameManager.Instance.IsLocalOrHost())
         {
             // 检查我们是否撞到了 Tilemap
-            if (other.CompareTag(Constants.TagWall) && canDestroyObstacle)
+            if (other.CompareTag(Constants.TagWall) && CanDestroyObstacle)
             {
                 ColliderDistance2D distanceInfo = col2D.Distance(other);
                 
@@ -125,13 +151,13 @@ public class Bullet : MonoBehaviour
             // 碰到护盾，直接销毁
             if (other.CompareTag(Constants.TagShield))
             {
-                if (bounceCount > 0)
+                if (BounceCount > 0)
                 {
                     MirrorBounce(other);
                 }
                 else
                 {
-                    Destroy(gameObject);
+                    GameManager.Instance.ReleaseObject(gameObject);
                 }
                 return;
             }
@@ -141,30 +167,25 @@ public class Bullet : MonoBehaviour
                 CharacterStatus tarStatus = other.GetCharacterStatus();
                 if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))
                 { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
-                    if (bounceCount > 0)
+                    if (BounceCount > 0)
                     {
                         MirrorBounce(other);
                     }
                     return; // 不伤害友方，也不销毁碰到自己的子弹
                 }
 
-                if (confuseTargetTime > 0)
+                if (ConfuseTargetTime > 0)
                 {
-                    tarStatus.ConfuseTime = Time.time + confuseTargetTime;
+                    tarStatus.ConfuseTime = Time.time + ConfuseTargetTime;
                     if (tarStatus.confuseCoroutine != null)
                         tarStatus.StopCoroutine(tarStatus.confuseCoroutine);
                     tarStatus.confuseCoroutine = tarStatus.StartCoroutine(tarStatus.ConfuseCoroutine());
-                    Destroy(gameObject);
+                    GameManager.Instance.ReleaseObject(gameObject);
                     return;
                 }
 
-                penetrateCount--;
+                PenetrateCount--;
                 SplitCount--;
-                // if (tarStatus.IsAllEnemy(OwnerStatus))
-                // {
-                //     if (penetrateCount < 0) Destroy(gameObject); // 敌人之间不互相伤害；但还是会销毁子弹
-                //     return;
-                // }
 
                 // 如果子弹的主人已经死亡，则不再造成伤害
                 if (OwnerStatus != null)
@@ -177,47 +198,48 @@ public class Bullet : MonoBehaviour
                     Quaternion rotationPlus = Quaternion.Euler(0, 0, 90);
                     for (int i = 0; i < 2; i++)
                     {
-                        var newBullet = LevelManager.Instance.InstantiateTemporaryObject(OwnerStatus.characterData.bulletPrefab, startPos);
+                        var newBullet = GameManager.Instance.GetObject(OwnerStatus.characterData.bulletPrefab, startPos);
                         newBullet.transform.localScale = transform.localScale / 2;
                         newBullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
-                        var bs = newBullet.GetComponent<Bullet>();
+                        var bs = newBullet.GetBullet();
                         bs.StartPosition = startPos;
                         bs.OwnerStatus = OwnerStatus;
                         bs.Damage = Damage > 1 ? (Damage / 2) : 1;
                         var bState = BulletState.Clone();
-                        bState.PenetrateCount = penetrateCount;
-                        bState.SplitCount = SplitCount;
-                        bState.BounceCount = bounceCount;
+                        bState.PenetrateCount = bs.PenetrateCount = PenetrateCount;
+                        bState.HomingForce = bs.HomingForce = HomingForce;
+                        bState.SplitCount = bs.SplitCount = SplitCount;
+                        bState.BounceCount = bs.BounceCount = BounceCount;
+                        bState.CanDestroyObstacle = bs.CanDestroyObstacle = CanDestroyObstacle;
+                        bState.ConfuseTargetTime = bs.ConfuseTargetTime = ConfuseTargetTime;
                         bs.BulletState = bState;
                         bs.LastCollider = other;
-
-                        var newRb = newBullet.GetComponent<Rigidbody2D>();
-                        newRb.linearVelocity = startDir * rb.linearVelocity.magnitude;
+                        bs.rb.linearVelocity = startDir * rb.linearVelocity.magnitude;
 
                         startDir = rotationPlus * startDir;
                     }
                 }
-                if (penetrateCount < 0)
+                if (PenetrateCount < 0)
                 {
-                    if (bounceCount > 0)
+                    if (BounceCount > 0)
                     {
                         MirrorBounce(other);
                     }
                     else
                     {
-                        Destroy(gameObject);
+                        GameManager.Instance.ReleaseObject(gameObject);
                     }
                 }
             }
             else // if (other.gameObject.CompareTag(Constants.TagWall))
             {
-                if (bounceCount > 0)
+                if (BounceCount > 0)
                 {
                     MirrorBounce(other);
                 }
                 else
                 {
-                    Destroy(gameObject);
+                    GameManager.Instance.ReleaseObject(gameObject);
                 }
             }
         }
@@ -236,6 +258,6 @@ public class Bullet : MonoBehaviour
 
         // 将刚体的速度设置为反射方向，并保持碰撞前的速度大小
         rb.linearVelocity = reflectionDirection * lastVelocity.magnitude;
-        bounceCount--;
+        BounceCount--;
     }
 }

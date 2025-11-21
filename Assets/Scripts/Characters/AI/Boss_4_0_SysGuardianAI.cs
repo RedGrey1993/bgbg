@@ -56,6 +56,7 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
     }
 
     private bool playerFirstComingRoom = true;
+    private Coroutine rebornCoroutine = null;
     protected override void SubclassFixedUpdate()
     {
         float yDelta = Mathf.Sin(Time.time * floatSpeed) * amplitude * Time.deltaTime;
@@ -64,7 +65,7 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
         floatingTurretsHasAlive = floatingTurrets.Any(go => go.activeSelf);
         if (!floatingTurretsHasAlive)
         {
-            StartCoroutine(Reborn());
+            rebornCoroutine ??= StartCoroutine(Reborn());
             return;
         }
 
@@ -188,6 +189,7 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
         }
         playerFirstComingRoom = true; // 复活后重新回到原位
         flyiedToPos = false;
+        rebornCoroutine = null;
     }
 
     #region Attack Actioin
@@ -230,19 +232,17 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
             {
                 audioSrc.PlayOneShot(CharacterData.shootSound);
 
-                GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+                GameObject bullet = GameManager.Instance.GetObject(CharacterData.bulletPrefab, bulletStartPosition);
+                bullet.tag = gameObject.tag;
+                if (bullet.layer == Constants.defaultLayer) bullet.layer = gameObject.layer;
                 bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
-                Bullet bulletScript = bullet.GetComponent<Bullet>();
+                var bulletScript = bullet.GetBullet();
                 if (bulletScript)
                 {
                     bulletScript.OwnerStatus = characterStatus;
                     bulletScript.StartPosition = bulletStartPosition;
+                    bulletScript.rb.linearVelocity = startDir.normalized * characterStatus.State.BulletSpeed;
                 }
-
-                // Get the bullet's Rigidbody2D component
-                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-                // Set the bullet's velocity
-                if (bulletRb) bulletRb.linearVelocity = startDir.normalized * characterStatus.State.BulletSpeed;
 
                 startDir = rotationPlus * startDir;
 
@@ -269,19 +269,17 @@ public class Boss_4_0_SysGuardianAI : CharacterBaseAI
             {
                 audioSrc.PlayOneShot(laser2ShootSound);
 
-                GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(laser2BulletPrefab, bulletStartPosition);
+                GameObject bullet = GameManager.Instance.GetObject(laser2BulletPrefab, bulletStartPosition);
+                bullet.tag = gameObject.tag;
+                if (bullet.layer == Constants.defaultLayer) bullet.layer = gameObject.layer;
                 bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
-                Bullet bulletScript = bullet.GetComponent<Bullet>();
+                var bulletScript = bullet.GetBullet();
                 if (bulletScript)
                 {
                     bulletScript.OwnerStatus = characterStatus;
                     bulletScript.StartPosition = bulletStartPosition;
+                    bulletScript.rb.linearVelocity = startDir.normalized * characterStatus.State.BulletSpeed;
                 }
-
-                // Get the bullet's Rigidbody2D component
-                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-                // Set the bullet's velocity
-                if (bulletRb) bulletRb.linearVelocity = startDir.normalized * characterStatus.State.BulletSpeed;
 
                 startDir = rotationPlus * startDir;
                 yield return new WaitForSeconds(0.1f);

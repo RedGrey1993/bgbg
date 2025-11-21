@@ -38,23 +38,19 @@ public class Minion_14_HypnoMothAI : CharacterBaseAI
 
         var bulletState = characterStatus.bulletState;
         // Instantiate the bullet
-        GameObject bullet = LevelManager.Instance.InstantiateTemporaryObject(CharacterData.bulletPrefab, bulletStartPosition);
+        GameObject bullet = GameManager.Instance.GetObject(CharacterData.bulletPrefab, bulletStartPosition);
         bullet.tag = gameObject.tag;
-        if (bullet.layer == LayerMask.NameToLayer("Default")) bullet.layer = gameObject.layer;
+        if (bullet.layer == Constants.defaultLayer) bullet.layer = gameObject.layer;
         bullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, lookInput);
         bullet.transform.localScale = transform.localScale;
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        var bulletScript = bullet.GetBullet();
         if (bulletScript)
         {
             bulletScript.OwnerStatus = characterStatus;
             bulletScript.StartPosition = bulletStartPosition;
             bulletScript.BulletState = bulletState;
+            bulletScript.rb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
         }
-
-        // Get the bullet's Rigidbody2D component
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        // Set the bullet's velocity
-        if (bulletRb) bulletRb.linearVelocity = lookInput * characterStatus.State.BulletSpeed;
 
         yield return new WaitForSeconds(1f);
         isAttack = false;
