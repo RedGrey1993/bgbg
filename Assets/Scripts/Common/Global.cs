@@ -81,6 +81,8 @@ public enum CharacterType
     Minion_15_HealBulb,
     Minion_16_HopperPump,
     Minion_17_WarpMage,
+    Minion_18_EggDragon,
+    Minion_19_Mimic,
 }
 
 public enum ItemTag

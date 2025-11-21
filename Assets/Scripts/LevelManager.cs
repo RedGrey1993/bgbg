@@ -1178,8 +1178,8 @@ public class LevelManager : MonoBehaviour
     public Vector2 GetRandomPositionInRoom(int roomId, float extentsX, float extentsY)
     {
         var room = Rooms[roomId];
-        var rndX = UnityEngine.Random.Range(room.xMin + 1 + extentsX + 0.1f, room.xMin + room.width - extentsX - 0.1f);
-        var rndY = UnityEngine.Random.Range(room.yMin + 1 + extentsY + 0.1f, room.yMin + room.height - extentsY - 0.1f);
+        var rndX = UnityEngine.Random.Range(room.xMin + 1 + extentsX + 0.1f, room.xMax - extentsX - 0.1f);
+        var rndY = UnityEngine.Random.Range(room.yMin + 1 + extentsY + 0.1f, room.yMax - extentsY - 0.1f);
         return new Vector2(rndX, rndY);
     }
 

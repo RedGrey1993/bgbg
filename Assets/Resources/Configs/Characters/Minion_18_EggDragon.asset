@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Minion_17_WarpMage
+  m_Name: Minion_18_EggDragon
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 8300000, guid: 728535d78b3076a42a837516f79f8b13, type: 3}
   hurtSound: {fileID: 0}
   deathSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: f0fd02d1c85ceca4c8493a5ec5c7419c, type: 3}
+  bulletPrefab: {fileID: 7906872621619036891, guid: 5768b3ef5b490214face8391273385ab, type: 3}
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
-  CharacterType: 24
-  MaxHp: 5
+  CharacterType: 25
+  MaxHp: 7
   MoveSpeed: 3
   ShootRange: 7
-  BulletSpeed: 6
+  BulletSpeed: 4
   Damage: 1
   AttackFreqUp: -8
   CriticalRate: 0
-  ExpGiven: 15
+  ExpGiven: 20
   InitialActiveSkillId: -1
   spawnOffsets: {x: -2, y: -2}
   bound:
@@ -35,7 +35,7 @@ MonoBehaviour:
   canMoveDiagonally: 1
   moveInAtkRange: 1
   moveAcrossRoom: 0
-  canAttackDiagonally: 1
+  canAttackDiagonally: 0
   causeCollisionDamage: 1
   AggroRange: 10
   AggroChangeInterval: 2

@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     private Collider2D col2D;
     public Rigidbody2D rb { get; private set; }
     private Vector2 lastVelocity;
+    private bool released = false;
 
     public int SplitCount { get; set; } = 0;
     public int HomingForce { get; set; } = 0;
@@ -55,6 +56,7 @@ public class Bullet : MonoBehaviour
         ConfuseTargetTime = confuseTargetTime;
 
         lastVelocity = Vector2.zero;
+        released = false;
     }
 
     private bool firstEnable = true;
@@ -95,7 +97,7 @@ public class Bullet : MonoBehaviour
             || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
             || rb.linearVelocity.magnitude < 0.1f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
         {
-            GameManager.Instance.ReleaseObject(gameObject);
+            ReleaseObject();
         }
         else
         {
@@ -157,7 +159,7 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.Instance.ReleaseObject(gameObject);
+                    ReleaseObject();
                 }
                 return;
             }
@@ -180,7 +182,7 @@ public class Bullet : MonoBehaviour
                     if (tarStatus.confuseCoroutine != null)
                         tarStatus.StopCoroutine(tarStatus.confuseCoroutine);
                     tarStatus.confuseCoroutine = tarStatus.StartCoroutine(tarStatus.ConfuseCoroutine());
-                    GameManager.Instance.ReleaseObject(gameObject);
+                    ReleaseObject();
                     return;
                 }
 
@@ -227,7 +229,7 @@ public class Bullet : MonoBehaviour
                     }
                     else
                     {
-                        GameManager.Instance.ReleaseObject(gameObject);
+                        ReleaseObject();
                     }
                 }
             }
@@ -239,7 +241,7 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.Instance.ReleaseObject(gameObject);
+                    ReleaseObject();
                 }
             }
         }
@@ -259,5 +261,14 @@ public class Bullet : MonoBehaviour
         // 将刚体的速度设置为反射方向，并保持碰撞前的速度大小
         rb.linearVelocity = reflectionDirection * lastVelocity.magnitude;
         BounceCount--;
+    }
+
+    private void ReleaseObject()
+    {
+        if (!released)
+        {
+            released = true;
+            GameManager.Instance.ReleaseObject(gameObject);
+        }
     }
 }

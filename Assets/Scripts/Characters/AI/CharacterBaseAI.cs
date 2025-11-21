@@ -638,7 +638,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
     }
 
-    protected void Move_FollowAcrossRooms(GameObject target, bool followTrainer = false)
+    protected virtual void Move_FollowAcrossRooms(GameObject target, bool followTrainer = false)
     {
         // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
         Constants.PositionToIndex(transform.position, out int sx, out int sy);

@@ -22,6 +22,7 @@ public class CharacterStatus : MonoBehaviour
     public bool IsAI { get; set; } = true;
     public bool IsBoss { get; set; } = false;
     private DamageType lastDamageType = DamageType.Bullet;
+    public float LastDamageTime { get; private set; } = 0;
     public float ConfuseTime { get; set; } = float.MinValue;
     public Coroutine confuseCoroutine = null;
 
@@ -110,6 +111,7 @@ public class CharacterStatus : MonoBehaviour
         if (curHp < State.CurrentHp)
         {
             CharacterAI.OnHurt();
+            LastDamageTime = Time.time;
         }
         State.CurrentHp = curHp;
         // 只有本地键盘操作的那个Player注册了OnHealthChanged事件，用于更新状态栏UI

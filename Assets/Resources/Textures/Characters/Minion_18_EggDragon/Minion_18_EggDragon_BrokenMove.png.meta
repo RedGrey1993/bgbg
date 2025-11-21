@@ -1,0 +1,887 @@
+fileFormatVersion: 2
+guid: 490db1fd667b89642aaa37c57ffa39d8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7385559600468010440
+    second: Minion_18_EggDragon_BrokenMove_0
+  - first:
+      213: -8573529444365026573
+    second: Minion_18_EggDragon_BrokenMove_1
+  - first:
+      213: -200084116006913333
+    second: Minion_18_EggDragon_BrokenMove_2
+  - first:
+      213: 5891957348573768444
+    second: Minion_18_EggDragon_BrokenMove_3
+  - first:
+      213: -8214821871788425039
+    second: Minion_18_EggDragon_BrokenMove_4
+  - first:
+      213: -6990574130044651190
+    second: Minion_18_EggDragon_BrokenMove_5
+  - first:
+      213: 665161525508069693
+    second: Minion_18_EggDragon_BrokenMove_6
+  - first:
+      213: 8167561533372205342
+    second: Minion_18_EggDragon_BrokenMove_7
+  - first:
+      213: -7211589225130251741
+    second: Minion_18_EggDragon_BrokenMove_8
+  - first:
+      213: -131646830206711377
+    second: Minion_18_EggDragon_BrokenMove_9
+  - first:
+      213: 3252231073915371854
+    second: Minion_18_EggDragon_BrokenMove_10
+  - first:
+      213: 7499533789482166795
+    second: Minion_18_EggDragon_BrokenMove_11
+  - first:
+      213: 811914319128473817
+    second: Minion_18_EggDragon_BrokenMove_12
+  - first:
+      213: -6445463520747241213
+    second: Minion_18_EggDragon_BrokenMove_13
+  - first:
+      213: 3502518474838884648
+    second: Minion_18_EggDragon_BrokenMove_14
+  - first:
+      213: -3487935620460649907
+    second: Minion_18_EggDragon_BrokenMove_15
+  - first:
+      213: 6780746876081526232
+    second: Minion_18_EggDragon_BrokenMove_16
+  - first:
+      213: 3983072195928215460
+    second: Minion_18_EggDragon_BrokenMove_17
+  - first:
+      213: -6282228700312081497
+    second: Minion_18_EggDragon_BrokenMove_18
+  - first:
+      213: -4925032464279939897
+    second: Minion_18_EggDragon_BrokenMove_19
+  - first:
+      213: 675805473322204430
+    second: Minion_18_EggDragon_BrokenMove_20
+  - first:
+      213: 2465424988605707281
+    second: Minion_18_EggDragon_BrokenMove_21
+  - first:
+      213: -8530040510985948892
+    second: Minion_18_EggDragon_BrokenMove_22
+  - first:
+      213: -4485456606246842024
+    second: Minion_18_EggDragon_BrokenMove_23
+  - first:
+      213: 7359976789463562113
+    second: Minion_18_EggDragon_BrokenMove_24
+  - first:
+      213: 8699241156164562544
+    second: Minion_18_EggDragon_BrokenMove_25
+  - first:
+      213: -3159173734611525341
+    second: Minion_18_EggDragon_BrokenMove_26
+  - first:
+      213: 3693557664625430694
+    second: Minion_18_EggDragon_BrokenMove_27
+  - first:
+      213: -1980738760667491825
+    second: Minion_18_EggDragon_BrokenMove_28
+  - first:
+      213: 2121870214127282147
+    second: Minion_18_EggDragon_BrokenMove_29
+  - first:
+      213: 3354703247143626121
+    second: Minion_18_EggDragon_BrokenMove_30
+  - first:
+      213: -108127005813980766
+    second: Minion_18_EggDragon_BrokenMove_31
+  - first:
+      213: 4151844829832807528
+    second: Minion_18_EggDragon_BrokenMove_32
+  - first:
+      213: -2849991214416148223
+    second: Minion_18_EggDragon_BrokenMove_33
+  - first:
+      213: -170111023915830084
+    second: Minion_18_EggDragon_BrokenMove_34
+  - first:
+      213: 6577911127411285187
+    second: Minion_18_EggDragon_BrokenMove_35
+  - first:
+      213: -8072400485048840878
+    second: Minion_18_EggDragon_BrokenMove_36
+  - first:
+      213: -2647064307789236160
+    second: Minion_18_EggDragon_BrokenMove_37
+  - first:
+      213: 3096053407990055349
+    second: Minion_18_EggDragon_BrokenMove_38
+  - first:
+      213: -6425667276601430704
+    second: Minion_18_EggDragon_BrokenMove_39
+  - first:
+      213: 1578495624824225839
+    second: Minion_18_EggDragon_BrokenMove_40
+  - first:
+      213: 981209379149723570
+    second: Minion_18_EggDragon_BrokenMove_41
+  - first:
+      213: 8882753263493905052
+    second: Minion_18_EggDragon_BrokenMove_42
+  - first:
+      213: 7167583592441847684
+    second: Minion_18_EggDragon_BrokenMove_43
+  - first:
+      213: -8013114110539350036
+    second: Minion_18_EggDragon_BrokenMove_44
+  - first:
+      213: -2335942390673897987
+    second: Minion_18_EggDragon_BrokenMove_45
+  - first:
+      213: -8503817179072033994
+    second: Minion_18_EggDragon_BrokenMove_46
+  - first:
+      213: -2390802165620071754
+    second: Minion_18_EggDragon_BrokenMove_47
+  - first:
+      213: 4697164793350305582
+    second: Minion_18_EggDragon_BrokenMove_48
+  - first:
+      213: 2961938974058097830
+    second: Minion_18_EggDragon_BrokenMove_49
+  - first:
+      213: -7088786984259484024
+    second: Minion_18_EggDragon_BrokenMove_50
+  - first:
+      213: -2353276582328764514
+    second: Minion_18_EggDragon_BrokenMove_51
+  - first:
+      213: 357484106333778400
+    second: Minion_18_EggDragon_BrokenMove_52
+  - first:
+      213: -3345138171324501831
+    second: Minion_18_EggDragon_BrokenMove_53
+  - first:
+      213: 974493659649809214
+    second: Minion_18_EggDragon_BrokenMove_54
+  - first:
+      213: 4138367060198539085
+    second: Minion_18_EggDragon_BrokenMove_55
+  - first:
+      213: -7826020055498568119
+    second: Minion_18_EggDragon_BrokenMove_56
+  - first:
+      213: -813976361072644402
+    second: Minion_18_EggDragon_BrokenMove_57
+  - first:
+      213: 2652303993254891005
+    second: Minion_18_EggDragon_BrokenMove_58
+  - first:
+      213: 692547141447907869
+    second: Minion_18_EggDragon_BrokenMove_59
+  - first:
+      213: -5893772043463774546
+    second: Minion_18_EggDragon_BrokenMove_60
+  - first:
+      213: 6373973158129164800
+    second: Minion_18_EggDragon_BrokenMove_61
+  - first:
+      213: -6741077140881233928
+    second: Minion_18_EggDragon_BrokenMove_62
+  - first:
+      213: 8080304241043888475
+    second: Minion_18_EggDragon_BrokenMove_63
+  - first:
+      213: -1450880554377128149
+    second: Minion_18_EggDragon_BrokenMove_64
+  - first:
+      213: 1115600368439577524
+    second: Minion_18_EggDragon_BrokenMove_65
+  - first:
+      213: 1712963699864043964
+    second: Minion_18_EggDragon_BrokenMove_66
+  - first:
+      213: 4605367175547064592
+    second: Minion_18_EggDragon_BrokenMove_67
+  - first:
+      213: -2045516855734484384
+    second: Minion_18_EggDragon_BrokenMove_68
+  - first:
+      213: -7531082477791843293
+    second: Minion_18_EggDragon_BrokenMove_69
+  - first:
+      213: 8431326858801466160
+    second: Minion_18_EggDragon_BrokenMove_70
+  - first:
+      213: -7449485185139100358
+    second: Minion_18_EggDragon_BrokenMove_71
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c52f558357ce7660800000000000000
+      internalID: 7385559600468010440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa35451564b40980800000000000000
+      internalID: -8573529444365026573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcab53c7e88293df0800000000000000
+      internalID: -200084116006913333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfaed79ddff64c150800000000000000
+      internalID: 5891957348573768444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b001f618071ffd80800000000000000
+      internalID: -8214821871788425039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4937aacddd7cfe90800000000000000
+      internalID: -6990574130044651190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d395a2e12e02b3900800000000000000
+      internalID: 665161525508069693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e198bc5e0f1095170800000000000000
+      internalID: 8167561533372205342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32aa312fec94beb90800000000000000
+      internalID: -7211589225130251741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa909b9c7eb4c2ef0800000000000000
+      internalID: -131646830206711377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4186304eee322d20800000000000000
+      internalID: 3252231073915371854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0aaf1f4f32b31860800000000000000
+      internalID: 7499533789482166795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0b4b385cf744b00800000000000000
+      internalID: 811914319128473817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3014f11d31d1d86a0800000000000000
+      internalID: -6445463520747241213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821c308eef17b9030800000000000000
+      internalID: 3502518474838884648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42e207780d589fc0800000000000000
+      internalID: -3487935620460649907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5ddac9b5d0a1e50800000000000000
+      internalID: 6780746876081526232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af49091f07b64730800000000000000
+      internalID: 3983072195928215460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ab6220284a01d8a0800000000000000
+      internalID: -6282228700312081497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4d3535115c6abb0800000000000000
+      internalID: -4925032464279939897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0d72a65f71f06900800000000000000
+      internalID: 675805473322204430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 114f63af6f2f63220800000000000000
+      internalID: 2465424988605707281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 421bdfe69553f9980800000000000000
+      internalID: -8530040510985948892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_BrokenMove_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8515a394bf470c1c0800000000000000
+      internalID: -4485456606246842024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ba9e3f3b32dfb4247a294fe57424106c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":4.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_18_EggDragon_BrokenMove_0: 7385559600468010440
+      Minion_18_EggDragon_BrokenMove_1: -8573529444365026573
+      Minion_18_EggDragon_BrokenMove_10: 3252231073915371854
+      Minion_18_EggDragon_BrokenMove_11: 7499533789482166795
+      Minion_18_EggDragon_BrokenMove_12: 811914319128473817
+      Minion_18_EggDragon_BrokenMove_13: -6445463520747241213
+      Minion_18_EggDragon_BrokenMove_14: 3502518474838884648
+      Minion_18_EggDragon_BrokenMove_15: -3487935620460649907
+      Minion_18_EggDragon_BrokenMove_16: 6780746876081526232
+      Minion_18_EggDragon_BrokenMove_17: 3983072195928215460
+      Minion_18_EggDragon_BrokenMove_18: -6282228700312081497
+      Minion_18_EggDragon_BrokenMove_19: -4925032464279939897
+      Minion_18_EggDragon_BrokenMove_2: -200084116006913333
+      Minion_18_EggDragon_BrokenMove_20: 675805473322204430
+      Minion_18_EggDragon_BrokenMove_21: 2465424988605707281
+      Minion_18_EggDragon_BrokenMove_22: -8530040510985948892
+      Minion_18_EggDragon_BrokenMove_23: -4485456606246842024
+      Minion_18_EggDragon_BrokenMove_3: 5891957348573768444
+      Minion_18_EggDragon_BrokenMove_4: -8214821871788425039
+      Minion_18_EggDragon_BrokenMove_5: -6990574130044651190
+      Minion_18_EggDragon_BrokenMove_6: 665161525508069693
+      Minion_18_EggDragon_BrokenMove_7: 8167561533372205342
+      Minion_18_EggDragon_BrokenMove_8: -7211589225130251741
+      Minion_18_EggDragon_BrokenMove_9: -131646830206711377
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

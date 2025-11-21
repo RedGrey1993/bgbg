@@ -20,7 +20,7 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
     protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
         if (Time.time > nxtTeleportTime) {
-            teleportCoroutine ??= StartCoroutine(Teleport(0.5f));
+            teleportCoroutine ??= StartCoroutine(Teleport(0.5f, AggroTarget));
             nxtTeleportTime = Time.time + teleportInterval;
         }
         if (CharacterData.causeCollisionDamage)
@@ -30,7 +30,7 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
     protected override void SubclassTriggerEnter2D(Collider2D other)
     {
         if (Time.time > nxtTeleportTime) {
-            teleportCoroutine ??= StartCoroutine(Teleport(0.5f));
+            teleportCoroutine ??= StartCoroutine(Teleport(0.5f, AggroTarget));
             nxtTeleportTime = Time.time + teleportInterval;
         }
     }
@@ -74,7 +74,7 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
         }
     }
 
-    private IEnumerator Teleport(float dismissDuration)
+    private IEnumerator Teleport(float dismissDuration, GameObject aggroTarget)
     {
         var teleportEffect = GameManager.Instance.GetObject(teleportPrefab, transform.position);
         GameManager.Instance.RecycleObject(teleportEffect, dismissDuration);
@@ -92,12 +92,13 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
         Vector2[] dirs = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
         Vector2 tarPos;
-        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
-        Rect room = LevelManager.Instance.Rooms[roomId];
-        if (AggroTarget != null)
+        if (aggroTarget != null)
         {
+            int roomId = LevelManager.Instance.GetRoomNoByPosition(aggroTarget.transform.position);
+            Rect room = LevelManager.Instance.Rooms[roomId];
+
             var dir = dirs[Random.Range(0, dirs.Length)];
-            tarPos = (Vector2)AggroTarget.transform.position + dir * characterStatus.State.ShootRange;
+            tarPos = (Vector2)aggroTarget.transform.position + dir * characterStatus.State.ShootRange;
             if (tarPos.x < room.xMin + 1 + col2D.bounds.extents.x) 
                 tarPos.x = room.xMin + 1 + col2D.bounds.extents.x;
             if (tarPos.x > room.xMax - col2D.bounds.extents.x) 
@@ -109,6 +110,7 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
         }
         else
         {
+            int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
             tarPos = LevelManager.Instance.GetRandomPositionInRoom(roomId, col2D.bounds);
         }
         col2D.enabled = false;
@@ -158,5 +160,22 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
     protected override bool IsAtkCoroutineIdle()
     {
         return atkCoroutine == null;
+    }
+
+    protected override void Move_FollowAcrossRooms(GameObject target, bool followTrainer = false)
+    {
+        // Debug.Log($"fhhtest, char {transform.name}, mod {posXMod},{posYMod}");
+        Constants.PositionToIndex(transform.position, out int sx, out int sy);
+        Constants.PositionToIndex(target.transform.position, out int tx, out int ty);
+
+        // 在同一间房间，直接追击
+        if (LevelManager.Instance.RoomGrid[sx, sy] == LevelManager.Instance.RoomGrid[tx, ty])
+        {
+            Move_ChaseInRoom(target, followTrainer);
+        }
+        else
+        {
+            teleportCoroutine ??= StartCoroutine(Teleport(0.5f, characterStatus.Trainer.gameObject));
+        }
     }
 }

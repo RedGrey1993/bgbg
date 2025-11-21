@@ -1,0 +1,2178 @@
+fileFormatVersion: 2
+guid: 2348a4907508d0345a7d8152a0eb83ef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5118369116705147322
+    second: Minion_18_EggDragon_Attack_0
+  - first:
+      213: 5676697261047920173
+    second: Minion_18_EggDragon_Attack_1
+  - first:
+      213: -4759593719057720928
+    second: Minion_18_EggDragon_Attack_2
+  - first:
+      213: -6975217723623470652
+    second: Minion_18_EggDragon_Attack_3
+  - first:
+      213: 8605906006281233082
+    second: Minion_18_EggDragon_Attack_4
+  - first:
+      213: 1665006082391670614
+    second: Minion_18_EggDragon_Attack_5
+  - first:
+      213: 1817062543518008160
+    second: Minion_18_EggDragon_Attack_6
+  - first:
+      213: 7572893258335430170
+    second: Minion_18_EggDragon_Attack_7
+  - first:
+      213: -4496868175211565108
+    second: Minion_18_EggDragon_Attack_8
+  - first:
+      213: -1050929504376542518
+    second: Minion_18_EggDragon_Attack_9
+  - first:
+      213: 22038322283794350
+    second: Minion_18_EggDragon_Attack_10
+  - first:
+      213: 8689005164153672411
+    second: Minion_18_EggDragon_Attack_11
+  - first:
+      213: 8550242655121618356
+    second: Minion_18_EggDragon_Attack_12
+  - first:
+      213: 7465149880971220499
+    second: Minion_18_EggDragon_Attack_13
+  - first:
+      213: -684753616935002096
+    second: Minion_18_EggDragon_Attack_14
+  - first:
+      213: -4290896309670718604
+    second: Minion_18_EggDragon_Attack_15
+  - first:
+      213: 1390958373589808630
+    second: Minion_18_EggDragon_Attack_16
+  - first:
+      213: -7371488385639544091
+    second: Minion_18_EggDragon_Attack_17
+  - first:
+      213: 5908668368561873884
+    second: Minion_18_EggDragon_Attack_18
+  - first:
+      213: -5576855053756965077
+    second: Minion_18_EggDragon_Attack_19
+  - first:
+      213: -2552138556924424772
+    second: Minion_18_EggDragon_Attack_20
+  - first:
+      213: -8621503582796927678
+    second: Minion_18_EggDragon_Attack_21
+  - first:
+      213: -3286199079805901060
+    second: Minion_18_EggDragon_Attack_22
+  - first:
+      213: -1269506270218063644
+    second: Minion_18_EggDragon_Attack_23
+  - first:
+      213: 3512784823397729089
+    second: Minion_18_EggDragon_Attack_24
+  - first:
+      213: 2496266156698863313
+    second: Minion_18_EggDragon_Attack_25
+  - first:
+      213: -2832036165479750396
+    second: Minion_18_EggDragon_Attack_26
+  - first:
+      213: -3545354834428219143
+    second: Minion_18_EggDragon_Attack_27
+  - first:
+      213: -7592077785056740110
+    second: Minion_18_EggDragon_Attack_28
+  - first:
+      213: -5377609724259029718
+    second: Minion_18_EggDragon_Attack_29
+  - first:
+      213: 7688024181943432619
+    second: Minion_18_EggDragon_Attack_30
+  - first:
+      213: -5888014615720819762
+    second: Minion_18_EggDragon_Attack_31
+  - first:
+      213: 5568191636471168948
+    second: Minion_18_EggDragon_Attack_32
+  - first:
+      213: -3147149045943070874
+    second: Minion_18_EggDragon_Attack_33
+  - first:
+      213: -2457736201206863453
+    second: Minion_18_EggDragon_Attack_34
+  - first:
+      213: 88728972101641186
+    second: Minion_18_EggDragon_Attack_35
+  - first:
+      213: -7528463979730470265
+    second: Minion_18_EggDragon_Attack_36
+  - first:
+      213: 1278589859366956502
+    second: Minion_18_EggDragon_Attack_37
+  - first:
+      213: 8220770266373513205
+    second: Minion_18_EggDragon_Attack_38
+  - first:
+      213: -5274622287091119211
+    second: Minion_18_EggDragon_Attack_39
+  - first:
+      213: 3560593388912525093
+    second: Minion_18_EggDragon_Attack_40
+  - first:
+      213: 2123568508911620581
+    second: Minion_18_EggDragon_Attack_41
+  - first:
+      213: 7160721468856843488
+    second: Minion_18_EggDragon_Attack_42
+  - first:
+      213: -5230609967917759865
+    second: Minion_18_EggDragon_Attack_43
+  - first:
+      213: 3752447041892716962
+    second: Minion_18_EggDragon_Attack_44
+  - first:
+      213: 7660617455334418931
+    second: Minion_18_EggDragon_Attack_45
+  - first:
+      213: 2891200348594626904
+    second: Minion_18_EggDragon_Attack_46
+  - first:
+      213: 8562045884487296786
+    second: Minion_18_EggDragon_Attack_47
+  - first:
+      213: -3866668637121415767
+    second: Minion_18_EggDragon_Attack_48
+  - first:
+      213: -7574966063031687469
+    second: Minion_18_EggDragon_Attack_49
+  - first:
+      213: 1973441064230213220
+    second: Minion_18_EggDragon_Attack_50
+  - first:
+      213: 1848251229643554156
+    second: Minion_18_EggDragon_Attack_51
+  - first:
+      213: -14522334182463910
+    second: Minion_18_EggDragon_Attack_52
+  - first:
+      213: -8493555017373089657
+    second: Minion_18_EggDragon_Attack_53
+  - first:
+      213: 2014561385984379002
+    second: Minion_18_EggDragon_Attack_54
+  - first:
+      213: -1363873339611775154
+    second: Minion_18_EggDragon_Attack_55
+  - first:
+      213: 5569641079210545125
+    second: Minion_18_EggDragon_Attack_56
+  - first:
+      213: -9012748895573483133
+    second: Minion_18_EggDragon_Attack_57
+  - first:
+      213: 8889816332641902624
+    second: Minion_18_EggDragon_Attack_58
+  - first:
+      213: -6466837958422602777
+    second: Minion_18_EggDragon_Attack_59
+  - first:
+      213: 1385895672422265455
+    second: Minion_18_EggDragon_Attack_60
+  - first:
+      213: -5620281596291751518
+    second: Minion_18_EggDragon_Attack_61
+  - first:
+      213: -3860982053794392900
+    second: Minion_18_EggDragon_Attack_62
+  - first:
+      213: 1547515342959312445
+    second: Minion_18_EggDragon_Attack_63
+  - first:
+      213: -4182315811154250487
+    second: Minion_18_EggDragon_Attack_64
+  - first:
+      213: -5218214979188819203
+    second: Minion_18_EggDragon_Attack_65
+  - first:
+      213: 7178978569753817891
+    second: Minion_18_EggDragon_Attack_66
+  - first:
+      213: -2992401878385980615
+    second: Minion_18_EggDragon_Attack_67
+  - first:
+      213: -759626054176818140
+    second: Minion_18_EggDragon_Attack_68
+  - first:
+      213: -8232447121643571522
+    second: Minion_18_EggDragon_Attack_69
+  - first:
+      213: 3656511991382653668
+    second: Minion_18_EggDragon_Attack_70
+  - first:
+      213: -5537882241121831409
+    second: Minion_18_EggDragon_Attack_71
+  - first:
+      213: -4010705092587209321
+    second: Minion_18_EggDragon_Attack_72
+  - first:
+      213: 5161668238110597524
+    second: Minion_18_EggDragon_Attack_73
+  - first:
+      213: -8381711250456090863
+    second: Minion_18_EggDragon_Attack_74
+  - first:
+      213: -2668175970805417504
+    second: Minion_18_EggDragon_Attack_75
+  - first:
+      213: 7434030799987467588
+    second: Minion_18_EggDragon_Attack_76
+  - first:
+      213: 1760533486990178589
+    second: Minion_18_EggDragon_Attack_77
+  - first:
+      213: 1734680556307614635
+    second: Minion_18_EggDragon_Attack_78
+  - first:
+      213: 2479543934652456558
+    second: Minion_18_EggDragon_Attack_79
+  - first:
+      213: 4912841714757709206
+    second: Minion_18_EggDragon_Attack_80
+  - first:
+      213: 8809244750894531224
+    second: Minion_18_EggDragon_Attack_81
+  - first:
+      213: -6529104046240230488
+    second: Minion_18_EggDragon_Attack_82
+  - first:
+      213: 8667926392144609111
+    second: Minion_18_EggDragon_Attack_83
+  - first:
+      213: -7605168906570968868
+    second: Minion_18_EggDragon_Attack_84
+  - first:
+      213: -9088077692961575878
+    second: Minion_18_EggDragon_Attack_85
+  - first:
+      213: -1872346726556223894
+    second: Minion_18_EggDragon_Attack_86
+  - first:
+      213: -7205244781878511917
+    second: Minion_18_EggDragon_Attack_87
+  - first:
+      213: 3471531775676237306
+    second: Minion_18_EggDragon_Attack_88
+  - first:
+      213: 1047270620092647968
+    second: Minion_18_EggDragon_Attack_89
+  - first:
+      213: 4995781564068728069
+    second: Minion_18_EggDragon_Attack_90
+  - first:
+      213: 5293167046263004065
+    second: Minion_18_EggDragon_Attack_91
+  - first:
+      213: -6247378789832432873
+    second: Minion_18_EggDragon_Attack_92
+  - first:
+      213: 2551190367496155299
+    second: Minion_18_EggDragon_Attack_93
+  - first:
+      213: 212724256222085497
+    second: Minion_18_EggDragon_Attack_94
+  - first:
+      213: 6633254593245918380
+    second: Minion_18_EggDragon_Attack_95
+  - first:
+      213: -5282835000115638220
+    second: Minion_18_EggDragon_Attack_96
+  - first:
+      213: 694953263977486974
+    second: Minion_18_EggDragon_Attack_97
+  - first:
+      213: 5434239133665458585
+    second: Minion_18_EggDragon_Attack_98
+  - first:
+      213: 8839380861958446832
+    second: Minion_18_EggDragon_Attack_99
+  - first:
+      213: -6513830425470837483
+    second: Minion_18_EggDragon_Attack_100
+  - first:
+      213: -2452638258583881958
+    second: Minion_18_EggDragon_Attack_101
+  - first:
+      213: 715867079497731792
+    second: Minion_18_EggDragon_Attack_102
+  - first:
+      213: 9186338251529662596
+    second: Minion_18_EggDragon_Attack_103
+  - first:
+      213: -4294880271783365415
+    second: Minion_18_EggDragon_Attack_104
+  - first:
+      213: -1547427727918371773
+    second: Minion_18_EggDragon_Attack_105
+  - first:
+      213: -4200526973028295622
+    second: Minion_18_EggDragon_Attack_106
+  - first:
+      213: 8608956383147890598
+    second: Minion_18_EggDragon_Attack_107
+  - first:
+      213: 6962513642216807333
+    second: Minion_18_EggDragon_Attack_108
+  - first:
+      213: -7124182585567501125
+    second: Minion_18_EggDragon_Attack_109
+  - first:
+      213: -2476757316401824661
+    second: Minion_18_EggDragon_Attack_110
+  - first:
+      213: -6897964033148292682
+    second: Minion_18_EggDragon_Attack_111
+  - first:
+      213: 3414522012402950389
+    second: Minion_18_EggDragon_Attack_112
+  - first:
+      213: -411750509410884871
+    second: Minion_18_EggDragon_Attack_113
+  - first:
+      213: 6677353690547235735
+    second: Minion_18_EggDragon_Attack_114
+  - first:
+      213: 7269433390096507849
+    second: Minion_18_EggDragon_Attack_115
+  - first:
+      213: -4965768193923813811
+    second: Minion_18_EggDragon_Attack_116
+  - first:
+      213: -8749611413936998471
+    second: Minion_18_EggDragon_Attack_117
+  - first:
+      213: -1979863363605068573
+    second: Minion_18_EggDragon_Attack_118
+  - first:
+      213: 2048700048504342343
+    second: Minion_18_EggDragon_Attack_119
+  - first:
+      213: -9098083129419322424
+    second: Minion_18_EggDragon_Attack_120
+  - first:
+      213: -8034929908811174327
+    second: Minion_18_EggDragon_Attack_121
+  - first:
+      213: 3963287016925055110
+    second: Minion_18_EggDragon_Attack_122
+  - first:
+      213: -2848483858287952260
+    second: Minion_18_EggDragon_Attack_123
+  - first:
+      213: -7040158242539116972
+    second: Minion_18_EggDragon_Attack_124
+  - first:
+      213: -3930828912990638221
+    second: Minion_18_EggDragon_Attack_125
+  - first:
+      213: 8502266459600502720
+    second: Minion_18_EggDragon_Attack_126
+  - first:
+      213: 1688141518424146889
+    second: Minion_18_EggDragon_Attack_127
+  - first:
+      213: -6181562208567659571
+    second: Minion_18_EggDragon_Attack_128
+  - first:
+      213: -4574536900889694984
+    second: Minion_18_EggDragon_Attack_129
+  - first:
+      213: 792897119325000725
+    second: Minion_18_EggDragon_Attack_130
+  - first:
+      213: -8298344654854873489
+    second: Minion_18_EggDragon_Attack_131
+  - first:
+      213: -3122976745715414359
+    second: Minion_18_EggDragon_Attack_132
+  - first:
+      213: -7336901100613656289
+    second: Minion_18_EggDragon_Attack_133
+  - first:
+      213: -5682024333298726320
+    second: Minion_18_EggDragon_Attack_134
+  - first:
+      213: 2032516308637346503
+    second: Minion_18_EggDragon_Attack_135
+  - first:
+      213: -4403185939407679268
+    second: Minion_18_EggDragon_Attack_136
+  - first:
+      213: -410770223350381902
+    second: Minion_18_EggDragon_Attack_137
+  - first:
+      213: -3272652434645813402
+    second: Minion_18_EggDragon_Attack_138
+  - first:
+      213: 5730858473438240578
+    second: Minion_18_EggDragon_Attack_139
+  - first:
+      213: -961528281408951708
+    second: Minion_18_EggDragon_Attack_140
+  - first:
+      213: 2370764702949177345
+    second: Minion_18_EggDragon_Attack_141
+  - first:
+      213: 4605157780398001860
+    second: Minion_18_EggDragon_Attack_142
+  - first:
+      213: 391622428226904404
+    second: Minion_18_EggDragon_Attack_143
+  - first:
+      213: -1146773793797467824
+    second: Minion_18_EggDragon_Attack_144
+  - first:
+      213: -814925123635788769
+    second: Minion_18_EggDragon_Attack_145
+  - first:
+      213: 3737825748315764557
+    second: Minion_18_EggDragon_Attack_146
+  - first:
+      213: 6509737890370590286
+    second: Minion_18_EggDragon_Attack_147
+  - first:
+      213: -1874105312365613235
+    second: Minion_18_EggDragon_Attack_148
+  - first:
+      213: 4962499633836212771
+    second: Minion_18_EggDragon_Attack_149
+  - first:
+      213: -8150455480050830062
+    second: Minion_18_EggDragon_Attack_150
+  - first:
+      213: 7264364092116425193
+    second: Minion_18_EggDragon_Attack_151
+  - first:
+      213: -2966147734794968365
+    second: Minion_18_EggDragon_Attack_152
+  - first:
+      213: -7573896795393797253
+    second: Minion_18_EggDragon_Attack_153
+  - first:
+      213: 3340371853527079776
+    second: Minion_18_EggDragon_Attack_154
+  - first:
+      213: -5566130649556463805
+    second: Minion_18_EggDragon_Attack_155
+  - first:
+      213: -5787561887523173643
+    second: Minion_18_EggDragon_Attack_156
+  - first:
+      213: 792480964307650441
+    second: Minion_18_EggDragon_Attack_157
+  - first:
+      213: -8808119622095574853
+    second: Minion_18_EggDragon_Attack_158
+  - first:
+      213: -3196007197615373598
+    second: Minion_18_EggDragon_Attack_159
+  - first:
+      213: -1859781360651264963
+    second: Minion_18_EggDragon_Attack_160
+  - first:
+      213: -8371975243730202817
+    second: Minion_18_EggDragon_Attack_161
+  - first:
+      213: 8712231777342903421
+    second: Minion_18_EggDragon_Attack_162
+  - first:
+      213: 5018248958818929642
+    second: Minion_18_EggDragon_Attack_163
+  - first:
+      213: 6092672657962994239
+    second: Minion_18_EggDragon_Attack_164
+  - first:
+      213: -7376700811540925075
+    second: Minion_18_EggDragon_Attack_165
+  - first:
+      213: -3363045955042853712
+    second: Minion_18_EggDragon_Attack_166
+  - first:
+      213: -625575716124987379
+    second: Minion_18_EggDragon_Attack_167
+  - first:
+      213: 3431428584701431021
+    second: Minion_18_EggDragon_Attack_168
+  - first:
+      213: 5210855804635396054
+    second: Minion_18_EggDragon_Attack_169
+  - first:
+      213: 988592498678580615
+    second: Minion_18_EggDragon_Attack_170
+  - first:
+      213: -2832980522703517425
+    second: Minion_18_EggDragon_Attack_171
+  - first:
+      213: 5197720276199979015
+    second: Minion_18_EggDragon_Attack_172
+  - first:
+      213: -111146687974154928
+    second: Minion_18_EggDragon_Attack_173
+  - first:
+      213: 317145423873913349
+    second: Minion_18_EggDragon_Attack_174
+  - first:
+      213: 5831462218571353104
+    second: Minion_18_EggDragon_Attack_175
+  - first:
+      213: 2983988286863586554
+    second: Minion_18_EggDragon_Attack_176
+  - first:
+      213: 3135535936268421457
+    second: Minion_18_EggDragon_Attack_177
+  - first:
+      213: 5854242782255793083
+    second: Minion_18_EggDragon_Attack_178
+  - first:
+      213: 2086918958627054146
+    second: Minion_18_EggDragon_Attack_179
+  - first:
+      213: 8226521519029499791
+    second: Minion_18_EggDragon_Attack_180
+  - first:
+      213: -1913809210879609877
+    second: Minion_18_EggDragon_Attack_181
+  - first:
+      213: -4370888837483489269
+    second: Minion_18_EggDragon_Attack_182
+  - first:
+      213: 8153916438331041076
+    second: Minion_18_EggDragon_Attack_183
+  - first:
+      213: -4466863803034220886
+    second: Minion_18_EggDragon_Attack_184
+  - first:
+      213: 1509737636199264707
+    second: Minion_18_EggDragon_Attack_185
+  - first:
+      213: 6582605717589326050
+    second: Minion_18_EggDragon_Attack_186
+  - first:
+      213: -4816803939576037268
+    second: Minion_18_EggDragon_Attack_187
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 646b5791866e7f8b0800000000000000
+      internalID: -5118369116705147322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26b13e151ea7ce40800000000000000
+      internalID: 5676697261047920173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a9526cdab682fdb0800000000000000
+      internalID: -4759593719057720928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c90a68cf6c033f90800000000000000
+      internalID: -6975217723623470652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab22bcaaae15e6770800000000000000
+      internalID: 8605906006281233082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ff1d9d53a4b1710800000000000000
+      internalID: 1665006082391670614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2304
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0630f0191c0873910800000000000000
+      internalID: 1817062543518008160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198c96c6a59789f4086a1d608e9438e3
+      internalID: 7572893258335430170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3686c4754751264cb8bd7d857e4c796
+      internalID: -4496868175211565108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cee1fca4ea2f9d4190d01badd18b69a
+      internalID: -1050929504376542518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b9541a44285984e9f7a70c99ed54bf
+      internalID: 22038322283794350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155e76b12beb91a45a96636a1d4b7688
+      internalID: 8689005164153672411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c12f55827b1985469db06c81a50a849
+      internalID: 8550242655121618356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2048
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a774dda0657eddd47873408a1017d9dd
+      internalID: 7465149880971220499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4453022fdaffce84fab17e40ae90b1df
+      internalID: -684753616935002096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e843308755155d04d95bf3073e5aa8c7
+      internalID: -4290896309670718604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e28afdb09df7239418b2becd9ec7bd8b
+      internalID: 1390958373589808630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b2e4dd3593bf54d998d52aa891e981
+      internalID: -7371488385639544091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d47cafad3943ce343b17e2ca4a10627d
+      internalID: 5908668368561873884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0347806afe128d24fbb41e7da7b5c38a
+      internalID: -5576855053756965077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3abcfba397913446ba7f5af4e9b94ff
+      internalID: -2552138556924424772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c12e5d2aa6e4a04bb3e8c2f78440b06
+      internalID: -8621503582796927678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ebe0a556e53e142bc9e47268ccd75c
+      internalID: -3286199079805901060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af652f3a701cf734ab1474b6fcd16303
+      internalID: -1269506270218063644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5b7f7fa0a4302b45926578b5cf29c4b
+      internalID: 3512784823397729089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9766e569ed6a604cb60caccdaa92263
+      internalID: 2496266156698863313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4679ebc10617fee4ebae307a73531e41
+      internalID: -2832036165479750396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de66ed399c552b943a602a8fc01e74c3
+      internalID: -3545354834428219143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf2bf5f2c08ec74891f8d01d07596d8
+      internalID: -7592077785056740110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1d3e9b47054062498a7f2ea19a308e9
+      internalID: -5377609724259029718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d4fb77f64c16454594b7744ad573bfd
+      internalID: 7688024181943432619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f1dc25b144f8648ae4a5f062e40aca
+      internalID: -5888014615720819762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d31b7c0b4eb164ab77f4b0dbfd6f42
+      internalID: 5568191636471168948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_33
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b932804a4da44b945b710c69a62b2e37
+      internalID: -3147149045943070874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_34
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3def9f28757ed964fb7fb986f70be38d
+      internalID: -2457736201206863453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5e50974d7dc274385ab30bb29fe185
+      internalID: 88728972101641186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249cb255ec7d06e4a95bed37520c40a2
+      internalID: -7528463979730470265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3839926dab1148d4392074fd43405362
+      internalID: 1278589859366956502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0fb266836663845b8f814ecd5d6648
+      internalID: 8220770266373513205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_39
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f6e01fa260e26e4a841aa1f41ad40d7
+      internalID: -5274622287091119211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2f60c4ba7912e745a6618f611e20bb5
+      internalID: 3560593388912525093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_41
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a60c93b11072e24d824b72143c5ca52
+      internalID: 2123568508911620581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d5659db1dbf4a4cb35d35f43a89d79
+      internalID: 7160721468856843488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c77621650f9fe8d4995f899783e4a453
+      internalID: -5230609967917759865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b488976c80d2690479d3e59e1729a659
+      internalID: 3752447041892716962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8450e42919606d94c89b4ea1857fdf66
+      internalID: 7660617455334418931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_46
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff5ce89a26134544b4310a4a50fa295
+      internalID: 2891200348594626904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_47
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc87f9670cb96c4d8e2b5640e7105a3
+      internalID: 8562045884487296786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_48
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd616dbd0095a643a21bad4694b0a82
+      internalID: -3866668637121415767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd3e99a107dc74749ae970c02a7f2805
+      internalID: -7574966063031687469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_50
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865ba0947c2e8ef44a30b24b490368c7
+      internalID: 1973441064230213220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e67a5a40fe2a340a53b8423f1bd43d
+      internalID: 1848251229643554156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_52
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4590d427a9e6ad4abe641e60559a822
+      internalID: -14522334182463910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_53
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f338e1cd7d87db45b936105ee58a80d
+      internalID: -8493555017373089657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_54
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e550ad373fd4a7a48aa90cb7e5679cd9
+      internalID: 2014561385984379002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_55
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bf953f2c7feb7d43a43cd5f484e7638
+      internalID: -1363873339611775154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb5734a20d200849aae7e6b267fe1f9
+      internalID: 5569641079210545125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46efcde0c395256468629eb0744b3d46
+      internalID: -9012748895573483133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_58
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec9366929a78834cbd516c81ce232e6
+      internalID: 8889816332641902624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_59
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b8e3994d8f8f204bb9b64b857370f1f
+      internalID: -6466837958422602777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18fe90f6f780309409eca58caefcd961
+      internalID: 1385895672422265455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_61
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db381797c8708e44386daac5576cacfc
+      internalID: -5620281596291751518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f341e6af0642746bbf7d122369ac7e
+      internalID: -3860982053794392900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51bd40892cdbe6c4f986394210fcbb15
+      internalID: 1547515342959312445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Attack_64
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f87695aa259e4e4da2f55980e5c1e41
+      internalID: -4182315811154250487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fe9e9cc262568224caba452f78ef7d3d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":10.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_18_EggDragon_Attack_0: -5118369116705147322
+      Minion_18_EggDragon_Attack_1: 5676697261047920173
+      Minion_18_EggDragon_Attack_10: 22038322283794350
+      Minion_18_EggDragon_Attack_11: 8689005164153672411
+      Minion_18_EggDragon_Attack_12: 8550242655121618356
+      Minion_18_EggDragon_Attack_13: 7465149880971220499
+      Minion_18_EggDragon_Attack_14: -684753616935002096
+      Minion_18_EggDragon_Attack_15: -4290896309670718604
+      Minion_18_EggDragon_Attack_16: 1390958373589808630
+      Minion_18_EggDragon_Attack_17: -7371488385639544091
+      Minion_18_EggDragon_Attack_18: 5908668368561873884
+      Minion_18_EggDragon_Attack_19: -5576855053756965077
+      Minion_18_EggDragon_Attack_2: -4759593719057720928
+      Minion_18_EggDragon_Attack_20: -2552138556924424772
+      Minion_18_EggDragon_Attack_21: -8621503582796927678
+      Minion_18_EggDragon_Attack_22: -3286199079805901060
+      Minion_18_EggDragon_Attack_23: -1269506270218063644
+      Minion_18_EggDragon_Attack_24: 3512784823397729089
+      Minion_18_EggDragon_Attack_25: 2496266156698863313
+      Minion_18_EggDragon_Attack_26: -2832036165479750396
+      Minion_18_EggDragon_Attack_27: -3545354834428219143
+      Minion_18_EggDragon_Attack_28: -7592077785056740110
+      Minion_18_EggDragon_Attack_29: -5377609724259029718
+      Minion_18_EggDragon_Attack_3: -6975217723623470652
+      Minion_18_EggDragon_Attack_30: 7688024181943432619
+      Minion_18_EggDragon_Attack_31: -5888014615720819762
+      Minion_18_EggDragon_Attack_32: 5568191636471168948
+      Minion_18_EggDragon_Attack_33: -3147149045943070874
+      Minion_18_EggDragon_Attack_34: -2457736201206863453
+      Minion_18_EggDragon_Attack_35: 88728972101641186
+      Minion_18_EggDragon_Attack_36: -7528463979730470265
+      Minion_18_EggDragon_Attack_37: 1278589859366956502
+      Minion_18_EggDragon_Attack_38: 8220770266373513205
+      Minion_18_EggDragon_Attack_39: -5274622287091119211
+      Minion_18_EggDragon_Attack_4: 8605906006281233082
+      Minion_18_EggDragon_Attack_40: 3560593388912525093
+      Minion_18_EggDragon_Attack_41: 2123568508911620581
+      Minion_18_EggDragon_Attack_42: 7160721468856843488
+      Minion_18_EggDragon_Attack_43: -5230609967917759865
+      Minion_18_EggDragon_Attack_44: 3752447041892716962
+      Minion_18_EggDragon_Attack_45: 7660617455334418931
+      Minion_18_EggDragon_Attack_46: 2891200348594626904
+      Minion_18_EggDragon_Attack_47: 8562045884487296786
+      Minion_18_EggDragon_Attack_48: -3866668637121415767
+      Minion_18_EggDragon_Attack_49: -7574966063031687469
+      Minion_18_EggDragon_Attack_5: 1665006082391670614
+      Minion_18_EggDragon_Attack_50: 1973441064230213220
+      Minion_18_EggDragon_Attack_51: 1848251229643554156
+      Minion_18_EggDragon_Attack_52: -14522334182463910
+      Minion_18_EggDragon_Attack_53: -8493555017373089657
+      Minion_18_EggDragon_Attack_54: 2014561385984379002
+      Minion_18_EggDragon_Attack_55: -1363873339611775154
+      Minion_18_EggDragon_Attack_56: 5569641079210545125
+      Minion_18_EggDragon_Attack_57: -9012748895573483133
+      Minion_18_EggDragon_Attack_58: 8889816332641902624
+      Minion_18_EggDragon_Attack_59: -6466837958422602777
+      Minion_18_EggDragon_Attack_6: 1817062543518008160
+      Minion_18_EggDragon_Attack_60: 1385895672422265455
+      Minion_18_EggDragon_Attack_61: -5620281596291751518
+      Minion_18_EggDragon_Attack_62: -3860982053794392900
+      Minion_18_EggDragon_Attack_63: 1547515342959312445
+      Minion_18_EggDragon_Attack_64: -4182315811154250487
+      Minion_18_EggDragon_Attack_7: 7572893258335430170
+      Minion_18_EggDragon_Attack_8: -4496868175211565108
+      Minion_18_EggDragon_Attack_9: -1050929504376542518
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

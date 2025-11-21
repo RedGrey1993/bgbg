@@ -1,0 +1,1067 @@
+fileFormatVersion: 2
+guid: cb8ab8acb78bdc041a80b9ff05b3add1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1347477343204297589
+    second: Minion_18_EggDragon_Broken_0
+  - first:
+      213: 5798310704074001155
+    second: Minion_18_EggDragon_Broken_1
+  - first:
+      213: 1731026909378393560
+    second: Minion_18_EggDragon_Broken_2
+  - first:
+      213: 5375001856436778695
+    second: Minion_18_EggDragon_Broken_3
+  - first:
+      213: 6640431228214019039
+    second: Minion_18_EggDragon_Broken_4
+  - first:
+      213: 8528394996147464072
+    second: Minion_18_EggDragon_Broken_5
+  - first:
+      213: 9026025485953736139
+    second: Minion_18_EggDragon_Broken_6
+  - first:
+      213: -3769229693840299931
+    second: Minion_18_EggDragon_Broken_7
+  - first:
+      213: -3871893217096946559
+    second: Minion_18_EggDragon_Broken_8
+  - first:
+      213: -6764574442294446082
+    second: Minion_18_EggDragon_Broken_9
+  - first:
+      213: 3275199961217397452
+    second: Minion_18_EggDragon_Broken_10
+  - first:
+      213: -5885717935713484803
+    second: Minion_18_EggDragon_Broken_11
+  - first:
+      213: -7092055903207332358
+    second: Minion_18_EggDragon_Broken_12
+  - first:
+      213: -2743550789947976392
+    second: Minion_18_EggDragon_Broken_13
+  - first:
+      213: -5845502618201103426
+    second: Minion_18_EggDragon_Broken_14
+  - first:
+      213: 4593851532320630141
+    second: Minion_18_EggDragon_Broken_15
+  - first:
+      213: 4394642140804324334
+    second: Minion_18_EggDragon_Broken_16
+  - first:
+      213: 7221570165889800200
+    second: Minion_18_EggDragon_Broken_17
+  - first:
+      213: 4136072698739307100
+    second: Minion_18_EggDragon_Broken_18
+  - first:
+      213: 7217156570814824065
+    second: Minion_18_EggDragon_Broken_19
+  - first:
+      213: 8934424795943732251
+    second: Minion_18_EggDragon_Broken_20
+  - first:
+      213: 4655301110432750891
+    second: Minion_18_EggDragon_Broken_21
+  - first:
+      213: 7985334526560867174
+    second: Minion_18_EggDragon_Broken_22
+  - first:
+      213: 8792741671858952736
+    second: Minion_18_EggDragon_Broken_23
+  - first:
+      213: -2293774970799509559
+    second: Minion_18_EggDragon_Broken_24
+  - first:
+      213: 7531489396109491075
+    second: Minion_18_EggDragon_Broken_25
+  - first:
+      213: -6947224322640467282
+    second: Minion_18_EggDragon_Broken_26
+  - first:
+      213: -5700461692195844105
+    second: Minion_18_EggDragon_Broken_27
+  - first:
+      213: 3994799416020598484
+    second: Minion_18_EggDragon_Broken_28
+  - first:
+      213: -4572765200433085915
+    second: Minion_18_EggDragon_Broken_29
+  - first:
+      213: -2246826238212826888
+    second: Minion_18_EggDragon_Broken_30
+  - first:
+      213: -7497091808445592332
+    second: Minion_18_EggDragon_Broken_31
+  - first:
+      213: 3065159247664916475
+    second: Minion_18_EggDragon_Broken_32
+  - first:
+      213: -7493805762367812519
+    second: Minion_18_EggDragon_Broken_33
+  - first:
+      213: 2098692880682693622
+    second: Minion_18_EggDragon_Broken_34
+  - first:
+      213: 8664727855109480388
+    second: Minion_18_EggDragon_Broken_35
+  - first:
+      213: 2756409848124678301
+    second: Minion_18_EggDragon_Broken_36
+  - first:
+      213: 4314264136986834517
+    second: Minion_18_EggDragon_Broken_37
+  - first:
+      213: -5605371307820554001
+    second: Minion_18_EggDragon_Broken_38
+  - first:
+      213: -8241728864799982475
+    second: Minion_18_EggDragon_Broken_39
+  - first:
+      213: 8612574301220522995
+    second: Minion_18_EggDragon_Broken_40
+  - first:
+      213: -6389819354070780993
+    second: Minion_18_EggDragon_Broken_41
+  - first:
+      213: -2781584912728248792
+    second: Minion_18_EggDragon_Broken_42
+  - first:
+      213: -6260301512587891464
+    second: Minion_18_EggDragon_Broken_43
+  - first:
+      213: -6270422336496546054
+    second: Minion_18_EggDragon_Broken_44
+  - first:
+      213: -7345102132682332903
+    second: Minion_18_EggDragon_Broken_45
+  - first:
+      213: 3933454526818004100
+    second: Minion_18_EggDragon_Broken_46
+  - first:
+      213: -861194377861539170
+    second: Minion_18_EggDragon_Broken_47
+  - first:
+      213: 4396528266714546412
+    second: Minion_18_EggDragon_Broken_48
+  - first:
+      213: -4486902327173263843
+    second: Minion_18_EggDragon_Broken_49
+  - first:
+      213: -7889938636766123528
+    second: Minion_18_EggDragon_Broken_50
+  - first:
+      213: -3200290496016711740
+    second: Minion_18_EggDragon_Broken_51
+  - first:
+      213: 7821294216424690181
+    second: Minion_18_EggDragon_Broken_52
+  - first:
+      213: 7138601127095658717
+    second: Minion_18_EggDragon_Broken_53
+  - first:
+      213: 7913941117538895993
+    second: Minion_18_EggDragon_Broken_54
+  - first:
+      213: 1487426753577298661
+    second: Minion_18_EggDragon_Broken_55
+  - first:
+      213: 7194616610674190876
+    second: Minion_18_EggDragon_Broken_56
+  - first:
+      213: 8175378975970742160
+    second: Minion_18_EggDragon_Broken_57
+  - first:
+      213: -7909904858074221086
+    second: Minion_18_EggDragon_Broken_58
+  - first:
+      213: -3998869709622892459
+    second: Minion_18_EggDragon_Broken_59
+  - first:
+      213: 6023039389968161289
+    second: Minion_18_EggDragon_Broken_60
+  - first:
+      213: -8579627954679009515
+    second: Minion_18_EggDragon_Broken_61
+  - first:
+      213: 4150116221233586126
+    second: Minion_18_EggDragon_Broken_62
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b4490218333b210800000000000000
+      internalID: 1347477343204297589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b0da55ddcb77050800000000000000
+      internalID: 5798310704074001155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5342e7dc7d50810800000000000000
+      internalID: 1731026909378393560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6baffd5b7d79a40800000000000000
+      internalID: 5375001856436778695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd38b11050d872c50800000000000000
+      internalID: 6640431228214019039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 887a6994012fa5670800000000000000
+      internalID: 8528394996147464072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcd15e78b52e24d70800000000000000
+      internalID: 9026025485953736139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5686bcd409101bbc0800000000000000
+      internalID: -3769229693840299931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c21ba12a5444ac0800000000000000
+      internalID: -3871893217096946559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef77a5e82676f12a0800000000000000
+      internalID: -6764574442294446082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_10
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc27cb01309d37d20800000000000000
+      internalID: 3275199961217397452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_11
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfff6a9a8bab15ea0800000000000000
+      internalID: -5885717935713484803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_12
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af56d1a3bb4f39d90800000000000000
+      internalID: -7092055903207332358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_13
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83598eda713fce9d0800000000000000
+      internalID: -2743550789947976392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb3e18ce65a90eea0800000000000000
+      internalID: -5845502618201103426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75eade11a3a0cf30800000000000000
+      internalID: 4593851532320630141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeb9a954eb7ecfc30800000000000000
+      internalID: 4394642140804324334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_17
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8089b6aedcb283460800000000000000
+      internalID: 7221570165889800200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c523c85a438466930800000000000000
+      internalID: 4136072698739307100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e3bcbb9ad782460800000000000000
+      internalID: 7217156570814824065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_20
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b140baae3047dfb70800000000000000
+      internalID: 8934424795943732251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d53d1f1b3fa9040800000000000000
+      internalID: 4655301110432750891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663925c917b91de60800000000000000
+      internalID: 7985334526560867174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_23
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02a5de0f6f7160a70800000000000000
+      internalID: 8792741671858952736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cf20d621dfda20e0800000000000000
+      internalID: -2293774970799509559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38b3ab4c3b9358860800000000000000
+      internalID: 7531489396109491075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_26
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaaaf0a5940869f90800000000000000
+      internalID: -6947224322640467282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ffc1f41b44e3e0b0800000000000000
+      internalID: -5700461692195844105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4de78dc47e0607730800000000000000
+      internalID: 3994799416020598484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_29
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5220bea17464a80c0800000000000000
+      internalID: -4572765200433085915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_30
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f81c47c07ba1d0e0800000000000000
+      internalID: -2246826238212826888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fc0c15b8baf4f790800000000000000
+      internalID: -7497091808445592332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_18_EggDragon_Broken_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf722198812a98a20800000000000000
+      internalID: 3065159247664916475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2ecd9cdd15a5c8b4e9b015d07ce1251a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":5.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Minion_18_EggDragon_Broken_0: 1347477343204297589
+      Minion_18_EggDragon_Broken_1: 5798310704074001155
+      Minion_18_EggDragon_Broken_10: 3275199961217397452
+      Minion_18_EggDragon_Broken_11: -5885717935713484803
+      Minion_18_EggDragon_Broken_12: -7092055903207332358
+      Minion_18_EggDragon_Broken_13: -2743550789947976392
+      Minion_18_EggDragon_Broken_14: -5845502618201103426
+      Minion_18_EggDragon_Broken_15: 4593851532320630141
+      Minion_18_EggDragon_Broken_16: 4394642140804324334
+      Minion_18_EggDragon_Broken_17: 7221570165889800200
+      Minion_18_EggDragon_Broken_18: 4136072698739307100
+      Minion_18_EggDragon_Broken_19: 7217156570814824065
+      Minion_18_EggDragon_Broken_2: 1731026909378393560
+      Minion_18_EggDragon_Broken_20: 8934424795943732251
+      Minion_18_EggDragon_Broken_21: 4655301110432750891
+      Minion_18_EggDragon_Broken_22: 7985334526560867174
+      Minion_18_EggDragon_Broken_23: 8792741671858952736
+      Minion_18_EggDragon_Broken_24: -2293774970799509559
+      Minion_18_EggDragon_Broken_25: 7531489396109491075
+      Minion_18_EggDragon_Broken_26: -6947224322640467282
+      Minion_18_EggDragon_Broken_27: -5700461692195844105
+      Minion_18_EggDragon_Broken_28: 3994799416020598484
+      Minion_18_EggDragon_Broken_29: -4572765200433085915
+      Minion_18_EggDragon_Broken_3: 5375001856436778695
+      Minion_18_EggDragon_Broken_30: -2246826238212826888
+      Minion_18_EggDragon_Broken_31: -7497091808445592332
+      Minion_18_EggDragon_Broken_32: 3065159247664916475
+      Minion_18_EggDragon_Broken_4: 6640431228214019039
+      Minion_18_EggDragon_Broken_5: 8528394996147464072
+      Minion_18_EggDragon_Broken_6: 9026025485953736139
+      Minion_18_EggDragon_Broken_7: -3769229693840299931
+      Minion_18_EggDragon_Broken_8: -3871893217096946559
+      Minion_18_EggDragon_Broken_9: -6764574442294446082
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
