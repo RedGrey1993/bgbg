@@ -280,7 +280,7 @@ public class CharacterStatus : MonoBehaviour
     {
         if (!IsBoss)
         {
-            transform.localScale = new Vector3(scale, scale, 1);
+            transform.localScale = new Vector3(scale, scale, scale);
             State.Scale = scale;
         }
     }

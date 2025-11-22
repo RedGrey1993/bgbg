@@ -8,10 +8,11 @@ public class EnergyWave : MonoBehaviour
     public float scaleSpeed = 20f;
     public float rotateSpeed = 20f;
     public float pushForce = 5f; // 推力大小
+    public int maxScaleX = int.MaxValue;
     public CharacterStatus OwnerStatus { get; set; }
     public bool FollowOwner { get; set; } = true;
     public float damageInterval = 0.3f;
-    public int minDamage = 2;
+    public float minDamage = 2;
     private float nextDamageTime = 0;
     private float curScale = 1;
     private bool scaleUp = true;
@@ -35,12 +36,18 @@ public class EnergyWave : MonoBehaviour
         if (scaleUp)
         {
             curScale += Time.deltaTime * scaleSpeed;
-            gameObject.transform.localScale = Vector3.one * curScale;
+            var tarScale = Vector3.one * curScale;
+            if (tarScale.x > maxScaleX) 
+                tarScale.x = maxScaleX;
+            gameObject.transform.localScale = tarScale;
         }
         else if (scaleDown)
         {
             curScale -= Time.deltaTime * scaleSpeed;
-            gameObject.transform.localScale = Vector3.one * curScale;
+            var tarScale = Vector3.one * curScale;
+            if (tarScale.x > maxScaleX) 
+                tarScale.x = maxScaleX;
+            gameObject.transform.localScale = tarScale;
         }
 
         if (Rotate != 0)

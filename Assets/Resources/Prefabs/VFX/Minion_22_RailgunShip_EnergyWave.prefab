@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7748469981586409697}
   - component: {fileID: 3826689437446375980}
   m_Layer: 12
-  m_Name: EnergyWave
+  m_Name: Minion_22_RailgunShip_EnergyWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f3079ef9cba00469304d3e86b33d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnergyWave
-  scaleSpeed: 40
+  scaleSpeed: 80
   rotateSpeed: 15
-  pushForce: 10
-  maxScaleX: 15
+  pushForce: 30
+  maxScaleX: 3
   damageInterval: 0.33
-  minDamage: 1
+  minDamage: 1.5
 --- !u!50 &3826689437446375980
 Rigidbody2D:
   serializedVersion: 5
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 60b96073820064558b98a49c7a3497db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5334a60396bca40f19ac9d531fab2621, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,7 +181,7 @@ Animator:
   m_GameObject: {fileID: 7323474230631106424}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a767d342f70a54806ade1a7245b9aa18, type: 2}
+  m_Controller: {fileID: 9100000, guid: de204a1321c2740f385902f5de7d6b89, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -240,8 +240,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.54160565, y: -0.08011538}
-      - {x: 0.5978136, y: -0.04926483}
-      - {x: 0.59836096, y: 0.018963844}
+      - {x: 0.5864439, y: -0.05413755}
+      - {x: 0.591864, y: 0.018963845}
       - {x: 0.5488257, y: 0.053722363}
-      - {x: -0.012222767, y: -0.014305644}
+      - {x: -0.013847021, y: -0.0013117073}
   m_UseDelaunayMesh: 0

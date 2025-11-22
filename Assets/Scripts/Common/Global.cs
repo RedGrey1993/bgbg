@@ -85,6 +85,7 @@ public enum CharacterType
     Minion_19_Mimic,
     Minion_20_OrbitalDrone,
     Minion_21_SpreadJet,
+    Minion_22_RailgunShip,
 }
 
 public enum ItemTag

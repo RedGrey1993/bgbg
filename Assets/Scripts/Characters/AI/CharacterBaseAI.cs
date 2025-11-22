@@ -825,6 +825,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip
             || CharacterData.CharacterType == CharacterType.Minion_12_DashCar
             || CharacterData.CharacterType == CharacterType.Minion_21_SpreadJet
+            || CharacterData.CharacterType == CharacterType.Minion_22_RailgunShip
             ;
     }
 

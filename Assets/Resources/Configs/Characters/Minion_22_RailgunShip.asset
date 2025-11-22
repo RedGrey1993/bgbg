@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Minion_21_SpreadJet
+  m_Name: Minion_22_RailgunShip
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 8300000, guid: 728535d78b3076a42a837516f79f8b13, type: 3}
   hurtSound: {fileID: 0}
@@ -18,10 +18,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
-  CharacterType: 28
-  MaxHp: 6
+  CharacterType: 29
+  MaxHp: 8
   MoveSpeed: 5
-  ShootRange: 3
+  ShootRange: 100
   BulletSpeed: 5
   Damage: 1
   AttackFreqUp: -7
