@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Minion_20_OrbitalDrone
+  m_Name: Minion_21_SpreadJet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
+  shootSound: {fileID: 8300000, guid: 728535d78b3076a42a837516f79f8b13, type: 3}
   hurtSound: {fileID: 0}
   deathSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: f800c1a413e9d0d49bb01c36978bc21e, type: 3}
+  bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
-  CharacterType: 27
-  MaxHp: 5
-  MoveSpeed: 4
-  ShootRange: 7
-  BulletSpeed: 6
-  Damage: 1.5
+  CharacterType: 28
+  MaxHp: 6
+  MoveSpeed: 5
+  ShootRange: 4
+  BulletSpeed: 7
+  Damage: 1
   AttackFreqUp: -7
   CriticalRate: 0
   ExpGiven: 30
@@ -37,7 +37,7 @@ MonoBehaviour:
   moveAcrossRoom: 0
   canAttackDiagonally: 1
   causeCollisionDamage: 0
-  AggroRange: 15
+  AggroRange: 20
   AggroChangeInterval: 2
   chaseMoveInputInterval:
     min: 0.05

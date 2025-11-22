@@ -424,7 +424,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         if (CanAttack())
         {
             var diff = AggroTarget.transform.position - transform.position;
-            var atkRange = characterStatus.State.ShootRange;
+            // 有时候距离外也可以尝试攻击
+            var atkRange = characterStatus.State.ShootRange * Random.Range(1f, 1.8f);
             // 进入攻击距离，攻击
             if (CharacterData.canAttackDiagonally) // 能斜向攻击
             {
@@ -823,6 +824,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             || CharacterData.CharacterType == CharacterType.Minion_2_1_SpikeTurtle
             || CharacterData.CharacterType == CharacterType.Minion_4_1_KamikazeShip
             || CharacterData.CharacterType == CharacterType.Minion_12_DashCar
+            || CharacterData.CharacterType == CharacterType.Minion_21_SpreadJet
             ;
     }
 
