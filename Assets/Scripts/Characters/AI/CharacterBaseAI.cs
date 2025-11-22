@@ -290,6 +290,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     }
 
     protected virtual void SubclassTriggerEnter2D(Collider2D other) { }
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        SubclassTriggerStay2D(other);
+    }
+
+    protected virtual void SubclassTriggerStay2D(Collider2D other) { }
     #endregion
 
     #region AI Logic / Update Input

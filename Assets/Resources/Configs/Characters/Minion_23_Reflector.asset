@@ -22,7 +22,7 @@ MonoBehaviour:
   MaxHp: 10
   MoveSpeed: 0
   ShootRange: 10
-  BulletSpeed: 6
+  BulletSpeed: 8
   Damage: 1
   AttackFreqUp: -7
   CriticalRate: 0

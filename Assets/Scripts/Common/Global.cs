@@ -87,6 +87,8 @@ public enum CharacterType
     Minion_21_SpreadJet,
     Minion_22_RailgunShip,
     Minion_23_Reflector,
+    Minion_24_BufferingIcon,
+    Minion_25_SporeShroom,
 }
 
 public enum ItemTag

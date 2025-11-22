@@ -10,38 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd55645a932a7a4e82c89be633fa30f, type: 3}
-  m_Name: Minion_21_SpreadJet
+  m_Name: Minion_24_BufferingIcon
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  shootSound: {fileID: 8300000, guid: 728535d78b3076a42a837516f79f8b13, type: 3}
+  shootSound: {fileID: 0}
   hurtSound: {fileID: 0}
   deathSound: {fileID: 0}
-  bulletPrefab: {fileID: 7906872621619036891, guid: acfb0b5b465440b40be0878783593eb3, type: 3}
+  bulletPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
-  CharacterType: 28
-  MaxHp: 6
-  MoveSpeed: 5
-  ShootRange: 3
-  BulletSpeed: 6
+  CharacterType: 31
+  MaxHp: 10
+  MoveSpeed: 2
+  ShootRange: 5
+  BulletSpeed: 0
   Damage: 1
   AttackFreqUp: -7
   CriticalRate: 0
-  ExpGiven: 30
+  ExpGiven: 15
   InitialActiveSkillId: -1
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 2, y: 2, z: 2}
   canMoveDiagonally: 1
-  moveInAtkRange: 0
+  moveInAtkRange: 1
   moveAcrossRoom: 0
-  canAttackDiagonally: 0
-  causeCollisionDamage: 0
+  canAttackDiagonally: 1
+  causeCollisionDamage: 1
   AggroRange: 20
   AggroChangeInterval: 2
   chaseMoveInputInterval:
-    min: 0.05
-    max: 0.1
+    min: 1
+    max: 2
   randomMoveToTargetInterval:
     min: 0.5
     max: 2

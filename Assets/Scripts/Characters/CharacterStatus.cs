@@ -25,6 +25,8 @@ public class CharacterStatus : MonoBehaviour
     public float LastDamageTime { get; private set; } = 0;
     public float ConfuseTime { get; set; } = float.MinValue;
     public Coroutine confuseCoroutine = null;
+    public float SlowdownTime { get; set; } = float.MinValue;
+    public Coroutine slowdownCoroutine = null;
 
     void Awake()
     {
@@ -322,6 +324,20 @@ public class CharacterStatus : MonoBehaviour
             yield return new WaitForSeconds(time);
         SetColor(initColor, false);
         confuseCoroutine = null;
+    }
+
+    public IEnumerator SlowdownCoroutine()
+    {
+        Color initColor = State.Color.ToColor();
+        SetColor(Color.sandyBrown, false);
+        float initSpeed = State.MoveSpeed;
+        State.MoveSpeed *= 0.5f;
+        float time = SlowdownTime - Time.time;
+        if (time > 0)
+            yield return new WaitForSeconds(time);
+        SetColor(initColor, false);
+        State.MoveSpeed = initSpeed;
+        slowdownCoroutine = null;
     }
 
     void FixedUpdate()
