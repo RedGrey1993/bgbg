@@ -86,6 +86,7 @@ public enum CharacterType
     Minion_20_OrbitalDrone,
     Minion_21_SpreadJet,
     Minion_22_RailgunShip,
+    Minion_23_Reflector,
 }
 
 public enum ItemTag
@@ -152,6 +153,7 @@ public static class Constants
     public const float BossHpMultipiler = 20f;
 
     public static int defaultLayer = LayerMask.NameToLayer("Default");
+    public static int bulletsLayer = LayerMask.NameToLayer("Bullets");
     public static Dictionary<GameObject, CharacterStatus> goToCharacterStatus = new();
     public static Dictionary<GameObject, CharacterInput> goToCharacterInput = new();
     public static Dictionary<GameObject, Bullet> goToBullet = new();

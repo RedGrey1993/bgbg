@@ -955,7 +955,7 @@ public class CharacterManager : MonoBehaviour
                 {
                     minionStatus.State.Damage = (int)(minionStatus.State.Damage * scale);
                     // minionStatus.State.MoveSpeed = (uint)(minionStatus.State.MoveSpeed * scale);
-                    minionStatus.State.BulletSpeed = (uint)(minionStatus.State.BulletSpeed * scale);
+                    // minionStatus.State.BulletSpeed = (uint)(minionStatus.State.BulletSpeed * scale);
                     minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
                     minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
                     minionStatus.State.ShootRange = (int)(minionStatus.State.ShootRange * scale);
