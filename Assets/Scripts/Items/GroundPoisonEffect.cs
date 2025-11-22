@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class GroundPoisonEffect : MonoBehaviour
 {
     private float nextDamageTime = 0;
     private void ContinueDamage(Collider2D collision)
