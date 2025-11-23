@@ -84,6 +84,7 @@ public class CharacterData : ScriptableObject
         state.ShootRange = ShootRange;
         state.CriticalRate = CriticalRate;
         state.CurrentExp = 0;
+        state.ExpGiven = ExpGiven;
         state.CurrentLevel = 1;
         state.Position = new Vec2();
         state.Scale = 1;

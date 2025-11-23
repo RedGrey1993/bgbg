@@ -89,6 +89,7 @@ public enum CharacterType
     Minion_23_Reflector,
     Minion_24_BufferingIcon,
     Minion_25_SporeShroom,
+    Minion_26_EvoLarva,
 }
 
 public enum ItemTag

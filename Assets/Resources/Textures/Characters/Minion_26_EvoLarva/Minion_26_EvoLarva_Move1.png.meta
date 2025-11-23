@@ -1,0 +1,949 @@
+fileFormatVersion: 2
+guid: 48dfa9967dcdde44fb305a5d530a5e30
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -390906016715112458
+    second: Minion_26_EvoLarva_Move1_0
+  - first:
+      213: 7315941724879558279
+    second: Minion_26_EvoLarva_Move1_1
+  - first:
+      213: -6800055230983009216
+    second: Minion_26_EvoLarva_Move1_2
+  - first:
+      213: -7044093159192679615
+    second: Minion_26_EvoLarva_Move1_3
+  - first:
+      213: -6492323492019592402
+    second: Minion_26_EvoLarva_Move1_4
+  - first:
+      213: -6911728817454464813
+    second: Minion_26_EvoLarva_Move1_5
+  - first:
+      213: 7231655419597349757
+    second: Minion_26_EvoLarva_Move1_6
+  - first:
+      213: -1748984913552620689
+    second: Minion_26_EvoLarva_Move1_7
+  - first:
+      213: -3407253833756995806
+    second: Minion_26_EvoLarva_Move1_8
+  - first:
+      213: -3786827968901442156
+    second: Minion_26_EvoLarva_Move1_9
+  - first:
+      213: 7362944972861493844
+    second: Minion_26_EvoLarva_Move1_10
+  - first:
+      213: 7016599793749702799
+    second: Minion_26_EvoLarva_Move1_11
+  - first:
+      213: 8592443155350093796
+    second: Minion_26_EvoLarva_Move1_12
+  - first:
+      213: 6986650842419396813
+    second: Minion_26_EvoLarva_Move1_13
+  - first:
+      213: -8676769731546829137
+    second: Minion_26_EvoLarva_Move1_14
+  - first:
+      213: -9080955405224667938
+    second: Minion_26_EvoLarva_Move1_15
+  - first:
+      213: 6751756376283560533
+    second: Minion_26_EvoLarva_Move1_16
+  - first:
+      213: -462726766404342519
+    second: Minion_26_EvoLarva_Move1_17
+  - first:
+      213: 4246483772264065490
+    second: Minion_26_EvoLarva_Move1_18
+  - first:
+      213: -3263066331852197007
+    second: Minion_26_EvoLarva_Move1_19
+  - first:
+      213: 2759071868594676666
+    second: Minion_26_EvoLarva_Move1_20
+  - first:
+      213: 3581446741867820998
+    second: Minion_26_EvoLarva_Move1_21
+  - first:
+      213: -5697250820070502840
+    second: Minion_26_EvoLarva_Move1_22
+  - first:
+      213: 2997842300703406770
+    second: Minion_26_EvoLarva_Move1_23
+  - first:
+      213: -3788600983481915088
+    second: Minion_26_EvoLarva_Move1_24
+  - first:
+      213: -1278535532830736348
+    second: Minion_26_EvoLarva_Move1_25
+  - first:
+      213: -7545659954975543169
+    second: Minion_26_EvoLarva_Move1_26
+  - first:
+      213: 3622224825028744413
+    second: Minion_26_EvoLarva_Move1_27
+  - first:
+      213: -2774420027075568015
+    second: Minion_26_EvoLarva_Move1_28
+  - first:
+      213: 6690920961857998624
+    second: Minion_26_EvoLarva_Move1_29
+  - first:
+      213: -435845606419374378
+    second: Minion_26_EvoLarva_Move1_30
+  - first:
+      213: 2549839699292827882
+    second: Minion_26_EvoLarva_Move1_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1603
+        width: 44
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fff1258c09339af0800000000000000
+      internalID: -390906016715112458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1609
+        width: 42
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78697ecbc32778560800000000000000
+      internalID: 7315941724879558279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_2
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1612
+        width: 51
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c8830bbc951a1a0800000000000000
+      internalID: -6800055230983009216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_3
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1610
+        width: 45
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14baf89c79a5e3e90800000000000000
+      internalID: -7044093159192679615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1347
+        width: 45
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e23af3b8e22a6e5a0800000000000000
+      internalID: -6492323492019592402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_5
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 1352
+        width: 43
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d0cbcba24b9410a0800000000000000
+      internalID: -6911728817454464813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_6
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1356
+        width: 51
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d73e0270a400c5460800000000000000
+      internalID: 7231655419597349757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_7
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 1354
+        width: 44
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f63cd26dc7b5ab7e0800000000000000
+      internalID: -1748984913552620689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_8
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1091
+        width: 46
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22f835bc0b007b0d0800000000000000
+      internalID: -3407253833756995806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_9
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1093
+        width: 45
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4959d18960c727bc0800000000000000
+      internalID: -3786827968901442156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_10
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1100
+        width: 50
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4525828317f6e2660800000000000000
+      internalID: 7362944972861493844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_11
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1099
+        width: 44
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f88b78d3658ff5160800000000000000
+      internalID: 7016599793749702799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 836
+        width: 49
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eff06b668d7e3770800000000000000
+      internalID: 8592443155350093796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_13
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 837
+        width: 45
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc08710ace195f060800000000000000
+      internalID: 6986650842419396813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_14
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 843
+        width: 48
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae2a4196ebe59780800000000000000
+      internalID: -8676769731546829137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_15
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 843
+        width: 45
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed49b620c27f9f180800000000000000
+      internalID: -9080955405224667938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_16
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 847
+        width: 43
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55a3c52e6ae03bd50800000000000000
+      internalID: 6751756376283560533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_17
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 580
+        width: 48
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90d676425701499f0800000000000000
+      internalID: -462726766404342519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_18
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 579
+        width: 45
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9a246fd7a8eea30800000000000000
+      internalID: 4246483772264065490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_19
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 587
+        width: 46
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 173b96ba57247b2d0800000000000000
+      internalID: -3263066331852197007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_20
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 587
+        width: 47
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab3eb5d0f313a4620800000000000000
+      internalID: 2759071868594676666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_21
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 589
+        width: 44
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7f20f16dad3b130800000000000000
+      internalID: 3581446741867820998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_22
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 324
+        width: 47
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e0561809c4fe0b0800000000000000
+      internalID: -5697250820070502840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_23
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 323
+        width: 45
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2baf01270b97a9920800000000000000
+      internalID: 2997842300703406770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_24
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 330
+        width: 44
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0396dd77a7f2c6bc0800000000000000
+      internalID: -3788600983481915088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_25
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 331
+        width: 48
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 420c8e4f4bab14ee0800000000000000
+      internalID: -1278535532830736348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_26
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 331
+        width: 45
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f70fac3ef3e684790800000000000000
+      internalID: -7545659954975543169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_27
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 69
+        width: 44
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd49078794ab44230800000000000000
+      internalID: 3622224825028744413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_28
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 67
+        width: 43
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e5e645fa74f79d0800000000000000
+      internalID: -2774420027075568015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_29
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 74
+        width: 42
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02fc2cf2a2deadc50800000000000000
+      internalID: 6690920961857998624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_30
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 76
+        width: 49
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6de557ceab093f9f0800000000000000
+      internalID: -435845606419374378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minion_26_EvoLarva_Move1_31
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 74
+        width: 45
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae0b98662b9d26320800000000000000
+      internalID: 2549839699292827882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Minion_26_EvoLarva_Move1_0: -390906016715112458
+      Minion_26_EvoLarva_Move1_1: 7315941724879558279
+      Minion_26_EvoLarva_Move1_10: 7362944972861493844
+      Minion_26_EvoLarva_Move1_11: 7016599793749702799
+      Minion_26_EvoLarva_Move1_12: 8592443155350093796
+      Minion_26_EvoLarva_Move1_13: 6986650842419396813
+      Minion_26_EvoLarva_Move1_14: -8676769731546829137
+      Minion_26_EvoLarva_Move1_15: -9080955405224667938
+      Minion_26_EvoLarva_Move1_16: 6751756376283560533
+      Minion_26_EvoLarva_Move1_17: -462726766404342519
+      Minion_26_EvoLarva_Move1_18: 4246483772264065490
+      Minion_26_EvoLarva_Move1_19: -3263066331852197007
+      Minion_26_EvoLarva_Move1_2: -6800055230983009216
+      Minion_26_EvoLarva_Move1_20: 2759071868594676666
+      Minion_26_EvoLarva_Move1_21: 3581446741867820998
+      Minion_26_EvoLarva_Move1_22: -5697250820070502840
+      Minion_26_EvoLarva_Move1_23: 2997842300703406770
+      Minion_26_EvoLarva_Move1_24: -3788600983481915088
+      Minion_26_EvoLarva_Move1_25: -1278535532830736348
+      Minion_26_EvoLarva_Move1_26: -7545659954975543169
+      Minion_26_EvoLarva_Move1_27: 3622224825028744413
+      Minion_26_EvoLarva_Move1_28: -2774420027075568015
+      Minion_26_EvoLarva_Move1_29: 6690920961857998624
+      Minion_26_EvoLarva_Move1_3: -7044093159192679615
+      Minion_26_EvoLarva_Move1_30: -435845606419374378
+      Minion_26_EvoLarva_Move1_31: 2549839699292827882
+      Minion_26_EvoLarva_Move1_4: -6492323492019592402
+      Minion_26_EvoLarva_Move1_5: -6911728817454464813
+      Minion_26_EvoLarva_Move1_6: 7231655419597349757
+      Minion_26_EvoLarva_Move1_7: -1748984913552620689
+      Minion_26_EvoLarva_Move1_8: -3407253833756995806
+      Minion_26_EvoLarva_Move1_9: -3786827968901442156
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

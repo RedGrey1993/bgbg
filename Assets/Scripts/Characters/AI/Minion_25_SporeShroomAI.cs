@@ -81,4 +81,9 @@ public class Minion_25_SporeShroomAI : CharacterBaseAI
         // shootCoroutine = null后才能再次使用该技能
         atkCoroutine = null;
     }
+
+    protected override bool IsAtkCoroutineIdle()
+    {
+        return atkCoroutine == null;
+    }
 }

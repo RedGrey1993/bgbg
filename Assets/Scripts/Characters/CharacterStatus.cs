@@ -66,7 +66,7 @@ public class CharacterStatus : MonoBehaviour
         {
             // this死亡，提供给attacker经验值
             uint attackerCurExp = attacker.State.CurrentExp;
-            uint expGained = characterData.ExpGiven;
+            uint expGained = State.ExpGiven;
             attackerCurExp += expGained;
             // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);
@@ -92,7 +92,7 @@ public class CharacterStatus : MonoBehaviour
         {
             // this死亡，提供给attacker经验值
             uint attackerCurExp = attacker.State.CurrentExp;
-            uint expGained = characterData.ExpGiven;
+            uint expGained = State.ExpGiven;
             attackerCurExp += expGained;
             // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);

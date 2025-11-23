@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 25
+    // next index = 26
     int32 PlayerId = 1;
     string PlayerName = 2;
     float MaxHp = 3;
@@ -60,6 +60,7 @@ message PlayerState
     uint32 CriticalRate = 10; // 暴击率
     uint32 CurrentLevel = 12;
     uint32 CurrentExp = 13;
+    uint32 ExpGiven = 25;
     Vec2 Position = 11;
     repeated int32 SkillIds = 14;
     bool CurrentStageSkillLearned = 15;

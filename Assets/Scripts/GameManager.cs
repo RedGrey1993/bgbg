@@ -258,6 +258,7 @@ public class GameManager : MonoBehaviour
             }
             SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
             skillPanelController.ForceRandomChoose = false;
+            skillPanelController.StopAllCoroutines();
             SaveLocalStorage(teleportPosition);
         }
         GameState = GameState.InMenu;
