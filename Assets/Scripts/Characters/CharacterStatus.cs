@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 using NetworkMessageProto;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(CharacterBaseAI))]
 public class CharacterStatus : MonoBehaviour
@@ -167,6 +168,8 @@ public class CharacterStatus : MonoBehaviour
     // 将玩家颜色设置为灰色，删除碰撞体（为了子弹能穿过），PlayerController禁用
     private void SetCharacterDead()
     {
+        ReturnStealStates();
+
         GameManager.Instance.CheckWinningCondition_Host();
 
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
@@ -338,6 +341,93 @@ public class CharacterStatus : MonoBehaviour
         SetColor(initColor, false);
         State.MoveSpeed = initSpeed;
         slowdownCoroutine = null;
+    }
+
+    public void StealState(CharacterStatus tarStatus)
+    {
+        if (tarStatus == null || tarStatus.IsBoss)
+            return;
+
+        int tarCharId = tarStatus.State.PlayerId;
+
+        bool stolen = false;
+        if (!State.StolenStates.ContainsKey(tarCharId))
+            State.StolenStates.Add(tarCharId, new PlayerState());
+
+        if (tarStatus.State.DamageUp > 0) {
+            tarStatus.State.DamageUp -= 1;
+            State.DamageUp += 1;
+            State.StolenStates[tarCharId].DamageUp += 1;
+
+            tarStatus.State.Damage = tarStatus.State.GetFinalDamage(tarStatus.characterData.Damage);
+            State.Damage = State.GetFinalDamage(characterData.Damage);
+
+            stolen = true;
+        }
+        if (tarStatus.State.AttackFreqUp > -10) {
+            tarStatus.State.AttackFreqUp -= 1;
+            State.AttackFreqUp += 1;
+            State.StolenStates[tarCharId].AttackFreqUp += 1;
+
+            tarStatus.State.AttackFrequency = tarStatus.State.GetFinalAtkFreq();
+            State.AttackFrequency = State.GetFinalAtkFreq();
+
+            stolen = true;
+        }
+        if (tarStatus.State.MoveSpeed > 1) {
+            tarStatus.State.MoveSpeed -= 1;
+            State.StolenStates[tarCharId].MoveSpeed += 1;
+            State.MoveSpeed += 1;
+
+            stolen = true;
+        }
+
+        if (stolen) {
+            tarStatus.StartCoroutine(tarStatus.ShowStatsChangeText(1, Color.red, "Stats Down"));
+            StartCoroutine(ShowStatsChangeText(1, Color.green, "Stats Up"));
+        }
+    }
+
+    private void ReturnStealStates()
+    {
+        foreach (var tarCharId in State.StolenStates.Keys)
+        {
+            var stolenState = State.StolenStates[tarCharId];
+            var tarStatus = CharacterManager.Instance.GetObject(tarCharId).GetCharacterStatus();
+
+            if (tarStatus != null && tarStatus.IsAlive())
+            {
+                tarStatus.State.DamageUp += stolenState.DamageUp;
+                tarStatus.State.AttackFreqUp += stolenState.AttackFreqUp;
+                tarStatus.State.MoveSpeed += stolenState.MoveSpeed;
+
+                tarStatus.State.Damage = tarStatus.State.GetFinalDamage(tarStatus.characterData.Damage);
+                tarStatus.State.AttackFrequency = tarStatus.State.GetFinalAtkFreq();
+            }
+        }
+        State.StolenStates.Clear();
+    }
+
+    private bool showingStatsText = false;
+    private IEnumerator ShowStatsChangeText(float duration, Color color, string text)
+    {
+        if (showingStatsText)
+            yield break;
+        showingStatsText = true;
+
+        bool initActive = CharacterAI.CharNameText.gameObject.activeSelf;
+        string initText = CharacterAI.CharNameText.text;
+        Color initColor = CharacterAI.CharNameText.color;
+        CharacterAI.CharNameText.gameObject.SetActive(true);
+
+        CharacterAI.CharNameText.text = text;
+        CharacterAI.CharNameText.color = color;
+        yield return new WaitForSeconds(duration);
+
+        CharacterAI.CharNameText.gameObject.SetActive(initActive);
+        CharacterAI.CharNameText.text = initText;
+        CharacterAI.CharNameText.color = initColor;
+        showingStatsText = false;
     }
 
     void FixedUpdate()

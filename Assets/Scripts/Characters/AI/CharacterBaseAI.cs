@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterInput))]
@@ -14,6 +15,8 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public CharacterInput characterInput { get; private set; }
     public CharacterStatus characterStatus { get; private set; }
     public CharacterData CharacterData => characterStatus.characterData;
+    protected Canvas MiniStatusCanvas { get; private set; }
+    public TextMeshProUGUI CharNameText { get; private set; }
     protected Rigidbody2D rb;
     protected SkinnedMeshRenderer skinnedMeshRenderer;
     public Collider2D col2D { get; private set; }
@@ -65,6 +68,10 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     public void Start()
     {
+        MiniStatusCanvas = GetComponentInChildren<Canvas>();
+        if (MiniStatusCanvas != null)
+            CharNameText = MiniStatusCanvas.GetComponentInChildren<TextMeshProUGUI>(true);
+
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         if (roomId < 0)
         {

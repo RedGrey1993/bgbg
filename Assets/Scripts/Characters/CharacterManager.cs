@@ -953,12 +953,12 @@ public class CharacterManager : MonoBehaviour
                 minionStatus.State.PlayerName = minion.name;
                 if (scale > 1.1f)
                 {
-                    minionStatus.State.Damage = (int)(minionStatus.State.Damage * scale);
-                    // minionStatus.State.MoveSpeed = (uint)(minionStatus.State.MoveSpeed * scale);
-                    // minionStatus.State.BulletSpeed = (uint)(minionStatus.State.BulletSpeed * scale);
+                    minionStatus.State.Damage = minionStatus.State.Damage * scale;
+                    // minionStatus.State.MoveSpeed = minionStatus.State.MoveSpeed * scale;
+                    // minionStatus.State.BulletSpeed = minionStatus.State.BulletSpeed * scale;
                     minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
                     minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
-                    minionStatus.State.ShootRange = (int)(minionStatus.State.ShootRange * scale);
+                    minionStatus.State.ShootRange = minionStatus.State.ShootRange * scale;
                     minionStatus.SetColor(Constants.RandomColor());
                 }
                 else

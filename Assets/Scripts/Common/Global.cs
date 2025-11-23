@@ -90,6 +90,10 @@ public enum CharacterType
     Minion_24_BufferingIcon,
     Minion_25_SporeShroom,
     Minion_26_EvoLarva,
+    Minion_27_Greedy,
+    Minion_28_DevAvatar,
+    Minion_29_AdminGaze,
+    Minion_30_WormHole,
 }
 
 public enum ItemTag
@@ -437,9 +441,9 @@ public static class Constants
         return collision.gameObject.GetCharacterStatus();
     }
 
-    public static float GetFinalDamage(this PlayerState state, float damage)
+    public static float GetFinalDamage(this PlayerState state, float initDamage)
     {
-        return damage * Mathf.Sqrt(1f + 1.2f * state.DamageUp);
+        return initDamage * Mathf.Sqrt(1f + 1.2f * state.DamageUp);
     }
 
     public static float GetFinalAtkFreq(this PlayerState state)

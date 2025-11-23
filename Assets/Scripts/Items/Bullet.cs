@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     private Vector2 lastVelocity;
     private bool released = false;
+    private bool inReturn = false;
 
     public int SplitCount { get; set; } = 0;
     public int HomingForce { get; set; } = 0;
@@ -24,6 +25,8 @@ public class Bullet : MonoBehaviour
     public int PenetrateCount { get; set; } = 0;
     public bool CanDestroyObstacle { get; set; } = false;
     public int ConfuseTargetTime { get; private set; } = 0;
+    public bool IsReturnBullet { get; private set; } = false;
+    public bool IsStealBullet { get; private set; } = false;
 
     // Inspector
     public int homingForce = 0;
@@ -31,6 +34,8 @@ public class Bullet : MonoBehaviour
     public int penetrateCount = 0;
     public bool canDestroyObstacle = false;
     public int confuseTargetTime = 0;
+    public bool isReturnBullet = false;
+    public bool isStealBullet = false;
 
     void Awake()
     {
@@ -43,6 +48,7 @@ public class Bullet : MonoBehaviour
         bornTime = Time.time;
         col2D.enabled = false;
         firstEnable = true;
+        inReturn = false;
 
         OwnerStatus = null;
         BulletState = null;
@@ -54,6 +60,8 @@ public class Bullet : MonoBehaviour
         PenetrateCount = penetrateCount;
         CanDestroyObstacle = canDestroyObstacle;
         ConfuseTargetTime = confuseTargetTime;
+        IsReturnBullet = isReturnBullet;
+        IsStealBullet = isStealBullet;
 
         lastVelocity = Vector2.zero;
         released = false;
@@ -72,6 +80,8 @@ public class Bullet : MonoBehaviour
                 if (BulletState.BounceCount > BounceCount) BounceCount = BulletState.BounceCount;
                 if (BulletState.CanDestroyObstacle) CanDestroyObstacle = true;
                 if (BulletState.ConfuseTargetTime > ConfuseTargetTime) ConfuseTargetTime = BulletState.ConfuseTargetTime;
+                if (BulletState.IsReturnBullet) IsReturnBullet = true;
+                if (BulletState.IsStealBullet) IsStealBullet = true;
             }
             if (Damage == 0) Damage = OwnerStatus.State.Damage;
             if (ConfuseTargetTime > 0) Damage = 0;
@@ -92,13 +102,27 @@ public class Bullet : MonoBehaviour
             transform.localRotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized);
         }
 
+        if (inReturn && OwnerStatus != null && OwnerStatus.IsAlive())
+        {
+            var diff = OwnerStatus.transform.position - transform.position;
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward, diff);
+            rb.linearVelocity = diff.normalized * OwnerStatus.State.BulletSpeed;
+        }
+
         // 当前减少计算量，不计算距离（避免平方根运算），只单独计算x/y轴的距离
         // if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
         //     || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
         if (Vector2.Distance(transform.position, StartPosition) > OwnerStatus.State.ShootRange
             || rb.linearVelocity.magnitude < 0.1f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
         {
-            ReleaseObject();
+            if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())
+            {
+                inReturn = true;
+            }
+            else 
+            {
+                ReleaseObject();
+            }
         }
         else
         {
@@ -160,7 +184,14 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
-                    ReleaseObject();
+                    if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())
+                    {
+                        inReturn = true;
+                    }
+                    else 
+                    {
+                        ReleaseObject();
+                    }
                 }
                 return;
             }
@@ -168,6 +199,15 @@ public class Bullet : MonoBehaviour
             if (other.IsPlayerOrEnemy())
             {
                 CharacterStatus tarStatus = other.GetCharacterStatus();
+                if (inReturn)
+                {
+                    if(tarStatus == OwnerStatus) {
+
+                        ReleaseObject();
+                    }
+                    return;
+                }
+                
                 if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))
                 { // 如果是碰撞到Player或Enemy发射/生成的道具或物品（Tag和创建者相同），也不做任何处理
                     if (BounceCount > 0)
@@ -177,22 +217,26 @@ public class Bullet : MonoBehaviour
                     return; // 不伤害友方，也不销毁碰到自己的子弹
                 }
 
-                if (ConfuseTargetTime > 0)
+                if (ConfuseTargetTime > 0) // 只造成异常状态，不影响其他判断
                 {
                     tarStatus.ConfuseTime = Time.time + ConfuseTargetTime;
                     if (tarStatus.confuseCoroutine != null)
                         tarStatus.StopCoroutine(tarStatus.confuseCoroutine);
                     tarStatus.confuseCoroutine = tarStatus.StartCoroutine(tarStatus.ConfuseCoroutine());
-                    ReleaseObject();
-                    return;
                 }
 
                 PenetrateCount--;
                 SplitCount--;
 
                 // 如果子弹的主人已经死亡，则不再造成伤害
-                if (OwnerStatus != null)
+                if (OwnerStatus != null) 
+                {
+                    if (IsStealBullet)
+                    {
+                        OwnerStatus.StealState(tarStatus);
+                    }
                     tarStatus.TakeDamage_Host(Damage, OwnerStatus, DamageType.Bullet);
+                }
 
                 if (SplitCount >= 0 && OwnerStatus != null) // 左右各相距45度分裂为2颗子弹
                 {
@@ -201,7 +245,7 @@ public class Bullet : MonoBehaviour
                     Quaternion rotationPlus = Quaternion.Euler(0, 0, 90);
                     for (int i = 0; i < 2; i++)
                     {
-                        var newBullet = GameManager.Instance.GetObject(OwnerStatus.characterData.bulletPrefab, startPos);
+                        var newBullet = GameManager.Instance.GetObject(gameObject, startPos);
                         newBullet.transform.localScale = transform.localScale / 2;
                         newBullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
                         var bs = newBullet.GetBullet();
@@ -215,6 +259,8 @@ public class Bullet : MonoBehaviour
                         bState.BounceCount = bs.BounceCount = BounceCount;
                         bState.CanDestroyObstacle = bs.CanDestroyObstacle = CanDestroyObstacle;
                         bState.ConfuseTargetTime = bs.ConfuseTargetTime = ConfuseTargetTime;
+                        bState.IsReturnBullet = bs.IsReturnBullet = IsReturnBullet;
+                        bState.IsStealBullet = bs.IsStealBullet = IsStealBullet;
                         bs.BulletState = bState;
                         bs.LastCollider = other;
                         bs.rb.linearVelocity = startDir * rb.linearVelocity.magnitude;
@@ -230,7 +276,14 @@ public class Bullet : MonoBehaviour
                     }
                     else
                     {
-                        ReleaseObject();
+                        if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())
+                        {
+                            inReturn = true;
+                        }
+                        else 
+                        {
+                            ReleaseObject();
+                        }
                     }
                 }
             }
@@ -242,7 +295,14 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
-                    ReleaseObject();
+                    if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())
+                    {
+                        inReturn = true;
+                    }
+                    else 
+                    {
+                        ReleaseObject();
+                    }
                 }
             }
         }

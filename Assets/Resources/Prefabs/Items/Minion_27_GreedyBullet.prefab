@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5226297286547867246}
   - component: {fileID: 2058633855798607430}
   - component: {fileID: 4992561073915373673}
-  - component: {fileID: 4850169735314407500}
   - component: {fileID: 594919404366040402}
+  - component: {fileID: 5271853810208148387}
   m_Layer: 8
-  m_Name: ContraBillBullet
+  m_Name: Minion_27_GreedyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 874343242196921964, guid: 5547e92425a5b584ba72bba3566474f0, type: 3}
+  m_Sprite: {fileID: 6025402788875248237, guid: d15d4771b078e8b46a671487d49765a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,8 +120,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &4850169735314407500
-BoxCollider2D:
+--- !u!114 &594919404366040402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906872621619036891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3568c4de614af4c92446820075c99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  homingForce: 0
+  bounceCount: 0
+  penetrateCount: 1
+  canDestroyObstacle: 0
+  confuseTargetTime: 0
+  isReturnBullet: 1
+  isStealBullet: 1
+--- !u!70 &5271853810208148387
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,7 +149,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6f184813a4d12d4408c82e97c6734ff6, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -154,34 +173,6 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0000009536743, y: -0.0016818047}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33333334, y: 0.45833334}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.36071777, y: 0.49193144}
-  m_EdgeRadius: 0
---- !u!114 &594919404366040402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7906872621619036891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd3568c4de614af4c92446820075c99e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  homingForce: 0
-  bounceCount: 0
-  penetrateCount: 0
-  canDestroyObstacle: 0
-  confuseTargetTime: 0
-  isReturnBullet: 0
-  isStealBullet: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.56, y: 0.73}
+  m_Direction: 0

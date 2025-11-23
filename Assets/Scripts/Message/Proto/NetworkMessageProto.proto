@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 26
+    // next index = 27
     int32 PlayerId = 1;
     string PlayerName = 2;
     float MaxHp = 3;
@@ -71,6 +71,7 @@ message PlayerState
     ColorProto Color = 18;
     repeated MinionPrefabInfo CatchedMinions = 21;
     repeated PlayerState CatchedMinionStates = 22;
+    map<int32, PlayerState> StolenStates = 26;
 }
 
 message BulletState
@@ -83,6 +84,8 @@ message BulletState
     int32 BounceCount = 6;
     bool CanDestroyObstacle = 7;
     int32 ConfuseTargetTime = 8;
+    bool IsReturnBullet = 9;
+    bool IsStealBullet = 10;
 }
 
 message StateUpdateMessage

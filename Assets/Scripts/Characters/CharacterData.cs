@@ -31,7 +31,7 @@ public class CharacterData : ScriptableObject
     public float MoveSpeed = 10;
     public float ShootRange = 6.5f;
     public float BulletSpeed = 10;
-    public float Damage = 3.5f;
+    public float Damage = 1f;
     public float AttackFreqUp = 0;
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
