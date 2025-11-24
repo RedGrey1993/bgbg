@@ -57,7 +57,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         audioSource = GetComponentInChildren<AudioSource>();
         OneShotAudioSource = gameObject.AddComponent<AudioSource>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        OneShotAudioSource.spatialBlend = 1;
+        OneShotAudioSource.spatialBlend = 0;
 
         if (animator != null)
         {

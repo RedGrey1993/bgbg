@@ -35,7 +35,8 @@ public class StatusPanelController : MonoBehaviour
         expSlider.maxValue = maxExp;
         expSlider.value = state.CurrentExp;
 
-        healthText.text = $"HP: {state.CurrentHp}/{state.MaxHp}";
+        // 4舍5入保留1位小数
+        healthText.text = $"HP: {state.CurrentHp:0.#}/{state.MaxHp}";
         expText.text = $"Data Shards: {state.CurrentExp}/{maxExp}";
 
         abilityRadarChart.SetStats(state);

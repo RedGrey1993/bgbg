@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 6e2f99b3f3441f4418aa28474e17a908
+timeCreated: 1426563973
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 56646
+  packageName: Free Turret Script
+  packageVersion: 1.1
+  assetPath: Assets/Standard Assets/MouseOrbit.cs
+  uploadId: 227093

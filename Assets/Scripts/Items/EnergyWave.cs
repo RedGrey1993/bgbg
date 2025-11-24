@@ -11,20 +11,37 @@ public class EnergyWave : MonoBehaviour
     public int maxScaleX = int.MaxValue;
     public CharacterStatus OwnerStatus { get; set; }
     public bool FollowOwner { get; set; } = true;
+    public bool PenetrateWall { get; set; } = false;
+    public float MaxLength { get; set; } = float.MaxValue;
     public float damageInterval = 0.3f;
     public float minDamage = 2;
     private float nextDamageTime = 0;
     private float curScale = 1;
     private bool scaleUp = true;
     private bool scaleDown = false;
+    private Collider2D col2D;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameObject.transform.localRotation = Quaternion.LookRotation(Vector3.forward, Direction);
+        col2D = GetComponentInChildren<Collider2D>();
     }
 
     void FixedUpdate()
     {
+        if (PenetrateWall) {
+            if (col2D.bounds.size.magnitude < MaxLength)
+            {
+                scaleUp = true;
+                scaleDown = false;
+            }
+            else
+            {
+                scaleUp = false;
+                scaleDown = false;
+            }
+        }
+
         if (OwnerStatus != null && FollowOwner)
         {
             Vector2 tarPos = OwnerStatus.gameObject.transform.position;
@@ -58,7 +75,7 @@ public class EnergyWave : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.TagWall))
+        if (!PenetrateWall && collision.CompareTag(Constants.TagWall))
         {
             scaleUp = false;
             scaleDown = false;
@@ -67,7 +84,7 @@ public class EnergyWave : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.TagWall))
+        if (!PenetrateWall && collision.CompareTag(Constants.TagWall))
         {
             scaleUp = true;
             scaleDown = false;
@@ -76,7 +93,7 @@ public class EnergyWave : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag(Constants.TagWall))
+        if (!PenetrateWall && collision.CompareTag(Constants.TagWall))
         {
             scaleUp = false;
             scaleDown = true;

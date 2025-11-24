@@ -7,6 +7,38 @@ using UnityEngine;
 // 死亡后偷取的属性归还，无法偷取boss的属性
 public class Minion_27_GreedyAI : CharacterBaseAI
 {
+    protected override void LookToAction()
+    {
+        Transform trans = transform.GetChild(0);
+        trans.localRotation = Quaternion.identity;
+
+        ref Vector2 moveInput = ref characterInput.MoveInput;
+        ref Vector2 lookInput = ref characterInput.LookInput;
+        if (isAttack || lookInput.sqrMagnitude >= 0.1f)
+        {
+            if (lookInput.sqrMagnitude < 0.1f) // 不修改之前的方向
+                return;
+            LookDir = lookInput;
+        }
+        else if (moveInput.sqrMagnitude >= 0.1f)
+        {
+            LookDir = moveInput;
+        }
+
+        if (LookDir.x > 0)
+        {
+            var scale = trans.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            trans.localScale = scale;
+        }
+        else
+        {
+            var scale = trans.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            trans.localScale = scale;
+        }
+    }
+
     private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {

@@ -77,8 +77,7 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
 
     protected override void SubclassFixedUpdate()
     {
-        if (!firstSameRoom && LevelManager.Instance.InSameRoom(gameObject, 
-            CharacterManager.Instance.GetMyselfGameObject()))
+        if (!firstSameRoom && AggroTarget != null && LevelManager.Instance.InSameRoom(gameObject, AggroTarget))
         {
             firstSameRoom = true;
             startEnvolveTime = Time.time;
