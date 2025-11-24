@@ -35,7 +35,7 @@ MonoBehaviour:
   canMoveDiagonally: 0
   moveInAtkRange: 0
   moveAcrossRoom: 0
-  canAttackDiagonally: 1
+  canAttackDiagonally: 0
   causeCollisionDamage: 1
   AggroRange: 100
   AggroChangeInterval: 2

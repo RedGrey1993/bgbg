@@ -96,7 +96,9 @@ public class CharacterData : ScriptableObject
     {
         return CharacterType == CharacterType.Boss_2_0_MasterTurtle
             || CharacterType == CharacterType.Boss_3_0_PokeBoy
-            || CharacterType == CharacterType.Contra_Bill;
+            || CharacterType == CharacterType.Contra_Bill
+            || CharacterType == CharacterType.Minion_28_DevAvatar
+            ;
     }
     
     public bool IsMasterLong()

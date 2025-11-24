@@ -19,19 +19,26 @@ public class CharacterStatus : MonoBehaviour
     public event System.Action OnDied;
 
     public CharacterBaseAI CharacterAI { get; private set; }
-    private Slider healthSlider;
     public bool IsAI { get; set; } = true;
     public bool IsBoss { get; set; } = false;
-    private DamageType lastDamageType = DamageType.Bullet;
     public float LastDamageTime { get; private set; } = 0;
     public float ConfuseTime { get; set; } = float.MinValue;
     public Coroutine confuseCoroutine = null;
     public float SlowdownTime { get; set; } = float.MinValue;
     public Coroutine slowdownCoroutine = null;
+    public SpriteRenderer SpriteRenderer {get; private set;}
+    public SkinnedMeshRenderer SkinnedMeshRenderer {get; private set;}
+    public MeshRenderer MeshRenderer {get; private set;}
+
+    private Slider healthSlider;
+    private DamageType lastDamageType = DamageType.Bullet;
 
     void Awake()
     {
         CharacterAI = GetComponent<CharacterBaseAI>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>(true);
+        MeshRenderer = GetComponentInChildren<MeshRenderer>();
 
         State = characterData.ToState();
 
@@ -172,10 +179,9 @@ public class CharacterStatus : MonoBehaviour
 
         GameManager.Instance.CheckWinningCondition_Host();
 
-        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
+        if (SpriteRenderer != null)
         {
-            sr.sortingOrder = -5; // Change sorting order to be behind alive players
+            SpriteRenderer.sortingOrder = -5; // Change sorting order to be behind alive players
             // 渲染层级对SkinnedMeshRenderer不管用
         }
 
@@ -247,26 +253,23 @@ public class CharacterStatus : MonoBehaviour
 
     public void SetColor(Color color, bool store = true) // 临时设置的颜色store=false，则不会保存到proto中
     {
-        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
+        if (SpriteRenderer != null)
         {
-            sr.color = color;
+            SpriteRenderer.color = color;
         }
 
-        SkinnedMeshRenderer skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        if (skinnedMeshRenderer != null)
+        if (SkinnedMeshRenderer != null)
         {
-            Material grayMaterial = new Material(skinnedMeshRenderer.material);
+            Material grayMaterial = new Material(SkinnedMeshRenderer.material);
             grayMaterial.color = color;
-            skinnedMeshRenderer.material = grayMaterial;
+            SkinnedMeshRenderer.material = grayMaterial;
         }
 
-        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
-        if (meshRenderer != null)
+        if (MeshRenderer != null)
         {
-            Material grayMaterial = new Material(meshRenderer.material);
+            Material grayMaterial = new Material(MeshRenderer.material);
             grayMaterial.color = color;
-            meshRenderer.material = grayMaterial;
+            MeshRenderer.material = grayMaterial;
         }
 
         if (IsAlive() && store) // 只有或者才存储颜色到proto中，死亡后设置的灰色不存储到proto中

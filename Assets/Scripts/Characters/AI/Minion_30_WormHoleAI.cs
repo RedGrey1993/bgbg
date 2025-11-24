@@ -35,6 +35,9 @@ public class Minion_30_WormHoleAI : CharacterBaseAI
         }
     }
 
+    protected override void UpdateMoveInput() {}
+    protected override void UpdateAttackInput() {}
+
     private IEnumerator SpawnMinion(GameObject aggroTarget)
     {
         Vector2 lookInput = (aggroTarget.transform.position - transform.position).normalized;

@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class Minion_19_MimicAI : CharacterBaseAI
 {
-    private Canvas miniStatusCanvas = null;
     private Coroutine atkCoroutine = null;
 
     protected override void SubclassStart()
     {
-        miniStatusCanvas = GetComponentInChildren<Canvas>();
-        miniStatusCanvas.gameObject.SetActive(false);
+        MiniStatusCanvas.gameObject.SetActive(false);
         col2D.enabled = false;
     }
 
@@ -23,7 +21,7 @@ public class Minion_19_MimicAI : CharacterBaseAI
         {
             if (characterInput.LookInput.sqrMagnitude < 0.1f) { return; }
 
-            miniStatusCanvas.gameObject.SetActive(true);
+            MiniStatusCanvas.gameObject.SetActive(true);
             col2D.enabled = true;
 
             atkCoroutine ??= StartCoroutine(Attack_Tongue());

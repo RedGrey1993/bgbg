@@ -20,7 +20,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     protected Rigidbody2D rb;
     protected SkinnedMeshRenderer skinnedMeshRenderer;
     public Collider2D col2D { get; private set; }
-    public Animator animator { get; private set; }
+    public Animator animator { get; protected set; }
     protected AudioSource audioSource;
     public AudioSource OneShotAudioSource { get; set; } = null;
     public bool isAi { get; private set; } = false;
@@ -712,7 +712,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     #region Animation
     protected virtual void SetSpdAnimation(float speed)
     {
-        if (animator && CharacterData.Is3DModel())
+        if (animator && animator.isActiveAndEnabled && CharacterData.Is3DModel())
             animator.SetFloat(spdHash, speed / 5);
     }
     protected virtual void SetShootAnimation(float attackSpeed = 1)
@@ -979,7 +979,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public virtual void OnHurt()
     {
         if (!isAi || Time.time - lastPlayHurtEffectTime > 1.5f) { // 避免频繁播放受伤动画和音效影响体验
-            if (animator && CharacterData.Is3DModel())
+            if (animator && animator.isActiveAndEnabled && CharacterData.Is3DModel())
             {
                 animator.Play("Hurt");
             }

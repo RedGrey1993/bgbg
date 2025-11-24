@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Boss_4_0_SysGuardianFloatingTurret
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
-  jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  deathSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: f800c1a413e9d0d49bb01c36978bc21e, type: 3}
-  shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  explosionEffectPrefab: {fileID: 0}
-  summonEffectPrefab: {fileID: 0}
-  teleportEffectPrefab: {fileID: 0}
-  accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 0}
   CharacterType: 15
   MaxHp: 15
@@ -50,3 +45,9 @@ MonoBehaviour:
   randomMoveToTargetInterval:
     min: 0.5
     max: 2
+  idleRate: 0.1
+  idleTime:
+    min: 1
+    max: 3
+  itemTags: 
+  takeCollisionDamage: 1

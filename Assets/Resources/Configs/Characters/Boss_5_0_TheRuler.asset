@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Boss_5_0_TheRuler
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 8300000, guid: 709df763e17ca9c4aad295659709e4d5, type: 3}
-  jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  deathSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: 04d74d883d398cf419c9a1fc163e5b58, type: 3}
-  shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  explosionEffectPrefab: {fileID: 725748389856807714, guid: fa5a5796973fb6149aba1a2947bac025, type: 3}
-  summonEffectPrefab: {fileID: 3280519133390621005, guid: 951ee9729bc3a2d45a9b38177d819e3d, type: 3}
-  teleportEffectPrefab: {fileID: 7761031033666763820, guid: 1eb833340b41fb444b576c4dced8d4dc, type: 3}
-  accumulateEffectPrefab: {fileID: 9027514048236820045, guid: 37f7760cdb8ca2e49bf311ba1faa70a9, type: 3}
   figure: {fileID: 0}
   CharacterType: 14
   MaxHp: 35
@@ -50,3 +45,9 @@ MonoBehaviour:
   randomMoveToTargetInterval:
     min: 0.5
     max: 2
+  idleRate: 0.1
+  idleTime:
+    min: 1
+    max: 3
+  itemTags: 
+  takeCollisionDamage: 1

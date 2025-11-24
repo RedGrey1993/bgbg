@@ -534,7 +534,7 @@ public class CharacterManager : MonoBehaviour
 
         if (showBossHealthSlider && BeAttackedBoss != null)
         {
-            var state = BeAttackedBoss.GetComponent<CharacterStatus>().State;
+            var state = BeAttackedBoss.GetCharacterStatus().State;
             UIManager.Instance.UpdateBossHealthSlider(state.CurrentHp, state.MaxHp);
 
             if (!prevShow) {

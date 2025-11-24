@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     private Vector2 lastVelocity;
     private bool released = false;
     private bool inReturn = false;
+    private bool isHitting = false;
 
     public int SplitCount { get; set; } = 0;
     public int HomingForce { get; set; } = 0;
@@ -49,6 +50,7 @@ public class Bullet : MonoBehaviour
         col2D.enabled = false;
         firstEnable = true;
         inReturn = false;
+        isHitting = false;
 
         OwnerStatus = null;
         BulletState = null;
@@ -113,7 +115,7 @@ public class Bullet : MonoBehaviour
         // if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
         //     || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
         if (Vector2.Distance(transform.position, StartPosition) > OwnerStatus.State.ShootRange
-            || rb.linearVelocity.magnitude < 0.1f) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
+            || rb.linearVelocity.magnitude < 0.1f && !isHitting) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
         {
             if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())
             {
@@ -155,6 +157,8 @@ public class Bullet : MonoBehaviour
     // 激光子弹的IsTrigger是true
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (isHitting) return;
+        isHitting = true;
         if (GameManager.Instance.IsLocalOrHost())
         {
             // 检查我们是否撞到了 Tilemap
@@ -171,12 +175,13 @@ public class Bullet : MonoBehaviour
                 }
             }
 
-            if (other.isTrigger) return;
-            if (!other.gameObject.activeSelf) return;
+            if (other.isTrigger) { isHitting = false; return; }
+            if (!other.gameObject.activeSelf) { isHitting = false; return; }
             // 避免分裂出的子弹在同一个碰撞体销毁并触发伤害
-            if (LastCollider == other) return;
-            // 碰到护盾，直接销毁
-            if (other.CompareTag(Constants.TagShield))
+            if (LastCollider == other) { isHitting = false; return; }
+            // 碰到护盾，且不是自己的护盾，直接销毁
+            if (other.CompareTag(Constants.TagShield)
+                && (OwnerStatus == null || other.attachedRigidbody.gameObject != OwnerStatus.gameObject))
             {
                 if (BounceCount > 0)
                 {
@@ -193,7 +198,7 @@ public class Bullet : MonoBehaviour
                         ReleaseObject();
                     }
                 }
-                return;
+                { isHitting = false; return; }
             }
             // 检测是否碰撞到Player
             if (other.IsPlayerOrEnemy())
@@ -205,7 +210,7 @@ public class Bullet : MonoBehaviour
 
                         ReleaseObject();
                     }
-                    return;
+                    { isHitting = false; return; }
                 }
                 
                 if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))
@@ -214,7 +219,7 @@ public class Bullet : MonoBehaviour
                     {
                         MirrorBounce(other);
                     }
-                    return; // 不伤害友方，也不销毁碰到自己的子弹
+                    { isHitting = false; return; } // 不伤害友方，也不销毁碰到自己的子弹
                 }
 
                 if (ConfuseTargetTime > 0) // 只造成异常状态，不影响其他判断
