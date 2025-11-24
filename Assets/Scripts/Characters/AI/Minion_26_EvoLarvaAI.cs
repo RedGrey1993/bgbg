@@ -10,7 +10,7 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
     public AudioClip energyWaveAccumulateSound;
     public AudioClip energyWaveShootSound;
     
-    private Slider envolveSlider;
+    private Slider expSlider;
     private bool envolved = false;
     private float startEnvolveTime;
     private bool firstSameRoom = false;
@@ -22,14 +22,14 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
         {
             if (slider.name == "ExpSlider")
             {
-                envolveSlider = slider;
+                expSlider = slider;
                 break;
             }
         }
-        envolveSlider.gameObject.SetActive(true);
+        expSlider.gameObject.SetActive(true);
 
-        envolveSlider.maxValue = envolveTime;
-        envolveSlider.value = 0;
+        expSlider.maxValue = envolveTime;
+        expSlider.value = 0;
 
         characterStatus.State.CurrentHp = characterStatus.State.MaxHp = CharacterData.MaxHp / 10;
         characterStatus.State.ExpGiven = CharacterData.ExpGiven / 10;
@@ -88,7 +88,7 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
             if (elapsedTime >= envolveTime)
             {
                 envolved = true;
-                envolveSlider.gameObject.SetActive(false);
+                expSlider.gameObject.SetActive(false);
                 characterStatus.State.CurrentHp = characterStatus.State.MaxHp = CharacterData.MaxHp;
                 characterStatus.State.ExpGiven = CharacterData.ExpGiven;
                 characterStatus.State.ShootRange = CharacterData.ShootRange;
@@ -96,8 +96,8 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
                 animator.SetTrigger("Envolve");
             }
             else {
-                envolveSlider.maxValue = envolveTime;
-                envolveSlider.value = elapsedTime;
+                expSlider.maxValue = envolveTime;
+                expSlider.value = elapsedTime;
             }
         }
     }
