@@ -51,17 +51,19 @@ public class Minion_18_EggDragonAI : CharacterBaseAI
             LookDir = moveInput;
         }
 
+        Transform trans = transform.GetChild(0);
+        trans.localRotation = Quaternion.identity;
         if (LookDir.x > 0)
         {
-            var scale = transform.localScale;
+            var scale = trans.localScale;
             scale.x = Mathf.Abs(scale.x);
-            transform.localScale = scale;
+            trans.localScale = scale;
         }
         else
         {
-            var scale = transform.localScale;
+            var scale = trans.localScale;
             scale.x = -Mathf.Abs(scale.x);
-            transform.localScale = scale;
+            trans.localScale = scale;
         }
     }
 

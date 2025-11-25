@@ -12,17 +12,19 @@ public class Minion_13_BoomManAI : CharacterBaseAI
     {
         if (characterInput.MoveInput.sqrMagnitude >= 0.1f)
         {
+            Transform trans = transform.GetChild(0);
+            trans.localRotation = Quaternion.identity;
             if (characterInput.MoveInput.x > 0)
             {
-                var scale = transform.localScale;
+                var scale = trans.localScale;
                 scale.x = Mathf.Abs(scale.x);
-                transform.localScale = scale;
+                trans.localScale = scale;
             }
             else
             {
-                var scale = transform.localScale;
+                var scale = trans.localScale;
                 scale.x = -Mathf.Abs(scale.x);
-                transform.localScale = scale;
+                trans.localScale = scale;
             }
         }
     }
@@ -45,7 +47,7 @@ public class Minion_13_BoomManAI : CharacterBaseAI
         var explosionEffect = GameManager.Instance.GetObject(explosionEffectPrefab, transform.position);
         var explosionDmg = explosionEffect.GetComponent<ExplosionDamage>();
         explosionDmg.OwnerStatus = characterStatus;
-        explosionDmg.explosionRadius = 3;
+        explosionDmg.explosionRadius = 5;
         explosionDmg.ApplyAreaDamage();
         GameManager.Instance.RecycleObject(explosionEffect, 3);
 

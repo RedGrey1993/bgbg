@@ -35,11 +35,13 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
         characterStatus.State.ExpGiven = CharacterData.ExpGiven / 10;
         characterStatus.State.ShootRange = 0;
         characterStatus.State.MoveSpeed = CharacterData.MoveSpeed * 2f;
+
+        col2D = GetComponentInChildren<CapsuleCollider2D>();
     }
 
     protected override void LookToAction()
     {
-        if (envolved) {
+        if (envolved || envolveCoroutine != null) {
             Transform trans = transform.GetChild(0);
             trans.localRotation = Quaternion.identity;
 
@@ -58,15 +60,15 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
 
             if (LookDir.x > 0)
             {
-                var scale = transform.localScale;
+                var scale = trans.localScale;
                 scale.x = -Mathf.Abs(scale.x);
-                transform.localScale = scale;
+                trans.localScale = scale;
             }
             else
             {
-                var scale = transform.localScale;
+                var scale = trans.localScale;
                 scale.x = Mathf.Abs(scale.x);
-                transform.localScale = scale;
+                trans.localScale = scale;
             }
         }
         else
@@ -87,20 +89,32 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
             float elapsedTime = Time.time - startEnvolveTime;
             if (elapsedTime >= envolveTime)
             {
-                envolved = true;
-                expSlider.gameObject.SetActive(false);
-                characterStatus.State.MaxHp = CharacterData.MaxHp * characterStatus.State.Scale;
-                characterStatus.HealthChanged(characterStatus.State.MaxHp);
-                characterStatus.State.ExpGiven = CharacterData.ExpGiven;
-                characterStatus.State.ShootRange = CharacterData.ShootRange * characterStatus.State.Scale;
-                characterStatus.State.MoveSpeed = CharacterData.MoveSpeed;
-                animator.SetTrigger("Envolve");
+                envolveCoroutine ??= StartCoroutine(Envolve(3));
             }
             else {
                 expSlider.maxValue = envolveTime;
                 expSlider.value = elapsedTime;
             }
         }
+    }
+
+    private Coroutine envolveCoroutine = null;
+    private IEnumerator Envolve(float duration)
+    {
+        expSlider.gameObject.SetActive(false);
+        characterStatus.State.MaxHp = CharacterData.MaxHp * characterStatus.State.Scale;
+        characterStatus.HealthChanged(characterStatus.State.MaxHp);
+        characterStatus.State.ExpGiven = CharacterData.ExpGiven;
+        characterStatus.State.ShootRange = CharacterData.ShootRange * characterStatus.State.Scale;
+        characterStatus.State.MoveSpeed = CharacterData.MoveSpeed;
+        animator.SetTrigger("Envolve");
+        OneShotAudioSource.PlayOneShot(energyWaveAccumulateSound);
+        yield return new WaitForSeconds(duration);
+        col2D = GetComponentInChildren<PolygonCollider2D>();
+        var tarPos = transform.position;
+        tarPos.y += col2D.bounds.extents.y + 0.5f;
+        MiniStatusCanvas.transform.position = tarPos;
+        envolved = true;
     }
 
     protected override void Move_ChaseInRoom(GameObject target, bool followTrainer = false)
@@ -111,19 +125,18 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
         }
         else
         {
-            int roomId = LevelManager.Instance.GetRoomNoByPosition(target.transform.position);
-            Rect room = LevelManager.Instance.Rooms[roomId];
+            Rect room = target.GetCharacterStatus().GetCurrentRoom();
             Vector2 tarPos = room.center;
-            if (target.transform.position.x < tarPos.x) tarPos.x = room.xMax - col2D.bounds.extents.x;
-            else tarPos.x = room.xMin + col2D.bounds.extents.x;
+            if (target.transform.position.x < tarPos.x) tarPos.x = room.xMax - col2D.bounds.size.x;
+            else tarPos.x = room.xMin + 1 + col2D.bounds.size.x;
 
-            if (target.transform.position.y < tarPos.y) tarPos.y = room.yMax - col2D.bounds.extents.y;
-            else tarPos.y = room.yMin + col2D.bounds.extents.y;
+            if (target.transform.position.y < tarPos.y) tarPos.y = room.yMax - col2D.bounds.size.y;
+            else tarPos.y = room.yMin + 1 + col2D.bounds.size.y;
 
             var diff = tarPos - (Vector2)transform.position;
             // 不能斜向攻击或移动，优先走距离短的那个方向，直到处于同一个水平或竖直方向
             if ((!CharacterData.canAttackDiagonally || !CharacterData.canMoveDiagonally)
-                && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Min(col2D.bounds.extents.x, col2D.bounds.extents.y))
+                && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Max(col2D.bounds.extents.x, col2D.bounds.extents.y))
             {
                 if (Mathf.Abs(diff.x) < Mathf.Abs(diff.y) && !XNearWall())
                 {
@@ -144,7 +157,7 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
     private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {
-        if (IsAtkCoroutineIdle() && envolved && Time.time - startEnvolveTime > envolveTime + 3)
+        if (IsAtkCoroutineIdle() && envolved)
         {
             Vector2 lookInput = characterInput.LookInput;
             if (lookInput.sqrMagnitude < 0.1f || AggroTarget == null) return;

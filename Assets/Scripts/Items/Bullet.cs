@@ -311,6 +311,7 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
+        isHitting = false;
     }
 
     private void MirrorBounce(Collider2D other)

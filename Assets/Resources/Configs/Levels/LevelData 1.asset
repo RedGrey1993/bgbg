@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
   normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: a161264895b9d6541b99653da67c76d9, type: 3}
+  - {fileID: 5506378715684145941, guid: 43215c31019db364cb3d3fe020e81e97, type: 3}
   bossPrefabs:
   - {fileID: 5506378715684145941, guid: dd830f0a76a4eb84dbd621582d61581f, type: 3}
   level: 1

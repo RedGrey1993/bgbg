@@ -9953,7 +9953,7 @@ MonoBehaviour:
   damageAmount: 2
   targetLayer:
     serializedVersion: 2
-    m_Bits: 14848
+    m_Bits: 14849
 --- !u!1 &725748390055121426
 GameObject:
   m_ObjectHideFlags: 0

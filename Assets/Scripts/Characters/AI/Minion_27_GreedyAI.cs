@@ -9,9 +9,6 @@ public class Minion_27_GreedyAI : CharacterBaseAI
 {
     protected override void LookToAction()
     {
-        Transform trans = transform.GetChild(0);
-        trans.localRotation = Quaternion.identity;
-
         ref Vector2 moveInput = ref characterInput.MoveInput;
         ref Vector2 lookInput = ref characterInput.LookInput;
         if (isAttack || lookInput.sqrMagnitude >= 0.1f)
@@ -25,6 +22,8 @@ public class Minion_27_GreedyAI : CharacterBaseAI
             LookDir = moveInput;
         }
 
+        Transform trans = transform.GetChild(0);
+        trans.localRotation = Quaternion.identity;
         if (LookDir.x > 0)
         {
             var scale = trans.localScale;

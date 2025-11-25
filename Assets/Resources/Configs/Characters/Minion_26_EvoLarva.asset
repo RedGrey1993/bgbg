@@ -37,7 +37,7 @@ MonoBehaviour:
   moveAcrossRoom: 0
   canAttackDiagonally: 1
   causeCollisionDamage: 1
-  AggroRange: 20
+  AggroRange: 100
   AggroChangeInterval: 2
   chaseMoveInputInterval:
     min: 0.05

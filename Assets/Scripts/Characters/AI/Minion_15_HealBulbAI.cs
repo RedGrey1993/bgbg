@@ -9,17 +9,19 @@ public class Minion_15_HealBulbAI : CharacterBaseAI
     {
         if (characterInput.MoveInput.sqrMagnitude >= 0.1f)
         {
+            Transform trans = transform.GetChild(0);
+            trans.localRotation = Quaternion.identity;   
             if (characterInput.MoveInput.x > 0)
             {
-                var scale = transform.localScale;
+                var scale = trans.localScale;
                 scale.x = -Mathf.Abs(scale.x);
-                transform.localScale = scale;
+                trans.localScale = scale;
             }
             else
             {
-                var scale = transform.localScale;
+                var scale = trans.localScale;
                 scale.x = Mathf.Abs(scale.x);
-                transform.localScale = scale;
+                trans.localScale = scale;
             }
         }
     }

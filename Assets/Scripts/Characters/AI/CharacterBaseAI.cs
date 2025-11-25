@@ -19,7 +19,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public TextMeshProUGUI CharNameText { get; private set; }
     protected Rigidbody2D rb;
     protected SkinnedMeshRenderer skinnedMeshRenderer;
-    public Collider2D col2D { get; private set; }
+    public Collider2D col2D { get; protected set; }
     public Animator animator { get; protected set; }
     protected AudioSource audioSource;
     public AudioSource OneShotAudioSource { get; set; } = null;
@@ -179,7 +179,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         }
         var diff = targetPos - transform.position;
         if (!CharacterData.canMoveDiagonally 
-            && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Min(col2D.bounds.extents.x, col2D.bounds.extents.y))
+            && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Max(col2D.bounds.extents.x, col2D.bounds.extents.y))
         {
             if (Mathf.Abs(diff.x) < Mathf.Abs(diff.y) && !XNearWall())
             {
@@ -625,7 +625,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             // 不能斜向攻击或移动，优先走距离短的那个方向，直到处于同一个水平或竖直方向
             if ((!CharacterData.canAttackDiagonally || !CharacterData.canMoveDiagonally)
-                && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Min(col2D.bounds.extents.x, col2D.bounds.extents.y))
+                && Mathf.Min(Mathf.Abs(diff.x), Mathf.Abs(diff.y)) > Mathf.Max(col2D.bounds.extents.x, col2D.bounds.extents.y))
             {
                 if (Mathf.Abs(diff.x) < Mathf.Abs(diff.y) && !XNearWall())
                 {
