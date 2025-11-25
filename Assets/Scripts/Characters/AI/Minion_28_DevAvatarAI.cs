@@ -146,8 +146,8 @@ public class Minion_28_DevAvatarAI : CharacterBaseAI
         spriteObject.SetActive(false);
         meshObject.SetActive(true);
         characterStatus.State.MoveSpeed = CharacterData.MoveSpeed;
-        characterStatus.State.CurrentHp = characterStatus.State.MaxHp 
-            = CharacterData.MaxHp * characterStatus.State.Scale * 10;
+        characterStatus.State.MaxHp = CharacterData.MaxHp * characterStatus.State.Scale * 10;
+        characterStatus.HealthChanged(characterStatus.State.MaxHp);
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         firstBeAttacked = true;
     }

@@ -895,6 +895,7 @@ public class CharacterManager : MonoBehaviour
     {
         var boss = Instantiate(prefab, bossParant);
         boss.transform.position = position;
+        float scale = boss.transform.localScale.x;
 
         int bossId;
         if (bs != null) bossId = bs.PlayerId;
@@ -913,6 +914,7 @@ public class CharacterManager : MonoBehaviour
             }
             else
             {
+                bossStatus.State.Scale = scale;
                 bossStatus.State.PlayerId = bossId;
                 bossStatus.State.PlayerName = boss.name;
                 bossStatus.State.MaxHp *= Constants.BossHpMultipiler;

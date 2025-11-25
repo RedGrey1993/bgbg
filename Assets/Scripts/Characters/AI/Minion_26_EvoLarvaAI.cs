@@ -89,7 +89,8 @@ public class Minion_26_EvoLarvaAI : CharacterBaseAI
             {
                 envolved = true;
                 expSlider.gameObject.SetActive(false);
-                characterStatus.State.CurrentHp = characterStatus.State.MaxHp = CharacterData.MaxHp * characterStatus.State.Scale;
+                characterStatus.State.MaxHp = CharacterData.MaxHp * characterStatus.State.Scale;
+                characterStatus.HealthChanged(characterStatus.State.MaxHp);
                 characterStatus.State.ExpGiven = CharacterData.ExpGiven;
                 characterStatus.State.ShootRange = CharacterData.ShootRange * characterStatus.State.Scale;
                 characterStatus.State.MoveSpeed = CharacterData.MoveSpeed;

@@ -94,6 +94,7 @@ public enum CharacterType
     Minion_28_DevAvatar,
     Minion_29_AdminGaze,
     Minion_30_WormHole,
+    Boss_6_2048,
 }
 
 public enum ItemTag

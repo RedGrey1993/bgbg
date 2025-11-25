@@ -32,6 +32,7 @@ public class CharacterStatus : MonoBehaviour
 
     private Slider healthSlider;
     private DamageType lastDamageType = DamageType.Bullet;
+    public int CurrentRoomId {get;private set;} = 0;
 
     void Awake()
     {
@@ -198,7 +199,7 @@ public class CharacterStatus : MonoBehaviour
         }
         
         // 如果是精英怪，概率掉落系统日志
-        if (State.Scale > 1.1f && GameManager.Instance.IsLocal() &&
+        if (!IsBoss && State.Scale > 1.1f && GameManager.Instance.IsLocal() &&
             GameManager.Instance.IsSysGuardianStage() && !GameManager.Instance.Storage.ShowedSysErrLogTip)
         {
             // TODO: uncomment it
@@ -286,11 +287,8 @@ public class CharacterStatus : MonoBehaviour
 
     public void SetScale(float scale)
     {
-        if (!IsBoss)
-        {
-            transform.localScale = new Vector3(scale, scale, scale);
-            State.Scale = scale;
-        }
+        transform.localScale = new Vector3(scale, scale, scale);
+        State.Scale = scale;
     }
 
     public void SetState(PlayerState state)
@@ -433,6 +431,11 @@ public class CharacterStatus : MonoBehaviour
         showingStatsText = false;
     }
 
+    public Rect GetCurrentRoom()
+    {
+        return LevelManager.Instance.Rooms[CurrentRoomId];
+    }
+
     void FixedUpdate()
     {
         State.Position = new Vec2
@@ -441,11 +444,26 @@ public class CharacterStatus : MonoBehaviour
             Y = transform.position.y
         };
 
+        int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
+        if (roomId != CurrentRoomId)
+        {
+            if (LevelManager.Instance.RoomToCharacters.ContainsKey(CurrentRoomId))
+            {
+                LevelManager.Instance.RoomToCharacters[CurrentRoomId].Remove(this);
+            }
+
+            CurrentRoomId = roomId;
+            if (!LevelManager.Instance.RoomToCharacters.ContainsKey(CurrentRoomId))
+            {
+                LevelManager.Instance.RoomToCharacters.Add(CurrentRoomId, new HashSet<CharacterStatus>());
+            }
+            LevelManager.Instance.RoomToCharacters[CurrentRoomId].Add(this);
+        }
+
         if (HasPlayerController())
         {
-            int roomNo = LevelManager.Instance.GetRoomNoByPosition(transform.position);
             var spc = UIManager.Instance.GetComponent<StatusPanelController>();
-            spc.UpdateTipsText(roomNo);
+            spc.UpdateTipsText(roomId);
             LevelManager.Instance.AddToVisitedRooms(transform.position);
         }
     }

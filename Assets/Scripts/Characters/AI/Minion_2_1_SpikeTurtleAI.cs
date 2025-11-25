@@ -19,6 +19,8 @@ public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
                 // 参数1: 入射向量 (即碰撞前的速度)
                 // 参数2: 法线
                 Vector2 reflectionDirection = Vector2.Reflect(characterInput.MoveInput, normal);
+                reflectionDirection.x /= Mathf.Abs(reflectionDirection.x);
+                reflectionDirection.y /= Mathf.Abs(reflectionDirection.y);
                 characterInput.MoveInput = reflectionDirection.normalized;
             }
         }
@@ -29,7 +31,6 @@ public class Minion_2_1_SpikeTurtleAI : CharacterBaseAI
     protected override void SubclassStart()
     {
         characterInput.MoveInput = new Vector2(2 * Random.Range(0, 2) - 1, 2 * Random.Range(0, 2) - 1).normalized;
-        
     }
     protected override void UpdateMoveInput()
     {

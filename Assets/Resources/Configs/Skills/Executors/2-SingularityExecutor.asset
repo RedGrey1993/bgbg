@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SingularityExecutor
   damagePerSecond: 3.5
   damageInterval: 1
-  totalInterval: 10
+  totalInterval: 5
   blackHolePrefab: {fileID: 3410765289809985633, guid: 552427c952bdaf94798e0dc9379fcc01, type: 3}

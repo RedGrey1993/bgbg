@@ -25,7 +25,13 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public AudioSource OneShotAudioSource { get; set; } = null;
     public bool isAi { get; private set; } = false;
     protected float nextAtkTime = 0f;
-    protected bool isAiming = false; // 瞄准时可以移动，但不再改变LookInput
+    protected int spdHash = Animator.StringToHash("Speed");
+    protected int shootHash = Animator.StringToHash("Shoot");
+    protected int atkSpdHash = Animator.StringToHash("AttackSpeed");
+
+    public int BaseLayerIndex { get; protected set; }
+    public int UpperBodyLayerIndex { get; protected set; }
+    public Vector3 LookToForwardDir { get; protected set; } = Vector3.forward;
     public bool isAttack { set; get; } = false; // 攻击时不能移动
     public Vector2 LookDir { get; protected set; } = Vector2.down;
     public HashSet<GameObject> TobeDestroyed { get; set; } = new HashSet<GameObject>();
@@ -35,13 +41,6 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public List<float> PokeMinionReviveTime { get; set; } = new List<float>();
     public List<(GameObject, int)> ExistingPokes = new();
     public int CircularIdx { get; set; } = 0;
-
-    protected int spdHash = Animator.StringToHash("Speed");
-    protected int shootHash = Animator.StringToHash("Shoot");
-    protected int atkSpdHash = Animator.StringToHash("AttackSpeed");
-    public int BaseLayerIndex { get; protected set; }
-    public int UpperBodyLayerIndex { get; protected set; }
-    public Vector3 LookToForwardDir { get; protected set; } = Vector3.forward;
 
     public void Awake()
     {

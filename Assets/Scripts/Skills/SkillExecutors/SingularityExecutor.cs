@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SingularityExecutor", menuName = "Skills/Effects/Singularity")]
 public class SingularityExecutor : SkillExecutor
 {
-    public float damagePerSecond = 3.5f;
-    public float damageInterval = 1.0f;
-    public float totalInterval = 10.0f;
+    public float damagePerSecond;
+    public float damageInterval;
+    public float totalInterval;
     public GameObject blackHolePrefab;
 
     public override void ExecuteSkill(GameObject playerObj, SkillData skillData)

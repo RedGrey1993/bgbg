@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
         public int tileTemplateId;
         public int tileId;
     }
-    public Dictionary<(Vector3Int, TileType), ImmutableTileInfo> pos2TilesDict = new ();
+    public Dictionary<(Vector3Int, TileType), ImmutableTileInfo> pos2TilesDict {get; private set;} = new ();
     // (TilePosition, (TileTemplateId, TileId, BreakableHealth))
     public struct BreakableTileInfo
     {
@@ -52,7 +52,8 @@ public class LevelManager : MonoBehaviour
         public int tileId;
         public float tileHealth;
     }
-    public Dictionary<Vector3Int, BreakableTileInfo> breakableObstacleTiles = new();
+    public Dictionary<Vector3Int, BreakableTileInfo> breakableObstacleTiles {get;set;} = new();
+    public Dictionary<int, HashSet<CharacterStatus>> RoomToCharacters {get; set;}= new();
 
     void Awake()
     {
@@ -233,6 +234,7 @@ public class LevelManager : MonoBehaviour
         VisitedRooms = new List<int>();
         BossRoomIds = new List<int>();
         IsVisitedRooms = new bool[Rooms.Count];
+        RoomToCharacters = new();
         for (int i = 0; i < Rooms.Count; ++i)
         {
             remainRoomsIndex.Add(i);
