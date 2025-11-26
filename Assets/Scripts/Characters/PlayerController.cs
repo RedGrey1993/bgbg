@@ -101,9 +101,9 @@ public class PlayerController : MonoBehaviour
         SkillData skillData = SkillDatabase.Instance.GetActiveSkill(state.ActiveSkillId);
         if (skillData != null && (state.ActiveSkillCurCd == -1 || state.ActiveSkillCurCd >= skillData.cooldown))
         {
-            // state.ActiveSkillCurCd = 0;
+            state.ActiveSkillCurCd = 0;
             // TODO: cd设置为实际的0，当前暂时是无cd
-            state.ActiveSkillCurCd = -1;
+            // state.ActiveSkillCurCd = -1;
             UIManager.Instance.UpdateMyStatusUI(baseAi.characterStatus);
             yield return new WaitUntil(() => baseAi.CanUseActiveItem());
             skillData.executor.ExecuteSkill(gameObject, skillData);

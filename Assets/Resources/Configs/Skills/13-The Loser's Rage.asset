@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 13-The Loser's Rage
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 13
+  skillName: The Loser's Rage
+  description: 'Damage up!
+
+    "One more time... The last time!"'
+  backgroundStory: It is composed of brain waves generated in the last second before
+    countless 'GAME OVER' interfaces are forcibly closed. It is filled with the obsession
+    of 'Play Again' and the rage at one's own incompetence. When you grasp it, you
+    no longer fight for survival; you fight to vent your anger. Let this fury be
+    your ammunition, and crush those damn monsters like broken controllers!
+  icon: {fileID: 3503806777434046602, guid: be50d68e5ea86884a9bcca2f8c91099d, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
+  IsActive: 0
+  cooldown: 10
+  executor: {fileID: 11400000, guid: fe5df31b6de6c184d9855745be03582f, type: 2}
+  tags: 

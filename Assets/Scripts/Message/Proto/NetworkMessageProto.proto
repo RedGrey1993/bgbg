@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 27
+    // next index = 28
     int32 PlayerId = 1;
     string PlayerName = 2;
     float MaxHp = 3;
@@ -54,6 +54,7 @@ message PlayerState
     float BulletSpeed = 6; // 子弹飞行速度
     float Damage = 7; //  伤害，由DamageUp计算出来
     float DamageUp = 23; // 累积伤害加成，道具增加的伤害加成最终玩家实际造成的伤害为，Damage*sqrt(1+1.2*DamageUp)
+    float DamageFixRate = 27;  // 伤害修正系数，默认为1
     float AttackFrequency = 8; // 攻击频率/每秒发射子弹数，数值由AttackDelay计算出来
     float AttackFreqUp = 24;
     float ShootRange = 9; // 攻击范围，不一定是射击

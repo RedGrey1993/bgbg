@@ -444,7 +444,7 @@ public static class Constants
 
     public static float GetFinalDamage(this PlayerState state, float initDamage)
     {
-        return initDamage * Mathf.Sqrt(1f + 1.2f * state.DamageUp);
+        return initDamage * Mathf.Sqrt(1f + 1.2f * state.DamageUp) * state.DamageFixRate;
     }
 
     public static float GetFinalAtkFreq(this PlayerState state)

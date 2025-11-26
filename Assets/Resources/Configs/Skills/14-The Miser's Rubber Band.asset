@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 14-The Miser's Rubber Band
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 14
+  skillName: The Miser's Rubber Band
+  description: 'Boomerang Bullet! Range Up!
+
+    "Maybe I should save it..."'
+  backgroundStory: This data fragment comes from a player who suffered from a severe
+    case of 'hoarding compulsion.' In life, they were the type to die with full pockets
+    rather than waste their best ammo before the 'next stage.'
+  icon: {fileID: -7913272693841531814, guid: ae68c28a62622ed40a2d16a5e4a6cc7d, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
+  IsActive: 0
+  cooldown: 10
+  executor: {fileID: 11400000, guid: 35ad6c5200083fe488252ebdf08591a9, type: 2}
+  tags: 

@@ -24,10 +24,11 @@ MonoBehaviour:
   ShootRange: 6.5
   BulletSpeed: 10
   Damage: 1
+  DamageFixRate: 1
   AttackFreqUp: 0
   CriticalRate: 0
   ExpGiven: 0
-  InitialActiveSkillId: 12
+  InitialActiveSkillId: 10
   spawnOffsets: {x: -2, y: -2}
   bound:
     m_Center: {x: 0, y: 0, z: 0}

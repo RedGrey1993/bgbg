@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   id: 1
   skillName: Perma-Trigger Jr.
-  description: 'Fire rate x2!
+  description: 'Fire rate up!
 
     "Factory Setting: Forever young, forever firing
     fast."'
@@ -30,3 +30,4 @@ MonoBehaviour:
   IsActive: 0
   cooldown: 10
   executor: {fileID: 11400000, guid: 70fb85f25d59a4d46a8bb5244cecdff8, type: 2}
+  tags: 

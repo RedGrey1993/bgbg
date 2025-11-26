@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692632f082d9229429fb2b3685c2afce, type: 3}
   m_Name: 4-ShotgunProtocolExecutor
   m_EditorClassIdentifier: Assembly-CSharp::ShotgunProtocolExecutor
-  changeShootRange: -2
+  changeShootRange: -1.5

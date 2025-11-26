@@ -785,8 +785,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         Quaternion rotationPlus = Quaternion.Euler(0, 0, stepAngle);
 
         if (tarEnemy == null)
-            tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45);
-        if (!LevelManager.Instance.InSameRoom(gameObject, tarEnemy)) tarEnemy = null;
+            tarEnemy = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 180, findSameRoom: true);
 
         for (int i = 0; i < bulletState.ShootNum; i++)
         {

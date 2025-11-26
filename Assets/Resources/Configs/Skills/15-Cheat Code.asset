@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 15-Cheat Code
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 15
+  skillName: Cheat Code
+  description: 'All Stats Up!
+
+    "Power... overwhelming... and illegal."'
+  backgroundStory: Feels good, doesn't it? Just like being back in your former life,
+    on that lonely afternoon when you punched in a cheat code and started destroying
+    everything with reckless abandon. Now, you get to do it again.
+  icon: {fileID: -1855639434505486079, guid: fba1ef294ec30f54287d85f80a0341a2, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
+  IsActive: 0
+  cooldown: 10
+  executor: {fileID: 11400000, guid: 3474ef02485d5eb4d986dd818e699cb4, type: 2}
+  tags: 

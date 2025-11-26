@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ShotgunProtocolExecutor", menuName = "Skills/Effects/Shotgun Protocol")]
 public class ShotgunProtocolExecutor : SkillExecutor
 {
-    public int changeShootRange = -2; // 降低攻击范围的参数
+    public float changeShootRange; // 降低攻击范围的参数
 
     public override void ExecuteSkill(GameObject playerObj, SkillData skillData)
     {
@@ -15,7 +15,7 @@ public class ShotgunProtocolExecutor : SkillExecutor
         if (changeShootRange != 0)
         {
             playerState.ShootRange += changeShootRange;
-            if (playerState.ShootRange < 2) playerState.ShootRange = 2;
+            if (playerState.ShootRange < 1) playerState.ShootRange = 1;
         }
 
         var bulletState = playerStatus.bulletState;

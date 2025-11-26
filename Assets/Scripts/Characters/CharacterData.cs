@@ -32,6 +32,7 @@ public class CharacterData : ScriptableObject
     public float ShootRange = 6.5f;
     public float BulletSpeed = 10;
     public float Damage = 1f;
+    public float DamageFixRate = 1f;
     public float AttackFreqUp = 0;
     public uint CriticalRate = 0;
     public uint ExpGiven = 5; // 击败该角色后，玩家获得的经验值
@@ -77,6 +78,7 @@ public class CharacterData : ScriptableObject
         state.MoveSpeed = MoveSpeed;
         state.BulletSpeed = BulletSpeed;
         state.DamageUp = 0;
+        state.DamageFixRate = DamageFixRate;
         state.Damage = state.GetFinalDamage(Damage);
         state.AttackFreqUp = AttackFreqUp;
         state.AttackFrequency = state.GetFinalAtkFreq();

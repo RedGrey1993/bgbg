@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13769511f002f44cb036574727d278f, type: 3}
-  m_Name: 1-PermaTriggerJrExecutor
-  m_EditorClassIdentifier: Assembly-CSharp::PermaTriggerJrExecutor
-  changeFireRate: 0.7
-  changeType: 0
+  m_Script: {fileID: 11500000, guid: 922561f4b469aee4ba120d939d91f6ad, type: 3}
+  m_Name: 14-TheMisersRubberBandExecutor
+  m_EditorClassIdentifier: Assembly-CSharp::TheMisersRubberBandExecutor
+  shootRangeChange: 1.5

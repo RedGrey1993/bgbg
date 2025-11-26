@@ -207,10 +207,9 @@ public class Bullet : MonoBehaviour
                 if (inReturn)
                 {
                     if(tarStatus == OwnerStatus) {
-
                         ReleaseObject();
+                        { isHitting = false; return; }
                     }
-                    { isHitting = false; return; }
                 }
                 
                 if (tarStatus == null || (OwnerStatus != null && OwnerStatus.IsFriendlyUnit(tarStatus)))

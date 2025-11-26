@@ -19,7 +19,7 @@ MonoBehaviour:
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
   CharacterType: 24
-  MaxHp: 5
+  MaxHp: 8
   MoveSpeed: 3
   ShootRange: 7
   BulletSpeed: 6
