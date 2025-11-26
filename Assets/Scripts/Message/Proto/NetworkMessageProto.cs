@@ -38,71 +38,72 @@ namespace NetworkMessageProto {
             "bnB1dE1lc3NhZ2USEAoIUGxheWVySWQYASABKAUSDAoEVGljaxgCIAEoDRIM",
             "CgRUeXBlGAMgASgNEiwKCU1vdmVJbnB1dBgEIAEoCzIZLk5ldHdvcmtNZXNz",
             "YWdlUHJvdG8uVmVjMhIsCglMb29rSW5wdXQYBSABKAsyGS5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlZlYzIi1gYKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
+            "c2FnZVByb3RvLlZlYzIi7QYKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
             "ASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTWF4SHAYAyABKAISEQoJQ3Vy",
             "cmVudEhwGAQgASgCEhEKCU1vdmVTcGVlZBgFIAEoAhITCgtCdWxsZXRTcGVl",
-            "ZBgGIAEoAhIOCgZEYW1hZ2UYByABKAISEAoIRGFtYWdlVXAYFyABKAISFQoN",
-            "RGFtYWdlRml4UmF0ZRgbIAEoAhIXCg9BdHRhY2tGcmVxdWVuY3kYCCABKAIS",
-            "FAoMQXR0YWNrRnJlcVVwGBggASgCEhIKClNob290UmFuZ2UYCSABKAISFAoM",
-            "Q3JpdGljYWxSYXRlGAogASgCEhQKDEN1cnJlbnRMZXZlbBgMIAEoDRISCgpD",
-            "dXJyZW50RXhwGA0gASgNEhAKCEV4cEdpdmVuGBkgASgNEisKCFBvc2l0aW9u",
-            "GAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyEhAKCFNraWxsSWRz",
-            "GA4gAygFEiAKGEN1cnJlbnRTdGFnZVNraWxsTGVhcm5lZBgPIAEoCBIZChFU",
-            "b0xlYXJuZWRTa2lsbElkcxgTIAMoBRIVCg1BY3RpdmVTa2lsbElkGBAgASgF",
-            "EhgKEEFjdGl2ZVNraWxsQ3VyQ2QYFCABKAUSDQoFU2NhbGUYESABKAISLgoF",
-            "Q29sb3IYEiABKAsyHy5OZXR3b3JrTWVzc2FnZVByb3RvLkNvbG9yUHJvdG8S",
-            "PQoOQ2F0Y2hlZE1pbmlvbnMYFSADKAsyJS5OZXR3b3JrTWVzc2FnZVByb3Rv",
-            "Lk1pbmlvblByZWZhYkluZm8SPQoTQ2F0Y2hlZE1pbmlvblN0YXRlcxgWIAMo",
-            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSSAoMU3RvbGVu",
-            "U3RhdGVzGBogAygLMjIuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0",
-            "ZS5TdG9sZW5TdGF0ZXNFbnRyeRpVChFTdG9sZW5TdGF0ZXNFbnRyeRILCgNr",
-            "ZXkYASABKAUSLwoFdmFsdWUYAiABKAsyIC5OZXR3b3JrTWVzc2FnZVByb3Rv",
-            "LlBsYXllclN0YXRlOgI4ASL0AQoLQnVsbGV0U3RhdGUSEAoIU2hvb3ROdW0Y",
-            "ASABKAUSFwoPU2hvb3RBbmdsZVJhbmdlGAIgASgFEhYKDlBlbmV0cmF0ZUNv",
-            "dW50GAMgASgFEhIKClNwbGl0Q291bnQYBCABKAUSEwoLSG9taW5nRm9yY2UY",
-            "BSABKAUSEwoLQm91bmNlQ291bnQYBiABKAUSGgoSQ2FuRGVzdHJveU9ic3Rh",
-            "Y2xlGAcgASgIEhkKEUNvbmZ1c2VUYXJnZXRUaW1lGAggASgFEhYKDklzUmV0",
-            "dXJuQnVsbGV0GAkgASgIEhUKDUlzU3RlYWxCdWxsZXQYCiABKAgiVQoSU3Rh",
-            "dGVVcGRhdGVNZXNzYWdlEjEKB1BsYXllcnMYASADKAsyIC5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlBsYXllclN0YXRlEgwKBFRpY2sYAiABKA0iSAoUUGxheWVy",
-            "c1VwZGF0ZU1lc3NhZ2USMAoHUGxheWVycxgBIAMoCzIfLk5ldHdvcmtNZXNz",
-            "YWdlUHJvdG8uUGxheWVySW5mbyJKCgpQbGF5ZXJJbmZvEhAKCENTdGVhbUlE",
-            "GAEgASgJEgwKBE5hbWUYAiABKAkSCgoCSWQYAyABKAUSEAoIUHJlZmFiSWQY",
-            "BCABKAUiNgoRTGVhcm5Ta2lsbE1lc3NhZ2USEAoIcGxheWVySWQYASABKAUS",
-            "DwoHc2tpbGxJZBgCIAEoBSJvCgpQaWNrdXBJdGVtEgoKAklkGAEgASgFEg8K",
-            "B1NraWxsSWQYAiABKAUSFwoPQ3VycmVudENvb2xkb3duGAMgASgFEisKCFBv",
-            "c2l0aW9uGAQgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyIjMKDkJv",
-            "c3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiAB",
-            "KAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgFEhAKCFBy",
-            "ZWZhYklkGAIgASgFIpkJCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVudFN0YWdl",
-            "GAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtNZXNzYWdl",
-            "UHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3RhdGVzGA8gAygLMiAuTmV0",
-            "d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRIXCg9QbGF5ZXJQcmVmYWJJ",
-            "ZHMYDiADKAUSNgoMTWluaW9uU3RhdGVzGAMgAygLMiAuTmV0d29ya01lc3Nh",
-            "Z2VQcm90by5QbGF5ZXJTdGF0ZRJAChFNaW5pb25QcmVmYWJJbmZvcxgEIAMo",
-            "CzIlLk5ldHdvcmtNZXNzYWdlUHJvdG8uTWluaW9uUHJlZmFiSW5mbxI0CgpC",
-            "b3NzU3RhdGVzGAUgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJT",
-            "dGF0ZRI8Cg9Cb3NzUHJlZmFiSW5mb3MYBiADKAsyIy5OZXR3b3JrTWVzc2Fn",
-            "ZVByb3RvLkJvc3NQcmVmYWJJbmZvEi0KBVJvb21zGAcgAygLMh4uTmV0d29y",
-            "a01lc3NhZ2VQcm90by5SZWN0UHJvdG8SFAoMUm9vbU1heFdpZHRoGAggASgN",
-            "EhUKDVJvb21NYXhIZWlnaHQYCSABKA0SFwoPTmV4dENoYXJhY3RlcklkGAog",
-            "ASgNEjMKEFRlbGVwb3J0UG9zaXRpb24YCyABKAsyGS5OZXR3b3JrTWVzc2Fn",
-            "ZVByb3RvLlZlYzISNAoLUGlja3VwSXRlbXMYDCADKAsyHy5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlBpY2t1cEl0ZW0SFAoMUGFzc2VkU3RhZ2VzGA0gAygFEhwK",
-            "FEFjaGlldmVtZW50MU5ld0N5Y2xlGBAgASgIEhoKEkFjaGlldmVtZW50Mk1p",
-            "cnJvchgRIAEoCBIiChpBY2hpZXZlbWVudDNJbmZpbml0ZUxvbmVseRgSIAEo",
-            "CBIQCghOZXdMZXZlbBgTIAEoCBIaChJTaG93ZWRTeXNFcnJMb2dUaXAYFCAB",
-            "KAgSPQoTTmV3UnVsZXJQbGF5ZXJTdGF0ZRgVIAEoCzIgLk5ldHdvcmtNZXNz",
-            "YWdlUHJvdG8uUGxheWVyU3RhdGUSPQoTTmV3UnVsZXJCdWxsZXRTdGF0ZRgW",
-            "IAEoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uQnVsbGV0U3RhdGUSGAoQTmV3",
-            "UnVsZXJQcmVmYWJJZBgXIAEoBRIZChFOeHREZXN0b3J5Um9vbUlkeBgYIAEo",
-            "BRIdChVEZXN0b3J5Um9vbVJlbWFpblRpbWUYGSABKAISMAoJV2FsbFRpbGVz",
-            "GBogAygLMh0uTmV0d29ya01lc3NhZ2VQcm90by5UaWxlSW5mbxIxCgpGbG9v",
-            "clRpbGVzGBsgAygLMh0uTmV0d29ya01lc3NhZ2VQcm90by5UaWxlSW5mbxIw",
-            "CglIb2xlVGlsZXMYHCADKAsyHS5OZXR3b3JrTWVzc2FnZVByb3RvLlRpbGVJ",
-            "bmZvEhEKCVBsYXlDb3VudBgdIAEoBSJaCghUaWxlSW5mbxIJCgFYGAEgASgF",
-            "EgkKAVkYAiABKAUSEAoIVGlsZVR5cGUYAyABKAUSFgoOVGlsZVRlbXBsYXRl",
-            "SWQYBCABKAUSDgoGVGlsZUlkGAUgASgFYgZwcm90bzM="));
+            "ZBgGIAEoAhIOCgZEYW1hZ2UYByABKAISEAoIRGFtYWdlVXAYFyABKAISGAoQ",
+            "RGFtYWdlQWRqdXN0bWVudBgbIAEoAhISCgpIcFN0ZWFsRml4GBwgASgCEhcK",
+            "D0F0dGFja0ZyZXF1ZW5jeRgIIAEoAhIUCgxBdHRhY2tGcmVxVXAYGCABKAIS",
+            "EgoKU2hvb3RSYW5nZRgJIAEoAhIUCgxDcml0aWNhbFJhdGUYCiABKAISFAoM",
+            "Q3VycmVudExldmVsGAwgASgNEhIKCkN1cnJlbnRFeHAYDSABKA0SEAoIRXhw",
+            "R2l2ZW4YGSABKA0SKwoIUG9zaXRpb24YCyABKAsyGS5OZXR3b3JrTWVzc2Fn",
+            "ZVByb3RvLlZlYzISEAoIU2tpbGxJZHMYDiADKAUSIAoYQ3VycmVudFN0YWdl",
+            "U2tpbGxMZWFybmVkGA8gASgIEhkKEVRvTGVhcm5lZFNraWxsSWRzGBMgAygF",
+            "EhUKDUFjdGl2ZVNraWxsSWQYECABKAUSGAoQQWN0aXZlU2tpbGxDdXJDZBgU",
+            "IAEoBRINCgVTY2FsZRgRIAEoAhIuCgVDb2xvchgSIAEoCzIfLk5ldHdvcmtN",
+            "ZXNzYWdlUHJvdG8uQ29sb3JQcm90bxI9Cg5DYXRjaGVkTWluaW9ucxgVIAMo",
+            "CzIlLk5ldHdvcmtNZXNzYWdlUHJvdG8uTWluaW9uUHJlZmFiSW5mbxI9ChND",
+            "YXRjaGVkTWluaW9uU3RhdGVzGBYgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90",
+            "by5QbGF5ZXJTdGF0ZRJICgxTdG9sZW5TdGF0ZXMYGiADKAsyMi5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLlBsYXllclN0YXRlLlN0b2xlblN0YXRlc0VudHJ5GlUK",
+            "EVN0b2xlblN0YXRlc0VudHJ5EgsKA2tleRgBIAEoBRIvCgV2YWx1ZRgCIAEo",
+            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGU6AjgBIvQBCgtC",
+            "dWxsZXRTdGF0ZRIQCghTaG9vdE51bRgBIAEoBRIXCg9TaG9vdEFuZ2xlUmFu",
+            "Z2UYAiABKAUSFgoOUGVuZXRyYXRlQ291bnQYAyABKAUSEgoKU3BsaXRDb3Vu",
+            "dBgEIAEoBRITCgtIb21pbmdGb3JjZRgFIAEoBRITCgtCb3VuY2VDb3VudBgG",
+            "IAEoBRIaChJDYW5EZXN0cm95T2JzdGFjbGUYByABKAgSGQoRQ29uZnVzZVRh",
+            "cmdldFRpbWUYCCABKAUSFgoOSXNSZXR1cm5CdWxsZXQYCSABKAgSFQoNSXNT",
+            "dGVhbEJ1bGxldBgKIAEoCCJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxh",
+            "eWVycxgBIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUS",
+            "DAoEVGljaxgCIAEoDSJIChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5",
+            "ZXJzGAEgAygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIkoK",
+            "ClBsYXllckluZm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIK",
+            "CgJJZBgDIAEoBRIQCghQcmVmYWJJZBgEIAEoBSI2ChFMZWFyblNraWxsTWVz",
+            "c2FnZRIQCghwbGF5ZXJJZBgBIAEoBRIPCgdza2lsbElkGAIgASgFIm8KClBp",
+            "Y2t1cEl0ZW0SCgoCSWQYASABKAUSDwoHU2tpbGxJZBgCIAEoBRIXCg9DdXJy",
+            "ZW50Q29vbGRvd24YAyABKAUSKwoIUG9zaXRpb24YBCABKAsyGS5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYkluZm8SDwoHU3RhZ2VJ",
+            "ZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSI1ChBNaW5pb25QcmVmYWJJbmZv",
+            "Eg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUimQkKDExvY2Fs",
+            "U3RvcmFnZRIUCgxDdXJyZW50U3RhZ2UYASABKAUSNgoMUGxheWVyU3RhdGVz",
+            "GAIgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI2CgxC",
+            "dWxsZXRTdGF0ZXMYDyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLkJ1bGxl",
+            "dFN0YXRlEhcKD1BsYXllclByZWZhYklkcxgOIAMoBRI2CgxNaW5pb25TdGF0",
+            "ZXMYAyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEkAK",
+            "EU1pbmlvblByZWZhYkluZm9zGAQgAygLMiUuTmV0d29ya01lc3NhZ2VQcm90",
+            "by5NaW5pb25QcmVmYWJJbmZvEjQKCkJvc3NTdGF0ZXMYBSADKAsyIC5OZXR3",
+            "b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjwKD0Jvc3NQcmVmYWJJbmZv",
+            "cxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdlUHJvdG8uQm9zc1ByZWZhYkluZm8S",
+            "LQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90",
+            "bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdodBgJIAEo",
+            "DRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQb3NpdGlv",
+            "bhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQaWNrdXBJ",
+            "dGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3VwSXRlbRIU",
+            "CgxQYXNzZWRTdGFnZXMYDSADKAUSHAoUQWNoaWV2ZW1lbnQxTmV3Q3ljbGUY",
+            "ECABKAgSGgoSQWNoaWV2ZW1lbnQyTWlycm9yGBEgASgIEiIKGkFjaGlldmVt",
+            "ZW50M0luZmluaXRlTG9uZWx5GBIgASgIEhAKCE5ld0xldmVsGBMgASgIEhoK",
+            "ElNob3dlZFN5c0VyckxvZ1RpcBgUIAEoCBI9ChNOZXdSdWxlclBsYXllclN0",
+            "YXRlGBUgASgLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI9",
+            "ChNOZXdSdWxlckJ1bGxldFN0YXRlGBYgASgLMiAuTmV0d29ya01lc3NhZ2VQ",
+            "cm90by5CdWxsZXRTdGF0ZRIYChBOZXdSdWxlclByZWZhYklkGBcgASgFEhkK",
+            "EU54dERlc3RvcnlSb29tSWR4GBggASgFEh0KFURlc3RvcnlSb29tUmVtYWlu",
+            "VGltZRgZIAEoAhIwCglXYWxsVGlsZXMYGiADKAsyHS5OZXR3b3JrTWVzc2Fn",
+            "ZVByb3RvLlRpbGVJbmZvEjEKCkZsb29yVGlsZXMYGyADKAsyHS5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLlRpbGVJbmZvEjAKCUhvbGVUaWxlcxgcIAMoCzIdLk5l",
+            "dHdvcmtNZXNzYWdlUHJvdG8uVGlsZUluZm8SEQoJUGxheUNvdW50GB0gASgF",
+            "IloKCFRpbGVJbmZvEgkKAVgYASABKAUSCQoBWRgCIAEoBRIQCghUaWxlVHlw",
+            "ZRgDIAEoBRIWCg5UaWxlVGVtcGxhdGVJZBgEIAEoBRIOCgZUaWxlSWQYBSAB",
+            "KAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -111,7 +112,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.ColorProto), global::NetworkMessageProto.ColorProto.Parser, new[]{ "R", "G", "B", "A" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "DamageUp", "DamageFixRate", "AttackFrequency", "AttackFreqUp", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "ExpGiven", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color", "CatchedMinions", "CatchedMinionStates", "StolenStates" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "DamageUp", "DamageAdjustment", "HpStealFix", "AttackFrequency", "AttackFreqUp", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "ExpGiven", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color", "CatchedMinions", "CatchedMinionStates", "StolenStates" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount", "SplitCount", "HomingForce", "BounceCount", "CanDestroyObstacle", "ConfuseTargetTime", "IsReturnBullet", "IsStealBullet" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
@@ -1807,7 +1808,8 @@ namespace NetworkMessageProto {
       bulletSpeed_ = other.bulletSpeed_;
       damage_ = other.damage_;
       damageUp_ = other.damageUp_;
-      damageFixRate_ = other.damageFixRate_;
+      damageAdjustment_ = other.damageAdjustment_;
+      hpStealFix_ = other.hpStealFix_;
       attackFrequency_ = other.attackFrequency_;
       attackFreqUp_ = other.attackFreqUp_;
       shootRange_ = other.shootRange_;
@@ -1839,7 +1841,7 @@ namespace NetworkMessageProto {
     public const int PlayerIdFieldNumber = 1;
     private int playerId_;
     /// <summary>
-    /// next index = 28
+    /// next index = 29
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1946,18 +1948,33 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "DamageFixRate" field.</summary>
-    public const int DamageFixRateFieldNumber = 27;
-    private float damageFixRate_;
+    /// <summary>Field number for the "DamageAdjustment" field.</summary>
+    public const int DamageAdjustmentFieldNumber = 27;
+    private float damageAdjustment_;
     /// <summary>
     /// 伤害修正系数，默认为1
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float DamageFixRate {
-      get { return damageFixRate_; }
+    public float DamageAdjustment {
+      get { return damageAdjustment_; }
       set {
-        damageFixRate_ = value;
+        damageAdjustment_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HpStealFix" field.</summary>
+    public const int HpStealFixFieldNumber = 28;
+    private float hpStealFix_;
+    /// <summary>
+    /// 固定生命偷取，和造成的伤害无关
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float HpStealFix {
+      get { return hpStealFix_; }
+      set {
+        hpStealFix_ = value;
       }
     }
 
@@ -2204,7 +2221,8 @@ namespace NetworkMessageProto {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BulletSpeed, other.BulletSpeed)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Damage, other.Damage)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DamageUp, other.DamageUp)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DamageFixRate, other.DamageFixRate)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DamageAdjustment, other.DamageAdjustment)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HpStealFix, other.HpStealFix)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AttackFrequency, other.AttackFrequency)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AttackFreqUp, other.AttackFreqUp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShootRange, other.ShootRange)) return false;
@@ -2238,7 +2256,8 @@ namespace NetworkMessageProto {
       if (BulletSpeed != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BulletSpeed);
       if (Damage != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Damage);
       if (DamageUp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DamageUp);
-      if (DamageFixRate != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DamageFixRate);
+      if (DamageAdjustment != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DamageAdjustment);
+      if (HpStealFix != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HpStealFix);
       if (AttackFrequency != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AttackFrequency);
       if (AttackFreqUp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AttackFreqUp);
       if (ShootRange != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShootRange);
@@ -2364,9 +2383,13 @@ namespace NetworkMessageProto {
         output.WriteUInt32(ExpGiven);
       }
       stolenStates_.WriteTo(output, _map_stolenStates_codec);
-      if (DamageFixRate != 0F) {
+      if (DamageAdjustment != 0F) {
         output.WriteRawTag(221, 1);
-        output.WriteFloat(DamageFixRate);
+        output.WriteFloat(DamageAdjustment);
+      }
+      if (HpStealFix != 0F) {
+        output.WriteRawTag(229, 1);
+        output.WriteFloat(HpStealFix);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2467,9 +2490,13 @@ namespace NetworkMessageProto {
         output.WriteUInt32(ExpGiven);
       }
       stolenStates_.WriteTo(ref output, _map_stolenStates_codec);
-      if (DamageFixRate != 0F) {
+      if (DamageAdjustment != 0F) {
         output.WriteRawTag(221, 1);
-        output.WriteFloat(DamageFixRate);
+        output.WriteFloat(DamageAdjustment);
+      }
+      if (HpStealFix != 0F) {
+        output.WriteRawTag(229, 1);
+        output.WriteFloat(HpStealFix);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2505,7 +2532,10 @@ namespace NetworkMessageProto {
       if (DamageUp != 0F) {
         size += 2 + 4;
       }
-      if (DamageFixRate != 0F) {
+      if (DamageAdjustment != 0F) {
+        size += 2 + 4;
+      }
+      if (HpStealFix != 0F) {
         size += 2 + 4;
       }
       if (AttackFrequency != 0F) {
@@ -2588,8 +2618,11 @@ namespace NetworkMessageProto {
       if (other.DamageUp != 0F) {
         DamageUp = other.DamageUp;
       }
-      if (other.DamageFixRate != 0F) {
-        DamageFixRate = other.DamageFixRate;
+      if (other.DamageAdjustment != 0F) {
+        DamageAdjustment = other.DamageAdjustment;
+      }
+      if (other.HpStealFix != 0F) {
+        HpStealFix = other.HpStealFix;
       }
       if (other.AttackFrequency != 0F) {
         AttackFrequency = other.AttackFrequency;
@@ -2773,7 +2806,11 @@ namespace NetworkMessageProto {
             break;
           }
           case 221: {
-            DamageFixRate = input.ReadFloat();
+            DamageAdjustment = input.ReadFloat();
+            break;
+          }
+          case 229: {
+            HpStealFix = input.ReadFloat();
             break;
           }
         }
@@ -2908,7 +2945,11 @@ namespace NetworkMessageProto {
             break;
           }
           case 221: {
-            DamageFixRate = input.ReadFloat();
+            DamageAdjustment = input.ReadFloat();
+            break;
+          }
+          case 229: {
+            HpStealFix = input.ReadFloat();
             break;
           }
         }

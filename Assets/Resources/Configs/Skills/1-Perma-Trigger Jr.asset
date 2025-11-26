@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   id: 1
   skillName: Perma-Trigger Jr.
-  description: 'Fire rate up!
+  description: 'Fire Rate Up!
 
     "Factory Setting: Forever young, forever firing
     fast."'

@@ -51,7 +51,7 @@ MonoBehaviour:
   pushForce: 10
   maxScaleX: 15
   damageInterval: 0.33
-  minDamage: 1
+  minDamage: 2
 --- !u!50 &3826689437446375980
 Rigidbody2D:
   serializedVersion: 5

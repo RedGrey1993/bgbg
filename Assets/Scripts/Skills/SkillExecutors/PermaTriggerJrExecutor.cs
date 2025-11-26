@@ -14,5 +14,7 @@ public class PermaTriggerJrExecutor : SkillExecutor
 
         playerState.AttackFreqUp += changeFireRate;
         playerState.AttackFrequency = playerState.GetFinalAtkFreq();
+
+        UIManager.Instance.UpdateMyStatusUI(playerStatus);
     }
 }

@@ -24,8 +24,8 @@ public class CheatCodeExecutor : SkillExecutor
         status.SetScale(state.Scale * 1.25f);
         state.MoveSpeed += 2f;
         state.DamageUp += 0.3f;
-        if (state.DamageFixRate < 1.5f) 
-            state.DamageFixRate = 1.5f;
+        if (state.DamageAdjustment < 1.5f) 
+            state.DamageAdjustment = 1.5f;
         state.Damage = state.GetFinalDamage(state.Damage);
         state.ShootRange += 2;
         state.CriticalRate += 0.2f;

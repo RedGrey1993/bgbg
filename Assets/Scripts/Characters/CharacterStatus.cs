@@ -84,6 +84,9 @@ public class CharacterStatus : MonoBehaviour
             // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);
             attacker.Killed(this);
+
+            if (attacker.State.HpStealFix > Constants.Eps)
+                attacker.HealthChanged(Mathf.Min(attacker.State.CurrentHp + attacker.State.HpStealFix, attacker.State.MaxHp));
         }
         // TODO: 发送this.HealthChanged后的State结果给所有客户端
         HealthChanged(Mathf.Max(0, curHp));
@@ -110,6 +113,9 @@ public class CharacterStatus : MonoBehaviour
             // TODO: 发送attacker.ExpChanged的State结果给所有客户端
             attacker.ExpChanged(attackerCurExp);
             attacker.Killed(this);
+
+            if (attacker.State.HpStealFix > Constants.Eps)
+                attacker.HealthChanged(Mathf.Min(attacker.State.CurrentHp + attacker.State.HpStealFix, attacker.State.MaxHp));
         }
         // TODO: 发送this.HealthChanged后的State结果给所有客户端
         HealthChanged(Mathf.Max(0, curHp));

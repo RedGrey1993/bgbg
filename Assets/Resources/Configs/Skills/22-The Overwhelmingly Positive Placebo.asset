@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 22-The Overwhelmingly Positive Placebo
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 22
+  skillName: The Overwhelmingly Positive Placebo
+  description: 'Fire Rate Up! Range Up! Heal!
+
+    "Even if they''re botted, I believe
+    them."'
+  backgroundStory: This is a jar of "zombie bot reviews" purchased by some unscrupulous
+    game publisher. Although every "Good game!", "Masterpiece!", and "Devs rock!"
+    inside is soulless, automatically generated nonsense, for a lonely soul like
+    you desperate for affirmation and comfort, it works better than anything else.
+  icon: {fileID: 21300000, guid: b39ba06a79189f44287a90344c0dca56, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
+  IsActive: 0
+  cooldown: 10
+  executor: {fileID: 11400000, guid: 74174b47c3364914d9b519ad41183ff1, type: 2}
+  additionalExecutors: []
+  DamageUpChange: 0
+  HpStealFixChange: 0
+  ShootRangeChange: 2.5
+  AttackFreqUpChange: 0.7
+  CurrentHpChangeType1: 5
+  tags: 
