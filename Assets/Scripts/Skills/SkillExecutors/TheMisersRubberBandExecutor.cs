@@ -31,5 +31,7 @@ public class TheMisersRubberBandExecutor : SkillExecutor
 
         playerState.ShootRange += shootRangeChange;
         bulletState.IsReturnBullet = true;
+
+        UIManager.Instance.UpdateMyStatusUI(playerStatus);
     }
 }

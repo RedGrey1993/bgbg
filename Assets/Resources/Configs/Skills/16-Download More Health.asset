@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64df679128812e4790481ec031af944, type: 3}
+  m_Name: 16-Download More Health
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  id: 16
+  skillName: Download More Health
+  description: 'Health Up!
+
+    "Seems legit."'
+  backgroundStory: This is a long-standing urban legend from the old internet era,
+    a supposedly magical little program that could increase hardware performance
+    out of thin air. Of course, anyone with an IQ higher than a slice of bread knew
+    it was a virus back in the day.
+  icon: {fileID: 1785372586879374701, guid: 1fca934008393be4f9d92341a4b5ca4d, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
+  IsActive: 0
+  cooldown: 10
+  executor: {fileID: 11400000, guid: 7e742434b0fe7b04fbcb2411eb55b21d, type: 2}
+  tags: 

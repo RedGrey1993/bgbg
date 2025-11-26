@@ -44,7 +44,7 @@ namespace NetworkMessageProto {
             "ZBgGIAEoAhIOCgZEYW1hZ2UYByABKAISEAoIRGFtYWdlVXAYFyABKAISFQoN",
             "RGFtYWdlRml4UmF0ZRgbIAEoAhIXCg9BdHRhY2tGcmVxdWVuY3kYCCABKAIS",
             "FAoMQXR0YWNrRnJlcVVwGBggASgCEhIKClNob290UmFuZ2UYCSABKAISFAoM",
-            "Q3JpdGljYWxSYXRlGAogASgNEhQKDEN1cnJlbnRMZXZlbBgMIAEoDRISCgpD",
+            "Q3JpdGljYWxSYXRlGAogASgCEhQKDEN1cnJlbnRMZXZlbBgMIAEoDRISCgpD",
             "dXJyZW50RXhwGA0gASgNEhAKCEV4cEdpdmVuGBkgASgNEisKCFBvc2l0aW9u",
             "GAsgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMyEhAKCFNraWxsSWRz",
             "GA4gAygFEiAKGEN1cnJlbnRTdGFnZVNraWxsTGVhcm5lZBgPIAEoCBIZChFU",
@@ -2005,13 +2005,13 @@ namespace NetworkMessageProto {
 
     /// <summary>Field number for the "CriticalRate" field.</summary>
     public const int CriticalRateFieldNumber = 10;
-    private uint criticalRate_;
+    private float criticalRate_;
     /// <summary>
     /// 暴击率
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CriticalRate {
+    public float CriticalRate {
       get { return criticalRate_; }
       set {
         criticalRate_ = value;
@@ -2208,7 +2208,7 @@ namespace NetworkMessageProto {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AttackFrequency, other.AttackFrequency)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AttackFreqUp, other.AttackFreqUp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShootRange, other.ShootRange)) return false;
-      if (CriticalRate != other.CriticalRate) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CriticalRate, other.CriticalRate)) return false;
       if (CurrentLevel != other.CurrentLevel) return false;
       if (CurrentExp != other.CurrentExp) return false;
       if (ExpGiven != other.ExpGiven) return false;
@@ -2242,7 +2242,7 @@ namespace NetworkMessageProto {
       if (AttackFrequency != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AttackFrequency);
       if (AttackFreqUp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AttackFreqUp);
       if (ShootRange != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShootRange);
-      if (CriticalRate != 0) hash ^= CriticalRate.GetHashCode();
+      if (CriticalRate != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CriticalRate);
       if (CurrentLevel != 0) hash ^= CurrentLevel.GetHashCode();
       if (CurrentExp != 0) hash ^= CurrentExp.GetHashCode();
       if (ExpGiven != 0) hash ^= ExpGiven.GetHashCode();
@@ -2311,9 +2311,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(77);
         output.WriteFloat(ShootRange);
       }
-      if (CriticalRate != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CriticalRate);
+      if (CriticalRate != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(CriticalRate);
       }
       if (position_ != null) {
         output.WriteRawTag(90);
@@ -2414,9 +2414,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(77);
         output.WriteFloat(ShootRange);
       }
-      if (CriticalRate != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CriticalRate);
+      if (CriticalRate != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(CriticalRate);
       }
       if (position_ != null) {
         output.WriteRawTag(90);
@@ -2517,8 +2517,8 @@ namespace NetworkMessageProto {
       if (ShootRange != 0F) {
         size += 1 + 4;
       }
-      if (CriticalRate != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CriticalRate);
+      if (CriticalRate != 0F) {
+        size += 1 + 4;
       }
       if (CurrentLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentLevel);
@@ -2600,7 +2600,7 @@ namespace NetworkMessageProto {
       if (other.ShootRange != 0F) {
         ShootRange = other.ShootRange;
       }
-      if (other.CriticalRate != 0) {
+      if (other.CriticalRate != 0F) {
         CriticalRate = other.CriticalRate;
       }
       if (other.CurrentLevel != 0) {
@@ -2696,8 +2696,8 @@ namespace NetworkMessageProto {
             ShootRange = input.ReadFloat();
             break;
           }
-          case 80: {
-            CriticalRate = input.ReadUInt32();
+          case 85: {
+            CriticalRate = input.ReadFloat();
             break;
           }
           case 90: {
@@ -2831,8 +2831,8 @@ namespace NetworkMessageProto {
             ShootRange = input.ReadFloat();
             break;
           }
-          case 80: {
-            CriticalRate = input.ReadUInt32();
+          case 85: {
+            CriticalRate = input.ReadFloat();
             break;
           }
           case 90: {

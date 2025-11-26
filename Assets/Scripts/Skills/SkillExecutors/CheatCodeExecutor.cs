@@ -8,7 +8,8 @@ using UnityEngine;
 // 5.伤害+0.3
 // 6.伤害修正=1.5倍
 // 7.射程+2
-// 8.主动道具恢复充能
+// 8.暴击率+20%
+// 9.主动道具恢复充能
 [CreateAssetMenu(fileName = "CheatCodeExecutor", menuName = "Skills/Effects/15 Cheat Code")]
 public class CheatCodeExecutor : SkillExecutor
 {
@@ -27,6 +28,7 @@ public class CheatCodeExecutor : SkillExecutor
             state.DamageFixRate = 1.5f;
         state.Damage = state.GetFinalDamage(state.Damage);
         state.ShootRange += 2;
+        state.CriticalRate += 0.2f;
         state.ActiveSkillCurCd = -1;
         UIManager.Instance.UpdateMyStatusUI(status);
     }

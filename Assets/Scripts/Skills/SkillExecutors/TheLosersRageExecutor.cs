@@ -41,5 +41,7 @@ public class TheLosersRageExecutor : SkillExecutor
         if (damageFixRate > playerState.DamageFixRate)
             playerState.DamageFixRate = damageFixRate;
         playerState.Damage = playerState.GetFinalDamage(playerState.Damage);
+
+        UIManager.Instance.UpdateMyStatusUI(playerStatus);
     }
 }

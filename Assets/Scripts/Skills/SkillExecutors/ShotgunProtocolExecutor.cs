@@ -22,5 +22,7 @@ public class ShotgunProtocolExecutor : SkillExecutor
         if (bulletState.ShootNum == 1) bulletState.ShootNum = 3;
         else bulletState.ShootNum += 3;
         bulletState.ShootAngleRange = 120;
+
+        UIManager.Instance.UpdateMyStatusUI(playerStatus);
     }
 }

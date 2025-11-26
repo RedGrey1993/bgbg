@@ -9,6 +9,6 @@ public class HealthRecoveryExecutor : SkillExecutor
         
         var playerStatus = playerObj.GetComponent<CharacterStatus>();
         var state = playerStatus.State;
-        state.CurrentHp = Mathf.Min(state.CurrentHp + state.MaxHp / 2, state.MaxHp);
+        playerStatus.HealthChanged(Mathf.Min(state.CurrentHp + state.MaxHp / 2, state.MaxHp));
     }
 }

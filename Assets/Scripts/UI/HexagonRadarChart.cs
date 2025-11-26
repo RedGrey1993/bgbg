@@ -19,7 +19,7 @@ public class HexagonRadarChart : Graphic
     // DM, FR, CR, MS, BS, RG
     // 初始值：1，3，0，5，6，5
     private float[] stats = new float[6] { 0.1f, 0.8f, 0.6f, 0.7f, 0.9f, 0.5f };
-    static readonly int[] MaxStats = new int[6] { 7, 7, 100, 7, 7, 7 };
+    static readonly int[] MaxStats = new int[6] { 7, 7, 1, 7, 7, 7 };
 
     [Header("前景样式 (能力多边形)")]
     [Tooltip("能力多边形填充区域的颜色")]
