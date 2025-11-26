@@ -273,8 +273,8 @@ public class CharacterManager : MonoBehaviour
                 playerStatus.State.PlayerId = playerId;
                 playerStatus.State.PlayerName = playerName;
                 playerStatus.SetColor(playerId <= 1 ? Color.white : Constants.RandomColor());
+                playerStatus.SetScale(1);
             }
-            playerStatus.SetScale(1);
 
             if (initBulletState != null)
             {

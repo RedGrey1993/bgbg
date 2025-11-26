@@ -69,7 +69,7 @@ public class Boss_1_0_PhantomTankAI : CharacterBaseAI
         // 攻击时不要改变朝向，只有不攻击时才改变（避免用户操作时持续读取Input导致朝向乱变）
         if (isAttack && !isAi)
         {
-            characterInput.MoveInput = Vector2.zero;
+            // characterInput.MoveInput = Vector2.zero;
             characterInput.LookInput = Vector2.zero;
         }
     }

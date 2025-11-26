@@ -809,11 +809,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
             startDir = rotationPlus * startDir;
         }
+        isAttack = false;
         if (atkInterval > 0f)
         {
             yield return new WaitForSeconds(atkInterval);
         }
-        isAttack = false;
         shootCoroutine = null;
     }
     private Coroutine shootCoroutine = null;

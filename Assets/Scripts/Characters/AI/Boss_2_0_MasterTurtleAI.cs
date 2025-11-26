@@ -21,6 +21,11 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
     #endregion
 
     #region Attack Action
+    protected override bool IsAtkCoroutineIdle()
+    {
+        return atkCoroutine == null && ActiveSkillCoroutine == null;
+    }
+
     private Coroutine atkCoroutine = null;
     protected override void AttackAction()
     {
@@ -74,7 +79,7 @@ public class Boss_2_0_MasterTurtleAI : CharacterBaseAI
         if (aggroTarget != null) // ai 逻辑
             lookInput = characterInput.LookInput = (aggroTarget.transform.position - transform.position).normalized;
         else // 玩家逻辑，aggroTarget用于追踪子弹
-            aggroTarget = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 45);
+            aggroTarget = CharacterManager.Instance.FindNearestEnemyInAngle(gameObject, lookInput, 180);
 
         if (CharacterData.shootSound)
         {

@@ -16,10 +16,13 @@ public class PlayerStateChangeExecutor : SkillExecutor
         state.ShootRange += skillData.ShootRangeChange;
         state.AttackFreqUp += skillData.AttackFreqUpChange;
         state.AttackFrequency = state.GetFinalAtkFreq();
-        
+        state.MoveSpeed += skillData.MoveSpeedChange;
+
         state.CurrentHp += skillData.CurrentHpChangeType1;
         state.MaxHp = Mathf.Max(state.MaxHp, state.CurrentHp);
         status.HealthChanged(state.CurrentHp);
+
+        status.SetScale(state.Scale * (1 + skillData.ScaleChange));
 
         UIManager.Instance.UpdateMyStatusUI(status);
     }

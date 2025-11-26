@@ -17,9 +17,11 @@ public class SkillData : ScriptableObject
     public float DamageUpChange;
     public float HpStealFixChange;
     public float ShootRangeChange;
+    public float MoveSpeedChange;
     public float AttackFreqUpChange;
     [Header("优先恢复当前血量，溢出的血量会恢复到最大血量")]
     public float CurrentHpChangeType1;
+    public float ScaleChange;
     public List<ItemTag> tags;
 
     public bool MatchTags(List<ItemTag> chTags)

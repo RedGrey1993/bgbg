@@ -13,22 +13,18 @@ MonoBehaviour:
   m_Name: Boss_1_0_PhantomTank
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   shootSound: {fileID: 8300000, guid: 09926e3f4e00d3f4e884a2bf5462e9d2, type: 3}
-  jumpSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  deathSound: {fileID: 0}
   bulletPrefab: {fileID: 7906872621619036891, guid: a3e45b601093d5e4e9b77ff83f0818d0, type: 3}
-  shadowPrefab: {fileID: 0}
   deadBodyPrefab: {fileID: 0}
-  explosionEffectPrefab: {fileID: 0}
-  summonEffectPrefab: {fileID: 0}
-  teleportEffectPrefab: {fileID: 0}
-  accumulateEffectPrefab: {fileID: 0}
   figure: {fileID: 5631680148070118295, guid: a0164557e52213c40990b842ffbada81, type: 3}
   CharacterType: 4
   MaxHp: 5
-  MoveSpeed: 7
+  MoveSpeed: 6
   ShootRange: 15
   BulletSpeed: 8
   Damage: 2
+  DamageAdjustment: 1
   AttackFreqUp: -2
   CriticalRate: 0
   ExpGiven: 0
@@ -50,5 +46,9 @@ MonoBehaviour:
   randomMoveToTargetInterval:
     min: 0.5
     max: 2
+  idleRate: 0.2
+  idleTime:
+    min: 1
+    max: 3
   itemTags: 01000000
   takeCollisionDamage: 0
