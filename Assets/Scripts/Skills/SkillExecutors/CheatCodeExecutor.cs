@@ -26,7 +26,7 @@ public class CheatCodeExecutor : SkillExecutor
         state.DamageUp += 0.3f;
         if (state.DamageAdjustment < 1.5f) 
             state.DamageAdjustment = 1.5f;
-        state.Damage = state.GetFinalDamage(state.Damage);
+        state.Damage = state.GetFinalDamage(status.characterData.Damage);
         state.ShootRange += 2;
         state.CriticalRate += 0.2f;
         state.ActiveSkillCurCd = -1;

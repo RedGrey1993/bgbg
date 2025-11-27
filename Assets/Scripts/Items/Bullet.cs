@@ -250,7 +250,7 @@ public class Bullet : MonoBehaviour
                     for (int i = 0; i < 2; i++)
                     {
                         var newBullet = GameManager.Instance.GetObject(gameObject, startPos);
-                        newBullet.transform.localScale = transform.localScale / 2;
+                        newBullet.transform.localScale = transform.localScale * 0.8f;
                         newBullet.transform.localRotation = Quaternion.LookRotation(Vector3.forward, startDir);
                         var bs = newBullet.GetBullet();
                         bs.StartPosition = startPos;

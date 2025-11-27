@@ -15,10 +15,14 @@ public class SkillData : ScriptableObject
     public SkillExecutor executor; // 技能执行器接口
     public List<SkillExecutor> additionalExecutors; // 额外的一些执行器，一般只有一个执行器
     public float DamageUpChange;
+    public float DamageAdjustment;
+    [Header("每击杀一个敌人，固定偷取的生命值")]
     public float HpStealFixChange;
+    public float MaxHpChange;
     public float ShootRangeChange;
     public float MoveSpeedChange;
     public float AttackFreqUpChange;
+    public float CriticalRateChange;
     [Header("优先恢复当前血量，溢出的血量会恢复到最大血量")]
     public float CurrentHpChangeType1;
     public float ScaleChange;

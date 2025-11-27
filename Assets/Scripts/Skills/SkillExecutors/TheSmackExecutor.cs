@@ -15,7 +15,7 @@ public class TheSmackExecutor : SkillExecutor
         var state = status.State;
         state.BulletSpeed += 2.3f;
         state.DamageUp += 1;
-        state.Damage = state.GetFinalDamage(state.Damage);
+        state.Damage = state.GetFinalDamage(status.characterData.Damage);
 
         UIManager.Instance.UpdateMyStatusUI(status);
     }
