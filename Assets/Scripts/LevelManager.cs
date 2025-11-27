@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
     {
         int level = storage.CurrentStage;
         Debug.Log($"################# 生成第 {level} 关 #################");
-        CurrentLevelData = LevelDatabase.Instance.GetLevelData(level);
+        CurrentLevelData = GameManager.Instance.GetStageConfig(level).stageData;
 
         GenerateRooms(storage);
 
@@ -565,7 +565,7 @@ public class LevelManager : MonoBehaviour
     private void GenerateUnbreakableObstacle(Rect room, LocalStorage storage)
     {
         int stage = storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData(stage);
+        var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
         var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
         if (uott == null) return;
 
@@ -596,7 +596,7 @@ public class LevelManager : MonoBehaviour
     private void GenerateBreakableObstacle(Rect room, LocalStorage storage)
     {
         int stage = storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData(stage);
+        var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
         var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
         if (uott == null) return;
 
@@ -627,7 +627,7 @@ public class LevelManager : MonoBehaviour
     private void GenerateHole(Rect room, LocalStorage storage)
     {
         int stage = storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData(stage);
+        var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
         var (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
         if (htt == null) return;
 

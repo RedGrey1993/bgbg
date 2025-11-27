@@ -12,10 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d55d457e7cb165439c45646a6421175, type: 3}
   m_Name: LocalGameConfig
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
+  CriticalDamageMultiplier: 2
+  PlayCG: 0
   FirstRoomBlastInterval: 1000
   OtherRoomBlastInterval: 1000
   RedFlashRectDuration: 10
-  PlayCG: 0
+  StageConfigs:
+  - stageData: {fileID: 11400000, guid: ee150687057fe9b40a3bb99e8396e0a8, type: 2}
+    isSysGuardianStage: 0
+    isSysBugStage: 0
+  - stageData: {fileID: 11400000, guid: 0aa299a024f59f644b84ebadda688227, type: 2}
+    isSysGuardianStage: 0
+    isSysBugStage: 0
+  - stageData: {fileID: 11400000, guid: 21504aa411195a045b051dfcb3107a5c, type: 2}
+    isSysGuardianStage: 0
+    isSysBugStage: 0
+  - stageData: {fileID: 11400000, guid: a7bc448cf2295a44c8679c8e16ea1ed8, type: 2}
+    isSysGuardianStage: 1
+    isSysBugStage: 0
+  - stageData: {fileID: 11400000, guid: 9f5a532d06e4e4d42a0691f3e290f9ac, type: 2}
+    isSysGuardianStage: 0
+    isSysBugStage: 1
   MinionPrefabs:
   - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}

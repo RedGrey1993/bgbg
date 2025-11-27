@@ -26,7 +26,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
             PokeMinionReviveTime.Clear();
             foreach (var prefabInfo in pokeMinionPrefabInfos)
             {
-                var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
+                var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
                 var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
 
                 PokeMinionPrefabs.Add(minionPrefab);
@@ -36,7 +36,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
         else if (PokeMinionPrefabs.Count == 0 && pokeMinionPrefabInfos.Count > 0)
         {
             var prefabInfo = pokeMinionPrefabInfos[0];
-            var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
+            var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
             var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
 
             PokeMinionPrefabs.Add(minionPrefab);

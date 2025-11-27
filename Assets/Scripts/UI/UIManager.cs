@@ -489,7 +489,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.Instance.StartFromChooseCharacter(storage))
         {
-            LevelData curStageData = LevelDatabase.Instance.GetLevelData(storage.CurrentStage);
+            LevelData curStageData = GameManager.Instance.GetStageConfig(storage.CurrentStage).stageData;
             bool hasValidStorage = GameManager.Instance.HasValidStorage(storage);
             SelectCharacterManager.Instance.RegisterEnterButtonPressed(() =>
             {

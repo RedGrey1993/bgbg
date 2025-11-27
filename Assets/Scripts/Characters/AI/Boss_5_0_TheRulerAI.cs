@@ -32,7 +32,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         prevBossPrefabInfos = new List<BossPrefabInfo>();
         foreach (int stage in GameManager.Instance.PassedStages)
         {
-            LevelData levelData = LevelDatabase.Instance.GetLevelData(stage);
+            LevelData levelData = GameManager.Instance.GetStageConfig(stage).stageData;
             for (int i = 0; i < levelData.bossPrefabs.Count; ++i)
             {
                 prevBossPrefabInfos.Add(new BossPrefabInfo
@@ -161,7 +161,7 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
             var room = LevelManager.Instance.Rooms[roomId];
             var bossPrefabInfo = prevBossPrefabInfos[bossIdx++];
-            var bossPrefab = LevelDatabase.Instance.GetBossPrefab(bossPrefabInfo.StageId, bossPrefabInfo.PrefabId);
+            var bossPrefab = GameManager.Instance.GetStageConfig(bossPrefabInfo.StageId).stageData.bossPrefabs[bossPrefabInfo.PrefabId];
             var charData = bossPrefab.GetComponent<CharacterStatus>().characterData;
             int extentsX = (int)charData.bound.extents.x, extentsY = (int)charData.bound.extents.y;
             int theRulerHeight = (int)CharacterData.bound.extents.y;

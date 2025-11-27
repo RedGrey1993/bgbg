@@ -98,7 +98,7 @@ public class CharacterManager : MonoBehaviour
         ClearMinionObjects();
 
         int stage = storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData(storage.CurrentStage);
+        var levelData = GameManager.Instance.GetStageConfig(storage.CurrentStage).stageData;
 
         if (!storage.NewLevel)
         {
@@ -168,9 +168,9 @@ public class CharacterManager : MonoBehaviour
         ClearBossObjects();
         
         int stage = storage.CurrentStage;
-        var levelData = LevelDatabase.Instance.GetLevelData(stage);
+        var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
 
-        if (LevelDatabase.Instance.IsSysBugStage(stage) && storage.NewRulerPlayerState != null)
+        if (GameManager.Instance.IsSysBugStage(stage) && storage.NewRulerPlayerState != null)
         {
             var prefab = SelectCharacterManager.Instance.characterPrefabs[storage.NewRulerPrefabId];
             NewRulerGo = Instantiate(prefab, bossParant);

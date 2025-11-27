@@ -121,7 +121,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
         aiScript.TobeDestroyed.Remove(pokeball);
 
         var prefabInfo = CharacterManager.Instance.minionPrefabInfos[enemy.State.PlayerId];
-        var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
+        var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
         var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
 
         if (aiScript.characterStatus.State.CatchedMinions.Count == maxPokeMinionCount)

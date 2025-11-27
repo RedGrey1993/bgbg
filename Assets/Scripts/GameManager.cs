@@ -269,15 +269,33 @@ public class GameManager : MonoBehaviour
         audioSource.Stop();
     }
 
+    public StageConfig GetStageConfig(int stage) // stage range [1, StageConfigs.Length]
+    {
+        stage--;
+        if (stage < gameConfig.StageConfigs.Length)
+        {
+            return gameConfig.StageConfigs[stage];
+        }
+        else
+        {
+            return new StageConfig();
+        }
+    }
+
+    public bool IsSysBugStage(int stage)
+    {
+        return GetStageConfig(stage).isSysBugStage;
+    }
+
     public void ToNextStage(Action callback)
     {
         SkillPanelController skillPanelController = UIManager.Instance.GetComponent<SkillPanelController>();
         skillPanelController.ForceRandomChoose = true;
         PassedStages.Add(Storage.CurrentStage);
         bool hasBugItem = CharacterManager.Instance.MySelfHasSysBug();
-        bool isBugStage = LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage + 1);
-        LevelData curStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
-        LevelData nextStage = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage + 1);
+        bool isBugStage = IsSysBugStage(Storage.CurrentStage + 1);
+        LevelData curStage = GetStageConfig(Storage.CurrentStage).stageData;
+        LevelData nextStage = GetStageConfig(Storage.CurrentStage + 1).stageData;
         if ((hasBugItem && isBugStage) || (!isBugStage && nextStage != null))
         {
             UIManager.Instance.PlayLoadingAnimation(() =>
@@ -293,7 +311,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // 没有关卡数据了，显示通关界面
-            if (LevelDatabase.Instance.IsSysBugStage(Storage.CurrentStage))
+            if (IsSysBugStage(Storage.CurrentStage))
             {
                 bool isHidden = false;
                 bool isAllAchieved = false;
@@ -363,12 +381,12 @@ public class GameManager : MonoBehaviour
     {
         // TODO: 临时，测试用
         return true;
-        // return LevelDatabase.Instance.IsSysGuardianStage(Storage.CurrentStage);
+        // return GetStageConfig(Storage.CurrentStage).isSysGuardianStage;
     }
 
     public void PlayBgm(bool inBossRoom = false)
     {
-        var stageData = LevelDatabase.Instance.GetLevelData(Storage.CurrentStage);
+        var stageData = GetStageConfig(Storage.CurrentStage).stageData;
         if (inBossRoom) {
             audioSource.clip = stageData.bgmBoss;
         }
@@ -378,7 +396,6 @@ public class GameManager : MonoBehaviour
         audioSource.loop = true;
         audioSource.volume = stageData.bgmVolume;
         audioSource.Play();
-        // if (!audioSource.isPlaying)
     }
 
     #endregion
@@ -496,7 +513,7 @@ public class GameManager : MonoBehaviour
             {
                 int stage = int.Parse(command.Split(":")[^1]);
                 Storage.CurrentStage = stage - 1; // to next stage, newLevel = true
-                LevelData nextStage = LevelDatabase.Instance.GetLevelData(stage);
+                LevelData nextStage = GetStageConfig(stage).stageData;
 
                 UIManager.Instance.PlayLoadingAnimation(() =>
                 {

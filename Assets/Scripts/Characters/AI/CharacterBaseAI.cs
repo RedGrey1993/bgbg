@@ -89,7 +89,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
             PokeMinionReviveTime.Clear();
             foreach (var prefabInfo in characterStatus.State.CatchedMinions)
             {
-                var levelData = LevelDatabase.Instance.GetLevelData(prefabInfo.StageId);
+                var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
                 var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
                 PokeMinionPrefabs.Add(minionPrefab);
                 PokeMinionReviveTime.Add(0);
