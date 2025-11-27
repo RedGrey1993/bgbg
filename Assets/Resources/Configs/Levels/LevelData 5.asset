@@ -136,6 +136,15 @@ MonoBehaviour:
   bossRoomMinHeight: 40
   holeRatio: 0.001
   unbreakableObstacleRatio: 0.001
+  breakableObstacleRatio: 0.001
+  tileTemplates:
+  - {fileID: 11400000, guid: de3ee702826657d45b2a1f4ded179521, type: 2}
+  - {fileID: 11400000, guid: 80c7bd1c58eb98f4b92947c134c17ae3, type: 2}
+  - {fileID: 11400000, guid: 43ef8375e87bbed4989248fe9fa9b44b, type: 2}
+  - {fileID: 11400000, guid: e15a291b8f7cfce4782621f6be85691a, type: 2}
+  - {fileID: 11400000, guid: 1c2e689e4af7ae94ea1bfeeb8d653613, type: 2}
+  - {fileID: 11400000, guid: 83635ba9556769445b95fd3491b44ef3, type: 2}
+  - {fileID: 11400000, guid: 09cef576b23fa654cac05246d3ecda52, type: 2}
   bgmNormal: {fileID: 8300000, guid: 7741e036a08bf9a42bdc68bff1dea918, type: 3}
   bgmBoss: {fileID: 8300000, guid: 20d7812b6c55fba458853e94c89e01bc, type: 3}
   bgmVolume: 0.2

@@ -98,7 +98,7 @@ public class CharacterStatus : MonoBehaviour
     {
         if (damageType == DamageType.Collision && !characterData.takeCollisionDamage) return;
         if (IsDead()) return;
-        if (Random.value < attacker.State.CriticalRate)
+        if (attacker != null && Random.value < attacker.State.CriticalRate)
         {
             damage *= GameManager.Instance.gameConfig.CriticalDamageMultiplier;
         }

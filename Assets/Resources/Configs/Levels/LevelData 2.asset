@@ -37,6 +37,20 @@ MonoBehaviour:
   bossRoomMinHeight: 20
   holeRatio: 0.001
   unbreakableObstacleRatio: 0.001
+  breakableObstacleRatio: 0.001
+  tileTemplates:
+  - {fileID: 11400000, guid: a0ed60495909bb1439b9e4eb065e4192, type: 2}
+  - {fileID: 11400000, guid: 89ff6aa872364e9409b337a135bde493, type: 2}
+  - {fileID: 11400000, guid: 0fcdae0cdf669884ab13801502510fec, type: 2}
+  - {fileID: 11400000, guid: c72987518dd80e9478173b1012f366d1, type: 2}
+  - {fileID: 11400000, guid: e3ea4fd21c2bcfe49b76b258122dbc3b, type: 2}
+  - {fileID: 11400000, guid: a2ef7b9b4ea0a5a4ba7c507fb5e720ca, type: 2}
+  - {fileID: 11400000, guid: 9cfe539ae3146bb42affabddc898348a, type: 2}
+  - {fileID: 11400000, guid: 848de996dbd2a0246a23115f6608d756, type: 2}
+  - {fileID: 11400000, guid: 6ef5ce44f73af334795640905cab8fa8, type: 2}
+  - {fileID: 11400000, guid: bbaf7e015f4aa0f419a6b653d5eee4c5, type: 2}
+  - {fileID: 11400000, guid: 17aa3238666c64246b8dbea2fda7e38a, type: 2}
+  - {fileID: 11400000, guid: e84e8e5c588506d40bbd7b1c8e3a6cd8, type: 2}
   bgmNormal: {fileID: 8300000, guid: 66d04315261801c4a8cb1f38ab308393, type: 3}
   bgmBoss: {fileID: 8300000, guid: 5b71fe8a18289af4c82732019dac8f1b, type: 3}
   bgmVolume: 0.2

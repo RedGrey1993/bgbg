@@ -33,6 +33,4 @@ public class TileTemplate : ScriptableObject
     public TileType tileType;
     // (可选) 存储门的位置等元数据
     // public Vector3Int[] doorPositions;
-
-    public int stage = 1;
 }

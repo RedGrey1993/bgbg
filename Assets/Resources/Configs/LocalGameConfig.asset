@@ -18,7 +18,7 @@ MonoBehaviour:
   OtherRoomBlastInterval: 1000
   RedFlashRectDuration: 10
   StageConfigs:
-  - stageData: {fileID: 11400000, guid: ee150687057fe9b40a3bb99e8396e0a8, type: 2}
+  - stageData: {fileID: 11400000, guid: a7bc448cf2295a44c8679c8e16ea1ed8, type: 2}
     isSysGuardianStage: 0
     isSysBugStage: 0
   - stageData: {fileID: 11400000, guid: 0aa299a024f59f644b84ebadda688227, type: 2}

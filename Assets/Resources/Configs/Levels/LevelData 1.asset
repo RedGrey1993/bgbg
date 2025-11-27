@@ -73,6 +73,23 @@ MonoBehaviour:
   holeRatio: 0.001
   unbreakableObstacleRatio: 0
   breakableObstacleRatio: 0.005
+  tileTemplates:
+  - {fileID: 11400000, guid: 5c1f44b14cbc7694ea932d846fe60aa6, type: 2}
+  - {fileID: 11400000, guid: b5bfe01cfd679bd45b3b40be7ce14169, type: 2}
+  - {fileID: 11400000, guid: 1a0fb858c77f9f74eaf59b3bc708e064, type: 2}
+  - {fileID: 11400000, guid: b9e963045f1b679458b41b4a8a6303f8, type: 2}
+  - {fileID: 11400000, guid: 4e6bfad1b9dac184c951dc43ebfc5af0, type: 2}
+  - {fileID: 11400000, guid: ca2289bb231127244932c4a06ebeb638, type: 2}
+  - {fileID: 11400000, guid: 8518987614daf404480f10dc7fb694d8, type: 2}
+  - {fileID: 11400000, guid: 689980756a03f3c4185bc575c7cd2f6b, type: 2}
+  - {fileID: 11400000, guid: dccaeb5ac1d5a744f9c8240387414dcc, type: 2}
+  - {fileID: 11400000, guid: cce427ee664481d45b339d628ac13c6f, type: 2}
+  - {fileID: 11400000, guid: 739cba6d2bf065f42b12afe4ab4d9dfe, type: 2}
+  - {fileID: 11400000, guid: 1d2da7ce11748664c83cb49c4595da30, type: 2}
+  - {fileID: 11400000, guid: 81342b3a89d531543a82ff71e3508e3a, type: 2}
+  - {fileID: 11400000, guid: 435f39465cf1610419f9d8c7e4a33e65, type: 2}
+  - {fileID: 11400000, guid: 82cc659323b7e5e4c8c07a0fa547bf7a, type: 2}
+  - {fileID: 11400000, guid: e5efe5d336aea18488975becc4cf4c15, type: 2}
   bgmNormal: {fileID: 8300000, guid: 886fc467bbbd49147a9f940de3044fbe, type: 3}
   bgmBoss: {fileID: 8300000, guid: e17a6c43a91cfb043af815ac86ec825c, type: 3}
   bgmVolume: 0.2

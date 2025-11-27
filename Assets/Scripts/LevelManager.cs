@@ -342,7 +342,7 @@ public class LevelManager : MonoBehaviour
         {
             // 被销毁的房间的tile，直接跳过
             if (!tileToRooms.ContainsKey(new Vector3Int(wallTile.X, wallTile.Y))) continue;
-            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
+            TileTemplate tt = GameManager.Instance.GetTileTemplate(stage, (TileType)wallTile.TileType, wallTile.TileTemplateId);
             if ((TileType)wallTile.TileType == TileType.BreakableObstacle) 
             {
                 wallTilemap.SetTile(new Vector3Int(wallTile.X, wallTile.Y), tt.breakableCollisionTiles[wallTile.TileId].tile);
@@ -359,7 +359,7 @@ public class LevelManager : MonoBehaviour
         foreach (var floorTile in storage.FloorTiles)
         {
             if (!tileToRooms.ContainsKey(new Vector3Int(floorTile.X, floorTile.Y))) continue;
-            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)floorTile.TileType, floorTile.TileTemplateId);
+            TileTemplate tt = GameManager.Instance.GetTileTemplate(stage, (TileType)floorTile.TileType, floorTile.TileTemplateId);
             floorTilemap.SetTile(new Vector3Int(floorTile.X, floorTile.Y), tt.floorTiles[floorTile.TileId].tile);
             pos2TilesDict.Add((new Vector3Int(floorTile.X, floorTile.Y), (TileType)floorTile.TileType), new ImmutableTileInfo { tileTemplateId = floorTile.TileTemplateId, tileId = floorTile.TileId });
         }
@@ -368,7 +368,7 @@ public class LevelManager : MonoBehaviour
         foreach (var holeTile in storage.HoleTiles)
         {
             if (!tileToRooms.ContainsKey(new Vector3Int(holeTile.X, holeTile.Y))) continue;
-            TileTemplate tt = TilemapDatabase.Instance.GetTileTemplate(stage, (TileType)holeTile.TileType, holeTile.TileTemplateId);
+            TileTemplate tt = GameManager.Instance.GetTileTemplate(stage, (TileType)holeTile.TileType, holeTile.TileTemplateId);
             holeTilemap.SetTile(new Vector3Int(holeTile.X, holeTile.Y), tt.unbreakableCollisionTiles[holeTile.TileId].tile);
             pos2TilesDict.Add((new Vector3Int(holeTile.X, holeTile.Y), (TileType)holeTile.TileType), new ImmutableTileInfo { tileTemplateId = holeTile.TileTemplateId, tileId = holeTile.TileId });
         }
@@ -466,9 +466,9 @@ public class LevelManager : MonoBehaviour
     public void GenerateDoorTiles(int roomIdx, LocalStorage storage)
     {
         int stage = storage.CurrentStage;
-        var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
+        var (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
         if (uott == null)
-            (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+            (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
 
         int ttCnt = uott.unbreakableCollisionTiles.Length;
         for (int i = 0; i < roomToDoorTiles[roomIdx].Count; ++i)
@@ -513,7 +513,7 @@ public class LevelManager : MonoBehaviour
                 }
 
                 if (wallTilemap.HasTile(pos)) continue;
-                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
                 for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
@@ -542,7 +542,7 @@ public class LevelManager : MonoBehaviour
                 }
 
                 if (wallTilemap.HasTile(pos)) continue;
-                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
                 for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
@@ -566,7 +566,7 @@ public class LevelManager : MonoBehaviour
     {
         int stage = storage.CurrentStage;
         var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
-        var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
+        var (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
         if (uott == null) return;
 
         for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
@@ -579,7 +579,7 @@ public class LevelManager : MonoBehaviour
                 if (wallTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > levelData.unbreakableObstacleRatio) continue;
 
-                (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
+                (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
                 if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
                     || y + uott.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
@@ -597,7 +597,7 @@ public class LevelManager : MonoBehaviour
     {
         int stage = storage.CurrentStage;
         var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
-        var (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
+        var (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
         if (uott == null) return;
 
         for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
@@ -610,7 +610,7 @@ public class LevelManager : MonoBehaviour
                 if (wallTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > levelData.breakableObstacleRatio) continue;
 
-                (uott, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
+                (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
                 if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
                     || y + uott.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
@@ -628,7 +628,7 @@ public class LevelManager : MonoBehaviour
     {
         int stage = storage.CurrentStage;
         var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
-        var (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
+        var (htt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Hole);
         if (htt == null) return;
 
         for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
@@ -640,7 +640,7 @@ public class LevelManager : MonoBehaviour
                 if (holeTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > levelData.holeRatio) continue;
 
-                (htt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Hole);
+                (htt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Hole);
                 if (x + htt.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
                     || y + htt.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
@@ -668,7 +668,7 @@ public class LevelManager : MonoBehaviour
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
                 if (floorTilemap.HasTile(pos)) continue;
-                var (ft, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, tileType);
+                var (ft, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, tileType);
                 for(int i = 0; i < ft.floorTiles.Count(); i++)
                 {
                     TileData td = ft.floorTiles[i];
@@ -692,7 +692,7 @@ public class LevelManager : MonoBehaviour
             var pos = new Vector3Int(x, 0, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
                 for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
@@ -710,7 +710,7 @@ public class LevelManager : MonoBehaviour
             var pos = new Vector3Int(x, roomMaxHeight, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
+                var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Horizontal);
                 for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
@@ -728,7 +728,7 @@ public class LevelManager : MonoBehaviour
             var pos = new Vector3Int(0, y, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
                 for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
@@ -746,7 +746,7 @@ public class LevelManager : MonoBehaviour
             var pos = new Vector3Int(roomMaxWidth, y, 0);
             if (!wallTilemap.HasTile(pos))
             {
-                var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
+                var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Wall_Vertical);
                 for (int i = 0; i < wt.unbreakableCollisionTiles.Count(); i++)
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
@@ -906,7 +906,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        var (wt, ttId) = TilemapDatabase.Instance.GetRandomTileTemplate(
+        var (wt, ttId) = GameManager.Instance.GetRandomTileTemplate(
             GameManager.Instance.Storage.CurrentStage, TileType.Wall_Vertical);
         // 炸毁房间后，原来连通未炸毁房间的门需要变成墙
         // 遍历房间对应的门的Tiles

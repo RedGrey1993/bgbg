@@ -16455,7 +16455,7 @@ MonoBehaviour:
   - {fileID: 7952023968737134189}
   amplitude: 1
   floatSpeed: 1.5
-  turretRebornTime: 15
+  turretRebornTime: 30
   turretMoveSpeed: 5
   layser1ShootPositions:
   - {fileID: 4123852363017733264}

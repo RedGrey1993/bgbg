@@ -13,7 +13,6 @@ public class TilemapBaker : EditorWindow
     private Tilemap breakableCollisionTilemap;  // 场景中用于烘焙的碰撞图层
     private int weight = 1;
     private TileType tileType = TileType.Floor;
-    private int stage = 1;
     private string assetName = "MyNewRoom"; // 保存的文件名
     private string savePath = "Assets/Resources/Configs/TileTemplates"; // 保存的路径
 
@@ -42,7 +41,6 @@ public class TilemapBaker : EditorWindow
         unbreakableCollisionTilemap = (Tilemap)EditorGUILayout.ObjectField("不可破坏碰撞图层 (Collision)", unbreakableCollisionTilemap, typeof(Tilemap), true);
         weight = EditorGUILayout.IntField("权重", weight);
         tileType = (TileType)EditorGUILayout.EnumPopup("Tile类型", tileType);
-        stage = EditorGUILayout.IntField("关卡", stage);
 
         EditorGUILayout.Space(10);
 
@@ -155,7 +153,6 @@ public class TilemapBaker : EditorWindow
         // 注意：cellBounds 返回的大小可能比实际绘制的大1，我们使用 size 属性
         newTemplate.size = (Vector2Int)totalBounds.size;
         newTemplate.weight = weight;
-        newTemplate.stage = stage;
         newTemplate.tileType = tileType;
 
         // 4. 将实例保存为 .asset 文件

@@ -60,6 +60,7 @@ public class LevelData : ScriptableObject
     public float holeRatio = 0.001f;
     public float unbreakableObstacleRatio = 0.001f;
     public float breakableObstacleRatio = 0.001f;
+    public TileTemplate[] tileTemplates;
 
     public AudioClip bgmNormal;
     public AudioClip bgmBoss;

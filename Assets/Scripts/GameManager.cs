@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         saveFilePath = Path.Combine(Application.persistentDataPath, "savedata.bin");
+        LoadStageTiletemplates();
     }
 
     public bool IsLocalOrHost()
@@ -267,6 +268,64 @@ public class GameManager : MonoBehaviour
         CharacterManager.Instance.InitializeMySelf();
 
         audioSource.Stop();
+    }
+
+    private Dictionary<int, Dictionary<TileType, List<TileTemplate>>> StageTileTemplates {get;set;} = new();
+    private void LoadStageTiletemplates()
+    {
+        for (int stage = 1; stage <= gameConfig.StageConfigs.Length; stage++)
+        {
+            LevelData stageData = gameConfig.StageConfigs[stage - 1].stageData;
+            foreach (var tileTemplate in stageData.tileTemplates)
+            {
+                if (!StageTileTemplates.ContainsKey(stage))
+                {
+                    StageTileTemplates.Add(stage, new Dictionary<TileType, List<TileTemplate>>());
+                }
+
+                if (!StageTileTemplates[stage].ContainsKey(tileTemplate.tileType))
+                {
+                    StageTileTemplates[stage].Add(tileTemplate.tileType, new List<TileTemplate>());
+                }
+
+                StageTileTemplates[stage][tileTemplate.tileType].Add(tileTemplate);
+            }
+        }
+    }
+
+    public (TileTemplate, int) GetRandomTileTemplate(int stage, TileType tileType)
+    {
+        List<TileTemplate> templates;
+        if (!StageTileTemplates.ContainsKey(stage) || !StageTileTemplates[stage].ContainsKey(tileType))
+        {
+            return (null, -1);
+        }
+        else
+        {
+            templates = StageTileTemplates[stage][tileType];
+        }
+
+        var cumulativeWeight = 0;
+        foreach (var template in templates) cumulativeWeight += template.weight;
+
+        var randomWeight = UnityEngine.Random.Range(0, cumulativeWeight);
+        for (int i = 0; i < templates.Count; ++i)
+        {
+            var template = templates[i];
+            randomWeight -= template.weight;
+            if (randomWeight < 0)
+            {
+                return (template, i);
+            }
+        }
+
+        int rnd = UnityEngine.Random.Range(0, templates.Count);
+        return (templates[rnd], rnd);
+    }
+
+    public TileTemplate GetTileTemplate(int stage, TileType tileType, int tileTemplateId)
+    {
+        return StageTileTemplates[stage][tileType][tileTemplateId];
     }
 
     public StageConfig GetStageConfig(int stage) // stage range [1, StageConfigs.Length]
