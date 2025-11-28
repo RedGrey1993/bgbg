@@ -213,8 +213,9 @@ public class CharacterManager : MonoBehaviour
             {
                 foreach (int bossRoomId in LevelManager.Instance.BossRoomIds)
                 {
-                    int rndIdx = Random.Range(0, stageBossSpawnConfigs.Count);
-                    var cfg = stageBossSpawnConfigs[rndIdx];
+                    var cfg = stageBossSpawnConfigs[0];
+                    if (cfg.ID == MyInfo.CharacterSpawnConfigId)
+                        cfg = stageBossSpawnConfigs[1];
                     var characterData = cfg.prefab.GetComponent<CharacterStatus>().characterData;
                     var spawnOffset = characterData.spawnOffsets;
                     var spawnBound = characterData.bound;
