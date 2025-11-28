@@ -155,9 +155,9 @@ public class GameManager : MonoBehaviour
     {
         if (Storage != null)
         {
-            return Storage;
+            // loaded before
         }
-        if (!File.Exists(saveFilePath))
+        else if (!File.Exists(saveFilePath))
         {
             Debug.Log("No save file found, starting a new game.");
             Storage = new LocalStorage
@@ -417,6 +417,11 @@ public class GameManager : MonoBehaviour
                         Storage.Achievement3InfiniteLonely = true;
                         Storage.NewRulerPlayerState = null;
                         Storage.NewRulerBulletState = null;
+                        Storage.PlayerLockStates.Clear();
+                        foreach (var id in PlayerSpawnConfigs.Keys)
+                        {
+                            Storage.PlayerLockStates.Add(id, false);
+                        }
                     }
                     else
                     {
@@ -428,6 +433,12 @@ public class GameManager : MonoBehaviour
                         Storage.NewRulerPlayerState.PlayerId = Constants.NewRulerPlayerId;
                         Storage.NewRulerBulletState = status.bulletState;
                         Storage.NewRulerCharacterSpawnConfigId = CharacterManager.Instance.MyInfo.CharacterSpawnConfigId;
+                        Storage.PlayerLockStates.Clear();
+                        foreach (var id in PlayerSpawnConfigs.Keys)
+                        {
+                            var lockState = PlayerSpawnConfigs[id].Item2;
+                            Storage.PlayerLockStates.Add(id, !lockState);
+                        }
                     }
 
                     SaveLocalStorage(null, restart: true);
@@ -628,6 +639,27 @@ public class GameManager : MonoBehaviour
                         if (hp > status.State.MaxHp)
                             status.State.MaxHp = hp;
                         status.HealthChanged(hp);
+                    }
+                }
+            }
+            // Change Character Damage / CCDM:1/10000
+            else if (command.StartsWith("CCDM"))
+            {
+                var parameters = command.Split(':')[^1];
+                int characterId = int.Parse(parameters.Split('/')[0]);
+                int damageUp = int.Parse(parameters.Split('/')[1]);
+
+                var go = CharacterManager.Instance.GetObject(characterId);
+                if (go == null)
+                {
+                    Debug.Log($"Cannot find character {characterId}");
+                }
+                else
+                {
+                    if (go.TryGetComponent(out CharacterStatus status))
+                    {
+                        status.State.DamageUp = damageUp;
+                        status.State.Damage = status.State.GetFinalDamage(status.characterData.Damage);
                     }
                 }
             }

@@ -279,6 +279,12 @@ public class SelectCharacterManager : MonoBehaviour
     {
         enabled = true;
 
+        playerSpawnConfigs.Clear();
+        foreach(var psc in GameManager.Instance.PlayerSpawnConfigs)
+        {
+            playerSpawnConfigs.Add(psc.Value);
+        }
+
         int leftestIdx = (curSelectedIdx - 2 + 5) % 5;
         int leftPrevPrefabIdx = leftPrevIdx % playerSpawnConfigs.Count;
         for (int i = 0; i < 5; ++i)

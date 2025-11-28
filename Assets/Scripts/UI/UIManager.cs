@@ -499,29 +499,6 @@ public class UIManager : MonoBehaviour
                 }, hasValidStorage ? null : curStageData.stageStartCgSprite);
             });
 
-            // ref var states = ref SelectCharacterManager.Instance.characterLockStates;
-            // // TODO: 当前是Debug，调试完毕后使用正式的人物锁定逻辑
-            // // if (storage.Achievement3InfiniteLonely)
-            // {
-            //     for (int i = 0; i < states.Count; i++)
-            //     {
-            //         states[i] = false;
-            //     }
-            // }
-            // else if (storage.Achievement2Mirror)
-            // {
-            //     for (int i = 0; i < states.Count; i++)
-            //     {
-            //         states[i] = i == 0; // only lock contra bill
-            //     }
-            // }
-            // else
-            // {
-            //     for (int i = 0; i < states.Count; i++)
-            //     {
-            //         states[i] = i != 0; // lock others except contra bill
-            //     }
-            // }
             PlayLoadingAnimation(() =>
             {
                 SelectCharacterManager.Instance.Show();
