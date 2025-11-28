@@ -134,10 +134,13 @@ public static class Constants
     public const int MinPlayableObjects = 1;
     public const int CharacterMaxWidth = 4;
     public const int CharacterMaxHeight = 4;
-    public const int RoomStep = 20;
+    public const int RoomWidthStep = 20;
+    public const int RoomHeightStep = 10;
     public const int DoorWidth = 4;
-    public const int DoorMin = RoomStep / 2 - DoorWidth / 2;
-    public const int DoorMax = RoomStep / 2 + DoorWidth / 2;
+    public const int HorizontalDoorMin = RoomWidthStep / 2 - DoorWidth / 2;
+    public const int HorizontalDoorMax = RoomWidthStep / 2 + DoorWidth / 2;
+    public const int VerticalDoorMin = RoomHeightStep / 2 - DoorWidth / 2;
+    public const int VerticalDoorMax = RoomHeightStep / 2 + DoorWidth / 2;
     public const float CharacterMaxRadius = 2f;
     public const float WallMaxThickness = 1.2f;
     // 每升1级，从3个技能中选择1个
@@ -339,8 +342,8 @@ public static class Constants
         }
         else
         {
-            x = (int)position.x / RoomStep;
-            y = (int)position.y / RoomStep;
+            x = (int)position.x / RoomWidthStep;
+            y = (int)position.y / RoomHeightStep;
         }
     }
 

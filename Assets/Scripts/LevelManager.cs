@@ -75,8 +75,11 @@ public class LevelManager : MonoBehaviour
         GenerateRooms(storage);
 
         if (level == 1) {
-            UIManager.Instance.ShowInfoPanel("MOVE:WASD\nATTACK:↑↓←→", Color.white, 30);
-            UIManager.Instance.ShowInfoPanel("ITEMS:TAB\nESC:MENU\nZOOM:MOUSE WHEEL", Color.white, 30);
+            if (storage.PlayCount <= 0) 
+            {
+                UIManager.Instance.ShowInfoPanel("MOVE:WASD\nATTACK:↑↓←→", Color.white, 30);
+                UIManager.Instance.ShowInfoPanel("ITEMS:TAB\nESC:MENU\nZOOM:MOUSE WHEEL", Color.white, 30);
+            }
             UIManager.Instance.ShowInfoPanel("HAPPY GAME!", Color.pink, 5);
         }
 
@@ -127,6 +130,7 @@ public class LevelManager : MonoBehaviour
         {
             roomMaxWidth = CurrentLevelData.roomMaxWidth;
             roomMaxHeight = CurrentLevelData.roomMaxHeight;
+            float whRatio = Constants.RoomWidthStep / Constants.RoomHeightStep;
 
             var bossRoomNum = 1;
             var bossRoomMinWidth = CurrentLevelData.bossRoomMinWidth;
@@ -141,13 +145,13 @@ public class LevelManager : MonoBehaviour
                 Rect room = sortedList[0];
                 sortedList.RemoveAt(0);
                 bool horizontalCut = UnityEngine.Random.value > 0.5f;
-                if ((room.height > room.width || (room.height == room.width && horizontalCut)) && room.height > Constants.RoomStep)
+                if ((room.height * whRatio > room.width || (room.height * whRatio == room.width && horizontalCut)) && room.height > Constants.RoomHeightStep)
                 {
                     int roomHeight = Mathf.CeilToInt(room.height);
-                    int segNum = roomHeight / Constants.RoomStep;
+                    int segNum = roomHeight / Constants.RoomHeightStep;
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
-                    Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomStep);
-                    Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomStep);
+                    Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomHeightStep);
+                    Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomHeightStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomHeightStep);
                     if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
                     {
                         bossRoomNum--;
@@ -172,13 +176,13 @@ public class LevelManager : MonoBehaviour
                     int index2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
                     if (index2 < 0) sortedList.Add(room2); else sortedList.Insert(index2, room2);
                 }
-                else if ((room.height < room.width || (room.height == room.width && !horizontalCut)) && room.width > Constants.RoomStep)
+                else if ((room.height * whRatio < room.width || (room.height * whRatio == room.width && !horizontalCut)) && room.width > Constants.RoomWidthStep)
                 {
                     int roomWidth = Mathf.CeilToInt(room.width);
-                    int segNum = roomWidth / Constants.RoomStep;
+                    int segNum = roomWidth / Constants.RoomWidthStep;
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
-                    Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomStep, room.height);
-                    Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomStep, room.height);
+                    Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomWidthStep, room.height);
+                    Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomWidthStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomWidthStep, room.height);
                     if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
                     {
                         bossRoomNum--;
@@ -223,7 +227,7 @@ public class LevelManager : MonoBehaviour
             return result;
         });
 
-        RoomGrid = new int[roomMaxWidth / Constants.RoomStep, roomMaxHeight / Constants.RoomStep];
+        RoomGrid = new int[roomMaxWidth / Constants.RoomWidthStep, roomMaxHeight / Constants.RoomHeightStep];
         roomConnections = new HashSet<int>[Rooms.Count];
         for (int i = 0; i < Rooms.Count; i++) roomConnections[i] = new HashSet<int>();
         roomToTiles = new List<Vector3Int>[Rooms.Count];
@@ -240,9 +244,9 @@ public class LevelManager : MonoBehaviour
             remainRoomsIndex.Add(i);
         }
 
-        for (int x = Constants.RoomStep / 2; x < roomMaxWidth; x += Constants.RoomStep)
+        for (int x = Constants.RoomWidthStep / 2; x < roomMaxWidth; x += Constants.RoomWidthStep)
         {
-            for (int y = Constants.RoomStep / 2; y < roomMaxHeight; y += Constants.RoomStep)
+            for (int y = Constants.RoomHeightStep / 2; y < roomMaxHeight; y += Constants.RoomHeightStep)
             {
                 Constants.PositionToIndex(new Vector2(x, y), out int i, out int j);
                 bool roomExists = false;
@@ -262,8 +266,8 @@ public class LevelManager : MonoBehaviour
         }
 
         remainRooms = Rooms.Count;
-        int hNum = roomMaxWidth / Constants.RoomStep;
-        int vNum = roomMaxHeight / Constants.RoomStep;
+        int hNum = roomMaxWidth / Constants.RoomWidthStep;
+        int vNum = roomMaxHeight / Constants.RoomHeightStep;
         int[,] dir = new int[4, 2]
         {
             {0, -1}, // up
@@ -389,8 +393,10 @@ public class LevelManager : MonoBehaviour
         Vector2 topRight = new Vector2(room.xMax, room.yMax);
         Vector2 bottomLeft = new Vector2(room.xMin, room.yMin);
 
-        int doorMin = Constants.DoorMin;
-        int doorMax = Constants.DoorMax;
+        int hDoorMin = Constants.HorizontalDoorMin;
+        int hDoorMax = Constants.HorizontalDoorMax;
+        int vDoorMin = Constants.VerticalDoorMin;
+        int vDoorMax = Constants.VerticalDoorMax;
 
         {
             ref var start = ref topLeft;
@@ -398,7 +404,7 @@ public class LevelManager : MonoBehaviour
             for (int x = (int)start.x; x < (int)end.x; x++)
             {
                 // Doorway
-                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
+                if (x.PositiveMod(Constants.RoomWidthStep) >= hDoorMin && x.PositiveMod(Constants.RoomWidthStep) < hDoorMax)
                 {
                     roomToDoorTiles[roomIdx] ??= new List<Vector3Int>();
                     var upDoor = new Vector3Int(x, (int)topLeft.y, 0);
@@ -426,7 +432,7 @@ public class LevelManager : MonoBehaviour
             for (int y = (int)start.y; y < (int)end.y; y++)
             {
                 // Doorway
-                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
+                if (y.PositiveMod(Constants.RoomHeightStep) >= vDoorMin && y.PositiveMod(Constants.RoomHeightStep) < vDoorMax)
                 {
                     roomToDoorTiles[roomIdx] ??= new List<Vector3Int>();
                     var leftDoor = new Vector3Int((int)bottomLeft.x, y, 0);
@@ -495,8 +501,10 @@ public class LevelManager : MonoBehaviour
         Vector2 topRight = new Vector2(room.xMax, room.yMax);
         Vector2 bottomLeft = new Vector2(room.xMin, room.yMin);
 
-        int doorMin = Constants.DoorMin;
-        int doorMax = Constants.DoorMax;
+        int hDoorMin = Constants.HorizontalDoorMin;
+        int hDoorMax = Constants.HorizontalDoorMax;
+        int vDoorMin = Constants.VerticalDoorMin;
+        int vDoorMax = Constants.VerticalDoorMax;
         if (Mathf.Abs(topLeft.y) < roomMaxHeight - 1)
         {
             // Top wall
@@ -506,7 +514,7 @@ public class LevelManager : MonoBehaviour
             {
                 var pos = new Vector3Int(x, (int)start.y, 0);
                 // Doorway
-                if (x.PositiveMod(Constants.RoomStep) >= doorMin && x.PositiveMod(Constants.RoomStep) < doorMax)
+                if (x.PositiveMod(Constants.RoomWidthStep) >= hDoorMin && x.PositiveMod(Constants.RoomWidthStep) < hDoorMax)
                 {
                     wallTilemap.SetTile(pos, null);
                     continue;
@@ -518,8 +526,8 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.x + td.position.x >= (int)end.x) continue;
-                    if ((pos.x + td.position.x).PositiveMod(Constants.RoomStep) >= doorMin
-                        && (pos.x + td.position.x).PositiveMod(Constants.RoomStep) < doorMax) continue;
+                    if ((pos.x + td.position.x).PositiveMod(Constants.RoomWidthStep) >= hDoorMin
+                        && (pos.x + td.position.x).PositiveMod(Constants.RoomWidthStep) < hDoorMax) continue;
                     wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
                     pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Horizontal), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
@@ -535,7 +543,7 @@ public class LevelManager : MonoBehaviour
             {
                 var pos = new Vector3Int((int)start.x, y, 0);
                 // Doorway
-                if (y.PositiveMod(Constants.RoomStep) >= doorMin && y.PositiveMod(Constants.RoomStep) < doorMax)
+                if (y.PositiveMod(Constants.RoomHeightStep) >= vDoorMin && y.PositiveMod(Constants.RoomHeightStep) < vDoorMax)
                 {
                     wallTilemap.SetTile(pos, null);
                     continue;
@@ -547,8 +555,8 @@ public class LevelManager : MonoBehaviour
                 {
                     TileData td = wt.unbreakableCollisionTiles[i];
                     if (pos.y + td.position.y >= (int)end.y) continue;
-                    if ((pos.y + td.position.y).PositiveMod(Constants.RoomStep) >= doorMin
-                        && (pos.y + td.position.y).PositiveMod(Constants.RoomStep) < doorMax) continue;
+                    if ((pos.y + td.position.y).PositiveMod(Constants.RoomHeightStep) >= vDoorMin
+                        && (pos.y + td.position.y).PositiveMod(Constants.RoomHeightStep) < vDoorMax) continue;
                     wallTilemap.SetTile(new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), td.tile);
                     pos2TilesDict.Add((new Vector3Int(pos.x + td.position.x, pos.y + td.position.y), TileType.Wall_Vertical), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }

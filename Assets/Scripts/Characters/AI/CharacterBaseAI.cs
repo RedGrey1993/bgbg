@@ -504,7 +504,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     protected float NeareastDoorY(Rect room)
     {
-        int step = Constants.RoomStep;
+        int step = Constants.RoomHeightStep;
         float tmpY = room.yMin + step / 2;
         float nearestDoorY = tmpY;
         while (tmpY < room.yMax)
@@ -546,7 +546,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     protected float NeareastDoorX(Rect room)
     {
-        int step = Constants.RoomStep;
+        int step = Constants.RoomWidthStep;
         float tmpX = room.xMin + step / 2;
         float nearestDoorX = tmpX;
         while (tmpX < room.xMax)

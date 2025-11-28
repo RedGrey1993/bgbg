@@ -13,19 +13,15 @@ MonoBehaviour:
   m_Name: LevelData 1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
-  normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: 3d06a5cabfe1ec945ad88f2d86182783, type: 3}
-  bossPrefabs:
-  - {fileID: 5506378715684145941, guid: 955c00057237d4a4895de47c1ef78fd3, type: 3}
   level: 1
   totalRooms:
     min: 4
     max: 4
   roomMaxWidth: 40
-  roomMaxHeight: 40
+  roomMaxHeight: 20
   areaPerMinion:
-    min: 400
-    max: 400
+    min: 200
+    max: 200
   stageStartCgSprite:
   - cg: {fileID: 2475271012110078146, guid: 885f12a2fc254b34781855d1103acff3, type: 3}
     content: 
@@ -69,7 +65,7 @@ MonoBehaviour:
     min: 1.3
     max: 2
   bossRoomMinWidth: 20
-  bossRoomMinHeight: 20
+  bossRoomMinHeight: 10
   holeRatio: 0.001
   unbreakableObstacleRatio: 0
   breakableObstacleRatio: 0.005
