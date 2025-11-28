@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a96c465654817d47b285274540cacc1, type: 3}
+  m_Name: Boss_5_0_TheRulerSpawnConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterSpawnConfigSO
+  _id: 6
+  prefab: {fileID: 696006956200170134, guid: d3e0d0ee05b365f47ac4c3c9aadb875f, type: 3}
+  weight: 0
+  spawnStages: 05000000
+  isBoss: 1
+  canBePlayer: 0
+  initLocked: 0

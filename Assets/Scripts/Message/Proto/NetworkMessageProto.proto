@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 29
+    // next index = 30
     int32 PlayerId = 1;
     string PlayerName = 2;
     float MaxHp = 3;
@@ -74,6 +74,7 @@ message PlayerState
     repeated MinionPrefabInfo CatchedMinions = 21;
     repeated PlayerState CatchedMinionStates = 22;
     map<int32, PlayerState> StolenStates = 26;
+    int32 CharacterSpawnConfigId = 29;
 }
 
 message BulletState
@@ -106,7 +107,7 @@ message PlayerInfo
     string CSteamID = 1; // CSteamID or a string for local players
     string Name = 2;
     int32 Id = 3;
-    int32 PrefabId = 4;
+    int32 CharacterSpawnConfigId = 4;
 }
 
 message LearnSkillMessage
@@ -137,11 +138,10 @@ message MinionPrefabInfo
 
 message LocalStorage
 {
-    // next index = 30
+    // next index = 14, 31
     int32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
     repeated BulletState BulletStates = 15;
-    repeated int32 PlayerPrefabIds = 14;
     repeated PlayerState MinionStates = 3;
     repeated MinionPrefabInfo MinionPrefabInfos = 4;
     repeated PlayerState BossStates = 5;
@@ -160,13 +160,14 @@ message LocalStorage
     bool ShowedSysErrLogTip = 20;
     PlayerState NewRulerPlayerState = 21;
     BulletState NewRulerBulletState = 22;
-    int32 NewRulerPrefabId = 23;
+    int32 NewRulerCharacterSpawnConfigId = 23;
     int32 NxtDestoryRoomIdx = 24;
     float DestoryRoomRemainTime = 25;
     repeated TileInfo WallTiles = 26;
     repeated TileInfo FloorTiles = 27;
     repeated TileInfo HoleTiles = 28;
     int32 PlayCount = 29;
+    map<int32, bool> PlayerLockStates = 30;
 }
 
 message TileInfo

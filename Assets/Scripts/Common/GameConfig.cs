@@ -12,17 +12,19 @@ public struct StageConfig
 [CreateAssetMenu(fileName = "GameConfig", menuName = "Game Config")]
 public class GameConfig : ScriptableObject
 {
-    [Header("Global Configs")]
+    [Header("全局配置")]
     public float CriticalDamageMultiplier;
     public bool PlayCG = true;
-    [Header("Room Blast Config")]
+
+    [Header("房间配置")]
     public float FirstRoomBlastInterval;
     public float OtherRoomBlastInterval;
     public float RedFlashRectDuration;
 
-    [Header("Stage Configs")]
+    [Header("关卡配置")]
     public StageConfig[] StageConfigs;
 
-    [Header("Character Prefabs")]
+    [Header("角色配置")]
+    public CharacterSpawnConfigSO[] CharacterSpawnConfigs;
     public List<GameObject> MinionPrefabs;
 }

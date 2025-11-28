@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public HashSet<int> PassedStages { get; private set; } = new HashSet<int>();
     public LocalStorage Storage { get; private set; } = null;
     public AudioSource audioSource;
+
     private string saveFilePath;
 
     public Dictionary<string, ObjectPool<GameObject>> poolDictionary = new();
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
 
         saveFilePath = Path.Combine(Application.persistentDataPath, "savedata.bin");
         LoadStageTiletemplates();
+        LoadCharacterSpawnConfigs();
     }
 
     public bool IsLocalOrHost()
@@ -177,10 +179,16 @@ public class GameManager : MonoBehaviour
         // PassedStages.AddRange(storage.PassedStages);
         PassedStages = new HashSet<int> { 1, 2, 3 };
 
+        foreach (var pls in Storage.PlayerLockStates)
+        {
+            PlayerSpawnConfigs[pls.Key] = (PlayerSpawnConfigs[pls.Key].Item1, pls.Value);
+        }
+
         Debug.Log($"fhhtest, LoadLocalStorage: {Storage}, {Storage.Achievement1NewCycle}");
         return Storage;
     }
 
+    // 清除记录，完全重新开始
     public LocalStorage ClearLocalStorage()
     {
         Storage = new LocalStorage
@@ -194,6 +202,10 @@ public class GameManager : MonoBehaviour
         // PassedStages.Clear();
         // PassedStages.AddRange(storage.PassedStages);
         PassedStages = new HashSet<int> { 1, 2, 3 };
+
+        LoadStageTiletemplates();
+        LoadCharacterSpawnConfigs();
+
         return Storage;
     }
 
@@ -270,9 +282,23 @@ public class GameManager : MonoBehaviour
         audioSource.Stop();
     }
 
-    private Dictionary<int, Dictionary<TileType, List<TileTemplate>>> StageTileTemplates {get;set;} = new();
+    public Dictionary<int, (CharacterSpawnConfigSO, bool)> PlayerSpawnConfigs {get; private set;}
+    private void LoadCharacterSpawnConfigs()
+    {
+        PlayerSpawnConfigs = new();
+        foreach(var cfg in gameConfig.CharacterSpawnConfigs)
+        {
+            if (cfg.canBePlayer)
+            {
+                PlayerSpawnConfigs.Add(cfg.ID, (cfg, cfg.initLocked));
+            }
+        }
+    }
+
+    private Dictionary<int, Dictionary<TileType, List<TileTemplate>>> StageTileTemplates {get;set;}
     private void LoadStageTiletemplates()
     {
+        StageTileTemplates = new();
         for (int stage = 1; stage <= gameConfig.StageConfigs.Length; stage++)
         {
             LevelData stageData = gameConfig.StageConfigs[stage - 1].stageData;
@@ -401,7 +427,7 @@ public class GameManager : MonoBehaviour
                         Storage.NewRulerPlayerState.Position = null;
                         Storage.NewRulerPlayerState.PlayerId = Constants.NewRulerPlayerId;
                         Storage.NewRulerBulletState = status.bulletState;
-                        Storage.NewRulerPrefabId = CharacterManager.Instance.PlayerPrefabIds[CharacterManager.Instance.MyInfo.Id];
+                        Storage.NewRulerCharacterSpawnConfigId = CharacterManager.Instance.MyInfo.CharacterSpawnConfigId;
                     }
 
                     SaveLocalStorage(null, restart: true);

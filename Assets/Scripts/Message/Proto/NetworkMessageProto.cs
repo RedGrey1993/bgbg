@@ -38,7 +38,7 @@ namespace NetworkMessageProto {
             "bnB1dE1lc3NhZ2USEAoIUGxheWVySWQYASABKAUSDAoEVGljaxgCIAEoDRIM",
             "CgRUeXBlGAMgASgNEiwKCU1vdmVJbnB1dBgEIAEoCzIZLk5ldHdvcmtNZXNz",
             "YWdlUHJvdG8uVmVjMhIsCglMb29rSW5wdXQYBSABKAsyGS5OZXR3b3JrTWVz",
-            "c2FnZVByb3RvLlZlYzIi7QYKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
+            "c2FnZVByb3RvLlZlYzIijQcKC1BsYXllclN0YXRlEhAKCFBsYXllcklkGAEg",
             "ASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTWF4SHAYAyABKAISEQoJQ3Vy",
             "cmVudEhwGAQgASgCEhEKCU1vdmVTcGVlZBgFIAEoAhITCgtCdWxsZXRTcGVl",
             "ZBgGIAEoAhIOCgZEYW1hZ2UYByABKAISEAoIRGFtYWdlVXAYFyABKAISGAoQ",
@@ -55,55 +55,59 @@ namespace NetworkMessageProto {
             "CzIlLk5ldHdvcmtNZXNzYWdlUHJvdG8uTWluaW9uUHJlZmFiSW5mbxI9ChND",
             "YXRjaGVkTWluaW9uU3RhdGVzGBYgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90",
             "by5QbGF5ZXJTdGF0ZRJICgxTdG9sZW5TdGF0ZXMYGiADKAsyMi5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlBsYXllclN0YXRlLlN0b2xlblN0YXRlc0VudHJ5GlUK",
-            "EVN0b2xlblN0YXRlc0VudHJ5EgsKA2tleRgBIAEoBRIvCgV2YWx1ZRgCIAEo",
-            "CzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGU6AjgBIvQBCgtC",
-            "dWxsZXRTdGF0ZRIQCghTaG9vdE51bRgBIAEoBRIXCg9TaG9vdEFuZ2xlUmFu",
-            "Z2UYAiABKAUSFgoOUGVuZXRyYXRlQ291bnQYAyABKAUSEgoKU3BsaXRDb3Vu",
-            "dBgEIAEoBRITCgtIb21pbmdGb3JjZRgFIAEoBRITCgtCb3VuY2VDb3VudBgG",
-            "IAEoBRIaChJDYW5EZXN0cm95T2JzdGFjbGUYByABKAgSGQoRQ29uZnVzZVRh",
-            "cmdldFRpbWUYCCABKAUSFgoOSXNSZXR1cm5CdWxsZXQYCSABKAgSFQoNSXNT",
-            "dGVhbEJ1bGxldBgKIAEoCCJVChJTdGF0ZVVwZGF0ZU1lc3NhZ2USMQoHUGxh",
-            "eWVycxgBIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUS",
-            "DAoEVGljaxgCIAEoDSJIChRQbGF5ZXJzVXBkYXRlTWVzc2FnZRIwCgdQbGF5",
-            "ZXJzGAEgAygLMh8uTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJJbmZvIkoK",
-            "ClBsYXllckluZm8SEAoIQ1N0ZWFtSUQYASABKAkSDAoETmFtZRgCIAEoCRIK",
-            "CgJJZBgDIAEoBRIQCghQcmVmYWJJZBgEIAEoBSI2ChFMZWFyblNraWxsTWVz",
-            "c2FnZRIQCghwbGF5ZXJJZBgBIAEoBRIPCgdza2lsbElkGAIgASgFIm8KClBp",
-            "Y2t1cEl0ZW0SCgoCSWQYASABKAUSDwoHU2tpbGxJZBgCIAEoBRIXCg9DdXJy",
-            "ZW50Q29vbGRvd24YAyABKAUSKwoIUG9zaXRpb24YBCABKAsyGS5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlZlYzIiMwoOQm9zc1ByZWZhYkluZm8SDwoHU3RhZ2VJ",
-            "ZBgBIAEoBRIQCghQcmVmYWJJZBgCIAEoBSI1ChBNaW5pb25QcmVmYWJJbmZv",
-            "Eg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUimQkKDExvY2Fs",
-            "U3RvcmFnZRIUCgxDdXJyZW50U3RhZ2UYASABKAUSNgoMUGxheWVyU3RhdGVz",
-            "GAIgAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI2CgxC",
-            "dWxsZXRTdGF0ZXMYDyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLkJ1bGxl",
-            "dFN0YXRlEhcKD1BsYXllclByZWZhYklkcxgOIAMoBRI2CgxNaW5pb25TdGF0",
-            "ZXMYAyADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEkAK",
-            "EU1pbmlvblByZWZhYkluZm9zGAQgAygLMiUuTmV0d29ya01lc3NhZ2VQcm90",
-            "by5NaW5pb25QcmVmYWJJbmZvEjQKCkJvc3NTdGF0ZXMYBSADKAsyIC5OZXR3",
-            "b3JrTWVzc2FnZVByb3RvLlBsYXllclN0YXRlEjwKD0Jvc3NQcmVmYWJJbmZv",
-            "cxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdlUHJvdG8uQm9zc1ByZWZhYkluZm8S",
-            "LQoFUm9vbXMYByADKAsyHi5OZXR3b3JrTWVzc2FnZVByb3RvLlJlY3RQcm90",
-            "bxIUCgxSb29tTWF4V2lkdGgYCCABKA0SFQoNUm9vbU1heEhlaWdodBgJIAEo",
-            "DRIXCg9OZXh0Q2hhcmFjdGVySWQYCiABKA0SMwoQVGVsZXBvcnRQb3NpdGlv",
-            "bhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdlUHJvdG8uVmVjMhI0CgtQaWNrdXBJ",
-            "dGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGlja3VwSXRlbRIU",
-            "CgxQYXNzZWRTdGFnZXMYDSADKAUSHAoUQWNoaWV2ZW1lbnQxTmV3Q3ljbGUY",
-            "ECABKAgSGgoSQWNoaWV2ZW1lbnQyTWlycm9yGBEgASgIEiIKGkFjaGlldmVt",
-            "ZW50M0luZmluaXRlTG9uZWx5GBIgASgIEhAKCE5ld0xldmVsGBMgASgIEhoK",
-            "ElNob3dlZFN5c0VyckxvZ1RpcBgUIAEoCBI9ChNOZXdSdWxlclBsYXllclN0",
-            "YXRlGBUgASgLMiAuTmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRI9",
-            "ChNOZXdSdWxlckJ1bGxldFN0YXRlGBYgASgLMiAuTmV0d29ya01lc3NhZ2VQ",
-            "cm90by5CdWxsZXRTdGF0ZRIYChBOZXdSdWxlclByZWZhYklkGBcgASgFEhkK",
-            "EU54dERlc3RvcnlSb29tSWR4GBggASgFEh0KFURlc3RvcnlSb29tUmVtYWlu",
-            "VGltZRgZIAEoAhIwCglXYWxsVGlsZXMYGiADKAsyHS5OZXR3b3JrTWVzc2Fn",
-            "ZVByb3RvLlRpbGVJbmZvEjEKCkZsb29yVGlsZXMYGyADKAsyHS5OZXR3b3Jr",
-            "TWVzc2FnZVByb3RvLlRpbGVJbmZvEjAKCUhvbGVUaWxlcxgcIAMoCzIdLk5l",
-            "dHdvcmtNZXNzYWdlUHJvdG8uVGlsZUluZm8SEQoJUGxheUNvdW50GB0gASgF",
-            "IloKCFRpbGVJbmZvEgkKAVgYASABKAUSCQoBWRgCIAEoBRIQCghUaWxlVHlw",
-            "ZRgDIAEoBRIWCg5UaWxlVGVtcGxhdGVJZBgEIAEoBRIOCgZUaWxlSWQYBSAB",
-            "KAViBnByb3RvMw=="));
+            "TWVzc2FnZVByb3RvLlBsYXllclN0YXRlLlN0b2xlblN0YXRlc0VudHJ5Eh4K",
+            "FkNoYXJhY3RlclNwYXduQ29uZmlnSWQYHSABKAUaVQoRU3RvbGVuU3RhdGVz",
+            "RW50cnkSCwoDa2V5GAEgASgFEi8KBXZhbHVlGAIgASgLMiAuTmV0d29ya01l",
+            "c3NhZ2VQcm90by5QbGF5ZXJTdGF0ZToCOAEi9AEKC0J1bGxldFN0YXRlEhAK",
+            "CFNob290TnVtGAEgASgFEhcKD1Nob290QW5nbGVSYW5nZRgCIAEoBRIWCg5Q",
+            "ZW5ldHJhdGVDb3VudBgDIAEoBRISCgpTcGxpdENvdW50GAQgASgFEhMKC0hv",
+            "bWluZ0ZvcmNlGAUgASgFEhMKC0JvdW5jZUNvdW50GAYgASgFEhoKEkNhbkRl",
+            "c3Ryb3lPYnN0YWNsZRgHIAEoCBIZChFDb25mdXNlVGFyZ2V0VGltZRgIIAEo",
+            "BRIWCg5Jc1JldHVybkJ1bGxldBgJIAEoCBIVCg1Jc1N0ZWFsQnVsbGV0GAog",
+            "ASgIIlUKElN0YXRlVXBkYXRlTWVzc2FnZRIxCgdQbGF5ZXJzGAEgAygLMiAu",
+            "TmV0d29ya01lc3NhZ2VQcm90by5QbGF5ZXJTdGF0ZRIMCgRUaWNrGAIgASgN",
+            "IkgKFFBsYXllcnNVcGRhdGVNZXNzYWdlEjAKB1BsYXllcnMYASADKAsyHy5O",
+            "ZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllckluZm8iWAoKUGxheWVySW5mbxIQ",
+            "CghDU3RlYW1JRBgBIAEoCRIMCgROYW1lGAIgASgJEgoKAklkGAMgASgFEh4K",
+            "FkNoYXJhY3RlclNwYXduQ29uZmlnSWQYBCABKAUiNgoRTGVhcm5Ta2lsbE1l",
+            "c3NhZ2USEAoIcGxheWVySWQYASABKAUSDwoHc2tpbGxJZBgCIAEoBSJvCgpQ",
+            "aWNrdXBJdGVtEgoKAklkGAEgASgFEg8KB1NraWxsSWQYAiABKAUSFwoPQ3Vy",
+            "cmVudENvb2xkb3duGAMgASgFEisKCFBvc2l0aW9uGAQgASgLMhkuTmV0d29y",
+            "a01lc3NhZ2VQcm90by5WZWMyIjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdl",
+            "SWQYASABKAUSEAoIUHJlZmFiSWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5m",
+            "bxIPCgdTdGFnZUlkGAEgASgFEhAKCFByZWZhYklkGAIgASgFIpoKCgxMb2Nh",
+            "bFN0b3JhZ2USFAoMQ3VycmVudFN0YWdlGAEgASgFEjYKDFBsYXllclN0YXRl",
+            "cxgCIAMoCzIgLk5ldHdvcmtNZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoM",
+            "QnVsbGV0U3RhdGVzGA8gAygLMiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxs",
+            "ZXRTdGF0ZRI2CgxNaW5pb25TdGF0ZXMYAyADKAsyIC5OZXR3b3JrTWVzc2Fn",
+            "ZVByb3RvLlBsYXllclN0YXRlEkAKEU1pbmlvblByZWZhYkluZm9zGAQgAygL",
+            "MiUuTmV0d29ya01lc3NhZ2VQcm90by5NaW5pb25QcmVmYWJJbmZvEjQKCkJv",
+            "c3NTdGF0ZXMYBSADKAsyIC5OZXR3b3JrTWVzc2FnZVByb3RvLlBsYXllclN0",
+            "YXRlEjwKD0Jvc3NQcmVmYWJJbmZvcxgGIAMoCzIjLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uQm9zc1ByZWZhYkluZm8SLQoFUm9vbXMYByADKAsyHi5OZXR3b3Jr",
+            "TWVzc2FnZVByb3RvLlJlY3RQcm90bxIUCgxSb29tTWF4V2lkdGgYCCABKA0S",
+            "FQoNUm9vbU1heEhlaWdodBgJIAEoDRIXCg9OZXh0Q2hhcmFjdGVySWQYCiAB",
+            "KA0SMwoQVGVsZXBvcnRQb3NpdGlvbhgLIAEoCzIZLk5ldHdvcmtNZXNzYWdl",
+            "UHJvdG8uVmVjMhI0CgtQaWNrdXBJdGVtcxgMIAMoCzIfLk5ldHdvcmtNZXNz",
+            "YWdlUHJvdG8uUGlja3VwSXRlbRIUCgxQYXNzZWRTdGFnZXMYDSADKAUSHAoU",
+            "QWNoaWV2ZW1lbnQxTmV3Q3ljbGUYECABKAgSGgoSQWNoaWV2ZW1lbnQyTWly",
+            "cm9yGBEgASgIEiIKGkFjaGlldmVtZW50M0luZmluaXRlTG9uZWx5GBIgASgI",
+            "EhAKCE5ld0xldmVsGBMgASgIEhoKElNob3dlZFN5c0VyckxvZ1RpcBgUIAEo",
+            "CBI9ChNOZXdSdWxlclBsYXllclN0YXRlGBUgASgLMiAuTmV0d29ya01lc3Nh",
+            "Z2VQcm90by5QbGF5ZXJTdGF0ZRI9ChNOZXdSdWxlckJ1bGxldFN0YXRlGBYg",
+            "ASgLMiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRImCh5OZXdS",
+            "dWxlckNoYXJhY3RlclNwYXduQ29uZmlnSWQYFyABKAUSGQoRTnh0RGVzdG9y",
+            "eVJvb21JZHgYGCABKAUSHQoVRGVzdG9yeVJvb21SZW1haW5UaW1lGBkgASgC",
+            "EjAKCVdhbGxUaWxlcxgaIAMoCzIdLk5ldHdvcmtNZXNzYWdlUHJvdG8uVGls",
+            "ZUluZm8SMQoKRmxvb3JUaWxlcxgbIAMoCzIdLk5ldHdvcmtNZXNzYWdlUHJv",
+            "dG8uVGlsZUluZm8SMAoJSG9sZVRpbGVzGBwgAygLMh0uTmV0d29ya01lc3Nh",
+            "Z2VQcm90by5UaWxlSW5mbxIRCglQbGF5Q291bnQYHSABKAUSUQoQUGxheWVy",
+            "TG9ja1N0YXRlcxgeIAMoCzI3Lk5ldHdvcmtNZXNzYWdlUHJvdG8uTG9jYWxT",
+            "dG9yYWdlLlBsYXllckxvY2tTdGF0ZXNFbnRyeRo3ChVQbGF5ZXJMb2NrU3Rh",
+            "dGVzRW50cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgIOgI4ASJaCghU",
+            "aWxlSW5mbxIJCgFYGAEgASgFEgkKAVkYAiABKAUSEAoIVGlsZVR5cGUYAyAB",
+            "KAUSFgoOVGlsZVRlbXBsYXRlSWQYBCABKAUSDgoGVGlsZUlkGAUgASgFYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -112,16 +116,16 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.ColorProto), global::NetworkMessageProto.ColorProto.Parser, new[]{ "R", "G", "B", "A" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.RectProto), global::NetworkMessageProto.RectProto.Parser, new[]{ "X", "Y", "Width", "Height" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.InputMessage), global::NetworkMessageProto.InputMessage.Parser, new[]{ "PlayerId", "Tick", "Type", "MoveInput", "LookInput" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "DamageUp", "DamageAdjustment", "HpStealFix", "AttackFrequency", "AttackFreqUp", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "ExpGiven", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color", "CatchedMinions", "CatchedMinionStates", "StolenStates" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerState), global::NetworkMessageProto.PlayerState.Parser, new[]{ "PlayerId", "PlayerName", "MaxHp", "CurrentHp", "MoveSpeed", "BulletSpeed", "Damage", "DamageUp", "DamageAdjustment", "HpStealFix", "AttackFrequency", "AttackFreqUp", "ShootRange", "CriticalRate", "CurrentLevel", "CurrentExp", "ExpGiven", "Position", "SkillIds", "CurrentStageSkillLearned", "ToLearnedSkillIds", "ActiveSkillId", "ActiveSkillCurCd", "Scale", "Color", "CatchedMinions", "CatchedMinionStates", "StolenStates", "CharacterSpawnConfigId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BulletState), global::NetworkMessageProto.BulletState.Parser, new[]{ "ShootNum", "ShootAngleRange", "PenetrateCount", "SplitCount", "HomingForce", "BounceCount", "CanDestroyObstacle", "ConfuseTargetTime", "IsReturnBullet", "IsStealBullet" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.StateUpdateMessage), global::NetworkMessageProto.StateUpdateMessage.Parser, new[]{ "Players", "Tick" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayersUpdateMessage), global::NetworkMessageProto.PlayersUpdateMessage.Parser, new[]{ "Players" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id", "PrefabId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PlayerInfo), global::NetworkMessageProto.PlayerInfo.Parser, new[]{ "CSteamID", "Name", "Id", "CharacterSpawnConfigId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LearnSkillMessage), global::NetworkMessageProto.LearnSkillMessage.Parser, new[]{ "PlayerId", "SkillId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "CurrentCooldown", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "PlayerPrefabIds", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerPrefabId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles", "PlayCount" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "MinionStates", "MinionPrefabInfos", "BossStates", "BossPrefabInfos", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerCharacterSpawnConfigId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles", "PlayCount", "PlayerLockStates" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.TileInfo), global::NetworkMessageProto.TileInfo.Parser, new[]{ "X", "Y", "TileType", "TileTemplateId", "TileId" }, null, null, null, null)
           }));
     }
@@ -1828,6 +1832,7 @@ namespace NetworkMessageProto {
       catchedMinions_ = other.catchedMinions_.Clone();
       catchedMinionStates_ = other.catchedMinionStates_.Clone();
       stolenStates_ = other.stolenStates_.Clone();
+      characterSpawnConfigId_ = other.characterSpawnConfigId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1841,7 +1846,7 @@ namespace NetworkMessageProto {
     public const int PlayerIdFieldNumber = 1;
     private int playerId_;
     /// <summary>
-    /// next index = 29
+    /// next index = 30
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2198,6 +2203,18 @@ namespace NetworkMessageProto {
       get { return stolenStates_; }
     }
 
+    /// <summary>Field number for the "CharacterSpawnConfigId" field.</summary>
+    public const int CharacterSpawnConfigIdFieldNumber = 29;
+    private int characterSpawnConfigId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CharacterSpawnConfigId {
+      get { return characterSpawnConfigId_; }
+      set {
+        characterSpawnConfigId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2241,6 +2258,7 @@ namespace NetworkMessageProto {
       if(!catchedMinions_.Equals(other.catchedMinions_)) return false;
       if(!catchedMinionStates_.Equals(other.catchedMinionStates_)) return false;
       if (!StolenStates.Equals(other.StolenStates)) return false;
+      if (CharacterSpawnConfigId != other.CharacterSpawnConfigId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2276,6 +2294,7 @@ namespace NetworkMessageProto {
       hash ^= catchedMinions_.GetHashCode();
       hash ^= catchedMinionStates_.GetHashCode();
       hash ^= StolenStates.GetHashCode();
+      if (CharacterSpawnConfigId != 0) hash ^= CharacterSpawnConfigId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2391,6 +2410,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(229, 1);
         output.WriteFloat(HpStealFix);
       }
+      if (CharacterSpawnConfigId != 0) {
+        output.WriteRawTag(232, 1);
+        output.WriteInt32(CharacterSpawnConfigId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2498,6 +2521,10 @@ namespace NetworkMessageProto {
         output.WriteRawTag(229, 1);
         output.WriteFloat(HpStealFix);
       }
+      if (CharacterSpawnConfigId != 0) {
+        output.WriteRawTag(232, 1);
+        output.WriteInt32(CharacterSpawnConfigId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2582,6 +2609,9 @@ namespace NetworkMessageProto {
       size += catchedMinions_.CalculateSize(_repeated_catchedMinions_codec);
       size += catchedMinionStates_.CalculateSize(_repeated_catchedMinionStates_codec);
       size += stolenStates_.CalculateSize(_map_stolenStates_codec);
+      if (CharacterSpawnConfigId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(CharacterSpawnConfigId);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2674,6 +2704,9 @@ namespace NetworkMessageProto {
       catchedMinions_.Add(other.catchedMinions_);
       catchedMinionStates_.Add(other.catchedMinionStates_);
       stolenStates_.MergeFrom(other.stolenStates_);
+      if (other.CharacterSpawnConfigId != 0) {
+        CharacterSpawnConfigId = other.CharacterSpawnConfigId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2813,6 +2846,10 @@ namespace NetworkMessageProto {
             HpStealFix = input.ReadFloat();
             break;
           }
+          case 232: {
+            CharacterSpawnConfigId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -2950,6 +2987,10 @@ namespace NetworkMessageProto {
           }
           case 229: {
             HpStealFix = input.ReadFloat();
+            break;
+          }
+          case 232: {
+            CharacterSpawnConfigId = input.ReadInt32();
             break;
           }
         }
@@ -3939,7 +3980,7 @@ namespace NetworkMessageProto {
       cSteamID_ = other.cSteamID_;
       name_ = other.name_;
       id_ = other.id_;
-      prefabId_ = other.prefabId_;
+      characterSpawnConfigId_ = other.characterSpawnConfigId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3988,15 +4029,15 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "PrefabId" field.</summary>
-    public const int PrefabIdFieldNumber = 4;
-    private int prefabId_;
+    /// <summary>Field number for the "CharacterSpawnConfigId" field.</summary>
+    public const int CharacterSpawnConfigIdFieldNumber = 4;
+    private int characterSpawnConfigId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int PrefabId {
-      get { return prefabId_; }
+    public int CharacterSpawnConfigId {
+      get { return characterSpawnConfigId_; }
       set {
-        prefabId_ = value;
+        characterSpawnConfigId_ = value;
       }
     }
 
@@ -4018,7 +4059,7 @@ namespace NetworkMessageProto {
       if (CSteamID != other.CSteamID) return false;
       if (Name != other.Name) return false;
       if (Id != other.Id) return false;
-      if (PrefabId != other.PrefabId) return false;
+      if (CharacterSpawnConfigId != other.CharacterSpawnConfigId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4029,7 +4070,7 @@ namespace NetworkMessageProto {
       if (CSteamID.Length != 0) hash ^= CSteamID.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (PrefabId != 0) hash ^= PrefabId.GetHashCode();
+      if (CharacterSpawnConfigId != 0) hash ^= CharacterSpawnConfigId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4060,9 +4101,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(24);
         output.WriteInt32(Id);
       }
-      if (PrefabId != 0) {
+      if (CharacterSpawnConfigId != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(PrefabId);
+        output.WriteInt32(CharacterSpawnConfigId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4086,9 +4127,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(24);
         output.WriteInt32(Id);
       }
-      if (PrefabId != 0) {
+      if (CharacterSpawnConfigId != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(PrefabId);
+        output.WriteInt32(CharacterSpawnConfigId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4109,8 +4150,8 @@ namespace NetworkMessageProto {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (PrefabId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PrefabId);
+      if (CharacterSpawnConfigId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CharacterSpawnConfigId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4133,8 +4174,8 @@ namespace NetworkMessageProto {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.PrefabId != 0) {
-        PrefabId = other.PrefabId;
+      if (other.CharacterSpawnConfigId != 0) {
+        CharacterSpawnConfigId = other.CharacterSpawnConfigId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4168,7 +4209,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 32: {
-            PrefabId = input.ReadInt32();
+            CharacterSpawnConfigId = input.ReadInt32();
             break;
           }
         }
@@ -4203,7 +4244,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 32: {
-            PrefabId = input.ReadInt32();
+            CharacterSpawnConfigId = input.ReadInt32();
             break;
           }
         }
@@ -5274,7 +5315,6 @@ namespace NetworkMessageProto {
       currentStage_ = other.currentStage_;
       playerStates_ = other.playerStates_.Clone();
       bulletStates_ = other.bulletStates_.Clone();
-      playerPrefabIds_ = other.playerPrefabIds_.Clone();
       minionStates_ = other.minionStates_.Clone();
       minionPrefabInfos_ = other.minionPrefabInfos_.Clone();
       bossStates_ = other.bossStates_.Clone();
@@ -5293,13 +5333,14 @@ namespace NetworkMessageProto {
       showedSysErrLogTip_ = other.showedSysErrLogTip_;
       newRulerPlayerState_ = other.newRulerPlayerState_ != null ? other.newRulerPlayerState_.Clone() : null;
       newRulerBulletState_ = other.newRulerBulletState_ != null ? other.newRulerBulletState_.Clone() : null;
-      newRulerPrefabId_ = other.newRulerPrefabId_;
+      newRulerCharacterSpawnConfigId_ = other.newRulerCharacterSpawnConfigId_;
       nxtDestoryRoomIdx_ = other.nxtDestoryRoomIdx_;
       destoryRoomRemainTime_ = other.destoryRoomRemainTime_;
       wallTiles_ = other.wallTiles_.Clone();
       floorTiles_ = other.floorTiles_.Clone();
       holeTiles_ = other.holeTiles_.Clone();
       playCount_ = other.playCount_;
+      playerLockStates_ = other.playerLockStates_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5313,7 +5354,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 30
+    /// next index = 14, 31
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5344,17 +5385,6 @@ namespace NetworkMessageProto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::NetworkMessageProto.BulletState> BulletStates {
       get { return bulletStates_; }
-    }
-
-    /// <summary>Field number for the "PlayerPrefabIds" field.</summary>
-    public const int PlayerPrefabIdsFieldNumber = 14;
-    private static readonly pb::FieldCodec<int> _repeated_playerPrefabIds_codec
-        = pb::FieldCodec.ForInt32(114);
-    private readonly pbc::RepeatedField<int> playerPrefabIds_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> PlayerPrefabIds {
-      get { return playerPrefabIds_; }
     }
 
     /// <summary>Field number for the "MinionStates" field.</summary>
@@ -5566,15 +5596,15 @@ namespace NetworkMessageProto {
       }
     }
 
-    /// <summary>Field number for the "NewRulerPrefabId" field.</summary>
-    public const int NewRulerPrefabIdFieldNumber = 23;
-    private int newRulerPrefabId_;
+    /// <summary>Field number for the "NewRulerCharacterSpawnConfigId" field.</summary>
+    public const int NewRulerCharacterSpawnConfigIdFieldNumber = 23;
+    private int newRulerCharacterSpawnConfigId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int NewRulerPrefabId {
-      get { return newRulerPrefabId_; }
+    public int NewRulerCharacterSpawnConfigId {
+      get { return newRulerCharacterSpawnConfigId_; }
       set {
-        newRulerPrefabId_ = value;
+        newRulerCharacterSpawnConfigId_ = value;
       }
     }
 
@@ -5647,6 +5677,17 @@ namespace NetworkMessageProto {
       }
     }
 
+    /// <summary>Field number for the "PlayerLockStates" field.</summary>
+    public const int PlayerLockStatesFieldNumber = 30;
+    private static readonly pbc::MapField<int, bool>.Codec _map_playerLockStates_codec
+        = new pbc::MapField<int, bool>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForBool(16, false), 242);
+    private readonly pbc::MapField<int, bool> playerLockStates_ = new pbc::MapField<int, bool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<int, bool> PlayerLockStates {
+      get { return playerLockStates_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -5665,7 +5706,6 @@ namespace NetworkMessageProto {
       if (CurrentStage != other.CurrentStage) return false;
       if(!playerStates_.Equals(other.playerStates_)) return false;
       if(!bulletStates_.Equals(other.bulletStates_)) return false;
-      if(!playerPrefabIds_.Equals(other.playerPrefabIds_)) return false;
       if(!minionStates_.Equals(other.minionStates_)) return false;
       if(!minionPrefabInfos_.Equals(other.minionPrefabInfos_)) return false;
       if(!bossStates_.Equals(other.bossStates_)) return false;
@@ -5684,13 +5724,14 @@ namespace NetworkMessageProto {
       if (ShowedSysErrLogTip != other.ShowedSysErrLogTip) return false;
       if (!object.Equals(NewRulerPlayerState, other.NewRulerPlayerState)) return false;
       if (!object.Equals(NewRulerBulletState, other.NewRulerBulletState)) return false;
-      if (NewRulerPrefabId != other.NewRulerPrefabId) return false;
+      if (NewRulerCharacterSpawnConfigId != other.NewRulerCharacterSpawnConfigId) return false;
       if (NxtDestoryRoomIdx != other.NxtDestoryRoomIdx) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DestoryRoomRemainTime, other.DestoryRoomRemainTime)) return false;
       if(!wallTiles_.Equals(other.wallTiles_)) return false;
       if(!floorTiles_.Equals(other.floorTiles_)) return false;
       if(!holeTiles_.Equals(other.holeTiles_)) return false;
       if (PlayCount != other.PlayCount) return false;
+      if (!PlayerLockStates.Equals(other.PlayerLockStates)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5701,7 +5742,6 @@ namespace NetworkMessageProto {
       if (CurrentStage != 0) hash ^= CurrentStage.GetHashCode();
       hash ^= playerStates_.GetHashCode();
       hash ^= bulletStates_.GetHashCode();
-      hash ^= playerPrefabIds_.GetHashCode();
       hash ^= minionStates_.GetHashCode();
       hash ^= minionPrefabInfos_.GetHashCode();
       hash ^= bossStates_.GetHashCode();
@@ -5720,13 +5760,14 @@ namespace NetworkMessageProto {
       if (ShowedSysErrLogTip != false) hash ^= ShowedSysErrLogTip.GetHashCode();
       if (newRulerPlayerState_ != null) hash ^= NewRulerPlayerState.GetHashCode();
       if (newRulerBulletState_ != null) hash ^= NewRulerBulletState.GetHashCode();
-      if (NewRulerPrefabId != 0) hash ^= NewRulerPrefabId.GetHashCode();
+      if (NewRulerCharacterSpawnConfigId != 0) hash ^= NewRulerCharacterSpawnConfigId.GetHashCode();
       if (NxtDestoryRoomIdx != 0) hash ^= NxtDestoryRoomIdx.GetHashCode();
       if (DestoryRoomRemainTime != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DestoryRoomRemainTime);
       hash ^= wallTiles_.GetHashCode();
       hash ^= floorTiles_.GetHashCode();
       hash ^= holeTiles_.GetHashCode();
       if (PlayCount != 0) hash ^= PlayCount.GetHashCode();
+      hash ^= PlayerLockStates.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5773,7 +5814,6 @@ namespace NetworkMessageProto {
       }
       pickupItems_.WriteTo(output, _repeated_pickupItems_codec);
       passedStages_.WriteTo(output, _repeated_passedStages_codec);
-      playerPrefabIds_.WriteTo(output, _repeated_playerPrefabIds_codec);
       bulletStates_.WriteTo(output, _repeated_bulletStates_codec);
       if (Achievement1NewCycle != false) {
         output.WriteRawTag(128, 1);
@@ -5803,9 +5843,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(178, 1);
         output.WriteMessage(NewRulerBulletState);
       }
-      if (NewRulerPrefabId != 0) {
+      if (NewRulerCharacterSpawnConfigId != 0) {
         output.WriteRawTag(184, 1);
-        output.WriteInt32(NewRulerPrefabId);
+        output.WriteInt32(NewRulerCharacterSpawnConfigId);
       }
       if (NxtDestoryRoomIdx != 0) {
         output.WriteRawTag(192, 1);
@@ -5822,6 +5862,7 @@ namespace NetworkMessageProto {
         output.WriteRawTag(232, 1);
         output.WriteInt32(PlayCount);
       }
+      playerLockStates_.WriteTo(output, _map_playerLockStates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5860,7 +5901,6 @@ namespace NetworkMessageProto {
       }
       pickupItems_.WriteTo(ref output, _repeated_pickupItems_codec);
       passedStages_.WriteTo(ref output, _repeated_passedStages_codec);
-      playerPrefabIds_.WriteTo(ref output, _repeated_playerPrefabIds_codec);
       bulletStates_.WriteTo(ref output, _repeated_bulletStates_codec);
       if (Achievement1NewCycle != false) {
         output.WriteRawTag(128, 1);
@@ -5890,9 +5930,9 @@ namespace NetworkMessageProto {
         output.WriteRawTag(178, 1);
         output.WriteMessage(NewRulerBulletState);
       }
-      if (NewRulerPrefabId != 0) {
+      if (NewRulerCharacterSpawnConfigId != 0) {
         output.WriteRawTag(184, 1);
-        output.WriteInt32(NewRulerPrefabId);
+        output.WriteInt32(NewRulerCharacterSpawnConfigId);
       }
       if (NxtDestoryRoomIdx != 0) {
         output.WriteRawTag(192, 1);
@@ -5909,6 +5949,7 @@ namespace NetworkMessageProto {
         output.WriteRawTag(232, 1);
         output.WriteInt32(PlayCount);
       }
+      playerLockStates_.WriteTo(ref output, _map_playerLockStates_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5924,7 +5965,6 @@ namespace NetworkMessageProto {
       }
       size += playerStates_.CalculateSize(_repeated_playerStates_codec);
       size += bulletStates_.CalculateSize(_repeated_bulletStates_codec);
-      size += playerPrefabIds_.CalculateSize(_repeated_playerPrefabIds_codec);
       size += minionStates_.CalculateSize(_repeated_minionStates_codec);
       size += minionPrefabInfos_.CalculateSize(_repeated_minionPrefabInfos_codec);
       size += bossStates_.CalculateSize(_repeated_bossStates_codec);
@@ -5965,8 +6005,8 @@ namespace NetworkMessageProto {
       if (newRulerBulletState_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(NewRulerBulletState);
       }
-      if (NewRulerPrefabId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NewRulerPrefabId);
+      if (NewRulerCharacterSpawnConfigId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NewRulerCharacterSpawnConfigId);
       }
       if (NxtDestoryRoomIdx != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(NxtDestoryRoomIdx);
@@ -5980,6 +6020,7 @@ namespace NetworkMessageProto {
       if (PlayCount != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(PlayCount);
       }
+      size += playerLockStates_.CalculateSize(_map_playerLockStates_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5997,7 +6038,6 @@ namespace NetworkMessageProto {
       }
       playerStates_.Add(other.playerStates_);
       bulletStates_.Add(other.bulletStates_);
-      playerPrefabIds_.Add(other.playerPrefabIds_);
       minionStates_.Add(other.minionStates_);
       minionPrefabInfos_.Add(other.minionPrefabInfos_);
       bossStates_.Add(other.bossStates_);
@@ -6047,8 +6087,8 @@ namespace NetworkMessageProto {
         }
         NewRulerBulletState.MergeFrom(other.NewRulerBulletState);
       }
-      if (other.NewRulerPrefabId != 0) {
-        NewRulerPrefabId = other.NewRulerPrefabId;
+      if (other.NewRulerCharacterSpawnConfigId != 0) {
+        NewRulerCharacterSpawnConfigId = other.NewRulerCharacterSpawnConfigId;
       }
       if (other.NxtDestoryRoomIdx != 0) {
         NxtDestoryRoomIdx = other.NxtDestoryRoomIdx;
@@ -6062,6 +6102,7 @@ namespace NetworkMessageProto {
       if (other.PlayCount != 0) {
         PlayCount = other.PlayCount;
       }
+      playerLockStates_.MergeFrom(other.playerLockStates_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -6137,11 +6178,6 @@ namespace NetworkMessageProto {
             passedStages_.AddEntriesFrom(input, _repeated_passedStages_codec);
             break;
           }
-          case 114:
-          case 112: {
-            playerPrefabIds_.AddEntriesFrom(input, _repeated_playerPrefabIds_codec);
-            break;
-          }
           case 122: {
             bulletStates_.AddEntriesFrom(input, _repeated_bulletStates_codec);
             break;
@@ -6181,7 +6217,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 184: {
-            NewRulerPrefabId = input.ReadInt32();
+            NewRulerCharacterSpawnConfigId = input.ReadInt32();
             break;
           }
           case 192: {
@@ -6206,6 +6242,10 @@ namespace NetworkMessageProto {
           }
           case 232: {
             PlayCount = input.ReadInt32();
+            break;
+          }
+          case 242: {
+            playerLockStates_.AddEntriesFrom(input, _map_playerLockStates_codec);
             break;
           }
         }
@@ -6283,11 +6323,6 @@ namespace NetworkMessageProto {
             passedStages_.AddEntriesFrom(ref input, _repeated_passedStages_codec);
             break;
           }
-          case 114:
-          case 112: {
-            playerPrefabIds_.AddEntriesFrom(ref input, _repeated_playerPrefabIds_codec);
-            break;
-          }
           case 122: {
             bulletStates_.AddEntriesFrom(ref input, _repeated_bulletStates_codec);
             break;
@@ -6327,7 +6362,7 @@ namespace NetworkMessageProto {
             break;
           }
           case 184: {
-            NewRulerPrefabId = input.ReadInt32();
+            NewRulerCharacterSpawnConfigId = input.ReadInt32();
             break;
           }
           case 192: {
@@ -6352,6 +6387,10 @@ namespace NetworkMessageProto {
           }
           case 232: {
             PlayCount = input.ReadInt32();
+            break;
+          }
+          case 242: {
+            playerLockStates_.AddEntriesFrom(ref input, _map_playerLockStates_codec);
             break;
           }
         }

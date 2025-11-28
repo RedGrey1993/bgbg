@@ -18,7 +18,7 @@ MonoBehaviour:
   OtherRoomBlastInterval: 1000
   RedFlashRectDuration: 10
   StageConfigs:
-  - stageData: {fileID: 11400000, guid: a7bc448cf2295a44c8679c8e16ea1ed8, type: 2}
+  - stageData: {fileID: 11400000, guid: ee150687057fe9b40a3bb99e8396e0a8, type: 2}
     isSysGuardianStage: 0
     isSysBugStage: 0
   - stageData: {fileID: 11400000, guid: 0aa299a024f59f644b84ebadda688227, type: 2}
@@ -33,6 +33,11 @@ MonoBehaviour:
   - stageData: {fileID: 11400000, guid: 9f5a532d06e4e4d42a0691f3e290f9ac, type: 2}
     isSysGuardianStage: 0
     isSysBugStage: 1
+  CharacterSpawnConfigs:
+  - {fileID: 11400000, guid: dd6887c449149994db695c74e9f9b878, type: 2}
+  - {fileID: 11400000, guid: c78096625d2be7d49a7c49a3e93c7aa6, type: 2}
+  - {fileID: 11400000, guid: e1e4a2886f5236042b444a79d200bedd, type: 2}
+  - {fileID: 11400000, guid: a98419ad527f8a6489d85a8cbb4014dd, type: 2}
   MinionPrefabs:
   - {fileID: 5506378715684145941, guid: b477ab9ead5e200418b7fc01d208f7f3, type: 3}
   - {fileID: 5506378715684145941, guid: bdba6314210caac40a9088e1cdb3c566, type: 3}

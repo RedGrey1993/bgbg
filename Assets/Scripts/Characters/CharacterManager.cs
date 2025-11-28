@@ -17,7 +17,6 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager Instance { get; private set; }
 
     public Dictionary<int, GameObject> PlayerObjects { get; private set; } = new ();
-    public Dictionary<int, int> PlayerPrefabIds { get; set; } = new Dictionary<int, int>();
     public Dictionary<int, GameObject> minionObjects { get; private set; } = new Dictionary<int, GameObject>();
     public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
     public Dictionary<int, GameObject> bossObjects { get; private set; } = new Dictionary<int, GameObject>();
@@ -77,18 +76,16 @@ public class CharacterManager : MonoBehaviour
             for (int i = 0; i < storage.PlayerStates.Count; i++) // 实际上只会有MyInfo自己，因为只有本地游戏有存档
             {
                 var ps = storage.PlayerStates[i];
-                int prefabId = storage.PlayerPrefabIds[i];
-                PlayerInfoMap[ps.PlayerId].PrefabId = prefabId;
+                PlayerInfoMap[ps.PlayerId].CharacterSpawnConfigId = ps.CharacterSpawnConfigId;
                 var bs = storage.BulletStates[i];
-                CreatePlayerObject(ps.PlayerId, prefabId, ps.PlayerId == MyInfo.Id, ps, bs);
+                CreatePlayerObject(ps.PlayerId, ps.CharacterSpawnConfigId, ps.PlayerId == MyInfo.Id, ps, bs);
             }
         }
         else
         {
             foreach (var player in Players)
             {
-                int prefabId = player.PrefabId;
-                CreatePlayerObject(player.Id, prefabId, player.Id == MyInfo.Id);
+                CreatePlayerObject(player.Id, player.CharacterSpawnConfigId, player.Id == MyInfo.Id);
             }
         }
     }
@@ -172,7 +169,7 @@ public class CharacterManager : MonoBehaviour
 
         if (GameManager.Instance.IsSysBugStage(stage) && storage.NewRulerPlayerState != null)
         {
-            var prefab = SelectCharacterManager.Instance.characterPrefabs[storage.NewRulerPrefabId];
+            var prefab = GameManager.Instance.PlayerSpawnConfigs[storage.NewRulerCharacterSpawnConfigId].Item1.prefab;
             NewRulerGo = Instantiate(prefab, bossParant);
             Vector2 spawnPosition;
             if (storage.NewRulerPlayerState.Position != null)
@@ -230,12 +227,12 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void CreatePlayerObject(int playerId, int prefabId,
+    private void CreatePlayerObject(int playerId, int characterSpawnConfigId,
         bool needController = false, PlayerState initState = null, BulletState initBulletState = null)
     {
         if (PlayerObjects.ContainsKey(playerId)) return;
 
-        var playerPrefab = SelectCharacterManager.Instance.characterPrefabs[prefabId];
+        var playerPrefab = GameManager.Instance.PlayerSpawnConfigs[characterSpawnConfigId].Item1.prefab;
         GameObject go = Instantiate(playerPrefab, playerParent);
         go.name = $"Player{playerId}";
         go.tag = Constants.TagPlayer;
@@ -283,12 +280,12 @@ public class CharacterManager : MonoBehaviour
 
             playerStatus.IsAI = false;
         }
+        playerStatus.State.CharacterSpawnConfigId = characterSpawnConfigId;
 
         LevelManager.Instance.AddToVisitedRooms(go.transform.position);
         playerRooms.Add(LevelManager.Instance.GetRoomNoByPosition(go.transform.position));
 
         PlayerObjects[playerId] = go;
-        PlayerPrefabIds[playerId] = prefabId;
         // 所有的Client Player都不处理碰撞，碰撞由Host处理
         // 上面的注释是老逻辑，新逻辑Client都处理（相当于状态同步的移动预测），但是Host会定期同步统一的状态
         // if (!IsLocalOrHost())
@@ -345,7 +342,6 @@ public class CharacterManager : MonoBehaviour
     {
         foreach (var go in PlayerObjects.Values) { if (go != null) Destroy(go); }
         PlayerObjects.Clear();
-        PlayerPrefabIds.Clear();
     }
 
     private void ClearMinionObjects()
@@ -382,7 +378,6 @@ public class CharacterManager : MonoBehaviour
         {
             if (go != null) Destroy(go);
             PlayerObjects.Remove(playerId);
-            PlayerPrefabIds.Remove(playerId);
         }
     }
 
@@ -391,7 +386,6 @@ public class CharacterManager : MonoBehaviour
         if (PlayerObjects.ContainsKey(characterId))
         {
             PlayerObjects.Remove(characterId);
-            PlayerPrefabIds.Remove(characterId);
             PlayerInfoMap.Remove(characterId);
             Players.RemoveAll(p => p.Id == characterId);
         }
@@ -479,7 +473,7 @@ public class CharacterManager : MonoBehaviour
         player.Id = IdGenerator.NextCharacterId();
         PlayerInfoMap[player.Id] = player;
         Players.Add(player);
-        CreatePlayerObject(player.Id, player.PrefabId, false);
+        CreatePlayerObject(player.Id, player.CharacterSpawnConfigId, false);
         SendPlayersUpdateToAll();
     }
 
@@ -838,17 +832,14 @@ public class CharacterManager : MonoBehaviour
     public void SaveInfoToLocalStorage(LocalStorage storage)
     {
         storage.PlayerStates.Clear();
-        storage.PlayerPrefabIds.Clear();
         storage.BulletStates.Clear();
         foreach (var playerId in PlayerObjects.Keys)
         {
             var playerStatus = PlayerObjects[playerId].GetCharacterStatus();
-            var playerPrefabId = PlayerPrefabIds[playerId];
             if (playerStatus != null)
             {
                 storage.PlayerStates.Add(playerStatus.State);
                 storage.BulletStates.Add(playerStatus.bulletState);
-                storage.PlayerPrefabIds.Add(playerPrefabId);
             }
         }
         storage.MinionStates.Clear();
@@ -1130,7 +1121,7 @@ public class CharacterManager : MonoBehaviour
         if (su == null) return;
         foreach (var ps in su.Players)
         {
-            if (!PlayerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, PlayerInfoMap[ps.PlayerId].PrefabId, ps.PlayerId == MyInfo.Id);
+            if (!PlayerObjects.ContainsKey(ps.PlayerId)) CreatePlayerObject(ps.PlayerId, PlayerInfoMap[ps.PlayerId].CharacterSpawnConfigId, ps.PlayerId == MyInfo.Id);
             if (PlayerObjects.TryGetValue(ps.PlayerId, out GameObject go) && go != null)
             {
                 // The server is authoritative, so it dictates the position for all objects.

@@ -14,8 +14,8 @@ public class SelectCharacterManager : MonoBehaviour
     [SerializeField] private GameObject rootPanel;
     [SerializeField] private List<UnityEngine.UI.Image> characterImages; // 数量固定为5
     [SerializeField] private AudioClip errorSound;
-    [SerializeField] public List<GameObject> characterPrefabs;
-    [SerializeField] public List<bool> characterLockStates;
+
+    private List<(CharacterSpawnConfigSO, bool)> playerSpawnConfigs = new();
 
     void Awake()
     {
@@ -29,6 +29,10 @@ public class SelectCharacterManager : MonoBehaviour
         }
         Instance = this;
 
+        foreach(var psc in GameManager.Instance.PlayerSpawnConfigs)
+        {
+            playerSpawnConfigs.Add(psc.Value);
+        }
         // （可选）如果你的UIManager需要跨场景，请取消注释下一行
         // DontDestroyOnLoad(gameObject);
     }
@@ -39,7 +43,7 @@ public class SelectCharacterManager : MonoBehaviour
 
         curSelectedIdx = 0;
         rightNxtIdx = 2;
-        leftPrevIdx = characterPrefabs.Count - 2;
+        leftPrevIdx = playerSpawnConfigs.Count - 2;
     }
 
     private bool isPressed = false;
@@ -101,8 +105,8 @@ public class SelectCharacterManager : MonoBehaviour
             if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame)
             {
                 Debug.Log("fhhtest, enterKey pressed");
-                int selectedPrefabId = (leftPrevIdx + 2) % characterPrefabs.Count;
-                if (characterLockStates[selectedPrefabId])
+                int selectedId = (leftPrevIdx + 2) % playerSpawnConfigs.Count;
+                if (playerSpawnConfigs[selectedId].Item2)
                 {
                     var audioSrc = gameObject.AddComponent<AudioSource>();
                     audioSrc.PlayOneShot(errorSound);
@@ -111,7 +115,7 @@ public class SelectCharacterManager : MonoBehaviour
                 }
                 else
                 {
-                    CharacterManager.Instance.MyInfo.PrefabId = selectedPrefabId;
+                    CharacterManager.Instance.MyInfo.CharacterSpawnConfigId = playerSpawnConfigs[selectedId].Item1.ID;
                     enterPressedCallback?.Invoke();
                     Hide();
                 }
@@ -131,20 +135,24 @@ public class SelectCharacterManager : MonoBehaviour
 
     void SetCharacterImages()
     {
-        for (int i = 0; i < Math.Min(characterPrefabs.Count, 3); i++)
+        // for (int i = 0; i < Math.Min(playerSpawnConfigs.Count, 3); i++)
+        for (int i = 0; i < 3; i++)
         {
-            var prefabIdx = (i) % characterPrefabs.Count;
-            var figure = characterPrefabs[prefabIdx].GetComponent<CharacterStatus>().characterData.figure;
+            var idx = (i) % playerSpawnConfigs.Count;
+            var figure = playerSpawnConfigs[idx].Item1.prefab.GetComponent<CharacterStatus>().characterData.figure;
             characterImages[i].sprite = figure;
-            SetLockState(i, characterLockStates[prefabIdx]);
+            SetLockState(i, playerSpawnConfigs[idx].Item2);
         }
 
-        for (int i = 1; i <= 2 && characterPrefabs.Count - i >= 3; i++)
+        // for (int i = 1; i <= 2 && playerSpawnConfigs.Count - i >= 3; i++)
+        for (int i = 1; i <= 2; i++)
         {
-            var prefabIdx = (characterPrefabs.Count - i) % characterPrefabs.Count;
-            var figure = characterPrefabs[prefabIdx].GetComponent<CharacterStatus>().characterData.figure;
+            // var idx = (playerSpawnConfigs.Count - i) % playerSpawnConfigs.Count;
+            var idx = (playerSpawnConfigs.Count - i) % playerSpawnConfigs.Count;
+            idx = (idx + playerSpawnConfigs.Count) % playerSpawnConfigs.Count;
+            var figure = playerSpawnConfigs[idx].Item1.prefab.GetComponent<CharacterStatus>().characterData.figure;
             characterImages[^i].sprite = figure;
-            SetLockState(characterImages.Count - i, characterLockStates[prefabIdx]);
+            SetLockState(characterImages.Count - i, playerSpawnConfigs[idx].Item2);
         }
     }
 
@@ -163,12 +171,12 @@ public class SelectCharacterManager : MonoBehaviour
         if (isPlayingAnimation) return;
         isPlayingAnimation = true;
 
-        rightNxtIdx = (rightNxtIdx + 1) % characterPrefabs.Count;
-        leftPrevIdx = (leftPrevIdx + 1) % characterPrefabs.Count;
+        rightNxtIdx = (rightNxtIdx + 1) % playerSpawnConfigs.Count;
+        leftPrevIdx = (leftPrevIdx + 1) % playerSpawnConfigs.Count;
 
         int leftestIdx = (curSelectedIdx - 2 + 5) % 5;
-        characterImages[leftestIdx].sprite = characterPrefabs[rightNxtIdx].GetComponent<CharacterStatus>().characterData.figure;
-        SetLockState(leftestIdx, characterLockStates[rightNxtIdx]);
+        characterImages[leftestIdx].sprite = playerSpawnConfigs[rightNxtIdx].Item1.prefab.GetComponent<CharacterStatus>().characterData.figure;
+        SetLockState(leftestIdx, playerSpawnConfigs[rightNxtIdx].Item2);
         curSelectedIdx = (curSelectedIdx + 1) % 5;
         characterImages[curSelectedIdx].rectTransform.SetAsLastSibling();
 
@@ -203,12 +211,12 @@ public class SelectCharacterManager : MonoBehaviour
         if (isPlayingAnimation) return;
         isPlayingAnimation = true;
 
-        rightNxtIdx = (rightNxtIdx - 1 + characterPrefabs.Count) % characterPrefabs.Count;
-        leftPrevIdx = (leftPrevIdx - 1 + characterPrefabs.Count) % characterPrefabs.Count;
+        rightNxtIdx = (rightNxtIdx - 1 + playerSpawnConfigs.Count) % playerSpawnConfigs.Count;
+        leftPrevIdx = (leftPrevIdx - 1 + playerSpawnConfigs.Count) % playerSpawnConfigs.Count;
 
         int rightestIdx = (curSelectedIdx + 2) % 5;
-        characterImages[rightestIdx].sprite = characterPrefabs[leftPrevIdx].GetComponent<CharacterStatus>().characterData.figure;
-        SetLockState(rightestIdx, characterLockStates[leftPrevIdx]);
+        characterImages[rightestIdx].sprite = playerSpawnConfigs[leftPrevIdx].Item1.prefab.GetComponent<CharacterStatus>().characterData.figure;
+        SetLockState(rightestIdx, playerSpawnConfigs[leftPrevIdx].Item2);
         curSelectedIdx = (curSelectedIdx - 1 + 5) % 5;
         characterImages[curSelectedIdx].rectTransform.SetAsLastSibling();
 
@@ -272,12 +280,12 @@ public class SelectCharacterManager : MonoBehaviour
         enabled = true;
 
         int leftestIdx = (curSelectedIdx - 2 + 5) % 5;
-        int leftPrevPrefabIdx = leftPrevIdx;
+        int leftPrevPrefabIdx = leftPrevIdx % playerSpawnConfigs.Count;
         for (int i = 0; i < 5; ++i)
         {
-            SetLockState(leftestIdx, characterLockStates[leftPrevPrefabIdx]);
+            SetLockState(leftestIdx, playerSpawnConfigs[leftPrevPrefabIdx].Item2);
             leftestIdx = (leftestIdx + 1) % 5;
-            leftPrevPrefabIdx = (leftPrevPrefabIdx + 1) % characterPrefabs.Count;
+            leftPrevPrefabIdx = (leftPrevPrefabIdx + 1) % playerSpawnConfigs.Count;
         }
 
         rootPanel.SetActive(true);
