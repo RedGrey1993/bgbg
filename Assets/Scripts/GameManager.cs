@@ -712,7 +712,16 @@ public class GameManager : MonoBehaviour
                         scale = UnityEngine.Random.Range(1.3f, 2f);
                     }
                     var cfg = gameConfig.CharacterSpawnConfigs[cfgId];
-                    CharacterManager.Instance.InstantiateMinionObject(cfg.prefab, room.center, cfg.ID, null, scale);
+                    Vector2 position;
+                    if (cfg.spawnOffsets.Length <= 0) {
+                        position = LevelManager.Instance.GetRandomPositionInRoom(roomId, cfg.bound);
+                    }
+                    else
+                    {
+                        int rnd = UnityEngine.Random.Range(0, cfg.spawnOffsets.Length);
+                        position = LevelManager.Instance.GetPositionInRoom(roomId, cfg.spawnOffsets[rnd], cfg.bound);
+                    }
+                    CharacterManager.Instance.InstantiateMinionObject(cfg.prefab, position, cfg.ID, null, scale);
                 }
             }
             // Print Character State / PCS:1

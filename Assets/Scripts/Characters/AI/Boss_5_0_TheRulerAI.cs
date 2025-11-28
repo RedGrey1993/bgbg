@@ -149,9 +149,9 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
             var room = LevelManager.Instance.Rooms[roomId];
             var bossSpawnCfg = summonBossSpawnConfigs[bossIdx++];
             var bossPrefab = bossSpawnCfg.prefab;
-            var charData = bossPrefab.GetComponent<CharacterStatus>().characterData;
-            int extentsX = (int)charData.bound.extents.x, extentsY = (int)charData.bound.extents.y;
-            int theRulerHeight = (int)CharacterData.bound.extents.y;
+            int extentsX = (int)bossSpawnCfg.bound.extents.x, extentsY = (int)bossSpawnCfg.bound.extents.y;
+            var theRulerSpawnCfg = GameManager.Instance.BossSpawnConfigs[characterStatus.State.CharacterSpawnConfigId];
+            int theRulerHeight = (int)theRulerSpawnCfg.bound.extents.y;
             var rndX = Random.Range(room.xMin + 1 + extentsX + 0.1f, room.xMin + room.width - extentsX - 0.1f);
             var rndY = Random.Range(room.yMin + 1 + extentsY + 0.1f, room.yMin + room.height - theRulerHeight - extentsY - 0.1f);
             Vector2 position = new Vector2(rndX, rndY);
@@ -214,7 +214,8 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         int roomId = LevelManager.Instance.GetRoomNoByPosition(transform.position);
         var room = LevelManager.Instance.Rooms[roomId];
 
-        Bounds bossBound = CharacterData.bound;
+        var theRulerSpawnCfg = GameManager.Instance.BossSpawnConfigs[characterStatus.State.CharacterSpawnConfigId];
+        Bounds bossBound = theRulerSpawnCfg.bound;
         var bossPos = transform.position;
         float explosionRatio = 0.6f;
         int tileNumber = (int)((room.width - 1) * (room.height - 1) * explosionRatio);
@@ -327,33 +328,34 @@ public class Boss_5_0_TheRulerAI : CharacterBaseAI
         var targetPos = room.center;
         int rnd = Random.Range(0, 4);
         Vector2 lookTo = Vector2.down;
+        var theRulerSpawnCfg = GameManager.Instance.BossSpawnConfigs[characterStatus.State.CharacterSpawnConfigId];
         switch (rnd)
         {
             case 0: // left
                 {
-                    targetPos.x = room.xMin + 1 + CharacterData.bound.extents.y;
-                    targetPos.y = Random.Range(room.yMin + 1 + CharacterData.bound.extents.x, room.yMax - CharacterData.bound.extents.x);
+                    targetPos.x = room.xMin + 1 + theRulerSpawnCfg.bound.extents.y;
+                    targetPos.y = Random.Range(room.yMin + 1 + theRulerSpawnCfg.bound.extents.x, room.yMax - theRulerSpawnCfg.bound.extents.x);
                     lookTo = new Vector2(1, 0);
                     break;
                 }
             case 1: // right
                 {
-                    targetPos.x = room.xMax - CharacterData.bound.extents.y;
-                    targetPos.y = Random.Range(room.yMin + 1 + CharacterData.bound.extents.x, room.yMax - CharacterData.bound.extents.x);
+                    targetPos.x = room.xMax - theRulerSpawnCfg.bound.extents.y;
+                    targetPos.y = Random.Range(room.yMin + 1 + theRulerSpawnCfg.bound.extents.x, room.yMax - theRulerSpawnCfg.bound.extents.x);
                     lookTo = new Vector2(-1, 0);
                     break;
                 }
             case 2: // top
                 {
-                    targetPos.x = Random.Range(room.xMin + 1 + CharacterData.bound.extents.x, room.xMax - CharacterData.bound.extents.x);
-                    targetPos.y = room.yMax - CharacterData.bound.extents.y;
+                    targetPos.x = Random.Range(room.xMin + 1 + theRulerSpawnCfg.bound.extents.x, room.xMax - theRulerSpawnCfg.bound.extents.x);
+                    targetPos.y = room.yMax - theRulerSpawnCfg.bound.extents.y;
                     lookTo = new Vector2(0, -1);
                     break;
                 }
             case 3: // bottom
                 {
-                    targetPos.x = Random.Range(room.xMin + 1 + CharacterData.bound.extents.x, room.xMax - CharacterData.bound.extents.x);
-                    targetPos.y = room.yMin + 1 + CharacterData.bound.extents.y;
+                    targetPos.x = Random.Range(room.xMin + 1 + theRulerSpawnCfg.bound.extents.x, room.xMax - theRulerSpawnCfg.bound.extents.x);
+                    targetPos.y = room.yMin + 1 + theRulerSpawnCfg.bound.extents.y;
                     lookTo = new Vector2(0, 1);
                     break;
                 }

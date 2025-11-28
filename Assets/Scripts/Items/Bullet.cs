@@ -115,9 +115,9 @@ public class Bullet : MonoBehaviour
         // if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
         //     || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
         if (!isHitting 
-            && ((OwnerStatus != null 
-                    && OwnerStatus.IsAlive() 
-                    && Vector2.Distance(transform.position, StartPosition) > OwnerStatus.State.ShootRange)
+            && (OwnerStatus == null
+                || OwnerStatus.IsDead() 
+                || Vector2.Distance(transform.position, StartPosition) > OwnerStatus.State.ShootRange
                 || rb.linearVelocity.magnitude < 0.1f)) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
         {
             if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())

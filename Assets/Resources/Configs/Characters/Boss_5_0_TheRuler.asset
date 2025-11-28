@@ -19,19 +19,16 @@ MonoBehaviour:
   deadBodyPrefab: {fileID: 0}
   figure: {fileID: 0}
   CharacterType: 14
-  MaxHp: 35
+  MaxHp: 30
   MoveSpeed: 2
   ShootRange: 100
   BulletSpeed: 8
   Damage: 2
+  DamageAdjustment: 1
   AttackFreqUp: -5
   CriticalRate: 0
   ExpGiven: 0
   InitialActiveSkillId: -1
-  spawnOffsets: {x: 0, y: 1}
-  bound:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 4, y: 3, z: 0}
   canMoveDiagonally: 0
   moveInAtkRange: 1
   moveAcrossRoom: 0

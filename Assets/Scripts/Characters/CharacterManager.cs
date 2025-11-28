@@ -109,19 +109,30 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            void AreaToNumber(Rect room, int roomIdx, out int number, out List<Vector2> positions)
+            void AreaToNumber(Rect room, int roomIdx, Vector2[] spawnOffsets, Bounds bound, out int number, out List<Vector2> positions)
             {
                 int areaPerMinion = Random.Range(levelData.areaPerMinion.min, levelData.areaPerMinion.max + 1);
                 float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
                 number = Mathf.FloorToInt(area / areaPerMinion);
                 positions = new List<Vector2>();
 
-                // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
-                for (int i = 0; i < number; i++)
+                if (spawnOffsets.Length <= 0) {
+                    // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
+                    for (int i = 0; i < number; i++)
+                    {
+                        Vector2 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
+                        // if (!positions.Contains(position)) // O(n) 太慢了
+                        positions.Add(position);
+                    }
+                }
+                else
                 {
-                    Vector2 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, 1f, 1f);
-                    // if (!positions.Contains(position)) // O(n) 太慢了
-                    positions.Add(position);
+                    number = Mathf.Min(number, spawnOffsets.Length);
+                    for (int i = 0; i < number; i++)
+                    {
+                        Vector2 position = LevelManager.Instance.GetPositionInRoom(roomIdx, spawnOffsets[i], bound);
+                        positions.Add(position);
+                    }
                 }
             }
             foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
@@ -133,7 +144,7 @@ public class CharacterManager : MonoBehaviour
                 // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
                 int rndIdx = Random.Range(0, stageMinionSpawnConfigs.Count);
                 var cfg = stageMinionSpawnConfigs[rndIdx];
-                AreaToNumber(room, roomIdx, out var minionNum, out var spawnPositions);
+                AreaToNumber(room, roomIdx, cfg.spawnOffsets, cfg.bound, out var minionNum, out var spawnPositions);
                 for (int i = 0; i < minionNum; i++)
                 {
                     // 10%的概率生成精英怪
@@ -150,27 +161,28 @@ public class CharacterManager : MonoBehaviour
 
     private void CreateBossObjects(LocalStorage storage)
     {
-        void GenerateBossPosition(int roomIdx, Vector2Int bossSpawnOffset, Bounds bound, out Vector2 position)
+        void GenerateBossPosition(int roomIdx, Vector2[] bossSpawnOffset, Bounds bound, out Vector2 position)
         {
-            if (bossSpawnOffset.x < -1 || bossSpawnOffset.y < -1)
+            if (bossSpawnOffset.Length <= 0)
             {
                 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
-            } else
+            } 
+            else
             {
-                position = LevelManager.Instance.GetPositionInRoom(roomIdx, bossSpawnOffset, bound);
+                int rnd = Random.Range(0, bossSpawnOffset.Length);
+                position = LevelManager.Instance.GetPositionInRoom(roomIdx, bossSpawnOffset[rnd], bound);
             }
         }
 
         ClearBossObjects();
         
         int stage = storage.CurrentStage;
-        var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
         var stageBossSpawnConfigs = GameManager.Instance.StageBossSpawnConfigs[stage];
 
         if (GameManager.Instance.IsSysBugStage(stage) && storage.NewRulerPlayerState != null)
         {
-            var prefab = GameManager.Instance.PlayerSpawnConfigs[storage.NewRulerCharacterSpawnConfigId].Item1.prefab;
-            NewRulerGo = Instantiate(prefab, bossParant);
+            var playerSpawnCfg = GameManager.Instance.PlayerSpawnConfigs[storage.NewRulerCharacterSpawnConfigId].Item1;
+            NewRulerGo = Instantiate(playerSpawnCfg.prefab, bossParant);
             Vector2 spawnPosition;
             if (storage.NewRulerPlayerState.Position != null)
             {
@@ -180,14 +192,13 @@ public class CharacterManager : MonoBehaviour
             else
             {
                 Rect bossRoom = LevelManager.Instance.Rooms[LevelManager.Instance.BossRoomIds[0]];
-                var characterData = prefab.GetComponent<CharacterStatus>().characterData;
-                var spawnOffset = characterData.spawnOffsets;
-                var spawnBound = characterData.bound;
+                var spawnOffset = playerSpawnCfg.spawnOffsets;
+                var spawnBound = playerSpawnCfg.bound;
                 GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(bossRoom.center), spawnOffset, spawnBound, out spawnPosition);
             }
             NewRulerGo.transform.position = spawnPosition;
 
-            NewRulerGo.name = $"{prefab.name}NewRuler";
+            NewRulerGo.name = $"{playerSpawnCfg.prefab.name}NewRuler";
             NewRulerGo.tag = Constants.TagEnemy;
 
             var bossStatus = NewRulerGo.GetComponent<CharacterStatus>();
@@ -216,9 +227,8 @@ public class CharacterManager : MonoBehaviour
                     var cfg = stageBossSpawnConfigs[0];
                     if (cfg.ID == MyInfo.CharacterSpawnConfigId)
                         cfg = stageBossSpawnConfigs[1];
-                    var characterData = cfg.prefab.GetComponent<CharacterStatus>().characterData;
-                    var spawnOffset = characterData.spawnOffsets;
-                    var spawnBound = characterData.bound;
+                    var spawnOffset = cfg.spawnOffsets;
+                    var spawnBound = cfg.bound;
                     Rect bossRoom = LevelManager.Instance.Rooms[bossRoomId];
                     GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(bossRoom.center), spawnOffset, spawnBound, out var spawnPosition);
 
