@@ -236,8 +236,11 @@ public class CharacterStatus : MonoBehaviour
             || CharacterManager.Instance.NewRulerGo == gameObject)
         {
             UIManager.Instance.ShowTeleportBeamEffect(transform.position);
-            if (!CharacterManager.Instance.MySelfHasSysBug())
-                LevelManager.Instance.RandomizePickupItem(characterData, transform.position);
+            // if (!CharacterManager.Instance.MySelfHasSysBug())
+            {
+                Rect room = GetCurrentRoom();
+                LevelManager.Instance.RandomizePickupItem(characterData, new Vector2(room.center.x, room.yMin + 5));
+            }
 
             if (CharacterManager.Instance.NewRulerGo == gameObject)
             {

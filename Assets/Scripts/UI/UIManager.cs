@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     public GameObject formatPanel;
     #endregion
 
+    public SkillPanelController SkillPanelController {get; private set;}
     public GameObject TeleportBeamEffect { get; set; }
     private Coroutine flashCoroutine;
 
@@ -139,6 +140,7 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         statusPanelCtrl = GetComponent<StatusPanelController>();
+        SkillPanelController = GetComponent<SkillPanelController>();
 
         _uiDocument = GetComponent<UIDocument>();
         _root = _uiDocument.rootVisualElement;

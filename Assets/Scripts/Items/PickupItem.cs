@@ -75,21 +75,29 @@ public class PickupItem : MonoBehaviour
             gameObject.transform.localScale *= status.transform.transform.lossyScale.x / gameObject.transform.lossyScale.x;
         }
 
-        if (status.State.ActiveSkillId > 0)
+        if (skillData.IsActive) 
         {
-            var skillData = SkillDatabase.Instance.GetActiveSkill(status.State.ActiveSkillId);
-            LevelManager.Instance.ShowPickUpItem(initialPos, skillData, status.State.ActiveSkillCurCd);
+            if (status.State.ActiveSkillId > 0)
+            {
+                var skillData = SkillDatabase.Instance.GetActiveSkill(status.State.ActiveSkillId);
+                LevelManager.Instance.ShowPickUpItem(initialPos, skillData, status.State.ActiveSkillCurCd);
+            }
+
+            status.State.ActiveSkillId = skillData.id;
+            status.State.ActiveSkillCurCd = LevelManager.Instance.PickupItems[Id].Item1.CurrentCooldown;
+            if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
+            {
+                UIManager.Instance.UpdateMyStatusUI(status);
+                UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
+            }
+        }
+        else
+        {
+            SkillPanelController spc = UIManager.Instance.SkillPanelController;
+            spc.LearnNewSkill(skillData);
         }
 
-        status.State.ActiveSkillId = skillData.id;
-        status.State.ActiveSkillCurCd = LevelManager.Instance.PickupItems[Id].Item1.CurrentCooldown;
-        if (status.State.PlayerId == CharacterManager.Instance.MyInfo.Id)
-        {
-            UIManager.Instance.UpdateMyStatusUI(status);
-            UIManager.Instance.ShowInfoPanel($"You got an active item: {skillData.skillName}, press space to use.", Color.white, 3);
-        }
         LevelManager.Instance.PickupItems.Remove(Id);
-
         if (status.characterData.Is3DModel())
         {
             float standUpTime = 2.25f;

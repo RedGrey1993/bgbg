@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
         foreach (var state in Storage.PlayerStates)
         {
             state.Position = null;
-            state.CurrentStageSkillLearned = false;
+            // state.CurrentStageSkillLearned = false;
             state.ToLearnedSkillIds.Clear();
         }
         Storage.MinionStates.Clear();

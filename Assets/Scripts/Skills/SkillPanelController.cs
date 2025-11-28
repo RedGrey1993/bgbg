@@ -202,7 +202,7 @@ public class SkillPanelController : MonoBehaviour
         }
     }
 
-    private void LearnNewSkill(SkillData newSkill)
+    public void LearnNewSkill(SkillData newSkill)
     {
         // 在这里添加你的游戏逻辑，比如给玩家添加能力
         CharacterManager.Instance.LearnSkill(newSkill);

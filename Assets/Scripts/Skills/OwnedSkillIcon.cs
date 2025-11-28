@@ -24,15 +24,18 @@ public class OwnedSkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void SetSkillData(SkillData skillData, float alpha = 1f)
     {
         SkillData = skillData;
-        if (skillData == null)
-        {
-            srcImage.sprite = null;
-            srcImage.color = new Color(1f, 1f, 1f, 0f);
-        }
-        else
-        {
-            srcImage.sprite = skillData.icon;
-            srcImage.color = new Color(1f, 1f, 1f, alpha);
+        // 默认SkillContainer的Active为false，在这时候Instantiate添加技能时Awake/Start暂时不会执行
+        if (srcImage != null) {
+            if (skillData == null)
+            {
+                srcImage.sprite = null;
+                srcImage.color = new Color(1f, 1f, 1f, 0f);
+            }
+            else
+            {
+                srcImage.sprite = skillData.icon;
+                srcImage.color = new Color(1f, 1f, 1f, alpha);
+            }
         }
     }
 

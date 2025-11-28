@@ -1259,14 +1259,18 @@ public class LevelManager : MonoBehaviour
     #region Pickup Items
     public void RandomizePickupItem(CharacterData chData, Vector3 position)
     {
-        List<SkillData> activeSkills = new List<SkillData>();
+        List<SkillData> skills = new List<SkillData>();
         foreach (var activeItem in SkillDatabase.Instance.ActiveSkills)
         {
-            if (activeItem.MatchTags(chData.itemTags)) activeSkills.Add(activeItem);
+            if (activeItem.MatchTags(chData.itemTags)) skills.Add(activeItem);
+        }
+        foreach(var passiveItem in SkillDatabase.Instance.PassiveSkills)
+        {
+            if (passiveItem.MatchTags(chData.itemTags)) skills.Add(passiveItem);
         }
 
-        var skillId = Random.Range(0, activeSkills.Count);
-        var skillData = activeSkills[skillId];
+        var skillId = Random.Range(0, skills.Count);
+        var skillData = skills[skillId];
         ShowPickUpItem(position, skillData);
     }
 

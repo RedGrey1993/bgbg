@@ -114,8 +114,11 @@ public class Bullet : MonoBehaviour
         // 当前减少计算量，不计算距离（避免平方根运算），只单独计算x/y轴的距离
         // if (Mathf.Abs(transform.position.x - StartPosition.x) > OwnerStatus.State.ShootRange
         //     || Mathf.Abs(transform.position.y - StartPosition.y) > OwnerStatus.State.ShootRange
-        if (Vector2.Distance(transform.position, StartPosition) > OwnerStatus.State.ShootRange
-            || rb.linearVelocity.magnitude < 0.1f && !isHitting) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
+        if (!isHitting 
+            && ((OwnerStatus != null 
+                    && OwnerStatus.IsAlive() 
+                    && Vector2.Distance(transform.position, StartPosition) > OwnerStatus.State.ShootRange)
+                || rb.linearVelocity.magnitude < 0.1f)) // 如果由于意外，子弹速度变成0，导致无法触发碰撞销毁子弹，则自动销毁
         {
             if (IsReturnBullet && OwnerStatus != null && OwnerStatus.IsAlive())
             {
@@ -157,7 +160,7 @@ public class Bullet : MonoBehaviour
     // 激光子弹的IsTrigger是true
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (isHitting) return;
+        if (isHitting || released) return;
         isHitting = true;
         if (GameManager.Instance.IsLocalOrHost())
         {
@@ -256,16 +259,17 @@ public class Bullet : MonoBehaviour
                         bs.StartPosition = startPos;
                         bs.OwnerStatus = OwnerStatus;
                         bs.Damage = Damage > 1 ? (Damage / 2) : 1;
-                        var bState = BulletState.Clone();
-                        bState.PenetrateCount = bs.PenetrateCount = PenetrateCount;
-                        bState.HomingForce = bs.HomingForce = HomingForce;
-                        bState.SplitCount = bs.SplitCount = SplitCount;
-                        bState.BounceCount = bs.BounceCount = BounceCount;
-                        bState.CanDestroyObstacle = bs.CanDestroyObstacle = CanDestroyObstacle;
-                        bState.ConfuseTargetTime = bs.ConfuseTargetTime = ConfuseTargetTime;
-                        bState.IsReturnBullet = bs.IsReturnBullet = IsReturnBullet;
-                        bState.IsStealBullet = bs.IsStealBullet = IsStealBullet;
-                        bs.BulletState = bState;
+                        
+                        bs.PenetrateCount = PenetrateCount;
+                        bs.HomingForce = HomingForce;
+                        bs.SplitCount = SplitCount;
+                        bs.BounceCount = BounceCount;
+                        bs.CanDestroyObstacle = CanDestroyObstacle;
+                        bs.ConfuseTargetTime = ConfuseTargetTime;
+                        bs.IsReturnBullet = IsReturnBullet;
+                        bs.IsStealBullet = IsStealBullet;
+
+                        bs.BulletState = null;
                         bs.LastCollider = other;
                         bs.rb.linearVelocity = startDir * rb.linearVelocity.magnitude;
 
