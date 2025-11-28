@@ -232,11 +232,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Minion_30_WormHoleAI
   rotateSpeed: 60
   spawnInterval: 10
-  spawnPrefabs:
-  - {fileID: 5506378715684145941, guid: 8a5643aed52326d458760d89dbb19ecf, type: 3}
-  - {fileID: 5506378715684145941, guid: 6efdb2aec6092ff45aca7abc4f9b9969, type: 3}
-  - {fileID: 5506378715684145941, guid: 948ccc4d1219f7e40a9929bf565f5c61, type: 3}
-  - {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+  spawnConfigs:
+  - {fileID: 11400000, guid: 770e5eb7cd26fee45988c7fce17bb6b8, type: 2}
+  - {fileID: 11400000, guid: 2140614878aa6dc4bb7b3f9e1e6e4758, type: 2}
+  - {fileID: 11400000, guid: 9e89b9a5b4d25f141ad9166dc9e0570d, type: 2}
+  - {fileID: 11400000, guid: dbea86ad5a8772c4e9ca219f23f8cba0, type: 2}
   summonEffectPrefab: {fileID: 1977356882097113535, guid: af0ad2fdc4ade354d8e895ea9cc32732, type: 3}
 --- !u!1 &6566019517108392442
 GameObject:

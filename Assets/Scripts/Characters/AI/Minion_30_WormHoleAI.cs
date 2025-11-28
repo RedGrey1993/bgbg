@@ -8,7 +8,7 @@ public class Minion_30_WormHoleAI : CharacterBaseAI
 {
     public float rotateSpeed;
     public float spawnInterval;
-    public List<GameObject> spawnPrefabs;
+    public List<CharacterSpawnConfigSO> spawnConfigs;
     public GameObject summonEffectPrefab;
     private float rotateZ = 0;
     private Transform child;
@@ -29,7 +29,7 @@ public class Minion_30_WormHoleAI : CharacterBaseAI
             if (Time.time - lastSpawnTime > spawnInterval)
             {
                 lastSpawnTime = Time.time;
-                if (spawnPrefabs.Count > 0)
+                if (spawnConfigs.Count > 0)
                     StartCoroutine(SpawnMinion(AggroTarget));
             }
         }
@@ -41,9 +41,9 @@ public class Minion_30_WormHoleAI : CharacterBaseAI
     private IEnumerator SpawnMinion(GameObject aggroTarget)
     {
         Vector2 lookInput = (aggroTarget.transform.position - transform.position).normalized;
-        int idx = Random.Range(0, spawnPrefabs.Count);
+        int idx = Random.Range(0, spawnConfigs.Count);
         // 召唤小弟
-        var pokePrefab = spawnPrefabs[idx];
+        var cfg = spawnConfigs[idx];
         Bounds playerBounds = col2D.bounds;
         // 计算子弹的初始位置，稍微偏离玩家边界
         Vector2 offset = lookInput.normalized * (playerBounds.extents.magnitude + 0.1f);
@@ -55,9 +55,8 @@ public class Minion_30_WormHoleAI : CharacterBaseAI
         Destroy(summonEffect, summonTime);
         yield return new WaitForSeconds(summonTime);
 
-        GameObject summonMinion = Instantiate(pokePrefab);
-        summonMinion.transform.position = summonPosition;
-        summonMinion.name += pokePrefab.name;
+        GameObject summonMinion = CharacterManager.Instance.InstantiateMinionObject(cfg.prefab, summonPosition, cfg.ID, null, 1);
+        summonMinion.name += cfg.prefab.name;
         summonMinion.tag = gameObject.tag;
         if (summonMinion.layer == Constants.defaultLayer) summonMinion.layer = gameObject.layer;
         Physics2D.SyncTransforms();
