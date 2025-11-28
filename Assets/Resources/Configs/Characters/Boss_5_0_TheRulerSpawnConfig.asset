@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a96c465654817d47b285274540cacc1, type: 3}
   m_Name: Boss_5_0_TheRulerSpawnConfig
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSpawnConfigSO
-  _id: 6
+  _id: 5
   prefab: {fileID: 696006956200170134, guid: d3e0d0ee05b365f47ac4c3c9aadb875f, type: 3}
   weight: 0
   spawnStages: 05000000

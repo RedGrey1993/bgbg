@@ -46,7 +46,7 @@ public class PokeboyCaptureExecutor : SkillExecutor
         else
         {
             info += $"No enemy's health is below {captureHpRatio * 100:F0}%.\n";
-            if (aiScript.PokeMinionPrefabs.Count == 0)
+            if (aiScript.PokeMinionSpawnConfigIds.Count == 0)
             {
                 info += "You have no companion now.\n";
                 aiScript.characterStatus.State.ActiveSkillCurCd = skillData.cooldown;
@@ -120,23 +120,17 @@ public class PokeboyCaptureExecutor : SkillExecutor
         Destroy(pokeball);
         aiScript.TobeDestroyed.Remove(pokeball);
 
-        var prefabInfo = CharacterManager.Instance.minionPrefabInfos[enemy.State.PlayerId];
-        var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
-        var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
-
-        if (aiScript.characterStatus.State.CatchedMinions.Count == maxPokeMinionCount)
+        if (aiScript.characterStatus.State.CatchedMinionStates.Count == maxPokeMinionCount)
         {
-            aiScript.characterStatus.State.CatchedMinions[aiScript.CircularIdx] = prefabInfo;
             aiScript.characterStatus.State.CatchedMinionStates[aiScript.CircularIdx] = enemy.State.Clone();
-            aiScript.PokeMinionPrefabs[aiScript.CircularIdx] = minionPrefab;
+            aiScript.PokeMinionSpawnConfigIds[aiScript.CircularIdx] = enemy.State.CharacterSpawnConfigId;
             aiScript.PokeMinionReviveTime[aiScript.CircularIdx] = 0;
             aiScript.CircularIdx = (aiScript.CircularIdx + 1) % maxPokeMinionCount;
         }
         else
         {
-            aiScript.characterStatus.State.CatchedMinions.Add(prefabInfo);
             aiScript.characterStatus.State.CatchedMinionStates.Add(enemy.State.Clone());
-            aiScript.PokeMinionPrefabs.Add(minionPrefab);
+            aiScript.PokeMinionSpawnConfigIds.Add(enemy.State.CharacterSpawnConfigId);
             aiScript.PokeMinionReviveTime.Add(0);
         }
 

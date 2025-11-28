@@ -218,9 +218,7 @@ public class GameManager : MonoBehaviour
             state.ToLearnedSkillIds.Clear();
         }
         Storage.MinionStates.Clear();
-        Storage.MinionPrefabInfos.Clear();
         Storage.BossStates.Clear();
-        Storage.BossPrefabInfos.Clear();
         Storage.Rooms.Clear();
         Storage.PickupItems.Clear();
         Storage.NxtDestoryRoomIdx = -1;
@@ -283,14 +281,47 @@ public class GameManager : MonoBehaviour
     }
 
     public Dictionary<int, (CharacterSpawnConfigSO, bool)> PlayerSpawnConfigs {get; private set;}
+    public Dictionary<int, CharacterSpawnConfigSO> BossSpawnConfigs {get; private set;}
+    public Dictionary<int, CharacterSpawnConfigSO> MinionSpawnConfigs {get; private set;}
+    public Dictionary<int, List<CharacterSpawnConfigSO>> StageBossSpawnConfigs {get; private set;}
+    public Dictionary<int, List<CharacterSpawnConfigSO>> StageMinionSpawnConfigs {get; private set;}
     private void LoadCharacterSpawnConfigs()
     {
         PlayerSpawnConfigs = new();
+        BossSpawnConfigs = new();
+        MinionSpawnConfigs = new();
+        StageBossSpawnConfigs = new();
+        StageMinionSpawnConfigs = new();
         foreach(var cfg in gameConfig.CharacterSpawnConfigs)
         {
             if (cfg.canBePlayer)
             {
                 PlayerSpawnConfigs.Add(cfg.ID, (cfg, cfg.initLocked));
+            }
+
+            if (cfg.isBoss)
+            {
+                BossSpawnConfigs.Add(cfg.ID, cfg);
+                foreach (int stage in cfg.spawnStages)
+                {
+                    if (!StageBossSpawnConfigs.ContainsKey(stage))
+                    {
+                        StageBossSpawnConfigs.Add(stage, new List<CharacterSpawnConfigSO>());
+                    }
+                    StageBossSpawnConfigs[stage].Add(cfg);
+                }
+            }
+            else
+            {
+                MinionSpawnConfigs.Add(cfg.ID, cfg);
+                foreach (int stage in cfg.spawnStages)
+                {
+                    if (!StageMinionSpawnConfigs.ContainsKey(stage))
+                    {
+                        StageMinionSpawnConfigs.Add(stage, new List<CharacterSpawnConfigSO>());
+                    }
+                    StageMinionSpawnConfigs[stage].Add(cfg);
+                }
             }
         }
     }
@@ -667,7 +698,7 @@ public class GameManager : MonoBehaviour
             else if (command.StartsWith("SM"))
             {
                 var parameters = command.Split(':')[^1];
-                int prefabId = int.Parse(parameters.Split('/')[0]);
+                int cfgId = int.Parse(parameters.Split('/')[0]);
                 int count = int.Parse(parameters.Split('/')[1]);
                 int elite = int.Parse(parameters.Split('/')[2]);
                 int roomId = LevelManager.Instance.GetRoomNoByPosition(CharacterManager.Instance.GetMyselfGameObject().transform.position);
@@ -680,7 +711,8 @@ public class GameManager : MonoBehaviour
                     {
                         scale = UnityEngine.Random.Range(1.3f, 2f);
                     }
-                    InstantiateMinionObject(gameConfig.MinionPrefabs[prefabId], room.center, null, scale);
+                    var cfg = gameConfig.CharacterSpawnConfigs[cfgId];
+                    CharacterManager.Instance.InstantiateMinionObject(cfg.prefab, room.center, cfg.ID, null, scale);
                 }
             }
             // Print Character State / PCS:1
@@ -703,65 +735,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, PlayerState ms, float scale = 1f)
-    {
-        var minion = Instantiate(prefab, CharacterManager.Instance.minionParant);
-        minion.transform.position = position;
-
-        int minionId;
-        if (ms != null) minionId = ms.PlayerId;
-        else minionId = IdGenerator.NextCharacterId();
-
-        minion.name = $"{prefab.name}{minionId}";
-        minion.tag = Constants.TagEnemy;
-
-        if (minion.TryGetComponent<CharacterStatus>(out var minionStatus))
-        {
-            if (ms != null)
-            {
-                minionStatus.SetState(ms);
-            }
-            else
-            {
-                minionStatus.State.PlayerId = minionId;
-                minionStatus.State.PlayerName = minion.name;
-                if (scale > 1.1f)
-                {
-                    minionStatus.State.Damage = minionStatus.State.Damage * scale;
-                    // minionStatus.State.MoveSpeed = minionStatus.State.MoveSpeed * scale;
-                    // minionStatus.State.BulletSpeed = minionStatus.State.BulletSpeed * scale;
-                    minionStatus.State.MaxHp = (int)(minionStatus.State.MaxHp * scale);
-                    minionStatus.State.CurrentHp = (int)(minionStatus.State.CurrentHp * scale);
-                    minionStatus.State.ShootRange = minionStatus.State.ShootRange * scale;
-                    minionStatus.SetColor(Constants.RandomColor());
-                }
-                else
-                {
-                    minionStatus.SetColor(Color.white);
-                }
-                minionStatus.SetScale(scale);
-            }
-            if (minion.TryGetComponent<Rigidbody2D>(out var rb))
-            {
-                rb.mass *= minionStatus.State.Scale;
-            }
-        }
-
-        // 将血条显示到对象的头上
-        var miniStatusCanvas = minion.GetComponentInChildren<Canvas>();
-        if (miniStatusCanvas == null)
-        {
-            Physics2D.SyncTransforms();
-            var col2D = minion.GetComponentInChildren<Collider2D>();
-            var tarPos = minion.transform.position;
-            tarPos.y += col2D.bounds.extents.y + 0.5f;
-            var obj = Instantiate(CharacterManager.Instance.miniStatusPrefab, tarPos, Quaternion.identity);
-            obj.transform.SetParent(minion.transform);
-        }
-
-        return minion;
     }
 #endif
 }

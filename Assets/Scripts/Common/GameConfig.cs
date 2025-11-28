@@ -26,5 +26,4 @@ public class GameConfig : ScriptableObject
 
     [Header("角色配置")]
     public CharacterSpawnConfigSO[] CharacterSpawnConfigs;
-    public List<GameObject> MinionPrefabs;
 }

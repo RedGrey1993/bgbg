@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a96c465654817d47b285274540cacc1, type: 3}
-  m_Name: ContraBillSpawnConfig
+  m_Name: Minion_4_1_KamikazeShipSpawnConfig
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSpawnConfigSO
-  _id: 7
-  prefab: {fileID: 696006956200170134, guid: cecee85ce7cd68646872240c56e02996, type: 3}
-  weight: 0
-  spawnStages: 
+  _id: 36
+  prefab: {fileID: 5506378715684145941, guid: d39eac67355bb1d41b80d128fb247b79, type: 3}
+  weight: 1
+  spawnStages: 0400000005000000
   isBoss: 0
-  canBePlayer: 1
+  canBePlayer: 0
   initLocked: 0

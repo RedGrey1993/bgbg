@@ -38,11 +38,6 @@ public class LevelData : ScriptableObject
     // public GameObject startRoomPrefab; // 起始房间
     // public GameObject bossRoomPrefab; // Boss 房间
 
-    [Header("Minion Prefabs")]
-    public List<GameObject> normalMinionPrefabs; // 普通怪物
-    // public List<GameObject> eliteMonsterPrefabs; // 精英怪物
-    public List<GameObject> bossPrefabs; // Boss 怪物
-
     [Header("Level Settings")]
     public int level = 1;
     public MinMaxInt totalRooms = new() { min = 10, max = 16};

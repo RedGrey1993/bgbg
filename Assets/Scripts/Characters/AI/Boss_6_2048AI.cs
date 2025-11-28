@@ -52,13 +52,12 @@ public class Boss_6_2048AI : CharacterBaseAI
     {
         if (characterStatus.State.CurrentHp < characterStatus.State.MaxHp)
         {
-            int myId = characterStatus.State.PlayerId;
-            var bossPrefabInfo = CharacterManager.Instance.bossPrefabInfos[myId];
+            int cfgId = characterStatus.State.CharacterSpawnConfigId;
             Vector2 pos1 = transform.position;
             Vector2 toCenter = characterStatus.GetCurrentRoom().center - pos1;
             Vector2 pos2 = pos1 + toCenter.normalized * col2D.bounds.extents.magnitude;
-            GameObject child1 = CharacterManager.Instance.InstantiateBossObject(gameObject, pos1, bossPrefabInfo.StageId, bossPrefabInfo.PrefabId, null);
-            GameObject child2 = CharacterManager.Instance.InstantiateBossObject(gameObject, pos2, bossPrefabInfo.StageId, bossPrefabInfo.PrefabId, null);
+            GameObject child1 = CharacterManager.Instance.InstantiateBossObject(gameObject, pos1, cfgId, null);
+            GameObject child2 = CharacterManager.Instance.InstantiateBossObject(gameObject, pos2, cfgId, null);
             CharacterStatus status1 = child1.GetCharacterStatus();
             CharacterStatus status2 = child2.GetCharacterStatus();
             status1.SetScale(characterStatus.State.Scale / 1.414f);

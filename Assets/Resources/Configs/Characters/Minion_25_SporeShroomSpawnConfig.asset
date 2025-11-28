@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a96c465654817d47b285274540cacc1, type: 3}
-  m_Name: ContraBillSpawnConfig
+  m_Name: Minion_25_SporeShroomSpawnConfig
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSpawnConfigSO
-  _id: 7
-  prefab: {fileID: 696006956200170134, guid: cecee85ce7cd68646872240c56e02996, type: 3}
-  weight: 0
-  spawnStages: 
+  _id: 27
+  prefab: {fileID: 5506378715684145941, guid: caadcd92dcd67cd45a2a0fa41241313b, type: 3}
+  weight: 1
+  spawnStages: 0200000003000000
   isBoss: 0
-  canBePlayer: 1
+  canBePlayer: 0
   initLocked: 0

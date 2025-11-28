@@ -37,7 +37,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
     public HashSet<GameObject> TobeDestroyed { get; set; } = new HashSet<GameObject>();
     public Coroutine ActiveSkillCoroutine { get; set; } = null;
     // poke related
-    public List<GameObject> PokeMinionPrefabs { get; set; } = new List<GameObject>();
+    public List<int> PokeMinionSpawnConfigIds { get; set; } = new();
     public List<float> PokeMinionReviveTime { get; set; } = new List<float>();
     public List<(GameObject, int)> ExistingPokes = new();
     public int CircularIdx { get; set; } = 0;
@@ -85,13 +85,11 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         // 玩家有伙伴大师技能
         if (!isAi && characterStatus.State.ActiveSkillId == Constants.CompanionMasterSkillId)
         {
-            PokeMinionPrefabs.Clear();
+            PokeMinionSpawnConfigIds.Clear();
             PokeMinionReviveTime.Clear();
-            foreach (var prefabInfo in characterStatus.State.CatchedMinions)
+            foreach (var state in characterStatus.State.CatchedMinionStates)
             {
-                var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
-                var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
-                PokeMinionPrefabs.Add(minionPrefab);
+                PokeMinionSpawnConfigIds.Add(state.CharacterSpawnConfigId);
                 PokeMinionReviveTime.Add(0);
             }
         }
@@ -112,7 +110,7 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
 
     protected bool HasAliveNotSummonedPokePrefabs()
     {
-        for (int idx = 0; idx < PokeMinionPrefabs.Count; idx++)
+        for (int idx = 0; idx < PokeMinionSpawnConfigIds.Count; idx++)
         {
             if (Time.time > PokeMinionReviveTime[idx])
             {
@@ -128,11 +126,12 @@ public abstract class CharacterBaseAI : MonoBehaviour, ICharacterAI
         int minReviveIdx = -1;
         // 存活，且没有被召唤到场上的小怪
         List<(GameObject, int)> aliveNotSummonedPokePrefabs = new();
-        for (int idx = 0; idx < PokeMinionPrefabs.Count; idx++)
+        for (int idx = 0; idx < PokeMinionSpawnConfigIds.Count; idx++)
         {
             if (Time.time > PokeMinionReviveTime[idx])
             {
-                aliveNotSummonedPokePrefabs.Add((PokeMinionPrefabs[idx], idx));
+                GameObject prefab = GameManager.Instance.MinionSpawnConfigs[PokeMinionSpawnConfigIds[idx]].prefab;
+                aliveNotSummonedPokePrefabs.Add((prefab, idx));
                 PokeMinionReviveTime[idx] = float.MaxValue;
             }
             else

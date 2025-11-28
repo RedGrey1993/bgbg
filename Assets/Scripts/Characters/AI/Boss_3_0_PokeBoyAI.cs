@@ -14,7 +14,7 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     public GameObject summonPokeEffectPrefab;
     public GameObject speedupEffectPrefab;
     public GameObject rageEffectPrefab;
-    public List<PrefabInfo> pokeMinionPrefabInfos;
+    public List<CharacterSpawnConfigSO> pokeMinionSpawnConfigs;
     public GameObject capturedMinionCanvas;
     public int pokeMinionBuffTime = 5;
 
@@ -22,36 +22,27 @@ public class Boss_3_0_PokeBoyAI : CharacterBaseAI
     {
         if (isAi)
         {
-            PokeMinionPrefabs.Clear();
+            PokeMinionSpawnConfigIds.Clear();
             PokeMinionReviveTime.Clear();
-            foreach (var prefabInfo in pokeMinionPrefabInfos)
+            foreach (var cfg in pokeMinionSpawnConfigs)
             {
-                var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
-                var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
-
-                PokeMinionPrefabs.Add(minionPrefab);
+                PokeMinionSpawnConfigIds.Add(cfg.ID);
                 PokeMinionReviveTime.Add(0);
             }
         }
-        else if (PokeMinionPrefabs.Count == 0 && pokeMinionPrefabInfos.Count > 0)
+        else if (PokeMinionSpawnConfigIds.Count == 0 && pokeMinionSpawnConfigs.Count > 0)
         {
-            var prefabInfo = pokeMinionPrefabInfos[0];
-            var levelData = GameManager.Instance.GetStageConfig(prefabInfo.StageId).stageData;
-            var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
+            var cfg = pokeMinionSpawnConfigs[0];
 
-            PokeMinionPrefabs.Add(minionPrefab);
+            PokeMinionSpawnConfigIds.Add(cfg.ID);
             PokeMinionReviveTime.Add(0);
 
-            characterStatus.State.CatchedMinions.Clear();
             characterStatus.State.CatchedMinionStates.Clear();
-
-            characterStatus.State.CatchedMinions.Add(new MinionPrefabInfo
-            {
-                StageId = prefabInfo.StageId,
-                PrefabId = prefabInfo.PrefabId
-            });
-            var prefabStatus = minionPrefab.GetComponent<CharacterStatus>();
-            characterStatus.State.CatchedMinionStates.Add(prefabStatus.characterData.ToState());
+            
+            var prefabStatus = cfg.prefab.GetComponent<CharacterStatus>();
+            var state = prefabStatus.characterData.ToState();
+            state.CharacterSpawnConfigId = cfg.ID;
+            characterStatus.State.CatchedMinionStates.Add(state);
         }
     }
 

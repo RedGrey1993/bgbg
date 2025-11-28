@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a96c465654817d47b285274540cacc1, type: 3}
   m_Name: Boss_6_2048SpawnConfig
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSpawnConfigSO
-  _id: 7
+  _id: 6
   prefab: {fileID: 5506378715684145941, guid: dd830f0a76a4eb84dbd621582d61581f, type: 3}
   weight: 0
   spawnStages: 010000000200000003000000

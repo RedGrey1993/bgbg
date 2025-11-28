@@ -45,7 +45,7 @@ message InputMessage
 
 message PlayerState
 {
-    // next index = 30
+    // next index = 21,30
     int32 PlayerId = 1;
     string PlayerName = 2;
     float MaxHp = 3;
@@ -71,7 +71,6 @@ message PlayerState
     int32 ActiveSkillCurCd = 20;
     float Scale = 17;
     ColorProto Color = 18;
-    repeated MinionPrefabInfo CatchedMinions = 21;
     repeated PlayerState CatchedMinionStates = 22;
     map<int32, PlayerState> StolenStates = 26;
     int32 CharacterSpawnConfigId = 29;
@@ -138,14 +137,12 @@ message MinionPrefabInfo
 
 message LocalStorage
 {
-    // next index = 14, 31
+    // next index = 4,6,14, 31
     int32 CurrentStage = 1;
     repeated PlayerState PlayerStates = 2;
     repeated BulletState BulletStates = 15;
     repeated PlayerState MinionStates = 3;
-    repeated MinionPrefabInfo MinionPrefabInfos = 4;
     repeated PlayerState BossStates = 5;
-    repeated BossPrefabInfo BossPrefabInfos = 6;
     repeated RectProto Rooms = 7;
     uint32 RoomMaxWidth = 8;
     uint32 RoomMaxHeight = 9;

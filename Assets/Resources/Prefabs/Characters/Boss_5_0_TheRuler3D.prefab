@@ -161,6 +161,10 @@ MonoBehaviour:
   teleportEffectPrefab: {fileID: 7761031033666763820, guid: 1eb833340b41fb444b576c4dced8d4dc, type: 3}
   accumulateEffectPrefab: {fileID: 9027514048236820045, guid: 37f7760cdb8ca2e49bf311ba1faa70a9, type: 3}
   explosionSound: {fileID: 8300000, guid: 9d31736e9e806024fb9a8d6fe8a29ef9, type: 3}
+  summonBossSpawnConfigs:
+  - {fileID: 11400000, guid: c78096625d2be7d49a7c49a3e93c7aa6, type: 2}
+  - {fileID: 11400000, guid: e1e4a2886f5236042b444a79d200bedd, type: 2}
+  - {fileID: 11400000, guid: a98419ad527f8a6489d85a8cbb4014dd, type: 2}
 --- !u!1 &2380667436673660461
 GameObject:
   m_ObjectHideFlags: 0

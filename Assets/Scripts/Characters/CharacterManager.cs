@@ -18,9 +18,7 @@ public class CharacterManager : MonoBehaviour
 
     public Dictionary<int, GameObject> PlayerObjects { get; private set; } = new ();
     public Dictionary<int, GameObject> minionObjects { get; private set; } = new Dictionary<int, GameObject>();
-    public Dictionary<int, MinionPrefabInfo> minionPrefabInfos { get; private set; } = new Dictionary<int, MinionPrefabInfo>();
     public Dictionary<int, GameObject> bossObjects { get; private set; } = new Dictionary<int, GameObject>();
-    public Dictionary<int, BossPrefabInfo> bossPrefabInfos { get; private set; } = new Dictionary<int, BossPrefabInfo>();
     public GameObject NewRulerGo { get; private set; }
 
     public PlayerInfo MyInfo { get; set; } = new PlayerInfo { Id = IdGenerator.NextCharacterId(), CSteamID = "PlayerOffline", Name = "Player Offline" };
@@ -96,16 +94,17 @@ public class CharacterManager : MonoBehaviour
 
         int stage = storage.CurrentStage;
         var levelData = GameManager.Instance.GetStageConfig(storage.CurrentStage).stageData;
+        var stageMinionSpawnConfigs = GameManager.Instance.StageMinionSpawnConfigs[stage];
 
         if (!storage.NewLevel)
         {
             for (int i = 0; i < storage.MinionStates.Count; i++)
             {
                 var ms = storage.MinionStates[i];
-                var prefabInfo = storage.MinionPrefabInfos[i];
-                var minionPrefab = levelData.normalMinionPrefabs[prefabInfo.PrefabId];
+                int cfgId = ms.CharacterSpawnConfigId;
+                var minionPrefab = GameManager.Instance.MinionSpawnConfigs[cfgId].prefab;
 
-                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), stage, prefabInfo.PrefabId, ms);
+                InstantiateMinionObject(minionPrefab, new Vector3(ms.Position.X, ms.Position.Y, 0), cfgId, ms);
             }
         }
         else
@@ -132,8 +131,8 @@ public class CharacterManager : MonoBehaviour
 
                 var room = LevelManager.Instance.Rooms[roomIdx];
                 // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
-                int randomMinionIdx = Random.Range(0, levelData.normalMinionPrefabs.Count);
-                var minionPrefab = levelData.normalMinionPrefabs[randomMinionIdx];
+                int rndIdx = Random.Range(0, stageMinionSpawnConfigs.Count);
+                var cfg = stageMinionSpawnConfigs[rndIdx];
                 AreaToNumber(room, roomIdx, out var minionNum, out var spawnPositions);
                 for (int i = 0; i < minionNum; i++)
                 {
@@ -143,7 +142,7 @@ public class CharacterManager : MonoBehaviour
                     {
                         scale = Random.Range(levelData.eliteScaleRange.min, levelData.eliteScaleRange.max);
                     }
-                    InstantiateMinionObject(minionPrefab, spawnPositions[i], stage, randomMinionIdx, null, scale);
+                    InstantiateMinionObject(cfg.prefab, spawnPositions[i], cfg.ID, null, scale);
                 }
             }
         }
@@ -166,6 +165,7 @@ public class CharacterManager : MonoBehaviour
         
         int stage = storage.CurrentStage;
         var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
+        var stageBossSpawnConfigs = GameManager.Instance.StageBossSpawnConfigs[stage];
 
         if (GameManager.Instance.IsSysBugStage(stage) && storage.NewRulerPlayerState != null)
         {
@@ -203,25 +203,25 @@ public class CharacterManager : MonoBehaviour
                 for (int i = 0; i < storage.BossStates.Count; i++)
                 {
                     var bs = storage.BossStates[i];
-                    var prefabInfo = storage.BossPrefabInfos[i];
-                    var bossPrefab = levelData.bossPrefabs[prefabInfo.PrefabId];
+                    int cfgId = bs.CharacterSpawnConfigId;
+                    var bossPrefab = GameManager.Instance.BossSpawnConfigs[cfgId].prefab;
 
-                    InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), stage, prefabInfo.PrefabId, bs);
+                    InstantiateBossObject(bossPrefab, new Vector3(bs.Position.X, bs.Position.Y, 0), cfgId, bs);
                 }
             }
             else
             {
                 foreach (int bossRoomId in LevelManager.Instance.BossRoomIds)
                 {
-                    int randomBossIdx = Random.Range(0, levelData.bossPrefabs.Count);
-                    var bossPrefab = levelData.bossPrefabs[randomBossIdx];
-                    var characterData = bossPrefab.GetComponent<CharacterStatus>().characterData;
+                    int rndIdx = Random.Range(0, stageBossSpawnConfigs.Count);
+                    var cfg = stageBossSpawnConfigs[rndIdx];
+                    var characterData = cfg.prefab.GetComponent<CharacterStatus>().characterData;
                     var spawnOffset = characterData.spawnOffsets;
                     var spawnBound = characterData.bound;
                     Rect bossRoom = LevelManager.Instance.Rooms[bossRoomId];
                     GenerateBossPosition(LevelManager.Instance.GetRoomNoByPosition(bossRoom.center), spawnOffset, spawnBound, out var spawnPosition);
 
-                    InstantiateBossObject(bossPrefab, spawnPosition, stage, randomBossIdx, null);
+                    InstantiateBossObject(cfg.prefab, spawnPosition, cfg.ID, null);
                 }
             }
         }
@@ -351,7 +351,6 @@ public class CharacterManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         minionObjects.Clear();
-        minionPrefabInfos.Clear();
     }
 
     private void ClearBossObjects()
@@ -361,7 +360,6 @@ public class CharacterManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         bossObjects.Clear();
-        bossPrefabInfos.Clear();
     }
 
     private void ClearCompanionObjects()
@@ -392,12 +390,10 @@ public class CharacterManager : MonoBehaviour
         else if (minionObjects.ContainsKey(characterId))
         {
             minionObjects.Remove(characterId);
-            minionPrefabInfos.Remove(characterId);
         }
         else if (bossObjects.ContainsKey(characterId))
         {
             bossObjects.Remove(characterId);
-            bossPrefabInfos.Remove(characterId);
         }
     }
 
@@ -843,9 +839,7 @@ public class CharacterManager : MonoBehaviour
             }
         }
         storage.MinionStates.Clear();
-        storage.MinionPrefabInfos.Clear();
         storage.BossStates.Clear();
-        storage.BossPrefabInfos.Clear();
 
         if (PlayerObjects.Count == 0) return; // Player死了，或者通关后清空上一把的状态，游戏结束，下次加载时从第1关重新开始
         storage.NextCharacterId = (uint)IdGenerator.NextCharacterId();
@@ -853,12 +847,10 @@ public class CharacterManager : MonoBehaviour
         foreach (var minionId in minionObjects.Keys)
         {
             var minion = minionObjects[minionId];
-            var prefabInfo = minionPrefabInfos[minionId];
             var minionStatus = minion.GetComponent<CharacterStatus>();
             if (minionStatus != null)
             {
                 storage.MinionStates.Add(minionStatus.State);
-                storage.MinionPrefabInfos.Add(prefabInfo);
             }
         }
 
@@ -866,12 +858,10 @@ public class CharacterManager : MonoBehaviour
         {
             var boss = bossObjects[bossId];
             if (boss.name.Equals(Constants.SummonBossName)) continue;
-            var prefabInfo = bossPrefabInfos[bossId];
             var bossStatus = boss.GetComponent<CharacterStatus>();
             if (bossStatus != null)
             {
                 storage.BossStates.Add(bossStatus.State);
-                storage.BossPrefabInfos.Add(prefabInfo);
             }
         }
         
@@ -882,7 +872,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public GameObject InstantiateBossObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState bs)
+    public GameObject InstantiateBossObject(GameObject prefab, Vector3 position, int characterSpawnConfigId, PlayerState bs)
     {
         var boss = Instantiate(prefab, bossParant);
         boss.transform.position = position;
@@ -911,18 +901,14 @@ public class CharacterManager : MonoBehaviour
                 bossStatus.State.MaxHp *= Constants.BossHpMultipiler;
                 bossStatus.State.CurrentHp *= Constants.BossHpMultipiler;
             }
+            bossStatus.State.CharacterSpawnConfigId = characterSpawnConfigId;
         }
 
         bossObjects[bossId] = boss;
-        bossPrefabInfos[bossId] = new BossPrefabInfo
-        {
-            StageId = stageId,
-            PrefabId = prefabId
-        };
         return boss;
     }
 
-    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int stageId, int prefabId, PlayerState ms, float scale = 1f)
+    public GameObject InstantiateMinionObject(GameObject prefab, Vector3 position, int characterSpawnConfigId, PlayerState ms, float scale = 1f)
     {
         var minion = Instantiate(prefab, minionParant);
         minion.transform.position = position;
@@ -960,6 +946,7 @@ public class CharacterManager : MonoBehaviour
                 }
                 minionStatus.SetScale(scale);
             }
+            minionStatus.State.CharacterSpawnConfigId = characterSpawnConfigId;
             if (minion.TryGetComponent<Rigidbody2D>(out var rb))
             {
                 rb.mass *= minionStatus.State.Scale;
@@ -979,11 +966,6 @@ public class CharacterManager : MonoBehaviour
         }
 
         minionObjects[minionId] = minion;
-        minionPrefabInfos[minionId] = new MinionPrefabInfo
-        {
-            StageId = stageId,
-            PrefabId = prefabId
-        };
         return minion;
     }
     
