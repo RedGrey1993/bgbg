@@ -76,6 +76,28 @@ public class SkillDatabase : MonoBehaviour
             return null;
         }
     }
+
+    public SkillData GetRandomPassiveSkill()
+    {
+        int cumulativeWeight = 0;
+        foreach (var skill in PassiveSkills)
+        {
+            cumulativeWeight += skill.weight;
+        }
+        int randomWeight = Random.Range(1, cumulativeWeight);
+        var skillData = PassiveSkills[0];
+        foreach (var skill in PassiveSkills)
+        {
+            randomWeight -= skill.weight;
+            if (randomWeight < 0)
+            {
+                skillData = skill;
+                break;
+            }
+        }
+        return skillData;
+    }
+
     public SkillData GetActiveSkill(int skillId)
     {
         if (ActiveSkillDictionary.ContainsKey(skillId))

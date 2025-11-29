@@ -52,7 +52,6 @@ public class SkillPanelController : MonoBehaviour
         }
         else
         {
-            var skillNum = SkillDatabase.Instance.PassiveSkills.Count;
             HashSet<int> selectedSkillIds = new HashSet<int>
             {
                 Constants.HealthRecoverySkillId
@@ -60,12 +59,12 @@ public class SkillPanelController : MonoBehaviour
             SkillData skillData;
             for (int i = 0; i < Constants.SkillChooseNumber; i++)
             {
-                var skillId = Random.Range(0, skillNum);
-                skillData = SkillDatabase.Instance.PassiveSkills[skillId];
-                while (selectedSkillIds.Contains(skillData.id))
+                skillData = SkillDatabase.Instance.GetRandomPassiveSkill();
+                int cnt = 0;
+                while (selectedSkillIds.Contains(skillData.id) && cnt < 50)
                 {
-                    skillId = Random.Range(0, skillNum);
-                    skillData = SkillDatabase.Instance.PassiveSkills[skillId];
+                    skillData = SkillDatabase.Instance.GetRandomPassiveSkill();
+                    cnt++;
                 }
                 selectedSkillIds.Add(skillData.id);
                 skills.Add(skillData);

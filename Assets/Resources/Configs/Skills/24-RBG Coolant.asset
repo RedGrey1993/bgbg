@@ -38,3 +38,4 @@ MonoBehaviour:
   CurrentHpChangeType1: 0
   ScaleChange: 0
   tags: 
+  weight: 5

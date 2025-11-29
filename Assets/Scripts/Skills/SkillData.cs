@@ -27,6 +27,7 @@ public class SkillData : ScriptableObject
     public float CurrentHpChangeType1;
     public float ScaleChange;
     public List<ItemTag> tags;
+    public int weight;
 
     public bool MatchTags(List<ItemTag> chTags)
     {

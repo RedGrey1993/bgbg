@@ -25,5 +25,14 @@ MonoBehaviour:
   executor: {fileID: 11400000, guid: 74174b47c3364914d9b519ad41183ff1, type: 2}
   additionalExecutors: []
   DamageUpChange: 0.3
+  DamageAdjustment: 0
   HpStealFixChange: 0.1
+  MaxHpChange: 0
+  ShootRangeChange: 0
+  MoveSpeedChange: 0
+  AttackFreqUpChange: 0
+  CriticalRateChange: 0
+  CurrentHpChangeType1: 0
+  ScaleChange: 0
   tags: 
+  weight: 5

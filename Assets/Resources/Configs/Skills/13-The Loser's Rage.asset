@@ -27,4 +27,16 @@ MonoBehaviour:
   IsActive: 0
   cooldown: 10
   executor: {fileID: 11400000, guid: fe5df31b6de6c184d9855745be03582f, type: 2}
+  additionalExecutors: []
+  DamageUpChange: 0
+  DamageAdjustment: 0
+  HpStealFixChange: 0
+  MaxHpChange: 0
+  ShootRangeChange: 0
+  MoveSpeedChange: 0
+  AttackFreqUpChange: 0
+  CriticalRateChange: 0
+  CurrentHpChangeType1: 0
+  ScaleChange: 0
   tags: 
+  weight: 5

@@ -1262,9 +1262,19 @@ public class LevelManager : MonoBehaviour
         {
             if (passiveItem.MatchTags(chData.itemTags)) skills.Add(passiveItem);
         }
-
-        var skillId = Random.Range(0, skills.Count);
-        var skillData = skills[skillId];
+        int cumulativeWeight = 0;
+        foreach (var skill in skills) cumulativeWeight += skill.weight;
+        int randomWeight = Random.Range(0, cumulativeWeight);
+        var skillData = skills[0];
+        foreach (var skill in skills)
+        {
+            randomWeight -= skill.weight;
+            if (randomWeight < 0)
+            {
+                skillData = skill;
+                break;
+            }
+        }
         ShowPickUpItem(position, skillData);
     }
 

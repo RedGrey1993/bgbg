@@ -17,5 +17,20 @@ MonoBehaviour:
   description: Restores 50% of maximum HP
   backgroundStory: 
   icon: {fileID: 9008983151185501802, guid: ec7f99d1573bbf447b4080f22cfddc6f, type: 3}
+  tipColor: {r: 1, g: 1, b: 1, a: 1}
   IsActive: 0
+  cooldown: 10
   executor: {fileID: 11400000, guid: 4c5826a7ace21d048addf45228bf8100, type: 2}
+  additionalExecutors: []
+  DamageUpChange: 0
+  DamageAdjustment: 0
+  HpStealFixChange: 0
+  MaxHpChange: 0
+  ShootRangeChange: 0
+  MoveSpeedChange: 0
+  AttackFreqUpChange: 0
+  CriticalRateChange: 0
+  CurrentHpChangeType1: 0
+  ScaleChange: 0
+  tags: 
+  weight: 5
