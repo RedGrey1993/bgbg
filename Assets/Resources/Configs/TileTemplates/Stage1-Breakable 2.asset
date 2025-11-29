@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24ae8bfb73c5cad41af487b5aa85b6db, type: 3}
-  m_Name: Stage1-UnbreakableObstacle 2
+  m_Name: Stage1-Breakable 2
   m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
   floorTiles: []
-  unbreakableCollisionTiles:
+  unbreakableCollisionTiles: []
+  breakableCollisionTiles:
   - position: {x: 0, y: 0, z: 0}
     tile: {fileID: 11400000, guid: b151f2d606d4df044b65dedf9dcda1fd, type: 2}
   - position: {x: 0, y: 1, z: 0}
@@ -24,8 +25,8 @@ MonoBehaviour:
     tile: {fileID: 11400000, guid: 3dc55e27ffe20664ca6967472d95c543, type: 2}
   - position: {x: 0, y: 4, z: 0}
     tile: {fileID: 11400000, guid: 0c5ade1f60925e9408edabeedf78c9b8, type: 2}
-  breakableCollisionTiles: []
+  obstacleTiles: []
+  holeTiles: []
   size: {x: 1, y: 5}
   weight: 1
-  tileType: 6
-  stage: 1
+  tileType: 4

@@ -45,6 +45,8 @@ public enum TileType
     BreakableObstacle = 4,
     // 碰撞，不可摧毁
     UnbreakableObstacle = 6,
+    // 房间的整体布局，除了墙壁之外的其他所有类型的Tile，如果符合条件，优先使用整体布局，而非分别随机生成
+    RoomLayoutExceptWall = 7,
     // 仅用于半透明覆盖在Floor上，不碰撞
     Highlight = 10,
 }

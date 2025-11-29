@@ -54,6 +54,7 @@ public class LevelManager : MonoBehaviour
     }
     public Dictionary<Vector3Int, BreakableTileInfo> breakableObstacleTiles {get;set;} = new();
     public Dictionary<int, HashSet<CharacterStatus>> RoomToCharacters {get; set;}= new();
+    public Dictionary<int, List<Vector3Int>> RoomToMinionPositions {get; private set;} = new();
 
     void Awake()
     {
@@ -239,6 +240,7 @@ public class LevelManager : MonoBehaviour
         BossRoomIds = new List<int>();
         IsVisitedRooms = new bool[Rooms.Count];
         RoomToCharacters = new();
+        RoomToMinionPositions = new();
         for (int i = 0; i < Rooms.Count; ++i)
         {
             remainRoomsIndex.Add(i);
@@ -331,7 +333,7 @@ public class LevelManager : MonoBehaviour
             for (int i = 0; i < Rooms.Count; ++i)
             {
                 bool isBossRoom = BossRoomIds.Contains(i);
-                GenerateRoom(Rooms[i], storage, isBossRoom);
+                GenerateRoom(i, Rooms[i], storage, isBossRoom);
             }
             GenerateOuterWall(storage);
         }
@@ -377,6 +379,30 @@ public class LevelManager : MonoBehaviour
             pos2TilesDict.Add((new Vector3Int(holeTile.X, holeTile.Y), (TileType)holeTile.TileType), new ImmutableTileInfo { tileTemplateId = holeTile.TileTemplateId, tileId = holeTile.TileId });
         }
         storage.HoleTiles.Clear();
+
+        foreach (var roomTile in storage.RoomTiles)
+        {
+            if (!tileToRooms.ContainsKey(new Vector3Int(roomTile.X, roomTile.Y))) continue;
+            TileTemplate tt = GameManager.Instance.GetTileTemplate(stage, (TileType)roomTile.TileType, roomTile.TileTemplateId);
+            for (int i = 0; i < tt.floorTiles.Length; ++i)
+            {
+                TileData td = tt.floorTiles[i];
+                floorTilemap.SetTile(new Vector3Int(roomTile.X + td.position.x, roomTile.Y + td.position.y), td.tile);
+            }
+            for (int i = 0; i < tt.obstacleTiles.Length; ++i)
+            {
+                TileData td = tt.obstacleTiles[i];
+                wallTilemap.SetTile(new Vector3Int(roomTile.X + td.position.x, roomTile.Y + td.position.y), td.tile);
+            }
+            for (int i = 0; i < tt.holeTiles.Length; ++i)
+            {
+                TileData td = tt.holeTiles[i];
+                holeTilemap.SetTile(new Vector3Int(roomTile.X + td.position.x, roomTile.Y + td.position.y), td.tile);
+            }
+
+            pos2TilesDict.Add((new Vector3Int(roomTile.X, roomTile.Y), (TileType)roomTile.TileType), new ImmutableTileInfo { tileTemplateId = roomTile.TileTemplateId, tileId = -1 });
+        }
+        storage.RoomTiles.Clear();
     }
     
     private void CalcRoomRelatedDict(Rect room, LocalStorage storage)
@@ -491,7 +517,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void GenerateRoom(Rect room, LocalStorage storage, bool isBossRoom)
+    private void GenerateRoom(int roomId, Rect room, LocalStorage storage, bool isBossRoom)
     {
         int stage = storage.CurrentStage;
         int roomMaxHeight = CurrentLevelData.roomMaxHeight;
@@ -564,10 +590,44 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        GenerateHole(room, storage);
-        GenerateUnbreakableObstacle(room, storage);
-        GenerateBreakableObstacle(room, storage);
-        GenerateFloor(room, storage, isBossRoom);
+        var (rt, rtid) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.RoomLayoutExceptWall, room);
+        if (rt != null)
+        {
+            int xmin = Mathf.RoundToInt(room.xMin);
+            int ymin = Mathf.RoundToInt(room.yMin);
+            for (int i = 0; i < rt.floorTiles.Count(); i++)
+            {
+                TileData td = rt.floorTiles[i];
+                floorTilemap.SetTile(new Vector3Int(xmin + td.position.x, ymin + td.position.y), td.tile);
+            }
+            for (int i = 0; i < rt.obstacleTiles.Count(); i++)
+            {
+                TileData td = rt.obstacleTiles[i];
+                wallTilemap.SetTile(new Vector3Int(xmin + td.position.x, ymin + td.position.y), td.tile);
+            }
+            for (int i = 0; i < rt.holeTiles.Count(); i++)
+            {
+                TileData td = rt.holeTiles[i];
+                holeTilemap.SetTile(new Vector3Int(xmin + td.position.x, ymin + td.position.y), td.tile);
+            }
+            for (int i = 0; i < rt.characterTiles.Count(); i++)
+            {
+                TileData td = rt.characterTiles[i];
+                if (!RoomToMinionPositions.ContainsKey(roomId))
+                {
+                    RoomToMinionPositions.Add(roomId, new List<Vector3Int>());
+                }
+                RoomToMinionPositions[roomId].Add(new Vector3Int(xmin + td.position.x, ymin + td.position.y));
+            }
+            pos2TilesDict.Add((new Vector3Int(xmin, ymin), TileType.RoomLayoutExceptWall), new ImmutableTileInfo { tileTemplateId = rtid, tileId = -1 });
+        }
+        else
+        {    
+            GenerateHole(room, storage);
+            GenerateUnbreakableObstacle(room, storage);
+            GenerateBreakableObstacle(room, storage);
+            GenerateFloor(room, storage, isBossRoom);
+        }
     }
 
     private void GenerateUnbreakableObstacle(Rect room, LocalStorage storage)
@@ -1133,6 +1193,17 @@ public class LevelManager : MonoBehaviour
                     TileId = tileInfo.Value.tileId,
                 });
             }
+            else if (tileType == TileType.RoomLayoutExceptWall)
+            {
+                storage.RoomTiles.Add(new TileInfo
+                {
+                    X = tileInfo.Key.Item1.x,
+                    Y = tileInfo.Key.Item1.y,
+                    TileType = (int)tileType,
+                    TileTemplateId = tileInfo.Value.tileTemplateId,
+                    TileId = -1,
+                });
+            }
         }
     }
 
@@ -1177,12 +1248,6 @@ public class LevelManager : MonoBehaviour
             IsVisitedRooms[roomId] = true;
             VisitedRooms.Add(roomId);
         }
-    }
-
-    public void AddToBossRooms(Vector3 position)
-    {
-        int roomId = GetRoomNoByPosition(position);
-        BossRoomIds.Add(roomId);
     }
 
     private Vector2 GetRandomPositionInRoom(int roomId, float extentsX, float extentsY)

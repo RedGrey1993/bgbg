@@ -24,6 +24,9 @@ public class TileTemplate : ScriptableObject
     public TileData[] floorTiles;
     public TileData[] unbreakableCollisionTiles;
     public TileData[] breakableCollisionTiles;
+    public TileData[] obstacleTiles;  // 包括可破坏的和不可破坏的，是否可破坏在于Tile本身是否是DestrctableTile类型
+    public TileData[] holeTiles;
+    public TileData[] characterTiles;
     // (可选) 你也可以在这里存储其他图层
     // public TileData[] decorationTiles;
 

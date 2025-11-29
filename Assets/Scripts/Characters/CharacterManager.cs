@@ -116,7 +116,15 @@ public class CharacterManager : MonoBehaviour
                 number = Mathf.FloorToInt(area / areaPerMinion);
                 positions = new List<Vector2>();
 
-                if (spawnOffsets.Length <= 0) {
+                if (LevelManager.Instance.RoomToMinionPositions.ContainsKey(roomIdx))
+                {
+                    number = LevelManager.Instance.RoomToMinionPositions[roomIdx].Count;
+                    foreach (var pos in LevelManager.Instance.RoomToMinionPositions[roomIdx])
+                    {
+                        positions.Add(new Vector2(pos.x, pos.y));
+                    }
+                }
+                else if (spawnOffsets.Length <= 0) {
                     // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
                     for (int i = 0; i < number; i++)
                     {

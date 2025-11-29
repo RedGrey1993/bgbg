@@ -380,6 +380,45 @@ public class GameManager : MonoBehaviour
         return (templates[rnd], rnd);
     }
 
+    public (TileTemplate, int) GetRandomTileTemplate(int stage, TileType tileType, Rect room)
+    {
+        List<TileTemplate> templates = new();
+        if (!StageTileTemplates.ContainsKey(stage) || !StageTileTemplates[stage].ContainsKey(tileType))
+        {
+            return (null, -1);
+        }
+        else
+        {
+            foreach (var template in StageTileTemplates[stage][tileType])
+            {
+                if (template.size.x == Mathf.RoundToInt(room.width) && template.size.y == Mathf.RoundToInt(room.height))
+                {
+                    templates.Add(template);
+                }
+            }
+        }
+        if (templates.Count == 0)
+        {
+            return (null, -1);
+        }
+
+        var cumulativeWeight = 0;
+        foreach (var template in templates) cumulativeWeight += template.weight;
+
+        var randomWeight = UnityEngine.Random.Range(0, cumulativeWeight);
+        for (int i = 0; i < templates.Count; ++i)
+        {
+            randomWeight -= templates[i].weight;
+            if (randomWeight < 0)
+            {
+                return (templates[i], i);
+            }
+        }
+
+        int rnd = UnityEngine.Random.Range(0, templates.Count);
+        return (templates[rnd], rnd);
+    }
+
     public TileTemplate GetTileTemplate(int stage, TileType tileType, int tileTemplateId)
     {
         return StageTileTemplates[stage][tileType][tileTemplateId];

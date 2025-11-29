@@ -11,6 +11,9 @@ public class TilemapBaker : EditorWindow
     private Tilemap floorTilemap;      // 场景中用于烘焙的地面图层
     private Tilemap unbreakableCollisionTilemap;  // 场景中用于烘焙的碰撞图层
     private Tilemap breakableCollisionTilemap;  // 场景中用于烘焙的碰撞图层
+    private Tilemap obstacleTilemap;  // 场景中用于烘焙的碰撞图层
+    private Tilemap holeTilemap;  // 场景中用于烘焙的碰撞图层
+    private Tilemap characterTilemap;  // 场景中用于烘焙的碰撞图层
     private int weight = 1;
     private TileType tileType = TileType.Floor;
     private string assetName = "MyNewRoom"; // 保存的文件名
@@ -39,6 +42,9 @@ public class TilemapBaker : EditorWindow
         floorTilemap = (Tilemap)EditorGUILayout.ObjectField("地面图层 (Floor)", floorTilemap, typeof(Tilemap), true);
         breakableCollisionTilemap = (Tilemap)EditorGUILayout.ObjectField("可破坏碰撞图层 (Collision)", breakableCollisionTilemap, typeof(Tilemap), true);
         unbreakableCollisionTilemap = (Tilemap)EditorGUILayout.ObjectField("不可破坏碰撞图层 (Collision)", unbreakableCollisionTilemap, typeof(Tilemap), true);
+        obstacleTilemap = (Tilemap)EditorGUILayout.ObjectField("障碍物碰撞图层 (包括可碰撞与不可碰撞)", obstacleTilemap, typeof(Tilemap), true);
+        holeTilemap = (Tilemap)EditorGUILayout.ObjectField("洞图层（只与地面Layer碰撞，不与飞行物Layer碰撞）", holeTilemap, typeof(Tilemap), true);
+        characterTilemap = (Tilemap)EditorGUILayout.ObjectField("角色生成位置（实际上不用来设置Tile）", characterTilemap, typeof(Tilemap), true);
         weight = EditorGUILayout.IntField("权重", weight);
         tileType = (TileType)EditorGUILayout.EnumPopup("Tile类型", tileType);
 
@@ -64,7 +70,8 @@ public class TilemapBaker : EditorWindow
     // === 验证输入 ===
     private bool ValidateInputs()
     {
-        if (floorTilemap == null && unbreakableCollisionTilemap == null && breakableCollisionTilemap == null)
+        if (floorTilemap == null && unbreakableCollisionTilemap == null && breakableCollisionTilemap == null
+            && obstacleTilemap == null && holeTilemap == null && characterTilemap == null)
         {
             Debug.LogError("烘焙失败: 至少需要指定一个 Tilemap (地面或碰撞)！");
             return false;
@@ -130,6 +137,33 @@ public class TilemapBaker : EditorWindow
         else
         {
             newTemplate.breakableCollisionTiles = new TileData[0]; // 空数组
+        }
+
+        if (obstacleTilemap != null)
+        {
+            newTemplate.obstacleTiles = ExtractTileData(obstacleTilemap);
+        }
+        else
+        {
+            newTemplate.obstacleTiles = new TileData[0]; // 空数组
+        }
+
+        if (holeTilemap != null)
+        {
+            newTemplate.holeTiles = ExtractTileData(holeTilemap);
+        }
+        else
+        {
+            newTemplate.holeTiles = new TileData[0]; // 空数组
+        }
+
+        if (characterTilemap != null)
+        {
+            newTemplate.characterTiles = ExtractTileData(characterTilemap);
+        }
+        else
+        {
+            newTemplate.characterTiles = new TileData[0]; // 空数组
         }
 
         // 3. (可选) 计算房间大小

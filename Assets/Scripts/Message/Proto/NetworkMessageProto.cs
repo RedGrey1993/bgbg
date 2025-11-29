@@ -74,7 +74,7 @@ namespace NetworkMessageProto {
             "EisKCFBvc2l0aW9uGAQgASgLMhkuTmV0d29ya01lc3NhZ2VQcm90by5WZWMy",
             "IjMKDkJvc3NQcmVmYWJJbmZvEg8KB1N0YWdlSWQYASABKAUSEAoIUHJlZmFi",
             "SWQYAiABKAUiNQoQTWluaW9uUHJlZmFiSW5mbxIPCgdTdGFnZUlkGAEgASgF",
-            "EhAKCFByZWZhYklkGAIgASgFIpoJCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVu",
+            "EhAKCFByZWZhYklkGAIgASgFIswJCgxMb2NhbFN0b3JhZ2USFAoMQ3VycmVu",
             "dFN0YWdlGAEgASgFEjYKDFBsYXllclN0YXRlcxgCIAMoCzIgLk5ldHdvcmtN",
             "ZXNzYWdlUHJvdG8uUGxheWVyU3RhdGUSNgoMQnVsbGV0U3RhdGVzGA8gAygL",
             "MiAuTmV0d29ya01lc3NhZ2VQcm90by5CdWxsZXRTdGF0ZRI2CgxNaW5pb25T",
@@ -97,12 +97,13 @@ namespace NetworkMessageProto {
             "ZXMYGiADKAsyHS5OZXR3b3JrTWVzc2FnZVByb3RvLlRpbGVJbmZvEjEKCkZs",
             "b29yVGlsZXMYGyADKAsyHS5OZXR3b3JrTWVzc2FnZVByb3RvLlRpbGVJbmZv",
             "EjAKCUhvbGVUaWxlcxgcIAMoCzIdLk5ldHdvcmtNZXNzYWdlUHJvdG8uVGls",
-            "ZUluZm8SEQoJUGxheUNvdW50GB0gASgFElEKEFBsYXllckxvY2tTdGF0ZXMY",
-            "HiADKAsyNy5OZXR3b3JrTWVzc2FnZVByb3RvLkxvY2FsU3RvcmFnZS5QbGF5",
-            "ZXJMb2NrU3RhdGVzRW50cnkaNwoVUGxheWVyTG9ja1N0YXRlc0VudHJ5EgsK",
-            "A2tleRgBIAEoBRINCgV2YWx1ZRgCIAEoCDoCOAEiWgoIVGlsZUluZm8SCQoB",
-            "WBgBIAEoBRIJCgFZGAIgASgFEhAKCFRpbGVUeXBlGAMgASgFEhYKDlRpbGVU",
-            "ZW1wbGF0ZUlkGAQgASgFEg4KBlRpbGVJZBgFIAEoBWIGcHJvdG8z"));
+            "ZUluZm8SMAoJUm9vbVRpbGVzGB8gAygLMh0uTmV0d29ya01lc3NhZ2VQcm90",
+            "by5UaWxlSW5mbxIRCglQbGF5Q291bnQYHSABKAUSUQoQUGxheWVyTG9ja1N0",
+            "YXRlcxgeIAMoCzI3Lk5ldHdvcmtNZXNzYWdlUHJvdG8uTG9jYWxTdG9yYWdl",
+            "LlBsYXllckxvY2tTdGF0ZXNFbnRyeRo3ChVQbGF5ZXJMb2NrU3RhdGVzRW50",
+            "cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgIOgI4ASJaCghUaWxlSW5m",
+            "bxIJCgFYGAEgASgFEgkKAVkYAiABKAUSEAoIVGlsZVR5cGUYAyABKAUSFgoO",
+            "VGlsZVRlbXBsYXRlSWQYBCABKAUSDgoGVGlsZUlkGAUgASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -120,7 +121,7 @@ namespace NetworkMessageProto {
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.PickupItem), global::NetworkMessageProto.PickupItem.Parser, new[]{ "Id", "SkillId", "CurrentCooldown", "Position" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.BossPrefabInfo), global::NetworkMessageProto.BossPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.MinionPrefabInfo), global::NetworkMessageProto.MinionPrefabInfo.Parser, new[]{ "StageId", "PrefabId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "MinionStates", "BossStates", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerCharacterSpawnConfigId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles", "PlayCount", "PlayerLockStates" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.LocalStorage), global::NetworkMessageProto.LocalStorage.Parser, new[]{ "CurrentStage", "PlayerStates", "BulletStates", "MinionStates", "BossStates", "Rooms", "RoomMaxWidth", "RoomMaxHeight", "NextCharacterId", "TeleportPosition", "PickupItems", "PassedStages", "Achievement1NewCycle", "Achievement2Mirror", "Achievement3InfiniteLonely", "NewLevel", "ShowedSysErrLogTip", "NewRulerPlayerState", "NewRulerBulletState", "NewRulerCharacterSpawnConfigId", "NxtDestoryRoomIdx", "DestoryRoomRemainTime", "WallTiles", "FloorTiles", "HoleTiles", "RoomTiles", "PlayCount", "PlayerLockStates" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::NetworkMessageProto.TileInfo), global::NetworkMessageProto.TileInfo.Parser, new[]{ "X", "Y", "TileType", "TileTemplateId", "TileId" }, null, null, null, null)
           }));
     }
@@ -5306,6 +5307,7 @@ namespace NetworkMessageProto {
       wallTiles_ = other.wallTiles_.Clone();
       floorTiles_ = other.floorTiles_.Clone();
       holeTiles_ = other.holeTiles_.Clone();
+      roomTiles_ = other.roomTiles_.Clone();
       playCount_ = other.playCount_;
       playerLockStates_ = other.playerLockStates_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -5321,7 +5323,7 @@ namespace NetworkMessageProto {
     public const int CurrentStageFieldNumber = 1;
     private int currentStage_;
     /// <summary>
-    /// next index = 4,6,14, 31
+    /// next index = 4,6,14,32
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -5610,6 +5612,17 @@ namespace NetworkMessageProto {
       get { return holeTiles_; }
     }
 
+    /// <summary>Field number for the "RoomTiles" field.</summary>
+    public const int RoomTilesFieldNumber = 31;
+    private static readonly pb::FieldCodec<global::NetworkMessageProto.TileInfo> _repeated_roomTiles_codec
+        = pb::FieldCodec.ForMessage(250, global::NetworkMessageProto.TileInfo.Parser);
+    private readonly pbc::RepeatedField<global::NetworkMessageProto.TileInfo> roomTiles_ = new pbc::RepeatedField<global::NetworkMessageProto.TileInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::NetworkMessageProto.TileInfo> RoomTiles {
+      get { return roomTiles_; }
+    }
+
     /// <summary>Field number for the "PlayCount" field.</summary>
     public const int PlayCountFieldNumber = 29;
     private int playCount_;
@@ -5673,6 +5686,7 @@ namespace NetworkMessageProto {
       if(!wallTiles_.Equals(other.wallTiles_)) return false;
       if(!floorTiles_.Equals(other.floorTiles_)) return false;
       if(!holeTiles_.Equals(other.holeTiles_)) return false;
+      if(!roomTiles_.Equals(other.roomTiles_)) return false;
       if (PlayCount != other.PlayCount) return false;
       if (!PlayerLockStates.Equals(other.PlayerLockStates)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -5707,6 +5721,7 @@ namespace NetworkMessageProto {
       hash ^= wallTiles_.GetHashCode();
       hash ^= floorTiles_.GetHashCode();
       hash ^= holeTiles_.GetHashCode();
+      hash ^= roomTiles_.GetHashCode();
       if (PlayCount != 0) hash ^= PlayCount.GetHashCode();
       hash ^= PlayerLockStates.GetHashCode();
       if (_unknownFields != null) {
@@ -5802,6 +5817,7 @@ namespace NetworkMessageProto {
         output.WriteInt32(PlayCount);
       }
       playerLockStates_.WriteTo(output, _map_playerLockStates_codec);
+      roomTiles_.WriteTo(output, _repeated_roomTiles_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5887,6 +5903,7 @@ namespace NetworkMessageProto {
         output.WriteInt32(PlayCount);
       }
       playerLockStates_.WriteTo(ref output, _map_playerLockStates_codec);
+      roomTiles_.WriteTo(ref output, _repeated_roomTiles_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5952,6 +5969,7 @@ namespace NetworkMessageProto {
       size += wallTiles_.CalculateSize(_repeated_wallTiles_codec);
       size += floorTiles_.CalculateSize(_repeated_floorTiles_codec);
       size += holeTiles_.CalculateSize(_repeated_holeTiles_codec);
+      size += roomTiles_.CalculateSize(_repeated_roomTiles_codec);
       if (PlayCount != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(PlayCount);
       }
@@ -6032,6 +6050,7 @@ namespace NetworkMessageProto {
       wallTiles_.Add(other.wallTiles_);
       floorTiles_.Add(other.floorTiles_);
       holeTiles_.Add(other.holeTiles_);
+      roomTiles_.Add(other.roomTiles_);
       if (other.PlayCount != 0) {
         PlayCount = other.PlayCount;
       }
@@ -6173,6 +6192,10 @@ namespace NetworkMessageProto {
             playerLockStates_.AddEntriesFrom(input, _map_playerLockStates_codec);
             break;
           }
+          case 250: {
+            roomTiles_.AddEntriesFrom(input, _repeated_roomTiles_codec);
+            break;
+          }
         }
       }
     #endif
@@ -6308,6 +6331,10 @@ namespace NetworkMessageProto {
           }
           case 242: {
             playerLockStates_.AddEntriesFrom(ref input, _map_playerLockStates_codec);
+            break;
+          }
+          case 250: {
+            roomTiles_.AddEntriesFrom(ref input, _repeated_roomTiles_codec);
             break;
           }
         }
