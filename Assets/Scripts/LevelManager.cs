@@ -129,13 +129,59 @@ public class LevelManager : MonoBehaviour
         }
         else // 重新随机生成房间
         {
+            var bossRoomMinWidth = CurrentLevelData.bossRoomMinWidth;
+            var bossRoomMinHeight = CurrentLevelData.bossRoomMinHeight;
+            
+            void CutToFixBossRoomSize(Rect src, out Rect candidate, out Rect other)
+            {
+                if (Mathf.RoundToInt(src.width) > bossRoomMinWidth)
+                {
+                    if (Random.value < 0.5f)
+                    {
+                        candidate = new Rect(src.xMin, src.yMin, bossRoomMinWidth, src.height);
+                        other = new Rect(src.xMin + bossRoomMinWidth, src.yMin, src.width - bossRoomMinWidth, src.height);
+                    }
+                    else
+                    {
+                        other = new Rect(src.xMin, src.yMin, src.width - bossRoomMinWidth, src.height);
+                        candidate = new Rect(src.xMin + src.width - bossRoomMinWidth, src.yMin, bossRoomMinWidth, src.height);
+                    }
+                }
+                else if (Mathf.RoundToInt(src.height) > bossRoomMinHeight)
+                {
+                    if (Random.value < 0.5f)
+                    {
+                        candidate = new Rect(src.xMin, src.yMin, src.width, bossRoomMinHeight);
+                        other = new Rect(src.xMin, src.yMin + bossRoomMinHeight, src.width, src.height - bossRoomMinHeight);
+                    }
+                    else
+                    {
+                        other = new Rect(src.xMin, src.yMin, src.width, src.height - bossRoomMinHeight);
+                        candidate = new Rect(src.xMin, src.yMin + src.height - bossRoomMinHeight, src.width, bossRoomMinHeight);
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"CutToFixBossRoomSize error, src: {src}");
+                    if (Random.value < 0.5f)
+                    {
+                        candidate = new Rect(src.xMin, src.yMin, src.width, bossRoomMinHeight);
+                        other = new Rect(src.xMin, src.yMin + bossRoomMinHeight, src.width, src.height - bossRoomMinHeight);
+                    }
+                    else
+                    {
+                        candidate = new Rect(src.xMin, src.yMin, src.width, src.height - bossRoomMinHeight);
+                        other = new Rect(src.xMin, src.yMin + src.height - bossRoomMinHeight, src.width, bossRoomMinHeight);
+                    }
+                }
+            }
+
+
             roomMaxWidth = CurrentLevelData.roomMaxWidth;
             roomMaxHeight = CurrentLevelData.roomMaxHeight;
             float whRatio = Constants.RoomWidthStep / Constants.RoomHeightStep;
 
             var bossRoomNum = 1;
-            var bossRoomMinWidth = CurrentLevelData.bossRoomMinWidth;
-            var bossRoomMinHeight = CurrentLevelData.bossRoomMinHeight;
             List<Rect> sortedList = new List<Rect> { new Rect(0, 0, roomMaxWidth, roomMaxHeight) };
             var totalRooms = CurrentLevelData.totalRooms;
             int cutNum = UnityEngine.Random.Range(totalRooms.min - 1, totalRooms.max);
@@ -152,7 +198,7 @@ public class LevelManager : MonoBehaviour
                     int segNum = roomHeight / Constants.RoomHeightStep;
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
                     Rect room1 = new Rect(room.xMin, room.yMin, room.width, cutSeg * Constants.RoomHeightStep);
-                    Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomHeightStep, room.width, room.yMax - room.yMin - cutSeg * Constants.RoomHeightStep);
+                    Rect room2 = new Rect(room.xMin, room.yMin + cutSeg * Constants.RoomHeightStep, room.width, room.height - cutSeg * Constants.RoomHeightStep);
                     if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
                     {
                         bossRoomNum--;
@@ -167,7 +213,26 @@ public class LevelManager : MonoBehaviour
                         if (bossRoomNum == 0)
                         {
                             bossRoomNum = 100000000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
-                            Rooms.Add(room);
+
+                            if (Mathf.RoundToInt(room.width) > bossRoomMinWidth 
+                                || Mathf.RoundToInt(room.height) > bossRoomMinHeight)
+                            {
+                                CutToFixBossRoomSize(room, out Rect candidate, out room1);
+                                int idx1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
+                                if (idx1 < 0) sortedList.Add(room1); else sortedList.Insert(idx1, room1);
+                                if (Mathf.RoundToInt(candidate.width) > bossRoomMinWidth 
+                                    || Mathf.RoundToInt(candidate.height) > bossRoomMinHeight)
+                                {
+                                    CutToFixBossRoomSize(candidate, out Rect candidate2, out room2);
+                                    int idx2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
+                                    if (idx2 < 0) sortedList.Add(room2); else sortedList.Insert(idx2, room2);
+                                    Rooms.Add(candidate2);
+                                }
+                                else
+                                {
+                                    Rooms.Add(candidate);
+                                }
+                            }
                             continue;
                         }
                     }
@@ -183,7 +248,7 @@ public class LevelManager : MonoBehaviour
                     int segNum = roomWidth / Constants.RoomWidthStep;
                     int cutSeg = UnityEngine.Random.Range(1, segNum);
                     Rect room1 = new Rect(room.xMin, room.yMin, cutSeg * Constants.RoomWidthStep, room.height);
-                    Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomWidthStep, room.yMin, room.xMax - room.xMin - cutSeg * Constants.RoomWidthStep, room.height);
+                    Rect room2 = new Rect(room.xMin + cutSeg * Constants.RoomWidthStep, room.yMin, room.width - cutSeg * Constants.RoomWidthStep, room.height);
                     if (Mathf.RoundToInt(room.width) >= bossRoomMinWidth && Mathf.RoundToInt(room.height) >= bossRoomMinHeight)
                     {
                         bossRoomNum--;
@@ -198,7 +263,26 @@ public class LevelManager : MonoBehaviour
                         if (bossRoomNum == 0)
                         {
                             bossRoomNum = 100000000; // 已经有符合条件的boss房间了，后续无需再考虑boss房的生成了
-                            Rooms.Add(room);
+                            
+                            if (Mathf.RoundToInt(room.width) > bossRoomMinWidth 
+                                || Mathf.RoundToInt(room.height) > bossRoomMinHeight)
+                            {
+                                CutToFixBossRoomSize(room, out Rect candidate, out room1);
+                                int idx1 = sortedList.FindIndex(r => r.width * r.height < room1.width * room1.height);
+                                if (idx1 < 0) sortedList.Add(room1); else sortedList.Insert(idx1, room1);
+                                if (Mathf.RoundToInt(candidate.width) > bossRoomMinWidth 
+                                    || Mathf.RoundToInt(candidate.height) > bossRoomMinHeight)
+                                {
+                                    CutToFixBossRoomSize(candidate, out Rect candidate2, out room2);
+                                    int idx2 = sortedList.FindIndex(r => r.width * r.height < room2.width * room2.height);
+                                    if (idx2 < 0) sortedList.Add(room2); else sortedList.Insert(idx2, room2);
+                                    Rooms.Add(candidate2);
+                                }
+                                else
+                                {
+                                    Rooms.Add(candidate);
+                                }
+                            }
                             continue;
                         }
                     }
@@ -215,6 +299,42 @@ public class LevelManager : MonoBehaviour
             }
 
             Rooms.AddRange(sortedList);
+
+            int bossRoomCandidateId = -1;
+            int minArea = int.MaxValue;
+            for (int i = 0; i < Rooms.Count; ++i)
+            {
+                if (Mathf.RoundToInt(Rooms[i].width) >= bossRoomMinWidth
+                    && Mathf.RoundToInt(Rooms[i].height) >= bossRoomMinHeight
+                    &&Mathf.RoundToInt(Rooms[i].width * Rooms[i].height) < minArea)
+                {
+                    minArea = Mathf.RoundToInt(Rooms[i].width * Rooms[i].height);
+                    bossRoomCandidateId = i;
+                }
+            }
+
+            if (bossRoomCandidateId >= 0)
+            {
+                if (Mathf.RoundToInt(Rooms[bossRoomCandidateId].width) > bossRoomMinWidth
+                    || Mathf.RoundToInt(Rooms[bossRoomCandidateId].height) > bossRoomMinHeight)
+                {
+                    Rect bossRoomCandidate = Rooms[bossRoomCandidateId];
+                    Rooms.RemoveAt(bossRoomCandidateId);
+                    CutToFixBossRoomSize(bossRoomCandidate, out Rect candidate, out Rect other);
+                    Rooms.Add(other);
+                    if (Mathf.RoundToInt(candidate.width) > bossRoomMinWidth 
+                        || Mathf.RoundToInt(candidate.height) > bossRoomMinHeight)
+                    {
+                        CutToFixBossRoomSize(candidate, out Rect candidate2, out Rect other2);
+                        Rooms.Add(other2);
+                        Rooms.Add(candidate2);
+                    }
+                    else
+                    {
+                        Rooms.Add(candidate);
+                    }
+                }
+            }
         }
 
         // 将Rooms按照先从y小到大，再从x小到大的顺序排序，方便后续处理

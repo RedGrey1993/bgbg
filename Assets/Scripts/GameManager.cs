@@ -252,6 +252,7 @@ public class GameManager : MonoBehaviour
 
         Constants.goToCharacterStatus.Clear();
         Constants.goToCharacterInput.Clear();
+        Constants.goToBullet.Clear();
         LevelManager.Instance.ClearLevel();
         LevelManager.Instance.GenerateLevel(storage);
     }
