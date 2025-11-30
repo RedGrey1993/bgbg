@@ -109,37 +109,48 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            void AreaToNumber(Rect room, int roomIdx, Vector2[] spawnOffsets, Bounds bound, out int number, out List<Vector2> positions)
+            void AreaToNumber(Rect room, int roomIdx, 
+                out List<Vector2> positions, out List<CharacterSpawnConfigSO> spawnCfgs)
             {
                 int areaPerMinion = Random.Range(levelData.areaPerMinion.min, levelData.areaPerMinion.max + 1);
                 float area = (room.yMax - room.yMin) * (room.xMax - room.xMin);
-                number = Mathf.FloorToInt(area / areaPerMinion);
+                int number = Mathf.FloorToInt(area / areaPerMinion);
                 positions = new List<Vector2>();
+                spawnCfgs = new List<CharacterSpawnConfigSO>();
 
                 if (LevelManager.Instance.RoomToMinionPositions.ContainsKey(roomIdx))
                 {
                     number = LevelManager.Instance.RoomToMinionPositions[roomIdx].Count;
                     foreach (var pos in LevelManager.Instance.RoomToMinionPositions[roomIdx])
                     {
+                        int rndIdx = Random.Range(0, stageMinionSpawnConfigs.Count);
+                        spawnCfgs.Add(stageMinionSpawnConfigs[rndIdx]);
                         positions.Add(new Vector2(pos.x, pos.y));
                     }
                 }
-                else if (spawnOffsets.Length <= 0) {
-                    // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
-                    for (int i = 0; i < number; i++)
-                    {
-                        Vector2 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
-                        // if (!positions.Contains(position)) // O(n) 太慢了
-                        positions.Add(position);
-                    }
-                }
-                else
+                else 
                 {
-                    number = Mathf.Min(number, spawnOffsets.Length);
-                    for (int i = 0; i < number; i++)
+                    // TODO: 当前生成的怪物位置可能会重叠，后续需要改进；目前物理系统应该会自动弹开重叠的怪物
+                    int cnt = 0;
+                    while (cnt < number)
                     {
-                        Vector2 position = LevelManager.Instance.GetPositionInRoom(roomIdx, spawnOffsets[i], bound);
-                        positions.Add(position);
+                        int rndIdx = Random.Range(0, stageMinionSpawnConfigs.Count);
+                        var cfg = stageMinionSpawnConfigs[rndIdx];
+                        if (cfg.spawnOffsets.Length <= 0) {
+                            Vector2 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, cfg.bound);
+                            // if (!positions.Contains(position)) // O(n) 太慢了
+                            positions.Add(position);
+                            cnt++;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < cfg.spawnOffsets.Length; i++)
+                            {
+                                Vector2 position = LevelManager.Instance.GetPositionInRoom(roomIdx, cfg.spawnOffsets[i], cfg.bound);
+                                positions.Add(position);
+                            }
+                            cnt += cfg.spawnOffsets.Length;
+                        }
                     }
                 }
             }
@@ -150,10 +161,8 @@ public class CharacterManager : MonoBehaviour
 
                 var room = LevelManager.Instance.Rooms[roomIdx];
                 // TODO：当前一个房间只会生成一个种类的怪物，后续可能考虑同一个房间生成多个种类的怪物
-                int rndIdx = Random.Range(0, stageMinionSpawnConfigs.Count);
-                var cfg = stageMinionSpawnConfigs[rndIdx];
-                AreaToNumber(room, roomIdx, cfg.spawnOffsets, cfg.bound, out var minionNum, out var spawnPositions);
-                for (int i = 0; i < minionNum; i++)
+                AreaToNumber(room, roomIdx, out var spawnPositions, out var spawnCfgs);
+                for (int i = 0; i < spawnCfgs.Count; i++)
                 {
                     // 10%的概率生成精英怪
                     float scale = 1f;
@@ -161,7 +170,7 @@ public class CharacterManager : MonoBehaviour
                     {
                         scale = Random.Range(levelData.eliteScaleRange.min, levelData.eliteScaleRange.max);
                     }
-                    InstantiateMinionObject(cfg.prefab, spawnPositions[i], cfg.ID, null, scale);
+                    InstantiateMinionObject(spawnCfgs[i].prefab, spawnPositions[i], spawnCfgs[i].ID, null, scale);
                 }
             }
         }

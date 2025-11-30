@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using NetworkMessageProto;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
@@ -324,6 +325,13 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+#if DEBUG
+        foreach (var cfgs in StageMinionSpawnConfigs)
+        {
+            Debug.Log($"Stage: {cfgs.Key}, Minions Number: {cfgs.Value.Count}");
+        }
+#endif
     }
 
     private Dictionary<int, Dictionary<TileType, List<TileTemplate>>> StageTileTemplates {get;set;}
