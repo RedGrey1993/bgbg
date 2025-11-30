@@ -14,26 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
   floorTiles:
   - position: {x: 0, y: 0, z: 0}
-    tile: {fileID: 11400000, guid: d04ad5ab58f597f48b281952ff27aca5, type: 2}
+    tile: {fileID: 11400000, guid: fb7725397e2cc27458372755984eb2f4, type: 2}
   - position: {x: 0, y: 1, z: 0}
-    tile: {fileID: 11400000, guid: e930a52192ea192449590f3697d2450c, type: 2}
+    tile: {fileID: 11400000, guid: ae3cef361c9597b4a9a641e437b18502, type: 2}
   - position: {x: 0, y: 2, z: 0}
-    tile: {fileID: 11400000, guid: ccd22572a2c98854b8de208ec78e207d, type: 2}
+    tile: {fileID: 11400000, guid: 3e4cf4e692e05124cafe120f454c88c6, type: 2}
+  - position: {x: 0, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: 4cee00d6c5163d444ab1854ee91f7340, type: 2}
+  - position: {x: 0, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: 0553fe7f401727841a2b5affb1976cb0, type: 2}
+  - position: {x: 0, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: d4883a29db3266047a659e3ab5a415e4, type: 2}
   - position: {x: 1, y: 0, z: 0}
-    tile: {fileID: 11400000, guid: f248eb2640e89f34db30e5d661ed05a8, type: 2}
+    tile: {fileID: 11400000, guid: 88cf82434b609714a913426c06f39337, type: 2}
   - position: {x: 1, y: 1, z: 0}
-    tile: {fileID: 11400000, guid: e605a71272846424eb86f26f36870f2d, type: 2}
+    tile: {fileID: 11400000, guid: 15be63f98e878ce4f986552d4bf29af4, type: 2}
   - position: {x: 1, y: 2, z: 0}
-    tile: {fileID: 11400000, guid: f8f07368e9a18764cb17e2674117e387, type: 2}
+    tile: {fileID: 11400000, guid: 99e3954b95ad79c4da10a30b41874564, type: 2}
+  - position: {x: 1, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: f074a8b105546414ab59150d1be683cc, type: 2}
+  - position: {x: 1, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: 2735e828bc1efea40b7a46485ad69568, type: 2}
+  - position: {x: 1, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: d9622a606d081f04ea4650b7dd5a7907, type: 2}
   - position: {x: 2, y: 0, z: 0}
-    tile: {fileID: 11400000, guid: f07b5f00f80fff04ca5b5b037e08551d, type: 2}
+    tile: {fileID: 11400000, guid: b095d357f64045245b74f518114ac617, type: 2}
   - position: {x: 2, y: 1, z: 0}
-    tile: {fileID: 11400000, guid: 8766343df052c504ebef21c8dc06c0e9, type: 2}
+    tile: {fileID: 11400000, guid: b7746f34760b9724681f7fcce6a87edd, type: 2}
   - position: {x: 2, y: 2, z: 0}
-    tile: {fileID: 11400000, guid: 8f95c6def5a8886468b66ccc791cbf48, type: 2}
+    tile: {fileID: 11400000, guid: 7f43b2ff8598eeb479205a0b39422c3d, type: 2}
+  - position: {x: 2, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: 64f1df99286b97044ad888817ff11c56, type: 2}
+  - position: {x: 2, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: a0f8f792c2b390442bca466ec857b372, type: 2}
+  - position: {x: 2, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: e523bb0e40e74794ea702246ae0d7b84, type: 2}
   unbreakableCollisionTiles: []
   breakableCollisionTiles: []
-  size: {x: 3, y: 3}
-  weight: 100
+  obstacleTiles: []
+  holeTiles: []
+  characterTiles: []
+  size: {x: 3, y: 6}
+  weight: 1
   tileType: 5
-  stage: 2

@@ -41,6 +41,7 @@ public enum TileType
     Wall_Vertical = 2,
     // 只和人物碰撞，不和子弹/飞行物体碰撞
     Hole = 3,
+    Hole_Boss = 8,
     // 碰撞，可摧毁
     BreakableObstacle = 4,
     // 碰撞，不可摧毁
@@ -134,8 +135,8 @@ public static class Constants
 {
     public const string AIPlayerPrefix = "BGBGAI_";
     public const int MinPlayableObjects = 1;
-    public const int CharacterMaxWidth = 4;
-    public const int CharacterMaxHeight = 4;
+    public const int CharacterMaxWidth = 3;
+    public const int CharacterMaxHeight = 3;
     public const int RoomWidthStep = 20;
     public const int RoomHeightStep = 10;
     public const int DoorWidth = 4;

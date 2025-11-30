@@ -16,6 +16,10 @@ MonoBehaviour:
   prefab: {fileID: 5506378715684145941, guid: dd830f0a76a4eb84dbd621582d61581f, type: 3}
   weight: 0
   spawnStages: 010000000200000003000000
+  spawnOffsets: []
+  bound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 3, y: 3, z: 3}
   isBoss: 1
   canBePlayer: 0
   initLocked: 0

@@ -33,7 +33,9 @@ MonoBehaviour:
   - position: {x: 0, y: 8, z: 0}
     tile: {fileID: 11400000, guid: 9eab5b00a629faf488b3a449a7a9dbce, type: 2}
   breakableCollisionTiles: []
+  obstacleTiles: []
+  holeTiles: []
+  characterTiles: []
   size: {x: 1, y: 9}
-  weight: 1
+  weight: 10
   tileType: 2
-  stage: 2

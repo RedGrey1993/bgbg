@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
         Constants.goToCharacterInput.Clear();
         Constants.goToBullet.Clear();
         LevelManager.Instance.ClearLevel();
-        LevelManager.Instance.GenerateLevel(storage);
+        StartCoroutine(LevelManager.Instance.GenerateLevel(storage));
     }
     public void StopGame()
     {

@@ -55,6 +55,8 @@ public class LevelManager : MonoBehaviour
     public Dictionary<Vector3Int, BreakableTileInfo> breakableObstacleTiles {get;set;} = new();
     public Dictionary<int, HashSet<CharacterStatus>> RoomToCharacters {get; set;}= new();
     public Dictionary<int, List<Vector3Int>> RoomToMinionPositions {get; private set;} = new();
+    private bool[,] holeVis;
+    private bool[,] wallVis;
 
     void Awake()
     {
@@ -67,7 +69,7 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void GenerateLevel(LocalStorage storage)
+    public IEnumerator GenerateLevel(LocalStorage storage)
     {
         int level = storage.CurrentStage;
         Debug.Log($"################# 生成第 {level} 关 #################");
@@ -84,6 +86,7 @@ public class LevelManager : MonoBehaviour
             UIManager.Instance.ShowInfoPanel("HAPPY GAME!", Color.pink, 5);
         }
 
+        yield return new WaitForFixedUpdate();
         // character objects 会随每次的HostTick将状态同步到Client
         CharacterManager.Instance.CreateCharacterObjects(storage);
 
@@ -233,6 +236,10 @@ public class LevelManager : MonoBehaviour
                                     Rooms.Add(candidate);
                                 }
                             }
+                            else
+                            {
+                                Rooms.Add(room);
+                            }
                             continue;
                         }
                     }
@@ -282,6 +289,10 @@ public class LevelManager : MonoBehaviour
                                 {
                                     Rooms.Add(candidate);
                                 }
+                            }
+                            else
+                            {
+                                Rooms.Add(room);
                             }
                             continue;
                         }
@@ -349,6 +360,8 @@ public class LevelManager : MonoBehaviour
         });
 
         RoomGrid = new int[roomMaxWidth / Constants.RoomWidthStep, roomMaxHeight / Constants.RoomHeightStep];
+        holeVis = new bool[roomMaxWidth + 1, roomMaxHeight + 1];
+        wallVis = new bool[roomMaxWidth + 1, roomMaxHeight + 1];
         roomConnections = new HashSet<int>[Rooms.Count];
         for (int i = 0; i < Rooms.Count; i++) roomConnections[i] = new HashSet<int>();
         roomToTiles = new List<Vector3Int>[Rooms.Count];
@@ -743,7 +756,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {    
-            GenerateHole(room, storage);
+            GenerateHole(room, storage, isBossRoom);
             GenerateUnbreakableObstacle(room, storage);
             GenerateBreakableObstacle(room, storage);
             GenerateFloor(room, storage, isBossRoom);
@@ -757,9 +770,9 @@ public class LevelManager : MonoBehaviour
         var (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.UnbreakableObstacle);
         if (uott == null) return;
 
-        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        for (int x = Mathf.RoundToInt(room.xMax); x >= Mathf.RoundToInt(room.xMin); x--)
         {
-            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            for (int y = Mathf.RoundToInt(room.yMax); y >= Mathf.RoundToInt(room.yMin); y--)
             {
                 
                 if (x < room.xMin + 1 + Constants.CharacterMaxWidth 
@@ -771,11 +784,27 @@ public class LevelManager : MonoBehaviour
                 if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
                     || y + uott.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
-                for(int i = 0; i < uott.unbreakableCollisionTiles.Count(); i++)
+                bool overlapped = false;
+                for(int xx = 0; xx < uott.size.x; xx++) for (int yy = 0; yy < uott.size.y; yy++)
                 {
-                    TileData td = uott.unbreakableCollisionTiles[i];
-                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
-                    pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), TileType.UnbreakableObstacle), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
+                    if (wallVis[x + xx, y + yy])
+                    {
+                        overlapped = true;
+                        break;
+                    }
+                }
+
+                if (!overlapped) {
+                    for(int xx = 0; xx < uott.size.x; xx++) for (int yy = 0; yy < uott.size.y; yy++)
+                    {
+                        wallVis[x + xx, y + yy] = true;
+                    }
+                    for(int i = 0; i < uott.unbreakableCollisionTiles.Count(); i++)
+                    {
+                        TileData td = uott.unbreakableCollisionTiles[i];
+                        wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                        pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), TileType.UnbreakableObstacle), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
+                    }
                 }
             }
         }
@@ -788,9 +817,9 @@ public class LevelManager : MonoBehaviour
         var (uott, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.BreakableObstacle);
         if (uott == null) return;
 
-        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        for (int x = Mathf.RoundToInt(room.xMax); x >= Mathf.RoundToInt(room.xMin); x--)
         {
-            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            for (int y = Mathf.RoundToInt(room.yMax); y >= Mathf.RoundToInt(room.yMin); y--)
             {
                 
                 if (x < room.xMin + 1 + Constants.CharacterMaxWidth 
@@ -802,41 +831,78 @@ public class LevelManager : MonoBehaviour
                 if (x + uott.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
                     || y + uott.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
-                for(int i = 0; i < uott.breakableCollisionTiles.Count(); i++)
+                bool overlapped = false;
+                for(int xx = 0; xx < uott.size.x; xx++) for (int yy = 0; yy < uott.size.y; yy++)
                 {
-                    TileData td = uott.breakableCollisionTiles[i];
-                    wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
-                    breakableObstacleTiles.Add(new Vector3Int(x + td.position.x, y + td.position.y), new BreakableTileInfo { tileTemplateId = ttId, tileId = i , tileHealth = 0 });
+                    if (wallVis[x + xx, y + yy])
+                    {
+                        overlapped = true;
+                        break;
+                    }
+                }
+
+                if (!overlapped) {
+                    for(int xx = 0; xx < uott.size.x; xx++) for (int yy = 0; yy < uott.size.y; yy++)
+                    {
+                        wallVis[x + xx, y + yy] = true;
+                    }
+                    for(int i = 0; i < uott.breakableCollisionTiles.Count(); i++)
+                    {
+                        TileData td = uott.breakableCollisionTiles[i];
+                        wallTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                        breakableObstacleTiles.Add(new Vector3Int(x + td.position.x, y + td.position.y), new BreakableTileInfo { tileTemplateId = ttId, tileId = i , tileHealth = 0 });
+                    }
                 }
             }
         }
     }
 
-    private void GenerateHole(Rect room, LocalStorage storage)
+    private void GenerateHole(Rect room, LocalStorage storage, bool isBossRoom)
     {
         int stage = storage.CurrentStage;
         var levelData = GameManager.Instance.GetStageConfig(stage).stageData;
-        var (htt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Hole);
+        TileType tileType = TileType.Hole;
+        if (isBossRoom)
+        {
+            tileType = TileType.Hole_Boss;
+        }
+        var (htt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, tileType);
         if (htt == null) return;
 
-        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        for (int x = Mathf.RoundToInt(room.xMax); x >= Mathf.RoundToInt(room.xMin); x--)
         {
-            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            for (int y = Mathf.RoundToInt(room.yMax); y >= Mathf.RoundToInt(room.yMin); y--)
             {
                 if (x < room.xMin + 1 + Constants.CharacterMaxWidth 
                     || y < room.yMin + 1 + Constants.CharacterMaxHeight) continue;
                 if (holeTilemap.HasTile(new Vector3Int(x, y, 0))) continue;
                 if (Random.value > levelData.holeRatio) continue;
 
-                (htt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, TileType.Hole);
+                (htt, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, tileType);
                 if (x + htt.size.x > (int)room.xMax - Constants.CharacterMaxWidth 
                     || y + htt.size.y > (int)room.yMax - Constants.CharacterMaxHeight) continue;
                 
-                for(int i = 0; i < htt.unbreakableCollisionTiles.Count(); i++)
+                bool overlapped = false;
+                for(int xx = 0; xx < htt.size.x; xx++) for (int yy = 0; yy < htt.size.y; yy++)
                 {
-                    TileData td = htt.unbreakableCollisionTiles[i];
-                    holeTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
-                    pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), TileType.Hole), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
+                    if (holeVis[x + xx, y + yy])
+                    {
+                        overlapped = true;
+                        break;
+                    }
+                }
+
+                if (!overlapped) {
+                    for(int xx = 0; xx < htt.size.x; xx++) for (int yy = 0; yy < htt.size.y; yy++)
+                    {
+                        holeVis[x + xx, y + yy] = true;
+                    }
+                    for(int i = 0; i < htt.unbreakableCollisionTiles.Count(); i++)
+                    {
+                        TileData td = htt.unbreakableCollisionTiles[i];
+                        holeTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
+                        pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), tileType), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
+                    }
                 }
             }
         }
@@ -850,20 +916,33 @@ public class LevelManager : MonoBehaviour
         {
             tileType = TileType.Floor_Boss;
         }
-        for (int x = (int)room.xMin; x <= (int)room.xMax; x++)
+        for (int x = Mathf.RoundToInt(room.xMin); x < Mathf.RoundToInt(room.xMax); x++)
         {
-            for (int y = (int)room.yMin; y <= (int)room.yMax; y++)
+            for (int y = Mathf.RoundToInt(room.yMin); y < Mathf.RoundToInt(room.yMax); y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
                 if (floorTilemap.HasTile(pos)) continue;
                 var (ft, ttId) = GameManager.Instance.GetRandomTileTemplate(stage, tileType);
+                int offsetX = 0;
+                int offsetY = 0;
+                if (x + ft.size.x > Mathf.RoundToInt(room.xMax))
+                {
+                    offsetX = -Random.Range(0, x + ft.size.x - Mathf.RoundToInt(room.xMax));
+                }
+                if (y + ft.size.y > Mathf.RoundToInt(room.yMax))
+                {
+                    offsetY = -Random.Range(0, y + ft.size.y - Mathf.RoundToInt(room.yMax));
+                }
                 for(int i = 0; i < ft.floorTiles.Count(); i++)
                 {
                     TileData td = ft.floorTiles[i];
-                    if (x + td.position.x > (int)room.xMax || y + td.position.y > (int)room.yMax) continue;
-                    if (floorTilemap.HasTile(new Vector3Int(x + td.position.x, y + td.position.y))) continue;
-                    floorTilemap.SetTile(new Vector3Int(x + td.position.x, y + td.position.y), td.tile);
-                    pos2TilesDict.Add((new Vector3Int(x + td.position.x, y + td.position.y), tileType), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
+
+                    if (td.position.x + offsetX < 0 || td.position.y + offsetY < 0) continue;
+                    if (x + td.position.x + offsetX >= Mathf.RoundToInt(room.xMax) 
+                        || y + td.position.y + offsetY >= Mathf.RoundToInt(room.yMax)) continue;
+                    if (floorTilemap.HasTile(new Vector3Int(x + td.position.x + offsetX, y + td.position.y + offsetY))) continue;
+                    floorTilemap.SetTile(new Vector3Int(x + td.position.x + offsetX, y + td.position.y + offsetY), td.tile);
+                    pos2TilesDict.Add((new Vector3Int(x + td.position.x + offsetX, y + td.position.y + offsetY), tileType), new ImmutableTileInfo { tileTemplateId = ttId, tileId = i });
                 }
             }
         }
@@ -1302,7 +1381,7 @@ public class LevelManager : MonoBehaviour
                     TileId = tileInfo.Value.tileId,
                 });
             }
-            else if (tileType == TileType.Hole)
+            else if (tileType == TileType.Hole || tileType == TileType.Hole_Boss)
             {
                 storage.HoleTiles.Add(new TileInfo
                 {

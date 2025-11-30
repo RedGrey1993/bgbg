@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ae8bfb73c5cad41af487b5aa85b6db, type: 3}
+  m_Name: Stage2-FloorBoss 3
+  m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
+  floorTiles:
+  - position: {x: 0, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: c7f519e807221c745abde6492238638f, type: 2}
+  - position: {x: 0, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: e4e201bb292e1c54bb4889982e4cec0a, type: 2}
+  - position: {x: 0, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: af16e66c8a9640f48857bbb4ff83714d, type: 2}
+  - position: {x: 0, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: 74d7911257a57bc48a32683d0e177e23, type: 2}
+  - position: {x: 0, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: fc2459d36773ff24786d7300d0c763db, type: 2}
+  - position: {x: 0, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: cb3cf26baa826294c8d1ff8e768450c7, type: 2}
+  - position: {x: 0, y: 6, z: 0}
+    tile: {fileID: 11400000, guid: 63e3c0cbb6b644e43acb0a3636e24c71, type: 2}
+  - position: {x: 0, y: 7, z: 0}
+    tile: {fileID: 11400000, guid: f7b4b54ef19e9b74194de5699bcb8498, type: 2}
+  - position: {x: 0, y: 8, z: 0}
+    tile: {fileID: 11400000, guid: ec1160a825ee6574a9c7998574f299a2, type: 2}
+  - position: {x: 0, y: 9, z: 0}
+    tile: {fileID: 11400000, guid: 9063dc402caaa9e44bc5fa68802ab699, type: 2}
+  - position: {x: 1, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 9062044e155a0c7469757d5f320b9f3e, type: 2}
+  - position: {x: 1, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: 2508ac8a4b36ef146b4d243d8b8d006c, type: 2}
+  - position: {x: 1, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: 97c42231678a87940bbac2312a93665f, type: 2}
+  - position: {x: 1, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: e51dc4a71d083ed429dfa7cbc3f88897, type: 2}
+  - position: {x: 1, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: 0f25b47f44be44741835a38fbe778c10, type: 2}
+  - position: {x: 1, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: 6c9f7092f1987e3478ad66a2f564565d, type: 2}
+  - position: {x: 1, y: 6, z: 0}
+    tile: {fileID: 11400000, guid: 99f31ae4d29eab7448f5ae16087c511d, type: 2}
+  - position: {x: 1, y: 7, z: 0}
+    tile: {fileID: 11400000, guid: 1f59c4cc4764610438a3820980d825d0, type: 2}
+  - position: {x: 1, y: 8, z: 0}
+    tile: {fileID: 11400000, guid: 49a1015913d6a4e4e9b663163650d1ef, type: 2}
+  - position: {x: 1, y: 9, z: 0}
+    tile: {fileID: 11400000, guid: e1eb1c5ec0b3720439a49df576667039, type: 2}
+  - position: {x: 2, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: f12a4bd0c81c63f458eea6220806f355, type: 2}
+  - position: {x: 2, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: 0719d87b6f437c147ba374de70ce40fe, type: 2}
+  - position: {x: 2, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: e4dcf6048b15fff4f9df393e9f8e602e, type: 2}
+  - position: {x: 2, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: 4ccba59a5ed363d4f97e0aa99ec29b28, type: 2}
+  - position: {x: 2, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: c971329f287b166418444b8e8846bb3c, type: 2}
+  - position: {x: 2, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: 63ce683a352dd46489219761702ba612, type: 2}
+  - position: {x: 2, y: 6, z: 0}
+    tile: {fileID: 11400000, guid: 4f837d22a6ebbb64185a6ccd1dbb8f75, type: 2}
+  - position: {x: 2, y: 7, z: 0}
+    tile: {fileID: 11400000, guid: 87a1e44d2ab29d640aee8199e4073dea, type: 2}
+  - position: {x: 2, y: 8, z: 0}
+    tile: {fileID: 11400000, guid: 20b4d3dfd98700f419689d6f233ea411, type: 2}
+  - position: {x: 2, y: 9, z: 0}
+    tile: {fileID: 11400000, guid: 87ceba3f60a4f6a4ab48a51070092c5c, type: 2}
+  - position: {x: 3, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: f55fdb744ac282644ad7a72b14c96062, type: 2}
+  - position: {x: 3, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: 623c1ffe04351de4e8480d0caa4bc862, type: 2}
+  - position: {x: 3, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: e11847ba8b82d334d8602c3cda3cc3b0, type: 2}
+  - position: {x: 3, y: 3, z: 0}
+    tile: {fileID: 11400000, guid: e843c5245d092224baf6385254882e1e, type: 2}
+  - position: {x: 3, y: 4, z: 0}
+    tile: {fileID: 11400000, guid: 84b8e3ad2784bd04b9f153063e8e2a3f, type: 2}
+  - position: {x: 3, y: 5, z: 0}
+    tile: {fileID: 11400000, guid: 63fea708539350940acb438aa80cd570, type: 2}
+  - position: {x: 3, y: 6, z: 0}
+    tile: {fileID: 11400000, guid: c7a022298bfeafb4aa545f756e41b111, type: 2}
+  - position: {x: 3, y: 7, z: 0}
+    tile: {fileID: 11400000, guid: 48c121ae8f874fe4280ccb1fe14d5991, type: 2}
+  - position: {x: 3, y: 8, z: 0}
+    tile: {fileID: 11400000, guid: 9f587d94d6b279f42a80ea019f3c8b55, type: 2}
+  - position: {x: 3, y: 9, z: 0}
+    tile: {fileID: 11400000, guid: c6925ef50488a7b4c92177276e3f6a34, type: 2}
+  unbreakableCollisionTiles: []
+  breakableCollisionTiles: []
+  obstacleTiles: []
+  holeTiles: []
+  characterTiles: []
+  size: {x: 4, y: 10}
+  weight: 1
+  tileType: 5

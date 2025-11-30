@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24ae8bfb73c5cad41af487b5aa85b6db, type: 3}
-  m_Name: Stage2-Floor 2
+  m_Name: Stage2-Hole 2
   m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
-  floorTiles:
+  floorTiles: []
+  unbreakableCollisionTiles:
   - position: {x: 0, y: 0, z: 0}
-    tile: {fileID: 11400000, guid: 0a0482c2b6753e04fbf3096f75fb8fd5, type: 2}
-  unbreakableCollisionTiles: []
+    tile: {fileID: 11400000, guid: 7cbfad4b2a62fe84ca67ab2d95a6b27f, type: 2}
   breakableCollisionTiles: []
-  size: {x: 1, y: 1}
-  weight: 500
-  tileType: 0
-  stage: 2
+  obstacleTiles: []
+  holeTiles: []
+  characterTiles: []
+  size: {x: 6, y: 6}
+  weight: 1
+  tileType: 3

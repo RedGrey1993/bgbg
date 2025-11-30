@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ae8bfb73c5cad41af487b5aa85b6db, type: 3}
+  m_Name: Stage2-FloorBoss 4
+  m_EditorClassIdentifier: Assembly-CSharp::TileTemplate
+  floorTiles:
+  - position: {x: 0, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 15f8c80c9a0c0164ca0d177ddeec88b4, type: 2}
+  - position: {x: 0, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: ae7a43e88707f14479de25ee438e3bc9, type: 2}
+  - position: {x: 0, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: ad2ecb5bba8f8174a9f86f94adf62b47, type: 2}
+  - position: {x: 1, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: b3a2db6a215a12d4b898d165c853a480, type: 2}
+  - position: {x: 1, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: af959eb347455e4419c9970310877c6f, type: 2}
+  - position: {x: 1, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: c9072676b2e04014a92f3a19531ff526, type: 2}
+  - position: {x: 2, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 729ce0299d32d314c8cfc6f7e202ec63, type: 2}
+  - position: {x: 2, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: 83a01563cca00cc48a51d1d24c44ee78, type: 2}
+  - position: {x: 2, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: 28288e4585db679468db6cdd1e660abe, type: 2}
+  - position: {x: 3, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: f47efd82249cd6d4f98911e8dceb5ca5, type: 2}
+  - position: {x: 3, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: fb00b89605b652e42b84f9ed2978e1f7, type: 2}
+  - position: {x: 3, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: 0ec62d7afd55a96448d273382ca9bf43, type: 2}
+  - position: {x: 4, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: 7601e6069a9aec64baf2d5678c24be3e, type: 2}
+  - position: {x: 4, y: 1, z: 0}
+    tile: {fileID: 11400000, guid: aba8f2216a05a914ba00cb4c26ac6bc9, type: 2}
+  - position: {x: 4, y: 2, z: 0}
+    tile: {fileID: 11400000, guid: 5f113216bec15df4991a01bd365b7235, type: 2}
+  unbreakableCollisionTiles: []
+  breakableCollisionTiles: []
+  obstacleTiles: []
+  holeTiles: []
+  characterTiles: []
+  size: {x: 5, y: 3}
+  weight: 1
+  tileType: 5

@@ -13,6 +13,8 @@ public class CharacterManager : MonoBehaviour
     public Transform companionParent;
     public GameObject cameraFollowObject;
     public GameObject miniStatusPrefab;
+    public float spawnCheckRadius;
+    public LayerMask spawnCheckLayer;
 
     public static CharacterManager Instance { get; private set; }
 
@@ -138,8 +140,18 @@ public class CharacterManager : MonoBehaviour
                         var cfg = stageMinionSpawnConfigs[rndIdx];
                         if (cfg.spawnOffsets.Length <= 0) {
                             Vector2 position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, cfg.bound);
-                            // if (!positions.Contains(position)) // O(n) 太慢了
-                            positions.Add(position);
+                            Collider2D hit = Physics2D.OverlapCircle(position, spawnCheckRadius, spawnCheckLayer);
+                            // 如果没碰到任何东西（返回null），说明位置合法
+                            if (hit == null)
+                            {
+                                spawnCfgs.Add(cfg);
+                                // if (!positions.Contains(position)) // O(n) 太慢了
+                                positions.Add(position);
+                            }
+                            else
+                            {
+                                Debug.Log($"hit {hit.name}");
+                            }
                             cnt++;
                         }
                         else
@@ -147,13 +159,24 @@ public class CharacterManager : MonoBehaviour
                             for (int i = 0; i < cfg.spawnOffsets.Length; i++)
                             {
                                 Vector2 position = LevelManager.Instance.GetPositionInRoom(roomIdx, cfg.spawnOffsets[i], cfg.bound);
-                                positions.Add(position);
+                                Collider2D hit = Physics2D.OverlapCircle(position, spawnCheckRadius, spawnCheckLayer);
+                                // 如果没碰到任何东西（返回null），说明位置合法
+                                if (hit == null)
+                                {
+                                    spawnCfgs.Add(cfg);
+                                    positions.Add(position);
+                                }
+                                else
+                                {
+                                    Debug.Log($"hit {hit.name}");
+                                }
                             }
                             cnt += cfg.spawnOffsets.Length;
                         }
                     }
                 }
             }
+
             foreach (int roomIdx in LevelManager.Instance.remainRoomsIndex)
             {
                 if (LevelManager.Instance.BossRoomIds.Contains(roomIdx) || playerRooms.Contains(roomIdx))
@@ -176,18 +199,56 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    // 临时变量，用来存储上次检测的位置
+    private Vector2 debugLastCheckPos;
+    private bool debugLastResult;
+    void OnDrawGizmos()
+    {
+        // 如果检测到了墙，画红球；没检测到（认为是空地），画绿球
+        Gizmos.color = debugLastResult ? Color.red : Color.green;
+        // 画出检测范围
+        Gizmos.DrawWireSphere(debugLastCheckPos, spawnCheckRadius); // 这里的 1.0f 要换成你的 checkRadius
+    }
+
     private void CreateBossObjects(LocalStorage storage)
     {
         void GenerateBossPosition(int roomIdx, Vector2[] bossSpawnOffset, Bounds bound, out Vector2 position)
         {
-            if (bossSpawnOffset.Length <= 0)
+            int cnt = 0;
+            position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
+            while(true && cnt < 50) {
+                if (bossSpawnOffset.Length <= 0)
+                {
+                    position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
+                } 
+                else
+                {
+                    int rnd = Random.Range(0, bossSpawnOffset.Length);
+                    position = LevelManager.Instance.GetPositionInRoom(roomIdx, bossSpawnOffset[rnd], bound);
+                }
+
+                Collider2D hit = Physics2D.OverlapCircle(position, spawnCheckRadius, spawnCheckLayer);
+                debugLastCheckPos = position;
+                debugLastResult = hit != null;  // 记录结果
+                // 如果没碰到任何东西（返回null），说明位置合法
+                if (hit == null)
+                {
+                    break; // 找到了，跳出尝试循环
+                }
+                cnt++;
+            }
+            if (cnt >= 50)
             {
-                position = LevelManager.Instance.GetRandomPositionInRoom(roomIdx, bound);
-            } 
+                Debug.LogError("Boss生成位置尝试50次都失败了");
+                var room = LevelManager.Instance.Rooms[roomIdx];
+                position = new Vector2(
+                    room.xMin + 1 + Constants.CharacterMaxRadius,
+                    room.yMin + 1 + Constants.CharacterMaxRadius
+                );
+            }
             else
             {
-                int rnd = Random.Range(0, bossSpawnOffset.Length);
-                position = LevelManager.Instance.GetPositionInRoom(roomIdx, bossSpawnOffset[rnd], bound);
+                Debug.Log("Boss生成位置尝试" + cnt + "次成功");
             }
         }
 
@@ -277,10 +338,9 @@ public class CharacterManager : MonoBehaviour
         var ascRooms = LevelManager.Instance.GetAreaAscRooms();
         var roomId = Random.Range(0, Mathf.Max(ascRooms.Count / 2, 1));
         Rect playerRoom = ascRooms[roomId];
-        // 墙壁最厚可能是2
         go.transform.position = new Vector2(
-            playerRoom.xMin + 2 + Constants.CharacterMaxRadius,
-            playerRoom.yMin + 2 + Constants.CharacterMaxRadius
+            playerRoom.xMin + 1 + Constants.CharacterMaxRadius,
+            playerRoom.yMin + 1 + Constants.CharacterMaxRadius
         );
         // Set player name
         string playerName = PlayerInfoMap[playerId].Name;

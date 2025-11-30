@@ -13,19 +13,15 @@ MonoBehaviour:
   m_Name: LevelData 2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   explosionTile: {fileID: 11400000, guid: 19d19b3715d1f7c4ba5af0698c3f15d2, type: 2}
-  normalMinionPrefabs:
-  - {fileID: 5506378715684145941, guid: 1dea79ebf4a63c5409789d28cf2ac9df, type: 3}
-  bossPrefabs:
-  - {fileID: 5506378715684145941, guid: 5aff9bf8c80eb1a44aae013f719c3dbf, type: 3}
   level: 2
   totalRooms:
-    min: 3
-    max: 3
-  roomMaxWidth: 80
+    min: 8
+    max: 8
+  roomMaxWidth: 40
   roomMaxHeight: 40
   areaPerMinion:
-    min: 100
-    max: 100
+    min: 35
+    max: 120
   stageStartCgSprite: []
   stagePassedCgSprite: []
   stagePassedHiddenCgSprite: []
@@ -35,22 +31,27 @@ MonoBehaviour:
     max: 2
   bossRoomMinWidth: 20
   bossRoomMinHeight: 20
-  holeRatio: 0.001
-  unbreakableObstacleRatio: 0.001
-  breakableObstacleRatio: 0.001
+  holeRatio: 0.005
+  unbreakableObstacleRatio: 0.005
+  breakableObstacleRatio: 0
   tileTemplates:
   - {fileID: 11400000, guid: a0ed60495909bb1439b9e4eb065e4192, type: 2}
-  - {fileID: 11400000, guid: 89ff6aa872364e9409b337a135bde493, type: 2}
-  - {fileID: 11400000, guid: 0fcdae0cdf669884ab13801502510fec, type: 2}
   - {fileID: 11400000, guid: c72987518dd80e9478173b1012f366d1, type: 2}
   - {fileID: 11400000, guid: e3ea4fd21c2bcfe49b76b258122dbc3b, type: 2}
+  - {fileID: 11400000, guid: 671b856e8e764f640babf0b4670b9127, type: 2}
+  - {fileID: 11400000, guid: 21a5a36be4f897440b589d20997b5206, type: 2}
+  - {fileID: 11400000, guid: 9ad6544b2571a934182f669026d6f530, type: 2}
+  - {fileID: 11400000, guid: e5bd3b78fe5e94e49acceca69d559bad, type: 2}
+  - {fileID: 11400000, guid: 6971156381aa76c499e33fa6fad3d5c0, type: 2}
   - {fileID: 11400000, guid: a2ef7b9b4ea0a5a4ba7c507fb5e720ca, type: 2}
+  - {fileID: 11400000, guid: 9382c1c7b63187748b44a992ff774951, type: 2}
   - {fileID: 11400000, guid: 9cfe539ae3146bb42affabddc898348a, type: 2}
   - {fileID: 11400000, guid: 848de996dbd2a0246a23115f6608d756, type: 2}
   - {fileID: 11400000, guid: 6ef5ce44f73af334795640905cab8fa8, type: 2}
   - {fileID: 11400000, guid: bbaf7e015f4aa0f419a6b653d5eee4c5, type: 2}
   - {fileID: 11400000, guid: 17aa3238666c64246b8dbea2fda7e38a, type: 2}
   - {fileID: 11400000, guid: e84e8e5c588506d40bbd7b1c8e3a6cd8, type: 2}
+  - {fileID: 11400000, guid: faa7ec2d7f880ab4197c05bbc3f012f5, type: 2}
   bgmNormal: {fileID: 8300000, guid: 66d04315261801c4a8cb1f38ab308393, type: 3}
   bgmBoss: {fileID: 8300000, guid: 5b71fe8a18289af4c82732019dac8f1b, type: 3}
   bgmVolume: 0.2

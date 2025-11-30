@@ -17,6 +17,10 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
     }
 
     private float nxtTeleportTime = 0;
+    protected override void SubclassCollisionStay2D(Collision2D collision)
+    {
+        SubclassCollisionEnter2D(collision);
+    }
     protected override void SubclassCollisionEnter2D(Collision2D collision)
     {
         if (Time.time > nxtTeleportTime) {
@@ -27,6 +31,10 @@ public class Minion_17_WarpMageAI : CharacterBaseAI
             ProcessCollisionDamage(collision);
     }
 
+    protected override void SubclassTriggerStay2D(Collider2D other)
+    {
+        SubclassTriggerEnter2D(other);
+    }
     protected override void SubclassTriggerEnter2D(Collider2D other)
     {
         if (Time.time > nxtTeleportTime) {
